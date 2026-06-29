@@ -1,0 +1,53 @@
+{
+  "dedup_uid": "dedup.sha256.f404b76d6fc56770134c6aee28a622b1a56e10611a5744ef0e25bd1cb4d9e6b3",
+  "operation_ids": [
+    "squeezebert.op-000009"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "MatMulWrapper"
+      ]
+    ],
+    "config_branches": [
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            4,
+            5,
+            4
+          ],
+          [
+            3,
+            4,
+            4,
+            5
+          ]
+        ],
+        [
+          [
+            3,
+            4,
+            5,
+            5
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "b3e6777c938fe6ac8d8e04874ffdfbf678f2a574b6fb657f8b4db49df4c7d7f1",
+    "topology": [
+      [
+        "module_call",
+        "transformers.models.squeezebert.modeling_squeezebert.MatMulWrapper"
+      ]
+    ]
+  }
+}

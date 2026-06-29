@@ -1,0 +1,641 @@
+{
+  "blocks": [
+    {
+      "block_type": "embedding",
+      "block_uid": "starcoder2.block-00001",
+      "dedup_ref": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 1,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49/block.json",
+        "target_dedup_uid": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embed_tokens",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "starcoder2.block-00002",
+      "dedup_ref": "dedup.sha256.2cdb1d9cdfde946c6ceb5f78d3aa9ddfc7331dd77c722ea71fa05db635fbf770",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 2,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2cdb1d9cdfde946c6ceb5f78d3aa9ddfc7331dd77c722ea71fa05db635fbf770/block.json",
+        "target_dedup_uid": "dedup.sha256.2cdb1d9cdfde946c6ceb5f78d3aa9ddfc7331dd77c722ea71fa05db635fbf770",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 202,
+          "executed_line": 159,
+          "file": "transformers/models/starcoder2/modeling_starcoder2.py",
+          "source_uid": "source.sha256.083e705485e677a664968f8c655c30c9caf3f12c181f88bc7f5f5230e46b0828",
+          "start_line": 159,
+          "symbol": "Starcoder2Attention.forward"
+        },
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 51,
+          "executed_line": 50,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 50,
+          "symbol": "GELUTanh.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 67,
+          "executed_line": 62,
+          "file": "transformers/models/starcoder2/modeling_starcoder2.py",
+          "source_uid": "source.sha256.083e705485e677a664968f8c655c30c9caf3f12c181f88bc7f5f5230e46b0828",
+          "start_line": 62,
+          "symbol": "Starcoder2MLP.forward"
+        },
+        {
+          "end_line": 243,
+          "executed_line": 214,
+          "file": "transformers/models/starcoder2/modeling_starcoder2.py",
+          "source_uid": "source.sha256.083e705485e677a664968f8c655c30c9caf3f12c181f88bc7f5f5230e46b0828",
+          "start_line": 214,
+          "symbol": "Starcoder2DecoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "starcoder2.block-00003",
+      "dedup_ref": "dedup.sha256.b61555e59830e5f01c7d0612b213c8c73ff9ef2b37df79624f6011b0ab236a61",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 3,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b61555e59830e5f01c7d0612b213c8c73ff9ef2b37df79624f6011b0ab236a61/block.json",
+        "target_dedup_uid": "dedup.sha256.b61555e59830e5f01c7d0612b213c8c73ff9ef2b37df79624f6011b0ab236a61",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 202,
+          "executed_line": 159,
+          "file": "transformers/models/starcoder2/modeling_starcoder2.py",
+          "source_uid": "source.sha256.083e705485e677a664968f8c655c30c9caf3f12c181f88bc7f5f5230e46b0828",
+          "start_line": 159,
+          "symbol": "Starcoder2Attention.forward"
+        },
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 51,
+          "executed_line": 50,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 50,
+          "symbol": "GELUTanh.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 67,
+          "executed_line": 62,
+          "file": "transformers/models/starcoder2/modeling_starcoder2.py",
+          "source_uid": "source.sha256.083e705485e677a664968f8c655c30c9caf3f12c181f88bc7f5f5230e46b0828",
+          "start_line": 62,
+          "symbol": "Starcoder2MLP.forward"
+        },
+        {
+          "end_line": 243,
+          "executed_line": 214,
+          "file": "transformers/models/starcoder2/modeling_starcoder2.py",
+          "source_uid": "source.sha256.083e705485e677a664968f8c655c30c9caf3f12c181f88bc7f5f5230e46b0828",
+          "start_line": 214,
+          "symbol": "Starcoder2DecoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "starcoder2.block-00004",
+      "dedup_ref": "dedup.sha256.6a7782b6564a33a9935f10fc9f2f9537e5ae3db0ccaff6a85266308bf4330c71",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 4,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6a7782b6564a33a9935f10fc9f2f9537e5ae3db0ccaff6a85266308bf4330c71/block.json",
+        "target_dedup_uid": "dedup.sha256.6a7782b6564a33a9935f10fc9f2f9537e5ae3db0ccaff6a85266308bf4330c71",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 202,
+          "executed_line": 159,
+          "file": "transformers/models/starcoder2/modeling_starcoder2.py",
+          "source_uid": "source.sha256.083e705485e677a664968f8c655c30c9caf3f12c181f88bc7f5f5230e46b0828",
+          "start_line": 159,
+          "symbol": "Starcoder2Attention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "starcoder2.block-00005",
+      "dedup_ref": "dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 5,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671/block.json",
+        "target_dedup_uid": "dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "starcoder2.block-00006",
+      "dedup_ref": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 6,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc/block.json",
+        "target_dedup_uid": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "starcoder2.block-00007",
+      "dedup_ref": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 7,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc/block.json",
+        "target_dedup_uid": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "starcoder2.block-00008",
+      "dedup_ref": "dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 8,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671/block.json",
+        "target_dedup_uid": "dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.o_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "starcoder2.block-00009",
+      "dedup_ref": "dedup.sha256.38f2471c4eae1767410d3587d6174676ca23e21d548c9bd4a0f0b3a2604e6a79",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 9,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.38f2471c4eae1767410d3587d6174676ca23e21d548c9bd4a0f0b3a2604e6a79/block.json",
+        "target_dedup_uid": "dedup.sha256.38f2471c4eae1767410d3587d6174676ca23e21d548c9bd4a0f0b3a2604e6a79",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 51,
+          "executed_line": 50,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 50,
+          "symbol": "GELUTanh.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 67,
+          "executed_line": 62,
+          "file": "transformers/models/starcoder2/modeling_starcoder2.py",
+          "source_uid": "source.sha256.083e705485e677a664968f8c655c30c9caf3f12c181f88bc7f5f5230e46b0828",
+          "start_line": 62,
+          "symbol": "Starcoder2MLP.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "starcoder2.block-00010",
+      "dedup_ref": "dedup.sha256.cbdc9e243caede71cc9ccbbf73cd3456606a36ad6c0a89e963e0b4797639bfa2",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 10,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.cbdc9e243caede71cc9ccbbf73cd3456606a36ad6c0a89e963e0b4797639bfa2/block.json",
+        "target_dedup_uid": "dedup.sha256.cbdc9e243caede71cc9ccbbf73cd3456606a36ad6c0a89e963e0b4797639bfa2",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.c_fc",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "starcoder2.block-00011",
+      "dedup_ref": "dedup.sha256.4b710be07eb8c355f9f26cc171e91a5f802077b3f5ceaf6147960d7027da6612",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 11,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4b710be07eb8c355f9f26cc171e91a5f802077b3f5ceaf6147960d7027da6612/block.json",
+        "target_dedup_uid": "dedup.sha256.4b710be07eb8c355f9f26cc171e91a5f802077b3f5ceaf6147960d7027da6612",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.c_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "starcoder2.block-00012",
+      "dedup_ref": "dedup.sha256.7a29cc10e5a72287ec837d032b51f475ba3795cc84c3931f5ed97ef57355929d",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 12,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7a29cc10e5a72287ec837d032b51f475ba3795cc84c3931f5ed97ef57355929d/block.json",
+        "target_dedup_uid": "dedup.sha256.7a29cc10e5a72287ec837d032b51f475ba3795cc84c3931f5ed97ef57355929d",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.act",
+      "source_refs": [
+        {
+          "end_line": 51,
+          "executed_line": 50,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 50,
+          "symbol": "GELUTanh.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "starcoder2.block-00013",
+      "dedup_ref": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 13,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd/block.json",
+        "target_dedup_uid": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.input_layernorm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "starcoder2.block-00014",
+      "dedup_ref": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 14,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd/block.json",
+        "target_dedup_uid": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.post_attention_layernorm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "starcoder2.block-00015",
+      "dedup_ref": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+      "family_id": "starcoder2",
+      "graph_ref": "graphs/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json",
+      "index": 15,
+      "model_version_id": "starcoder2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd/block.json",
+        "target_dedup_uid": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.6fb3d28207a45c52b60cc5761113d1cbab06207f465a239fb6566ab21add08e5.json"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "dedup_uid": "dedup.sha256.007a33073b6cd9fca067b1ec03b66728a91ccdf67ce0efbc7f463a58df4867d2",
+  "operation_ids": [
+    "squeezebert.op-000017"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "ConvDropoutLayerNorm"
+      ],
+      [
+        "conv1d",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ],
+      [
+        "layernorm",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "SqueezeBertLayerNorm"
+      ],
+      [
+        "dropout",
+        "torch.nn.modules.dropout",
+        "Dropout"
+      ]
+    ],
+    "config_branches": [
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            16,
+            5
+          ],
+          [
+            3,
+            16,
+            5
+          ]
+        ],
+        [
+          [
+            3,
+            16,
+            5
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "1bf7a09d8b838783c452f63dc5fad163a2c48da666eceb9633a96383b1a8a5b6",
+    "topology": [
+      [
+        "module_call",
+        "transformers.models.squeezebert.modeling_squeezebert.ConvDropoutLayerNorm"
+      ]
+    ]
+  }
+}

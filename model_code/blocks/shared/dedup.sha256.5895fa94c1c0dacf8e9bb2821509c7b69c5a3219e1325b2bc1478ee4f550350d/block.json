@@ -1,0 +1,80 @@
+{
+  "dedup_uid": "dedup.sha256.5895fa94c1c0dacf8e9bb2821509c7b69c5a3219e1325b2bc1478ee4f550350d",
+  "operation_ids": [
+    "squeezebert.op-000013"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "SqueezeBertSelfAttention"
+      ],
+      [
+        "query",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ],
+      [
+        "key",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ],
+      [
+        "value",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ],
+      [
+        "dropout",
+        "torch.nn.modules.dropout",
+        "Dropout"
+      ],
+      [
+        "softmax",
+        "torch.nn.modules.activation",
+        "Softmax"
+      ],
+      [
+        "matmul_qk",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "MatMulWrapper"
+      ],
+      [
+        "matmul_qkv",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "MatMulWrapper"
+      ]
+    ],
+    "config_branches": [
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            16,
+            5
+          ]
+        ],
+        [
+          [
+            3,
+            16,
+            5
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "5c0e82ca5a74e5937632357b35b0c31fa890d83f3c0d66b7accb3ad3ea3c34fb",
+    "topology": [
+      [
+        "module_call",
+        "transformers.models.squeezebert.modeling_squeezebert.SqueezeBertSelfAttention"
+      ]
+    ]
+  }
+}

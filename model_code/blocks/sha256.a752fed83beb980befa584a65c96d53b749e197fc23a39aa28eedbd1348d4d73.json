@@ -1,0 +1,265 @@
+{
+  "blocks": [
+    {
+      "block_type": "embedding",
+      "block_uid": "falcon.block-00001",
+      "dedup_ref": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+      "family_id": "falcon",
+      "graph_ref": "graphs/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json",
+      "index": 1,
+      "model_version_id": "falcon",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49/block.json",
+        "target_dedup_uid": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "word_embeddings",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "falcon.block-00004",
+      "dedup_ref": "dedup.sha256.6e621d874dcc3cc64dd92b14adcd66b02667ccbfdfbdb2a56f599fb1f7f6f19e",
+      "family_id": "falcon",
+      "graph_ref": "graphs/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json",
+      "index": 4,
+      "model_version_id": "falcon",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6e621d874dcc3cc64dd92b14adcd66b02667ccbfdfbdb2a56f599fb1f7f6f19e/block.json",
+        "target_dedup_uid": "dedup.sha256.6e621d874dcc3cc64dd92b14adcd66b02667ccbfdfbdb2a56f599fb1f7f6f19e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "h.0.self_attention",
+      "source_refs": [
+        {
+          "end_line": 427,
+          "executed_line": 316,
+          "file": "transformers/models/falcon/modeling_falcon.py",
+          "source_uid": "source.sha256.976031b4b7d05d63631af699ddca89066f2b871cf1c21e01e58ef3d8317e9154",
+          "start_line": 316,
+          "symbol": "FalconAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "falcon.block-00005",
+      "dedup_ref": "dedup.sha256.d4d966870da2658fc707ade71ba4fc2e995395246fcf94e041084e1906b34f9d",
+      "family_id": "falcon",
+      "graph_ref": "graphs/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json",
+      "index": 5,
+      "model_version_id": "falcon",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.d4d966870da2658fc707ade71ba4fc2e995395246fcf94e041084e1906b34f9d/block.json",
+        "target_dedup_uid": "dedup.sha256.d4d966870da2658fc707ade71ba4fc2e995395246fcf94e041084e1906b34f9d",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "h.0.self_attention.query_key_value",
+      "source_refs": [
+        {
+          "end_line": 65,
+          "executed_line": 61,
+          "file": "transformers/models/falcon/modeling_falcon.py",
+          "source_uid": "source.sha256.976031b4b7d05d63631af699ddca89066f2b871cf1c21e01e58ef3d8317e9154",
+          "start_line": 61,
+          "symbol": "FalconLinear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "falcon.block-00006",
+      "dedup_ref": "dedup.sha256.0da5b8c7b27c0274d208cdb84bf136057c66fa0178dfb38795f8fd20de749dc1",
+      "family_id": "falcon",
+      "graph_ref": "graphs/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json",
+      "index": 6,
+      "model_version_id": "falcon",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.0da5b8c7b27c0274d208cdb84bf136057c66fa0178dfb38795f8fd20de749dc1/block.json",
+        "target_dedup_uid": "dedup.sha256.0da5b8c7b27c0274d208cdb84bf136057c66fa0178dfb38795f8fd20de749dc1",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "h.0.self_attention.dense",
+      "source_refs": [
+        {
+          "end_line": 65,
+          "executed_line": 61,
+          "file": "transformers/models/falcon/modeling_falcon.py",
+          "source_uid": "source.sha256.976031b4b7d05d63631af699ddca89066f2b871cf1c21e01e58ef3d8317e9154",
+          "start_line": 61,
+          "symbol": "FalconLinear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "falcon.block-00007",
+      "dedup_ref": "dedup.sha256.65b2bba5bfee27032f9794d18701862652f6c334a01a1ed8e5bbaa12fdc1e619",
+      "family_id": "falcon",
+      "graph_ref": "graphs/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json",
+      "index": 7,
+      "model_version_id": "falcon",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.65b2bba5bfee27032f9794d18701862652f6c334a01a1ed8e5bbaa12fdc1e619/block.json",
+        "target_dedup_uid": "dedup.sha256.65b2bba5bfee27032f9794d18701862652f6c334a01a1ed8e5bbaa12fdc1e619",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "h.0.self_attention.attention_dropout",
+      "source_refs": [],
+      "trace_ref": "traces/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "falcon.block-00008",
+      "dedup_ref": "dedup.sha256.57fca79abcafa373319c503680cd1afb8e04fedcb0e143818ac81b09b60ff168",
+      "family_id": "falcon",
+      "graph_ref": "graphs/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json",
+      "index": 8,
+      "model_version_id": "falcon",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.57fca79abcafa373319c503680cd1afb8e04fedcb0e143818ac81b09b60ff168/block.json",
+        "target_dedup_uid": "dedup.sha256.57fca79abcafa373319c503680cd1afb8e04fedcb0e143818ac81b09b60ff168",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "h.0.mlp",
+      "source_refs": [
+        {
+          "end_line": 544,
+          "executed_line": 541,
+          "file": "transformers/models/falcon/modeling_falcon.py",
+          "source_uid": "source.sha256.976031b4b7d05d63631af699ddca89066f2b871cf1c21e01e58ef3d8317e9154",
+          "start_line": 541,
+          "symbol": "FalconMLP.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "falcon.block-00009",
+      "dedup_ref": "dedup.sha256.9f52948917635706c511629781878760496a6cf9392ef08212e99984e76aa074",
+      "family_id": "falcon",
+      "graph_ref": "graphs/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json",
+      "index": 9,
+      "model_version_id": "falcon",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.9f52948917635706c511629781878760496a6cf9392ef08212e99984e76aa074/block.json",
+        "target_dedup_uid": "dedup.sha256.9f52948917635706c511629781878760496a6cf9392ef08212e99984e76aa074",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "h.0.mlp.dense_h_to_4h",
+      "source_refs": [
+        {
+          "end_line": 65,
+          "executed_line": 61,
+          "file": "transformers/models/falcon/modeling_falcon.py",
+          "source_uid": "source.sha256.976031b4b7d05d63631af699ddca89066f2b871cf1c21e01e58ef3d8317e9154",
+          "start_line": 61,
+          "symbol": "FalconLinear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "falcon.block-00010",
+      "dedup_ref": "dedup.sha256.03c366a38e91f291f3f51df2f5b95759f1bbdfd770384ef2e514a3c707e7529a",
+      "family_id": "falcon",
+      "graph_ref": "graphs/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json",
+      "index": 10,
+      "model_version_id": "falcon",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.03c366a38e91f291f3f51df2f5b95759f1bbdfd770384ef2e514a3c707e7529a/block.json",
+        "target_dedup_uid": "dedup.sha256.03c366a38e91f291f3f51df2f5b95759f1bbdfd770384ef2e514a3c707e7529a",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "h.0.mlp.act",
+      "source_refs": [
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "falcon.block-00011",
+      "dedup_ref": "dedup.sha256.53ae8e4d0067a8c5ed511615c77da6fac649e4c69770a60cb24c67139071c81a",
+      "family_id": "falcon",
+      "graph_ref": "graphs/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json",
+      "index": 11,
+      "model_version_id": "falcon",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.53ae8e4d0067a8c5ed511615c77da6fac649e4c69770a60cb24c67139071c81a/block.json",
+        "target_dedup_uid": "dedup.sha256.53ae8e4d0067a8c5ed511615c77da6fac649e4c69770a60cb24c67139071c81a",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "h.0.mlp.dense_4h_to_h",
+      "source_refs": [
+        {
+          "end_line": 65,
+          "executed_line": 61,
+          "file": "transformers/models/falcon/modeling_falcon.py",
+          "source_uid": "source.sha256.976031b4b7d05d63631af699ddca89066f2b871cf1c21e01e58ef3d8317e9154",
+          "start_line": 61,
+          "symbol": "FalconLinear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "falcon.block-00012",
+      "dedup_ref": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+      "family_id": "falcon",
+      "graph_ref": "graphs/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json",
+      "index": 12,
+      "model_version_id": "falcon",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd/block.json",
+        "target_dedup_uid": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "h.0.input_layernorm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a752fed83beb980befa584a65c96d53b749e197fc23a39aa28eedbd1348d4d73.json"
+    }
+  ]
+}

@@ -1,0 +1,968 @@
+# SPEC.md — Static Cloudflare Model Structure and Source-Code Viewer
+
+Status: final implementation spec for coding agent
+Target runtime: Cloudflare Pages static site
+Backend: forbidden at runtime
+Primary build language: Python for model-data build, TypeScript/JavaScript for static UI
+Primary ML framework scope: PyTorch model implementations, with Hugging Face Transformers/Diffusers support where declared in `model.txt` and the generated normalized scope
+
+---
+
+## 1. Product goal
+
+Build a Cloudflare Pages-compatible static website that lets users inspect every declared model family, model version, model block, module, layer, operation, and available source-code path interactively in the browser.
+
+The runtime website must contain prebuilt static assets only. It must not load models, execute Python, call a backend API, use a database, call serverless functions, or download model weights.
+
+The build system has two separate stages:
+
+1. Stage 1 — Build model data.
+   - Read the model catalog from `model.txt` and expand it through the model registry into a normalized text/YAML/JSON scope.
+   - Instantiate each declared model architecture without downloading pretrained weights.
+   - Execute at least one full forward pass for every declared model version on CPU or GPU, or use approved staged layer-by-layer execution for models that cannot fit in available RAM/VRAM.
+   - Capture graph, module hierarchy, source-code spans, operation calls, tensor shapes, dtypes, device, config branches, and parameter counts.
+   - Deduplicate identical blocks and generate pointer-like references.
+   - Generate static `model_code/` assets.
+
+2. Stage 2 — Build UI.
+   - Build the static frontend.
+   - Package only required static assets into `build/`.
+   - Ensure `build/` is directly deployable to Cloudflare Pages.
+
+---
+
+## 2. External model catalog and scope input
+
+The full model range is not defined inside this spec. The canonical model catalog is `model.txt`.
+
+`model.txt` contains the list of all model families/architectures to include. It is the human-edited model list, with one declared model family or architecture per line. The builder must treat it as the source of truth for "all models used" unless a release build explicitly points to another catalog file.
+
+The builder must expand `model.txt` through a registry/factory layer into a normalized scope file such as `model_scope.generated.yaml` or `model_scope.generated.json`. A hand-written `model_scope.txt`, `model_scope.yaml`, or `model_scope.json` may still be supplied for advanced/private scopes, but release builds in this repository should default to `model.txt` plus registry expansion.
+
+The build must fail if the model-scope file is missing, malformed, or does not provide enough information to instantiate and forward each declared model version.
+
+Adding support for a new model family should require only one small registry/factory entry when the architecture follows existing Transformers, Diffusers, or PyTorch conventions. The registry entry may point to reusable source/config resolvers, input factories, constructor adapters, and task defaults. Per-model custom code is allowed only when an architecture cannot be adapted by the generic hook/tracing system.
+
+Minimum required fields per model version:
+
+```yaml
+model_families:
+  - family_id: string
+    display_name: string
+    source:
+      type: local | git | huggingface_hub
+      repo: string | null
+      commit: string
+      local_path: string | null
+      license_hint: string | null
+    versions:
+      - version_id: string
+        display_name: string
+        parameter_size_label: string
+        framework: pytorch
+        library: transformers | diffusers | custom
+        config_path: string
+        entrypoint:
+          module: string
+          class_name: string
+          factory: string | null
+        task_type: text | vision | audio | multimodal | diffusion | custom
+        input_spec:
+          description: string
+          tensors:
+            - name: string
+              shape: [int | string]
+              dtype: string
+              value_policy: zeros | random_normal | random_int | token_ids | custom
+          kwargs: object
+        forward_policy:
+          device: auto | cpu | cuda
+          dtype: float32 | float16 | bfloat16 | auto
+          eval_mode: true
+          no_grad: true
+          inference_mode: true
+          timeout_seconds: int
+        expected_success: true
+```
+
+Rules:
+
+- Every non-empty, non-comment model line in `model.txt` must resolve to one or more normalized model versions, or the build must fail with an actionable registry error.
+- Every version must provide representative forward inputs.
+- Every version must complete at least one full forward pass, or an approved staged layer-by-layer execution record when full-model execution does not fit in available RAM/VRAM.
+- Symbolic tracing, meta tensors, fake tensors, FX, or static analysis may be used as auxiliary data sources, but they do not replace the required real forward execution.
+- If a model cannot complete one full forward pass under the declared resource policy, the Stage 1 build must fail for that version unless the scope explicitly enables the large-model staged execution policy in section 6.4.
+- The builder must support partial rebuilds, resumable runs, and per-model cache records. A release build must have passing forward or approved staged execution records for every declared model version.
+
+---
+
+## 3. Hard constraints
+
+### 3.1 Runtime constraints
+
+The deployed website must be static.
+
+Forbidden at runtime:
+
+- Python runtime.
+- Model loading.
+- Weight loading.
+- Database.
+- Backend server.
+- Serverless function.
+- Pages Functions.
+- Workers API dependency.
+- Runtime call to Hugging Face Hub, GitHub API, PyPI, npm registry, or any external model/code source.
+- Any attempt to download model weights.
+
+Allowed at runtime:
+
+- Loading static JSON, HTML, CSS, JS, SVG, PNG, WebP, and text/source chunks from the same Cloudflare Pages deployment.
+- Browser-side graph rendering, search, filtering, comparison, expansion, and source-code display.
+
+### 3.2 Model-weight prohibition
+
+The project must never download pretrained model weights during development, test, build, CI, or UI runtime.
+
+Forbidden file extensions and patterns:
+
+- `*.bin`
+- `*.safetensors`
+- `*.pt`
+- `*.pth`
+- `*.ckpt`
+- `*.gguf`
+- `*.onnx`, unless explicitly used only as a comparison fixture and approved in model scope
+- `pytorch_model-*`
+- `model-*of-*`
+- `*.h5`
+- `*.npz`, unless explicitly a small non-weight test fixture
+- any checkpoint shard
+
+Allowed:
+
+- Config files.
+- Tokenizer/config metadata if required to construct representative inputs.
+- Source code.
+- Licenses and notices.
+- Generated static graph/trace/shape/source-map metadata.
+- Temporary randomly initialized or uninitialized parameters created in RAM as a side effect of architecture instantiation. These temporary tensors must not be saved, packaged, committed, cached as model weights, or displayed as pretrained values.
+
+Required guards:
+
+- Stage 1 may fetch source code, config files, tokenizer/config metadata, license files, and notices only. It must not fetch, stream, cache, or save pretrained model weights.
+- Stage 1 must not serialize model objects, state dicts, parameter tensors, buffers, or checkpoint-like files to disk.
+- Set Hugging Face and Transformers offline/network controls during model execution after required config/source files are locally available.
+- Add a download interceptor or network allowlist during Stage 1. The allowlist must permit source/config/license metadata endpoints only and must block known weight filenames, checkpoint shards, and binary model artifacts.
+- Scan `model_code/`, `build_cache/`, `build/`, repository tree, and CI artifacts for forbidden file extensions and checkpoint signatures.
+- Build must fail if any forbidden weight-like artifact is found.
+- Build logs must include `NO_WEIGHT_DOWNLOAD_GUARD=passed` before release.
+
+### 3.3 Mandatory forward or staged execution
+
+Every declared model version must execute one complete forward pass on CPU or GPU during Stage 1 by default. Oversized models may use the approved staged layer-by-layer execution policy in section 6.4 when full-model execution does not fit in available RAM/VRAM.
+
+Required full-model execution conditions:
+
+- Use `model.eval()`.
+- Use `torch.no_grad()` or `torch.inference_mode()`.
+- Use the input tensors and kwargs from `model_scope`.
+- Use CPU or GPU according to `forward_policy.device`.
+- Capture at least one successful top-level output object.
+- Record all traceable tensor inputs and outputs for modules, functions, methods, and operations observed during that pass.
+
+The build must not silently downgrade to symbolic-only tracing. If real full-model forward fails and staged execution is not enabled or cannot satisfy the required metadata, record the failure and fail the release build.
+
+For very large architectures that do not fit into the available RAM/VRAM on the build machine, the builder may use the staged execution policy in section 6.4. Staged execution must still execute real PyTorch modules/layers with real tensors, capture observed shapes, and produce static trace metadata. It must not save model weights or parameter tensors to disk.
+
+---
+
+## 4. Similar project analysis and reuse policy
+
+Do not rebuild known mechanisms unnecessarily. Use existing projects for reference, metadata ideas, or test comparison, but implement a static-first data model and UI because no single existing project satisfies the full target.
+
+Reference projects:
+
+1. Torchview
+   - Useful because it visualizes PyTorch models as graphs and includes tensors, modules, torch functions, and input/output shapes.
+   - Limitation: it is not a Cloudflare static source-code/operation-line trace browser.
+   - Policy: use as visual and output reference. Do not merely wrap its current output. Modifications or derived ideas must be license-reviewed.
+
+2. TorchLens
+   - Useful because it extracts activations from every intermediate operation in a PyTorch model and exposes computation graph metadata.
+   - Limitation: it is not a static Cloudflare Pages browser and does not define this project’s source-line/code-navigation schema.
+   - Policy: use as implementation reference for operation-level forward capture.
+
+3. Netron
+   - Useful because it is a mature neural-network model viewer with broad model-format support and a browser viewer.
+   - Limitation: it primarily inspects model files/formats; this project must inspect live PyTorch implementation source and build-time forward traces without packaging weights.
+   - Policy: use as UI/UX reference for graph navigation and metadata panes.
+
+4. PyTorchViz / torchviz
+   - Useful because it visualizes PyTorch execution graphs and traces.
+   - Limitation: it is small, Graphviz-oriented, and not a full static source-code/shape browser.
+   - Policy: use as a comparison fixture for simple models only.
+
+5. TensorBoard graph visualization
+   - Useful because it is an established ML visualization suite with graph visualization concepts.
+   - Limitation: it is not a pure static Cloudflare Pages artifact and is not focused on source-code line tracing.
+   - Policy: use as comparison reference for graph-level concepts only.
+
+6. diagrams.net / draw.io-style graph editing interaction
+   - Useful because users expect dynamic block dragging, canvas panning/zooming, connection routing, grouping, and click-through detail behavior from diagram tools.
+   - Limitation: this project is not a general diagram editor; graph data is generated by the builder and should not become user-authored model data unless a future edit mode is explicitly approved.
+   - Policy: use as interaction reference for graph layout, drag/drop, selection, grouping, minimap, and detail navigation.
+
+Selenium must be used for browser regression testing because the final artifact is an interactive web application.
+
+---
+
+## 5. Repository layout
+
+Required repository tree:
+
+```text
+model.txt                     # canonical human-edited list of all model families/architectures to include
+model_scope.yaml              # external input; may be uncommitted for private scopes
+model_scope.generated.yaml    # optional generated normalized scope from model.txt and registry
+model_code/                   # generated static model metadata; committed when release-ready
+  manifest.v1.json
+  families/
+  versions/
+  blocks/
+  graphs/
+  traces/
+  sources/
+  indexes/
+  assets/
+src/
+  model_builder/              # Stage 1 builder
+  ui/                         # Stage 2 frontend
+  schemas/                    # JSON schemas for generated assets
+  common/                     # shared schema/types/utilities
+test/
+  unit/
+  integration/
+  e2e/
+  visual/
+  fixtures/
+build_cache/                  # local generated cache; not release artifact
+ext-tool/                     # pinned external tools, git submodules, vendored references if legally allowed
+license/
+  THIRD_PARTY_NOTICES.md
+  dependency_licenses.json
+  source_redistribution_review.md
+build/                        # final Cloudflare Pages output; generated
+```
+
+Rules:
+
+- `model_code/` must contain generated source/graph/config/shape metadata only. It must not contain pretrained weights.
+- `build_cache/` must not be required at runtime. It may contain fetched source/config metadata, normalized scope files, progress records, and generated static trace artifacts only; it must not contain serialized models, state dicts, parameter tensors, buffers, or pretrained weights.
+- `ext-tool/` must contain pinned versions or lockfile-controlled references for external libraries used during development/build, including Hugging Face Transformers, Diffusers, Torchview, TorchLens if used, Graphviz if used, and Selenium tooling.
+- All external libraries must be license-reviewed before code or source snippets are redistributed into `model_code/` or `build/`.
+
+---
+
+## 6. Stage 1 — Model-data builder
+
+### 6.1 Responsibilities
+
+The builder must:
+
+- Parse `model.txt` and/or `model_scope`.
+- Expand `model.txt` through registry/factory adapters into normalized model version records.
+- Validate scope schema.
+- Resolve model source and config from local files or pinned commits.
+- Refuse to download pretrained weights.
+- Instantiate each model architecture.
+- Count parameters from parameter shapes after instantiation.
+- Run at least one full forward pass per model version on CPU or GPU.
+- Capture module tree.
+- Capture block structure.
+- Capture operation graph.
+- Capture source code for model class, block/module class, layer code, torch.nn module code, torch.nn.functional calls, and related config-driven branches wherever source is available.
+- Capture tensor input/output dimensions at each traceable operation.
+- Capture line-level source mapping for operations.
+- Deduplicate identical blocks.
+- Emit static model data into `model_code/`.
+- Generate a machine-readable build report.
+- Support resumable per-family/per-version builds so a long build can continue after interruption without redoing completed static data.
+- Support cache records for fetched source/config metadata and generated trace assets, while never caching model weights.
+
+The builder should be generic and hook-driven. Model-specific adapters should only normalize constructor/config/input details. Graph, source, shape, line, operation, and block data must be generated by shared hooks/tracers so new model support does not require custom trace code.
+
+### 6.2 Tracing architecture
+
+Use a multi-source tracing strategy. No single tracing method is sufficient.
+
+Required tracing layers:
+
+1. Module-call tracer
+   - Wrap or hook `torch.nn.Module.__call__` / forward call path during build only.
+   - Capture qualified module name, class, input shapes, output shapes, dtype, device, call order, parent stack, and source location.
+
+2. Function-call tracer
+   - Capture `torch.nn.functional` calls where possible.
+   - Capture direct `torch.*` function calls where possible.
+   - Capture tensor method calls where possible.
+
+3. Dispatch-level tracer
+   - Use PyTorch mechanisms such as `TorchFunctionMode`, `TorchDispatchMode`, FX, TorchLens-like operation capture, or equivalent instrumentation to observe lower-level tensor operations.
+   - Record ATen/operator names when Python source is unavailable.
+
+4. Source extractor
+   - Use Python `inspect`, AST parsing, import metadata, and package source files.
+   - Extract source spans for model classes, blocks, modules, layers, `torch.nn` modules, and `torch.nn.functional` wrappers wherever available.
+
+5. Line mapper
+   - Map runtime operation events to source file, function, class, start line, end line, and executed line where possible.
+   - For each line that executes one or more traceable tensor operations, record input/output tensor shape records.
+   - For non-tensor lines, record config/control-flow metadata when relevant.
+
+6. Auxiliary graph extractors
+   - Use FX symbolic tracing where it works.
+   - Use Torchview/TorchLens-style metadata as cross-checks or supplementary data.
+   - Do not treat FX as authoritative for dynamic control flow unless real forward trace confirms the path.
+
+### 6.3 Registry and model adapters
+
+The registry/factory layer converts each `model.txt` line into normalized model version records. It must provide:
+
+- A model family identifier and display name.
+- Source/config resolver.
+- Entrypoint module, class, or factory.
+- Constructor policy that avoids `from_pretrained` weight loading.
+- Representative input factory.
+- Forward policy defaults.
+- Optional large-model staged execution settings.
+
+Registry additions should be small. Adding a model that follows an existing Hugging Face Transformers, Diffusers, or local PyTorch pattern should be one registry line or one compact entry that selects existing generic adapters.
+
+The registry must fail clearly when a listed model cannot be resolved, when config/source metadata is unavailable, or when the model would require downloading weights.
+
+### 6.4 Forward execution requirements
+
+For every model version:
+
+- Instantiate the exact architecture declared in scope.
+- Do not load pretrained weights.
+- Use representative inputs from `input_spec`.
+- Execute one complete top-level forward pass unless staged execution is enabled because the model does not fit in available RAM/VRAM.
+- Capture the actual executed path, including config-driven branches.
+- Store forward result metadata, not tensor values.
+
+Large-model staged execution is allowed when the model cannot fit into the available RAM/VRAM as a single instantiated model. This project target machine currently has about 70 GB RAM, so the builder must be able to process large architectures one model, block, or layer group at a time.
+
+Staged execution requirements:
+
+- Use source/config metadata only. Do not download, stream, cache, or save pretrained weights.
+- Instantiate only the required module, layer, or block group when full-model instantiation is not feasible.
+- Run real module/layer/block calls with representative tensors and capture observed shape/dtype/device metadata.
+- Propagate shape metadata between stages and record when a boundary value is synthetic, derived, or observed.
+- Preserve topological order and parent/child relationships in the generated static graph.
+- Mark the forward record with execution mode `full_model_forward` or `staged_layer_by_layer`.
+- Save resumable build state and generated static metadata, but never save parameter tensor values or model checkpoints.
+- Prefer completing a full top-level forward when resources allow. Use staged execution only when needed for resource limits.
+
+If staged execution cannot produce enough observed metadata to satisfy graph, block, shape, and source-line display requirements, the build must fail for that model version with a resource/actionability report.
+
+Forward metadata schema:
+
+```json
+{
+  "forward_run_id": "string",
+  "model_version_id": "string",
+  "status": "passed | failed",
+  "device": "cpu | cuda",
+  "dtype_policy": "string",
+  "started_at": "iso8601",
+  "duration_ms": 0,
+  "input_summary": [],
+  "output_summary": [],
+  "peak_memory_bytes": null,
+  "trace_event_count": 0,
+  "execution_mode": "full_model_forward | staged_layer_by_layer",
+  "error": null
+}
+```
+
+Release build gate:
+
+- `status` must be `passed` for every declared model version.
+- `trace_event_count` must be greater than zero.
+- At least one top-level output summary or approved staged final-output summary must be recorded.
+
+### 6.5 Shape record format
+
+Shape records must never store tensor values.
+
+```json
+{
+  "tensor_id": "stable-local-id",
+  "role": "input | output | parameter | buffer | intermediate",
+  "shape": [1, 128, 4096],
+  "dtype": "torch.float16",
+  "device": "cuda:0",
+  "requires_grad": false,
+  "is_symbolic": false,
+  "source": "observed_forward",
+  "notes": null
+}
+```
+
+Shape source values:
+
+- `observed_forward`: captured from mandatory real forward pass.
+- `observed_stage`: captured from approved staged layer-by-layer execution.
+- `static_config`: derived from config, used only as supplementary data.
+- `fx_meta`: derived from FX metadata, used only as supplementary data.
+- `unknown`: unavailable.
+
+For release-quality displayed operation shapes, prefer `observed_forward`, then `observed_stage` when staged execution was required by resource limits.
+
+### 6.6 Operation node schema
+
+```json
+{
+  "op_id": "string",
+  "model_version_id": "string",
+  "block_uid": "string | null",
+  "parent_module_id": "string | null",
+  "call_index": 0,
+  "kind": "module_call | functional_call | tensor_method | torch_function | aten_op | python_control | output",
+  "qualified_name": "string",
+  "display_name": "string",
+  "target": "string",
+  "source_ref": {
+    "source_uid": "string | null",
+    "file": "string | null",
+    "symbol": "string | null",
+    "start_line": 0,
+    "end_line": 0,
+    "executed_line": 0
+  },
+  "stack": [],
+  "inputs": [],
+  "outputs": [],
+  "attributes": {},
+  "config_conditions": [],
+  "children": [],
+  "trace_confidence": "exact | partial | inferred | unavailable"
+}
+```
+
+### 6.7 Source asset schema
+
+```json
+{
+  "source_uid": "string",
+  "package": "string",
+  "package_version": "string",
+  "repo": "string | null",
+  "commit": "string | null",
+  "license_id": "string | null",
+  "relative_file": "string",
+  "content_hash": "sha256",
+  "language": "python",
+  "line_count": 0,
+  "chunks": [
+    {
+      "chunk_id": "string",
+      "start_line": 1,
+      "end_line": 200,
+      "asset_path": "sources/chunks/...json"
+    }
+  ]
+}
+```
+
+Source chunks must preserve line numbers. They may contain source text only when license review allows redistribution. If redistribution is not allowed, emit source references and line metadata without embedding the source body.
+
+### 6.8 Line-level trace schema
+
+```json
+{
+  "line_trace_id": "string",
+  "source_uid": "string",
+  "file": "string",
+  "line": 0,
+  "code_hash": "sha256",
+  "executed": true,
+  "op_ids": [],
+  "input_shapes": [],
+  "output_shapes": [],
+  "variables": [
+    {
+      "name": "hidden_states",
+      "before": [],
+      "after": []
+    }
+  ],
+  "control_context": [],
+  "confidence": "exact | partial | inferred | unavailable"
+}
+```
+
+Display rule:
+
+- Lines with tensor operations must show observed input/output dimensions.
+- Lines with multiple tensor operations must show all operation records in execution order.
+- Lines without tensor output must not fake a dimension result.
+- Config-driven branches must show whether the branch executed during the mandatory forward pass.
+
+---
+
+## 7. Block model and deduplication
+
+### 7.1 Hierarchy
+
+The UI and data model must support this navigation path:
+
+```text
+model family -> model version -> model block(s) -> module/layer -> operation -> source line
+```
+
+A model block is a repeated or semantically grouped substructure such as transformer block, attention block, MLP block, embedding block, decoder block, encoder block, normalization block, or custom block declared by the builder.
+
+### 7.2 Block UID
+
+Each concrete block instance must receive a stable UID.
+
+```json
+{
+  "block_uid": "string",
+  "model_version_id": "string",
+  "family_id": "string",
+  "block_type": "transformer_block | attention | mlp | embedding | norm | custom",
+  "index": 0,
+  "qualified_name": "string",
+  "source_refs": [],
+  "graph_ref": "string",
+  "trace_ref": "string",
+  "dedup_ref": "string | null"
+}
+```
+
+### 7.3 Deduplication rule
+
+Two blocks may share the same stored block asset only if all of the following are identical:
+
+- Normalized module class source hash.
+- Normalized child module tree hash.
+- Normalized operation graph topology hash from observed forward.
+- Parameter shape signature.
+- Buffer shape signature.
+- Input/output shape signature for the representative forward.
+- Relevant config branch signature.
+
+Do not deduplicate solely by class name or source text. Blocks with the same class but different shape, branch behavior, parameter signature, or graph path must remain separate concrete block instances.
+
+Pointer schema:
+
+```json
+{
+  "block_uid": "family.model.block_002",
+  "pointer": {
+    "type": "deduplicated_block",
+    "target_dedup_uid": "dedup.sha256...",
+    "target_asset": "blocks/shared/dedup.sha256.../block.json",
+    "reason": "same_source_tree_graph_shapes_config_signature"
+  }
+}
+```
+
+---
+
+## 8. Generated static assets
+
+### 8.1 Top-level manifest
+
+`model_code/manifest.v1.json` must include:
+
+```json
+{
+  "schema_version": "1.0.0",
+  "generated_at": "iso8601",
+  "builder_version": "string",
+  "scope_hash": "sha256",
+  "families": [],
+  "versions": [],
+  "asset_index": "indexes/assets.v1.json",
+  "search_index": "indexes/search.v1.json",
+  "license_manifest": "indexes/license_manifest.v1.json",
+  "build_report": "indexes/build_report.v1.json",
+  "cloudflare_pages_check": {
+    "file_count": 0,
+    "max_file_size_bytes": 0,
+    "passed": true
+  }
+}
+```
+
+### 8.2 Chunking
+
+Static assets must be chunked for browser performance and Cloudflare Pages deployment limits.
+
+Rules:
+
+- No single generated file in `build/` may exceed 25 MiB.
+- Prefer a soft cap of 20 MiB per generated asset to leave margin for deployment tooling.
+- The Free-plan target must stay under 20,000 files.
+- If a paid-plan deployment is explicitly configured, the build may allow up to 100,000 files only when the Cloudflare Pages Wrangler v4 setting is documented and enabled.
+- Drag-and-drop deployment is not the primary target because of the lower file count limit.
+- Do not rely on R2 or other external storage unless a separate deployment mode is explicitly approved. The default deliverable is one self-contained Cloudflare Pages static build.
+
+### 8.3 Search indexes
+
+Required browser-side indexes:
+
+- Family/version index.
+- Parameter size index.
+- Block index.
+- Operation index.
+- Source symbol index.
+- Shape index.
+- Config-branch index.
+
+Indexes must support lazy loading. The initial page must not load all model data.
+
+---
+
+## 9. Stage 2 — Static UI
+
+### 9.1 General UI requirements
+
+The UI must be smooth and usable on desktop and smartphone browsers.
+
+Required layout panes:
+
+- Navigation/sidebar pane.
+- Graph canvas pane.
+- Detail inspector pane.
+- Source-code pane.
+- Shape/metadata pane.
+- Compare pane when compare mode is active.
+
+Required graph interactions:
+
+- Pan.
+- Zoom.
+- Drag nodes.
+- Drag and drop blocks/modules dynamically on the canvas without changing the underlying generated model data.
+- Preserve user-local graph layout adjustments in browser storage when practical, without requiring a backend.
+- Expand/collapse node groups.
+- Enlarge block/module/operation view.
+- Show block/module shapes similar to the reference visualization style, with clear nested boundaries for model, block, module, layer, and operation levels.
+- Click node to inspect details.
+- Click or double-click a block to enter a detailed block view.
+- Click source line to see operation metadata.
+- Click operation to highlight source line and graph node.
+- Breadcrumb navigation from family to source line.
+- Support diagram-editor-style selection, multi-select where useful, fit-to-screen, minimap or overview, and reset-layout controls.
+
+The visual style may follow Torchview-like block graph semantics and draw.io-style canvas interaction, but the frontend must be static-first and designed for large precomputed graph datasets.
+
+### 9.2 Required modes
+
+The UI must expose four modes.
+
+1. Model family mode
+   - Show every declared family.
+   - Show available model versions.
+   - Show parameter size labels and computed parameter counts.
+   - Allow sorting by family, parameter size, version, and source.
+   - Allow left-right comparison between families.
+
+2. Model version mode
+   - Show the full model structure for one version.
+   - Show module hierarchy, major blocks, parameter counts, source files, and forward summary.
+   - Allow comparison between two versions.
+
+3. Block mode
+   - Show a selected block and its internal modules/layers/operations.
+   - Show deduplication status.
+   - Show whether this block is concrete or a pointer to a shared block asset.
+   - Allow comparison between same-type blocks.
+
+4. Operation/source mode
+   - Show operation-level graph down to `nn.Module`, `torch.nn.functional`, tensor method, `torch.*`, and ATen/operator level wherever captured.
+   - Show source code for model, block, layer, `torch.nn` module, and `torch.nn.functional` wrapper wherever legally redistributable and technically available.
+   - Show input/output dimensions for each traceable source line.
+   - Show config branches and whether they executed.
+
+### 9.3 Compare mode
+
+Users must be able to compare left/right across:
+
+- Family mode.
+- Model version mode.
+- Block mode.
+
+Comparison must support:
+
+- Parameter count difference.
+- Block count difference.
+- Operation count difference.
+- Shape differences.
+- Source difference by file/symbol/line when available.
+- Deduplication similarity.
+- Config difference.
+
+### 9.4 Mobile and desktop requirements
+
+Minimum viewport targets:
+
+- Desktop: 1440 × 900.
+- Laptop: 1280 × 720.
+- Tablet: 768 × 1024.
+- Smartphone: 390 × 844.
+
+Mobile behavior:
+
+- Sidebar collapses into drawer.
+- Detail inspector appears as bottom sheet or route-level panel.
+- Graph gestures must support touch pan and pinch zoom.
+- Source code must be horizontally scrollable and line-number stable.
+
+### 9.5 Performance requirements
+
+The UI must use lazy loading and virtual rendering.
+
+Release targets:
+
+- Initial shell usable without loading every model graph.
+- Opening a family loads only that family manifest.
+- Opening a version loads only that version summary and top-level graph.
+- Opening a block loads only that block graph/source chunks.
+- Search index may be split and loaded by category.
+- Large source files must be chunked by line range.
+
+Do not render every operation in the DOM at once for large graphs. Use canvas/SVG hybrid, virtualization, or a graph renderer capable of large graph interaction.
+
+---
+
+## 10. Testing and validation
+
+### 10.1 Stage 1 tests
+
+Required tests:
+
+- Scope parser tests.
+- No-weight-download guard tests.
+- Forbidden artifact scan tests.
+- Model instantiation tests.
+- Mandatory forward pass tests for every declared model version.
+- Trace event capture tests.
+- Shape record tests.
+- Source extraction tests.
+- Line-mapping tests.
+- Deduplication tests.
+- Schema validation tests for every generated JSON file.
+- Cloudflare asset size/file count tests.
+- License manifest tests.
+
+Release gates:
+
+- All declared model versions have one passed forward run.
+- All generated JSON validates against schema.
+- No forbidden weight files exist.
+- No generated file exceeds Cloudflare Pages size limits.
+- File count fits the configured Cloudflare Pages deployment tier.
+- License review passes.
+
+### 10.2 UI tests
+
+Required UI tests:
+
+- Unit tests for data loading and state transitions.
+- Integration tests using generated fixture `model_code/`.
+- E2E tests with Selenium WebDriver.
+- Screenshot regression tests using Selenium/capture-screen for desktop, laptop, tablet, and smartphone viewports.
+- Touch/gesture tests for mobile graph navigation where supported.
+- Source-line click/highlight tests.
+- Graph-node click/highlight tests.
+- Compare mode tests.
+- Search/filter/sort tests.
+
+Visual-regression policy:
+
+- Store baseline screenshots under `test/visual/baselines/`.
+- On mismatch, save actual, expected, and diff images.
+- CI must fail on visual regression above the configured threshold.
+- The threshold must be explicit in config; do not use vague `100% correct` wording in tests. The target is deterministic screenshot match within a defined pixel-difference threshold.
+
+---
+
+## 11. Build commands
+
+The exact command names may change, but the project must expose equivalent commands.
+
+```bash
+# Stage 1: build model data
+python -m src.model_builder \
+  --catalog model.txt \
+  --scope-out model_scope.generated.yaml \
+  --out model_code \
+  --cache build_cache \
+  --device auto \
+  --require-forward \
+  --allow-staged-large-models \
+  --resume \
+  --fetch-policy source-config-only \
+  --forbid-weight-downloads \
+  --max-resident-memory-gb 70
+
+# Validate generated model data
+python -m src.model_builder.validate \
+  --model-code model_code \
+  --catalog model.txt \
+  --scope model_scope.generated.yaml \
+  --cloudflare-target free
+
+# Stage 2: build UI
+npm run build-ui -- \
+  --model-code model_code \
+  --out build
+
+# Full test suite
+npm test
+python -m pytest test
+
+# E2E and screenshots
+npm run test:e2e
+npm run test:visual
+
+# Deploy with Wrangler
+npx wrangler pages deploy build
+```
+
+---
+
+## 12. Deployment guide
+
+1. Prepare a powerful build machine.
+   - The machine must have enough CPU RAM and/or GPU VRAM to instantiate and forward every declared model version without downloading pretrained weights.
+   - The build may use CPU or GPU according to each version’s `forward_policy`.
+   - On this target machine, assume approximately 70 GB RAM. When a model cannot fit as a full instantiated architecture, use the staged layer-by-layer execution path instead of downloading weights, saving models, or silently skipping trace capture.
+
+2. Prepare model scope.
+   - Maintain `model.txt` as the canonical list of all model families/architectures to include.
+   - Add or update one registry/factory entry per new model family when the generic adapters cannot infer it.
+   - Let the builder generate `model_scope.generated.yaml`, or provide `model_scope.yaml` / `model_scope.json` only for advanced/private scopes.
+   - Ensure every normalized version has config path, entrypoint, and representative input spec.
+   - Fetch source/config/license metadata only. Do not fetch, cache, save, or commit model weights.
+
+3. Run Stage 1.
+   - Generate `model_code/`.
+   - Confirm every model version completed one real full-model forward pass or an approved staged layer-by-layer execution record.
+   - Resume interrupted builds from `build_cache/` rather than restarting all completed model versions.
+   - Confirm no forbidden weight artifact exists.
+
+4. Run Stage 2.
+   - Generate `build/`.
+   - Validate Cloudflare Pages file count and file size constraints.
+
+5. Commit source and generated static metadata.
+   - Commit application source.
+   - Commit `model_code/` if release policy requires generated metadata to be versioned.
+   - Do not commit `build_cache/`.
+   - Do not commit any model weight.
+
+6. Push final code to GitHub.
+
+7. Deploy `build/` to Cloudflare Pages.
+   - Preferred: Wrangler direct upload.
+   - Alternative: Git-integrated Pages build if the build machine and repository workflow support the heavy Stage 1 requirements.
+   - The final Cloudflare deployment must serve static files only.
+
+---
+
+## 13. License and compliance
+
+The project must generate `license/dependency_licenses.json` and `license/THIRD_PARTY_NOTICES.md`.
+
+For every dependency or redistributed source snippet, record:
+
+- Package name.
+- Version.
+- Source repository.
+- Commit hash.
+- License identifier.
+- Whether source text is redistributed in `model_code/` or `build/`.
+- Whether modifications were made.
+- Notice requirements.
+- Compatibility decision.
+
+Special attention:
+
+- PyTorch source snippets.
+- Hugging Face Transformers/Diffusers source snippets.
+- Torchview-derived code or visual output references.
+- TorchLens-derived code or metadata ideas.
+- Netron UI/UX references.
+- Graphviz output or binaries.
+- Selenium tooling.
+
+If source redistribution is not permitted or is unclear, the UI must show source metadata and file/line references without embedding the source body.
+
+---
+
+## 14. Security requirements
+
+- The UI must not use `eval` or execute source code shown in the browser.
+- Source code display must be escaped/sanitized.
+- Static JSON must be treated as untrusted input and validated before rendering critical fields.
+- Generated source snippets must not include secrets, local filesystem paths beyond normalized relative paths, tokens, or private environment variables.
+- Build logs must not expose credentials.
+- The builder must run with least required credentials and preferably with network disabled after source/config preparation.
+
+---
+
+## 15. Definition of done
+
+The implementation is complete when all conditions below are true:
+
+- `model.txt` defines the canonical model list, and the registry/factory layer expands it into normalized model families, versions, configs, entrypoints, and forward inputs.
+- Adding a model that follows an existing pattern requires only a small registry/factory entry.
+- Stage 1 builds `model_code/` from `model.txt` and/or the normalized external scope.
+- Every declared model version completes one CPU or GPU full-model forward pass during Stage 1, or an approved staged layer-by-layer execution record when full-model execution exceeds the available RAM/VRAM policy.
+- The build captures module hierarchy, block structure, operation graph, source spans, line-level trace metadata, input/output dimensions, dtypes, devices, and config branch observations.
+- No pretrained model weights are downloaded, streamed, saved, committed, cached, or packaged.
+- No model objects, state dicts, parameter tensors, buffers, or checkpoint-like artifacts are saved to disk.
+- Identical blocks are deduplicated using the defined signature and represented with pointer-like references.
+- Stage 2 builds a static UI into `build/`.
+- The UI supports family mode, model version mode, block mode, and operation/source mode.
+- The UI provides a draw.io-style interactive graph canvas with pan, zoom, drag/drop block movement, click-through block detail, and source/operation highlighting.
+- The UI supports sorting by parameter size and family.
+- The UI supports left/right compare in family, model version, and block modes.
+- The UI is usable on desktop and smartphone viewports.
+- Selenium E2E and screenshot regression tests pass.
+- All generated assets validate against schema.
+- Cloudflare Pages file count and file size gates pass.
+- License manifests are generated and reviewed.
+- `build/` deploys to Cloudflare Pages without backend/serverless/runtime model dependency.
+
+---
+
+## 16. Implementation notes for the coding agent
+
+- Treat this as a static-site generation project with a heavy offline compiler, not as an online model viewer.
+- The mandatory full-model forward pass or approved staged layer-by-layer execution record is a non-negotiable release gate.
+- Do not solve memory problems by skipping trace capture. Solve them by staged layer-by-layer execution, using the declared device policy, reducing only the representative input size where the model scope explicitly allows it, or failing the build with an actionable resource report.
+- Do not download pretrained weights to make forward easier.
+- Do not save instantiated models, state dicts, tensors, buffers, or checkpoints to disk.
+- Fetch source/config/license metadata only, then enforce offline/no-weight guards during execution.
+- Prefer deterministic IDs, content hashes, stable schemas, and reproducible build reports.
+- Prefer resumable per-model build jobs and cache only static metadata/source/config artifacts.
+- Make failure states explicit. A partial trace may exist for debugging, but release build requires complete success for every declared version.
+
+---
+
+## 17. Reference facts used when writing this spec
+
+- Cloudflare Pages currently documents a 25 MiB maximum single asset size; Free plan supports up to 20,000 files, and paid plans can support up to 100,000 files with the documented Wrangler v4 setting.
+- Cloudflare Pages Direct Upload supports deploying a prebuilt asset folder with Wrangler; the documented direct-upload table lists Wrangler as 20,000 files / 25 MiB and drag-and-drop as 1,000 files / 25 MiB.
+- PyTorch FX symbolic tracing records operations into an intermediate representation of nodes and has documented limitations around dynamic control flow and some non-torch functions.
+- Hugging Face Transformers documents model construction/loading APIs and distinguishes pretrained loading from configuration-based construction; `from_pretrained` is the path that loads pretrained weights.
+- Torchview, TorchLens, Netron, torchviz, TensorBoard, and Selenium are relevant reference projects/tools but do not individually satisfy this complete spec.

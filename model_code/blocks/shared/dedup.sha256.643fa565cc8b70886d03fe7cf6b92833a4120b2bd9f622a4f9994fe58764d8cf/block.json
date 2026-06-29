@@ -1,0 +1,72 @@
+{
+  "dedup_uid": "dedup.sha256.643fa565cc8b70886d03fe7cf6b92833a4120b2bd9f622a4f9994fe58764d8cf",
+  "operation_ids": [
+    "moshi.op-000004",
+    "moshi.op-000005"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.moshi.modeling_moshi",
+        "MoshiLinear"
+      ],
+      [
+        "linear",
+        "torch.nn.modules.linear",
+        "Linear"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            8
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            8
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "fdaac0ef8f264844d08653ab2528f146d2550ebcd2dc784d201ad5fa10473834",
+    "topology": [
+      [
+        "module_call",
+        "torch.nn.modules.linear.Linear"
+      ],
+      [
+        "module_call",
+        "transformers.models.moshi.modeling_moshi.MoshiLinear"
+      ]
+    ]
+  }
+}

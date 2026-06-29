@@ -1,0 +1,659 @@
+{
+  "blocks": [
+    {
+      "block_type": "embedding",
+      "block_uid": "nemotron.block-00001",
+      "dedup_ref": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 1,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49/block.json",
+        "target_dedup_uid": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embed_tokens",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "nemotron.block-00002",
+      "dedup_ref": "dedup.sha256.badbe8a015b5ca9bff3c8082c00c89f9caacccdb1a2ebae49098f747d7d73998",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 2,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.badbe8a015b5ca9bff3c8082c00c89f9caacccdb1a2ebae49098f747d7d73998/block.json",
+        "target_dedup_uid": "dedup.sha256.badbe8a015b5ca9bff3c8082c00c89f9caacccdb1a2ebae49098f747d7d73998",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers",
+      "source_refs": [
+        {
+          "end_line": 82,
+          "executed_line": 76,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 76,
+          "symbol": "NemotronLayerNorm1P.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 473,
+          "executed_line": 416,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 416,
+          "symbol": "NemotronSdpaAttention.forward"
+        },
+        {
+          "end_line": 82,
+          "executed_line": 76,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 76,
+          "symbol": "NemotronLayerNorm1P.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 214,
+          "executed_line": 211,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 211,
+          "symbol": "ReLUSquaredActivation.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 204,
+          "executed_line": 203,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 203,
+          "symbol": "NemotronMLP.forward"
+        },
+        {
+          "end_line": 529,
+          "executed_line": 497,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 497,
+          "symbol": "NemotronDecoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "nemotron.block-00003",
+      "dedup_ref": "dedup.sha256.2d4ebec1a8b3cb48702d8ef8b39d8016cccf1f0f850016d40a83cf5d1e0febf5",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 3,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2d4ebec1a8b3cb48702d8ef8b39d8016cccf1f0f850016d40a83cf5d1e0febf5/block.json",
+        "target_dedup_uid": "dedup.sha256.2d4ebec1a8b3cb48702d8ef8b39d8016cccf1f0f850016d40a83cf5d1e0febf5",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0",
+      "source_refs": [
+        {
+          "end_line": 82,
+          "executed_line": 76,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 76,
+          "symbol": "NemotronLayerNorm1P.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 473,
+          "executed_line": 416,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 416,
+          "symbol": "NemotronSdpaAttention.forward"
+        },
+        {
+          "end_line": 82,
+          "executed_line": 76,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 76,
+          "symbol": "NemotronLayerNorm1P.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 214,
+          "executed_line": 211,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 211,
+          "symbol": "ReLUSquaredActivation.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 204,
+          "executed_line": 203,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 203,
+          "symbol": "NemotronMLP.forward"
+        },
+        {
+          "end_line": 529,
+          "executed_line": 497,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 497,
+          "symbol": "NemotronDecoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "nemotron.block-00004",
+      "dedup_ref": "dedup.sha256.38cdbad4a32ef3db0ed54a64cfe271c6265b6b77efc7bdcf3bda406ec466093f",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 4,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.38cdbad4a32ef3db0ed54a64cfe271c6265b6b77efc7bdcf3bda406ec466093f/block.json",
+        "target_dedup_uid": "dedup.sha256.38cdbad4a32ef3db0ed54a64cfe271c6265b6b77efc7bdcf3bda406ec466093f",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 473,
+          "executed_line": 416,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 416,
+          "symbol": "NemotronSdpaAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "nemotron.block-00005",
+      "dedup_ref": "dedup.sha256.b1fcccf0e47acf24ae403a3b3c46746225249ca88878c3cf6462126d6aa34100",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 5,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b1fcccf0e47acf24ae403a3b3c46746225249ca88878c3cf6462126d6aa34100/block.json",
+        "target_dedup_uid": "dedup.sha256.b1fcccf0e47acf24ae403a3b3c46746225249ca88878c3cf6462126d6aa34100",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.rotary_emb",
+      "source_refs": [],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "nemotron.block-00006",
+      "dedup_ref": "dedup.sha256.6f96145cae424090fae98342549fad59113c6c2a9b65ef525f25db333d43853e",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 6,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6f96145cae424090fae98342549fad59113c6c2a9b65ef525f25db333d43853e/block.json",
+        "target_dedup_uid": "dedup.sha256.6f96145cae424090fae98342549fad59113c6c2a9b65ef525f25db333d43853e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "nemotron.block-00007",
+      "dedup_ref": "dedup.sha256.40eb931ee8784c41e447cf115cba1b7335242def179aef6ae01aa0c821bfca05",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 7,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.40eb931ee8784c41e447cf115cba1b7335242def179aef6ae01aa0c821bfca05/block.json",
+        "target_dedup_uid": "dedup.sha256.40eb931ee8784c41e447cf115cba1b7335242def179aef6ae01aa0c821bfca05",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "nemotron.block-00008",
+      "dedup_ref": "dedup.sha256.40eb931ee8784c41e447cf115cba1b7335242def179aef6ae01aa0c821bfca05",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 8,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.40eb931ee8784c41e447cf115cba1b7335242def179aef6ae01aa0c821bfca05/block.json",
+        "target_dedup_uid": "dedup.sha256.40eb931ee8784c41e447cf115cba1b7335242def179aef6ae01aa0c821bfca05",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "nemotron.block-00009",
+      "dedup_ref": "dedup.sha256.6f96145cae424090fae98342549fad59113c6c2a9b65ef525f25db333d43853e",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 9,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6f96145cae424090fae98342549fad59113c6c2a9b65ef525f25db333d43853e/block.json",
+        "target_dedup_uid": "dedup.sha256.6f96145cae424090fae98342549fad59113c6c2a9b65ef525f25db333d43853e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.o_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "nemotron.block-00010",
+      "dedup_ref": "dedup.sha256.bab56040be4013731b5ceeafe567c5f5b77da167bb736d7ec734daaad12c081e",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 10,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.bab56040be4013731b5ceeafe567c5f5b77da167bb736d7ec734daaad12c081e/block.json",
+        "target_dedup_uid": "dedup.sha256.bab56040be4013731b5ceeafe567c5f5b77da167bb736d7ec734daaad12c081e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 214,
+          "executed_line": 211,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 211,
+          "symbol": "ReLUSquaredActivation.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 204,
+          "executed_line": 203,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 203,
+          "symbol": "NemotronMLP.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "nemotron.block-00011",
+      "dedup_ref": "dedup.sha256.f5a95c8a43ad4532c94743b4b10cfcf38855b3e03a37c18eb40cd9f0445344c0",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 11,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f5a95c8a43ad4532c94743b4b10cfcf38855b3e03a37c18eb40cd9f0445344c0/block.json",
+        "target_dedup_uid": "dedup.sha256.f5a95c8a43ad4532c94743b4b10cfcf38855b3e03a37c18eb40cd9f0445344c0",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.up_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "nemotron.block-00012",
+      "dedup_ref": "dedup.sha256.21008dc0951ac80491539006b1d181f11acfeff000cccad5d0e905b220404f3a",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 12,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.21008dc0951ac80491539006b1d181f11acfeff000cccad5d0e905b220404f3a/block.json",
+        "target_dedup_uid": "dedup.sha256.21008dc0951ac80491539006b1d181f11acfeff000cccad5d0e905b220404f3a",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.down_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "nemotron.block-00013",
+      "dedup_ref": "dedup.sha256.e7007ca4c6aa0fb341fb3a14a2d72866461913a8f192df748c63f7d042bb9f19",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 13,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.e7007ca4c6aa0fb341fb3a14a2d72866461913a8f192df748c63f7d042bb9f19/block.json",
+        "target_dedup_uid": "dedup.sha256.e7007ca4c6aa0fb341fb3a14a2d72866461913a8f192df748c63f7d042bb9f19",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.act_fn",
+      "source_refs": [
+        {
+          "end_line": 214,
+          "executed_line": 211,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 211,
+          "symbol": "ReLUSquaredActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "nemotron.block-00014",
+      "dedup_ref": "dedup.sha256.7e9a44c2465ad7dd68e1401ff6ab1ee7aa8df12601d9c3f64282b0fc9df76885",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 14,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7e9a44c2465ad7dd68e1401ff6ab1ee7aa8df12601d9c3f64282b0fc9df76885/block.json",
+        "target_dedup_uid": "dedup.sha256.7e9a44c2465ad7dd68e1401ff6ab1ee7aa8df12601d9c3f64282b0fc9df76885",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.input_layernorm",
+      "source_refs": [
+        {
+          "end_line": 82,
+          "executed_line": 76,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 76,
+          "symbol": "NemotronLayerNorm1P.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "nemotron.block-00015",
+      "dedup_ref": "dedup.sha256.7e9a44c2465ad7dd68e1401ff6ab1ee7aa8df12601d9c3f64282b0fc9df76885",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 15,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7e9a44c2465ad7dd68e1401ff6ab1ee7aa8df12601d9c3f64282b0fc9df76885/block.json",
+        "target_dedup_uid": "dedup.sha256.7e9a44c2465ad7dd68e1401ff6ab1ee7aa8df12601d9c3f64282b0fc9df76885",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.post_attention_layernorm",
+      "source_refs": [
+        {
+          "end_line": 82,
+          "executed_line": 76,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 76,
+          "symbol": "NemotronLayerNorm1P.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "nemotron.block-00016",
+      "dedup_ref": "dedup.sha256.7e9a44c2465ad7dd68e1401ff6ab1ee7aa8df12601d9c3f64282b0fc9df76885",
+      "family_id": "nemotron",
+      "graph_ref": "graphs/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json",
+      "index": 16,
+      "model_version_id": "nemotron",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7e9a44c2465ad7dd68e1401ff6ab1ee7aa8df12601d9c3f64282b0fc9df76885/block.json",
+        "target_dedup_uid": "dedup.sha256.7e9a44c2465ad7dd68e1401ff6ab1ee7aa8df12601d9c3f64282b0fc9df76885",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "norm",
+      "source_refs": [
+        {
+          "end_line": 82,
+          "executed_line": 76,
+          "file": "transformers/models/nemotron/modeling_nemotron.py",
+          "source_uid": "source.sha256.853675ec273e78711b585cf12a650ea0bb9f2fb2952673f307fca68d8da708af",
+          "start_line": 76,
+          "symbol": "NemotronLayerNorm1P.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.0fabfda7a5deb08fc1cf7bf04205492374568585d06e780c92fb3890e5d025be.json"
+    }
+  ]
+}

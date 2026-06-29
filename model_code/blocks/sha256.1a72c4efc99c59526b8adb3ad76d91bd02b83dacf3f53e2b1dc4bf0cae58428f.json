@@ -1,0 +1,915 @@
+{
+  "blocks": [
+    {
+      "block_type": "embedding",
+      "block_uid": "beit.block-00001",
+      "dedup_ref": "dedup.sha256.ec18f3dbcf814ecc02e37158af5ccfeb919f333b7d05a371c3a1783abf675f89",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 1,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.ec18f3dbcf814ecc02e37158af5ccfeb919f333b7d05a371c3a1783abf675f89/block.json",
+        "target_dedup_uid": "dedup.sha256.ec18f3dbcf814ecc02e37158af5ccfeb919f333b7d05a371c3a1783abf675f89",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings",
+      "source_refs": [
+        {
+          "end_line": 565,
+          "executed_line": 564,
+          "file": "torch/nn/modules/conv.py",
+          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+          "start_line": 564,
+          "symbol": "Conv2d.forward"
+        },
+        {
+          "end_line": 90,
+          "executed_line": 83,
+          "file": "transformers/models/beit/modeling_beit.py",
+          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
+          "start_line": 83,
+          "symbol": "BeitPatchEmbeddings.forward"
+        },
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        },
+        {
+          "end_line": 176,
+          "executed_line": 153,
+          "file": "transformers/models/beit/modeling_beit.py",
+          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
+          "start_line": 153,
+          "symbol": "BeitEmbeddings.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "beit.block-00002",
+      "dedup_ref": "dedup.sha256.b6e7d5b24f72844a6915e84a4966a8b633f01c58e20406178227d39e5abb906c",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 2,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b6e7d5b24f72844a6915e84a4966a8b633f01c58e20406178227d39e5abb906c/block.json",
+        "target_dedup_uid": "dedup.sha256.b6e7d5b24f72844a6915e84a4966a8b633f01c58e20406178227d39e5abb906c",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.patch_embeddings",
+      "source_refs": [
+        {
+          "end_line": 565,
+          "executed_line": 564,
+          "file": "torch/nn/modules/conv.py",
+          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+          "start_line": 564,
+          "symbol": "Conv2d.forward"
+        },
+        {
+          "end_line": 90,
+          "executed_line": 83,
+          "file": "transformers/models/beit/modeling_beit.py",
+          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
+          "start_line": 83,
+          "symbol": "BeitPatchEmbeddings.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "beit.block-00003",
+      "dedup_ref": "dedup.sha256.28089112439b39f45caaf1e2b2071df835484b7808be9ebdddc81d7a3d9107ac",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 3,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.28089112439b39f45caaf1e2b2071df835484b7808be9ebdddc81d7a3d9107ac/block.json",
+        "target_dedup_uid": "dedup.sha256.28089112439b39f45caaf1e2b2071df835484b7808be9ebdddc81d7a3d9107ac",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.patch_embeddings.projection",
+      "source_refs": [
+        {
+          "end_line": 565,
+          "executed_line": 564,
+          "file": "torch/nn/modules/conv.py",
+          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+          "start_line": 564,
+          "symbol": "Conv2d.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "beit.block-00004",
+      "dedup_ref": "dedup.sha256.8d57ce553dfb4aaa3d45c2de2020af2a382741bd0c2e2fad80288edaf9c63ef6",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 4,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.8d57ce553dfb4aaa3d45c2de2020af2a382741bd0c2e2fad80288edaf9c63ef6/block.json",
+        "target_dedup_uid": "dedup.sha256.8d57ce553dfb4aaa3d45c2de2020af2a382741bd0c2e2fad80288edaf9c63ef6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.dropout",
+      "source_refs": [
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "beit.block-00005",
+      "dedup_ref": "dedup.sha256.fd3c62080cab1b1de03372815e2af9210124c603925cc1e6fa1f7d8aac5ba6ec",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 5,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.fd3c62080cab1b1de03372815e2af9210124c603925cc1e6fa1f7d8aac5ba6ec/block.json",
+        "target_dedup_uid": "dedup.sha256.fd3c62080cab1b1de03372815e2af9210124c603925cc1e6fa1f7d8aac5ba6ec",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 341,
+          "executed_line": 310,
+          "file": "transformers/models/beit/modeling_beit.py",
+          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
+          "start_line": 310,
+          "symbol": "BeitAttention.forward"
+        },
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        },
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        },
+        {
+          "end_line": 50,
+          "executed_line": 46,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 46,
+          "symbol": "Identity.forward"
+        },
+        {
+          "end_line": 50,
+          "executed_line": 46,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 46,
+          "symbol": "Identity.forward"
+        },
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 357,
+          "executed_line": 352,
+          "file": "transformers/models/beit/modeling_beit.py",
+          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
+          "start_line": 352,
+          "symbol": "BeitMLP.forward"
+        },
+        {
+          "end_line": 444,
+          "executed_line": 406,
+          "file": "transformers/models/beit/modeling_beit.py",
+          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
+          "start_line": 406,
+          "symbol": "BeitLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "beit.block-00006",
+      "dedup_ref": "dedup.sha256.bf88d433b50ba33b6c11a63c3d663c4f6f780c6dd54df30528cfe35fbd582d76",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 6,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.bf88d433b50ba33b6c11a63c3d663c4f6f780c6dd54df30528cfe35fbd582d76/block.json",
+        "target_dedup_uid": "dedup.sha256.bf88d433b50ba33b6c11a63c3d663c4f6f780c6dd54df30528cfe35fbd582d76",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 341,
+          "executed_line": 310,
+          "file": "transformers/models/beit/modeling_beit.py",
+          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
+          "start_line": 310,
+          "symbol": "BeitAttention.forward"
+        },
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        },
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        },
+        {
+          "end_line": 50,
+          "executed_line": 46,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 46,
+          "symbol": "Identity.forward"
+        },
+        {
+          "end_line": 50,
+          "executed_line": 46,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 46,
+          "symbol": "Identity.forward"
+        },
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 357,
+          "executed_line": 352,
+          "file": "transformers/models/beit/modeling_beit.py",
+          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
+          "start_line": 352,
+          "symbol": "BeitMLP.forward"
+        },
+        {
+          "end_line": 444,
+          "executed_line": 406,
+          "file": "transformers/models/beit/modeling_beit.py",
+          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
+          "start_line": 406,
+          "symbol": "BeitLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "beit.block-00007",
+      "dedup_ref": "dedup.sha256.e48275bd081b11e980298b0d618e8d4300fa360cfed8a2221d2cda6e4eedd746",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 7,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.e48275bd081b11e980298b0d618e8d4300fa360cfed8a2221d2cda6e4eedd746/block.json",
+        "target_dedup_uid": "dedup.sha256.e48275bd081b11e980298b0d618e8d4300fa360cfed8a2221d2cda6e4eedd746",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.attention",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 341,
+          "executed_line": 310,
+          "file": "transformers/models/beit/modeling_beit.py",
+          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
+          "start_line": 310,
+          "symbol": "BeitAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "beit.block-00008",
+      "dedup_ref": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 8,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6/block.json",
+        "target_dedup_uid": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.attention.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "beit.block-00009",
+      "dedup_ref": "dedup.sha256.943e3c5918814f5e83b857216444b969e7230eb6e32785c416529622bd73191b",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 9,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.943e3c5918814f5e83b857216444b969e7230eb6e32785c416529622bd73191b/block.json",
+        "target_dedup_uid": "dedup.sha256.943e3c5918814f5e83b857216444b969e7230eb6e32785c416529622bd73191b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.attention.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "beit.block-00010",
+      "dedup_ref": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 10,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6/block.json",
+        "target_dedup_uid": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.attention.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "beit.block-00011",
+      "dedup_ref": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 11,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6/block.json",
+        "target_dedup_uid": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.attention.o_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "beit.block-00012",
+      "dedup_ref": "dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 12,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c/block.json",
+        "target_dedup_uid": "dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.layernorm_before",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "beit.block-00013",
+      "dedup_ref": "dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 13,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c/block.json",
+        "target_dedup_uid": "dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.layernorm_after",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "beit.block-00014",
+      "dedup_ref": "dedup.sha256.8fba36ce72d06f0458a3f4cd018e2c9cabdc3cb47be193107c2f34c6a21934ea",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 14,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.8fba36ce72d06f0458a3f4cd018e2c9cabdc3cb47be193107c2f34c6a21934ea/block.json",
+        "target_dedup_uid": "dedup.sha256.8fba36ce72d06f0458a3f4cd018e2c9cabdc3cb47be193107c2f34c6a21934ea",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 357,
+          "executed_line": 352,
+          "file": "transformers/models/beit/modeling_beit.py",
+          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
+          "start_line": 352,
+          "symbol": "BeitMLP.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "beit.block-00015",
+      "dedup_ref": "dedup.sha256.22e6a140791131afac77fca4cf82bc676c5099288811c4d26036dc0082849117",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 15,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.22e6a140791131afac77fca4cf82bc676c5099288811c4d26036dc0082849117/block.json",
+        "target_dedup_uid": "dedup.sha256.22e6a140791131afac77fca4cf82bc676c5099288811c4d26036dc0082849117",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.activation_fn",
+      "source_refs": [
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "beit.block-00016",
+      "dedup_ref": "dedup.sha256.4eb823f533ee120ac69bd639dab8990859da9db94e612fa8f26cc5c0e98abdd1",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 16,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4eb823f533ee120ac69bd639dab8990859da9db94e612fa8f26cc5c0e98abdd1/block.json",
+        "target_dedup_uid": "dedup.sha256.4eb823f533ee120ac69bd639dab8990859da9db94e612fa8f26cc5c0e98abdd1",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.fc1",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "beit.block-00017",
+      "dedup_ref": "dedup.sha256.941d15e802c3dfa3479c78ed7fc017be031fab9f21dafc6e0b4e0f80d1a6e611",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 17,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.941d15e802c3dfa3479c78ed7fc017be031fab9f21dafc6e0b4e0f80d1a6e611/block.json",
+        "target_dedup_uid": "dedup.sha256.941d15e802c3dfa3479c78ed7fc017be031fab9f21dafc6e0b4e0f80d1a6e611",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.fc2",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "beit.block-00018",
+      "dedup_ref": "dedup.sha256.0e6dd25b91159accbe71c4e0df929d9a45defa1e748679175b8bc3dd6d0c0bb0",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 18,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.0e6dd25b91159accbe71c4e0df929d9a45defa1e748679175b8bc3dd6d0c0bb0/block.json",
+        "target_dedup_uid": "dedup.sha256.0e6dd25b91159accbe71c4e0df929d9a45defa1e748679175b8bc3dd6d0c0bb0",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.dropout",
+      "source_refs": [
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        },
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "beit.block-00019",
+      "dedup_ref": "dedup.sha256.087de2719fee187aba3d24246f6b256f934428e128444b654bbc6b695880328f",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 19,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.087de2719fee187aba3d24246f6b256f934428e128444b654bbc6b695880328f/block.json",
+        "target_dedup_uid": "dedup.sha256.087de2719fee187aba3d24246f6b256f934428e128444b654bbc6b695880328f",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.drop_path",
+      "source_refs": [
+        {
+          "end_line": 50,
+          "executed_line": 46,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 46,
+          "symbol": "Identity.forward"
+        },
+        {
+          "end_line": 50,
+          "executed_line": 46,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 46,
+          "symbol": "Identity.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "beit.block-00020",
+      "dedup_ref": "dedup.sha256.7fb291e7a04edd3539faf1da8f03836a91991a676940e4162ebc9fdb4d51fd63",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 20,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7fb291e7a04edd3539faf1da8f03836a91991a676940e4162ebc9fdb4d51fd63/block.json",
+        "target_dedup_uid": "dedup.sha256.7fb291e7a04edd3539faf1da8f03836a91991a676940e4162ebc9fdb4d51fd63",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layernorm",
+      "source_refs": [
+        {
+          "end_line": 50,
+          "executed_line": 46,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 46,
+          "symbol": "Identity.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "beit.block-00022",
+      "dedup_ref": "dedup.sha256.5dc930683e70c39168d4d811790a0c51c79290d5959994880741a260b56230b1",
+      "family_id": "beit",
+      "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
+      "index": 22,
+      "model_version_id": "beit",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.5dc930683e70c39168d4d811790a0c51c79290d5959994880741a260b56230b1/block.json",
+        "target_dedup_uid": "dedup.sha256.5dc930683e70c39168d4d811790a0c51c79290d5959994880741a260b56230b1",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "pooler.layernorm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
+    }
+  ]
+}

@@ -1,0 +1,850 @@
+{
+  "blocks": [
+    {
+      "block_type": "embedding",
+      "block_uid": "convbert.block-00001",
+      "dedup_ref": "dedup.sha256.0d8f12c966c9f394b839ec1c7c253766fec8ea4ff3c324f4715b730fa4908c15",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 1,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.0d8f12c966c9f394b839ec1c7c253766fec8ea4ff3c324f4715b730fa4908c15/block.json",
+        "target_dedup_uid": "dedup.sha256.0d8f12c966c9f394b839ec1c7c253766fec8ea4ff3c324f4715b730fa4908c15",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings",
+      "source_refs": [
+        {
+          "end_line": 107,
+          "executed_line": 71,
+          "file": "transformers/models/convbert/modeling_convbert.py",
+          "source_uid": "source.sha256.5775392cc52574daa4c19bf932750f0f757ee8dc185941f7778c195a8bc731e1",
+          "start_line": 71,
+          "symbol": "ConvBertEmbeddings.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "convbert.block-00002",
+      "dedup_ref": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 2,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49/block.json",
+        "target_dedup_uid": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.word_embeddings",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "convbert.block-00003",
+      "dedup_ref": "dedup.sha256.38eaec3b41f129a5986c823c86ca8748476ad5e9e43ffcc756a95b38339137f9",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 3,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.38eaec3b41f129a5986c823c86ca8748476ad5e9e43ffcc756a95b38339137f9/block.json",
+        "target_dedup_uid": "dedup.sha256.38eaec3b41f129a5986c823c86ca8748476ad5e9e43ffcc756a95b38339137f9",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.position_embeddings",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "convbert.block-00004",
+      "dedup_ref": "dedup.sha256.12a9dcaaef5b27af1a3f849b1f121c5964eeb137c8c59a105df5d084d765d6a8",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 4,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.12a9dcaaef5b27af1a3f849b1f121c5964eeb137c8c59a105df5d084d765d6a8/block.json",
+        "target_dedup_uid": "dedup.sha256.12a9dcaaef5b27af1a3f849b1f121c5964eeb137c8c59a105df5d084d765d6a8",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.token_type_embeddings",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "convbert.block-00005",
+      "dedup_ref": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 5,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd/block.json",
+        "target_dedup_uid": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.LayerNorm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "convbert.block-00006",
+      "dedup_ref": "dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 6,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406/block.json",
+        "target_dedup_uid": "dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.dropout",
+      "source_refs": [
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "convbert.block-00007",
+      "dedup_ref": "dedup.sha256.15826f017a0e94dfb8d3fa8e10fad52e3b258117c59cb306eb4c25e547b6c602",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 7,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.15826f017a0e94dfb8d3fa8e10fad52e3b258117c59cb306eb4c25e547b6c602/block.json",
+        "target_dedup_uid": "dedup.sha256.15826f017a0e94dfb8d3fa8e10fad52e3b258117c59cb306eb4c25e547b6c602",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder",
+      "source_refs": [
+        {
+          "end_line": 459,
+          "executed_line": 440,
+          "file": "transformers/models/convbert/modeling_convbert.py",
+          "source_uid": "source.sha256.5775392cc52574daa4c19bf932750f0f757ee8dc185941f7778c195a8bc731e1",
+          "start_line": 440,
+          "symbol": "ConvBertEncoder.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "convbert.block-00008",
+      "dedup_ref": "dedup.sha256.adce71ac9167984c1da3e9a26c2a1cbbbabb7ee7962441062851226492c75b14",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 8,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.adce71ac9167984c1da3e9a26c2a1cbbbabb7ee7962441062851226492c75b14/block.json",
+        "target_dedup_uid": "dedup.sha256.adce71ac9167984c1da3e9a26c2a1cbbbabb7ee7962441062851226492c75b14",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer",
+      "source_refs": [],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "convbert.block-00009",
+      "dedup_ref": "dedup.sha256.9cdb47de5b7b7b3a1b9474e28e9d752abc528a3d8773617ad583faf3b75593f4",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 9,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.9cdb47de5b7b7b3a1b9474e28e9d752abc528a3d8773617ad583faf3b75593f4/block.json",
+        "target_dedup_uid": "dedup.sha256.9cdb47de5b7b7b3a1b9474e28e9d752abc528a3d8773617ad583faf3b75593f4",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0",
+      "source_refs": [
+        {
+          "end_line": 401,
+          "executed_line": 371,
+          "file": "transformers/models/convbert/modeling_convbert.py",
+          "source_uid": "source.sha256.5775392cc52574daa4c19bf932750f0f757ee8dc185941f7778c195a8bc731e1",
+          "start_line": 371,
+          "symbol": "ConvBertLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00010",
+      "dedup_ref": "dedup.sha256.7c7e822718133745cb41ea69ea2f6fd467c9c03adac6aaacb9f0cfc43d71d398",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 10,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7c7e822718133745cb41ea69ea2f6fd467c9c03adac6aaacb9f0cfc43d71d398/block.json",
+        "target_dedup_uid": "dedup.sha256.7c7e822718133745cb41ea69ea2f6fd467c9c03adac6aaacb9f0cfc43d71d398",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention",
+      "source_refs": [
+        {
+          "end_line": 292,
+          "executed_line": 278,
+          "file": "transformers/models/convbert/modeling_convbert.py",
+          "source_uid": "source.sha256.5775392cc52574daa4c19bf932750f0f757ee8dc185941f7778c195a8bc731e1",
+          "start_line": 278,
+          "symbol": "ConvBertAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00011",
+      "dedup_ref": "dedup.sha256.0547fc89d56aa9bce1434cc1db216b6ff7dadfeea464967ae93225aa4304de22",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 11,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.0547fc89d56aa9bce1434cc1db216b6ff7dadfeea464967ae93225aa4304de22/block.json",
+        "target_dedup_uid": "dedup.sha256.0547fc89d56aa9bce1434cc1db216b6ff7dadfeea464967ae93225aa4304de22",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.self",
+      "source_refs": [
+        {
+          "end_line": 255,
+          "executed_line": 176,
+          "file": "transformers/models/convbert/modeling_convbert.py",
+          "source_uid": "source.sha256.5775392cc52574daa4c19bf932750f0f757ee8dc185941f7778c195a8bc731e1",
+          "start_line": 176,
+          "symbol": "ConvBertSelfAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00012",
+      "dedup_ref": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 12,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc/block.json",
+        "target_dedup_uid": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.self.query",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00013",
+      "dedup_ref": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 13,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc/block.json",
+        "target_dedup_uid": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.self.key",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00014",
+      "dedup_ref": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 14,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc/block.json",
+        "target_dedup_uid": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.self.value",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00015",
+      "dedup_ref": "dedup.sha256.05e3e9dfa7a2f1831c1eff8fe6a74574238b360b13cf5e5ce6ba320a1ab195f9",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 15,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.05e3e9dfa7a2f1831c1eff8fe6a74574238b360b13cf5e5ce6ba320a1ab195f9/block.json",
+        "target_dedup_uid": "dedup.sha256.05e3e9dfa7a2f1831c1eff8fe6a74574238b360b13cf5e5ce6ba320a1ab195f9",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.self.key_conv_attn_layer",
+      "source_refs": [
+        {
+          "end_line": 133,
+          "executed_line": 129,
+          "file": "transformers/models/convbert/modeling_convbert.py",
+          "source_uid": "source.sha256.5775392cc52574daa4c19bf932750f0f757ee8dc185941f7778c195a8bc731e1",
+          "start_line": 129,
+          "symbol": "SeparableConv1D.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00016",
+      "dedup_ref": "dedup.sha256.edee50d5596788663daf8ff69b4414db28382c332089c8a53dd663aab6430600",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 16,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.edee50d5596788663daf8ff69b4414db28382c332089c8a53dd663aab6430600/block.json",
+        "target_dedup_uid": "dedup.sha256.edee50d5596788663daf8ff69b4414db28382c332089c8a53dd663aab6430600",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.self.key_conv_attn_layer.depthwise",
+      "source_refs": [
+        {
+          "end_line": 385,
+          "executed_line": 384,
+          "file": "torch/nn/modules/conv.py",
+          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+          "start_line": 384,
+          "symbol": "Conv1d.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00017",
+      "dedup_ref": "dedup.sha256.a844e2dfc368c484796ad78a82a63f55b906f3810efe0a0bfa5e8c82d166f61e",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 17,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.a844e2dfc368c484796ad78a82a63f55b906f3810efe0a0bfa5e8c82d166f61e/block.json",
+        "target_dedup_uid": "dedup.sha256.a844e2dfc368c484796ad78a82a63f55b906f3810efe0a0bfa5e8c82d166f61e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.self.key_conv_attn_layer.pointwise",
+      "source_refs": [
+        {
+          "end_line": 385,
+          "executed_line": 384,
+          "file": "torch/nn/modules/conv.py",
+          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+          "start_line": 384,
+          "symbol": "Conv1d.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00018",
+      "dedup_ref": "dedup.sha256.0276e56d052942f2f549fa978e2d5c296d3887c16e362419cd79a9a930a20c90",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 18,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.0276e56d052942f2f549fa978e2d5c296d3887c16e362419cd79a9a930a20c90/block.json",
+        "target_dedup_uid": "dedup.sha256.0276e56d052942f2f549fa978e2d5c296d3887c16e362419cd79a9a930a20c90",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.self.conv_kernel_layer",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00019",
+      "dedup_ref": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 19,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc/block.json",
+        "target_dedup_uid": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.self.conv_out_layer",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00020",
+      "dedup_ref": "dedup.sha256.fbb1491ebe666245a276b942a835017b53a4dd61d23ef983aa5758cecb8b3db7",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 20,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.fbb1491ebe666245a276b942a835017b53a4dd61d23ef983aa5758cecb8b3db7/block.json",
+        "target_dedup_uid": "dedup.sha256.fbb1491ebe666245a276b942a835017b53a4dd61d23ef983aa5758cecb8b3db7",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.self.unfold",
+      "source_refs": [],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00021",
+      "dedup_ref": "dedup.sha256.00af3527b690864f18bf2d1fa553f95925e257b986d01362d0b07ac5803064fa",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 21,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.00af3527b690864f18bf2d1fa553f95925e257b986d01362d0b07ac5803064fa/block.json",
+        "target_dedup_uid": "dedup.sha256.00af3527b690864f18bf2d1fa553f95925e257b986d01362d0b07ac5803064fa",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.self.dropout",
+      "source_refs": [
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00022",
+      "dedup_ref": "dedup.sha256.c6fefff198b342d003111e0467f3f35e16c012c218c2d6e279c2c39da6f139be",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 22,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.c6fefff198b342d003111e0467f3f35e16c012c218c2d6e279c2c39da6f139be/block.json",
+        "target_dedup_uid": "dedup.sha256.c6fefff198b342d003111e0467f3f35e16c012c218c2d6e279c2c39da6f139be",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.output",
+      "source_refs": [
+        {
+          "end_line": 269,
+          "executed_line": 265,
+          "file": "transformers/models/convbert/modeling_convbert.py",
+          "source_uid": "source.sha256.5775392cc52574daa4c19bf932750f0f757ee8dc185941f7778c195a8bc731e1",
+          "start_line": 265,
+          "symbol": "ConvBertSelfOutput.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00023",
+      "dedup_ref": "dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 23,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671/block.json",
+        "target_dedup_uid": "dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.output.dense",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00024",
+      "dedup_ref": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 24,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd/block.json",
+        "target_dedup_uid": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.output.LayerNorm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "convbert.block-00025",
+      "dedup_ref": "dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 25,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406/block.json",
+        "target_dedup_uid": "dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.output.dropout",
+      "source_refs": [
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "convbert.block-00026",
+      "dedup_ref": "dedup.sha256.dbed3af20625828d7329f64dff16c447026bffd9faa862c5f87797b02b7b4e4e",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 26,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.dbed3af20625828d7329f64dff16c447026bffd9faa862c5f87797b02b7b4e4e/block.json",
+        "target_dedup_uid": "dedup.sha256.dbed3af20625828d7329f64dff16c447026bffd9faa862c5f87797b02b7b4e4e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.intermediate",
+      "source_refs": [
+        {
+          "end_line": 334,
+          "executed_line": 331,
+          "file": "transformers/models/convbert/modeling_convbert.py",
+          "source_uid": "source.sha256.5775392cc52574daa4c19bf932750f0f757ee8dc185941f7778c195a8bc731e1",
+          "start_line": 331,
+          "symbol": "ConvBertIntermediate.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "convbert.block-00027",
+      "dedup_ref": "dedup.sha256.feb1fe99c6da7405f71c28e81b79855415901bc3605aa3e2923d40708ac3af15",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 27,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.feb1fe99c6da7405f71c28e81b79855415901bc3605aa3e2923d40708ac3af15/block.json",
+        "target_dedup_uid": "dedup.sha256.feb1fe99c6da7405f71c28e81b79855415901bc3605aa3e2923d40708ac3af15",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.intermediate.dense",
+      "source_refs": [
+        {
+          "end_line": 314,
+          "executed_line": 306,
+          "file": "transformers/models/convbert/modeling_convbert.py",
+          "source_uid": "source.sha256.5775392cc52574daa4c19bf932750f0f757ee8dc185941f7778c195a8bc731e1",
+          "start_line": 306,
+          "symbol": "GroupedLinearLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "convbert.block-00028",
+      "dedup_ref": "dedup.sha256.03c366a38e91f291f3f51df2f5b95759f1bbdfd770384ef2e514a3c707e7529a",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 28,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.03c366a38e91f291f3f51df2f5b95759f1bbdfd770384ef2e514a3c707e7529a/block.json",
+        "target_dedup_uid": "dedup.sha256.03c366a38e91f291f3f51df2f5b95759f1bbdfd770384ef2e514a3c707e7529a",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.intermediate.intermediate_act_fn",
+      "source_refs": [
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "convbert.block-00029",
+      "dedup_ref": "dedup.sha256.3b7fc465590200df0528414cdf12883686af1cbe507d02fc82e3331c4e2af884",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 29,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.3b7fc465590200df0528414cdf12883686af1cbe507d02fc82e3331c4e2af884/block.json",
+        "target_dedup_uid": "dedup.sha256.3b7fc465590200df0528414cdf12883686af1cbe507d02fc82e3331c4e2af884",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.output",
+      "source_refs": [
+        {
+          "end_line": 353,
+          "executed_line": 349,
+          "file": "transformers/models/convbert/modeling_convbert.py",
+          "source_uid": "source.sha256.5775392cc52574daa4c19bf932750f0f757ee8dc185941f7778c195a8bc731e1",
+          "start_line": 349,
+          "symbol": "ConvBertOutput.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "convbert.block-00030",
+      "dedup_ref": "dedup.sha256.6650ff8fbb7ae5be8d702cb36545022b7a6df141b4a239f358231f364af835f6",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 30,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6650ff8fbb7ae5be8d702cb36545022b7a6df141b4a239f358231f364af835f6/block.json",
+        "target_dedup_uid": "dedup.sha256.6650ff8fbb7ae5be8d702cb36545022b7a6df141b4a239f358231f364af835f6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.output.dense",
+      "source_refs": [
+        {
+          "end_line": 314,
+          "executed_line": 306,
+          "file": "transformers/models/convbert/modeling_convbert.py",
+          "source_uid": "source.sha256.5775392cc52574daa4c19bf932750f0f757ee8dc185941f7778c195a8bc731e1",
+          "start_line": 306,
+          "symbol": "GroupedLinearLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "convbert.block-00031",
+      "dedup_ref": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 31,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd/block.json",
+        "target_dedup_uid": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.output.LayerNorm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "convbert.block-00032",
+      "dedup_ref": "dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406",
+      "family_id": "convbert",
+      "graph_ref": "graphs/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json",
+      "index": 32,
+      "model_version_id": "convbert",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406/block.json",
+        "target_dedup_uid": "dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.output.dropout",
+      "source_refs": [
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bea91481c79103e9e25d13bbd432af658e61332cbece5ed8071948e7244caef4.json"
+    }
+  ]
+}

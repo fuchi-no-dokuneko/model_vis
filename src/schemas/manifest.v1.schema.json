@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "builder_version", "scope_hash", "families", "versions", "asset_index", "search_index", "license_manifest", "build_report", "cloudflare_pages_check"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "families": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "versions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "cloudflare_pages_check": {
+      "type": "object",
+      "required": ["file_count", "max_file_size_bytes", "passed"],
+      "properties": {
+        "file_count": {"type": "integer", "minimum": 0},
+        "max_file_size_bytes": {"type": "integer", "minimum": 0},
+        "passed": {"type": "boolean"}
+      }
+    }
+  }
+}

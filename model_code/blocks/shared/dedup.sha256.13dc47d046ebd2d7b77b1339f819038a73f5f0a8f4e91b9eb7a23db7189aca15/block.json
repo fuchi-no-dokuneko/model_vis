@@ -1,0 +1,100 @@
+{
+  "dedup_uid": "dedup.sha256.13dc47d046ebd2d7b77b1339f819038a73f5f0a8f4e91b9eb7a23db7189aca15",
+  "operation_ids": [
+    "dinov3.op-000000",
+    "dinov3.op-000001"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.dinov3_vit.modeling_dinov3_vit",
+        "DINOv3ViTEmbeddings"
+      ],
+      [
+        "patch_embeddings",
+        "torch.nn.modules.conv",
+        "Conv2d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            17,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "cls_token",
+        [
+          1,
+          1,
+          16
+        ]
+      ],
+      [
+        "mask_token",
+        [
+          1,
+          1,
+          16
+        ]
+      ],
+      [
+        "register_tokens",
+        [
+          1,
+          0,
+          16
+        ]
+      ]
+    ],
+    "source": "4580ff927b7619ffe37ad563538f711e96ad2b8be5458da0c66690f112104f98",
+    "topology": [
+      [
+        "module_call",
+        "torch.nn.modules.conv.Conv2d"
+      ],
+      [
+        "module_call",
+        "transformers.models.dinov3_vit.modeling_dinov3_vit.DINOv3ViTEmbeddings"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "architecture_key": "moshi",
+  "artifact_refs": [
+    "blocks/sha256.ee843b965ccdc84cf8470e5d720e12abd8d886e0c391d74532ef1442b52260ca.json",
+    "blocks/shared/dedup.sha256.28dd3263203a76c3211ee8c37a34ba8270c54f36a81a23e42df4652ddca805b2/block.json",
+    "blocks/shared/dedup.sha256.40eb931ee8784c41e447cf115cba1b7335242def179aef6ae01aa0c821bfca05/block.json",
+    "blocks/shared/dedup.sha256.489118aacf597bb0f2d51ab6d50ff0067a680aa6465483de973416a5d0e7491e/block.json",
+    "blocks/shared/dedup.sha256.643fa565cc8b70886d03fe7cf6b92833a4120b2bd9f622a4f9994fe58764d8cf/block.json",
+    "blocks/shared/dedup.sha256.6f96145cae424090fae98342549fad59113c6c2a9b65ef525f25db333d43853e/block.json",
+    "blocks/shared/dedup.sha256.a3554213f22c71c1b26a04cba3b99153c836bd456b6b75acfb5f7404b73d2f51/block.json",
+    "blocks/shared/dedup.sha256.b1aeeb3638482b464e1ef42590dea2dabf82b8610801dfbd3790d36ef3d1b4d4/block.json",
+    "blocks/shared/dedup.sha256.b23438f1209a6f632d4b094eaf7425c9cc0548dc2911a1b8f47d4a6deda8c62f/block.json",
+    "blocks/shared/dedup.sha256.b65d893d1ee08e5d5641d92036110b8e7e7601c3be160055be1c3ffa62b4881d/block.json",
+    "blocks/shared/dedup.sha256.b871b7ef3ce4c6406ec4a2e94feab35af093a9276f292a7ea101c1c31c3a5f94/block.json",
+    "blocks/shared/dedup.sha256.bfb460042d4dcf6c42baf761a86e388eaf1b9c07a15c5e70ac278910dbba681d/block.json",
+    "blocks/shared/dedup.sha256.f5a95c8a43ad4532c94743b4b10cfcf38855b3e03a37c18eb40cd9f0445344c0/block.json",
+    "blocks/shared/dedup.sha256.f8a2c30c8944816beb6ffc1dba968d7902f8cd2715aedcd199783d0b6597406a/block.json",
+    "configs/sha256.ee843b965ccdc84cf8470e5d720e12abd8d886e0c391d74532ef1442b52260ca.json",
+    "graphs/sha256.ee843b965ccdc84cf8470e5d720e12abd8d886e0c391d74532ef1442b52260ca.json",
+    "sources/source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108.json",
+    "sources/source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188.json",
+    "sources/source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130.json",
+    "sources/source.sha256.ce787f73e2a7dc48559e4dea1ae913eaa00257c3e1a50ea5091108194ad08915.json",
+    "sources/source.sha256.ec06f5144589578be72ca007058153bd788a29531ac21335f97e593559d1bfc3.json",
+    "traces/sha256.ee843b965ccdc84cf8470e5d720e12abd8d886e0c391d74532ef1442b52260ca.json"
+  ],
+  "block_count": 20,
+  "blocks_ref": "blocks/sha256.ee843b965ccdc84cf8470e5d720e12abd8d886e0c391d74532ef1442b52260ca.json",
+  "canonical_version_id": "moshi",
+  "category": "Audio models",
+  "config_class": "MoshiConfig",
+  "config_ref": "configs/sha256.ee843b965ccdc84cf8470e5d720e12abd8d886e0c391d74532ef1442b52260ca.json",
+  "display_name": "Moshi",
+  "entrypoint_class": "MoshiModel",
+  "entrypoint_module": "transformers.models.moshi.modeling_moshi",
+  "execution_mode": "full_model_forward",
+  "execution_reused": false,
+  "execution_source_version": "moshi",
+  "family_id": "moshi",
+  "family_name": "Moshi",
+  "forward_policy": {
+    "device": "cpu",
+    "eval_mode": true,
+    "inference_mode": true
+  },
+  "graph_ref": "graphs/sha256.ee843b965ccdc84cf8470e5d720e12abd8d886e0c391d74532ef1442b52260ca.json",
+  "library": "transformers",
+  "operation_count": 104,
+  "parameters": {
+    "total": 2624,
+    "trainable": 2624
+  },
+  "sources": [
+    "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+    "source.sha256.ce787f73e2a7dc48559e4dea1ae913eaa00257c3e1a50ea5091108194ad08915",
+    "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+    "source.sha256.ec06f5144589578be72ca007058153bd788a29531ac21335f97e593559d1bfc3",
+    "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188"
+  ],
+  "status": "passed",
+  "structure_key": "sha256.ee843b965ccdc84cf8470e5d720e12abd8d886e0c391d74532ef1442b52260ca",
+  "task_type": "audio",
+  "top_level_outputs": [
+    {
+      "device": "cpu",
+      "dtype": "torch.float32",
+      "is_symbolic": false,
+      "notes": null,
+      "requires_grad": false,
+      "role": "output",
+      "shape": [
+        3,
+        5,
+        16
+      ],
+      "source": "observed_forward",
+      "tensor_id": "tensor-0"
+    }
+  ],
+  "trace_event_count": 104,
+  "trace_ref": "traces/sha256.ee843b965ccdc84cf8470e5d720e12abd8d886e0c391d74532ef1442b52260ca.json",
+  "version_id": "moshi"
+}

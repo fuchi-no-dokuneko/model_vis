@@ -1,0 +1,435 @@
+{
+  "blocks": [
+    {
+      "block_type": "embedding",
+      "block_uid": "phi.block-00001",
+      "dedup_ref": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 1,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49/block.json",
+        "target_dedup_uid": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embed_tokens",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "phi.block-00002",
+      "dedup_ref": "dedup.sha256.e1d3c9417ef53e4768d5f147d73c93153e2a3eb4d6de9555b6cdbdc5bafcc0b8",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 2,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.e1d3c9417ef53e4768d5f147d73c93153e2a3eb4d6de9555b6cdbdc5bafcc0b8/block.json",
+        "target_dedup_uid": "dedup.sha256.e1d3c9417ef53e4768d5f147d73c93153e2a3eb4d6de9555b6cdbdc5bafcc0b8",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers",
+      "source_refs": [],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "phi.block-00003",
+      "dedup_ref": "dedup.sha256.4d79f8b8f4716aeacd8e5d48627d5ae0ff4655599e7dc016de082f9f8386c286",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 3,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4d79f8b8f4716aeacd8e5d48627d5ae0ff4655599e7dc016de082f9f8386c286/block.json",
+        "target_dedup_uid": "dedup.sha256.4d79f8b8f4716aeacd8e5d48627d5ae0ff4655599e7dc016de082f9f8386c286",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0",
+      "source_refs": [
+        {
+          "end_line": 307,
+          "executed_line": 279,
+          "file": "transformers/models/phi/modeling_phi.py",
+          "source_uid": "source.sha256.9fd3495e24501d50a1c19e5527af22b790796ea61e4ad08ef5ceefffbd384ef1",
+          "start_line": 279,
+          "symbol": "PhiDecoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "phi.block-00004",
+      "dedup_ref": "dedup.sha256.f7f2e1c7d938dc3a294032ad7f1235f5e0c14a0dd3f7a603114c641b94c79dd0",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 4,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f7f2e1c7d938dc3a294032ad7f1235f5e0c14a0dd3f7a603114c641b94c79dd0/block.json",
+        "target_dedup_uid": "dedup.sha256.f7f2e1c7d938dc3a294032ad7f1235f5e0c14a0dd3f7a603114c641b94c79dd0",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn",
+      "source_refs": [
+        {
+          "end_line": 253,
+          "executed_line": 197,
+          "file": "transformers/models/phi/modeling_phi.py",
+          "source_uid": "source.sha256.9fd3495e24501d50a1c19e5527af22b790796ea61e4ad08ef5ceefffbd384ef1",
+          "start_line": 197,
+          "symbol": "PhiAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "phi.block-00005",
+      "dedup_ref": "dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 5,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671/block.json",
+        "target_dedup_uid": "dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "phi.block-00006",
+      "dedup_ref": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 6,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc/block.json",
+        "target_dedup_uid": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "phi.block-00007",
+      "dedup_ref": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 7,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc/block.json",
+        "target_dedup_uid": "dedup.sha256.2254dea4a7d4f67cb7da0ae9cdcc3a2a789d6c9b543762ea0b2eb6934372cbfc",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "phi.block-00008",
+      "dedup_ref": "dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 8,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671/block.json",
+        "target_dedup_uid": "dedup.sha256.7d941d3040d97d1521d44dc8151dac862b8d2b10b85c21fd3017f78e7ec1e671",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.dense",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "phi.block-00009",
+      "dedup_ref": "dedup.sha256.6503ed54f3f697f250d443401ef68aa94d0a2803b4cc0efa289393862cec3ffb",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 9,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6503ed54f3f697f250d443401ef68aa94d0a2803b4cc0efa289393862cec3ffb/block.json",
+        "target_dedup_uid": "dedup.sha256.6503ed54f3f697f250d443401ef68aa94d0a2803b4cc0efa289393862cec3ffb",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp",
+      "source_refs": [
+        {
+          "end_line": 268,
+          "executed_line": 264,
+          "file": "transformers/models/phi/modeling_phi.py",
+          "source_uid": "source.sha256.9fd3495e24501d50a1c19e5527af22b790796ea61e4ad08ef5ceefffbd384ef1",
+          "start_line": 264,
+          "symbol": "PhiMLP.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "phi.block-00010",
+      "dedup_ref": "dedup.sha256.8d6ee4f05dc35f9b0ebd33fcfadc2bf1396161bf38924f28425bbf3f1d5c4fee",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 10,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.8d6ee4f05dc35f9b0ebd33fcfadc2bf1396161bf38924f28425bbf3f1d5c4fee/block.json",
+        "target_dedup_uid": "dedup.sha256.8d6ee4f05dc35f9b0ebd33fcfadc2bf1396161bf38924f28425bbf3f1d5c4fee",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.activation_fn",
+      "source_refs": [
+        {
+          "end_line": 66,
+          "executed_line": 65,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 65,
+          "symbol": "NewGELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "phi.block-00011",
+      "dedup_ref": "dedup.sha256.cbdc9e243caede71cc9ccbbf73cd3456606a36ad6c0a89e963e0b4797639bfa2",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 11,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.cbdc9e243caede71cc9ccbbf73cd3456606a36ad6c0a89e963e0b4797639bfa2/block.json",
+        "target_dedup_uid": "dedup.sha256.cbdc9e243caede71cc9ccbbf73cd3456606a36ad6c0a89e963e0b4797639bfa2",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.fc1",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "phi.block-00012",
+      "dedup_ref": "dedup.sha256.4b710be07eb8c355f9f26cc171e91a5f802077b3f5ceaf6147960d7027da6612",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 12,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4b710be07eb8c355f9f26cc171e91a5f802077b3f5ceaf6147960d7027da6612/block.json",
+        "target_dedup_uid": "dedup.sha256.4b710be07eb8c355f9f26cc171e91a5f802077b3f5ceaf6147960d7027da6612",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.fc2",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "phi.block-00013",
+      "dedup_ref": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 13,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd/block.json",
+        "target_dedup_uid": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.input_layernorm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "phi.block-00014",
+      "dedup_ref": "dedup.sha256.cb88c41b104c9cb8ddb903f6a189b0d99f2a81ebb7c5ed9d127ad513d84066d4",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 14,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.cb88c41b104c9cb8ddb903f6a189b0d99f2a81ebb7c5ed9d127ad513d84066d4/block.json",
+        "target_dedup_uid": "dedup.sha256.cb88c41b104c9cb8ddb903f6a189b0d99f2a81ebb7c5ed9d127ad513d84066d4",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.resid_dropout",
+      "source_refs": [
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        },
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "phi.block-00016",
+      "dedup_ref": "dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 16,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406/block.json",
+        "target_dedup_uid": "dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embed_dropout",
+      "source_refs": [
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "phi.block-00017",
+      "dedup_ref": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+      "family_id": "phi",
+      "graph_ref": "graphs/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json",
+      "index": 17,
+      "model_version_id": "phi",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd/block.json",
+        "target_dedup_uid": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "final_layernorm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.fcbeb1fe943db2222be25c68fa4a95f2a9a3121327f090cb16ce8e04324f5359.json"
+    }
+  ]
+}

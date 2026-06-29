@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["version", "node_count", "edge_count", "nodes", "edges", "dot"],
+  "properties": {
+    "node_count": {"type": "integer", "minimum": 1},
+    "edge_count": {"type": "integer", "minimum": 0},
+    "nodes": {"type": "array", "items": {"type": "object", "required": ["id", "kind", "name", "depth", "is_container", "input_shapes", "output_shapes"]}},
+    "edges": {"type": "array", "items": {"type": "object", "required": ["source", "target"]}},
+    "dot": {"type": "string"}
+  }
+}

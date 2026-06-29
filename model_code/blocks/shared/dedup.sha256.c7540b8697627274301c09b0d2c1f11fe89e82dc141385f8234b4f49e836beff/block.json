@@ -1,0 +1,90 @@
+{
+  "dedup_uid": "dedup.sha256.c7540b8697627274301c09b0d2c1f11fe89e82dc141385f8234b4f49e836beff",
+  "operation_ids": [
+    "mlcd.op-000001",
+    "mlcd.op-000002"
+  ],
+  "signature": {
+    "buffers": [
+      [
+        "position_ids",
+        [
+          1,
+          17
+        ]
+      ]
+    ],
+    "children": [
+      [
+        "",
+        "transformers.models.mlcd.modeling_mlcd",
+        "MLCDVisionEmbeddings"
+      ],
+      [
+        "patch_embedding",
+        "torch.nn.modules.conv",
+        "Conv2d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            17,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "class_embedding",
+        [
+          16
+        ]
+      ]
+    ],
+    "source": "0e1c3207e6227ee6f6dbcaba8d4ef9acc73e314e4f1827e8648446d7457799f1",
+    "topology": [
+      [
+        "module_call",
+        "torch.nn.modules.conv.Conv2d"
+      ],
+      [
+        "module_call",
+        "transformers.models.mlcd.modeling_mlcd.MLCDVisionEmbeddings"
+      ]
+    ]
+  }
+}

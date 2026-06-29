@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "model-vis"
+version = "0.1.0"
+description = "Offline compiler and static viewer for PyTorch model structures"
+requires-python = ">=3.11"
+dependencies = [
+  "diffusers>=0.38",
+  "jsonschema>=4.20",
+  "PyYAML>=6",
+  "torch>=2.6",
+  "torchview>=0.2.7",
+  "transformers>=5",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "selenium>=4"]
+
+[tool.pytest.ini_options]
+testpaths = ["test"]
+addopts = "-q"
+

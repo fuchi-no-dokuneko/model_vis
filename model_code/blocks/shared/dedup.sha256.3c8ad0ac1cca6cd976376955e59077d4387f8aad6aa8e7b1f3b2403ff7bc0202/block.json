@@ -1,0 +1,75 @@
+{
+  "dedup_uid": "dedup.sha256.3c8ad0ac1cca6cd976376955e59077d4387f8aad6aa8e7b1f3b2403ff7bc0202",
+  "operation_ids": [
+    "data2vec-3.op-000000",
+    "data2vec-3.op-000001"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.data2vec.modeling_data2vec_vision",
+        "Data2VecVisionPatchEmbeddings"
+      ],
+      [
+        "projection",
+        "torch.nn.modules.conv",
+        "Conv2d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "3e281c59dd47b1709bbab6dcc804d52874c161d64e4a624ca404c32ecfecaf7b",
+    "topology": [
+      [
+        "module_call",
+        "torch.nn.modules.conv.Conv2d"
+      ],
+      [
+        "module_call",
+        "transformers.models.data2vec.modeling_data2vec_vision.Data2VecVisionPatchEmbeddings"
+      ]
+    ]
+  }
+}

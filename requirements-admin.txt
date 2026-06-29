@@ -1,0 +1,11 @@
+# Build-only packages that are not present in the checked venv.
+# Download wheels on a networked machine, then install with --no-index.
+timm>=1.0
+natten>=0.21
+# Must match the installed CPU-only torch build exactly. A CUDA torchaudio
+# wheel fails at import time and breaks unrelated Transformers imports.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torchaudio==2.12.0+cpu
+
+# Browser regression runner. The matching Chromium binary/driver is a system package.
+selenium>=4.30

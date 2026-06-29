@@ -1,0 +1,1660 @@
+{
+  "dot": "digraph model {\n  \"tv-000000\" [label=\"input-tensor\"];\n  \"tv-000001\" [label=\"conv2d\"];\n  \"tv-000002\" [label=\"hidden-tensor\"];\n  \"tv-000003\" [label=\"flatten\"];\n  \"tv-000004\" [label=\"hidden-tensor\"];\n  \"tv-000005\" [label=\"transpose\"];\n  \"tv-000006\" [label=\"hidden-tensor\"];\n  \"tv-000007\" [label=\"cat\"];\n  \"tv-000008\" [label=\"hidden-tensor\"];\n  \"tv-000009\" [label=\"dropout\"];\n  \"tv-000010\" [label=\"hidden-tensor\"];\n  \"tv-000011\" [label=\"layer_norm\"];\n  \"tv-000012\" [label=\"hidden-tensor\"];\n  \"tv-000013\" [label=\"linear\"];\n  \"tv-000014\" [label=\"hidden-tensor\"];\n  \"tv-000015\" [label=\"view\"];\n  \"tv-000016\" [label=\"hidden-tensor\"];\n  \"tv-000017\" [label=\"transpose\"];\n  \"tv-000018\" [label=\"hidden-tensor\"];\n  \"tv-000019\" [label=\"linear\"];\n  \"tv-000020\" [label=\"hidden-tensor\"];\n  \"tv-000021\" [label=\"view\"];\n  \"tv-000022\" [label=\"hidden-tensor\"];\n  \"tv-000023\" [label=\"transpose\"];\n  \"tv-000024\" [label=\"hidden-tensor\"];\n  \"tv-000025\" [label=\"linear\"];\n  \"tv-000026\" [label=\"hidden-tensor\"];\n  \"tv-000027\" [label=\"view\"];\n  \"tv-000028\" [label=\"hidden-tensor\"];\n  \"tv-000029\" [label=\"transpose\"];\n  \"tv-000030\" [label=\"hidden-tensor\"];\n  \"tv-000031\" [label=\"scaled_dot_product_attention\"];\n  \"tv-000032\" [label=\"hidden-tensor\"];\n  \"tv-000033\" [label=\"transpose\"];\n  \"tv-000034\" [label=\"hidden-tensor\"];\n  \"tv-000035\" [label=\"contiguous\"];\n  \"tv-000036\" [label=\"hidden-tensor\"];\n  \"tv-000037\" [label=\"reshape\"];\n  \"tv-000038\" [label=\"hidden-tensor\"];\n  \"tv-000039\" [label=\"contiguous\"];\n  \"tv-000040\" [label=\"hidden-tensor\"];\n  \"tv-000041\" [label=\"linear\"];\n  \"tv-000042\" [label=\"hidden-tensor\"];\n  \"tv-000043\" [label=\"dropout\"];\n  \"tv-000044\" [label=\"hidden-tensor\"];\n  \"tv-000045\" [label=\"mul\"];\n  \"tv-000046\" [label=\"hidden-tensor\"];\n  \"tv-000047\" [label=\"hidden-tensor\"];\n  \"tv-000048\" [label=\"add\"];\n  \"tv-000049\" [label=\"hidden-tensor\"];\n  \"tv-000050\" [label=\"layer_norm\"];\n  \"tv-000051\" [label=\"hidden-tensor\"];\n  \"tv-000052\" [label=\"linear\"];\n  \"tv-000053\" [label=\"hidden-tensor\"];\n  \"tv-000054\" [label=\"gelu\"];\n  \"tv-000055\" [label=\"hidden-tensor\"];\n  \"tv-000056\" [label=\"linear\"];\n  \"tv-000057\" [label=\"hidden-tensor\"];\n  \"tv-000058\" [label=\"dropout\"];\n  \"tv-000059\" [label=\"hidden-tensor\"];\n  \"tv-000060\" [label=\"mul\"];\n  \"tv-000061\" [label=\"hidden-tensor\"];\n  \"tv-000062\" [label=\"hidden-tensor\"];\n  \"tv-000063\" [label=\"add\"];\n  \"tv-000064\" [label=\"hidden-tensor\"];\n  \"tv-000065\" [label=\"hidden-tensor\"];\n  \"tv-000066\" [label=\"__getitem__\"];\n  \"tv-000067\" [label=\"hidden-tensor\"];\n  \"tv-000068\" [label=\"mean\"];\n  \"tv-000069\" [label=\"hidden-tensor\"];\n  \"tv-000070\" [label=\"layer_norm\"];\n  \"tv-000071\" [label=\"output-tensor\"];\n  \"tv-000072\" [label=\"output-tensor\"];\n  \"tv-000000\" -> \"tv-000001\";\n  \"tv-000002\" -> \"tv-000003\";\n  \"tv-000001\" -> \"tv-000002\";\n  \"tv-000004\" -> \"tv-000005\";\n  \"tv-000003\" -> \"tv-000004\";\n  \"tv-000006\" -> \"tv-000007\";\n  \"tv-000005\" -> \"tv-000006\";\n  \"tv-000007\" -> \"tv-000008\";\n  \"tv-000008\" -> \"tv-000009\";\n  \"tv-000009\" -> \"tv-000010\";\n  \"tv-000010\" -> \"tv-000048\";\n  \"tv-000010\" -> \"tv-000011\";\n  \"tv-000011\" -> \"tv-000012\";\n  \"tv-000012\" -> \"tv-000013\";\n  \"tv-000014\" -> \"tv-000015\";\n  \"tv-000013\" -> \"tv-000014\";\n  \"tv-000016\" -> \"tv-000017\";\n  \"tv-000015\" -> \"tv-000016\";\n  \"tv-000018\" -> \"tv-000031\";\n  \"tv-000017\" -> \"tv-000018\";\n  \"tv-000012\" -> \"tv-000019\";\n  \"tv-000020\" -> \"tv-000021\";\n  \"tv-000019\" -> \"tv-000020\";\n  \"tv-000022\" -> \"tv-000023\";\n  \"tv-000021\" -> \"tv-000022\";\n  \"tv-000024\" -> \"tv-000031\";\n  \"tv-000023\" -> \"tv-000024\";\n  \"tv-000012\" -> \"tv-000025\";\n  \"tv-000026\" -> \"tv-000027\";\n  \"tv-000025\" -> \"tv-000026\";\n  \"tv-000028\" -> \"tv-000029\";\n  \"tv-000027\" -> \"tv-000028\";\n  \"tv-000030\" -> \"tv-000031\";\n  \"tv-000029\" -> \"tv-000030\";\n  \"tv-000032\" -> \"tv-000033\";\n  \"tv-000031\" -> \"tv-000032\";\n  \"tv-000034\" -> \"tv-000035\";\n  \"tv-000033\" -> \"tv-000034\";\n  \"tv-000036\" -> \"tv-000037\";\n  \"tv-000035\" -> \"tv-000036\";\n  \"tv-000038\" -> \"tv-000039\";\n  \"tv-000037\" -> \"tv-000038\";\n  \"tv-000039\" -> \"tv-000040\";\n  \"tv-000040\" -> \"tv-000041\";\n  \"tv-000041\" -> \"tv-000042\";\n  \"tv-000042\" -> \"tv-000043\";\n  \"tv-000044\" -> \"tv-000045\";\n  \"tv-000043\" -> \"tv-000044\";\n  \"tv-000045\" -> \"tv-000046\";\n  \"tv-000047\" -> \"tv-000048\";\n  \"tv-000045\" -> \"tv-000047\";\n  \"tv-000049\" -> \"tv-000063\";\n  \"tv-000048\" -> \"tv-000049\";\n  \"tv-000049\" -> \"tv-000050\";\n  \"tv-000050\" -> \"tv-000051\";\n  \"tv-000051\" -> \"tv-000052\";\n  \"tv-000052\" -> \"tv-000053\";\n  \"tv-000053\" -> \"tv-000054\";\n  \"tv-000054\" -> \"tv-000055\";\n  \"tv-000055\" -> \"tv-000056\";\n  \"tv-000056\" -> \"tv-000057\";\n  \"tv-000057\" -> \"tv-000058\";\n  \"tv-000059\" -> \"tv-000060\";\n  \"tv-000058\" -> \"tv-000059\";\n  \"tv-000060\" -> \"tv-000061\";\n  \"tv-000062\" -> \"tv-000063\";\n  \"tv-000060\" -> \"tv-000062\";\n  \"tv-000063\" -> \"tv-000064\";\n  \"tv-000063\" -> \"tv-000065\";\n  \"tv-000065\" -> \"tv-000066\";\n  \"tv-000067\" -> \"tv-000068\";\n  \"tv-000066\" -> \"tv-000067\";\n  \"tv-000068\" -> \"tv-000069\";\n  \"tv-000069\" -> \"tv-000070\";\n  \"tv-000070\" -> \"tv-000071\";\n  \"tv-000063\" -> \"tv-000072\";\n}",
+  "edge_count": 76,
+  "edges": [
+    {
+      "source": "tv-000000",
+      "target": "tv-000001"
+    },
+    {
+      "source": "tv-000002",
+      "target": "tv-000003"
+    },
+    {
+      "source": "tv-000001",
+      "target": "tv-000002"
+    },
+    {
+      "source": "tv-000004",
+      "target": "tv-000005"
+    },
+    {
+      "source": "tv-000003",
+      "target": "tv-000004"
+    },
+    {
+      "source": "tv-000006",
+      "target": "tv-000007"
+    },
+    {
+      "source": "tv-000005",
+      "target": "tv-000006"
+    },
+    {
+      "source": "tv-000007",
+      "target": "tv-000008"
+    },
+    {
+      "source": "tv-000008",
+      "target": "tv-000009"
+    },
+    {
+      "source": "tv-000009",
+      "target": "tv-000010"
+    },
+    {
+      "source": "tv-000010",
+      "target": "tv-000048"
+    },
+    {
+      "source": "tv-000010",
+      "target": "tv-000011"
+    },
+    {
+      "source": "tv-000011",
+      "target": "tv-000012"
+    },
+    {
+      "source": "tv-000012",
+      "target": "tv-000013"
+    },
+    {
+      "source": "tv-000014",
+      "target": "tv-000015"
+    },
+    {
+      "source": "tv-000013",
+      "target": "tv-000014"
+    },
+    {
+      "source": "tv-000016",
+      "target": "tv-000017"
+    },
+    {
+      "source": "tv-000015",
+      "target": "tv-000016"
+    },
+    {
+      "source": "tv-000018",
+      "target": "tv-000031"
+    },
+    {
+      "source": "tv-000017",
+      "target": "tv-000018"
+    },
+    {
+      "source": "tv-000012",
+      "target": "tv-000019"
+    },
+    {
+      "source": "tv-000020",
+      "target": "tv-000021"
+    },
+    {
+      "source": "tv-000019",
+      "target": "tv-000020"
+    },
+    {
+      "source": "tv-000022",
+      "target": "tv-000023"
+    },
+    {
+      "source": "tv-000021",
+      "target": "tv-000022"
+    },
+    {
+      "source": "tv-000024",
+      "target": "tv-000031"
+    },
+    {
+      "source": "tv-000023",
+      "target": "tv-000024"
+    },
+    {
+      "source": "tv-000012",
+      "target": "tv-000025"
+    },
+    {
+      "source": "tv-000026",
+      "target": "tv-000027"
+    },
+    {
+      "source": "tv-000025",
+      "target": "tv-000026"
+    },
+    {
+      "source": "tv-000028",
+      "target": "tv-000029"
+    },
+    {
+      "source": "tv-000027",
+      "target": "tv-000028"
+    },
+    {
+      "source": "tv-000030",
+      "target": "tv-000031"
+    },
+    {
+      "source": "tv-000029",
+      "target": "tv-000030"
+    },
+    {
+      "source": "tv-000032",
+      "target": "tv-000033"
+    },
+    {
+      "source": "tv-000031",
+      "target": "tv-000032"
+    },
+    {
+      "source": "tv-000034",
+      "target": "tv-000035"
+    },
+    {
+      "source": "tv-000033",
+      "target": "tv-000034"
+    },
+    {
+      "source": "tv-000036",
+      "target": "tv-000037"
+    },
+    {
+      "source": "tv-000035",
+      "target": "tv-000036"
+    },
+    {
+      "source": "tv-000038",
+      "target": "tv-000039"
+    },
+    {
+      "source": "tv-000037",
+      "target": "tv-000038"
+    },
+    {
+      "source": "tv-000039",
+      "target": "tv-000040"
+    },
+    {
+      "source": "tv-000040",
+      "target": "tv-000041"
+    },
+    {
+      "source": "tv-000041",
+      "target": "tv-000042"
+    },
+    {
+      "source": "tv-000042",
+      "target": "tv-000043"
+    },
+    {
+      "source": "tv-000044",
+      "target": "tv-000045"
+    },
+    {
+      "source": "tv-000043",
+      "target": "tv-000044"
+    },
+    {
+      "source": "tv-000045",
+      "target": "tv-000046"
+    },
+    {
+      "source": "tv-000047",
+      "target": "tv-000048"
+    },
+    {
+      "source": "tv-000045",
+      "target": "tv-000047"
+    },
+    {
+      "source": "tv-000049",
+      "target": "tv-000063"
+    },
+    {
+      "source": "tv-000048",
+      "target": "tv-000049"
+    },
+    {
+      "source": "tv-000049",
+      "target": "tv-000050"
+    },
+    {
+      "source": "tv-000050",
+      "target": "tv-000051"
+    },
+    {
+      "source": "tv-000051",
+      "target": "tv-000052"
+    },
+    {
+      "source": "tv-000052",
+      "target": "tv-000053"
+    },
+    {
+      "source": "tv-000053",
+      "target": "tv-000054"
+    },
+    {
+      "source": "tv-000054",
+      "target": "tv-000055"
+    },
+    {
+      "source": "tv-000055",
+      "target": "tv-000056"
+    },
+    {
+      "source": "tv-000056",
+      "target": "tv-000057"
+    },
+    {
+      "source": "tv-000057",
+      "target": "tv-000058"
+    },
+    {
+      "source": "tv-000059",
+      "target": "tv-000060"
+    },
+    {
+      "source": "tv-000058",
+      "target": "tv-000059"
+    },
+    {
+      "source": "tv-000060",
+      "target": "tv-000061"
+    },
+    {
+      "source": "tv-000062",
+      "target": "tv-000063"
+    },
+    {
+      "source": "tv-000060",
+      "target": "tv-000062"
+    },
+    {
+      "source": "tv-000063",
+      "target": "tv-000064"
+    },
+    {
+      "source": "tv-000063",
+      "target": "tv-000065"
+    },
+    {
+      "source": "tv-000065",
+      "target": "tv-000066"
+    },
+    {
+      "source": "tv-000067",
+      "target": "tv-000068"
+    },
+    {
+      "source": "tv-000066",
+      "target": "tv-000067"
+    },
+    {
+      "source": "tv-000068",
+      "target": "tv-000069"
+    },
+    {
+      "source": "tv-000069",
+      "target": "tv-000070"
+    },
+    {
+      "source": "tv-000070",
+      "target": "tv-000071"
+    },
+    {
+      "source": "tv-000063",
+      "target": "tv-000072"
+    }
+  ],
+  "node_count": 73,
+  "nodes": [
+    {
+      "depth": 0,
+      "id": "tv-000000",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "input-tensor",
+      "output_shapes": [
+        [
+          1,
+          3,
+          16,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 4,
+      "id": "tv-000001",
+      "input_shapes": [
+        [
+          1,
+          3,
+          16,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "conv2d",
+      "output_shapes": [
+        [
+          1,
+          16,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000002",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          16,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000003",
+      "input_shapes": [
+        [
+          1,
+          16,
+          4,
+          4
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "flatten",
+      "output_shapes": [
+        [
+          1,
+          16,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000004",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          16,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000005",
+      "input_shapes": [
+        [
+          1,
+          16,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "transpose",
+      "output_shapes": [
+        [
+          1,
+          16,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000006",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          16,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000007",
+      "input_shapes": [
+        [
+          1,
+          16,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "cat",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000008",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000009",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "dropout",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 1,
+      "id": "tv-000010",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000011",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "layer_norm",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000012",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 4,
+      "id": "tv-000013",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "linear",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000014",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000015",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "view",
+      "output_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000016",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000017",
+      "input_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "transpose",
+      "output_shapes": [
+        [
+          1,
+          4,
+          17,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000018",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          4,
+          17,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 4,
+      "id": "tv-000019",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "linear",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000020",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000021",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "view",
+      "output_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000022",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000023",
+      "input_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "transpose",
+      "output_shapes": [
+        [
+          1,
+          4,
+          17,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000024",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          4,
+          17,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 4,
+      "id": "tv-000025",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "linear",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000026",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000027",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "view",
+      "output_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000028",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000029",
+      "input_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "transpose",
+      "output_shapes": [
+        [
+          1,
+          4,
+          17,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000030",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          4,
+          17,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000031",
+      "input_shapes": [
+        [
+          1,
+          4,
+          17,
+          4
+        ],
+        [
+          1,
+          4,
+          17,
+          4
+        ],
+        [
+          1,
+          4,
+          17,
+          4
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "scaled_dot_product_attention",
+      "output_shapes": [
+        [
+          1,
+          4,
+          17,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000032",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          4,
+          17,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000033",
+      "input_shapes": [
+        [
+          1,
+          4,
+          17,
+          4
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "transpose",
+      "output_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000034",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000035",
+      "input_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "contiguous",
+      "output_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000036",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000037",
+      "input_shapes": [
+        [
+          1,
+          17,
+          4,
+          4
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "reshape",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000038",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000039",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "contiguous",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000040",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 4,
+      "id": "tv-000041",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "linear",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000042",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000043",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "dropout",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000044",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000045",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "mul",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000046",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000047",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000048",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ],
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "add",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000049",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000050",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "layer_norm",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000051",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 4,
+      "id": "tv-000052",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "linear",
+      "output_shapes": [
+        [
+          1,
+          17,
+          32
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000053",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          32
+        ]
+      ]
+    },
+    {
+      "depth": 4,
+      "id": "tv-000054",
+      "input_shapes": [
+        [
+          1,
+          17,
+          32
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "gelu",
+      "output_shapes": [
+        [
+          1,
+          17,
+          32
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000055",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          32
+        ]
+      ]
+    },
+    {
+      "depth": 4,
+      "id": "tv-000056",
+      "input_shapes": [
+        [
+          1,
+          17,
+          32
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "linear",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000057",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000058",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "dropout",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000059",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000060",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "mul",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000061",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000062",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000063",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ],
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "add",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 1,
+      "id": "tv-000064",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 1,
+      "id": "tv-000065",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000066",
+      "input_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "__getitem__",
+      "output_shapes": [
+        [
+          1,
+          16,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000067",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          16,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000068",
+      "input_shapes": [
+        [
+          1,
+          16,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "mean",
+      "output_shapes": [
+        [
+          1,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 2,
+      "id": "tv-000069",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "hidden-tensor",
+      "output_shapes": [
+        [
+          1,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 3,
+      "id": "tv-000070",
+      "input_shapes": [
+        [
+          1,
+          16
+        ]
+      ],
+      "is_container": true,
+      "kind": "FunctionNode",
+      "name": "layer_norm",
+      "output_shapes": [
+        [
+          1,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 0,
+      "id": "tv-000071",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "output-tensor",
+      "output_shapes": [
+        [
+          1,
+          16
+        ]
+      ]
+    },
+    {
+      "depth": 0,
+      "id": "tv-000072",
+      "input_shapes": [],
+      "is_container": false,
+      "kind": "TensorNode",
+      "name": "output-tensor",
+      "output_shapes": [
+        [
+          1,
+          17,
+          16
+        ]
+      ]
+    }
+  ],
+  "version": "0.2.7"
+}

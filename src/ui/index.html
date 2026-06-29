@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Model Structure</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="menu-button" class="icon-button mobile-only" title="Open model catalog" aria-label="Open model catalog">☰</button>
+    <div class="brand">Model Structure</div>
+    <nav class="mode-tabs" aria-label="Viewer mode">
+      <button class="mode active" data-mode="family">Families</button>
+      <button class="mode" data-mode="version">Version</button>
+      <button class="mode" data-mode="block">Blocks</button>
+      <button class="mode" data-mode="source">Operations</button>
+    </nav>
+    <div class="toolbar-actions">
+      <button id="density-button" class="icon-button" title="Expand graph detail" aria-label="Expand graph detail">⊞</button>
+      <button id="compare-button" title="Compare selected models"><span class="button-label">Compare</span><span id="compare-count" class="count-badge" hidden>0</span></button>
+      <button id="focus-button" class="icon-button" title="Toggle full canvas" aria-label="Toggle full canvas">⛶</button>
+      <button id="reset-button" class="icon-button" title="Reset graph layout" aria-label="Reset graph layout">↺</button>
+      <button id="fit-button" class="icon-button" title="Fit graph to screen" aria-label="Fit graph to screen">⤢</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <aside id="sidebar" class="sidebar" aria-label="Model catalog">
+      <div class="sidebar-head">
+        <label class="search">
+          <span aria-hidden="true">⌕</span>
+          <input id="search" type="search" placeholder="Search models" autocomplete="off">
+        </label>
+        <div class="filter-row">
+          <select id="category" aria-label="Filter category"><option value="">All categories</option></select>
+          <select id="sort" aria-label="Sort models">
+            <option value="family">Family</option>
+            <option value="parameters">Parameters</option>
+            <option value="version">Version</option>
+            <option value="sources">Sources</option>
+          </select>
+        </div>
+      </div>
+      <div id="model-list" class="model-list" role="listbox" aria-label="Model versions"><div id="model-list-inner" class="model-list-inner"></div></div>
+      <div id="result-count" class="sidebar-footer">0 models</div>
+    </aside>
+
+    <section class="graph-region" aria-label="Model graph">
+      <div class="canvas-toolbar">
+        <nav id="breadcrumbs" class="breadcrumbs" aria-label="Model location"></nav>
+        <div class="zoom-controls">
+          <button id="zoom-out" class="icon-button" title="Zoom out" aria-label="Zoom out">−</button>
+          <output id="zoom-value">100%</output>
+          <button id="zoom-in" class="icon-button" title="Zoom in" aria-label="Zoom in">+</button>
+        </div>
+      </div>
+      <div id="graph-viewport" class="graph-viewport" tabindex="0" aria-label="Interactive computation graph">
+        <div id="graph-canvas" class="graph-canvas">
+          <svg id="edges" class="edges" aria-hidden="true"></svg>
+          <div id="nodes"></div>
+        </div>
+        <canvas id="minimap" class="minimap" width="272" height="176" aria-label="Graph overview"></canvas>
+        <div id="graph-status" class="graph-status" hidden></div>
+        <div id="empty-state" class="empty-state">Select a model</div>
+      </div>
+    </section>
+
+    <aside id="inspector" class="inspector" aria-label="Inspector">
+      <div class="panel-head">
+        <h2 id="inspector-title">Inspector</h2>
+        <div class="panel-actions">
+          <button id="center-selection" class="icon-button" title="Center selected node" aria-label="Center selected node">⌖</button>
+          <button id="close-inspector" class="icon-button mobile-only" title="Close inspector" aria-label="Close inspector">×</button>
+        </div>
+      </div>
+      <div class="inspector-tabs" role="tablist" aria-label="Inspector view">
+        <button class="inspector-tab active" data-panel="details" role="tab">Details</button>
+        <button class="inspector-tab" data-panel="shapes" role="tab">Shapes</button>
+        <button class="inspector-tab" data-panel="source" role="tab">Source</button>
+        <button class="inspector-tab" data-panel="config" role="tab">Config</button>
+      </div>
+      <section id="details-panel" class="inspector-panel active"><div id="metadata" class="metadata"></div></section>
+      <section id="shapes-panel" class="inspector-panel"><div id="shape-list" class="shape-list"></div></section>
+      <section id="source-panel" class="inspector-panel source-panel">
+        <div id="source-reference" class="source-reference">No operation selected</div>
+        <div id="source-lines" class="source-lines"></div>
+      </section>
+      <section id="config-panel" class="inspector-panel"><div id="config-view" class="config-view">Open Config to load this asset.</div></section>
+    </aside>
+  </main>
+
+  <section id="compare-pane" class="compare-pane" role="dialog" aria-modal="true" aria-labelledby="compare-title" hidden>
+    <div class="panel-head">
+      <h2 id="compare-title">Compare models</h2>
+      <button id="close-compare" class="icon-button" title="Close comparison" aria-label="Close comparison">×</button>
+    </div>
+    <div id="compare-content" class="compare-content"></div>
+  </section>
+  <div id="scrim" class="scrim" hidden></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

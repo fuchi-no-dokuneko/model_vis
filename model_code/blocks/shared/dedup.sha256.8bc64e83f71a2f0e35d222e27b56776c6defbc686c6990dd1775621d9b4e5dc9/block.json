@@ -1,0 +1,114 @@
+{
+  "dedup_uid": "dedup.sha256.8bc64e83f71a2f0e35d222e27b56776c6defbc686c6990dd1775621d9b4e5dc9",
+  "operation_ids": [],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "SqueezeBertModule"
+      ],
+      [
+        "attention",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "SqueezeBertSelfAttention"
+      ],
+      [
+        "attention.query",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ],
+      [
+        "attention.key",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ],
+      [
+        "attention.value",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ],
+      [
+        "attention.dropout",
+        "torch.nn.modules.dropout",
+        "Dropout"
+      ],
+      [
+        "attention.softmax",
+        "torch.nn.modules.activation",
+        "Softmax"
+      ],
+      [
+        "attention.matmul_qk",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "MatMulWrapper"
+      ],
+      [
+        "attention.matmul_qkv",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "MatMulWrapper"
+      ],
+      [
+        "post_attention",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "ConvDropoutLayerNorm"
+      ],
+      [
+        "post_attention.conv1d",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ],
+      [
+        "post_attention.layernorm",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "SqueezeBertLayerNorm"
+      ],
+      [
+        "post_attention.dropout",
+        "torch.nn.modules.dropout",
+        "Dropout"
+      ],
+      [
+        "intermediate",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "ConvActivation"
+      ],
+      [
+        "intermediate.conv1d",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ],
+      [
+        "intermediate.act",
+        "transformers.activations",
+        "GELUActivation"
+      ],
+      [
+        "output",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "ConvDropoutLayerNorm"
+      ],
+      [
+        "output.conv1d",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ],
+      [
+        "output.layernorm",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "SqueezeBertLayerNorm"
+      ],
+      [
+        "output.dropout",
+        "torch.nn.modules.dropout",
+        "Dropout"
+      ]
+    ],
+    "config_branches": [],
+    "io_shapes": [],
+    "parameters": [],
+    "source": "e4f317bfa28bb7160c20ebc7e67c8ad3b5d17498318fe038e2173116cd5c64e8",
+    "topology": []
+  }
+}

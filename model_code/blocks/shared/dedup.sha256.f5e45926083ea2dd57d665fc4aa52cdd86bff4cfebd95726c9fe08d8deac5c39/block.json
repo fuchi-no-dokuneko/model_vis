@@ -1,0 +1,60 @@
+{
+  "dedup_uid": "dedup.sha256.f5e45926083ea2dd57d665fc4aa52cdd86bff4cfebd95726c9fe08d8deac5c39",
+  "operation_ids": [
+    "squeezebert.op-000021"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ]
+    ],
+    "config_branches": [
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            32,
+            5
+          ]
+        ],
+        [
+          [
+            3,
+            16,
+            5
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "bias",
+        [
+          16
+        ]
+      ],
+      [
+        "weight",
+        [
+          16,
+          8,
+          1
+        ]
+      ]
+    ],
+    "source": "fbee03b57ea5de21b175e1e3192b3308ba0b5d60fd5c613f9cbae60d4b029b51",
+    "topology": [
+      [
+        "module_call",
+        "torch.nn.modules.conv.Conv1d"
+      ]
+    ]
+  }
+}

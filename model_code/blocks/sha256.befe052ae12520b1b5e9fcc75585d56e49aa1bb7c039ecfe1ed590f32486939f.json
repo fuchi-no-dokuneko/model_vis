@@ -1,0 +1,453 @@
+{
+  "blocks": [
+    {
+      "block_type": "embedding",
+      "block_uid": "zamba2.block-00001",
+      "dedup_ref": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+      "family_id": "zamba2",
+      "graph_ref": "graphs/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json",
+      "index": 1,
+      "model_version_id": "zamba2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49/block.json",
+        "target_dedup_uid": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embed_tokens",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "zamba2.block-00002",
+      "dedup_ref": "dedup.sha256.71d521102428dec4e09efa9b9d4db3eae50ca08384d15440af66e3ff3d4186d6",
+      "family_id": "zamba2",
+      "graph_ref": "graphs/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json",
+      "index": 2,
+      "model_version_id": "zamba2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.71d521102428dec4e09efa9b9d4db3eae50ca08384d15440af66e3ff3d4186d6/block.json",
+        "target_dedup_uid": "dedup.sha256.71d521102428dec4e09efa9b9d4db3eae50ca08384d15440af66e3ff3d4186d6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers",
+      "source_refs": [
+        {
+          "end_line": 86,
+          "executed_line": 81,
+          "file": "transformers/models/zamba2/modeling_zamba2.py",
+          "source_uid": "source.sha256.f184d2321b410c9861eed3f210a4140f6e6bfa28dcd2d2df99b1b88e22241598",
+          "start_line": 81,
+          "symbol": "Zamba2RMSNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 385,
+          "executed_line": 384,
+          "file": "torch/nn/modules/conv.py",
+          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+          "start_line": 384,
+          "symbol": "Conv1d.forward"
+        },
+        {
+          "end_line": 475,
+          "executed_line": 471,
+          "file": "torch/nn/modules/activation.py",
+          "source_uid": "source.sha256.61bd5e4f390b965228ead6bb0efcad5b9b5299d833bcf5c2aa11ebaebb39ba29",
+          "start_line": 471,
+          "symbol": "SiLU.forward"
+        },
+        {
+          "end_line": 69,
+          "executed_line": 58,
+          "file": "transformers/models/zamba2/modeling_zamba2.py",
+          "source_uid": "source.sha256.f184d2321b410c9861eed3f210a4140f6e6bfa28dcd2d2df99b1b88e22241598",
+          "start_line": 58,
+          "symbol": "Zamba2RMSNormGated.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 862,
+          "executed_line": 852,
+          "file": "transformers/models/zamba2/modeling_zamba2.py",
+          "source_uid": "source.sha256.f184d2321b410c9861eed3f210a4140f6e6bfa28dcd2d2df99b1b88e22241598",
+          "start_line": 852,
+          "symbol": "Zamba2MambaMixer.forward"
+        },
+        {
+          "end_line": 1010,
+          "executed_line": 968,
+          "file": "transformers/models/zamba2/modeling_zamba2.py",
+          "source_uid": "source.sha256.f184d2321b410c9861eed3f210a4140f6e6bfa28dcd2d2df99b1b88e22241598",
+          "start_line": 968,
+          "symbol": "Zamba2MambaDecoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "zamba2.block-00003",
+      "dedup_ref": "dedup.sha256.a3f906b69fada88d2ede54635535e3730333dbc3c2fe52eef4a31b58e5b87f91",
+      "family_id": "zamba2",
+      "graph_ref": "graphs/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json",
+      "index": 3,
+      "model_version_id": "zamba2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.a3f906b69fada88d2ede54635535e3730333dbc3c2fe52eef4a31b58e5b87f91/block.json",
+        "target_dedup_uid": "dedup.sha256.a3f906b69fada88d2ede54635535e3730333dbc3c2fe52eef4a31b58e5b87f91",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0",
+      "source_refs": [
+        {
+          "end_line": 86,
+          "executed_line": 81,
+          "file": "transformers/models/zamba2/modeling_zamba2.py",
+          "source_uid": "source.sha256.f184d2321b410c9861eed3f210a4140f6e6bfa28dcd2d2df99b1b88e22241598",
+          "start_line": 81,
+          "symbol": "Zamba2RMSNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 385,
+          "executed_line": 384,
+          "file": "torch/nn/modules/conv.py",
+          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+          "start_line": 384,
+          "symbol": "Conv1d.forward"
+        },
+        {
+          "end_line": 475,
+          "executed_line": 471,
+          "file": "torch/nn/modules/activation.py",
+          "source_uid": "source.sha256.61bd5e4f390b965228ead6bb0efcad5b9b5299d833bcf5c2aa11ebaebb39ba29",
+          "start_line": 471,
+          "symbol": "SiLU.forward"
+        },
+        {
+          "end_line": 69,
+          "executed_line": 58,
+          "file": "transformers/models/zamba2/modeling_zamba2.py",
+          "source_uid": "source.sha256.f184d2321b410c9861eed3f210a4140f6e6bfa28dcd2d2df99b1b88e22241598",
+          "start_line": 58,
+          "symbol": "Zamba2RMSNormGated.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 862,
+          "executed_line": 852,
+          "file": "transformers/models/zamba2/modeling_zamba2.py",
+          "source_uid": "source.sha256.f184d2321b410c9861eed3f210a4140f6e6bfa28dcd2d2df99b1b88e22241598",
+          "start_line": 852,
+          "symbol": "Zamba2MambaMixer.forward"
+        },
+        {
+          "end_line": 1010,
+          "executed_line": 968,
+          "file": "transformers/models/zamba2/modeling_zamba2.py",
+          "source_uid": "source.sha256.f184d2321b410c9861eed3f210a4140f6e6bfa28dcd2d2df99b1b88e22241598",
+          "start_line": 968,
+          "symbol": "Zamba2MambaDecoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "zamba2.block-00004",
+      "dedup_ref": "dedup.sha256.7f5994ba836c3d08ba3029622df052b3378622a05f602dd3581db25e6d92198c",
+      "family_id": "zamba2",
+      "graph_ref": "graphs/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json",
+      "index": 4,
+      "model_version_id": "zamba2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7f5994ba836c3d08ba3029622df052b3378622a05f602dd3581db25e6d92198c/block.json",
+        "target_dedup_uid": "dedup.sha256.7f5994ba836c3d08ba3029622df052b3378622a05f602dd3581db25e6d92198c",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mamba",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 385,
+          "executed_line": 384,
+          "file": "torch/nn/modules/conv.py",
+          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+          "start_line": 384,
+          "symbol": "Conv1d.forward"
+        },
+        {
+          "end_line": 475,
+          "executed_line": 471,
+          "file": "torch/nn/modules/activation.py",
+          "source_uid": "source.sha256.61bd5e4f390b965228ead6bb0efcad5b9b5299d833bcf5c2aa11ebaebb39ba29",
+          "start_line": 471,
+          "symbol": "SiLU.forward"
+        },
+        {
+          "end_line": 69,
+          "executed_line": 58,
+          "file": "transformers/models/zamba2/modeling_zamba2.py",
+          "source_uid": "source.sha256.f184d2321b410c9861eed3f210a4140f6e6bfa28dcd2d2df99b1b88e22241598",
+          "start_line": 58,
+          "symbol": "Zamba2RMSNormGated.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 862,
+          "executed_line": 852,
+          "file": "transformers/models/zamba2/modeling_zamba2.py",
+          "source_uid": "source.sha256.f184d2321b410c9861eed3f210a4140f6e6bfa28dcd2d2df99b1b88e22241598",
+          "start_line": 852,
+          "symbol": "Zamba2MambaMixer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "zamba2.block-00005",
+      "dedup_ref": "dedup.sha256.9525e65216a941adc546c924d24d11007999125b5e54f976a8d5a32f6f4f8fae",
+      "family_id": "zamba2",
+      "graph_ref": "graphs/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json",
+      "index": 5,
+      "model_version_id": "zamba2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.9525e65216a941adc546c924d24d11007999125b5e54f976a8d5a32f6f4f8fae/block.json",
+        "target_dedup_uid": "dedup.sha256.9525e65216a941adc546c924d24d11007999125b5e54f976a8d5a32f6f4f8fae",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mamba.act",
+      "source_refs": [
+        {
+          "end_line": 475,
+          "executed_line": 471,
+          "file": "torch/nn/modules/activation.py",
+          "source_uid": "source.sha256.61bd5e4f390b965228ead6bb0efcad5b9b5299d833bcf5c2aa11ebaebb39ba29",
+          "start_line": 471,
+          "symbol": "SiLU.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "zamba2.block-00006",
+      "dedup_ref": "dedup.sha256.7225f6a05fe28840846b8037b60209d2a487994433df68b5b685f364c06e5623",
+      "family_id": "zamba2",
+      "graph_ref": "graphs/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json",
+      "index": 6,
+      "model_version_id": "zamba2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7225f6a05fe28840846b8037b60209d2a487994433df68b5b685f364c06e5623/block.json",
+        "target_dedup_uid": "dedup.sha256.7225f6a05fe28840846b8037b60209d2a487994433df68b5b685f364c06e5623",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mamba.conv1d",
+      "source_refs": [
+        {
+          "end_line": 385,
+          "executed_line": 384,
+          "file": "torch/nn/modules/conv.py",
+          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+          "start_line": 384,
+          "symbol": "Conv1d.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "zamba2.block-00007",
+      "dedup_ref": "dedup.sha256.96c122c0e7aad2089a663256e1efd3b7d34ccd02a4b0a4ce8f23e59009547db2",
+      "family_id": "zamba2",
+      "graph_ref": "graphs/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json",
+      "index": 7,
+      "model_version_id": "zamba2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.96c122c0e7aad2089a663256e1efd3b7d34ccd02a4b0a4ce8f23e59009547db2/block.json",
+        "target_dedup_uid": "dedup.sha256.96c122c0e7aad2089a663256e1efd3b7d34ccd02a4b0a4ce8f23e59009547db2",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mamba.in_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "zamba2.block-00008",
+      "dedup_ref": "dedup.sha256.5978f4a29fb6a928b6ce19eb434dd3ac6f31fc32a3fdb2464febabc629aff8d4",
+      "family_id": "zamba2",
+      "graph_ref": "graphs/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json",
+      "index": 8,
+      "model_version_id": "zamba2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.5978f4a29fb6a928b6ce19eb434dd3ac6f31fc32a3fdb2464febabc629aff8d4/block.json",
+        "target_dedup_uid": "dedup.sha256.5978f4a29fb6a928b6ce19eb434dd3ac6f31fc32a3fdb2464febabc629aff8d4",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mamba.norm",
+      "source_refs": [
+        {
+          "end_line": 69,
+          "executed_line": 58,
+          "file": "transformers/models/zamba2/modeling_zamba2.py",
+          "source_uid": "source.sha256.f184d2321b410c9861eed3f210a4140f6e6bfa28dcd2d2df99b1b88e22241598",
+          "start_line": 58,
+          "symbol": "Zamba2RMSNormGated.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "zamba2.block-00009",
+      "dedup_ref": "dedup.sha256.6f96145cae424090fae98342549fad59113c6c2a9b65ef525f25db333d43853e",
+      "family_id": "zamba2",
+      "graph_ref": "graphs/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json",
+      "index": 9,
+      "model_version_id": "zamba2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6f96145cae424090fae98342549fad59113c6c2a9b65ef525f25db333d43853e/block.json",
+        "target_dedup_uid": "dedup.sha256.6f96145cae424090fae98342549fad59113c6c2a9b65ef525f25db333d43853e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mamba.out_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "zamba2.block-00010",
+      "dedup_ref": "dedup.sha256.060224f99b0f2c8bb759db81889897f5a587b4ac011f02e5d552e4737a89c575",
+      "family_id": "zamba2",
+      "graph_ref": "graphs/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json",
+      "index": 10,
+      "model_version_id": "zamba2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.060224f99b0f2c8bb759db81889897f5a587b4ac011f02e5d552e4737a89c575/block.json",
+        "target_dedup_uid": "dedup.sha256.060224f99b0f2c8bb759db81889897f5a587b4ac011f02e5d552e4737a89c575",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.input_layernorm",
+      "source_refs": [
+        {
+          "end_line": 86,
+          "executed_line": 81,
+          "file": "transformers/models/zamba2/modeling_zamba2.py",
+          "source_uid": "source.sha256.f184d2321b410c9861eed3f210a4140f6e6bfa28dcd2d2df99b1b88e22241598",
+          "start_line": 81,
+          "symbol": "Zamba2RMSNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "zamba2.block-00011",
+      "dedup_ref": "dedup.sha256.060224f99b0f2c8bb759db81889897f5a587b4ac011f02e5d552e4737a89c575",
+      "family_id": "zamba2",
+      "graph_ref": "graphs/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json",
+      "index": 11,
+      "model_version_id": "zamba2",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.060224f99b0f2c8bb759db81889897f5a587b4ac011f02e5d552e4737a89c575/block.json",
+        "target_dedup_uid": "dedup.sha256.060224f99b0f2c8bb759db81889897f5a587b4ac011f02e5d552e4737a89c575",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "final_layernorm",
+      "source_refs": [
+        {
+          "end_line": 86,
+          "executed_line": 81,
+          "file": "transformers/models/zamba2/modeling_zamba2.py",
+          "source_uid": "source.sha256.f184d2321b410c9861eed3f210a4140f6e6bfa28dcd2d2df99b1b88e22241598",
+          "start_line": 81,
+          "symbol": "Zamba2RMSNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.befe052ae12520b1b5e9fcc75585d56e49aa1bb7c039ecfe1ed590f32486939f.json"
+    }
+  ]
+}

@@ -1,0 +1,853 @@
+{
+  "blocks": [
+    {
+      "block_type": "embedding",
+      "block_uid": "mlcd.block-00001",
+      "dedup_ref": "dedup.sha256.c7540b8697627274301c09b0d2c1f11fe89e82dc141385f8234b4f49e836beff",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 1,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.c7540b8697627274301c09b0d2c1f11fe89e82dc141385f8234b4f49e836beff/block.json",
+        "target_dedup_uid": "dedup.sha256.c7540b8697627274301c09b0d2c1f11fe89e82dc141385f8234b4f49e836beff",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings",
+      "source_refs": [
+        {
+          "end_line": 565,
+          "executed_line": 564,
+          "file": "torch/nn/modules/conv.py",
+          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+          "start_line": 564,
+          "symbol": "Conv2d.forward"
+        },
+        {
+          "end_line": 168,
+          "executed_line": 158,
+          "file": "transformers/models/mlcd/modeling_mlcd.py",
+          "source_uid": "source.sha256.ba8773fbb1b953a8cc27d1611a7668316117717c3914cf8e1e3239d7c2d74063",
+          "start_line": 158,
+          "symbol": "MLCDVisionEmbeddings.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "mlcd.block-00002",
+      "dedup_ref": "dedup.sha256.2a19f2c582b766b9d59a0a175e16cef17db14de8855adad11acb9536b65fd08e",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 2,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2a19f2c582b766b9d59a0a175e16cef17db14de8855adad11acb9536b65fd08e/block.json",
+        "target_dedup_uid": "dedup.sha256.2a19f2c582b766b9d59a0a175e16cef17db14de8855adad11acb9536b65fd08e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.patch_embedding",
+      "source_refs": [
+        {
+          "end_line": 565,
+          "executed_line": 564,
+          "file": "torch/nn/modules/conv.py",
+          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+          "start_line": 564,
+          "symbol": "Conv2d.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "mlcd.block-00003",
+      "dedup_ref": "dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 3,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c/block.json",
+        "target_dedup_uid": "dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "pre_layrnorm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "mlcd.block-00004",
+      "dedup_ref": "dedup.sha256.a358823b3da0d24a7cb7798d1bd919780ff9f1c7fd862c320131501bf420c474",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 4,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.a358823b3da0d24a7cb7798d1bd919780ff9f1c7fd862c320131501bf420c474/block.json",
+        "target_dedup_uid": "dedup.sha256.a358823b3da0d24a7cb7798d1bd919780ff9f1c7fd862c320131501bf420c474",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 298,
+          "executed_line": 253,
+          "file": "transformers/models/mlcd/modeling_mlcd.py",
+          "source_uid": "source.sha256.ba8773fbb1b953a8cc27d1611a7668316117717c3914cf8e1e3239d7c2d74063",
+          "start_line": 253,
+          "symbol": "MLCDAttention.forward"
+        },
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 49,
+          "executed_line": 45,
+          "file": "transformers/models/mlcd/modeling_mlcd.py",
+          "source_uid": "source.sha256.ba8773fbb1b953a8cc27d1611a7668316117717c3914cf8e1e3239d7c2d74063",
+          "start_line": 45,
+          "symbol": "MLCDMLP.forward"
+        },
+        {
+          "end_line": 344,
+          "executed_line": 310,
+          "file": "transformers/models/mlcd/modeling_mlcd.py",
+          "source_uid": "source.sha256.ba8773fbb1b953a8cc27d1611a7668316117717c3914cf8e1e3239d7c2d74063",
+          "start_line": 310,
+          "symbol": "MLCDEncoderLayer.forward"
+        },
+        {
+          "end_line": 396,
+          "executed_line": 363,
+          "file": "transformers/models/mlcd/modeling_mlcd.py",
+          "source_uid": "source.sha256.ba8773fbb1b953a8cc27d1611a7668316117717c3914cf8e1e3239d7c2d74063",
+          "start_line": 363,
+          "symbol": "MLCDEncoder.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "mlcd.block-00005",
+      "dedup_ref": "dedup.sha256.d59b1625fe23682deca54fb5be47f15cb9bd38a40956cc3a68a274090b141216",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 5,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.d59b1625fe23682deca54fb5be47f15cb9bd38a40956cc3a68a274090b141216/block.json",
+        "target_dedup_uid": "dedup.sha256.d59b1625fe23682deca54fb5be47f15cb9bd38a40956cc3a68a274090b141216",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 298,
+          "executed_line": 253,
+          "file": "transformers/models/mlcd/modeling_mlcd.py",
+          "source_uid": "source.sha256.ba8773fbb1b953a8cc27d1611a7668316117717c3914cf8e1e3239d7c2d74063",
+          "start_line": 253,
+          "symbol": "MLCDAttention.forward"
+        },
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 49,
+          "executed_line": 45,
+          "file": "transformers/models/mlcd/modeling_mlcd.py",
+          "source_uid": "source.sha256.ba8773fbb1b953a8cc27d1611a7668316117717c3914cf8e1e3239d7c2d74063",
+          "start_line": 45,
+          "symbol": "MLCDMLP.forward"
+        },
+        {
+          "end_line": 344,
+          "executed_line": 310,
+          "file": "transformers/models/mlcd/modeling_mlcd.py",
+          "source_uid": "source.sha256.ba8773fbb1b953a8cc27d1611a7668316117717c3914cf8e1e3239d7c2d74063",
+          "start_line": 310,
+          "symbol": "MLCDEncoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "mlcd.block-00006",
+      "dedup_ref": "dedup.sha256.ebecb975d838a6046beeecfb856ea93aad5d1fe52426e7bfd707514bc8a80533",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 6,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.ebecb975d838a6046beeecfb856ea93aad5d1fe52426e7bfd707514bc8a80533/block.json",
+        "target_dedup_uid": "dedup.sha256.ebecb975d838a6046beeecfb856ea93aad5d1fe52426e7bfd707514bc8a80533",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 298,
+          "executed_line": 253,
+          "file": "transformers/models/mlcd/modeling_mlcd.py",
+          "source_uid": "source.sha256.ba8773fbb1b953a8cc27d1611a7668316117717c3914cf8e1e3239d7c2d74063",
+          "start_line": 253,
+          "symbol": "MLCDAttention.forward"
+        },
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 49,
+          "executed_line": 45,
+          "file": "transformers/models/mlcd/modeling_mlcd.py",
+          "source_uid": "source.sha256.ba8773fbb1b953a8cc27d1611a7668316117717c3914cf8e1e3239d7c2d74063",
+          "start_line": 45,
+          "symbol": "MLCDMLP.forward"
+        },
+        {
+          "end_line": 344,
+          "executed_line": 310,
+          "file": "transformers/models/mlcd/modeling_mlcd.py",
+          "source_uid": "source.sha256.ba8773fbb1b953a8cc27d1611a7668316117717c3914cf8e1e3239d7c2d74063",
+          "start_line": 310,
+          "symbol": "MLCDEncoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "mlcd.block-00007",
+      "dedup_ref": "dedup.sha256.9a0086861c5a361359a5b05937efaa33b20c0a36de17479aef7b6668b5060444",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 7,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.9a0086861c5a361359a5b05937efaa33b20c0a36de17479aef7b6668b5060444/block.json",
+        "target_dedup_uid": "dedup.sha256.9a0086861c5a361359a5b05937efaa33b20c0a36de17479aef7b6668b5060444",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 298,
+          "executed_line": 253,
+          "file": "transformers/models/mlcd/modeling_mlcd.py",
+          "source_uid": "source.sha256.ba8773fbb1b953a8cc27d1611a7668316117717c3914cf8e1e3239d7c2d74063",
+          "start_line": 253,
+          "symbol": "MLCDAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "mlcd.block-00008",
+      "dedup_ref": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 8,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6/block.json",
+        "target_dedup_uid": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "mlcd.block-00009",
+      "dedup_ref": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 9,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6/block.json",
+        "target_dedup_uid": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "mlcd.block-00010",
+      "dedup_ref": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 10,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6/block.json",
+        "target_dedup_uid": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "mlcd.block-00011",
+      "dedup_ref": "dedup.sha256.d757d851449e72c017b70ff21422a52206f728f6afba8d88272ec87d5b2c0864",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 11,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.d757d851449e72c017b70ff21422a52206f728f6afba8d88272ec87d5b2c0864/block.json",
+        "target_dedup_uid": "dedup.sha256.d757d851449e72c017b70ff21422a52206f728f6afba8d88272ec87d5b2c0864",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.out_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "mlcd.block-00012",
+      "dedup_ref": "dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 12,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c/block.json",
+        "target_dedup_uid": "dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.layer_norm1",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "mlcd.block-00013",
+      "dedup_ref": "dedup.sha256.f0dcb8fd74ed759207abddd3d05e1c0680823819af9f836c625e8df34aa50aee",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 13,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f0dcb8fd74ed759207abddd3d05e1c0680823819af9f836c625e8df34aa50aee/block.json",
+        "target_dedup_uid": "dedup.sha256.f0dcb8fd74ed759207abddd3d05e1c0680823819af9f836c625e8df34aa50aee",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.mlp",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 49,
+          "executed_line": 45,
+          "file": "transformers/models/mlcd/modeling_mlcd.py",
+          "source_uid": "source.sha256.ba8773fbb1b953a8cc27d1611a7668316117717c3914cf8e1e3239d7c2d74063",
+          "start_line": 45,
+          "symbol": "MLCDMLP.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "mlcd.block-00014",
+      "dedup_ref": "dedup.sha256.22e6a140791131afac77fca4cf82bc676c5099288811c4d26036dc0082849117",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 14,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.22e6a140791131afac77fca4cf82bc676c5099288811c4d26036dc0082849117/block.json",
+        "target_dedup_uid": "dedup.sha256.22e6a140791131afac77fca4cf82bc676c5099288811c4d26036dc0082849117",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.mlp.activation_fn",
+      "source_refs": [
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "mlcd.block-00015",
+      "dedup_ref": "dedup.sha256.4eb823f533ee120ac69bd639dab8990859da9db94e612fa8f26cc5c0e98abdd1",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 15,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4eb823f533ee120ac69bd639dab8990859da9db94e612fa8f26cc5c0e98abdd1/block.json",
+        "target_dedup_uid": "dedup.sha256.4eb823f533ee120ac69bd639dab8990859da9db94e612fa8f26cc5c0e98abdd1",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.mlp.fc1",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "mlcd.block-00016",
+      "dedup_ref": "dedup.sha256.941d15e802c3dfa3479c78ed7fc017be031fab9f21dafc6e0b4e0f80d1a6e611",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 16,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.941d15e802c3dfa3479c78ed7fc017be031fab9f21dafc6e0b4e0f80d1a6e611/block.json",
+        "target_dedup_uid": "dedup.sha256.941d15e802c3dfa3479c78ed7fc017be031fab9f21dafc6e0b4e0f80d1a6e611",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.mlp.fc2",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "mlcd.block-00017",
+      "dedup_ref": "dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 17,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c/block.json",
+        "target_dedup_uid": "dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.layer_norm2",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "mlcd.block-00018",
+      "dedup_ref": "dedup.sha256.5dc930683e70c39168d4d811790a0c51c79290d5959994880741a260b56230b1",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 18,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.5dc930683e70c39168d4d811790a0c51c79290d5959994880741a260b56230b1/block.json",
+        "target_dedup_uid": "dedup.sha256.5dc930683e70c39168d4d811790a0c51c79290d5959994880741a260b56230b1",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "post_layernorm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "mlcd.block-00019",
+      "dedup_ref": "dedup.sha256.a576af8099291840bc21e5195b49c115c36c1978ee5322ade1ee5bb657f1e4dc",
+      "family_id": "mlcd",
+      "graph_ref": "graphs/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json",
+      "index": 19,
+      "model_version_id": "mlcd",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.a576af8099291840bc21e5195b49c115c36c1978ee5322ade1ee5bb657f1e4dc/block.json",
+        "target_dedup_uid": "dedup.sha256.a576af8099291840bc21e5195b49c115c36c1978ee5322ade1ee5bb657f1e4dc",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_rotary_embedding",
+      "source_refs": [
+        {
+          "end_line": 92,
+          "executed_line": 62,
+          "file": "transformers/models/mlcd/modeling_mlcd.py",
+          "source_uid": "source.sha256.ba8773fbb1b953a8cc27d1611a7668316117717c3914cf8e1e3239d7c2d74063",
+          "start_line": 62,
+          "symbol": "MLCDRotaryEmbedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.b69c39ce6cb461020b5cdd088ad70f664c4332521707a7dc3633c608360ea630.json"
+    }
+  ]
+}

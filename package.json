@@ -1,0 +1,12 @@
+{
+  "name": "model-vis-ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build-ui": "node scripts/build-ui.mjs",
+    "test": "node --test test/ui/*.test.mjs",
+    "test:e2e": "venv/bin/python -m pytest test/e2e/test_viewer.py",
+    "test:visual": "venv/bin/python -m pytest test/e2e/test_visual.py"
+  }
+}

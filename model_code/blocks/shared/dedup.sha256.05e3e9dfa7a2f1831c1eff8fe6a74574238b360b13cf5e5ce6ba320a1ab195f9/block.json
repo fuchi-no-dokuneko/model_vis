@@ -1,0 +1,63 @@
+{
+  "dedup_uid": "dedup.sha256.05e3e9dfa7a2f1831c1eff8fe6a74574238b360b13cf5e5ce6ba320a1ab195f9",
+  "operation_ids": [
+    "convbert.op-000010"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.convbert.modeling_convbert",
+        "SeparableConv1D"
+      ],
+      [
+        "depthwise",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ],
+      [
+        "pointwise",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ]
+    ],
+    "config_branches": [
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            16,
+            5
+          ]
+        ],
+        [
+          [
+            3,
+            8,
+            5
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "bias",
+        [
+          8,
+          1
+        ]
+      ]
+    ],
+    "source": "b6031c18306edbbee7e35e5cb8b1695034b6309ee6ab5cd5ecb04a512ec71de7",
+    "topology": [
+      [
+        "module_call",
+        "transformers.models.convbert.modeling_convbert.SeparableConv1D"
+      ]
+    ]
+  }
+}

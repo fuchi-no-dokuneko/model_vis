@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["family_id", "version_id", "library", "structure_key", "status", "execution_mode", "trace_event_count", "top_level_outputs", "trace_ref", "graph_ref", "blocks_ref", "config_ref", "parameters", "sources"],
+  "properties": {
+    "library": {"enum": ["transformers", "diffusers", "custom"]},
+    "status": {"const": "passed"},
+    "execution_mode": {"enum": ["full_model_forward", "staged_layer_by_layer"]},
+    "trace_event_count": {"type": "integer", "minimum": 1},
+    "top_level_outputs": {"type": "array", "minItems": 1},
+    "parameters": {
+      "type": "object",
+      "required": ["total", "trainable"],
+      "properties": {
+        "total": {"type": "integer", "minimum": 0},
+        "trainable": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

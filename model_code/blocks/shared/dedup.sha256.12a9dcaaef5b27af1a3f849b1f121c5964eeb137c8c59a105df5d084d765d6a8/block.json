@@ -1,0 +1,52 @@
+{
+  "dedup_uid": "dedup.sha256.12a9dcaaef5b27af1a3f849b1f121c5964eeb137c8c59a105df5d084d765d6a8",
+  "operation_ids": [
+    "bert.op-000001"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "torch.nn.modules.sparse",
+        "Embedding"
+      ]
+    ],
+    "config_branches": [
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          2,
+          16
+        ]
+      ]
+    ],
+    "source": "a837f205a2849e50f03a17d6b7587e00ea4a6978493384641cb301407c137bb2",
+    "topology": [
+      [
+        "module_call",
+        "torch.nn.modules.sparse.Embedding"
+      ]
+    ]
+  }
+}

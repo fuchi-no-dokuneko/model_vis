@@ -1,0 +1,126 @@
+{
+  "dedup_uid": "dedup.sha256.b871b7ef3ce4c6406ec4a2e94feab35af093a9276f292a7ea101c1c31c3a5f94",
+  "operation_ids": [
+    "moshi.op-000013",
+    "moshi.op-000014",
+    "moshi.op-000015",
+    "moshi.op-000016"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.moshi.modeling_moshi",
+        "MoshiGatingMLP"
+      ],
+      [
+        "activation_fn",
+        "transformers.activations",
+        "SiLUActivation"
+      ],
+      [
+        "fc1",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "fc2",
+        "torch.nn.modules.linear",
+        "Linear"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            32
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "45df2b291f691df886b283a716b12e54da2b537f4343d0d51a1b2da24f830973",
+    "topology": [
+      [
+        "module_call",
+        "torch.nn.modules.linear.Linear"
+      ],
+      [
+        "module_call",
+        "transformers.activations.SiLUActivation"
+      ],
+      [
+        "module_call",
+        "torch.nn.modules.linear.Linear"
+      ],
+      [
+        "module_call",
+        "transformers.models.moshi.modeling_moshi.MoshiGatingMLP"
+      ]
+    ]
+  }
+}

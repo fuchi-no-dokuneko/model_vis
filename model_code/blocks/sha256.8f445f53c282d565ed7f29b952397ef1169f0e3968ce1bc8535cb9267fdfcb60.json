@@ -1,0 +1,845 @@
+{
+  "blocks": [
+    {
+      "block_type": "embedding",
+      "block_uid": "youtu-llm.block-00001",
+      "dedup_ref": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 1,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49/block.json",
+        "target_dedup_uid": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embed_tokens",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "youtu-llm.block-00002",
+      "dedup_ref": "dedup.sha256.3df79fcda2e98ea149be236165426e1b47e2a9cfc241d9f6d294b9a890c4abfc",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 2,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.3df79fcda2e98ea149be236165426e1b47e2a9cfc241d9f6d294b9a890c4abfc/block.json",
+        "target_dedup_uid": "dedup.sha256.3df79fcda2e98ea149be236165426e1b47e2a9cfc241d9f6d294b9a890c4abfc",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers",
+      "source_refs": [
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 385,
+          "executed_line": 322,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 322,
+          "symbol": "YoutuAttention.forward"
+        },
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 103,
+          "executed_line": 102,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 102,
+          "symbol": "SiLUActivation.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 152,
+          "executed_line": 150,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 150,
+          "symbol": "YoutuMLP.forward"
+        },
+        {
+          "end_line": 428,
+          "executed_line": 399,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 399,
+          "symbol": "YoutuDecoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "youtu-llm.block-00003",
+      "dedup_ref": "dedup.sha256.5002aadb15de71cde0e7f908d1f49b736f026f5f10e1f139e48a00379ff205f0",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 3,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.5002aadb15de71cde0e7f908d1f49b736f026f5f10e1f139e48a00379ff205f0/block.json",
+        "target_dedup_uid": "dedup.sha256.5002aadb15de71cde0e7f908d1f49b736f026f5f10e1f139e48a00379ff205f0",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0",
+      "source_refs": [
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 385,
+          "executed_line": 322,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 322,
+          "symbol": "YoutuAttention.forward"
+        },
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 103,
+          "executed_line": 102,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 102,
+          "symbol": "SiLUActivation.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 152,
+          "executed_line": 150,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 150,
+          "symbol": "YoutuMLP.forward"
+        },
+        {
+          "end_line": 428,
+          "executed_line": 399,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 399,
+          "symbol": "YoutuDecoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "youtu-llm.block-00004",
+      "dedup_ref": "dedup.sha256.6c1640a254b7acdce1fcd96e42cc1a2d960dad07bba3afa80521e466c02c034b",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 4,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6c1640a254b7acdce1fcd96e42cc1a2d960dad07bba3afa80521e466c02c034b/block.json",
+        "target_dedup_uid": "dedup.sha256.6c1640a254b7acdce1fcd96e42cc1a2d960dad07bba3afa80521e466c02c034b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 385,
+          "executed_line": 322,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 322,
+          "symbol": "YoutuAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "youtu-llm.block-00005",
+      "dedup_ref": "dedup.sha256.f77a01481db6a829ec3e89db026c5cd4baa7dba5e51411567f9f35a20db70356",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 5,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f77a01481db6a829ec3e89db026c5cd4baa7dba5e51411567f9f35a20db70356/block.json",
+        "target_dedup_uid": "dedup.sha256.f77a01481db6a829ec3e89db026c5cd4baa7dba5e51411567f9f35a20db70356",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.q_a_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "youtu-llm.block-00006",
+      "dedup_ref": "dedup.sha256.8a2676f368c6e422afe9bf81e0e647b0af5a980b0bcf705a43847041d4070bfd",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 6,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.8a2676f368c6e422afe9bf81e0e647b0af5a980b0bcf705a43847041d4070bfd/block.json",
+        "target_dedup_uid": "dedup.sha256.8a2676f368c6e422afe9bf81e0e647b0af5a980b0bcf705a43847041d4070bfd",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.q_a_layernorm",
+      "source_refs": [
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "youtu-llm.block-00007",
+      "dedup_ref": "dedup.sha256.f95a6d33efa9c8f98145551f71ce3142970b17ea500022d2d98d05951f895544",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 7,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f95a6d33efa9c8f98145551f71ce3142970b17ea500022d2d98d05951f895544/block.json",
+        "target_dedup_uid": "dedup.sha256.f95a6d33efa9c8f98145551f71ce3142970b17ea500022d2d98d05951f895544",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.q_b_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "youtu-llm.block-00008",
+      "dedup_ref": "dedup.sha256.018089cd0929d8b57cdfdc4d6a8186119c92d4a64b8079abf1f4c03c07ea2af7",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 8,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.018089cd0929d8b57cdfdc4d6a8186119c92d4a64b8079abf1f4c03c07ea2af7/block.json",
+        "target_dedup_uid": "dedup.sha256.018089cd0929d8b57cdfdc4d6a8186119c92d4a64b8079abf1f4c03c07ea2af7",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.kv_a_proj_with_mqa",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "youtu-llm.block-00009",
+      "dedup_ref": "dedup.sha256.8a2676f368c6e422afe9bf81e0e647b0af5a980b0bcf705a43847041d4070bfd",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 9,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.8a2676f368c6e422afe9bf81e0e647b0af5a980b0bcf705a43847041d4070bfd/block.json",
+        "target_dedup_uid": "dedup.sha256.8a2676f368c6e422afe9bf81e0e647b0af5a980b0bcf705a43847041d4070bfd",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.kv_a_layernorm",
+      "source_refs": [
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "youtu-llm.block-00010",
+      "dedup_ref": "dedup.sha256.07f95f6de5416577dff48beb0a21ac67eb0ed140cc07872b3b687dab7bee20f6",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 10,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.07f95f6de5416577dff48beb0a21ac67eb0ed140cc07872b3b687dab7bee20f6/block.json",
+        "target_dedup_uid": "dedup.sha256.07f95f6de5416577dff48beb0a21ac67eb0ed140cc07872b3b687dab7bee20f6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.kv_b_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "youtu-llm.block-00011",
+      "dedup_ref": "dedup.sha256.6f96145cae424090fae98342549fad59113c6c2a9b65ef525f25db333d43853e",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 11,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.6f96145cae424090fae98342549fad59113c6c2a9b65ef525f25db333d43853e/block.json",
+        "target_dedup_uid": "dedup.sha256.6f96145cae424090fae98342549fad59113c6c2a9b65ef525f25db333d43853e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.o_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "youtu-llm.block-00012",
+      "dedup_ref": "dedup.sha256.b438fe13127e74b1ecd2e8d2c64c4f95916a996c18b0f3a4d1c52cb766ccd429",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 12,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b438fe13127e74b1ecd2e8d2c64c4f95916a996c18b0f3a4d1c52cb766ccd429/block.json",
+        "target_dedup_uid": "dedup.sha256.b438fe13127e74b1ecd2e8d2c64c4f95916a996c18b0f3a4d1c52cb766ccd429",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 103,
+          "executed_line": 102,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 102,
+          "symbol": "SiLUActivation.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        },
+        {
+          "end_line": 152,
+          "executed_line": 150,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 150,
+          "symbol": "YoutuMLP.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "youtu-llm.block-00013",
+      "dedup_ref": "dedup.sha256.f5a95c8a43ad4532c94743b4b10cfcf38855b3e03a37c18eb40cd9f0445344c0",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 13,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f5a95c8a43ad4532c94743b4b10cfcf38855b3e03a37c18eb40cd9f0445344c0/block.json",
+        "target_dedup_uid": "dedup.sha256.f5a95c8a43ad4532c94743b4b10cfcf38855b3e03a37c18eb40cd9f0445344c0",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.gate_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "youtu-llm.block-00014",
+      "dedup_ref": "dedup.sha256.f5a95c8a43ad4532c94743b4b10cfcf38855b3e03a37c18eb40cd9f0445344c0",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 14,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f5a95c8a43ad4532c94743b4b10cfcf38855b3e03a37c18eb40cd9f0445344c0/block.json",
+        "target_dedup_uid": "dedup.sha256.f5a95c8a43ad4532c94743b4b10cfcf38855b3e03a37c18eb40cd9f0445344c0",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.up_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "youtu-llm.block-00015",
+      "dedup_ref": "dedup.sha256.21008dc0951ac80491539006b1d181f11acfeff000cccad5d0e905b220404f3a",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 15,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.21008dc0951ac80491539006b1d181f11acfeff000cccad5d0e905b220404f3a/block.json",
+        "target_dedup_uid": "dedup.sha256.21008dc0951ac80491539006b1d181f11acfeff000cccad5d0e905b220404f3a",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.down_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "youtu-llm.block-00016",
+      "dedup_ref": "dedup.sha256.aeb5efff3f3c4d6769b0efd8f785bcaab7dc2ff1e4cdc22e9a6f427320dba3be",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 16,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.aeb5efff3f3c4d6769b0efd8f785bcaab7dc2ff1e4cdc22e9a6f427320dba3be/block.json",
+        "target_dedup_uid": "dedup.sha256.aeb5efff3f3c4d6769b0efd8f785bcaab7dc2ff1e4cdc22e9a6f427320dba3be",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.act_fn",
+      "source_refs": [
+        {
+          "end_line": 103,
+          "executed_line": 102,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 102,
+          "symbol": "SiLUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "youtu-llm.block-00017",
+      "dedup_ref": "dedup.sha256.4bcf5bb68876abaa07c1ce26e19771a6cabe3cc6c855e4b877164f4998a78c84",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 17,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4bcf5bb68876abaa07c1ce26e19771a6cabe3cc6c855e4b877164f4998a78c84/block.json",
+        "target_dedup_uid": "dedup.sha256.4bcf5bb68876abaa07c1ce26e19771a6cabe3cc6c855e4b877164f4998a78c84",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.input_layernorm",
+      "source_refs": [
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "youtu-llm.block-00018",
+      "dedup_ref": "dedup.sha256.4bcf5bb68876abaa07c1ce26e19771a6cabe3cc6c855e4b877164f4998a78c84",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 18,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4bcf5bb68876abaa07c1ce26e19771a6cabe3cc6c855e4b877164f4998a78c84/block.json",
+        "target_dedup_uid": "dedup.sha256.4bcf5bb68876abaa07c1ce26e19771a6cabe3cc6c855e4b877164f4998a78c84",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.post_attention_layernorm",
+      "source_refs": [
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "youtu-llm.block-00019",
+      "dedup_ref": "dedup.sha256.4bcf5bb68876abaa07c1ce26e19771a6cabe3cc6c855e4b877164f4998a78c84",
+      "family_id": "youtu-llm",
+      "graph_ref": "graphs/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json",
+      "index": 19,
+      "model_version_id": "youtu-llm",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4bcf5bb68876abaa07c1ce26e19771a6cabe3cc6c855e4b877164f4998a78c84/block.json",
+        "target_dedup_uid": "dedup.sha256.4bcf5bb68876abaa07c1ce26e19771a6cabe3cc6c855e4b877164f4998a78c84",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "norm",
+      "source_refs": [
+        {
+          "end_line": 68,
+          "executed_line": 63,
+          "file": "transformers/models/youtu/modeling_youtu.py",
+          "source_uid": "source.sha256.7ea748c4736ab2be17575ffa6dabe43f3da17e72740310c919d96f6b40ba2847",
+          "start_line": 63,
+          "symbol": "YoutuRMSNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8f445f53c282d565ed7f29b952397ef1169f0e3968ce1bc8535cb9267fdfcb60.json"
+    }
+  ]
+}

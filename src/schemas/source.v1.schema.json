@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["source_uid", "package", "package_version", "relative_file", "content_hash", "language", "line_count", "chunks", "redistributed"],
+  "properties": {
+    "language": {"const": "python"},
+    "line_count": {"type": "integer", "minimum": 0},
+    "chunks": {"type": "array"},
+    "redistributed": {"const": false}
+  }
+}

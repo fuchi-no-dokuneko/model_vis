@@ -1,0 +1,60 @@
+{
+  "dedup_uid": "dedup.sha256.6503ed54f3f697f250d443401ef68aa94d0a2803b4cc0efa289393862cec3ffb",
+  "operation_ids": [
+    "phi.op-000013"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.phi.modeling_phi",
+        "PhiMLP"
+      ],
+      [
+        "activation_fn",
+        "transformers.activations",
+        "NewGELUActivation"
+      ],
+      [
+        "fc1",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "fc2",
+        "torch.nn.modules.linear",
+        "Linear"
+      ]
+    ],
+    "config_branches": [
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "81966699996c5955f88a53ad0d646e78ebbfc62cc979a18f69b1849fac491185",
+    "topology": [
+      [
+        "module_call",
+        "transformers.models.phi.modeling_phi.PhiMLP"
+      ]
+    ]
+  }
+}
