@@ -213,3 +213,58 @@ def test_mobile_drawers_and_no_external_runtime_requests(driver, viewer_url: str
     urls = driver.execute_script("return performance.getEntriesByType('resource').map(entry => entry.name)")
     assert urls
     assert all(url.startswith(viewer_url) for url in urls)
+
+
+def test_amendment_controls_configs_paths_blocks_and_partial_warning(loaded_viewer) -> None:
+    driver = loaded_viewer
+    wait = WebDriverWait(driver, 15)
+
+    assert driver.find_element(By.ID, "graph-legend").is_displayed()
+    assert driver.find_elements(By.CSS_SELECTOR, "#structural-summary .summary-metric")
+    assert not driver.find_element(By.ID, "model-warning").is_displayed()
+
+    click_mode(driver, "blocks")
+    wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, '.graph-node[data-kind^="block_"]'))
+    assert driver.find_elements(By.CSS_SELECTOR, ".edges path")
+
+    click_mode(driver, "module")
+    graph_search = driver.find_element(By.ID, "graph-search")
+    graph_search.send_keys("rmsnorm")
+    wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, ".graph-node.search-match"))
+    graph_search.clear()
+
+    click_first(driver, ".graph-node")
+    assert len(driver.find_elements(By.CSS_SELECTOR, ".graph-node.selected .node-action")) == 3
+    assert driver.find_element(By.CSS_SELECTOR, '[data-path-mode="downstream"]').is_enabled()
+    driver.find_element(By.CSS_SELECTOR, '[data-path-mode="downstream"]').click()
+    wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, ".graph-node.path-active"))
+
+    port = driver.find_elements(By.CSS_SELECTOR, ".graph-node .node-port[data-port-id]")[0]
+    driver.execute_script("arguments[0].click()", port)
+    wait.until(lambda current: "tensor_route" in current.find_element(By.ID, "metadata").text.lower())
+    assert driver.find_elements(By.CSS_SELECTOR, ".node-port.selected")
+
+    driver.find_element(By.CSS_SELECTOR, '[data-panel="config"]').click()
+    wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, "#config-view .config-provenance"))
+    assert "huggingface.co" in driver.find_element(By.ID, "official-config-link").get_attribute("href")
+    driver.find_element(By.CSS_SELECTOR, '[data-config-mode="trace"]').click()
+    wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, "#config-view .config-row"))
+    driver.find_element(By.CSS_SELECTOR, '[data-config-mode="diff"]').click()
+    wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, "#config-view .config-row.changed"))
+
+    for _ in range(4):
+        driver.find_element(By.ID, "zoom-out").click()
+    assert driver.find_element(By.ID, "graph-viewport").get_attribute("data-zoom-level") == "low"
+
+    click_mode(driver, "operation")
+    wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, ".continuation-marker"))
+
+    driver.find_element(By.CSS_SELECTOR, '[data-navigator="catalog"]').click()
+    model_search = driver.find_element(By.ID, "search")
+    model_search.clear()
+    model_search.send_keys("DINOv3")
+    wait.until(lambda current: current.find_element(By.ID, "result-count").text.startswith("1 model"))
+    assert driver.find_elements(By.CSS_SELECTOR, ".model-warning-badge")
+    driver.find_element(By.CSS_SELECTOR, ".model-open").click()
+    wait.until(lambda current: current.find_element(By.ID, "model-warning").is_displayed())
+    assert "official config" in driver.find_element(By.ID, "model-warning").text.lower()

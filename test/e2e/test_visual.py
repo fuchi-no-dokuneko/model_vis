@@ -41,6 +41,9 @@ def test_required_viewport_screenshots(driver, viewer_url: str) -> None:
         pixels = difference.get_flattened_data()
         changed = sum(1 for pixel in pixels if max(pixel) > PIXEL_CHANNEL_TOLERANCE)
         ratio = changed / (actual.width * actual.height)
+        diff_path = ACTUAL / f"{name}.diff.png"
         if ratio > MAX_DIFFERENT_PIXEL_RATIO:
-            difference.save(ACTUAL / f"{name}.diff.png")
+            difference.save(diff_path)
+        else:
+            diff_path.unlink(missing_ok=True)
         assert ratio <= MAX_DIFFERENT_PIXEL_RATIO, f"{name} visual difference {ratio:.3%} exceeds {MAX_DIFFERENT_PIXEL_RATIO:.3%}"

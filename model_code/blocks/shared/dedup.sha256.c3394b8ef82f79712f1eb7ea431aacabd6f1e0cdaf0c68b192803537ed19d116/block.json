@@ -1,0 +1,112 @@
+{
+  "dedup_uid": "dedup.sha256.c3394b8ef82f79712f1eb7ea431aacabd6f1e0cdaf0c68b192803537ed19d116",
+  "operation_ids": [
+    "op-000074",
+    "op-000075"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.data2vec.modeling_data2vec_vision",
+        "Data2VecVisionSelfOutput"
+      ],
+      [
+        "dense",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "dropout",
+        "torch.nn.modules.dropout",
+        "Dropout"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            197,
+            768
+          ],
+          [
+            1,
+            197,
+            768
+          ]
+        ],
+        [
+          [
+            1,
+            197,
+            768
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            197,
+            768
+          ]
+        ],
+        [
+          [
+            1,
+            197,
+            768
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            197,
+            768
+          ]
+        ],
+        [
+          [
+            1,
+            197,
+            768
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "dense.bias",
+        [
+          768
+        ]
+      ],
+      [
+        "dense.weight",
+        [
+          768,
+          768
+        ]
+      ]
+    ],
+    "source": "4a1404b2ecc5b4c4238180a057fd5c6c141a2b45970884669cc348edab3ef5f1",
+    "topology": [
+      [
+        "aten_op",
+        "aten.linear.default"
+      ],
+      [
+        "aten_op",
+        "aten.dropout.default"
+      ]
+    ]
+  }
+}

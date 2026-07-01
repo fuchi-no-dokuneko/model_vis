@@ -73,7 +73,7 @@ def test_aliases_execute_one_canonical_inference(monkeypatch, tmp_path: Path) ->
     assert len(report["executions"]) == 1
     assert create_calls == ["bert"]
     manifest = json.loads((tmp_path / "model_code" / "manifest.v2.json").read_text(encoding="utf-8"))
-    assert manifest["schema_version"] == "2.1.0"
+    assert manifest["schema_version"] == "2.2.0"
     source_assets = list((tmp_path / "model_code" / "sources").glob("source.*.json"))
     assert source_assets
     source = json.loads(source_assets[0].read_text(encoding="utf-8"))

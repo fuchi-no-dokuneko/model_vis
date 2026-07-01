@@ -9,6 +9,7 @@ from torch import nn
 
 from .introspection import ConstructorRecorder
 from .registry import ResolvedVersion
+from .staged import apply_compact_schedule
 
 
 COMPACT_VALUES: dict[str, Any] = {
@@ -117,6 +118,9 @@ COMPACT_VALUES: dict[str, Any] = {
     "shared_expert_intermediate_size": 16,
     "n_docs": 1,
     "num_groups": 4,
+    "n_group": 1,
+    "topk_group": 1,
+    "ep_size": 1,
     "embedding_dim": 16,
     "attention_hidden_size": 16,
     "attention_head_dim": 4,
@@ -261,6 +265,17 @@ def _compact_config(config: Any, seen: set[int] | None = None) -> Any:
         config.use_mamba_kernels = False
     if getattr(config, "model_type", None) == "mamba2":
         config.conv_kernel = 2
+    if getattr(config, "model_type", None) == "zamba2":
+        config.attention_hidden_size = int(config.hidden_size) * 2
+        config.attention_head_dim = config.attention_hidden_size // int(config.num_attention_heads)
+        config.hybrid_layer_ids = [
+            index for index, block_type in enumerate(config.layers_block_type)
+            if block_type == "hybrid"
+        ]
+    if getattr(config, "model_type", None) == "zamba":
+        config.attention_hidden_size = int(config.hidden_size) * 2
+        config.attention_head_dim = config.attention_hidden_size // int(config.num_attention_heads)
+        config.tie_word_embeddings = False
     if not hasattr(config, "num_key_value_heads") and hasattr(config, "num_attention_heads"):
         try:
             object.__setattr__(config, "num_key_value_heads", config.num_attention_heads)
@@ -271,7 +286,11 @@ def _compact_config(config: Any, seen: set[int] | None = None) -> Any:
     return config
 
 
-def _transformers_model(version: ResolvedVersion) -> tuple[nn.Module, dict[str, Any]]:
+def _transformers_model(
+    version: ResolvedVersion,
+    official_config: dict[str, Any] | None = None,
+    trace_plan: dict[str, Any] | None = None,
+) -> tuple[nn.Module, dict[str, Any]]:
     from transformers import AutoConfig, AutoModel
 
     if version.architecture_key == "encoder-decoder":
@@ -290,8 +309,14 @@ def _transformers_model(version: ResolvedVersion) -> tuple[nn.Module, dict[str, 
         config = RagConfig.from_question_encoder_generator_configs(question, generator, n_docs=1)
         return RagModel(config), config.to_dict()
 
-    config = AutoConfig.for_model(version.architecture_key)
-    _compact_config(config)
+    if official_config is not None and trace_plan and trace_plan.get("execution_mode") == "full_model_forward":
+        config_class = type(AutoConfig.for_model(version.architecture_key))
+        config = config_class.from_dict(official_config)
+    else:
+        config = AutoConfig.for_model(version.architecture_key)
+        _compact_config(config)
+        if trace_plan is not None:
+            apply_compact_schedule(config, trace_plan)
     if version.architecture_key == "funnel":
         config.block_sizes = (1,)
         config.block_repeats = [1]
@@ -452,11 +477,13 @@ def _representative_inputs(model: nn.Module, config: dict[str, Any]) -> tuple[tu
             kwargs["input_ids"] = torch.zeros((1, 4), dtype=torch.long)
         if "pixel_values" in parameter_names:
             model_type = getattr(model.config, "model_type", "")
-            image_extent = 32 if model_type in {
+            image_extent = int(config.get("image_size", 0) or 0)
+            if not image_extent:
+                image_extent = 32 if model_type in {
                 "convnext", "convnextv2", "cvt", "depth_pro", "d_fine", "deimv2",
                 "efficientnet", "glpn", "mobilevit", "mobilevitv2", "pvt", "pvt_v2",
                 "rt_detr", "rt_detr_v2", "segformer", "swin", "swinv2", "textnet",
-            } else 16
+                } else 16
             kwargs["pixel_values"] = torch.zeros((1, 3, image_extent, image_extent))
             if model_type in {"efficientloftr", "lightglue"}:
                 kwargs["pixel_values"] = torch.zeros((1, 2, 3, image_extent, image_extent))
@@ -551,7 +578,12 @@ def _representative_inputs(model: nn.Module, config: dict[str, Any]) -> tuple[tu
     return (), kwargs
 
 
-def create_model(version: ResolvedVersion) -> ModelBundle:
+def create_model(
+    version: ResolvedVersion,
+    *,
+    official_config: dict[str, Any] | None = None,
+    trace_plan: dict[str, Any] | None = None,
+) -> ModelBundle:
     # Load the model module before installing constructor wrappers so nested
     # modules retain the exact positional/keyword call form used at runtime.
     try:
@@ -568,7 +600,7 @@ def create_model(version: ResolvedVersion) -> ModelBundle:
                 pass
     with ConstructorRecorder() as constructors:
         if version.library == "transformers":
-            model, config = _transformers_model(version)
+            model, config = _transformers_model(version, official_config, trace_plan)
         else:
             model, config = _diffusers_model(version)
     model.cpu().eval()

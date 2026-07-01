@@ -30,6 +30,8 @@ function moduleWithin(module, scope) {
 function syntheticBoundary(kind, edge, sourceNode, targetNode) {
   const input = kind === "scope_input";
   const id = `${kind}:${edge.tensor_id}`;
+  const external = input ? sourceNode : targetNode;
+  const externalPath = external?.module_path || external?.qualified_name || external?.display_name || external?.name || "external graph";
   const original = input
     ? targetNode?.input_ports?.find((port) => port.port_id === edge.target_port)
     : sourceNode?.output_ports?.find((port) => port.port_id === edge.source_port);
@@ -37,22 +39,27 @@ function syntheticBoundary(kind, edge, sourceNode, targetNode) {
     ...(original || {}),
     port_id: `${id}:${input ? "out" : "in"}:0`,
     direction: input ? "output" : "input",
-    name: original?.name || (input ? "scope input" : "scope output"),
+    name: original?.name || edge.tensor_id || (input ? "scope input" : "scope output"),
     tensor_id: edge.tensor_id,
     shape: edge.shape,
   };
   return {
     id,
     kind,
-    name: input ? "Scope input" : "Scope output",
-    display_name: input ? "Scope input" : "Scope output",
-    module_path: null,
+    name: `${input ? "From" : "To"} ${externalPath}`,
+    display_name: `${input ? "From" : "To"} ${externalPath}`,
+    module_path: externalPath,
     layer_group_id: null,
     source_ref: { file: null },
     input_ports: input ? [] : [port],
     output_ports: input ? [port] : [],
     call_arguments: [],
-    attributes: {},
+    attributes: {
+      external_node_id: external?.id || null,
+      external_module_path: externalPath,
+      tensor_id: edge.tensor_id,
+      shape: edge.shape,
+    },
   };
 }
 
@@ -255,7 +262,81 @@ export function moduleProjection(graph, scopeModuleId = null) {
   };
 }
 
-export function projectGraph({ mode, current, family, index, graph, scopeModuleId }) {
+export function blocksProjection(graph, blocksDocument) {
+  const blocks = blocksDocument?.blocks || [];
+  if (!graph || !blocks.length) return { nodes: [], edges: [], layerGroups: [] };
+  const nodes = blocks.map((block) => ({
+    ...block,
+    id: block.block_uid,
+    kind: `block_${block.block_type}`,
+    name: block.qualified_name,
+    display_name: block.qualified_name,
+    module_path: block.qualified_name,
+  }));
+  const producers = new Map();
+  const consumers = new Map();
+  for (const node of nodes) {
+    for (const port of node.output_ports || []) {
+      if (!producers.has(port.tensor_id)) producers.set(port.tensor_id, []);
+      producers.get(port.tensor_id).push({ node, port });
+    }
+    for (const port of node.input_ports || []) {
+      if (!consumers.has(port.tensor_id)) consumers.set(port.tensor_id, []);
+      consumers.get(port.tensor_id).push({ node, port });
+    }
+  }
+  const edges = [];
+  const seen = new Set();
+  for (const [tensorId, sources] of producers) {
+    for (const source of sources) for (const target of consumers.get(tensorId) || []) {
+      if (source.node.id === target.node.id) continue;
+      const key = `${source.node.id}:${target.node.id}:${tensorId}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      edges.push({
+        edge_id: `block-edge-${edges.length}`,
+        source: source.node.id,
+        source_port: source.port.port_id,
+        target: target.node.id,
+        target_port: target.port.port_id,
+        tensor_id: tensorId,
+        shape: source.port.shape || target.port.shape || [],
+        confidence: "exact",
+      });
+    }
+  }
+  const activeLayers = new Set(nodes.map((node) => node.layer_group_id).filter(Boolean));
+  return {
+    nodes: nodes.map(viewNode),
+    edges,
+    layerGroups: graph.layer_groups.filter((group) => activeLayers.has(group.layer_group_id)),
+  };
+}
+
+export function tracePath(edges, startId, direction = "downstream") {
+  const upstream = direction === "upstream" || direction === "isolate";
+  const downstream = direction === "downstream" || direction === "isolate";
+  const nodes = new Set([startId]);
+  const edgeIds = new Set();
+  const queue = [startId];
+  while (queue.length) {
+    const current = queue.shift();
+    for (const edge of edges) {
+      let next = null;
+      if (downstream && edge.source === current) next = edge.target;
+      if (upstream && edge.target === current) next = edge.source;
+      if (!next) continue;
+      edgeIds.add(edge.edge_id);
+      if (!nodes.has(next)) {
+        nodes.add(next);
+        queue.push(next);
+      }
+    }
+  }
+  return { nodes, edges: edgeIds };
+}
+
+export function projectGraph({ mode, current, family, index, graph, blocks, scopeModuleId }) {
   if (!current) return { nodes: [], edges: [], layerGroups: [] };
   if (mode === "family") {
     const root = {
@@ -294,9 +375,9 @@ export function projectGraph({ mode, current, family, index, graph, scopeModuleI
       layerGroups: [],
     };
   }
-  return mode === "operation"
-    ? operationProjection(graph, scopeModuleId)
-    : moduleProjection(graph, scopeModuleId);
+  if (mode === "operation") return operationProjection(graph, scopeModuleId);
+  if (mode === "blocks") return blocksProjection(graph, blocks);
+  return moduleProjection(graph, scopeModuleId);
 }
 
 export function layoutGraph(nodes, edges) {

@@ -81,7 +81,7 @@ def validate(
         errors.append(f"partial build has unknown families: {sorted(actual - expected)}")
     elif not allow_partial and expected != actual:
         errors.append(f"family coverage mismatch: missing={sorted(expected - actual)}, extra={sorted(actual - expected)}")
-    if report["status"] != "passed":
+    if report["status"] not in {"passed", "passed_with_warnings"}:
         errors.append(f"build report status is {report['status']!r}")
     for version_id in manifest["versions"]:
         path = model_code / "versions" / f"{version_id}.json"
@@ -89,8 +89,38 @@ def validate(
             errors.append(f"missing version asset {path}")
             continue
         version = read_json(path)
-        if version.get("status") != "passed" or version.get("trace_event_count", 0) <= 0:
+        if version.get("status") not in {"passed", "partial"} or version.get("trace_event_count", 0) <= 0:
             errors.append(f"version did not pass a real trace: {version_id}")
+        if version.get("status") == "partial" and not version.get("warnings"):
+            errors.append(f"partial version has no model-specific warning: {version_id}")
+        security = version.get("security_policy", {})
+        if any((
+            security.get("weights_downloaded") is not False,
+            security.get("remote_code_executed") is not False,
+            security.get("trust_remote_code") is not False,
+            security.get("network_during_trace") is not False,
+        )):
+            errors.append(f"version security policy is missing or unsafe: {version_id}")
+        trace_config_path = model_code / version.get("trace_config_ref", "")
+        if version.get("trace_config_ref") and not trace_config_path.is_file():
+            errors.append(f"missing trace config record: {version_id}")
+        source = version.get("official_config_source")
+        if source:
+            official_path = model_code / version.get("official_config_ref", "")
+            diff_path = model_code / version.get("config_diff_ref", "")
+            if not official_path.is_file():
+                errors.append(f"missing raw official config: {version_id}")
+            else:
+                digest = hashlib.sha256(official_path.read_bytes()).hexdigest()
+                if source.get("sha256") != digest:
+                    errors.append(f"official config hash mismatch: {version_id}")
+            revision = source.get("revision", "")
+            if len(revision) != 40 or any(value not in "0123456789abcdef" for value in revision):
+                errors.append(f"official config revision is not a full SHA: {version_id}")
+            if revision not in source.get("pinned_url", ""):
+                errors.append(f"official config URL is not pinned to its revision: {version_id}")
+            if not diff_path.is_file():
+                errors.append(f"missing official/trace config diff: {version_id}")
         if not version.get("top_level_outputs"):
             errors.append(f"version has no top-level output summary: {version_id}")
         graph_path = model_code / version.get("graph_ref", "")

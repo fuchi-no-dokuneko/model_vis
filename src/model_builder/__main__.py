@@ -13,13 +13,9 @@ def parser() -> argparse.ArgumentParser:
     command.add_argument("--scope-out", type=Path, default=Path("model_scope.generated.yaml"))
     command.add_argument("--out", type=Path, default=Path("model_code"))
     command.add_argument("--cache", type=Path, default=Path("build_cache"))
-    command.add_argument("--device", choices=("auto", "cpu"), default="cpu")
-    command.add_argument("--max-resident-memory-gb", type=float, default=70)
-    command.add_argument("--require-forward", action="store_true")
-    command.add_argument("--allow-staged-large-models", action="store_true")
+    command.add_argument("--official-config-mapping", type=Path, default=Path("profiles/hf-config-mapping.v1.json"))
+    command.add_argument("--official-config-dir", type=Path, default=Path("official_configs"))
     command.add_argument("--resume", action="store_true")
-    command.add_argument("--fetch-policy", choices=("source-config-only",), default="source-config-only")
-    command.add_argument("--forbid-weight-downloads", action="store_true")
     command.add_argument("--plan-only", action="store_true")
     command.add_argument("--offset", type=int, default=0)
     command.add_argument("--limit", type=int)
@@ -59,9 +55,11 @@ def main() -> int:
         limit=args.limit,
         includes=tuple([*args.include, *_file_includes(args.include_file)]),
         resume=args.resume,
+        official_mapping_path=args.official_config_mapping,
+        official_config_dir=args.official_config_dir,
     )
     print(json.dumps(report, indent=2))
-    return 0 if report["status"] in {"planned", "passed"} else 1
+    return 0 if report["status"] in {"planned", "passed", "passed_with_warnings"} else 1
 
 
 if __name__ == "__main__":

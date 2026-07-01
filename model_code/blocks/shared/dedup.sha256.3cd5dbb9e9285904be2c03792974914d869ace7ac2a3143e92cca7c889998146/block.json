@@ -1,0 +1,126 @@
+{
+  "dedup_uid": "dedup.sha256.3cd5dbb9e9285904be2c03792974914d869ace7ac2a3143e92cca7c889998146",
+  "operation_ids": [
+    "op-000084",
+    "op-000085",
+    "op-000086",
+    "op-000087",
+    "op-000088",
+    "op-000089",
+    "op-000090",
+    "op-000091",
+    "op-000092",
+    "op-000093",
+    "op-000094",
+    "op-000095",
+    "op-000096",
+    "op-000097"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.beit.modeling_beit",
+        "BeitRelativePositionBias"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [],
+        [
+          [
+            1,
+            12,
+            197,
+            197
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "relative_position_bias_table",
+        [
+          732,
+          12
+        ]
+      ]
+    ],
+    "source": "fde0b38be3382df6cda31e76cf6933d379b85cdb8ed1df30d665257a7c918a7b",
+    "topology": [
+      [
+        "aten_op",
+        "aten.slice.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.reshape.default"
+      ],
+      [
+        "aten_op",
+        "aten.permute.default"
+      ],
+      [
+        "aten_op",
+        "aten.upsample_bilinear2d.vec"
+      ],
+      [
+        "aten_op",
+        "aten.permute.default"
+      ],
+      [
+        "aten_op",
+        "aten.reshape.default"
+      ],
+      [
+        "aten_op",
+        "aten.slice.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.cat.default"
+      ],
+      [
+        "aten_op",
+        "aten.view.default"
+      ],
+      [
+        "aten_op",
+        "aten.index.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.view.default"
+      ],
+      [
+        "aten_op",
+        "aten.permute.default"
+      ],
+      [
+        "aten_op",
+        "aten.contiguous.default"
+      ],
+      [
+        "aten_op",
+        "aten.unsqueeze.default"
+      ]
+    ]
+  }
+}

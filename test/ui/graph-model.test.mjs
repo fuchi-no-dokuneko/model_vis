@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { layoutGraph, moduleProjection, operationProjection, projectGraph } from "../../src/ui/graph-model.js";
+import { blocksProjection, layoutGraph, moduleProjection, operationProjection, projectGraph, tracePath } from "../../src/ui/graph-model.js";
 
 const current = {
   family_id: "tiny",
@@ -41,7 +41,7 @@ function canonicalGraph() {
     tensor_id: tensor, shape: [1, 4], confidence: "exact",
   }));
   return {
-    schema_version: "2.1.0",
+    schema_version: "2.2.0",
     nodes: [input, query, key, add, output],
     edges,
     modules: [
@@ -86,6 +86,29 @@ test("scoped operation projection creates explicit boundary ports", () => {
   assert.ok(result.nodes.some((node) => node.kind === "scope_input" || node.kind === "graph_input"));
   assert.ok(result.nodes.some((node) => node.kind === "scope_output"));
   assert.ok(result.edges.every((edge) => edge.source_port && edge.target_port));
+  const boundary = result.nodes.find((node) => node.kind === "scope_output");
+  assert.match(boundary.title, /^To /);
+  assert.ok(boundary.raw.attributes.external_module_path);
+});
+
+test("blocks projection exposes generated architectural blocks and exact tensor routes", () => {
+  const blocks = { blocks: [
+    { block_uid: "b1", block_type: "attention", qualified_name: "layer.attn", input_ports: [port("b1", "input", 0, "input", "t0")], output_ports: [port("b1", "output", 0, "query", "tq")] },
+    { block_uid: "b2", block_type: "mlp", qualified_name: "layer.mlp", input_ports: [port("b2", "input", 0, "input", "tq")], output_ports: [port("b2", "output", 0, "output", "t1")] },
+  ] };
+  const result = blocksProjection(canonicalGraph(), blocks);
+  assert.deepEqual(result.nodes.map((node) => node.kind), ["block_attention", "block_mlp"]);
+  assert.equal(result.edges.length, 1);
+  assert.equal(result.edges[0].tensor_id, "tq");
+});
+
+test("path tracing follows all upstream and downstream branches", () => {
+  const graph = canonicalGraph();
+  const upstream = tracePath(graph.edges, "add", "upstream");
+  assert.deepEqual([...upstream.nodes].sort(), ["add", "input", "q"]);
+  const isolated = tracePath(graph.edges, "q", "isolate");
+  assert.ok(isolated.nodes.has("output"));
+  assert.ok(isolated.nodes.has("input"));
 });
 
 test("collapse and expansion preserve scope-boundary tensor routes", () => {

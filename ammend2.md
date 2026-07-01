@@ -45,7 +45,7 @@
     Large-model tracing MUST instead:
 
     - Read the official configuration and constructor signatures before module
-      allocation.
+      allocation. This stage MUST NOT download or load checkpoint weights.
     - Detect every structurally unique layer or block variant. Detection MUST
       include module class, effective constructor arguments, relevant config
       fields, ordered child-module structure, parameter and buffer shape
@@ -58,7 +58,9 @@
       captured constructor parameters. Compact dimensions MUST preserve required
       divisibility and coupling constraints such as hidden-size/head count,
       grouped attention, expert routing, convolution groups, and residual
-      boundary compatibility.
+      boundary compatibility. The compact configuration MUST be derived from the
+      official configuration through recorded, deterministic overrides; it MUST
+      NOT replace or modify the stored official configuration.
     - Instantiate and execute one deterministic CPU forward for each unique
       layer or block variant rather than each repeated instance.
     - Fall back to operation-by-operation construction and execution when one
@@ -85,7 +87,8 @@
     The two configuration records MUST be clearly separated:
 
     - `official_config`: the exact downloaded `config.json` from the selected
-      Hugging Face model repository at a pinned full commit SHA.
+      Hugging Face model repository at a pinned full commit SHA. It MUST be
+      stored byte-for-byte and MUST NOT be rewritten into the trace schema.
     - `trace_config`: the compact, runnable configuration used by the current
       CPU tracing approach, including all derivations and overrides.
 
@@ -109,6 +112,12 @@
       contents changed.
     - The mapping is expected to be reviewed and corrected manually when
       necessary without changing generated-data contracts.
+    - When an original publisher uses a native configuration schema that differs
+      from the installed Transformers configuration class, keep the original
+      config unchanged and use an explicit, versioned compatibility adapter.
+      Adapter inputs, outputs, and every renamed or derived field MUST be
+      recorded in `trace_config`; do not substitute a community conversion only
+      to obtain matching field names.
 
     Config acquisition MUST be a separate network-enabled prefetch stage. The
     tracing and static-site stages MUST continue to run with network access
@@ -125,5 +134,7 @@
     - Preserve the agreed license metadata and attribution in the generated
       license records.
     - A missing, moved, unpinned, malformed, or architecture-incompatible config
-      MUST block that model's release record rather than silently falling back
-      to an unrelated repository or unrecorded configuration.
+      MUST mark that exact model's release record as partial or blocked and show
+      a visible model-specific warning in the UI. It MUST NOT silently fall back
+      to an unrelated repository or unrecorded configuration. Other valid models
+      MAY continue through the release pipeline.

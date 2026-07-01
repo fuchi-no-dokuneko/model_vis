@@ -24,12 +24,22 @@ const config = options(process.argv.slice(2));
 const manifestPath = path.join(config.modelCode, "manifest.v2.json");
 await stat(manifestPath);
 const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-if (manifest.schema_version !== "2.1.0") {
+if (manifest.schema_version !== "2.2.0") {
   throw new Error(`Unsupported generated-data schema: ${manifest.schema_version || "missing"}`);
 }
 const report = JSON.parse(await readFile(path.join(config.modelCode, manifest.build_report), "utf8"));
-if (report.status !== "passed" || report.passed_version_count !== manifest.versions.length) {
+if (!["passed", "passed_with_warnings"].includes(report.status)
+  || report.passed_version_count !== manifest.versions.length) {
   throw new Error("Generated model data did not pass its release build");
+}
+if (report.status === "passed_with_warnings") {
+  const versions = await Promise.all(manifest.versions.map(async (versionId) => (
+    JSON.parse(await readFile(path.join(config.modelCode, "versions", `${versionId}.json`), "utf8"))
+  )));
+  const partial = new Set(versions.filter((version) => version.status === "partial").map((version) => version.version_id));
+  if (!report.warnings.length || report.warnings.some((warning) => !partial.has(warning.version_id))) {
+    throw new Error("Release warnings are not attached to exact partial model records");
+  }
 }
 await rm(config.out, { recursive: true, force: true });
 await mkdir(config.out, { recursive: true });

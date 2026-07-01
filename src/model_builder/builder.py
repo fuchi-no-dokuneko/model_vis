@@ -5,6 +5,7 @@ import gc
 import hashlib
 import importlib.metadata
 import importlib.util
+import multiprocessing
 import platform
 import shutil
 from collections import Counter, defaultdict
@@ -17,15 +18,18 @@ import yaml
 from . import SCHEMA_VERSION, __version__
 from .blocks import build_blocks
 from .catalog import Catalog, read_catalog
+from .config_provenance import materialize_version_configs
 from .factory import create_model
 from .guard import NoNetworkGuard, scan_forbidden_artifacts
+from .hf_config import ConfigMappingEntry, load_mapping, parse_config
 from .registry import ResolvedVersion, resolve_catalog
+from .staged import attach_template_provenance, plan_trace
 from .tracing import trace_model
 from .util import read_json, sha256_json, write_json
 
 
 REDISTRIBUTABLE_SOURCE_PACKAGES = {"project", "torch", "transformers", "diffusers"}
-CACHE_REVISION = "canonical-lineage-v2.4"
+CACHE_REVISION = "official-config-unique-stage-v4"
 
 
 def normalized_scope(catalog: Catalog, versions: Iterable[ResolvedVersion]) -> dict[str, Any]:
@@ -50,7 +54,7 @@ def normalized_scope(catalog: Catalog, versions: Iterable[ResolvedVersion]) -> d
             "versions": [{
                 "version_id": version.version_id,
                 "display_name": version.display_name,
-                "parameter_size_label": "compact-trace-config",
+                "parameter_size_label": "resource-preflight-selected-random-init-config",
                 "framework": "pytorch",
                 "library": version.library,
                 "config_path": f"versions/{version.version_id}.json",
@@ -246,6 +250,8 @@ def _write_execution(
         "canonical_version_id": version.version_id,
         "status": "passed",
         "execution_mode": trace["execution_mode"],
+        "resource_preflight": trace.get("resource_preflight"),
+        "trace_templates": trace.get("trace_templates", []),
         "trace_event_count": trace["trace_event_count"],
         "top_level_outputs": trace["top_level_outputs"],
         "trace_ref": trace_path,
@@ -318,7 +324,12 @@ def _package_license(name: str, redistributed_packages: set[str]) -> dict[str, A
     }
 
 
-def _write_licenses(root: Path, out: Path, redistributed_packages: set[str]) -> None:
+def _write_licenses(
+    root: Path,
+    out: Path,
+    redistributed_packages: set[str],
+    model_licenses: list[dict[str, Any]] | None = None,
+) -> None:
     dependencies = [_package_license(name, redistributed_packages) for name in (
         "torch", "torchview", "transformers", "diffusers", "jsonschema", "PyYAML",
         "timm", "natten", "torchaudio", "selenium", "graphviz",
@@ -347,6 +358,7 @@ def _write_licenses(root: Path, out: Path, redistributed_packages: set[str]) -> 
             repository_copy.parent.mkdir(parents=True, exist_ok=True)
             repository_copy.write_text(text, encoding="utf-8")
             item["license_assets"].append(relative)
+    dependencies.extend(model_licenses or [])
     write_json(root / "license" / "dependency_licenses.json", dependencies)
     notices = [
         "# Third-Party Notices",
@@ -376,6 +388,101 @@ def _asset_stats(path: Path) -> dict[str, Any]:
     }
 
 
+def _execute_version(
+    version: ResolvedVersion,
+    out: Path,
+    cache: Path,
+    official_config: dict[str, Any] | None,
+    trace_plan: dict[str, Any] | None,
+) -> dict[str, Any]:
+    bundle = None
+    try:
+        if official_config is None and trace_plan is None:
+            bundle = create_model(version)
+        else:
+            bundle = create_model(
+                version,
+                official_config=official_config,
+                trace_plan=trace_plan,
+            )
+        parameters = _parameter_summary(bundle.model)
+        if trace_plan is not None:
+            trace_plan["compact_parameter_count"] = parameters["total"]
+            trace_plan["compact_estimated_peak_bytes"] = parameters["total"] * 4 * 6
+            trace_plan["operation_fallback_required"] = (
+                trace_plan["compact_estimated_peak_bytes"] > trace_plan["resource_budget_bytes"]
+            )
+        trace = trace_model(
+            bundle.model,
+            bundle.inputs,
+            bundle.kwargs,
+            version.version_id,
+            bundle.constructors,
+        )
+        if trace_plan is not None:
+            attach_template_provenance(trace, trace_plan)
+        blocks, shared = build_blocks(
+            bundle.model,
+            version.version_id,
+            version.family_id,
+            version.structure_key,
+            trace,
+        )
+        return _write_execution(
+            out, cache, version, trace, blocks, shared, parameters, bundle.config,
+        )
+    finally:
+        del bundle
+        gc.collect()
+
+
+def _execution_worker(
+    version: ResolvedVersion,
+    out: Path,
+    cache: Path,
+    official_config: dict[str, Any] | None,
+    trace_plan: dict[str, Any] | None,
+    result_path: Path,
+) -> None:
+    try:
+        with NoNetworkGuard():
+            record = _execute_version(version, out, cache, official_config, trace_plan)
+        write_json(result_path, {"status": "passed", "record": record})
+    except Exception as exc:
+        write_json(result_path, {
+            "status": "failed",
+            "error_type": type(exc).__name__,
+            "message": str(exc),
+        })
+
+
+def _execute_version_isolated(
+    version: ResolvedVersion,
+    out: Path,
+    cache: Path,
+    official_config: dict[str, Any] | None,
+    trace_plan: dict[str, Any],
+) -> dict[str, Any]:
+    result_path = cache / "workers" / f"{version.version_id}.json"
+    result_path.unlink(missing_ok=True)
+    process = multiprocessing.get_context("spawn").Process(
+        target=_execution_worker,
+        args=(version, out, cache, official_config, trace_plan, result_path),
+    )
+    process.start()
+    process.join()
+    if not result_path.is_file():
+        raise RuntimeError(
+            f"isolated trace process exited with code {process.exitcode} without a result"
+        )
+    result = read_json(result_path)
+    if result.get("status") != "passed":
+        raise RuntimeError(
+            f"isolated {result.get('error_type', 'trace')} failure: {result.get('message', 'unknown error')}"
+        )
+    return result["record"]
+
+
 def build(
     catalog_path: Path,
     scope_out: Path,
@@ -387,6 +494,8 @@ def build(
     limit: int | None = None,
     includes: tuple[str, ...] = (),
     resume: bool = True,
+    official_mapping_path: Path | None = None,
+    official_config_dir: Path | None = None,
 ) -> dict[str, Any]:
     catalog = read_catalog(catalog_path)
     versions = resolve_catalog(catalog.entries)
@@ -420,15 +529,24 @@ def build(
         "selected_version_count": len(selected),
         "executions": [],
         "failures": [],
+        "warnings": [],
     }
     if plan_only:
         return report
+
+    official_entries: dict[str, ConfigMappingEntry] = {}
+    mapping_document: dict[str, Any] | None = None
+    if official_mapping_path is not None:
+        mapping_document, official_entries = load_mapping(official_mapping_path)
+    official_config_dir = official_config_dir or Path("official_configs")
 
     # Generated releases are content-addressed and cheap to rematerialize from
     # cache. A clean output prevents orphaned assets from older scopes/schemas.
     if out.exists():
         shutil.rmtree(out)
     out.mkdir(parents=True, exist_ok=True)
+    if mapping_document is not None:
+        write_json(out / "configs" / "hf-config-mapping.v1.json", mapping_document)
     cache.mkdir(parents=True, exist_ok=True)
     execution_records: dict[str, dict[str, Any]] = {}
     failed_structures: dict[str, dict[str, Any]] = {}
@@ -452,25 +570,21 @@ def build(
                 record = _restore_execution(cache, out, version.structure_key)
             reused = record is not None
             if record is None:
-                bundle = None
                 try:
-                    bundle = create_model(version)
-                    parameters = _parameter_summary(bundle.model)
-                    trace = trace_model(
-                        bundle.model,
-                        bundle.inputs,
-                        bundle.kwargs,
-                        version.version_id,
-                        bundle.constructors,
-                    )
-                    blocks, shared = build_blocks(
-                        bundle.model,
-                        version.version_id,
-                        version.family_id,
-                        version.structure_key,
-                        trace,
-                    )
-                    record = _write_execution(out, cache, version, trace, blocks, shared, parameters, bundle.config)
+                    official_config = None
+                    trace_plan = None
+                    if mapping_document is not None:
+                        local_config = official_config_dir / version.version_id / "config.json"
+                        try:
+                            official_config = parse_config(local_config.read_bytes())
+                        except (OSError, ValueError):
+                            official_config = None
+                        trace_plan = plan_trace(official_config)
+                        record = _execute_version_isolated(
+                            version, out, cache, official_config, trace_plan,
+                        )
+                    else:
+                        record = _execute_version(version, out, cache, None, None)
                     report["executions"].append(version.structure_key)
                 except Exception as exc:  # keep a durable failure report during long release builds
                     failure = {
@@ -482,9 +596,6 @@ def build(
                     report["failures"].append(failure)
                     failed_structures[version.structure_key] = failure
                     continue
-                finally:
-                    del bundle
-                    gc.collect()
             execution_records[version.structure_key] = record
             family_versions[version.family_id].append(version.version_id)
             summary = {
@@ -493,7 +604,32 @@ def build(
                 "execution_reused": reused,
                 "execution_source_version": record["canonical_version_id"],
                 "forward_policy": {"device": "cpu", "eval_mode": True, "inference_mode": True},
+                "security_policy": {
+                    "weights_downloaded": False,
+                    "remote_code_executed": False,
+                    "trust_remote_code": False,
+                    "network_during_trace": False,
+                },
             }
+            if mapping_document is not None:
+                config_record = materialize_version_configs(
+                    out,
+                    version,
+                    record["config"],
+                    official_entries.get(version.version_id),
+                    official_config_dir,
+                )
+                summary.update({key: value for key, value in config_record.items() if key != "artifact_refs"})
+                summary["artifact_refs"] = sorted(set([
+                    *summary.get("artifact_refs", []),
+                    *config_record["artifact_refs"],
+                ]))
+                report["warnings"].extend(
+                    {"version_id": version.version_id, **warning}
+                    for warning in summary["warnings"]
+                )
+            else:
+                summary["warnings"] = []
             write_json(out / "versions" / f"{version.version_id}.json", summary)
             version_summaries.append(summary)
 
@@ -507,8 +643,13 @@ def build(
                 "versions": ids,
             })
 
-    report["status"] = "passed" if not report["failures"] and len(version_summaries) == len(selected) else "failed"
+    report["status"] = (
+        "failed" if report["failures"] or len(version_summaries) != len(selected)
+        else "passed_with_warnings" if report["warnings"]
+        else "passed"
+    )
     report["passed_version_count"] = len(version_summaries)
+    report["partial_version_count"] = sum(summary["status"] == "partial" for summary in version_summaries)
     report["no_weight_download_guard"] = "passed"
     report["source_redistribution_license_gate"] = "passed"
     report["environment"] = {"python": platform.python_version(), "torch": torch.__version__, "device": "cpu"}
@@ -519,11 +660,14 @@ def build(
         "version_id": summary["version_id"],
         "category": summary["category"],
         "parameters": summary["parameters"]["total"],
+        "official_parameter_estimate": (summary.get("resource_preflight") or {}).get("estimated_parameter_count"),
         "block_count": summary["block_count"],
         "operation_count": summary["operation_count"],
         "source_count": len(summary["sources"]),
         "library": summary["library"],
         "execution_mode": summary["execution_mode"],
+        "status": summary["status"],
+        "warnings": summary.get("warnings", []),
     } for summary in version_summaries]
     write_json(out / "indexes" / "search.v2.json", search)
     redistributed_packages = {
@@ -531,7 +675,21 @@ def build(
         for path in (out / "sources").glob("source.*.json")
         if path.is_file()
     }
-    _write_licenses(Path.cwd(), out, {value for value in redistributed_packages if value})
+    model_licenses = [{
+        "package": f"model-config:{summary['version_id']}",
+        "version": summary["official_config_source"]["revision"],
+        "license": summary["official_config_source"]["license"],
+        "source_repository": summary["official_config_source"]["repo_id"],
+        "pinned_url": summary["official_config_source"]["pinned_url"],
+        "source_redistributed": False,
+        "config_redistributed": True,
+        "modified": False,
+    } for summary in version_summaries if summary.get("official_config_source")]
+    redistributed = {value for value in redistributed_packages if value}
+    if model_licenses:
+        _write_licenses(Path.cwd(), out, redistributed, model_licenses)
+    else:
+        _write_licenses(Path.cwd(), out, redistributed)
     manifest = {
         "schema_version": SCHEMA_VERSION,
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
@@ -551,7 +709,7 @@ def build(
     ))
     manifest["cloudflare_pages_check"] = _asset_stats(out)
     write_json(out / "manifest.v2.json", manifest)
-    violations = scan_forbidden_artifacts([out, cache])
+    violations = scan_forbidden_artifacts([out, cache, official_config_dir])
     if violations:
         raise RuntimeError("forbidden weight-like artifacts: " + ", ".join(map(str, violations)))
     print("NO_WEIGHT_DOWNLOAD_GUARD=passed")

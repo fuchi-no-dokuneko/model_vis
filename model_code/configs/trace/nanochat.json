@@ -1,0 +1,260 @@
+{
+  "config": {
+    "_name_or_path": "",
+    "architectures": null,
+    "attention_bias": false,
+    "attention_dropout": 0.0,
+    "bos_token_id": 1,
+    "chunk_size_feed_forward": 0,
+    "dtype": null,
+    "eos_token_id": 1,
+    "final_logit_softcapping": 15.0,
+    "hidden_act": "relu2",
+    "hidden_size": 16,
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "initializer_range": 0.02,
+    "intermediate_size": 32,
+    "is_encoder_decoder": false,
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "max_position_embeddings": 32,
+    "model_type": "nanochat",
+    "num_attention_heads": 4,
+    "num_hidden_layers": 1,
+    "num_key_value_heads": 2,
+    "output_attentions": false,
+    "output_hidden_states": false,
+    "pad_token_id": 0,
+    "problem_type": null,
+    "return_dict": true,
+    "rms_norm_eps": 1e-06,
+    "rope_parameters": {
+      "rope_theta": 10000.0,
+      "rope_type": "default"
+    },
+    "tie_word_embeddings": false,
+    "transformers_version": "5.12.0",
+    "use_cache": false,
+    "vocab_size": 64
+  },
+  "derivation": {
+    "compatibility_adapter": null,
+    "official_config_available": true,
+    "overrides": [
+      {
+        "path": "_name_or_path",
+        "status": "trace_only",
+        "trace_value": ""
+      },
+      {
+        "official_value": [
+          "NanoChatForCausalLM"
+        ],
+        "path": "architectures",
+        "status": "changed",
+        "trace_value": null
+      },
+      {
+        "path": "attention_bias",
+        "status": "trace_only",
+        "trace_value": false
+      },
+      {
+        "official_value": 65527,
+        "path": "bos_token_id",
+        "status": "changed",
+        "trace_value": 1
+      },
+      {
+        "path": "chunk_size_feed_forward",
+        "status": "trace_only",
+        "trace_value": 0
+      },
+      {
+        "official_value": "bfloat16",
+        "path": "dtype",
+        "status": "changed",
+        "trace_value": null
+      },
+      {
+        "official_value": "<|assistant_end|>",
+        "path": "eos_token",
+        "status": "official_only"
+      },
+      {
+        "official_value": 65531,
+        "path": "eos_token_id",
+        "status": "changed",
+        "trace_value": 1
+      },
+      {
+        "path": "final_logit_softcapping",
+        "status": "trace_only",
+        "trace_value": 15.0
+      },
+      {
+        "official_value": 2048,
+        "path": "hidden_size",
+        "status": "changed",
+        "trace_value": 16
+      },
+      {
+        "path": "id2label",
+        "status": "trace_only",
+        "trace_value": {
+          "0": "LABEL_0",
+          "1": "LABEL_1"
+        }
+      },
+      {
+        "official_value": 8192,
+        "path": "intermediate_size",
+        "status": "changed",
+        "trace_value": 32
+      },
+      {
+        "path": "is_encoder_decoder",
+        "status": "trace_only",
+        "trace_value": false
+      },
+      {
+        "path": "label2id",
+        "status": "trace_only",
+        "trace_value": {
+          "LABEL_0": 0,
+          "LABEL_1": 1
+        }
+      },
+      {
+        "official_value": 15.0,
+        "path": "logits_soft_cap",
+        "status": "official_only"
+      },
+      {
+        "official_value": 2048,
+        "path": "max_position_embeddings",
+        "status": "changed",
+        "trace_value": 32
+      },
+      {
+        "official_value": 2048,
+        "path": "n_embd",
+        "status": "official_only"
+      },
+      {
+        "official_value": 16,
+        "path": "n_head",
+        "status": "official_only"
+      },
+      {
+        "official_value": 32,
+        "path": "n_layer",
+        "status": "official_only"
+      },
+      {
+        "official_value": 16,
+        "path": "num_attention_heads",
+        "status": "changed",
+        "trace_value": 4
+      },
+      {
+        "official_value": 32,
+        "path": "num_hidden_layers",
+        "status": "changed",
+        "trace_value": 1
+      },
+      {
+        "official_value": 16,
+        "path": "num_key_value_heads",
+        "status": "changed",
+        "trace_value": 2
+      },
+      {
+        "path": "output_attentions",
+        "status": "trace_only",
+        "trace_value": false
+      },
+      {
+        "path": "output_hidden_states",
+        "status": "trace_only",
+        "trace_value": false
+      },
+      {
+        "official_value": "<|assistant_end|>",
+        "path": "pad_token",
+        "status": "official_only"
+      },
+      {
+        "official_value": 65531,
+        "path": "pad_token_id",
+        "status": "changed",
+        "trace_value": 0
+      },
+      {
+        "path": "problem_type",
+        "status": "trace_only",
+        "trace_value": null
+      },
+      {
+        "official_value": false,
+        "path": "qkv_bias",
+        "status": "official_only"
+      },
+      {
+        "official_value": 0.0,
+        "path": "resid_dropout",
+        "status": "official_only"
+      },
+      {
+        "path": "return_dict",
+        "status": "trace_only",
+        "trace_value": true
+      },
+      {
+        "path": "rope_parameters",
+        "status": "trace_only",
+        "trace_value": {
+          "rope_theta": 10000.0,
+          "rope_type": "default"
+        }
+      },
+      {
+        "official_value": null,
+        "path": "rope_scaling",
+        "status": "official_only"
+      },
+      {
+        "official_value": 10000.0,
+        "path": "rope_theta",
+        "status": "official_only"
+      },
+      {
+        "official_value": "4.57.0.dev0",
+        "path": "transformers_version",
+        "status": "changed",
+        "trace_value": "5.12.0"
+      },
+      {
+        "official_value": true,
+        "path": "use_cache",
+        "status": "changed",
+        "trace_value": false
+      },
+      {
+        "official_value": 65536,
+        "path": "vocab_size",
+        "status": "changed",
+        "trace_value": 64
+      }
+    ],
+    "strategy": "deterministic-compact-cpu-trace"
+  },
+  "kind": "trace_config",
+  "schema_version": "1.0.0",
+  "version_id": "nanochat"
+}

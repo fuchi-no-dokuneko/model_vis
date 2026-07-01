@@ -17,7 +17,7 @@ test("static viewer has no runtime backend or dynamic code execution", async () 
 
 test("viewer exposes every required mode", async () => {
   const html = await readFile("src/ui/index.html", "utf8");
-  for (const mode of ["family", "module", "operation"]) {
+  for (const mode of ["family", "module", "blocks", "operation"]) {
     assert.match(html, new RegExp(`data-mode="${mode}"`));
   }
 });
@@ -28,6 +28,7 @@ test("viewer exposes required inspector and graph controls", async () => {
     "model-list", "module-tree", "source-tree", "uri-input", "graph-viewport", "inspector",
     "source-panel", "source-editor", "source-repository", "copy-source", "shapes-panel",
     "runtime-panel", "compare-pane", "density-button", "fit-button", "reset-button", "minimap",
+    "graph-legend", "graph-search", "continuations", "structural-summary", "official-config-link",
   ]) {
     assert.match(html, new RegExp(`id="${id}"`));
   }

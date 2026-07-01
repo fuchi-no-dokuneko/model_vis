@@ -19,6 +19,7 @@
     <nav class="mode-tabs" aria-label="Viewer mode">
       <button class="mode active" data-mode="family">Families</button>
       <button class="mode" data-mode="module">Modules</button>
+      <button class="mode" data-mode="blocks">Blocks</button>
       <button class="mode" data-mode="operation">Operations</button>
     </nav>
     <div class="toolbar-actions">
@@ -68,6 +69,12 @@
     <section class="graph-region" aria-label="Model graph">
       <div class="canvas-toolbar">
         <nav id="breadcrumbs" class="breadcrumbs" aria-label="Model location"></nav>
+        <label class="graph-search"><span aria-hidden="true">⌕</span><input id="graph-search" type="search" placeholder="Search graph" autocomplete="off"></label>
+        <div class="path-controls" role="group" aria-label="Trace tensor path">
+          <button class="path-control" data-path-mode="upstream" disabled>Inputs</button>
+          <button class="path-control" data-path-mode="downstream" disabled>Outputs</button>
+          <button class="path-control" data-path-mode="isolate" disabled>Path</button>
+        </div>
         <div class="zoom-controls">
           <button id="zoom-out" class="icon-button" title="Zoom out" aria-label="Zoom out">−</button>
           <output id="zoom-value">100%</output>
@@ -81,6 +88,18 @@
             <div id="nodes"></div>
         </div>
         <canvas id="minimap" class="minimap" width="272" height="176" aria-label="Graph overview"></canvas>
+        <aside id="graph-legend" class="graph-legend" aria-label="Graph legend">
+          <div class="legend-title">Legend</div>
+          <div><span class="legend-node module"></span>Module or operation</div>
+          <div><span class="legend-node input"></span>Input boundary</div>
+          <div><span class="legend-node output"></span>Output boundary</div>
+          <div><span class="legend-edge exact"></span>Exact route</div>
+          <div><span class="legend-edge inferred"></span>Inferred route</div>
+          <div><span class="legend-edge ambiguous"></span>Ambiguous route</div>
+          <div><span class="legend-layer"></span>Repeated layer color</div>
+          <div><span class="legend-selection"></span>Selection and traced path</div>
+        </aside>
+        <div id="continuations" class="continuations" aria-live="polite"></div>
         <div id="graph-status" class="graph-status" hidden></div>
         <div id="empty-state" class="empty-state">Select a model</div>
       </div>
@@ -94,6 +113,7 @@
           <button id="close-inspector" class="icon-button mobile-only" title="Close inspector" aria-label="Close inspector">×</button>
         </div>
       </div>
+      <div id="model-warning" class="model-warning" role="alert" hidden></div>
       <div class="inspector-tabs" role="tablist" aria-label="Inspector view">
         <button class="inspector-tab active" data-panel="details" role="tab">Details</button>
         <button class="inspector-tab" data-panel="shapes" role="tab">I/O</button>
@@ -101,7 +121,10 @@
         <button class="inspector-tab" data-panel="runtime" role="tab">Runtime</button>
         <button class="inspector-tab" data-panel="config" role="tab">Config</button>
       </div>
-      <section id="details-panel" class="inspector-panel active"><div id="metadata" class="metadata"></div></section>
+      <section id="details-panel" class="inspector-panel active">
+        <div id="structural-summary" class="structural-summary"></div>
+        <div id="metadata" class="metadata"></div>
+      </section>
       <section id="shapes-panel" class="inspector-panel"><div id="shape-list" class="shape-list"></div></section>
       <section id="source-panel" class="inspector-panel source-panel">
         <div class="source-toolbar">
@@ -114,7 +137,17 @@
         <div id="source-editor" class="source-editor" role="region" aria-label="Read-only source code"><div id="source-lines" class="source-lines"></div></div>
       </section>
       <section id="runtime-panel" class="inspector-panel"><div id="runtime-view" class="runtime-view"></div></section>
-      <section id="config-panel" class="inspector-panel"><div id="config-view" class="config-view">Open Config to load this asset.</div></section>
+      <section id="config-panel" class="inspector-panel config-panel">
+        <div class="config-toolbar">
+          <div class="config-modes" role="tablist" aria-label="Configuration type">
+            <button class="config-mode active" data-config-mode="official" role="tab">Official</button>
+            <button class="config-mode" data-config-mode="trace" role="tab">Trace</button>
+            <button class="config-mode" data-config-mode="diff" role="tab">Differences</button>
+          </div>
+          <a id="official-config-link" class="icon-button" title="Open pinned official config" aria-label="Open pinned official config" target="_blank" rel="noopener noreferrer" hidden>↗</a>
+        </div>
+        <div id="config-view" class="config-view">Open Config to load this asset.</div>
+      </section>
     </aside>
   </main>
 

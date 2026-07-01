@@ -1,0 +1,347 @@
+{
+  "config": {
+    "_name_or_path": "",
+    "architectures": null,
+    "attention_dropout": 0.0,
+    "attention_head_dim": 8,
+    "attention_hidden_size": 32,
+    "attn_layer_offset": 4,
+    "attn_layer_period": 6,
+    "bos_token_id": 1,
+    "chunk_size_feed_forward": 0,
+    "dtype": null,
+    "eos_token_id": 1,
+    "hidden_act": "gelu",
+    "hidden_mamba_act": "silu",
+    "hidden_size": 16,
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "initializer_range": 0.02,
+    "intermediate_size": 32,
+    "is_encoder_decoder": false,
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "layers_block_type": [
+      "mamba",
+      "hybrid"
+    ],
+    "mamba_conv_bias": true,
+    "mamba_d_conv": 2,
+    "mamba_d_state": 4,
+    "mamba_dt_rank": 4,
+    "mamba_expand": 1,
+    "mamba_proj_bias": false,
+    "max_position_embeddings": 32,
+    "model_type": "zamba",
+    "n_mamba_heads": 4,
+    "num_attention_heads": 4,
+    "num_hidden_layers": 2,
+    "num_key_value_heads": 2,
+    "num_logits_to_keep": 1,
+    "output_attentions": false,
+    "output_hidden_states": false,
+    "pad_token_id": 0,
+    "problem_type": null,
+    "return_dict": true,
+    "rms_norm_eps": 1e-05,
+    "tie_word_embeddings": false,
+    "time_step_floor": 0.0001,
+    "time_step_max": 0.1,
+    "time_step_min": 0.001,
+    "transformers_version": "5.12.0",
+    "use_cache": false,
+    "use_mamba_kernels": false,
+    "vocab_size": 64
+  },
+  "derivation": {
+    "compatibility_adapter": null,
+    "official_config_available": true,
+    "overrides": [
+      {
+        "official_value": "Zyphra/Zamba-7B-v1",
+        "path": "_name_or_path",
+        "status": "changed",
+        "trace_value": ""
+      },
+      {
+        "official_value": [
+          "ZambaForCausalLM"
+        ],
+        "path": "architectures",
+        "status": "changed",
+        "trace_value": null
+      },
+      {
+        "path": "attention_head_dim",
+        "status": "trace_only",
+        "trace_value": 8
+      },
+      {
+        "path": "attention_hidden_size",
+        "status": "trace_only",
+        "trace_value": 32
+      },
+      {
+        "path": "chunk_size_feed_forward",
+        "status": "trace_only",
+        "trace_value": 0
+      },
+      {
+        "path": "dtype",
+        "status": "trace_only",
+        "trace_value": null
+      },
+      {
+        "official_value": 2,
+        "path": "eos_token_id",
+        "status": "changed",
+        "trace_value": 1
+      },
+      {
+        "official_value": 3712,
+        "path": "hidden_size",
+        "status": "changed",
+        "trace_value": 16
+      },
+      {
+        "path": "id2label",
+        "status": "trace_only",
+        "trace_value": {
+          "0": "LABEL_0",
+          "1": "LABEL_1"
+        }
+      },
+      {
+        "official_value": 14848,
+        "path": "intermediate_size",
+        "status": "changed",
+        "trace_value": 32
+      },
+      {
+        "path": "is_encoder_decoder",
+        "status": "trace_only",
+        "trace_value": false
+      },
+      {
+        "path": "label2id",
+        "status": "trace_only",
+        "trace_value": {
+          "LABEL_0": 0,
+          "LABEL_1": 1
+        }
+      },
+      {
+        "official_value": [
+          "mamba",
+          "mamba",
+          "hybrid",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "hybrid",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "hybrid",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "hybrid",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "hybrid",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "hybrid",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "hybrid",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "hybrid",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "hybrid",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "hybrid",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "hybrid",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "hybrid",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "mamba",
+          "hybrid",
+          "mamba",
+          "mamba"
+        ],
+        "path": "layers_block_type",
+        "status": "changed",
+        "trace_value": [
+          "mamba",
+          "hybrid"
+        ]
+      },
+      {
+        "official_value": 4,
+        "path": "mamba_d_conv",
+        "status": "changed",
+        "trace_value": 2
+      },
+      {
+        "official_value": 16,
+        "path": "mamba_d_state",
+        "status": "changed",
+        "trace_value": 4
+      },
+      {
+        "official_value": 232,
+        "path": "mamba_dt_rank",
+        "status": "changed",
+        "trace_value": 4
+      },
+      {
+        "official_value": 2,
+        "path": "mamba_expand",
+        "status": "changed",
+        "trace_value": 1
+      },
+      {
+        "official_value": 4096,
+        "path": "max_position_embeddings",
+        "status": "changed",
+        "trace_value": 32
+      },
+      {
+        "official_value": 2,
+        "path": "n_mamba_heads",
+        "status": "changed",
+        "trace_value": 4
+      },
+      {
+        "official_value": 16,
+        "path": "num_attention_heads",
+        "status": "changed",
+        "trace_value": 4
+      },
+      {
+        "official_value": 76,
+        "path": "num_hidden_layers",
+        "status": "changed",
+        "trace_value": 2
+      },
+      {
+        "official_value": 16,
+        "path": "num_key_value_heads",
+        "status": "changed",
+        "trace_value": 2
+      },
+      {
+        "path": "output_attentions",
+        "status": "trace_only",
+        "trace_value": false
+      },
+      {
+        "path": "output_hidden_states",
+        "status": "trace_only",
+        "trace_value": false
+      },
+      {
+        "path": "problem_type",
+        "status": "trace_only",
+        "trace_value": null
+      },
+      {
+        "path": "return_dict",
+        "status": "trace_only",
+        "trace_value": true
+      },
+      {
+        "official_value": 10000,
+        "path": "rope_theta",
+        "status": "official_only"
+      },
+      {
+        "official_value": null,
+        "path": "sliding_window",
+        "status": "official_only"
+      },
+      {
+        "path": "tie_word_embeddings",
+        "status": "trace_only",
+        "trace_value": false
+      },
+      {
+        "official_value": "bfloat16",
+        "path": "torch_dtype",
+        "status": "official_only"
+      },
+      {
+        "official_value": "4.45.0.dev0",
+        "path": "transformers_version",
+        "status": "changed",
+        "trace_value": "5.12.0"
+      },
+      {
+        "official_value": true,
+        "path": "use_cache",
+        "status": "changed",
+        "trace_value": false
+      },
+      {
+        "official_value": true,
+        "path": "use_mamba_kernels",
+        "status": "changed",
+        "trace_value": false
+      },
+      {
+        "official_value": 32000,
+        "path": "vocab_size",
+        "status": "changed",
+        "trace_value": 64
+      }
+    ],
+    "strategy": "deterministic-compact-cpu-trace"
+  },
+  "kind": "trace_config",
+  "schema_version": "1.0.0",
+  "version_id": "zamba"
+}

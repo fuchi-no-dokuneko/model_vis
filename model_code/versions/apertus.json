@@ -15,7 +15,10 @@
     "blocks/shared/dedup.sha256.daa2fb48a13a8ea638ac001d7eb8d5e3505d4cafdcf6f495600207e8b5b61534/block.json",
     "blocks/shared/dedup.sha256.f1798b4b0068fe929821781e189ab2bfd3cdfafefa50b8a9a25ba20c7591ee84/block.json",
     "blocks/shared/dedup.sha256.fbe53f0343d2aa92bcae2f7aaa44db5bdc3d1fd56e04d3b86f2e202435e87b4c/block.json",
+    "configs/diffs/apertus.json",
+    "configs/official/apertus.json",
     "configs/sha256.8aadbc34d4d7b09618d7a353dd665854431404d73ff0c0565f5319b973ee19fd.json",
+    "configs/trace/apertus.json",
     "graphs/sha256.8aadbc34d4d7b09618d7a353dd665854431404d73ff0c0565f5319b973ee19fd.json",
     "sources/files/sha256.1961ad1a1f650e104b3c7f78d19af2d21bf977e7af6c3fdf2420aad563c9e202.py.txt",
     "sources/files/sha256.252a17b73d020df90157e4033e2db51dcac8c11c9ffb799c33d5302a71c4964e.py.txt",
@@ -43,17 +46,18 @@
   ],
   "block_count": 17,
   "blocks_ref": "blocks/sha256.8aadbc34d4d7b09618d7a353dd665854431404d73ff0c0565f5319b973ee19fd.json",
-  "builder_version": "0.3.0",
-  "cache_revision": "canonical-lineage-v2.4",
+  "builder_version": "0.4.0",
+  "cache_revision": "official-config-unique-stage-v4",
   "canonical_version_id": "apertus",
   "category": "Text models",
   "config_class": "ApertusConfig",
+  "config_diff_ref": "configs/diffs/apertus.json",
   "config_ref": "configs/sha256.8aadbc34d4d7b09618d7a353dd665854431404d73ff0c0565f5319b973ee19fd.json",
   "display_name": "Apertus",
   "entrypoint_class": "ApertusModel",
   "entrypoint_module": "transformers.models.apertus.modeling_apertus",
-  "execution_mode": "full_model_forward",
-  "execution_reused": false,
+  "execution_mode": "unique_structure_forward",
+  "execution_reused": true,
   "execution_source_version": "apertus",
   "family_id": "apertus",
   "family_name": "Apertus",
@@ -64,12 +68,78 @@
   },
   "graph_ref": "graphs/sha256.8aadbc34d4d7b09618d7a353dd665854431404d73ff0c0565f5319b973ee19fd.json",
   "library": "transformers",
+  "official_config_ref": "configs/official/apertus.json",
+  "official_config_source": {
+    "compatibility_adapter": null,
+    "config_path": "config.json",
+    "license": "apache-2.0",
+    "mapping_status": "approved",
+    "pinned_url": "https://huggingface.co/swiss-ai/Apertus-v1.1-0.5B/blob/1b7276176e564fc0cc7d7c3b991a8d653c8b8792/config.json",
+    "publisher": "Swiss AI Initiative",
+    "repo_id": "swiss-ai/Apertus-v1.1-0.5B",
+    "review_notes": "Smallest official Apertus v1.1 release.",
+    "revision": "1b7276176e564fc0cc7d7c3b991a8d653c8b8792",
+    "sha256": "a7bf256ceb8d77e633d2f32588ea72e8c0b39d77fc5e2c5c7031e1c3b767ee38",
+    "size_bytes": 832
+  },
   "operation_count": 121,
   "parameters": {
     "total": 2874,
     "trainable": 2874
   },
-  "schema_version": "2.1.0",
+  "resource_preflight": {
+    "compact_estimated_peak_bytes": 68976,
+    "compact_parameter_count": 2874,
+    "compact_schedule": {},
+    "decision": "official_model_exceeds_host",
+    "estimated_parameter_bytes": 2256535552,
+    "estimated_parameter_count": 564133888,
+    "estimated_peak_bytes": 13539213312,
+    "execution_mode": "unique_structure_forward",
+    "operation_fallback_required": false,
+    "resource_budget_bytes": 9971465420,
+    "resource_preflight": {
+      "available_memory_bytes": 15340716032,
+      "cpu_count": 6,
+      "total_memory_bytes": 16769368064
+    },
+    "templates": [
+      {
+        "effective_config": {},
+        "layer_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "representative_layer_index": 0,
+        "template_id": "layer-template-000"
+      }
+    ]
+  },
+  "schema_version": "2.2.0",
+  "security_policy": {
+    "network_during_trace": false,
+    "remote_code_executed": false,
+    "trust_remote_code": false,
+    "weights_downloaded": false
+  },
   "sources": [
     "source.sha256.c358c214f663ba0c8b9c6846fbe0042fa29494cf02fe4714a17dcd0d268b035b",
     "source.sha256.078d3017261a1eb3d043eaa898935aaefcae414d0e375bd4c8a2998b2f2122c5",
@@ -117,7 +187,66 @@
       "tensor_id": "tensor-000121"
     }
   ],
+  "trace_config_ref": "configs/trace/apertus.json",
   "trace_event_count": 121,
   "trace_ref": "traces/sha256.8aadbc34d4d7b09618d7a353dd665854431404d73ff0c0565f5319b973ee19fd.json",
-  "version_id": "apertus"
+  "trace_templates": [
+    {
+      "effective_config": {},
+      "expanded_instances_observed": false,
+      "instance_module_paths": [
+        "layers.0",
+        "layers.1",
+        "layers.2",
+        "layers.3",
+        "layers.4",
+        "layers.5",
+        "layers.6",
+        "layers.7",
+        "layers.8",
+        "layers.9",
+        "layers.10",
+        "layers.11",
+        "layers.12",
+        "layers.13",
+        "layers.14",
+        "layers.15",
+        "layers.16",
+        "layers.17",
+        "layers.18",
+        "layers.19"
+      ],
+      "layer_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "observed_module_path": "layers.0",
+      "observed_module_paths": [
+        "layers.0"
+      ],
+      "provenance": "representative_runtime_forward",
+      "representative_layer_index": 0,
+      "template_id": "layer-template-000"
+    }
+  ],
+  "version_id": "apertus",
+  "warnings": []
 }

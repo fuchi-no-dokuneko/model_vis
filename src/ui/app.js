@@ -1,5 +1,5 @@
 import { configDifferences, flattenConfig, ModelStore } from "./data-store.js";
-import { graphBounds, layoutGraph, NODE_HEIGHT, NODE_WIDTH, projectGraph } from "./graph-model.js";
+import { graphBounds, layoutGraph, NODE_HEIGHT, NODE_WIDTH, projectGraph, tracePath } from "./graph-model.js";
 
 const $ = (selector) => document.querySelector(selector);
 const store = new ModelStore();
@@ -20,6 +20,10 @@ const state = {
   blocks: null,
   trace: null,
   config: null,
+  officialConfig: null,
+  traceConfig: null,
+  configDiff: null,
+  configMode: "official",
   scopeModuleId: null,
   hierarchyModuleId: null,
   inspected: null,
@@ -45,6 +49,12 @@ const state = {
   moduleExpanded: new Set(["module-00000"]),
   fileExpanded: new Set(),
   routeApplying: false,
+  graphQuery: "",
+  graphMatches: new Set(),
+  pathMode: null,
+  pathNodes: new Set(),
+  pathEdges: new Set(),
+  selectedPortId: null,
 };
 
 function formatNumber(value) {
@@ -136,9 +146,22 @@ function renderListWindow() {
     const name = document.createElement("span");
     name.className = "model-name";
     name.textContent = item.family_name;
+    if (item.status === "partial") {
+      const warning = document.createElement("span");
+      warning.className = "model-warning-badge";
+      warning.title = item.warnings?.map((value) => value.message).join("\n") || "Partial model record";
+      warning.setAttribute("aria-label", "Model has a warning");
+      warning.textContent = "!";
+      name.append(warning);
+    }
     const meta = document.createElement("span");
     meta.className = "model-meta";
-    for (const text of [item.category.replace(" models", ""), item.version_id, `${formatNumber(item.parameters)} params`]) {
+    for (const text of [
+      item.category.replace(" models", ""),
+      item.version_id,
+      `${formatNumber(item.parameters)} trace params`,
+      item.official_parameter_estimate ? `${formatNumber(item.official_parameter_estimate)} est. official` : null,
+    ].filter(Boolean)) {
       const value = document.createElement("span");
       value.textContent = text;
       meta.append(value);
@@ -233,13 +256,13 @@ async function applyRoute(value) {
   const route = parseRoute(value);
   if (!route.version) throw new Error("URI must include /version/<version-id>");
   if (!state.index.some((item) => item.version_id === route.version)) throw new Error(`Unknown model version: ${route.version}`);
-  if (route.view && !["family", "module", "operation"].includes(route.view)) {
+  if (route.view && !["family", "module", "blocks", "operation"].includes(route.view)) {
     throw new Error(`Unknown graph detail mode: ${route.view}`);
   }
   state.routeApplying = true;
   try {
     await loadVersion(route.version, { sync: false });
-    const mode = ["family", "module", "operation"].includes(route.view) ? route.view : "module";
+    const mode = ["family", "module", "blocks", "operation"].includes(route.view) ? route.view : "module";
     await setMode(mode, { sync: false });
     if (route.module && state.graph) {
       const module = moduleByPath(route.module);
@@ -335,6 +358,7 @@ function renderBreadcrumbs() {
     }
   }
   if (state.mode === "operation") crumbs.push({ label: "Operations", action: () => setMode("operation") });
+  if (state.mode === "blocks") crumbs.push({ label: "Blocks", action: () => setMode("blocks") });
   crumbs.forEach((crumb, index) => {
     const button = document.createElement("button");
     button.className = `breadcrumb${index === crumbs.length - 1 ? " current" : ""}`;
@@ -363,6 +387,7 @@ async function ensureModeAssets() {
     return;
   }
   await ensureGraphAssets();
+  if (state.mode === "blocks") state.blocks ||= await store.blocks(state.current);
 }
 
 async function loadVersion(versionId, { sync = true } = {}) {
@@ -379,11 +404,19 @@ async function loadVersion(versionId, { sync = true } = {}) {
   state.blocks = null;
   state.trace = null;
   state.config = null;
+  state.officialConfig = null;
+  state.traceConfig = null;
+  state.configDiff = null;
+  state.configMode = "official";
   state.scopeModuleId = null;
   state.hierarchyModuleId = null;
   state.selectedId = null;
   state.selectedCallId = null;
   state.selectedIds.clear();
+  state.pathMode = null;
+  state.pathNodes.clear();
+  state.pathEdges.clear();
+  state.selectedPortId = null;
   state.inspected = version;
   state.sourceAssets = new Map();
   state.currentSourceText = "";
@@ -403,6 +436,10 @@ async function setMode(mode, { sync = true } = {}) {
   state.selectedId = null;
   state.selectedCallId = null;
   state.selectedIds.clear();
+  state.pathMode = null;
+  state.pathNodes.clear();
+  state.pathEdges.clear();
+  state.selectedPortId = null;
   document.querySelectorAll(".mode").forEach((button) => button.classList.toggle("active", button.dataset.mode === mode));
   updateDensityButton();
   await renderMode({ fit: true });
@@ -436,6 +473,7 @@ async function renderMode({ fit = false } = {}) {
       family: state.family,
       index: state.index,
       graph: state.graph,
+      blocks: state.blocks,
       scopeModuleId: state.scopeModuleId,
     });
     const nextLayoutKey = positionStorageKey();
@@ -450,8 +488,11 @@ async function renderMode({ fit = false } = {}) {
     $("#edges").setAttribute("viewBox", `0 0 ${state.bounds.width} ${state.bounds.height}`);
     $("#empty-state").hidden = state.graphView.nodes.length > 0;
     renderBreadcrumbs();
+    updateGraphSearch({ render: false });
+    updatePathControls();
     updateTransform();
     renderVisibleGraph();
+    renderStructuralSummary();
     if (fit) requestAnimationFrame(fitGraph);
   } catch (error) {
     $("#empty-state").hidden = false;
@@ -725,7 +766,7 @@ function scheduleVisibleRender() {
   });
 }
 
-function portBand(ports, direction) {
+function portBand(nodeItem, ports, direction) {
   const band = document.createElement("div");
   band.className = `node-ports ${direction === "input" ? "inputs" : "outputs"}`;
   if (!ports.length) {
@@ -735,10 +776,11 @@ function portBand(ports, direction) {
     return band;
   }
   for (const port of ports) {
-    const item = document.createElement("div");
-    item.className = "node-port";
-    item.dataset.portId = port.port_id;
-    item.title = [
+    const portElement = document.createElement("div");
+    portElement.className = "node-port";
+    portElement.dataset.portId = port.port_id;
+    portElement.classList.toggle("selected", state.selectedPortId === port.port_id);
+    portElement.title = [
       port.name || direction,
       shapeLabel([port]),
       port.dtype,
@@ -752,8 +794,13 @@ function portBand(ports, direction) {
     const shape = document.createElement("span");
     shape.className = "port-shape";
     shape.textContent = shapeLabel([port]) || "non-tensor";
-    item.append(name, shape);
-    band.append(item);
+    const meta = document.createElement("span");
+    meta.className = "port-meta";
+    meta.textContent = [port.dtype?.replace("torch.", ""), port.alias_kind, port.is_inplace ? "mutated" : null].filter(Boolean).join(" · ");
+    portElement.append(name, shape, meta);
+    portElement.addEventListener("pointerdown", (event) => event.stopPropagation());
+    portElement.addEventListener("click", (event) => selectPort(nodeItem, port, direction, event));
+    band.append(portElement);
   }
   return band;
 }
@@ -771,6 +818,9 @@ function renderVisibleGraph() {
     node.dataset.kind = item.kind;
     node.classList.toggle("selected", state.selectedId === item.id);
     node.classList.toggle("multi-selected", state.selectedIds.has(item.id));
+    node.classList.toggle("search-match", state.graphMatches.has(item.id));
+    node.classList.toggle("path-active", state.pathNodes.has(item.id));
+    node.classList.toggle("path-muted", state.pathNodes.size > 0 && !state.pathNodes.has(item.id));
     node.style.left = `${position.x}px`;
     node.style.top = `${position.y}px`;
     node.style.setProperty("--layer-color", layerColor(item.layerGroupId));
@@ -793,7 +843,32 @@ function renderVisibleGraph() {
       badge.textContent = layer?.qualified_name || item.layerGroupId;
       core.append(badge);
     }
-    node.append(portBand(item.inputPorts, "input"), core, portBand(item.outputPorts, "output"));
+    if (state.mode !== "family") {
+      const actions = document.createElement("div");
+      actions.className = "node-actions";
+      const commands = [
+        ["Open", "Open module", async () => item.raw.module_id && selectModule(item.raw.module_id)],
+        ["Ops", "Show operations", async () => {
+          if (item.raw.module_id) state.scopeModuleId = item.raw.module_id;
+          await setMode("operation");
+        }],
+        ["Parent", "Go to parent module", async () => {
+          const module = moduleById(item.raw.module_id);
+          if (module?.parent_module_id) await selectModule(module.parent_module_id);
+        }],
+      ];
+      for (const [label, titleText, action] of commands) {
+        const button = document.createElement("button");
+        button.className = "node-action";
+        button.textContent = label;
+        button.title = titleText;
+        button.addEventListener("pointerdown", (event) => event.stopPropagation());
+        button.addEventListener("click", async (event) => { event.stopPropagation(); await action(); });
+        actions.append(button);
+      }
+      core.append(actions);
+    }
+    node.append(portBand(item, item.inputPorts, "input"), core, portBand(item, item.outputPorts, "output"));
     node.addEventListener("pointerdown", startNodeDrag);
     node.addEventListener("click", (event) => selectNode(item, event));
     node.addEventListener("dblclick", (event) => drillIntoNode(item, event));
@@ -852,13 +927,49 @@ function renderEdges(visible) {
     const bend = Math.max(34, Math.abs(after.y - before.y) / 2);
     path.setAttribute("d", `M ${before.x} ${before.y} C ${before.x} ${before.y + bend}, ${after.x} ${after.y - bend}, ${after.x} ${after.y}`);
     path.dataset.confidence = edge.confidence || "exact";
-    path.classList.toggle("active", edge.source === state.selectedId || edge.target === state.selectedId);
+    path.classList.toggle("active", state.pathEdges.has(edge.edge_id)
+      || (!state.pathEdges.size && (edge.source === state.selectedId || edge.target === state.selectedId)));
     const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
     title.textContent = `${edge.tensor_id || "route"} ${shapeLabel([{ shape: edge.shape }])} ${edge.confidence || "exact"}`;
     path.append(title);
     fragment.append(path);
   }
   svg.replaceChildren(fragment);
+  renderContinuationMarkers(visible, byId);
+}
+
+function renderContinuationMarkers(visible, byId) {
+  const container = $("#continuations");
+  const viewport = $("#graph-viewport");
+  const groups = new Map();
+  for (const edge of state.graphView.edges) {
+    const sourceVisible = visible.has(edge.source);
+    const targetVisible = visible.has(edge.target);
+    if (sourceVisible === targetVisible) continue;
+    const anchorId = sourceVisible ? edge.source : edge.target;
+    const offscreenId = sourceVisible ? edge.target : edge.source;
+    const direction = sourceVisible ? "to" : "from";
+    const key = `${anchorId}:${direction}`;
+    if (!groups.has(key)) groups.set(key, { anchorId, offscreenId, direction, count: 0 });
+    groups.get(key).count += 1;
+  }
+  const fragment = document.createDocumentFragment();
+  for (const group of groups.values()) {
+    const anchor = byId.get(group.anchorId);
+    const offscreen = byId.get(group.offscreenId);
+    if (!anchor || !offscreen) continue;
+    const anchorPosition = positionFor(anchor.id);
+    const offscreenPosition = positionFor(offscreen.id);
+    const marker = document.createElement("div");
+    marker.className = "continuation-marker";
+    const noun = group.direction === "to" ? "consumer" : "producer";
+    marker.textContent = `${group.direction} ${group.count} off-screen ${noun}${group.count === 1 ? "" : "s"}`;
+    const rightSide = offscreenPosition.x >= anchorPosition.x;
+    marker.style.left = `${rightSide ? Math.max(4, viewport.clientWidth - 184) : 4}px`;
+    marker.style.top = `${Math.max(4, Math.min(viewport.clientHeight - 28, state.pan.y + (anchorPosition.y + NODE_HEIGHT / 2) * state.zoom))}px`;
+    fragment.append(marker);
+  }
+  container.replaceChildren(fragment);
 }
 
 function renderLayerGroups() {
@@ -896,7 +1007,8 @@ function renderMinimap() {
   context.fillRect(0, 0, canvas.width, canvas.height);
   const scale = Math.min(canvas.width / state.bounds.width, canvas.height / state.bounds.height);
   for (const node of state.graphView.nodes) {
-    context.fillStyle = layerColor(node.layerGroupId);
+    context.fillStyle = state.graphMatches.has(node.id) ? "#356a9b"
+      : state.pathNodes.has(node.id) ? "#a76508" : layerColor(node.layerGroupId);
     const position = positionFor(node.id);
     context.fillRect(position.x * scale, position.y * scale, Math.max(3, NODE_WIDTH * scale), Math.max(2, 7 * scale));
   }
@@ -921,6 +1033,7 @@ function selectNode(item, event = {}, { sync = true } = {}) {
     state.selectedIds.add(item.id);
   }
   state.selectedId = item.id;
+  state.selectedPortId = null;
   state.selectedCallId = item.raw.call_id || null;
   if (item.raw.module_id) {
     state.hierarchyModuleId = item.raw.module_id;
@@ -932,10 +1045,91 @@ function selectNode(item, event = {}, { sync = true } = {}) {
     });
   }
   state.inspected = item.raw;
+  if (state.pathMode) applyPathMode(state.pathMode, { render: false });
+  updatePathControls();
   renderInspector(item.raw);
   renderVisibleGraph();
   if (sync) syncRoute();
   if (window.innerWidth <= 980) openInspector();
+}
+
+function selectPort(item, port, direction, event) {
+  event.stopPropagation();
+  state.selectedId = item.id;
+  state.selectedIds = new Set([item.id]);
+  state.selectedPortId = port.port_id;
+  const routeEdges = state.graphView.edges.filter((edge) => edge.tensor_id === port.tensor_id);
+  const byId = new Map(state.graphView.nodes.map((node) => [node.id, node]));
+  const producers = [...new Set(routeEdges.map((edge) => byId.get(edge.source)?.title).filter(Boolean))];
+  const consumers = [...new Set(routeEdges.map((edge) => byId.get(edge.target)?.title).filter(Boolean))];
+  const tensor = state.graph?.tensors?.find((value) => value.tensor_id === port.tensor_id) || {};
+  state.inspected = {
+    ...tensor,
+    ...port,
+    kind: "tensor_route",
+    display_name: port.name || port.tensor_id,
+    producer: producers.join(", ") || "external input",
+    consumers: consumers.join(", ") || "external output",
+    route: {
+      producer: producers,
+      consumers,
+      confidence: [...new Set(routeEdges.map((edge) => edge.confidence || "exact"))],
+      mutation: tensor.mutation_history || tensor.mutations || [],
+      alias: port.alias_kind || tensor.alias_kind,
+      required: port.required,
+    },
+    input_ports: direction === "input" ? [port] : [],
+    output_ports: direction === "output" ? [port] : [],
+  };
+  state.pathMode = "isolate";
+  state.pathEdges = new Set(routeEdges.map((edge) => edge.edge_id));
+  state.pathNodes = new Set(routeEdges.flatMap((edge) => [edge.source, edge.target]));
+  updatePathControls();
+  renderInspector(state.inspected);
+  renderVisibleGraph();
+  if (window.innerWidth <= 980) openInspector();
+}
+
+function updatePathControls() {
+  document.querySelectorAll(".path-control").forEach((button) => {
+    button.disabled = !state.selectedId;
+    button.classList.toggle("active", button.dataset.pathMode === state.pathMode);
+  });
+}
+
+function applyPathMode(mode, { render = true } = {}) {
+  if (!state.selectedId) return;
+  state.pathMode = state.pathMode === mode && render ? null : mode;
+  if (!state.pathMode) {
+    state.pathNodes.clear();
+    state.pathEdges.clear();
+  } else {
+    const path = tracePath(state.graphView.edges, state.selectedId, state.pathMode);
+    state.pathNodes = path.nodes;
+    state.pathEdges = path.edges;
+  }
+  updatePathControls();
+  if (render) renderVisibleGraph();
+}
+
+function updateGraphSearch({ render = true } = {}) {
+  state.graphQuery = $("#graph-search").value.trim().toLowerCase();
+  state.graphMatches.clear();
+  if (state.graphQuery) {
+    for (const item of state.graphView.nodes) {
+      const searchable = [
+        item.title,
+        item.subtitle,
+        item.kind,
+        item.raw.source_ref?.file,
+        item.raw.source_ref?.symbol,
+        ...item.inputPorts.flatMap((port) => [port.name, port.tensor_id, port.dtype, shapeLabel([port])]),
+        ...item.outputPorts.flatMap((port) => [port.name, port.tensor_id, port.dtype, shapeLabel([port])]),
+      ].filter(Boolean).join(" ").toLowerCase();
+      if (searchable.includes(state.graphQuery)) state.graphMatches.add(item.id);
+    }
+  }
+  if (render) renderVisibleGraph();
 }
 
 async function drillIntoNode(item, event = {}) {
@@ -959,19 +1153,65 @@ async function drillIntoNode(item, event = {}) {
 function metadataRows(value) {
   const preferred = [
     "status", "library", "architecture_key", "entrypoint_class", "execution_mode", "kind", "name",
-    "qualified_name", "module_path", "class_name", "block_type", "trace_confidence", "operation_count", "block_count",
+    "qualified_name", "module_path", "class_name", "block_type", "trace_confidence", "producer", "consumers",
+    "tensor_id", "dtype", "alias_kind", "mutation_version", "required", "operation_count", "block_count",
   ];
   const rows = [];
   for (const key of preferred) if (value?.[key] !== undefined && value[key] !== null) rows.push([key.replaceAll("_", " "), value[key]]);
   if (value?.parameters !== undefined) {
     const count = typeof value.parameters === "number" ? value.parameters : value.parameters.total;
-    if (Number.isFinite(count)) rows.push(["parameters", count.toLocaleString()]);
+    if (Number.isFinite(count)) rows.push(["trace initialized parameters", count.toLocaleString()]);
   }
+  const officialEstimate = value?.resource_preflight?.estimated_parameter_count;
+  if (Number.isFinite(officialEstimate)) rows.push(["official parameter estimate", officialEstimate.toLocaleString()]);
   if (value?.input_ports) rows.push(["inputs", value.input_ports.length]);
   if (value?.output_ports) rows.push(["outputs", value.output_ports.length]);
   if (value?.layer_group_id) rows.push(["layer group", value.layer_group_id]);
   if (value?.sources) rows.push(["source assets", value.sources.length]);
   return rows;
+}
+
+function renderStructuralSummary() {
+  const container = $("#structural-summary");
+  if (!state.current) {
+    container.replaceChildren();
+    return;
+  }
+  const modules = state.graph?.modules || [];
+  const depth = modules.length ? Math.max(...modules.map((module) => (
+    module.qualified_name === "<root>" ? 0 : module.qualified_name.split(".").length
+  ))) : "—";
+  const templates = state.current.trace_templates || state.trace?.trace_templates || [];
+  const repeated = templates.reduce((total, item) => total + Math.max(0, item.layer_indices.length - 1), 0);
+  const inputs = state.graph?.nodes.find((node) => node.kind === "graph_input")?.output_ports || [];
+  const outputs = state.current.top_level_outputs || [];
+  const shapeFlow = `${shapeLabel(inputs) || "—"} → ${shapeLabel(outputs) || "—"}`;
+  const total = state.current.parameters?.total || 0;
+  const trainable = state.current.parameters?.trainable || 0;
+  const metrics = [
+    [depth, "Hierarchy depth"],
+    [modules.length || "—", "Modules"],
+    [repeated, "Repeated layers"],
+    [`${formatNumber(trainable)} / ${formatNumber(total)}`, "Trace trainable / total"],
+    [state.current.operation_count || state.current.trace_event_count || "—", "Operations"],
+    [templates.length || state.graph?.layer_groups?.length || "—", "Layer structures"],
+    [`${inputs.length} / ${outputs.length}`, "Inputs / outputs"],
+    [shapeFlow, "Tensor shape flow"],
+  ];
+  const fragment = document.createDocumentFragment();
+  for (const [value, label] of metrics) {
+    const metric = document.createElement("div");
+    metric.className = "summary-metric";
+    const content = document.createElement("span");
+    content.className = "summary-value";
+    content.textContent = String(value);
+    const name = document.createElement("span");
+    name.className = "summary-label";
+    name.textContent = label;
+    metric.append(content, name);
+    fragment.append(metric);
+  }
+  container.replaceChildren(fragment);
 }
 
 function renderInspector(value) {
@@ -987,6 +1227,11 @@ function renderInspector(value) {
     list.append(term, detail);
   }
   $("#metadata").replaceChildren(list);
+  const warnings = state.current?.warnings || [];
+  const warning = $("#model-warning");
+  warning.hidden = warnings.length === 0;
+  warning.textContent = warnings.map((item) => item.message).join(" ");
+  renderStructuralSummary();
   renderShapes(value);
   renderRuntime(value);
   const ref = sourceRefFor(value);
@@ -1090,6 +1335,7 @@ function renderRuntime(value) {
   appendRuntimeSection(container, "Tensor parameters", tensorParameters.map((item) => [
     item.name, `${shapeLabel([item])} · ${item.dtype} · ${item.trainable ? "trainable" : "fixed"}`,
   ]));
+  if (value?.route) appendRuntimeSection(container, "Tensor route", Object.entries(value.route));
   if (!container.children.length) container.textContent = "No constructor or runtime argument record is attached to this selection.";
 }
 
@@ -1192,27 +1438,65 @@ async function switchInspectorPanel(panel) {
   document.querySelectorAll(".inspector-tab").forEach((tab) => tab.classList.toggle("active", tab.dataset.panel === panel));
   document.querySelectorAll(".inspector-panel").forEach((section) => section.classList.toggle("active", section.id === `${panel}-panel`));
   if (panel === "source") await renderSource(state.inspected);
-  if (panel === "config" && state.current) {
-    $("#config-view").textContent = "Loading config...";
-    try {
-      state.config ||= await store.config(state.current);
-      const fragment = document.createDocumentFragment();
-      for (const [key, value] of [...flattenConfig(state.config)].slice(0, 1000)) {
-        const row = document.createElement("div");
-        row.className = "config-row";
-        const name = document.createElement("span");
-        name.className = "config-key";
-        name.textContent = key;
-        const content = document.createElement("span");
-        content.className = "config-value";
-        content.textContent = String(value);
-        row.append(name, content);
-        fragment.append(row);
+  if (panel === "config" && state.current) await renderConfigPanel();
+}
+
+function appendConfigRow(fragment, key, value, changed = false) {
+  const row = document.createElement("div");
+  row.className = `config-row${changed ? " changed" : ""}`;
+  const name = document.createElement("span");
+  name.className = "config-key";
+  name.textContent = key;
+  const content = document.createElement("span");
+  content.className = "config-value";
+  content.textContent = typeof value === "string" ? value : JSON.stringify(value, null, 2);
+  row.append(name, content);
+  fragment.append(row);
+}
+
+async function renderConfigPanel() {
+  const view = $("#config-view");
+  view.textContent = "Loading config...";
+  document.querySelectorAll(".config-mode").forEach((button) => {
+    button.classList.toggle("active", button.dataset.configMode === state.configMode);
+  });
+  const link = $("#official-config-link");
+  link.hidden = !state.current?.official_config_source?.pinned_url;
+  if (!link.hidden) link.href = state.current.official_config_source.pinned_url;
+  try {
+    const fragment = document.createDocumentFragment();
+    if (state.configMode === "official") {
+      state.officialConfig ??= await store.officialConfig(state.current);
+      if (!state.officialConfig) {
+        view.textContent = state.current.warnings?.[0]?.message || "Official config unavailable.";
+        return;
       }
-      $("#config-view").replaceChildren(fragment);
-    } catch (error) {
-      $("#config-view").textContent = error.message;
+      const source = state.current.official_config_source;
+      const provenance = document.createElement("div");
+      provenance.className = "config-provenance";
+      provenance.textContent = `${source.repo_id} @ ${source.revision.slice(0, 12)} · ${source.license} · sha256:${source.sha256.slice(0, 12)}`;
+      fragment.append(provenance);
+      for (const [key, value] of [...flattenConfig(state.officialConfig)].slice(0, 2000)) appendConfigRow(fragment, key, value);
+    } else if (state.configMode === "trace") {
+      state.traceConfig ??= await store.traceConfig(state.current);
+      const config = state.traceConfig.config || state.traceConfig;
+      for (const [key, value] of [...flattenConfig(config)].slice(0, 2000)) appendConfigRow(fragment, key, value);
+    } else {
+      state.configDiff ??= await store.configDiff(state.current);
+      if (!state.configDiff) {
+        view.textContent = "Differences unavailable because the official config could not be fetched.";
+        return;
+      }
+      for (const item of state.configDiff.differences) {
+        appendConfigRow(fragment, `${item.path} · ${item.status}`, {
+          official: item.official_value,
+          trace: item.trace_value,
+        }, true);
+      }
     }
+    view.replaceChildren(fragment);
+  } catch (error) {
+    view.textContent = error.message;
   }
 }
 
@@ -1221,7 +1505,7 @@ function updateDensityButton() {
   button.classList.toggle("active", state.mode === "operation");
   button.textContent = state.mode === "operation" ? "⊟" : "⊞";
   button.title = state.mode === "operation" ? "Collapse to module topology" : "Expand operation topology";
-  button.disabled = state.mode === "family";
+  button.disabled = state.mode === "family" || state.mode === "blocks";
 }
 
 async function toggleDensity() {
@@ -1232,6 +1516,7 @@ async function toggleDensity() {
 function updateTransform() {
   $("#graph-canvas").style.transform = `translate(${state.pan.x}px, ${state.pan.y}px) scale(${state.zoom})`;
   $("#zoom-value").value = `${Math.round(state.zoom * 100)}%`;
+  $("#graph-viewport").dataset.zoomLevel = state.zoom < 0.55 ? "low" : state.zoom < 0.95 ? "medium" : "high";
   scheduleVisibleRender();
 }
 
@@ -1481,9 +1766,15 @@ $("#category").addEventListener("change", filterIndex);
 $("#sort").addEventListener("change", filterIndex);
 $("#model-list").addEventListener("scroll", renderListWindow, { passive: true });
 $("#module-search").addEventListener("input", renderModuleTree);
+$("#graph-search").addEventListener("input", () => updateGraphSearch());
+document.querySelectorAll(".path-control").forEach((button) => button.addEventListener("click", () => applyPathMode(button.dataset.pathMode)));
 document.querySelectorAll(".navigator-tab").forEach((button) => button.addEventListener("click", () => switchNavigator(button.dataset.navigator)));
 document.querySelectorAll(".mode").forEach((button) => button.addEventListener("click", () => setMode(button.dataset.mode)));
 document.querySelectorAll(".inspector-tab").forEach((button) => button.addEventListener("click", () => switchInspectorPanel(button.dataset.panel)));
+document.querySelectorAll(".config-mode").forEach((button) => button.addEventListener("click", async () => {
+  state.configMode = button.dataset.configMode;
+  await renderConfigPanel();
+}));
 $("#uri-form").addEventListener("submit", async (event) => {
   event.preventDefault();
   try { await applyRoute($("#uri-input").value); } catch (error) { showStatus(error.message); }

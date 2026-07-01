@@ -1,0 +1,97 @@
+{
+  "dedup_uid": "dedup.sha256.c756d8e9081e9606f253c25503572c9abdb7ed60f7a06d1a8cf4471cfa96a1a5",
+  "operation_ids": [
+    "op-000000",
+    "op-000001",
+    "op-000002"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.beit.modeling_beit",
+        "BeitPatchEmbeddings"
+      ],
+      [
+        "projection",
+        "torch.nn.modules.conv",
+        "Conv2d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            3,
+            224,
+            224
+          ]
+        ],
+        [
+          [
+            1,
+            196,
+            768
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            3,
+            224,
+            224
+          ]
+        ],
+        [
+          [
+            1,
+            768,
+            14,
+            14
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "projection.bias",
+        [
+          768
+        ]
+      ],
+      [
+        "projection.weight",
+        [
+          768,
+          3,
+          16,
+          16
+        ]
+      ]
+    ],
+    "source": "a42cd6cdaf44e65bd4914c95dcfbfa690030da51a8963d7af4963ea6ad64aa27",
+    "topology": [
+      [
+        "aten_op",
+        "aten.conv2d.default"
+      ],
+      [
+        "aten_op",
+        "aten.flatten.using_ints"
+      ],
+      [
+        "aten_op",
+        "aten.transpose.int"
+      ]
+    ]
+  }
+}

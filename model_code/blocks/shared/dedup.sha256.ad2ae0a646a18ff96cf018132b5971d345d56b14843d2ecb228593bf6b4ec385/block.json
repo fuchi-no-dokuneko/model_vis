@@ -1,0 +1,108 @@
+{
+  "dedup_uid": "dedup.sha256.ad2ae0a646a18ff96cf018132b5971d345d56b14843d2ecb228593bf6b4ec385",
+  "operation_ids": [
+    "op-000043",
+    "op-000044"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.squeezebert.modeling_squeezebert",
+        "ConvActivation"
+      ],
+      [
+        "conv1d",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ],
+      [
+        "act",
+        "transformers.activations",
+        "GELUActivation"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            768,
+            5
+          ]
+        ],
+        [
+          [
+            3,
+            3072,
+            5
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            3,
+            768,
+            5
+          ]
+        ],
+        [
+          [
+            3,
+            3072,
+            5
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            3,
+            3072,
+            5
+          ]
+        ],
+        [
+          [
+            3,
+            3072,
+            5
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "conv1d.bias",
+        [
+          3072
+        ]
+      ],
+      [
+        "conv1d.weight",
+        [
+          3072,
+          192,
+          1
+        ]
+      ]
+    ],
+    "source": "1b2a7a2a03b979433563b62f2ebe0aff4487a939a1b03d55d65e78c3cdd6c67c",
+    "topology": [
+      [
+        "aten_op",
+        "aten.conv1d.default"
+      ],
+      [
+        "aten_op",
+        "aten.gelu.default"
+      ]
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "device": "cpu",
-  "execution_mode": "full_model_forward",
+  "execution_mode": "unique_structure_forward",
   "layer_groups": [
     {
       "color_index": 0,
@@ -9,7 +9,8 @@
       "module_id": "module-00003",
       "qualified_name": "layers.0",
       "runtime_signature": "layer.sha256.be44d8e33f4edd2ff5f7abe44e9a5fddcdf8bf7a35ab3f03e02d5a442c07bd09",
-      "structural_signature": "structure.sha256.e331da4213ee28fe0e5b887b6badd27db059bc12d8c322f7fe999c30f70c3761"
+      "structural_signature": "structure.sha256.e331da4213ee28fe0e5b887b6badd27db059bc12d8c322f7fe999c30f70c3761",
+      "template_id": "layer-template-000"
     }
   ],
   "line_traces": [
@@ -35032,7 +35033,53 @@
       "trace_confidence": "exact"
     }
   ],
-  "schema_version": "2.1.0",
+  "resource_preflight": {
+    "compact_estimated_peak_bytes": 68976,
+    "compact_parameter_count": 2874,
+    "compact_schedule": {},
+    "decision": "official_model_exceeds_host",
+    "estimated_parameter_bytes": 2256535552,
+    "estimated_parameter_count": 564133888,
+    "estimated_peak_bytes": 13539213312,
+    "execution_mode": "unique_structure_forward",
+    "operation_fallback_required": false,
+    "resource_budget_bytes": 9971465420,
+    "resource_preflight": {
+      "available_memory_bytes": 15340716032,
+      "cpu_count": 6,
+      "total_memory_bytes": 16769368064
+    },
+    "templates": [
+      {
+        "effective_config": {},
+        "layer_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "representative_layer_index": 0,
+        "template_id": "layer-template-000"
+      }
+    ]
+  },
+  "schema_version": "2.2.0",
   "status": "passed",
   "top_level_outputs": [
     {
@@ -35076,5 +35123,62 @@
     },
     "deep_recovery": "not_required",
     "exact_lineage": "completed"
-  }
+  },
+  "trace_templates": [
+    {
+      "effective_config": {},
+      "expanded_instances_observed": false,
+      "instance_module_paths": [
+        "layers.0",
+        "layers.1",
+        "layers.2",
+        "layers.3",
+        "layers.4",
+        "layers.5",
+        "layers.6",
+        "layers.7",
+        "layers.8",
+        "layers.9",
+        "layers.10",
+        "layers.11",
+        "layers.12",
+        "layers.13",
+        "layers.14",
+        "layers.15",
+        "layers.16",
+        "layers.17",
+        "layers.18",
+        "layers.19"
+      ],
+      "layer_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "observed_module_path": "layers.0",
+      "observed_module_paths": [
+        "layers.0"
+      ],
+      "provenance": "representative_runtime_forward",
+      "representative_layer_index": 0,
+      "template_id": "layer-template-000"
+    }
+  ]
 }

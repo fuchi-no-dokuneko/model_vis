@@ -1,6 +1,6 @@
 # Model Structure Viewer
 
-This repository compiles PyTorch architecture metadata into a static Cloudflare Pages viewer. Model constructors use compact random initialization on CPU. They never call `from_pretrained`, download weights, or serialize model tensors.
+This repository compiles PyTorch architecture metadata into a static Cloudflare Pages viewer. Models use random CPU initialization and never call `from_pretrained`, download weights, execute remote code, or serialize model tensors.
 
 ## Build
 
@@ -10,7 +10,18 @@ Resolve the complete catalog without inference:
 ./venv/bin/python -m src.model_builder --catalog model.txt --scope-out model_scope.generated.yaml --plan-only
 ```
 
-Run the resumable Stage 1 build:
+Prefetch only the 21 pinned official Hugging Face `config.json` files on a network-enabled host:
+
+```bash
+./venv/bin/python -m src.model_builder.hf_config \
+  --mapping profiles/hf-config-mapping.v1.json \
+  --out official_configs
+```
+
+The pinned mapping is human-reviewable. Jais2 and DINOv3 currently require Hub authorization; without credentials their exact model records are published as partial with a visible warning.
+For an account that has accepted those repository terms, `HF_TOKEN` may be supplied to the prefetch process; the token is sent only as an authorization header and is never written to generated metadata.
+
+Run the resumable offline trace build:
 
 ```bash
 ./venv/bin/python -m src.model_builder \
@@ -18,15 +29,12 @@ Run the resumable Stage 1 build:
   --scope-out model_scope.generated.yaml \
   --out model_code \
   --cache build_cache \
-  --device cpu \
-  --require-forward \
-  --allow-staged-large-models \
-  --resume \
-  --fetch-policy source-config-only \
-  --forbid-weight-downloads
+  --official-config-mapping profiles/hf-config-mapping.v1.json \
+  --official-config-dir official_configs \
+  --resume
 ```
 
-Each canonical `structure_key` executes one deterministic CPU forward through the canonical dispatch/lineage tracer. Catalog aliases and later versions with the same constructor/config structure point to that execution record.
+An automatic preflight compares estimated official-model peak memory with currently available host memory. Models that fit execute a complete official-configuration forward. Larger models execute one compact, shape-valid representative of every distinct layer structure, including later MoE or hybrid variants. Each model trace runs in a separate process so allocator state cannot accumulate across the release. Every version stores the raw pinned official config, the effective trace config, and a field-level diff.
 
 ## Redistributed source code
 
@@ -59,9 +67,9 @@ The amended 21-model development scope (the verified 20-structure baseline plus 
   --out model_code \
   --cache build_cache \
   --include-file profiles/smallest-21.txt \
-  --resume \
-  --require-forward \
-  --forbid-weight-downloads
+  --official-config-mapping profiles/hf-config-mapping.v1.json \
+  --official-config-dir official_configs \
+  --resume
 
 ./venv/bin/python -m src.model_builder.validate \
   --model-code model_code \
@@ -69,7 +77,7 @@ The amended 21-model development scope (the verified 20-structure baseline plus 
   --allow-partial
 ```
 
-`--resume` reuses the canonical structure record and rematerializes trace assets from `build_cache/assets/` when the output directory is new. Aliases and later builds with the same `structure_key` never execute another forward pass.
+`--resume` reuses the canonical structure record and rematerializes trace assets from `build_cache/assets/` when the output directory is new. Aliases and later builds with the same `structure_key` never execute another forward pass. The trace/static stages run under a network guard and consume only local pinned configs.
 
 When the build host has no package-network access, prepare a wheelhouse on a networked host:
 

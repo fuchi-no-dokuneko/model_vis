@@ -4,8 +4,8 @@
   "add_bias_linear": false,
   "architectures": null,
   "attention_dropout": 0.0,
-  "attention_head_dim": 4,
-  "attention_hidden_size": 16,
+  "attention_head_dim": 8,
+  "attention_hidden_size": 32,
   "bos_token_id": 1,
   "chunk_size": 4,
   "chunk_size_feed_forward": 0,
@@ -14,15 +14,7 @@
   "hidden_act": "gelu",
   "hidden_size": 16,
   "hybrid_layer_ids": [
-    6,
-    12,
-    18,
-    24,
-    30,
-    36,
-    42,
-    47,
-    51
+    1
   ],
   "id2label": {
     "0": "LABEL_0",
@@ -37,7 +29,8 @@
     "LABEL_1": 1
   },
   "layers_block_type": [
-    "mamba"
+    "mamba",
+    "hybrid"
   ],
   "mamba_d_conv": 2,
   "mamba_d_state": 4,
@@ -48,7 +41,7 @@
   "model_type": "zamba2",
   "n_mamba_heads": 4,
   "num_attention_heads": 4,
-  "num_hidden_layers": 1,
+  "num_hidden_layers": 2,
   "num_key_value_heads": 2,
   "num_logits_to_keep": 1,
   "num_mem_blocks": 1,

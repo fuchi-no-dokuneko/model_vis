@@ -1,0 +1,123 @@
+{
+  "dedup_uid": "dedup.sha256.119a4e7e2634b66db9bec261101e525ee6ac597c45963b7b4260a6b9b3f486ee",
+  "operation_ids": [
+    "op-000024",
+    "op-000025",
+    "op-000026"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.convbert.modeling_convbert",
+        "SeparableConv1D"
+      ],
+      [
+        "depthwise",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ],
+      [
+        "pointwise",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            256,
+            5
+          ]
+        ],
+        [
+          [
+            3,
+            128,
+            5
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            3,
+            256,
+            5
+          ]
+        ],
+        [
+          [
+            3,
+            256,
+            5
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            3,
+            256,
+            5
+          ]
+        ],
+        [
+          [
+            3,
+            128,
+            5
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "bias",
+        [
+          128,
+          1
+        ]
+      ],
+      [
+        "depthwise.weight",
+        [
+          256,
+          1,
+          9
+        ]
+      ],
+      [
+        "pointwise.weight",
+        [
+          128,
+          256,
+          1
+        ]
+      ]
+    ],
+    "source": "b6031c18306edbbee7e35e5cb8b1695034b6309ee6ab5cd5ecb04a512ec71de7",
+    "topology": [
+      [
+        "aten_op",
+        "aten.conv1d.default"
+      ],
+      [
+        "aten_op",
+        "aten.conv1d.default"
+      ],
+      [
+        "aten_op",
+        "aten.add_.Tensor"
+      ]
+    ]
+  }
+}

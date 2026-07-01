@@ -1,25 +1,27 @@
 {
-  "_name_or_path": "",
+  "_name_or_path": "/home/abhishek/convbert_models/conv-bert-small/",
   "add_cross_attention": false,
-  "architectures": null,
+  "architectures": [
+    "ConvBertModel"
+  ],
   "attention_probs_dropout_prob": 0.1,
-  "bos_token_id": 1,
+  "bos_token_id": 0,
   "chunk_size_feed_forward": 0,
   "classifier_dropout": null,
   "conv_kernel_size": 9,
   "dtype": null,
-  "embedding_size": 16,
-  "eos_token_id": 1,
+  "embedding_size": 128,
+  "eos_token_id": 2,
   "head_ratio": 2,
   "hidden_act": "gelu",
   "hidden_dropout_prob": 0.1,
-  "hidden_size": 16,
+  "hidden_size": 256,
   "id2label": {
     "0": "LABEL_0",
     "1": "LABEL_1"
   },
   "initializer_range": 0.02,
-  "intermediate_size": 32,
+  "intermediate_size": 1024,
   "is_decoder": false,
   "is_encoder_decoder": false,
   "label2id": {
@@ -27,12 +29,11 @@
     "LABEL_1": 1
   },
   "layer_norm_eps": 1e-12,
-  "max_position_embeddings": 32,
+  "max_position_embeddings": 512,
   "model_type": "convbert",
   "num_attention_heads": 4,
-  "num_groups": 4,
-  "num_hidden_layers": 1,
-  "num_key_value_heads": 4,
+  "num_groups": 1,
+  "num_hidden_layers": 12,
   "output_attentions": false,
   "output_hidden_states": false,
   "pad_token_id": 0,
@@ -41,5 +42,5 @@
   "tie_word_embeddings": true,
   "transformers_version": "5.12.0",
   "type_vocab_size": 2,
-  "vocab_size": 64
+  "vocab_size": 30522
 }

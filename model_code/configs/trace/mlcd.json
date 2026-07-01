@@ -1,0 +1,179 @@
+{
+  "config": {
+    "_name_or_path": "",
+    "architectures": null,
+    "attention_dropout": 0.0,
+    "chunk_size_feed_forward": 0,
+    "dtype": null,
+    "hidden_act": "gelu",
+    "hidden_size": 16,
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "image_size": 16,
+    "initializer_factor": 1.0,
+    "initializer_range": 0.02,
+    "intermediate_size": 32,
+    "is_encoder_decoder": false,
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "layer_norm_eps": 1e-05,
+    "model_type": "mlcd_vision_model",
+    "num_attention_heads": 4,
+    "num_channels": 3,
+    "num_hidden_layers": 1,
+    "num_key_value_groups": 1,
+    "num_key_value_heads": 4,
+    "output_attentions": false,
+    "output_hidden_states": false,
+    "patch_size": 4,
+    "problem_type": null,
+    "return_dict": true,
+    "transformers_version": "5.12.0"
+  },
+  "derivation": {
+    "compatibility_adapter": null,
+    "official_config_available": true,
+    "overrides": [
+      {
+        "path": "_name_or_path",
+        "status": "trace_only",
+        "trace_value": ""
+      },
+      {
+        "official_value": [
+          "MLCDVisionModel"
+        ],
+        "path": "architectures",
+        "status": "changed",
+        "trace_value": null
+      },
+      {
+        "path": "chunk_size_feed_forward",
+        "status": "trace_only",
+        "trace_value": 0
+      },
+      {
+        "path": "dtype",
+        "status": "trace_only",
+        "trace_value": null
+      },
+      {
+        "official_value": 1664,
+        "path": "hidden_size",
+        "status": "changed",
+        "trace_value": 16
+      },
+      {
+        "path": "id2label",
+        "status": "trace_only",
+        "trace_value": {
+          "0": "LABEL_0",
+          "1": "LABEL_1"
+        }
+      },
+      {
+        "official_value": 336,
+        "path": "image_size",
+        "status": "changed",
+        "trace_value": 16
+      },
+      {
+        "official_value": 8192,
+        "path": "intermediate_size",
+        "status": "changed",
+        "trace_value": 32
+      },
+      {
+        "path": "is_encoder_decoder",
+        "status": "trace_only",
+        "trace_value": false
+      },
+      {
+        "path": "label2id",
+        "status": "trace_only",
+        "trace_value": {
+          "LABEL_0": 0,
+          "LABEL_1": 1
+        }
+      },
+      {
+        "official_value": "mlcd",
+        "path": "model_type",
+        "status": "changed",
+        "trace_value": "mlcd_vision_model"
+      },
+      {
+        "official_value": 16,
+        "path": "num_attention_heads",
+        "status": "changed",
+        "trace_value": 4
+      },
+      {
+        "official_value": 48,
+        "path": "num_hidden_layers",
+        "status": "changed",
+        "trace_value": 1
+      },
+      {
+        "path": "num_key_value_groups",
+        "status": "trace_only",
+        "trace_value": 1
+      },
+      {
+        "path": "num_key_value_heads",
+        "status": "trace_only",
+        "trace_value": 4
+      },
+      {
+        "path": "output_attentions",
+        "status": "trace_only",
+        "trace_value": false
+      },
+      {
+        "path": "output_hidden_states",
+        "status": "trace_only",
+        "trace_value": false
+      },
+      {
+        "official_value": 14,
+        "path": "patch_size",
+        "status": "changed",
+        "trace_value": 4
+      },
+      {
+        "path": "problem_type",
+        "status": "trace_only",
+        "trace_value": null
+      },
+      {
+        "official_value": 1024,
+        "path": "projection_dim",
+        "status": "official_only"
+      },
+      {
+        "path": "return_dict",
+        "status": "trace_only",
+        "trace_value": true
+      },
+      {
+        "official_value": "float32",
+        "path": "torch_dtype",
+        "status": "official_only"
+      },
+      {
+        "official_value": "4.44.0",
+        "path": "transformers_version",
+        "status": "changed",
+        "trace_value": "5.12.0"
+      }
+    ],
+    "strategy": "deterministic-compact-cpu-trace"
+  },
+  "kind": "trace_config",
+  "schema_version": "1.0.0",
+  "version_id": "mlcd"
+}

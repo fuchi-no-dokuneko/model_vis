@@ -1,6 +1,8 @@
 {
   "_name_or_path": "",
-  "architectures": null,
+  "architectures": [
+    "Data2VecVisionModel"
+  ],
   "attention_probs_dropout_prob": 0.0,
   "auxiliary_channels": 256,
   "auxiliary_concat_input": false,
@@ -8,17 +10,17 @@
   "auxiliary_num_convs": 1,
   "chunk_size_feed_forward": 0,
   "drop_path_rate": 0.1,
-  "dtype": null,
+  "dtype": "float32",
   "hidden_act": "gelu",
   "hidden_dropout_prob": 0.0,
-  "hidden_size": 16,
+  "hidden_size": 768,
   "id2label": {
     "0": "LABEL_0",
     "1": "LABEL_1"
   },
-  "image_size": 16,
+  "image_size": 224,
   "initializer_range": 0.02,
-  "intermediate_size": 32,
+  "intermediate_size": 3072,
   "is_encoder_decoder": false,
   "label2id": {
     "LABEL_0": 0,
@@ -27,10 +29,9 @@
   "layer_norm_eps": 1e-12,
   "layer_scale_init_value": 0.1,
   "model_type": "data2vec-vision",
-  "num_attention_heads": 4,
+  "num_attention_heads": 12,
   "num_channels": 3,
-  "num_hidden_layers": 1,
-  "num_key_value_heads": 4,
+  "num_hidden_layers": 12,
   "out_indices": [
     3,
     5,
@@ -39,7 +40,7 @@
   ],
   "output_attentions": false,
   "output_hidden_states": false,
-  "patch_size": 4,
+  "patch_size": 16,
   "pool_scales": [
     1,
     2,
@@ -53,7 +54,8 @@
   "use_absolute_position_embeddings": false,
   "use_auxiliary_head": true,
   "use_mask_token": false,
-  "use_mean_pooling": true,
+  "use_mean_pooling": false,
   "use_relative_position_bias": false,
-  "use_shared_relative_position_bias": false
+  "use_shared_relative_position_bias": true,
+  "vocab_size": 8192
 }

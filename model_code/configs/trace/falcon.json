@@ -1,0 +1,261 @@
+{
+  "config": {
+    "_name_or_path": "",
+    "activation": "gelu",
+    "alibi": false,
+    "architectures": null,
+    "attention_dropout": 0.0,
+    "bias": false,
+    "bos_token_id": 1,
+    "chunk_size_feed_forward": 0,
+    "dtype": null,
+    "eos_token_id": 1,
+    "ffn_hidden_size": 32,
+    "hidden_dropout": 0.0,
+    "hidden_size": 16,
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "initializer_range": 0.02,
+    "is_encoder_decoder": false,
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "layer_norm_epsilon": 1e-05,
+    "max_position_embeddings": 32,
+    "model_type": "falcon",
+    "multi_query": true,
+    "new_decoder_architecture": false,
+    "num_attention_heads": 4,
+    "num_hidden_layers": 1,
+    "num_key_value_heads": 4,
+    "num_kv_heads": 71,
+    "num_ln_in_parallel_attn": null,
+    "output_attentions": false,
+    "output_hidden_states": false,
+    "pad_token_id": 0,
+    "parallel_attn": true,
+    "problem_type": null,
+    "return_dict": true,
+    "rope_parameters": {
+      "rope_theta": 10000.0,
+      "rope_type": "default"
+    },
+    "tie_word_embeddings": true,
+    "transformers_version": "5.12.0",
+    "use_cache": false,
+    "vocab_size": 64
+  },
+  "derivation": {
+    "compatibility_adapter": null,
+    "official_config_available": true,
+    "overrides": [
+      {
+        "path": "_name_or_path",
+        "status": "trace_only",
+        "trace_value": ""
+      },
+      {
+        "path": "activation",
+        "status": "trace_only",
+        "trace_value": "gelu"
+      },
+      {
+        "official_value": true,
+        "path": "alibi",
+        "status": "changed",
+        "trace_value": false
+      },
+      {
+        "official_value": false,
+        "path": "apply_residual_connection_post_layernorm",
+        "status": "official_only"
+      },
+      {
+        "official_value": [
+          "FalconForCausalLM"
+        ],
+        "path": "architectures",
+        "status": "changed",
+        "trace_value": null
+      },
+      {
+        "official_value": {
+          "AutoConfig": "configuration_falcon.FalconConfig",
+          "AutoModel": "modeling_falcon.FalconModel",
+          "AutoModelForCausalLM": "modeling_falcon.FalconForCausalLM",
+          "AutoModelForQuestionAnswering": "modeling_falcon.FalconForQuestionAnswering",
+          "AutoModelForSequenceClassification": "modeling_falcon.FalconForSequenceClassification",
+          "AutoModelForTokenClassification": "modeling_falcon.FalconForTokenClassification"
+        },
+        "path": "auto_map",
+        "status": "official_only"
+      },
+      {
+        "official_value": true,
+        "path": "bias",
+        "status": "changed",
+        "trace_value": false
+      },
+      {
+        "path": "chunk_size_feed_forward",
+        "status": "trace_only",
+        "trace_value": 0
+      },
+      {
+        "path": "dtype",
+        "status": "trace_only",
+        "trace_value": null
+      },
+      {
+        "official_value": 2,
+        "path": "eos_token_id",
+        "status": "changed",
+        "trace_value": 1
+      },
+      {
+        "path": "ffn_hidden_size",
+        "status": "trace_only",
+        "trace_value": 32
+      },
+      {
+        "official_value": 2048,
+        "path": "hidden_size",
+        "status": "changed",
+        "trace_value": 16
+      },
+      {
+        "path": "id2label",
+        "status": "trace_only",
+        "trace_value": {
+          "0": "LABEL_0",
+          "1": "LABEL_1"
+        }
+      },
+      {
+        "path": "is_encoder_decoder",
+        "status": "trace_only",
+        "trace_value": false
+      },
+      {
+        "path": "label2id",
+        "status": "trace_only",
+        "trace_value": {
+          "LABEL_0": 0,
+          "LABEL_1": 1
+        }
+      },
+      {
+        "path": "max_position_embeddings",
+        "status": "trace_only",
+        "trace_value": 32
+      },
+      {
+        "official_value": false,
+        "path": "multi_query",
+        "status": "changed",
+        "trace_value": true
+      },
+      {
+        "official_value": 32,
+        "path": "num_attention_heads",
+        "status": "changed",
+        "trace_value": 4
+      },
+      {
+        "official_value": 24,
+        "path": "num_hidden_layers",
+        "status": "changed",
+        "trace_value": 1
+      },
+      {
+        "path": "num_key_value_heads",
+        "status": "trace_only",
+        "trace_value": 4
+      },
+      {
+        "path": "num_kv_heads",
+        "status": "trace_only",
+        "trace_value": 71
+      },
+      {
+        "path": "num_ln_in_parallel_attn",
+        "status": "trace_only",
+        "trace_value": null
+      },
+      {
+        "path": "output_attentions",
+        "status": "trace_only",
+        "trace_value": false
+      },
+      {
+        "path": "output_hidden_states",
+        "status": "trace_only",
+        "trace_value": false
+      },
+      {
+        "path": "pad_token_id",
+        "status": "trace_only",
+        "trace_value": 0
+      },
+      {
+        "official_value": false,
+        "path": "parallel_attn",
+        "status": "changed",
+        "trace_value": true
+      },
+      {
+        "path": "problem_type",
+        "status": "trace_only",
+        "trace_value": null
+      },
+      {
+        "path": "return_dict",
+        "status": "trace_only",
+        "trace_value": true
+      },
+      {
+        "path": "rope_parameters",
+        "status": "trace_only",
+        "trace_value": {
+          "rope_theta": 10000.0,
+          "rope_type": "default"
+        }
+      },
+      {
+        "path": "tie_word_embeddings",
+        "status": "trace_only",
+        "trace_value": true
+      },
+      {
+        "official_value": "bfloat16",
+        "path": "torch_dtype",
+        "status": "official_only"
+      },
+      {
+        "official_value": "4.27.4",
+        "path": "transformers_version",
+        "status": "changed",
+        "trace_value": "5.12.0"
+      },
+      {
+        "official_value": true,
+        "path": "use_cache",
+        "status": "changed",
+        "trace_value": false
+      },
+      {
+        "official_value": 50304,
+        "path": "vocab_size",
+        "status": "changed",
+        "trace_value": 64
+      }
+    ],
+    "strategy": "deterministic-compact-cpu-trace"
+  },
+  "kind": "trace_config",
+  "schema_version": "1.0.0",
+  "version_id": "falcon"
+}

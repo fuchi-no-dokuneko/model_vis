@@ -34,3 +34,24 @@ test("config comparison reports only changed leaves", () => {
   );
   assert.deepEqual(result, [{ key: "nested.layers", left: 1, right: 2 }]);
 });
+
+test("model store loads official, trace, and difference configs independently", async () => {
+  const assets = {
+    "model_code/configs/official/tiny.json": { hidden: 64 },
+    "model_code/configs/trace/tiny.json": { config: { hidden: 16 } },
+    "model_code/configs/diffs/tiny.json": { differences: [{ path: "hidden" }] },
+  };
+  const store = new ModelStore("model_code", async (path) => ({
+    ok: path in assets,
+    status: path in assets ? 200 : 404,
+    json: async () => assets[path],
+  }));
+  const version = {
+    official_config_ref: "configs/official/tiny.json",
+    trace_config_ref: "configs/trace/tiny.json",
+    config_diff_ref: "configs/diffs/tiny.json",
+  };
+  assert.equal((await store.officialConfig(version)).hidden, 64);
+  assert.equal((await store.traceConfig(version)).config.hidden, 16);
+  assert.equal((await store.configDiff(version)).differences[0].path, "hidden");
+});

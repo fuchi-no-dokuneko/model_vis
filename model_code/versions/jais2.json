@@ -14,6 +14,7 @@
     "blocks/shared/dedup.sha256.f2d5bc91bdf5454d137a6ccaae5fd0a59e0a64008c057e90e18e31c409090d8c/block.json",
     "blocks/shared/dedup.sha256.fbe53f0343d2aa92bcae2f7aaa44db5bdc3d1fd56e04d3b86f2e202435e87b4c/block.json",
     "configs/sha256.fb8d89741599b245bcfdbf9eb68120ae274aed09bd0b31309c91add998f25d75.json",
+    "configs/trace/jais2.json",
     "graphs/sha256.fb8d89741599b245bcfdbf9eb68120ae274aed09bd0b31309c91add998f25d75.json",
     "sources/files/sha256.0478b94a43b507276cc4dcd85cfbdff7fc83807f30226f575aaac69d416b658a.py.txt",
     "sources/files/sha256.1961ad1a1f650e104b3c7f78d19af2d21bf977e7af6c3fdf2420aad563c9e202.py.txt",
@@ -45,17 +46,18 @@
   ],
   "block_count": 15,
   "blocks_ref": "blocks/sha256.fb8d89741599b245bcfdbf9eb68120ae274aed09bd0b31309c91add998f25d75.json",
-  "builder_version": "0.3.0",
-  "cache_revision": "canonical-lineage-v2.4",
+  "builder_version": "0.4.0",
+  "cache_revision": "official-config-unique-stage-v4",
   "canonical_version_id": "jais2",
   "category": "Text models",
   "config_class": "Jais2Config",
+  "config_diff_ref": null,
   "config_ref": "configs/sha256.fb8d89741599b245bcfdbf9eb68120ae274aed09bd0b31309c91add998f25d75.json",
   "display_name": "Jais2",
   "entrypoint_class": "Jais2Model",
   "entrypoint_module": "transformers.models.jais2.modeling_jais2",
-  "execution_mode": "full_model_forward",
-  "execution_reused": false,
+  "execution_mode": "unique_structure_forward",
+  "execution_reused": true,
   "execution_source_version": "jais2",
   "family_id": "jais2",
   "family_name": "Jais2",
@@ -66,12 +68,46 @@
   },
   "graph_ref": "graphs/sha256.fb8d89741599b245bcfdbf9eb68120ae274aed09bd0b31309c91add998f25d75.json",
   "library": "transformers",
+  "official_config_ref": null,
+  "official_config_source": null,
   "operation_count": 71,
   "parameters": {
     "total": 3008,
     "trainable": 3008
   },
-  "schema_version": "2.1.0",
+  "resource_preflight": {
+    "compact_estimated_peak_bytes": 72192,
+    "compact_parameter_count": 3008,
+    "compact_schedule": {},
+    "decision": "official_config_unavailable",
+    "estimated_parameter_count": null,
+    "estimated_peak_bytes": null,
+    "execution_mode": "unique_structure_forward",
+    "operation_fallback_required": false,
+    "resource_budget_bytes": 9972642201,
+    "resource_preflight": {
+      "available_memory_bytes": 15342526464,
+      "cpu_count": 6,
+      "total_memory_bytes": 16769368064
+    },
+    "templates": [
+      {
+        "effective_config": {},
+        "layer_indices": [
+          0
+        ],
+        "representative_layer_index": 0,
+        "template_id": "layer-template-000"
+      }
+    ]
+  },
+  "schema_version": "2.2.0",
+  "security_policy": {
+    "network_during_trace": false,
+    "remote_code_executed": false,
+    "trust_remote_code": false,
+    "weights_downloaded": false
+  },
   "sources": [
     "source.sha256.c358c214f663ba0c8b9c6846fbe0042fa29494cf02fe4714a17dcd0d268b035b",
     "source.sha256.ab8d059210a2424524b6dcef3c017ee7ae2d4e9941dff66df61dfb15fa6378d0",
@@ -87,7 +123,7 @@
     "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
     "source.sha256.ec06f5144589578be72ca007058153bd788a29531ac21335f97e593559d1bfc3"
   ],
-  "status": "passed",
+  "status": "partial",
   "structure_key": "sha256.fb8d89741599b245bcfdbf9eb68120ae274aed09bd0b31309c91add998f25d75",
   "task_type": "text",
   "top_level_outputs": [
@@ -121,7 +157,34 @@
       "tensor_id": "tensor-000084"
     }
   ],
+  "trace_config_ref": "configs/trace/jais2.json",
   "trace_event_count": 71,
   "trace_ref": "traces/sha256.fb8d89741599b245bcfdbf9eb68120ae274aed09bd0b31309c91add998f25d75.json",
-  "version_id": "jais2"
+  "trace_templates": [
+    {
+      "effective_config": {},
+      "expanded_instances_observed": false,
+      "instance_module_paths": [
+        "layers.0"
+      ],
+      "layer_indices": [
+        0
+      ],
+      "observed_module_path": "layers.0",
+      "observed_module_paths": [
+        "layers.0"
+      ],
+      "provenance": "representative_runtime_forward",
+      "representative_layer_index": 0,
+      "template_id": "layer-template-000"
+    }
+  ],
+  "version_id": "jais2",
+  "warnings": [
+    {
+      "code": "official_config_unavailable",
+      "message": "Pinned official config is unavailable or incompatible: [Errno 2] No such file or directory: 'official_configs/jais2/config.json'",
+      "severity": "warning"
+    }
+  ]
 }
