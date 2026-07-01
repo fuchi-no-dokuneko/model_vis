@@ -6,8 +6,8 @@ import { configDifferences, ModelStore } from "../../src/ui/data-store.js";
 test("model store caches assets and loads traces only when requested", async () => {
   const calls = [];
   const assets = {
-    "model_code/manifest.v1.json": { search_index: "indexes/search.v1.json" },
-    "model_code/indexes/search.v1.json": [{ version_id: "tiny" }],
+    "model_code/manifest.v2.json": { search_index: "indexes/search.v2.json" },
+    "model_code/indexes/search.v2.json": [{ version_id: "tiny" }],
     "model_code/versions/tiny.json": { version_id: "tiny", trace_ref: "traces/tiny.json" },
     "model_code/traces/tiny.json": { operations: [] },
   };

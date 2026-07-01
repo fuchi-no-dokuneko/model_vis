@@ -1,0 +1,87 @@
+{
+  "dedup_uid": "dedup.sha256.392bcc31d17f4c594283c8107a0b4fa6c79514922bbc7ac0e68ce38c52642cc0",
+  "operation_ids": [
+    "op-000073",
+    "op-000074",
+    "op-000075",
+    "op-000076",
+    "op-000077",
+    "op-000078",
+    "op-000079",
+    "op-000080"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.activations",
+        "NewGELUActivation"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            32
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            32
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "d3ca038015c741c8e28f596ea6a07b6141ea87598662d538ecf64ae21d2e2a42",
+    "topology": [
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.pow.Tensor_Scalar"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.tanh.default"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ]
+    ]
+  }
+}

@@ -1,11 +1,19 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
-  "required": ["source_uid", "package", "package_version", "relative_file", "content_hash", "language", "line_count", "chunks", "redistributed"],
+  "required": ["source_uid", "package", "package_version", "relative_file", "content_hash", "language", "line_count", "chunks", "asset_path", "redistributed"],
   "properties": {
     "language": {"const": "python"},
     "line_count": {"type": "integer", "minimum": 0},
-    "chunks": {"type": "array"},
-    "redistributed": {"const": false}
+    "chunks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["start_line", "end_line", "asset_path"]
+      }
+    },
+    "asset_path": {"type": "string", "minLength": 1},
+    "redistributed": {"const": true}
   }
 }

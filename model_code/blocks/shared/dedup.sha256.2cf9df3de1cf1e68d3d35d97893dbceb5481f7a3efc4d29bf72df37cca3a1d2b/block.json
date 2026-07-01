@@ -1,0 +1,83 @@
+{
+  "dedup_uid": "dedup.sha256.2cf9df3de1cf1e68d3d35d97893dbceb5481f7a3efc4d29bf72df37cca3a1d2b",
+  "operation_ids": [
+    "op-000072",
+    "op-000073",
+    "op-000074",
+    "op-000075",
+    "op-000076",
+    "op-000077",
+    "op-000078"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.nanochat.modeling_nanochat",
+        "NanoChatRMSNorm"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            4,
+            5,
+            4
+          ]
+        ],
+        [
+          [
+            3,
+            4,
+            5,
+            4
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "e64e01298cea43d4b1b878401097b36bbcea2c4eaff84c147596e0ed6839a4b4",
+    "topology": [
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.pow.Tensor_Scalar"
+      ],
+      [
+        "aten_op",
+        "aten.mean.dim"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.rsqrt.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.type_as.default"
+      ]
+    ]
+  }
+}

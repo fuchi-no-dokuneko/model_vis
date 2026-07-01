@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import subprocess
+import tempfile
 import threading
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -36,9 +37,11 @@ def main() -> None:
     thread.start()
     options = Options()
     options.binary_location = "/snap/chromium/current/usr/lib/chromium-browser/chrome"
+    profile = tempfile.TemporaryDirectory(prefix="model-vis-chromium-")
     for option in (
         "--headless=new", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage",
         "--remote-debugging-pipe", "--hide-scrollbars", "--force-device-scale-factor=1",
+        f"--user-data-dir={profile.name}",
     ):
         options.add_argument(option)
     browser = webdriver.Chrome(service=Service("/usr/bin/chromedriver"), options=options)
@@ -52,6 +55,7 @@ def main() -> None:
             browser.save_screenshot(BASELINES / f"{name}.png")
     finally:
         browser.quit()
+        profile.cleanup()
         server.shutdown()
         thread.join(timeout=5)
 

@@ -1,0 +1,64 @@
+{
+  "dedup_uid": "dedup.sha256.e561c88ae81c1f597144e31e2924a9bd1012da54b8624af3cf8cd17bffe3076a",
+  "operation_ids": [
+    "op-000033",
+    "op-000034"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.nemotron.modeling_nemotron",
+        "NemotronLayerNorm1P"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "bias",
+        [
+          16
+        ]
+      ],
+      [
+        "weight",
+        [
+          16
+        ]
+      ]
+    ],
+    "source": "e61a1ebd57e2e97fa0ae8f0eb988dfa74e65921b1d218bcd918cadd5ae731076",
+    "topology": [
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.layer_norm.default"
+      ]
+    ]
+  }
+}

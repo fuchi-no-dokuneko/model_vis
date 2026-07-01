@@ -3,43 +3,97 @@
     {
       "block_type": "embedding",
       "block_uid": "beit.block-00001",
-      "dedup_ref": "dedup.sha256.ec18f3dbcf814ecc02e37158af5ccfeb919f333b7d05a371c3a1783abf675f89",
+      "call_ids": [
+        "call-000001",
+        "call-000002",
+        "call-000003",
+        "call-000004"
+      ],
+      "dedup_ref": "dedup.sha256.94f8830b2bb92034f7936de5ac9dd8404845ae7f444d51b5315371623037c1a6",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 1,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "pixel_values",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "pixel_values",
+          "optional": false,
+          "port_id": "call-000001:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            3,
+            16,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "beit",
+      "module_id": "module-00001",
+      "operation_ids": [
+        "op-000000",
+        "op-000001",
+        "op-000002",
+        "op-000003",
+        "op-000004",
+        "op-000005"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000004:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000008"
+        }
+      ],
+      "parent_module_id": "module-00000",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.ec18f3dbcf814ecc02e37158af5ccfeb919f333b7d05a371c3a1783abf675f89/block.json",
-        "target_dedup_uid": "dedup.sha256.ec18f3dbcf814ecc02e37158af5ccfeb919f333b7d05a371c3a1783abf675f89",
+        "target_asset": "blocks/shared/dedup.sha256.94f8830b2bb92034f7936de5ac9dd8404845ae7f444d51b5315371623037c1a6/block.json",
+        "target_dedup_uid": "dedup.sha256.94f8830b2bb92034f7936de5ac9dd8404845ae7f444d51b5315371623037c1a6",
         "type": "deduplicated_block"
       },
       "qualified_name": "embeddings",
       "source_refs": [
-        {
-          "end_line": 565,
-          "executed_line": 564,
-          "file": "torch/nn/modules/conv.py",
-          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
-          "start_line": 564,
-          "symbol": "Conv2d.forward"
-        },
-        {
-          "end_line": 90,
-          "executed_line": 83,
-          "file": "transformers/models/beit/modeling_beit.py",
-          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
-          "start_line": 83,
-          "symbol": "BeitPatchEmbeddings.forward"
-        },
-        {
-          "end_line": 73,
-          "executed_line": 69,
-          "file": "torch/nn/modules/dropout.py",
-          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
-          "start_line": 69,
-          "symbol": "Dropout.forward"
-        },
         {
           "end_line": 176,
           "executed_line": 153,
@@ -54,27 +108,93 @@
     {
       "block_type": "embedding",
       "block_uid": "beit.block-00002",
-      "dedup_ref": "dedup.sha256.b6e7d5b24f72844a6915e84a4966a8b633f01c58e20406178227d39e5abb906c",
+      "call_ids": [
+        "call-000002",
+        "call-000003"
+      ],
+      "dedup_ref": "dedup.sha256.a3444fdc1ab0eb37757d9279db9582278d01a71a89cd21937b1fee596737a38e",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 2,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "pixel_values",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "pixel_values",
+          "optional": false,
+          "port_id": "call-000002:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            3,
+            16,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "beit",
+      "module_id": "module-00002",
+      "operation_ids": [
+        "op-000000",
+        "op-000001",
+        "op-000002"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000003:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            16,
+            4,
+            4
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000003"
+        }
+      ],
+      "parent_module_id": "module-00001",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.b6e7d5b24f72844a6915e84a4966a8b633f01c58e20406178227d39e5abb906c/block.json",
-        "target_dedup_uid": "dedup.sha256.b6e7d5b24f72844a6915e84a4966a8b633f01c58e20406178227d39e5abb906c",
+        "target_asset": "blocks/shared/dedup.sha256.a3444fdc1ab0eb37757d9279db9582278d01a71a89cd21937b1fee596737a38e/block.json",
+        "target_dedup_uid": "dedup.sha256.a3444fdc1ab0eb37757d9279db9582278d01a71a89cd21937b1fee596737a38e",
         "type": "deduplicated_block"
       },
       "qualified_name": "embeddings.patch_embeddings",
       "source_refs": [
-        {
-          "end_line": 565,
-          "executed_line": 564,
-          "file": "torch/nn/modules/conv.py",
-          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
-          "start_line": 564,
-          "symbol": "Conv2d.forward"
-        },
         {
           "end_line": 90,
           "executed_line": 83,
@@ -89,15 +209,86 @@
     {
       "block_type": "embedding",
       "block_uid": "beit.block-00003",
-      "dedup_ref": "dedup.sha256.28089112439b39f45caaf1e2b2071df835484b7808be9ebdddc81d7a3d9107ac",
+      "call_ids": [
+        "call-000003"
+      ],
+      "dedup_ref": "dedup.sha256.41a0b94ffd41ed77fdf5074641f850b27ef271ee74d7c3c21317701ff8bc22b2",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 3,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000003:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            3,
+            16,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "beit",
+      "module_id": "module-00003",
+      "operation_ids": [
+        "op-000000"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000003:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            16,
+            4,
+            4
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000003"
+        }
+      ],
+      "parent_module_id": "module-00002",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.28089112439b39f45caaf1e2b2071df835484b7808be9ebdddc81d7a3d9107ac/block.json",
-        "target_dedup_uid": "dedup.sha256.28089112439b39f45caaf1e2b2071df835484b7808be9ebdddc81d7a3d9107ac",
+        "target_asset": "blocks/shared/dedup.sha256.41a0b94ffd41ed77fdf5074641f850b27ef271ee74d7c3c21317701ff8bc22b2/block.json",
+        "target_dedup_uid": "dedup.sha256.41a0b94ffd41ed77fdf5074641f850b27ef271ee74d7c3c21317701ff8bc22b2",
         "type": "deduplicated_block"
       },
       "qualified_name": "embeddings.patch_embeddings.projection",
@@ -116,15 +307,84 @@
     {
       "block_type": "embedding",
       "block_uid": "beit.block-00004",
-      "dedup_ref": "dedup.sha256.8d57ce553dfb4aaa3d45c2de2020af2a382741bd0c2e2fad80288edaf9c63ef6",
+      "call_ids": [
+        "call-000004"
+      ],
+      "dedup_ref": "dedup.sha256.ce66bcd9470a59f302094171e85cf3262cb17b52aa0c2559a0aca5688825ef28",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 4,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000004:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000008"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "beit",
+      "module_id": "module-00004",
+      "operation_ids": [
+        "op-000005"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000004:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000008"
+        }
+      ],
+      "parent_module_id": "module-00001",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.8d57ce553dfb4aaa3d45c2de2020af2a382741bd0c2e2fad80288edaf9c63ef6/block.json",
-        "target_dedup_uid": "dedup.sha256.8d57ce553dfb4aaa3d45c2de2020af2a382741bd0c2e2fad80288edaf9c63ef6",
+        "target_asset": "blocks/shared/dedup.sha256.ce66bcd9470a59f302094171e85cf3262cb17b52aa0c2559a0aca5688825ef28/block.json",
+        "target_dedup_uid": "dedup.sha256.ce66bcd9470a59f302094171e85cf3262cb17b52aa0c2559a0aca5688825ef28",
         "type": "deduplicated_block"
       },
       "qualified_name": "embeddings.dropout",
@@ -143,146 +403,133 @@
     {
       "block_type": "transformer_block",
       "block_uid": "beit.block-00005",
-      "dedup_ref": "dedup.sha256.fd3c62080cab1b1de03372815e2af9210124c603925cc1e6fa1f7d8aac5ba6ec",
+      "call_ids": [
+        "call-000005",
+        "call-000007",
+        "call-000008",
+        "call-000009",
+        "call-000010",
+        "call-000011",
+        "call-000006",
+        "call-000014",
+        "call-000015",
+        "call-000017",
+        "call-000016",
+        "call-000018",
+        "call-000012",
+        "call-000019",
+        "call-000013",
+        "call-000020"
+      ],
+      "dedup_ref": "dedup.sha256.3eff9e2f132dd508d72168238408d878e09f0e845c305cd1f7337ffb02be3656",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 5,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000005:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000008"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "beit",
+      "module_id": "module-00005",
+      "operation_ids": [
+        "op-000006",
+        "op-000007",
+        "op-000008",
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000020:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000046"
+        }
+      ],
+      "parent_module_id": "module-00000",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.fd3c62080cab1b1de03372815e2af9210124c603925cc1e6fa1f7d8aac5ba6ec/block.json",
-        "target_dedup_uid": "dedup.sha256.fd3c62080cab1b1de03372815e2af9210124c603925cc1e6fa1f7d8aac5ba6ec",
+        "target_asset": "blocks/shared/dedup.sha256.3eff9e2f132dd508d72168238408d878e09f0e845c305cd1f7337ffb02be3656/block.json",
+        "target_dedup_uid": "dedup.sha256.3eff9e2f132dd508d72168238408d878e09f0e845c305cd1f7337ffb02be3656",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers",
       "source_refs": [
         {
-          "end_line": 230,
-          "executed_line": 227,
-          "file": "torch/nn/modules/normalization.py",
-          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
-          "start_line": 227,
-          "symbol": "LayerNorm.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 341,
-          "executed_line": 310,
-          "file": "transformers/models/beit/modeling_beit.py",
-          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
-          "start_line": 310,
-          "symbol": "BeitAttention.forward"
-        },
-        {
-          "end_line": 73,
-          "executed_line": 69,
-          "file": "torch/nn/modules/dropout.py",
-          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
-          "start_line": 69,
-          "symbol": "Dropout.forward"
-        },
-        {
-          "end_line": 73,
-          "executed_line": 69,
-          "file": "torch/nn/modules/dropout.py",
-          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
-          "start_line": 69,
-          "symbol": "Dropout.forward"
-        },
-        {
-          "end_line": 50,
-          "executed_line": 46,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 46,
-          "symbol": "Identity.forward"
-        },
-        {
-          "end_line": 50,
-          "executed_line": 46,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 46,
-          "symbol": "Identity.forward"
-        },
-        {
-          "end_line": 230,
-          "executed_line": 227,
-          "file": "torch/nn/modules/normalization.py",
-          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
-          "start_line": 227,
-          "symbol": "LayerNorm.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 89,
-          "executed_line": 88,
-          "file": "transformers/activations.py",
-          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
-          "start_line": 88,
-          "symbol": "GELUActivation.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 357,
-          "executed_line": 352,
-          "file": "transformers/models/beit/modeling_beit.py",
-          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
-          "start_line": 352,
-          "symbol": "BeitMLP.forward"
-        },
-        {
-          "end_line": 444,
-          "executed_line": 406,
-          "file": "transformers/models/beit/modeling_beit.py",
-          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
-          "start_line": 406,
-          "symbol": "BeitLayer.forward"
+          "end_line": 404,
+          "executed_line": 391,
+          "file": "torch/nn/modules/module.py",
+          "source_uid": "source.sha256.4be56271f7bfe650e3521c81fd363da58f109cd23ee80d243156d2d6ccda6263",
+          "start_line": 391,
+          "symbol": "_forward_unimplemented"
         }
       ],
       "trace_ref": "traces/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json"
@@ -290,139 +537,126 @@
     {
       "block_type": "transformer_block",
       "block_uid": "beit.block-00006",
-      "dedup_ref": "dedup.sha256.bf88d433b50ba33b6c11a63c3d663c4f6f780c6dd54df30528cfe35fbd582d76",
+      "call_ids": [
+        "call-000005",
+        "call-000007",
+        "call-000008",
+        "call-000009",
+        "call-000010",
+        "call-000011",
+        "call-000006",
+        "call-000014",
+        "call-000015",
+        "call-000017",
+        "call-000016",
+        "call-000018",
+        "call-000012",
+        "call-000019",
+        "call-000013",
+        "call-000020"
+      ],
+      "dedup_ref": "dedup.sha256.74b159ba3f7ad12b1638690949e993c740651b764ccb35b42e18784bd11b4fff",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 6,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000005:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000008"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "beit",
+      "module_id": "module-00006",
+      "operation_ids": [
+        "op-000006",
+        "op-000007",
+        "op-000008",
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000020:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000046"
+        }
+      ],
+      "parent_module_id": "module-00005",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.bf88d433b50ba33b6c11a63c3d663c4f6f780c6dd54df30528cfe35fbd582d76/block.json",
-        "target_dedup_uid": "dedup.sha256.bf88d433b50ba33b6c11a63c3d663c4f6f780c6dd54df30528cfe35fbd582d76",
+        "target_asset": "blocks/shared/dedup.sha256.74b159ba3f7ad12b1638690949e993c740651b764ccb35b42e18784bd11b4fff/block.json",
+        "target_dedup_uid": "dedup.sha256.74b159ba3f7ad12b1638690949e993c740651b764ccb35b42e18784bd11b4fff",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers.0",
       "source_refs": [
-        {
-          "end_line": 230,
-          "executed_line": 227,
-          "file": "torch/nn/modules/normalization.py",
-          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
-          "start_line": 227,
-          "symbol": "LayerNorm.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 341,
-          "executed_line": 310,
-          "file": "transformers/models/beit/modeling_beit.py",
-          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
-          "start_line": 310,
-          "symbol": "BeitAttention.forward"
-        },
-        {
-          "end_line": 73,
-          "executed_line": 69,
-          "file": "torch/nn/modules/dropout.py",
-          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
-          "start_line": 69,
-          "symbol": "Dropout.forward"
-        },
-        {
-          "end_line": 73,
-          "executed_line": 69,
-          "file": "torch/nn/modules/dropout.py",
-          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
-          "start_line": 69,
-          "symbol": "Dropout.forward"
-        },
-        {
-          "end_line": 50,
-          "executed_line": 46,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 46,
-          "symbol": "Identity.forward"
-        },
-        {
-          "end_line": 50,
-          "executed_line": 46,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 46,
-          "symbol": "Identity.forward"
-        },
-        {
-          "end_line": 230,
-          "executed_line": 227,
-          "file": "torch/nn/modules/normalization.py",
-          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
-          "start_line": 227,
-          "symbol": "LayerNorm.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 89,
-          "executed_line": 88,
-          "file": "transformers/activations.py",
-          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
-          "start_line": 88,
-          "symbol": "GELUActivation.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 357,
-          "executed_line": 352,
-          "file": "transformers/models/beit/modeling_beit.py",
-          "source_uid": "source.sha256.7abaed6a28e9ccc556b0e95950acc41a9f2135876e0f2e1b273d8ee0e6be4201",
-          "start_line": 352,
-          "symbol": "BeitMLP.forward"
-        },
         {
           "end_line": 444,
           "executed_line": 406,
@@ -437,51 +671,104 @@
     {
       "block_type": "attention",
       "block_uid": "beit.block-00007",
-      "dedup_ref": "dedup.sha256.e48275bd081b11e980298b0d618e8d4300fa360cfed8a2221d2cda6e4eedd746",
+      "call_ids": [
+        "call-000007",
+        "call-000008",
+        "call-000009",
+        "call-000010",
+        "call-000011"
+      ],
+      "dedup_ref": "dedup.sha256.a4db15fcd068c4a58db549edbb4ee175e6eacc7e9c418f97225b269f04c034cc",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 7,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000007:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000011"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "beit",
+      "module_id": "module-00007",
+      "operation_ids": [
+        "op-000007",
+        "op-000008",
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000011:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000031"
+        }
+      ],
+      "parent_module_id": "module-00006",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.e48275bd081b11e980298b0d618e8d4300fa360cfed8a2221d2cda6e4eedd746/block.json",
-        "target_dedup_uid": "dedup.sha256.e48275bd081b11e980298b0d618e8d4300fa360cfed8a2221d2cda6e4eedd746",
+        "target_asset": "blocks/shared/dedup.sha256.a4db15fcd068c4a58db549edbb4ee175e6eacc7e9c418f97225b269f04c034cc/block.json",
+        "target_dedup_uid": "dedup.sha256.a4db15fcd068c4a58db549edbb4ee175e6eacc7e9c418f97225b269f04c034cc",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers.0.attention",
       "source_refs": [
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
         {
           "end_line": 341,
           "executed_line": 310,
@@ -496,15 +783,84 @@
     {
       "block_type": "attention",
       "block_uid": "beit.block-00008",
-      "dedup_ref": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+      "call_ids": [
+        "call-000008"
+      ],
+      "dedup_ref": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 8,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000008:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000011"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "beit",
+      "module_id": "module-00008",
+      "operation_ids": [
+        "op-000007"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000008:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000014"
+        }
+      ],
+      "parent_module_id": "module-00007",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6/block.json",
-        "target_dedup_uid": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+        "target_asset": "blocks/shared/dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8/block.json",
+        "target_dedup_uid": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers.0.attention.q_proj",
@@ -523,15 +879,84 @@
     {
       "block_type": "attention",
       "block_uid": "beit.block-00009",
-      "dedup_ref": "dedup.sha256.943e3c5918814f5e83b857216444b969e7230eb6e32785c416529622bd73191b",
+      "call_ids": [
+        "call-000009"
+      ],
+      "dedup_ref": "dedup.sha256.ee83583362195d616bd7a3d8017f539a64c9a2368cc4c26df0b776f6af5eefff",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 9,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000009:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000011"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "beit",
+      "module_id": "module-00009",
+      "operation_ids": [
+        "op-000010"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000009:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000018"
+        }
+      ],
+      "parent_module_id": "module-00007",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.943e3c5918814f5e83b857216444b969e7230eb6e32785c416529622bd73191b/block.json",
-        "target_dedup_uid": "dedup.sha256.943e3c5918814f5e83b857216444b969e7230eb6e32785c416529622bd73191b",
+        "target_asset": "blocks/shared/dedup.sha256.ee83583362195d616bd7a3d8017f539a64c9a2368cc4c26df0b776f6af5eefff/block.json",
+        "target_dedup_uid": "dedup.sha256.ee83583362195d616bd7a3d8017f539a64c9a2368cc4c26df0b776f6af5eefff",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers.0.attention.k_proj",
@@ -550,15 +975,84 @@
     {
       "block_type": "attention",
       "block_uid": "beit.block-00010",
-      "dedup_ref": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+      "call_ids": [
+        "call-000010"
+      ],
+      "dedup_ref": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 10,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000010:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000011"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "beit",
+      "module_id": "module-00010",
+      "operation_ids": [
+        "op-000013"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000010:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000023"
+        }
+      ],
+      "parent_module_id": "module-00007",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6/block.json",
-        "target_dedup_uid": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+        "target_asset": "blocks/shared/dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8/block.json",
+        "target_dedup_uid": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers.0.attention.v_proj",
@@ -577,15 +1071,84 @@
     {
       "block_type": "attention",
       "block_uid": "beit.block-00011",
-      "dedup_ref": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+      "call_ids": [
+        "call-000011"
+      ],
+      "dedup_ref": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 11,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000011:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000028"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "beit",
+      "module_id": "module-00011",
+      "operation_ids": [
+        "op-000019"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000011:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000031"
+        }
+      ],
+      "parent_module_id": "module-00007",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6/block.json",
-        "target_dedup_uid": "dedup.sha256.6a70fd840aa0d8056b6380c53dc53918761131af48fa465ed183c844a5169cd6",
+        "target_asset": "blocks/shared/dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8/block.json",
+        "target_dedup_uid": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers.0.attention.o_proj",
@@ -604,15 +1167,84 @@
     {
       "block_type": "norm",
       "block_uid": "beit.block-00012",
-      "dedup_ref": "dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c",
+      "call_ids": [
+        "call-000006"
+      ],
+      "dedup_ref": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 12,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000006:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000008"
+        }
+      ],
+      "layer_group_id": "layer-00001",
       "model_version_id": "beit",
+      "module_id": "module-00012",
+      "operation_ids": [
+        "op-000006"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000006:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000011"
+        }
+      ],
+      "parent_module_id": "module-00006",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c/block.json",
-        "target_dedup_uid": "dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c",
+        "target_asset": "blocks/shared/dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66/block.json",
+        "target_dedup_uid": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers.0.layernorm_before",
@@ -631,15 +1263,84 @@
     {
       "block_type": "norm",
       "block_uid": "beit.block-00013",
-      "dedup_ref": "dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c",
+      "call_ids": [
+        "call-000014"
+      ],
+      "dedup_ref": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 13,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000014:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000034"
+        }
+      ],
+      "layer_group_id": "layer-00002",
       "model_version_id": "beit",
+      "module_id": "module-00013",
+      "operation_ids": [
+        "op-000023"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000014:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000037"
+        }
+      ],
+      "parent_module_id": "module-00006",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c/block.json",
-        "target_dedup_uid": "dedup.sha256.cfc1d5d80afafd1a4c3667528236dc8837cca2549cb4d1d00b26891a14643e8c",
+        "target_asset": "blocks/shared/dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66/block.json",
+        "target_dedup_uid": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers.0.layernorm_after",
@@ -658,43 +1359,93 @@
     {
       "block_type": "mlp",
       "block_uid": "beit.block-00014",
-      "dedup_ref": "dedup.sha256.8fba36ce72d06f0458a3f4cd018e2c9cabdc3cb47be193107c2f34c6a21934ea",
+      "call_ids": [
+        "call-000015",
+        "call-000017",
+        "call-000016",
+        "call-000018"
+      ],
+      "dedup_ref": "dedup.sha256.dba635d9fd10eb3fff2a091303dab9235b1eba58671065e619e3bc8bfb8fb22b",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 14,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000015:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000037"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "beit",
+      "module_id": "module-00014",
+      "operation_ids": [
+        "op-000024",
+        "op-000025",
+        "op-000026"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000018:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000044"
+        }
+      ],
+      "parent_module_id": "module-00006",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.8fba36ce72d06f0458a3f4cd018e2c9cabdc3cb47be193107c2f34c6a21934ea/block.json",
-        "target_dedup_uid": "dedup.sha256.8fba36ce72d06f0458a3f4cd018e2c9cabdc3cb47be193107c2f34c6a21934ea",
+        "target_asset": "blocks/shared/dedup.sha256.dba635d9fd10eb3fff2a091303dab9235b1eba58671065e619e3bc8bfb8fb22b/block.json",
+        "target_dedup_uid": "dedup.sha256.dba635d9fd10eb3fff2a091303dab9235b1eba58671065e619e3bc8bfb8fb22b",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers.0.mlp",
       "source_refs": [
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
-        {
-          "end_line": 89,
-          "executed_line": 88,
-          "file": "transformers/activations.py",
-          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
-          "start_line": 88,
-          "symbol": "GELUActivation.forward"
-        },
-        {
-          "end_line": 134,
-          "executed_line": 130,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 130,
-          "symbol": "Linear.forward"
-        },
         {
           "end_line": 357,
           "executed_line": 352,
@@ -709,15 +1460,84 @@
     {
       "block_type": "mlp",
       "block_uid": "beit.block-00015",
-      "dedup_ref": "dedup.sha256.22e6a140791131afac77fca4cf82bc676c5099288811c4d26036dc0082849117",
+      "call_ids": [
+        "call-000017"
+      ],
+      "dedup_ref": "dedup.sha256.ebe5b466955f181436fb71796b039dd6e3173cd790381796e0956ed547ce7f0f",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 15,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000017:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000040"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "beit",
+      "module_id": "module-00015",
+      "operation_ids": [
+        "op-000025"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000017:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000041"
+        }
+      ],
+      "parent_module_id": "module-00014",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.22e6a140791131afac77fca4cf82bc676c5099288811c4d26036dc0082849117/block.json",
-        "target_dedup_uid": "dedup.sha256.22e6a140791131afac77fca4cf82bc676c5099288811c4d26036dc0082849117",
+        "target_asset": "blocks/shared/dedup.sha256.ebe5b466955f181436fb71796b039dd6e3173cd790381796e0956ed547ce7f0f/block.json",
+        "target_dedup_uid": "dedup.sha256.ebe5b466955f181436fb71796b039dd6e3173cd790381796e0956ed547ce7f0f",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers.0.mlp.activation_fn",
@@ -736,15 +1556,84 @@
     {
       "block_type": "mlp",
       "block_uid": "beit.block-00016",
-      "dedup_ref": "dedup.sha256.4eb823f533ee120ac69bd639dab8990859da9db94e612fa8f26cc5c0e98abdd1",
+      "call_ids": [
+        "call-000016"
+      ],
+      "dedup_ref": "dedup.sha256.5e75998f3a64a7c817f671e000b65477975b18c881c99dd36e56c8d548fe5533",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 16,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000016:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000037"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "beit",
+      "module_id": "module-00016",
+      "operation_ids": [
+        "op-000024"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000016:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000040"
+        }
+      ],
+      "parent_module_id": "module-00014",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.4eb823f533ee120ac69bd639dab8990859da9db94e612fa8f26cc5c0e98abdd1/block.json",
-        "target_dedup_uid": "dedup.sha256.4eb823f533ee120ac69bd639dab8990859da9db94e612fa8f26cc5c0e98abdd1",
+        "target_asset": "blocks/shared/dedup.sha256.5e75998f3a64a7c817f671e000b65477975b18c881c99dd36e56c8d548fe5533/block.json",
+        "target_dedup_uid": "dedup.sha256.5e75998f3a64a7c817f671e000b65477975b18c881c99dd36e56c8d548fe5533",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers.0.mlp.fc1",
@@ -763,15 +1652,84 @@
     {
       "block_type": "mlp",
       "block_uid": "beit.block-00017",
-      "dedup_ref": "dedup.sha256.941d15e802c3dfa3479c78ed7fc017be031fab9f21dafc6e0b4e0f80d1a6e611",
+      "call_ids": [
+        "call-000018"
+      ],
+      "dedup_ref": "dedup.sha256.b50d2449166dcbab6618b87a9ce4f96904a2b184631dfc2bf1b6ff46340d0e7b",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 17,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000018:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000041"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "beit",
+      "module_id": "module-00017",
+      "operation_ids": [
+        "op-000026"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000018:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000044"
+        }
+      ],
+      "parent_module_id": "module-00014",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.941d15e802c3dfa3479c78ed7fc017be031fab9f21dafc6e0b4e0f80d1a6e611/block.json",
-        "target_dedup_uid": "dedup.sha256.941d15e802c3dfa3479c78ed7fc017be031fab9f21dafc6e0b4e0f80d1a6e611",
+        "target_asset": "blocks/shared/dedup.sha256.b50d2449166dcbab6618b87a9ce4f96904a2b184631dfc2bf1b6ff46340d0e7b/block.json",
+        "target_dedup_uid": "dedup.sha256.b50d2449166dcbab6618b87a9ce4f96904a2b184631dfc2bf1b6ff46340d0e7b",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers.0.mlp.fc2",
@@ -790,27 +1748,90 @@
     {
       "block_type": "transformer_block",
       "block_uid": "beit.block-00018",
-      "dedup_ref": "dedup.sha256.0e6dd25b91159accbe71c4e0df929d9a45defa1e748679175b8bc3dd6d0c0bb0",
+      "call_ids": [
+        "call-000012",
+        "call-000019"
+      ],
+      "dedup_ref": "dedup.sha256.b4a73af654e087eefe55fdb34e2577e12300935a94dac62a3cb8a3b390862222",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 18,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000012:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000031"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "beit",
+      "module_id": "module-00018",
+      "operation_ids": [
+        "op-000020",
+        "op-000027"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000019:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000044"
+        }
+      ],
+      "parent_module_id": "module-00006",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.0e6dd25b91159accbe71c4e0df929d9a45defa1e748679175b8bc3dd6d0c0bb0/block.json",
-        "target_dedup_uid": "dedup.sha256.0e6dd25b91159accbe71c4e0df929d9a45defa1e748679175b8bc3dd6d0c0bb0",
+        "target_asset": "blocks/shared/dedup.sha256.b4a73af654e087eefe55fdb34e2577e12300935a94dac62a3cb8a3b390862222/block.json",
+        "target_dedup_uid": "dedup.sha256.b4a73af654e087eefe55fdb34e2577e12300935a94dac62a3cb8a3b390862222",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers.0.dropout",
       "source_refs": [
-        {
-          "end_line": 73,
-          "executed_line": 69,
-          "file": "torch/nn/modules/dropout.py",
-          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
-          "start_line": 69,
-          "symbol": "Dropout.forward"
-        },
         {
           "end_line": 73,
           "executed_line": 69,
@@ -825,27 +1846,87 @@
     {
       "block_type": "transformer_block",
       "block_uid": "beit.block-00019",
-      "dedup_ref": "dedup.sha256.087de2719fee187aba3d24246f6b256f934428e128444b654bbc6b695880328f",
+      "call_ids": [
+        "call-000013",
+        "call-000020"
+      ],
+      "dedup_ref": "dedup.sha256.5bcc98c723344d8f781f419c461321236512f5fe4b17d3abd8201f64745ce6dd",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 19,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000013:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000033"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "beit",
+      "module_id": "module-00019",
+      "operation_ids": [],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000020:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000046"
+        }
+      ],
+      "parent_module_id": "module-00006",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.087de2719fee187aba3d24246f6b256f934428e128444b654bbc6b695880328f/block.json",
-        "target_dedup_uid": "dedup.sha256.087de2719fee187aba3d24246f6b256f934428e128444b654bbc6b695880328f",
+        "target_asset": "blocks/shared/dedup.sha256.5bcc98c723344d8f781f419c461321236512f5fe4b17d3abd8201f64745ce6dd/block.json",
+        "target_dedup_uid": "dedup.sha256.5bcc98c723344d8f781f419c461321236512f5fe4b17d3abd8201f64745ce6dd",
         "type": "deduplicated_block"
       },
       "qualified_name": "layers.0.drop_path",
       "source_refs": [
-        {
-          "end_line": 50,
-          "executed_line": 46,
-          "file": "torch/nn/modules/linear.py",
-          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
-          "start_line": 46,
-          "symbol": "Identity.forward"
-        },
         {
           "end_line": 50,
           "executed_line": 46,
@@ -860,15 +1941,82 @@
     {
       "block_type": "norm",
       "block_uid": "beit.block-00020",
-      "dedup_ref": "dedup.sha256.7fb291e7a04edd3539faf1da8f03836a91991a676940e4162ebc9fdb4d51fd63",
+      "call_ids": [
+        "call-000021"
+      ],
+      "dedup_ref": "dedup.sha256.86c423dbee4aa216141c7a8aa022cb022d16bb75a88612d3e4c26f859b16d635",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 20,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000021:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000047"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "beit",
+      "module_id": "module-00020",
+      "operation_ids": [],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000021:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000047"
+        }
+      ],
+      "parent_module_id": "module-00000",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.7fb291e7a04edd3539faf1da8f03836a91991a676940e4162ebc9fdb4d51fd63/block.json",
-        "target_dedup_uid": "dedup.sha256.7fb291e7a04edd3539faf1da8f03836a91991a676940e4162ebc9fdb4d51fd63",
+        "target_asset": "blocks/shared/dedup.sha256.86c423dbee4aa216141c7a8aa022cb022d16bb75a88612d3e4c26f859b16d635/block.json",
+        "target_dedup_uid": "dedup.sha256.86c423dbee4aa216141c7a8aa022cb022d16bb75a88612d3e4c26f859b16d635",
         "type": "deduplicated_block"
       },
       "qualified_name": "layernorm",
@@ -887,15 +2035,82 @@
     {
       "block_type": "norm",
       "block_uid": "beit.block-00022",
-      "dedup_ref": "dedup.sha256.5dc930683e70c39168d4d811790a0c51c79290d5959994880741a260b56230b1",
+      "call_ids": [
+        "call-000023"
+      ],
+      "dedup_ref": "dedup.sha256.08b423f62eb47df25a99efb0c64493fb8d1b358746abc438987351f83d8188ff",
       "family_id": "beit",
       "graph_ref": "graphs/sha256.1a72c4efc99c59526b8adb3ad76d91bd02b83dacf3f53e2b1dc4bf0cae58428f.json",
       "index": 22,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000023:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000049"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "beit",
+      "module_id": "module-00022",
+      "operation_ids": [
+        "op-000032"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000023:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000052"
+        }
+      ],
+      "parent_module_id": "module-00021",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.5dc930683e70c39168d4d811790a0c51c79290d5959994880741a260b56230b1/block.json",
-        "target_dedup_uid": "dedup.sha256.5dc930683e70c39168d4d811790a0c51c79290d5959994880741a260b56230b1",
+        "target_asset": "blocks/shared/dedup.sha256.08b423f62eb47df25a99efb0c64493fb8d1b358746abc438987351f83d8188ff/block.json",
+        "target_dedup_uid": "dedup.sha256.08b423f62eb47df25a99efb0c64493fb8d1b358746abc438987351f83d8188ff",
         "type": "deduplicated_block"
       },
       "qualified_name": "pooler.layernorm",

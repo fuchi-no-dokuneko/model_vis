@@ -3,15 +3,122 @@
     {
       "block_type": "embedding",
       "block_uid": "squeezebert.block-00001",
-      "dedup_ref": "dedup.sha256.bb44e880943e6820261a460f3d4050f1122c4781a438b29812ac33a09927b10a",
+      "call_ids": [
+        "call-000001",
+        "call-000002",
+        "call-000003",
+        "call-000004",
+        "call-000005",
+        "call-000006"
+      ],
+      "dedup_ref": "dedup.sha256.2013fab7e7c60847ff33cae16ad2d02a74e873f0b05ff886b90487d3b032a0f6",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 1,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "input_ids",
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": true,
+          "port_id": "call-000001:in:0",
+          "position": null,
+          "required": false,
+          "shape": [
+            3,
+            5
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000000"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "token_type_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "token_type_ids",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "token_type_ids",
+          "optional": true,
+          "port_id": "call-000001:in:1",
+          "position": null,
+          "required": false,
+          "shape": [
+            3,
+            5
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000008"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "squeezebert",
+      "module_id": "module-00001",
+      "operation_ids": [
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000006:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000022"
+        }
+      ],
+      "parent_module_id": "module-00000",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.bb44e880943e6820261a460f3d4050f1122c4781a438b29812ac33a09927b10a/block.json",
-        "target_dedup_uid": "dedup.sha256.bb44e880943e6820261a460f3d4050f1122c4781a438b29812ac33a09927b10a",
+        "target_asset": "blocks/shared/dedup.sha256.2013fab7e7c60847ff33cae16ad2d02a74e873f0b05ff886b90487d3b032a0f6/block.json",
+        "target_dedup_uid": "dedup.sha256.2013fab7e7c60847ff33cae16ad2d02a74e873f0b05ff886b90487d3b032a0f6",
         "type": "deduplicated_block"
       },
       "qualified_name": "embeddings",
@@ -30,15 +137,83 @@
     {
       "block_type": "embedding",
       "block_uid": "squeezebert.block-00002",
-      "dedup_ref": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+      "call_ids": [
+        "call-000002"
+      ],
+      "dedup_ref": "dedup.sha256.fbe53f0343d2aa92bcae2f7aaa44db5bdc3d1fd56e04d3b86f2e202435e87b4c",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 2,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000002:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "squeezebert",
+      "module_id": "module-00002",
+      "operation_ids": [
+        "op-000010"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000002:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000013"
+        }
+      ],
+      "parent_module_id": "module-00001",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49/block.json",
-        "target_dedup_uid": "dedup.sha256.2ffbae59b44442800353bf1d3503696eebcaccdd27053298c2fb59d229c7ec49",
+        "target_asset": "blocks/shared/dedup.sha256.fbe53f0343d2aa92bcae2f7aaa44db5bdc3d1fd56e04d3b86f2e202435e87b4c/block.json",
+        "target_dedup_uid": "dedup.sha256.fbe53f0343d2aa92bcae2f7aaa44db5bdc3d1fd56e04d3b86f2e202435e87b4c",
         "type": "deduplicated_block"
       },
       "qualified_name": "embeddings.word_embeddings",
@@ -57,15 +232,83 @@
     {
       "block_type": "embedding",
       "block_uid": "squeezebert.block-00003",
-      "dedup_ref": "dedup.sha256.38eaec3b41f129a5986c823c86ca8748476ad5e9e43ffcc756a95b38339137f9",
+      "call_ids": [
+        "call-000003"
+      ],
+      "dedup_ref": "dedup.sha256.c812e1578728eff7558bb94ba90b3f4c33ea5a292a00be5ef7ea9de29f99b62f",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 3,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 1,
+          "mutation_version_after": 1,
+          "mutation_version_before": 1,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000003:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000011"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "squeezebert",
+      "module_id": "module-00003",
+      "operation_ids": [
+        "op-000011"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000003:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000015"
+        }
+      ],
+      "parent_module_id": "module-00001",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.38eaec3b41f129a5986c823c86ca8748476ad5e9e43ffcc756a95b38339137f9/block.json",
-        "target_dedup_uid": "dedup.sha256.38eaec3b41f129a5986c823c86ca8748476ad5e9e43ffcc756a95b38339137f9",
+        "target_asset": "blocks/shared/dedup.sha256.c812e1578728eff7558bb94ba90b3f4c33ea5a292a00be5ef7ea9de29f99b62f/block.json",
+        "target_dedup_uid": "dedup.sha256.c812e1578728eff7558bb94ba90b3f4c33ea5a292a00be5ef7ea9de29f99b62f",
         "type": "deduplicated_block"
       },
       "qualified_name": "embeddings.position_embeddings",
@@ -84,15 +327,83 @@
     {
       "block_type": "embedding",
       "block_uid": "squeezebert.block-00004",
-      "dedup_ref": "dedup.sha256.12a9dcaaef5b27af1a3f849b1f121c5964eeb137c8c59a105df5d084d765d6a8",
+      "call_ids": [
+        "call-000004"
+      ],
+      "dedup_ref": "dedup.sha256.25f5d119ba813debf94750d5fde9797d3d5e06d873dc8802bf9981095ec6035d",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 4,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000004:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000008"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "squeezebert",
+      "module_id": "module-00004",
+      "operation_ids": [
+        "op-000012"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000004:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000017"
+        }
+      ],
+      "parent_module_id": "module-00001",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.12a9dcaaef5b27af1a3f849b1f121c5964eeb137c8c59a105df5d084d765d6a8/block.json",
-        "target_dedup_uid": "dedup.sha256.12a9dcaaef5b27af1a3f849b1f121c5964eeb137c8c59a105df5d084d765d6a8",
+        "target_asset": "blocks/shared/dedup.sha256.25f5d119ba813debf94750d5fde9797d3d5e06d873dc8802bf9981095ec6035d/block.json",
+        "target_dedup_uid": "dedup.sha256.25f5d119ba813debf94750d5fde9797d3d5e06d873dc8802bf9981095ec6035d",
         "type": "deduplicated_block"
       },
       "qualified_name": "embeddings.token_type_embeddings",
@@ -111,15 +422,84 @@
     {
       "block_type": "embedding",
       "block_uid": "squeezebert.block-00005",
-      "dedup_ref": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+      "call_ids": [
+        "call-000005"
+      ],
+      "dedup_ref": "dedup.sha256.4c4c11942926fa232f2990b5fc6acaf50ad49c1a349c362b873138e44fc9760f",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 5,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000005:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000019"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "squeezebert",
+      "module_id": "module-00005",
+      "operation_ids": [
+        "op-000015"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000005:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000022"
+        }
+      ],
+      "parent_module_id": "module-00001",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd/block.json",
-        "target_dedup_uid": "dedup.sha256.72f92634650ad7bb037d5c5729c8e2d93052dea99fa38883f9d6da8a80992acd",
+        "target_asset": "blocks/shared/dedup.sha256.4c4c11942926fa232f2990b5fc6acaf50ad49c1a349c362b873138e44fc9760f/block.json",
+        "target_dedup_uid": "dedup.sha256.4c4c11942926fa232f2990b5fc6acaf50ad49c1a349c362b873138e44fc9760f",
         "type": "deduplicated_block"
       },
       "qualified_name": "embeddings.LayerNorm",
@@ -138,15 +518,84 @@
     {
       "block_type": "embedding",
       "block_uid": "squeezebert.block-00006",
-      "dedup_ref": "dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406",
+      "call_ids": [
+        "call-000006"
+      ],
+      "dedup_ref": "dedup.sha256.021f41156bc196e68259398d88eb14d743b1ce643a978392b400a973051cbcbf",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 6,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000006:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000022"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "squeezebert",
+      "module_id": "module-00006",
+      "operation_ids": [
+        "op-000016"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000006:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000022"
+        }
+      ],
+      "parent_module_id": "module-00001",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406/block.json",
-        "target_dedup_uid": "dedup.sha256.7230f4fbd8e8c95448cecfa21ed3512286d4c6f3e457474f54c63bfc5767c406",
+        "target_asset": "blocks/shared/dedup.sha256.021f41156bc196e68259398d88eb14d743b1ce643a978392b400a973051cbcbf/block.json",
+        "target_dedup_uid": "dedup.sha256.021f41156bc196e68259398d88eb14d743b1ce643a978392b400a973051cbcbf",
         "type": "deduplicated_block"
       },
       "qualified_name": "embeddings.dropout",
@@ -165,15 +614,134 @@
     {
       "block_type": "transformer_block",
       "block_uid": "squeezebert.block-00007",
-      "dedup_ref": "dedup.sha256.8cbe96c52996668fcbaaa9a3009ccb81a5dba63a09eed66a143f1eca3c3f415c",
+      "call_ids": [
+        "call-000007",
+        "call-000008",
+        "call-000009",
+        "call-000010",
+        "call-000011",
+        "call-000014",
+        "call-000013",
+        "call-000012",
+        "call-000015",
+        "call-000016",
+        "call-000017",
+        "call-000019",
+        "call-000018",
+        "call-000020",
+        "call-000021",
+        "call-000022",
+        "call-000023",
+        "call-000024",
+        "call-000026",
+        "call-000025"
+      ],
+      "dedup_ref": "dedup.sha256.0261dfe3044ce6c0b4182d363b94cf436a48a34fea61fdd529c86b1155cf9596",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 7,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "hidden_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000007:in:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000022"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "squeezebert",
+      "module_id": "module-00007",
+      "operation_ids": [
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030",
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034",
+        "op-000035",
+        "op-000036",
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000025:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000062"
+        }
+      ],
+      "parent_module_id": "module-00000",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.8cbe96c52996668fcbaaa9a3009ccb81a5dba63a09eed66a143f1eca3c3f415c/block.json",
-        "target_dedup_uid": "dedup.sha256.8cbe96c52996668fcbaaa9a3009ccb81a5dba63a09eed66a143f1eca3c3f415c",
+        "target_asset": "blocks/shared/dedup.sha256.0261dfe3044ce6c0b4182d363b94cf436a48a34fea61fdd529c86b1155cf9596/block.json",
+        "target_dedup_uid": "dedup.sha256.0261dfe3044ce6c0b4182d363b94cf436a48a34fea61fdd529c86b1155cf9596",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder",
@@ -192,51 +760,393 @@
     {
       "block_type": "transformer_block",
       "block_uid": "squeezebert.block-00008",
-      "dedup_ref": "dedup.sha256.fd47b03c884822f5179dfcbdd5a1111a7b275510b4da186a5dcf74eaab175ac0",
+      "call_ids": [
+        "call-000008",
+        "call-000009",
+        "call-000010",
+        "call-000011",
+        "call-000014",
+        "call-000013",
+        "call-000012",
+        "call-000015",
+        "call-000016",
+        "call-000017",
+        "call-000019",
+        "call-000018",
+        "call-000020",
+        "call-000021",
+        "call-000022",
+        "call-000023",
+        "call-000024",
+        "call-000026",
+        "call-000025"
+      ],
+      "dedup_ref": "dedup.sha256.dbcc040e628fad3b56f61ce6a1e763e22de596d2aecf3b161ed3bb28cc16e73c",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 8,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000008:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000025"
+        }
+      ],
+      "layer_group_id": null,
       "model_version_id": "squeezebert",
+      "module_id": "module-00008",
+      "operation_ids": [
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030",
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034",
+        "op-000035",
+        "op-000036",
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000025:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000062"
+        }
+      ],
+      "parent_module_id": "module-00007",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.fd47b03c884822f5179dfcbdd5a1111a7b275510b4da186a5dcf74eaab175ac0/block.json",
-        "target_dedup_uid": "dedup.sha256.fd47b03c884822f5179dfcbdd5a1111a7b275510b4da186a5dcf74eaab175ac0",
+        "target_asset": "blocks/shared/dedup.sha256.dbcc040e628fad3b56f61ce6a1e763e22de596d2aecf3b161ed3bb28cc16e73c/block.json",
+        "target_dedup_uid": "dedup.sha256.dbcc040e628fad3b56f61ce6a1e763e22de596d2aecf3b161ed3bb28cc16e73c",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers",
-      "source_refs": [],
+      "source_refs": [
+        {
+          "end_line": 404,
+          "executed_line": 391,
+          "file": "torch/nn/modules/module.py",
+          "source_uid": "source.sha256.4be56271f7bfe650e3521c81fd363da58f109cd23ee80d243156d2d6ccda6263",
+          "start_line": 391,
+          "symbol": "_forward_unimplemented"
+        }
+      ],
       "trace_ref": "traces/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json"
     },
     {
       "block_type": "transformer_block",
       "block_uid": "squeezebert.block-00009",
-      "dedup_ref": "dedup.sha256.8bc64e83f71a2f0e35d222e27b56776c6defbc686c6990dd1775621d9b4e5dc9",
+      "call_ids": [
+        "call-000008",
+        "call-000009",
+        "call-000010",
+        "call-000011",
+        "call-000014",
+        "call-000013",
+        "call-000012",
+        "call-000015",
+        "call-000016",
+        "call-000017",
+        "call-000019",
+        "call-000018",
+        "call-000020",
+        "call-000021",
+        "call-000022",
+        "call-000023",
+        "call-000024",
+        "call-000026",
+        "call-000025"
+      ],
+      "dedup_ref": "dedup.sha256.dde917a86b08d93253f2623a85395ab55d05276411a66ead412b0b1fa251127a",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 9,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000008:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000025"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00009",
+      "operation_ids": [
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030",
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034",
+        "op-000035",
+        "op-000036",
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000025:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000062"
+        }
+      ],
+      "parent_module_id": "module-00008",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.8bc64e83f71a2f0e35d222e27b56776c6defbc686c6990dd1775621d9b4e5dc9/block.json",
-        "target_dedup_uid": "dedup.sha256.8bc64e83f71a2f0e35d222e27b56776c6defbc686c6990dd1775621d9b4e5dc9",
+        "target_asset": "blocks/shared/dedup.sha256.dde917a86b08d93253f2623a85395ab55d05276411a66ead412b0b1fa251127a/block.json",
+        "target_dedup_uid": "dedup.sha256.dde917a86b08d93253f2623a85395ab55d05276411a66ead412b0b1fa251127a",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0",
-      "source_refs": [],
+      "source_refs": [
+        {
+          "end_line": 288,
+          "executed_line": 276,
+          "file": "transformers/models/squeezebert/modeling_squeezebert.py",
+          "source_uid": "source.sha256.79eee61d7995da50a81873c1c297cd24a0678ffda7ef5c53076bedbcb2a6eced",
+          "start_line": 276,
+          "symbol": "SqueezeBertModule.forward"
+        }
+      ],
       "trace_ref": "traces/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json"
     },
     {
       "block_type": "attention",
       "block_uid": "squeezebert.block-00010",
-      "dedup_ref": "dedup.sha256.5895fa94c1c0dacf8e9bb2821509c7b69c5a3219e1325b2bc1478ee4f550350d",
+      "call_ids": [
+        "call-000008",
+        "call-000009",
+        "call-000010",
+        "call-000011",
+        "call-000014",
+        "call-000013",
+        "call-000012",
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.1345c3553df10873da040d9fee6513d2b9f5f9a34811ce6629a35a36968066c9",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 10,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000008:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000025"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00010",
+      "operation_ids": [
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030",
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034",
+        "op-000035",
+        "op-000036"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            4,
+            5,
+            4
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000043"
+        }
+      ],
+      "parent_module_id": "module-00009",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.5895fa94c1c0dacf8e9bb2821509c7b69c5a3219e1325b2bc1478ee4f550350d/block.json",
-        "target_dedup_uid": "dedup.sha256.5895fa94c1c0dacf8e9bb2821509c7b69c5a3219e1325b2bc1478ee4f550350d",
+        "target_asset": "blocks/shared/dedup.sha256.1345c3553df10873da040d9fee6513d2b9f5f9a34811ce6629a35a36968066c9/block.json",
+        "target_dedup_uid": "dedup.sha256.1345c3553df10873da040d9fee6513d2b9f5f9a34811ce6629a35a36968066c9",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.attention",
@@ -255,15 +1165,84 @@
     {
       "block_type": "attention",
       "block_uid": "squeezebert.block-00011",
-      "dedup_ref": "dedup.sha256.6ede01f1f3c3bb8eb0d08f403aaf47e2acf2c509d29204851c8605c73ef867d3",
+      "call_ids": [
+        "call-000009"
+      ],
+      "dedup_ref": "dedup.sha256.932134f85e2000716c135978184d61f001ba68cbe661a4c411a28e26c5046d95",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 11,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000009:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000025"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00011",
+      "operation_ids": [
+        "op-000021"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000009:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000028"
+        }
+      ],
+      "parent_module_id": "module-00010",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.6ede01f1f3c3bb8eb0d08f403aaf47e2acf2c509d29204851c8605c73ef867d3/block.json",
-        "target_dedup_uid": "dedup.sha256.6ede01f1f3c3bb8eb0d08f403aaf47e2acf2c509d29204851c8605c73ef867d3",
+        "target_asset": "blocks/shared/dedup.sha256.932134f85e2000716c135978184d61f001ba68cbe661a4c411a28e26c5046d95/block.json",
+        "target_dedup_uid": "dedup.sha256.932134f85e2000716c135978184d61f001ba68cbe661a4c411a28e26c5046d95",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.attention.query",
@@ -282,15 +1261,84 @@
     {
       "block_type": "attention",
       "block_uid": "squeezebert.block-00012",
-      "dedup_ref": "dedup.sha256.6ede01f1f3c3bb8eb0d08f403aaf47e2acf2c509d29204851c8605c73ef867d3",
+      "call_ids": [
+        "call-000010"
+      ],
+      "dedup_ref": "dedup.sha256.932134f85e2000716c135978184d61f001ba68cbe661a4c411a28e26c5046d95",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 12,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000010:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000025"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00012",
+      "operation_ids": [
+        "op-000022"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000010:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000031"
+        }
+      ],
+      "parent_module_id": "module-00010",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.6ede01f1f3c3bb8eb0d08f403aaf47e2acf2c509d29204851c8605c73ef867d3/block.json",
-        "target_dedup_uid": "dedup.sha256.6ede01f1f3c3bb8eb0d08f403aaf47e2acf2c509d29204851c8605c73ef867d3",
+        "target_asset": "blocks/shared/dedup.sha256.932134f85e2000716c135978184d61f001ba68cbe661a4c411a28e26c5046d95/block.json",
+        "target_dedup_uid": "dedup.sha256.932134f85e2000716c135978184d61f001ba68cbe661a4c411a28e26c5046d95",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.attention.key",
@@ -309,15 +1357,84 @@
     {
       "block_type": "attention",
       "block_uid": "squeezebert.block-00013",
-      "dedup_ref": "dedup.sha256.6ede01f1f3c3bb8eb0d08f403aaf47e2acf2c509d29204851c8605c73ef867d3",
+      "call_ids": [
+        "call-000011"
+      ],
+      "dedup_ref": "dedup.sha256.932134f85e2000716c135978184d61f001ba68cbe661a4c411a28e26c5046d95",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 13,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000011:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000025"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00013",
+      "operation_ids": [
+        "op-000023"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000011:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000034"
+        }
+      ],
+      "parent_module_id": "module-00010",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.6ede01f1f3c3bb8eb0d08f403aaf47e2acf2c509d29204851c8605c73ef867d3/block.json",
-        "target_dedup_uid": "dedup.sha256.6ede01f1f3c3bb8eb0d08f403aaf47e2acf2c509d29204851c8605c73ef867d3",
+        "target_asset": "blocks/shared/dedup.sha256.932134f85e2000716c135978184d61f001ba68cbe661a4c411a28e26c5046d95/block.json",
+        "target_dedup_uid": "dedup.sha256.932134f85e2000716c135978184d61f001ba68cbe661a4c411a28e26c5046d95",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.attention.value",
@@ -336,15 +1453,86 @@
     {
       "block_type": "attention",
       "block_uid": "squeezebert.block-00014",
-      "dedup_ref": "dedup.sha256.598b7a2dc1a6ecc57f032c467155fcd4bd849dfd2161756f005757842150f436",
+      "call_ids": [
+        "call-000014"
+      ],
+      "dedup_ref": "dedup.sha256.bfff83d05839c4e36db1ef15a320fe174ea9cbf3b700e1af791db10817764889",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 14,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000014:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            4,
+            5,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000042"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00014",
+      "operation_ids": [
+        "op-000032"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000014:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            4,
+            5,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000042"
+        }
+      ],
+      "parent_module_id": "module-00010",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.598b7a2dc1a6ecc57f032c467155fcd4bd849dfd2161756f005757842150f436/block.json",
-        "target_dedup_uid": "dedup.sha256.598b7a2dc1a6ecc57f032c467155fcd4bd849dfd2161756f005757842150f436",
+        "target_asset": "blocks/shared/dedup.sha256.bfff83d05839c4e36db1ef15a320fe174ea9cbf3b700e1af791db10817764889/block.json",
+        "target_dedup_uid": "dedup.sha256.bfff83d05839c4e36db1ef15a320fe174ea9cbf3b700e1af791db10817764889",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.attention.dropout",
@@ -363,15 +1551,86 @@
     {
       "block_type": "attention",
       "block_uid": "squeezebert.block-00015",
-      "dedup_ref": "dedup.sha256.9112d1e7098c0544a09983041fec85edfb254565c6b4940737d2a4eaed2289a9",
+      "call_ids": [
+        "call-000013"
+      ],
+      "dedup_ref": "dedup.sha256.751975f5d29c9cd0c14e1eaaaefbc2d9619e6c4dbf6599a8ff28cdcc30af7ee5",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 15,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000013:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            4,
+            5,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000041"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00015",
+      "operation_ids": [
+        "op-000031"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000013:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            4,
+            5,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000042"
+        }
+      ],
+      "parent_module_id": "module-00010",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.9112d1e7098c0544a09983041fec85edfb254565c6b4940737d2a4eaed2289a9/block.json",
-        "target_dedup_uid": "dedup.sha256.9112d1e7098c0544a09983041fec85edfb254565c6b4940737d2a4eaed2289a9",
+        "target_asset": "blocks/shared/dedup.sha256.751975f5d29c9cd0c14e1eaaaefbc2d9619e6c4dbf6599a8ff28cdcc30af7ee5/block.json",
+        "target_dedup_uid": "dedup.sha256.751975f5d29c9cd0c14e1eaaaefbc2d9619e6c4dbf6599a8ff28cdcc30af7ee5",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.attention.softmax",
@@ -390,15 +1649,115 @@
     {
       "block_type": "attention",
       "block_uid": "squeezebert.block-00016",
-      "dedup_ref": "dedup.sha256.f404b76d6fc56770134c6aee28a622b1a56e10611a5744ef0e25bd1cb4d9e6b3",
+      "call_ids": [
+        "call-000012"
+      ],
+      "dedup_ref": "dedup.sha256.04389a5ba1b95dacaf3a89973fa1e5d76bae1d07c0d05f52511d8ace467ba57a",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 16,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "mat1",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "mat1",
+          "optional": false,
+          "port_id": "call-000012:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            4,
+            5,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000036"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "mat2",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "mat2",
+          "optional": false,
+          "port_id": "call-000012:in:1",
+          "position": 1,
+          "required": true,
+          "shape": [
+            3,
+            4,
+            4,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000037"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00016",
+      "operation_ids": [
+        "op-000029"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000012:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            4,
+            5,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000040"
+        }
+      ],
+      "parent_module_id": "module-00010",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.f404b76d6fc56770134c6aee28a622b1a56e10611a5744ef0e25bd1cb4d9e6b3/block.json",
-        "target_dedup_uid": "dedup.sha256.f404b76d6fc56770134c6aee28a622b1a56e10611a5744ef0e25bd1cb4d9e6b3",
+        "target_asset": "blocks/shared/dedup.sha256.04389a5ba1b95dacaf3a89973fa1e5d76bae1d07c0d05f52511d8ace467ba57a/block.json",
+        "target_dedup_uid": "dedup.sha256.04389a5ba1b95dacaf3a89973fa1e5d76bae1d07c0d05f52511d8ace467ba57a",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.attention.matmul_qk",
@@ -417,15 +1776,115 @@
     {
       "block_type": "attention",
       "block_uid": "squeezebert.block-00017",
-      "dedup_ref": "dedup.sha256.f43d6a4f937e62080efc54776a56333a5e5fe9c27745a95d9733362ccfc9503e",
+      "call_ids": [
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.aed9bf210daeb7a9179f3bff9aee8c3167ed30cb3e8b56dabe9e0e0aa7091db4",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 17,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "mat1",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "mat1",
+          "optional": false,
+          "port_id": "call-000015:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            4,
+            5,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000042"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "mat2",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "mat2",
+          "optional": false,
+          "port_id": "call-000015:in:1",
+          "position": 1,
+          "required": true,
+          "shape": [
+            3,
+            4,
+            5,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000039"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00017",
+      "operation_ids": [
+        "op-000033"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            4,
+            5,
+            4
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000043"
+        }
+      ],
+      "parent_module_id": "module-00010",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.f43d6a4f937e62080efc54776a56333a5e5fe9c27745a95d9733362ccfc9503e/block.json",
-        "target_dedup_uid": "dedup.sha256.f43d6a4f937e62080efc54776a56333a5e5fe9c27745a95d9733362ccfc9503e",
+        "target_asset": "blocks/shared/dedup.sha256.aed9bf210daeb7a9179f3bff9aee8c3167ed30cb3e8b56dabe9e0e0aa7091db4/block.json",
+        "target_dedup_uid": "dedup.sha256.aed9bf210daeb7a9179f3bff9aee8c3167ed30cb3e8b56dabe9e0e0aa7091db4",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.attention.matmul_qkv",
@@ -444,15 +1903,120 @@
     {
       "block_type": "attention",
       "block_uid": "squeezebert.block-00018",
-      "dedup_ref": "dedup.sha256.007a33073b6cd9fca067b1ec03b66728a91ccdf67ce0efbc7f463a58df4867d2",
+      "call_ids": [
+        "call-000016",
+        "call-000017",
+        "call-000019",
+        "call-000018"
+      ],
+      "dedup_ref": "dedup.sha256.d26921ab38f041d948a5a5890bb7c3a1697f81610e20c700cd4c45ac3737336f",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 18,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000016:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000046"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_tensor",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input_tensor",
+          "optional": false,
+          "port_id": "call-000016:in:1",
+          "position": 1,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000025"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00018",
+      "operation_ids": [
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000018:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000049"
+        }
+      ],
+      "parent_module_id": "module-00009",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.007a33073b6cd9fca067b1ec03b66728a91ccdf67ce0efbc7f463a58df4867d2/block.json",
-        "target_dedup_uid": "dedup.sha256.007a33073b6cd9fca067b1ec03b66728a91ccdf67ce0efbc7f463a58df4867d2",
+        "target_asset": "blocks/shared/dedup.sha256.d26921ab38f041d948a5a5890bb7c3a1697f81610e20c700cd4c45ac3737336f/block.json",
+        "target_dedup_uid": "dedup.sha256.d26921ab38f041d948a5a5890bb7c3a1697f81610e20c700cd4c45ac3737336f",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.post_attention",
@@ -471,15 +2035,84 @@
     {
       "block_type": "attention",
       "block_uid": "squeezebert.block-00019",
-      "dedup_ref": "dedup.sha256.f27d4e0f7a6ba3f5cc7c968dbc0d01324766a6b31b02e6148220455da4ebd26b",
+      "call_ids": [
+        "call-000017"
+      ],
+      "dedup_ref": "dedup.sha256.455a36ae35915be69d00289435ebfc914832848aefc5ad7720ee5c31d7538044",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 19,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000017:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000046"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00019",
+      "operation_ids": [
+        "op-000037"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000017:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000049"
+        }
+      ],
+      "parent_module_id": "module-00018",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.f27d4e0f7a6ba3f5cc7c968dbc0d01324766a6b31b02e6148220455da4ebd26b/block.json",
-        "target_dedup_uid": "dedup.sha256.f27d4e0f7a6ba3f5cc7c968dbc0d01324766a6b31b02e6148220455da4ebd26b",
+        "target_asset": "blocks/shared/dedup.sha256.455a36ae35915be69d00289435ebfc914832848aefc5ad7720ee5c31d7538044/block.json",
+        "target_dedup_uid": "dedup.sha256.455a36ae35915be69d00289435ebfc914832848aefc5ad7720ee5c31d7538044",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.post_attention.conv1d",
@@ -498,15 +2131,86 @@
     {
       "block_type": "attention",
       "block_uid": "squeezebert.block-00020",
-      "dedup_ref": "dedup.sha256.d1a4e7be56a89b84219e74970116b693bc2092e303cf4b8ef5427eefb8cbb33e",
+      "call_ids": [
+        "call-000019"
+      ],
+      "dedup_ref": "dedup.sha256.0289217a97ffdc48fbf058a897881ef782e4a3e15ac1ac2248dc9957a25e02c7",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 20,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "x",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "x",
+          "optional": false,
+          "port_id": "call-000019:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000050"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00020",
+      "operation_ids": [
+        "op-000040",
+        "op-000041",
+        "op-000042"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000019:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000055"
+        }
+      ],
+      "parent_module_id": "module-00018",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.d1a4e7be56a89b84219e74970116b693bc2092e303cf4b8ef5427eefb8cbb33e/block.json",
-        "target_dedup_uid": "dedup.sha256.d1a4e7be56a89b84219e74970116b693bc2092e303cf4b8ef5427eefb8cbb33e",
+        "target_asset": "blocks/shared/dedup.sha256.0289217a97ffdc48fbf058a897881ef782e4a3e15ac1ac2248dc9957a25e02c7/block.json",
+        "target_dedup_uid": "dedup.sha256.0289217a97ffdc48fbf058a897881ef782e4a3e15ac1ac2248dc9957a25e02c7",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.post_attention.layernorm",
@@ -525,15 +2229,84 @@
     {
       "block_type": "attention",
       "block_uid": "squeezebert.block-00021",
-      "dedup_ref": "dedup.sha256.e63ae2b913e81fa1174e8a9a0d1a4220468158d39b23d0536ad0d3fd3d761382",
+      "call_ids": [
+        "call-000018"
+      ],
+      "dedup_ref": "dedup.sha256.1ebdb4417e12c2efc6536546258092cd1e1f6aa4499db92e51ded19b25b29902",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 21,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000018:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000049"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00021",
+      "operation_ids": [
+        "op-000038"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000018:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000049"
+        }
+      ],
+      "parent_module_id": "module-00018",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.e63ae2b913e81fa1174e8a9a0d1a4220468158d39b23d0536ad0d3fd3d761382/block.json",
-        "target_dedup_uid": "dedup.sha256.e63ae2b913e81fa1174e8a9a0d1a4220468158d39b23d0536ad0d3fd3d761382",
+        "target_asset": "blocks/shared/dedup.sha256.1ebdb4417e12c2efc6536546258092cd1e1f6aa4499db92e51ded19b25b29902/block.json",
+        "target_dedup_uid": "dedup.sha256.1ebdb4417e12c2efc6536546258092cd1e1f6aa4499db92e51ded19b25b29902",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.post_attention.dropout",
@@ -552,15 +2325,87 @@
     {
       "block_type": "transformer_block",
       "block_uid": "squeezebert.block-00022",
-      "dedup_ref": "dedup.sha256.d065c0ac64a3e643b79381b103fcc805b7d9730dff146162a058210d43fa8dae",
+      "call_ids": [
+        "call-000020",
+        "call-000021",
+        "call-000022"
+      ],
+      "dedup_ref": "dedup.sha256.0ad1eb2566e106dccb75875440d6f5302c7df35a921c16cb5dbabced7a4e3c0c",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 22,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "x",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "x",
+          "optional": false,
+          "port_id": "call-000020:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000055"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00022",
+      "operation_ids": [
+        "op-000043",
+        "op-000044"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000022:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            32,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000059"
+        }
+      ],
+      "parent_module_id": "module-00009",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.d065c0ac64a3e643b79381b103fcc805b7d9730dff146162a058210d43fa8dae/block.json",
-        "target_dedup_uid": "dedup.sha256.d065c0ac64a3e643b79381b103fcc805b7d9730dff146162a058210d43fa8dae",
+        "target_asset": "blocks/shared/dedup.sha256.0ad1eb2566e106dccb75875440d6f5302c7df35a921c16cb5dbabced7a4e3c0c/block.json",
+        "target_dedup_uid": "dedup.sha256.0ad1eb2566e106dccb75875440d6f5302c7df35a921c16cb5dbabced7a4e3c0c",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.intermediate",
@@ -579,15 +2424,84 @@
     {
       "block_type": "transformer_block",
       "block_uid": "squeezebert.block-00023",
-      "dedup_ref": "dedup.sha256.4882e0576ef493427bfe63ce0f8ab3c53bcaed20b97293cbd86815133b9b655e",
+      "call_ids": [
+        "call-000021"
+      ],
+      "dedup_ref": "dedup.sha256.e5b405a67055165bc9430694213d7872c5b2b9a0e89e058392a2621b860e84b9",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 23,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000021:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000055"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00023",
+      "operation_ids": [
+        "op-000043"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000021:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            32,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000058"
+        }
+      ],
+      "parent_module_id": "module-00022",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.4882e0576ef493427bfe63ce0f8ab3c53bcaed20b97293cbd86815133b9b655e/block.json",
-        "target_dedup_uid": "dedup.sha256.4882e0576ef493427bfe63ce0f8ab3c53bcaed20b97293cbd86815133b9b655e",
+        "target_asset": "blocks/shared/dedup.sha256.e5b405a67055165bc9430694213d7872c5b2b9a0e89e058392a2621b860e84b9/block.json",
+        "target_dedup_uid": "dedup.sha256.e5b405a67055165bc9430694213d7872c5b2b9a0e89e058392a2621b860e84b9",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.intermediate.conv1d",
@@ -606,15 +2520,84 @@
     {
       "block_type": "transformer_block",
       "block_uid": "squeezebert.block-00024",
-      "dedup_ref": "dedup.sha256.022f5c6b057085fe736b13802872e50973c0cb7da69b47bb29ade270ef427354",
+      "call_ids": [
+        "call-000022"
+      ],
+      "dedup_ref": "dedup.sha256.bd91ee870cf410ffb522adfdbb753227a67c5fd74d8eb23ce95e3b3cfe5464b4",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 24,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000022:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            32,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000058"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00024",
+      "operation_ids": [
+        "op-000044"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000022:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            32,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000059"
+        }
+      ],
+      "parent_module_id": "module-00022",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.022f5c6b057085fe736b13802872e50973c0cb7da69b47bb29ade270ef427354/block.json",
-        "target_dedup_uid": "dedup.sha256.022f5c6b057085fe736b13802872e50973c0cb7da69b47bb29ade270ef427354",
+        "target_asset": "blocks/shared/dedup.sha256.bd91ee870cf410ffb522adfdbb753227a67c5fd74d8eb23ce95e3b3cfe5464b4/block.json",
+        "target_dedup_uid": "dedup.sha256.bd91ee870cf410ffb522adfdbb753227a67c5fd74d8eb23ce95e3b3cfe5464b4",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.intermediate.act",
@@ -633,15 +2616,120 @@
     {
       "block_type": "norm",
       "block_uid": "squeezebert.block-00025",
-      "dedup_ref": "dedup.sha256.b8705c5157adb3b4a07a380933aede4256f825d76cd6f01ad1ab521561a64a17",
+      "call_ids": [
+        "call-000023",
+        "call-000024",
+        "call-000026",
+        "call-000025"
+      ],
+      "dedup_ref": "dedup.sha256.a7bc91987666bc3271c852c9e5a3f8aec88e7a0c6c2e88c99c172df574ab2de7",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 25,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000023:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            32,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000059"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_tensor",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input_tensor",
+          "optional": false,
+          "port_id": "call-000023:in:1",
+          "position": 1,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000055"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00025",
+      "operation_ids": [
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000025:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000062"
+        }
+      ],
+      "parent_module_id": "module-00009",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.b8705c5157adb3b4a07a380933aede4256f825d76cd6f01ad1ab521561a64a17/block.json",
-        "target_dedup_uid": "dedup.sha256.b8705c5157adb3b4a07a380933aede4256f825d76cd6f01ad1ab521561a64a17",
+        "target_asset": "blocks/shared/dedup.sha256.a7bc91987666bc3271c852c9e5a3f8aec88e7a0c6c2e88c99c172df574ab2de7/block.json",
+        "target_dedup_uid": "dedup.sha256.a7bc91987666bc3271c852c9e5a3f8aec88e7a0c6c2e88c99c172df574ab2de7",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.output",
@@ -660,15 +2748,84 @@
     {
       "block_type": "transformer_block",
       "block_uid": "squeezebert.block-00026",
-      "dedup_ref": "dedup.sha256.f5e45926083ea2dd57d665fc4aa52cdd86bff4cfebd95726c9fe08d8deac5c39",
+      "call_ids": [
+        "call-000024"
+      ],
+      "dedup_ref": "dedup.sha256.04cb77c413493f2b6f4762496fe4f1908b4f10769ffef086a5d7b8b12e5678de",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 26,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000024:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            32,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000059"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00026",
+      "operation_ids": [
+        "op-000045"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000024:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000062"
+        }
+      ],
+      "parent_module_id": "module-00025",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.f5e45926083ea2dd57d665fc4aa52cdd86bff4cfebd95726c9fe08d8deac5c39/block.json",
-        "target_dedup_uid": "dedup.sha256.f5e45926083ea2dd57d665fc4aa52cdd86bff4cfebd95726c9fe08d8deac5c39",
+        "target_asset": "blocks/shared/dedup.sha256.04cb77c413493f2b6f4762496fe4f1908b4f10769ffef086a5d7b8b12e5678de/block.json",
+        "target_dedup_uid": "dedup.sha256.04cb77c413493f2b6f4762496fe4f1908b4f10769ffef086a5d7b8b12e5678de",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.output.conv1d",
@@ -687,15 +2844,86 @@
     {
       "block_type": "norm",
       "block_uid": "squeezebert.block-00027",
-      "dedup_ref": "dedup.sha256.d1a4e7be56a89b84219e74970116b693bc2092e303cf4b8ef5427eefb8cbb33e",
+      "call_ids": [
+        "call-000026"
+      ],
+      "dedup_ref": "dedup.sha256.0289217a97ffdc48fbf058a897881ef782e4a3e15ac1ac2248dc9957a25e02c7",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 27,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "x",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "x",
+          "optional": false,
+          "port_id": "call-000026:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000063"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00027",
+      "operation_ids": [
+        "op-000048",
+        "op-000049",
+        "op-000050"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000026:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000068"
+        }
+      ],
+      "parent_module_id": "module-00025",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.d1a4e7be56a89b84219e74970116b693bc2092e303cf4b8ef5427eefb8cbb33e/block.json",
-        "target_dedup_uid": "dedup.sha256.d1a4e7be56a89b84219e74970116b693bc2092e303cf4b8ef5427eefb8cbb33e",
+        "target_asset": "blocks/shared/dedup.sha256.0289217a97ffdc48fbf058a897881ef782e4a3e15ac1ac2248dc9957a25e02c7/block.json",
+        "target_dedup_uid": "dedup.sha256.0289217a97ffdc48fbf058a897881ef782e4a3e15ac1ac2248dc9957a25e02c7",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.output.layernorm",
@@ -714,15 +2942,84 @@
     {
       "block_type": "transformer_block",
       "block_uid": "squeezebert.block-00028",
-      "dedup_ref": "dedup.sha256.e63ae2b913e81fa1174e8a9a0d1a4220468158d39b23d0536ad0d3fd3d761382",
+      "call_ids": [
+        "call-000025"
+      ],
+      "dedup_ref": "dedup.sha256.1ebdb4417e12c2efc6536546258092cd1e1f6aa4499db92e51ded19b25b29902",
       "family_id": "squeezebert",
       "graph_ref": "graphs/sha256.10f8820748a1e7486c0eb60f20c2c9c17167cbccd78281f96441491e68d7fc25.json",
       "index": 28,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000025:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000062"
+        }
+      ],
+      "layer_group_id": "layer-00000",
       "model_version_id": "squeezebert",
+      "module_id": "module-00028",
+      "operation_ids": [
+        "op-000046"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000025:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            16,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000062"
+        }
+      ],
+      "parent_module_id": "module-00025",
       "pointer": {
         "reason": "same_source_tree_graph_shapes_config_signature",
-        "target_asset": "blocks/shared/dedup.sha256.e63ae2b913e81fa1174e8a9a0d1a4220468158d39b23d0536ad0d3fd3d761382/block.json",
-        "target_dedup_uid": "dedup.sha256.e63ae2b913e81fa1174e8a9a0d1a4220468158d39b23d0536ad0d3fd3d761382",
+        "target_asset": "blocks/shared/dedup.sha256.1ebdb4417e12c2efc6536546258092cd1e1f6aa4499db92e51ded19b25b29902/block.json",
+        "target_dedup_uid": "dedup.sha256.1ebdb4417e12c2efc6536546258092cd1e1f6aa4499db92e51ded19b25b29902",
         "type": "deduplicated_block"
       },
       "qualified_name": "encoder.layers.0.output.dropout",

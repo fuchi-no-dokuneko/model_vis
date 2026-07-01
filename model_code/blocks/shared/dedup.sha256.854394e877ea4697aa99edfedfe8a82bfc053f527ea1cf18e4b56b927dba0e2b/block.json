@@ -1,0 +1,96 @@
+{
+  "dedup_uid": "dedup.sha256.854394e877ea4697aa99edfedfe8a82bfc053f527ea1cf18e4b56b927dba0e2b",
+  "operation_ids": [
+    "op-000050",
+    "op-000051",
+    "op-000052",
+    "op-000053",
+    "op-000054",
+    "op-000055",
+    "op-000056",
+    "op-000057"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.apertus.modeling_apertus",
+        "ApertusRMSNorm"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            4,
+            5,
+            4
+          ]
+        ],
+        [
+          [
+            3,
+            4,
+            5,
+            4
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          4
+        ]
+      ]
+    ],
+    "source": "d3be868f637a9c7cc80e8081bb451d79a9c3340d42137d0c1c3f521f92cc6425",
+    "topology": [
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.pow.Tensor_Scalar"
+      ],
+      [
+        "aten_op",
+        "aten.mean.dim"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.rsqrt.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ]
+    ]
+  }
+}

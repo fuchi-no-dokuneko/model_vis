@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 import inspect
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 import torch
 from torch import nn
 
+from .introspection import ConstructorRecorder
 from .registry import ResolvedVersion
 
 
@@ -167,6 +168,7 @@ class ModelBundle:
     inputs: tuple[Any, ...]
     kwargs: dict[str, Any]
     config: dict[str, Any]
+    constructors: list[dict[str, Any]] = field(default_factory=list)
 
 
 def _compact_config(config: Any, seen: set[int] | None = None) -> Any:
@@ -550,10 +552,25 @@ def _representative_inputs(model: nn.Module, config: dict[str, Any]) -> tuple[tu
 
 
 def create_model(version: ResolvedVersion) -> ModelBundle:
-    if version.library == "transformers":
-        model, config = _transformers_model(version)
-    else:
-        model, config = _diffusers_model(version)
+    # Load the model module before installing constructor wrappers so nested
+    # modules retain the exact positional/keyword call form used at runtime.
+    try:
+        entrypoint = __import__(version.entrypoint_module, fromlist=[version.entrypoint_class])
+        getattr(entrypoint, version.entrypoint_class)
+    except (ImportError, AttributeError):
+        if version.library == "transformers":
+            try:
+                from transformers import AutoConfig, AutoModel
+
+                config_type = type(AutoConfig.for_model(version.architecture_key))
+                AutoModel._model_mapping[config_type]
+            except (AttributeError, KeyError, TypeError, ValueError):
+                pass
+    with ConstructorRecorder() as constructors:
+        if version.library == "transformers":
+            model, config = _transformers_model(version)
+        else:
+            model, config = _diffusers_model(version)
     model.cpu().eval()
     inputs, kwargs = _representative_inputs(model, config)
-    return ModelBundle(model, inputs, kwargs, config)
+    return ModelBundle(model, inputs, kwargs, config, constructors.records_for(model, config))

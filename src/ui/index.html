@@ -5,17 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>Model Structure</title>
+  <link rel="icon" href="data:,">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="topbar">
     <button id="menu-button" class="icon-button mobile-only" title="Open model catalog" aria-label="Open model catalog">☰</button>
     <div class="brand">Model Structure</div>
+    <form id="uri-form" class="uri-form" role="search">
+      <span aria-hidden="true">⌘</span>
+      <input id="uri-input" aria-label="Model location" autocomplete="off" spellcheck="false" value="modelvis:/">
+    </form>
     <nav class="mode-tabs" aria-label="Viewer mode">
       <button class="mode active" data-mode="family">Families</button>
-      <button class="mode" data-mode="version">Version</button>
-      <button class="mode" data-mode="block">Blocks</button>
-      <button class="mode" data-mode="source">Operations</button>
+      <button class="mode" data-mode="module">Modules</button>
+      <button class="mode" data-mode="operation">Operations</button>
     </nav>
     <div class="toolbar-actions">
       <button id="density-button" class="icon-button" title="Expand graph detail" aria-label="Expand graph detail">⊞</button>
@@ -27,24 +31,38 @@
   </header>
 
   <main class="workspace">
-    <aside id="sidebar" class="sidebar" aria-label="Model catalog">
-      <div class="sidebar-head">
-        <label class="search">
-          <span aria-hidden="true">⌕</span>
-          <input id="search" type="search" placeholder="Search models" autocomplete="off">
-        </label>
-        <div class="filter-row">
-          <select id="category" aria-label="Filter category"><option value="">All categories</option></select>
-          <select id="sort" aria-label="Sort models">
-            <option value="family">Family</option>
-            <option value="parameters">Parameters</option>
-            <option value="version">Version</option>
-            <option value="sources">Sources</option>
-          </select>
-        </div>
+    <aside id="sidebar" class="sidebar" aria-label="Navigator">
+      <div class="navigator-tabs" role="tablist" aria-label="Navigator view">
+        <button class="navigator-tab active" data-navigator="catalog" role="tab">Catalog</button>
+        <button class="navigator-tab" data-navigator="modules" role="tab">Modules</button>
+        <button class="navigator-tab" data-navigator="files" role="tab">Files</button>
       </div>
-      <div id="model-list" class="model-list" role="listbox" aria-label="Model versions"><div id="model-list-inner" class="model-list-inner"></div></div>
-      <div id="result-count" class="sidebar-footer">0 models</div>
+      <section id="catalog-navigator" class="navigator-panel active">
+        <div class="sidebar-head">
+          <label class="search">
+            <span aria-hidden="true">⌕</span>
+            <input id="search" type="search" placeholder="Search models" autocomplete="off">
+          </label>
+          <div class="filter-row">
+            <select id="category" aria-label="Filter category"><option value="">All categories</option></select>
+            <select id="sort" aria-label="Sort models">
+              <option value="family">Family</option>
+              <option value="parameters">Parameters</option>
+              <option value="version">Version</option>
+              <option value="sources">Sources</option>
+            </select>
+          </div>
+        </div>
+        <div id="model-list" class="model-list" role="listbox" aria-label="Model versions"><div id="model-list-inner" class="model-list-inner"></div></div>
+        <div id="result-count" class="sidebar-footer">0 models</div>
+      </section>
+      <section id="modules-navigator" class="navigator-panel">
+        <label class="tree-search"><span aria-hidden="true">⌕</span><input id="module-search" type="search" placeholder="Find module" autocomplete="off"></label>
+        <div id="module-tree" class="tree-view" role="tree" aria-label="Module Hierarchy"></div>
+      </section>
+      <section id="files-navigator" class="navigator-panel">
+        <div id="source-tree" class="tree-view source-tree" role="tree" aria-label="Source File Hierarchy"></div>
+      </section>
     </aside>
 
     <section class="graph-region" aria-label="Model graph">
@@ -56,10 +74,11 @@
           <button id="zoom-in" class="icon-button" title="Zoom in" aria-label="Zoom in">+</button>
         </div>
       </div>
-      <div id="graph-viewport" class="graph-viewport" tabindex="0" aria-label="Interactive computation graph">
-        <div id="graph-canvas" class="graph-canvas">
-          <svg id="edges" class="edges" aria-hidden="true"></svg>
-          <div id="nodes"></div>
+        <div id="graph-viewport" class="graph-viewport" tabindex="0" aria-label="Interactive computation graph">
+          <div id="graph-canvas" class="graph-canvas">
+            <div id="layer-groups" class="layer-groups" aria-hidden="true"></div>
+            <svg id="edges" class="edges" aria-hidden="true"></svg>
+            <div id="nodes"></div>
         </div>
         <canvas id="minimap" class="minimap" width="272" height="176" aria-label="Graph overview"></canvas>
         <div id="graph-status" class="graph-status" hidden></div>
@@ -77,16 +96,24 @@
       </div>
       <div class="inspector-tabs" role="tablist" aria-label="Inspector view">
         <button class="inspector-tab active" data-panel="details" role="tab">Details</button>
-        <button class="inspector-tab" data-panel="shapes" role="tab">Shapes</button>
+        <button class="inspector-tab" data-panel="shapes" role="tab">I/O</button>
         <button class="inspector-tab" data-panel="source" role="tab">Source</button>
+        <button class="inspector-tab" data-panel="runtime" role="tab">Runtime</button>
         <button class="inspector-tab" data-panel="config" role="tab">Config</button>
       </div>
       <section id="details-panel" class="inspector-panel active"><div id="metadata" class="metadata"></div></section>
       <section id="shapes-panel" class="inspector-panel"><div id="shape-list" class="shape-list"></div></section>
       <section id="source-panel" class="inspector-panel source-panel">
-        <div id="source-reference" class="source-reference">No operation selected</div>
-        <div id="source-lines" class="source-lines"></div>
+        <div class="source-toolbar">
+          <div id="source-reference" class="source-reference">No operation selected</div>
+          <div class="source-actions">
+            <button id="copy-source" class="icon-button" title="Copy source" aria-label="Copy source">⧉</button>
+            <a id="source-repository" class="icon-button" title="Open official source" aria-label="Open official source" target="_blank" rel="noopener noreferrer" hidden>↗</a>
+          </div>
+        </div>
+        <div id="source-editor" class="source-editor" role="region" aria-label="Read-only source code"><div id="source-lines" class="source-lines"></div></div>
       </section>
+      <section id="runtime-panel" class="inspector-panel"><div id="runtime-view" class="runtime-view"></div></section>
       <section id="config-panel" class="inspector-panel"><div id="config-view" class="config-view">Open Config to load this asset.</div></section>
     </aside>
   </main>

@@ -22,8 +22,23 @@ export class ModelStore {
     return this.cache.get(path);
   }
 
+  async text(relative) {
+    const path = `${this.base}/${relative}`;
+    if (!this.cache.has(path)) {
+      const request = this.fetcher(path).then(async (response) => {
+        if (!response.ok) throw new Error(`Unable to load ${relative}: ${response.status}`);
+        return response.text();
+      }).catch((error) => {
+        this.cache.delete(path);
+        throw error;
+      });
+      this.cache.set(path, request);
+    }
+    return this.cache.get(path);
+  }
+
   async initialize() {
-    this.manifest = await this.get("manifest.v1.json");
+    this.manifest = await this.get("manifest.v2.json");
     this.index = await this.get(this.manifest.search_index);
     return { manifest: this.manifest, index: this.index };
   }
@@ -34,6 +49,8 @@ export class ModelStore {
   blocks(version) { return this.get(version.blocks_ref); }
   trace(version) { return this.get(version.trace_ref); }
   config(version) { return this.get(version.config_ref); }
+  source(sourceUid) { return this.get(`sources/${sourceUid}.json`); }
+  sourceText(source) { return this.text(source.asset_path); }
   sharedBlock(block) { return this.get(block.pointer.target_asset); }
 }
 

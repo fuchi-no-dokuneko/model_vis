@@ -1,4 +1,4 @@
-import { cp, mkdir, readdir, rm, stat } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, stat } from "node:fs/promises";
 import path from "node:path";
 
 function options(argv) {
@@ -21,7 +21,16 @@ async function files(root) {
 }
 
 const config = options(process.argv.slice(2));
-await stat(path.join(config.modelCode, "manifest.v1.json"));
+const manifestPath = path.join(config.modelCode, "manifest.v2.json");
+await stat(manifestPath);
+const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+if (manifest.schema_version !== "2.1.0") {
+  throw new Error(`Unsupported generated-data schema: ${manifest.schema_version || "missing"}`);
+}
+const report = JSON.parse(await readFile(path.join(config.modelCode, manifest.build_report), "utf8"));
+if (report.status !== "passed" || report.passed_version_count !== manifest.versions.length) {
+  throw new Error("Generated model data did not pass its release build");
+}
 await rm(config.out, { recursive: true, force: true });
 await mkdir(config.out, { recursive: true });
 await cp("src/ui", config.out, { recursive: true });

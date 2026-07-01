@@ -1,0 +1,52 @@
+{
+  "dedup_uid": "dedup.sha256.9b0553b509a79313dbf6a441fbde7b4ea4be15d36c85262b8d81d68fe0d1ec35",
+  "operation_ids": [
+    "op-000063"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.dinov3_vit.modeling_dinov3_vit",
+        "DINOv3ViTLayerScale"
+      ]
+    ],
+    "config_branches": [
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            17,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            17,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "lambda1",
+        [
+          16
+        ]
+      ]
+    ],
+    "source": "13a914f540f0c86477c3a96c2c3e11b4dcf975a1f2f3728e185290badecb7e8e",
+    "topology": [
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ]
+    ]
+  }
+}

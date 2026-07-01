@@ -26,7 +26,11 @@ Run the resumable Stage 1 build:
   --forbid-weight-downloads
 ```
 
-Each canonical `structure_key` executes once through Torchview. Catalog aliases and later versions with the same constructor/config structure point to that execution record.
+Each canonical `structure_key` executes one deterministic CPU forward through the canonical dispatch/lineage tracer. Catalog aliases and later versions with the same constructor/config structure point to that execution record.
+
+## Redistributed source code
+
+The static viewer includes unmodified copies of installed Python source files referenced by captured model traces so the Source panel works offline. Every generated source asset records its package, installed version, content hash, license metadata, and a pinned official-repository URL when one is available. Copyright remains with the respective package authors and contributors. Required package notices are maintained in `license/THIRD_PARTY_NOTICES.md` and `license/dependency_licenses.json`; source text must not be added to a release unless the license gate records redistribution as permitted.
 
 Build the static UI without downloading npm dependencies:
 
@@ -46,7 +50,7 @@ npm run test:visual
 
 Partial development builds can use `--include BERT` or `--limit 5`. They are intentionally rejected by full-catalog validation.
 
-The verified 20-structure baseline is reproducible without retyping model names:
+The amended 21-model development scope (the verified 20-structure baseline plus BERT) is reproducible without retyping model names:
 
 ```bash
 ./venv/bin/python -m src.model_builder \
@@ -54,7 +58,7 @@ The verified 20-structure baseline is reproducible without retyping model names:
   --scope-out model_scope.generated.yaml \
   --out model_code \
   --cache build_cache \
-  --include-file profiles/smallest-20.txt \
+  --include-file profiles/smallest-21.txt \
   --resume \
   --require-forward \
   --forbid-weight-downloads

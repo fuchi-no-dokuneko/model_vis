@@ -1,0 +1,51 @@
+{
+  "dedup_uid": "dedup.sha256.a8d6d5a2185c3f5677ccd28ea37857f95de1fbc457252764955f723950545240",
+  "operation_ids": [
+    "op-000080",
+    "op-000081"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.activations",
+        "ReLUSquaredActivation"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            32
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            32
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "d51c5a25a22ef138f4b6c8b6d6a295c1f34c90aa64455d2d0c523fa9827c4a46",
+    "topology": [
+      [
+        "aten_op",
+        "aten.relu.default"
+      ],
+      [
+        "aten_op",
+        "aten.square.default"
+      ]
+    ]
+  }
+}

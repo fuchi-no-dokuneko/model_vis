@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 import torch
@@ -57,7 +58,7 @@ def test_aliases_execute_one_canonical_inference(monkeypatch, tmp_path: Path) ->
         return ModelBundle(TinyModel(), (torch.zeros(1, 4),), {}, {"hidden_size": 4})
 
     monkeypatch.setattr(builder, "create_model", create)
-    monkeypatch.setattr(builder, "_write_licenses", lambda root, out: None)
+    monkeypatch.setattr(builder, "_write_licenses", lambda root, out, packages: None)
     report = builder.build(
         catalog,
         tmp_path / "scope.yaml",
@@ -71,6 +72,13 @@ def test_aliases_execute_one_canonical_inference(monkeypatch, tmp_path: Path) ->
     assert report["passed_version_count"] == 2
     assert len(report["executions"]) == 1
     assert create_calls == ["bert"]
+    manifest = json.loads((tmp_path / "model_code" / "manifest.v2.json").read_text(encoding="utf-8"))
+    assert manifest["schema_version"] == "2.1.0"
+    source_assets = list((tmp_path / "model_code" / "sources").glob("source.*.json"))
+    assert source_assets
+    source = json.loads(source_assets[0].read_text(encoding="utf-8"))
+    assert source["redistributed"] is True
+    assert (tmp_path / "model_code" / source["asset_path"]).is_file()
 
     second = builder.build(
         catalog,

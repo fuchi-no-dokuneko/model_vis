@@ -38,28 +38,40 @@ def build_blocks(
     structure_key: str,
     trace: dict[str, Any],
 ) -> tuple[list[dict[str, Any]], dict[str, dict[str, Any]]]:
-    events_by_name: dict[str, list[dict[str, Any]]] = {}
-    for event in trace["operations"]:
-        if event["kind"] == "module_call":
-            events_by_name.setdefault(event["qualified_name"], []).append(event)
+    calls_by_module: dict[str, list[dict[str, Any]]] = {}
+    for call in trace.get("module_calls", []):
+        calls_by_module.setdefault(call["module_id"], []).append(call)
+    traced_modules = {item["module_id"]: item for item in trace.get("modules", [])}
 
     concrete: list[dict[str, Any]] = []
     shared: dict[str, dict[str, Any]] = {}
     for index, (name, module) in enumerate(model.named_modules()):
         if not name or not any(token in name.lower() for token in ("layer", "block", "attention", "mlp", "embed", "norm", "encoder", "decoder")):
             continue
-        parameters = sorted((key, list(value.shape)) for key, value in module.named_parameters(recurse=False))
-        buffers = sorted((key, list(value.shape)) for key, value in module.named_buffers(recurse=False))
+        traced = next((item for item in traced_modules.values() if item["qualified_name"] == name), None)
+        if traced is None:
+            continue
+        parameters = sorted((key, list(value.shape)) for key, value in module.named_parameters(recurse=True))
+        buffers = sorted((key, list(value.shape)) for key, value in module.named_buffers(recurse=True))
         child_tree = [(child_name, type(child).__module__, type(child).__qualname__) for child_name, child in module.named_modules()]
-        events = [
-            event
-            for qualified_name, named_events in events_by_name.items()
-            if qualified_name == name or qualified_name.startswith(f"{name}.")
-            for event in named_events
+        descendant_ids = [
+            item["module_id"]
+            for item in traced_modules.values()
+            if item["qualified_name"] == name or item["qualified_name"].startswith(f"{name}.")
         ]
+        calls = [call for module_id in descendant_ids for call in calls_by_module.get(module_id, [])]
+        operation_ids = {
+            operation_id
+            for call in calls
+            for operation_id in call.get("operation_ids", [])
+        }
+        events = [event for event in trace["operations"] if event["op_id"] in operation_ids]
         io_shapes = [
-            ([item.get("shape") for item in event["inputs"]], [item.get("shape") for item in event["outputs"]])
-            for event in events
+            (
+                [item.get("shape") for item in call["input_ports"]],
+                [item.get("shape") for item in call["output_ports"]],
+            )
+            for call in calls
         ]
         topology = [(event["kind"], event["target"]) for event in events]
         signature = {
@@ -69,14 +81,14 @@ def build_blocks(
             "parameters": parameters,
             "buffers": buffers,
             "io_shapes": io_shapes,
-            "config_branches": [event["config_conditions"] for event in events],
+            "config_branches": [event.get("config_conditions", []) for event in events],
         }
         dedup_uid = "dedup.sha256." + sha256_json(signature)
         block_uid = f"{version_id}.block-{index:05d}"
         shared.setdefault(dedup_uid, {
             "dedup_uid": dedup_uid,
             "signature": signature,
-            "operation_ids": [event["op_id"] for event in events],
+            "operation_ids": sorted(operation_ids),
         })
         concrete.append({
             "block_uid": block_uid,
@@ -84,8 +96,15 @@ def build_blocks(
             "family_id": family_id,
             "block_type": _block_type(name, module),
             "index": index,
+            "module_id": traced["module_id"],
+            "parent_module_id": traced["parent_module_id"],
+            "layer_group_id": traced["layer_group_id"],
             "qualified_name": name,
-            "source_refs": [event["source_ref"] for event in events],
+            "source_refs": [traced["source_ref"]],
+            "input_ports": calls[0]["input_ports"] if calls else [],
+            "output_ports": calls[-1]["output_ports"] if calls else [],
+            "call_ids": [call["call_id"] for call in calls],
+            "operation_ids": sorted(operation_ids),
             "graph_ref": f"graphs/{structure_key}.json",
             "trace_ref": f"traces/{structure_key}.json",
             "dedup_ref": dedup_uid,
