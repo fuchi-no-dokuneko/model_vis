@@ -29,6 +29,7 @@ test("viewer exposes required inspector and graph controls", async () => {
     "source-panel", "source-editor", "source-repository", "copy-source", "shapes-panel",
     "runtime-panel", "compare-pane", "density-button", "fit-button", "reset-button", "minimap",
     "graph-legend", "graph-search", "continuations", "structural-summary", "official-config-link",
+    "theme-button",
   ]) {
     assert.match(html, new RegExp(`id="${id}"`));
   }

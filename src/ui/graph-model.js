@@ -1,5 +1,5 @@
 export const NODE_WIDTH = 248;
-export const NODE_HEIGHT = 132;
+export const NODE_HEIGHT = 168;
 
 function shapeText(records = []) {
   return records.map((record) => record?.shape || record).filter(Array.isArray)
@@ -195,6 +195,7 @@ export function moduleProjection(graph, scopeModuleId = null) {
   const inputPortKeys = new Map();
   const outputPortKeys = new Map();
   const edges = [];
+  const edgeKeys = new Set();
   function callBoundaryPort(ownerId, direction, tensorId) {
     if (!ownerId.startsWith("group:")) return null;
     const calls = callsByModule.get(ownerId.slice(6)) || [];
@@ -219,7 +220,7 @@ export function moduleProjection(graph, scopeModuleId = null) {
     const originalInput = callBoundaryPort(targetOwner, "input", edge.tensor_id)
       || targetRaw?.input_ports?.find((port) => port.port_id === edge.target_port) || {};
     const outputKey = `${sourceOwner}:${edge.tensor_id}`;
-    const inputKey = `${targetOwner}:${edge.target_port}:${edge.tensor_id}`;
+    const inputKey = `${targetOwner}:${edge.tensor_id}`;
     if (!outputPortKeys.has(outputKey)) {
       const port = {
         ...originalOutput,
@@ -242,6 +243,9 @@ export function moduleProjection(graph, scopeModuleId = null) {
       target.input_ports.push(port);
       inputPortKeys.set(inputKey, port);
     }
+    const edgeKey = `${sourceOwner}:${targetOwner}:${edge.tensor_id}`;
+    if (edgeKeys.has(edgeKey)) continue;
+    edgeKeys.add(edgeKey);
     edges.push({
       ...edge,
       edge_id: `group:${edge.edge_id}`,
@@ -422,10 +426,17 @@ export function layoutGraph(nodes, edges) {
   return positions;
 }
 
-export function graphBounds(nodes, positions) {
-  const values = nodes.map((node) => positions.get(node.id)).filter(Boolean);
+export function graphBounds(nodes, positions, sizes = new Map()) {
   return {
-    width: Math.max(400, ...values.map((position) => position.x + NODE_WIDTH + 80)),
-    height: Math.max(300, ...values.map((position) => position.y + NODE_HEIGHT + 80)),
+    width: Math.max(400, ...nodes.map((node) => {
+      const position = positions.get(node.id);
+      const size = sizes.get(node.id) || { width: NODE_WIDTH, height: NODE_HEIGHT };
+      return position ? position.x + size.width + 80 : 0;
+    })),
+    height: Math.max(300, ...nodes.map((node) => {
+      const position = positions.get(node.id);
+      const size = sizes.get(node.id) || { width: NODE_WIDTH, height: NODE_HEIGHT };
+      return position ? position.y + size.height + 80 : 0;
+    })),
   };
 }

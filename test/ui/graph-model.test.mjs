@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { blocksProjection, layoutGraph, moduleProjection, operationProjection, projectGraph, tracePath } from "../../src/ui/graph-model.js";
+import { blocksProjection, graphBounds, layoutGraph, moduleProjection, operationProjection, projectGraph, tracePath } from "../../src/ui/graph-model.js";
 
 const current = {
   family_id: "tiny",
@@ -81,6 +81,20 @@ test("module projection derives groups from canonical edges without sequential s
   assert.ok(result.edges.every((edge) => edge.edge_id.startsWith("group:")));
 });
 
+test("module projection collapses repeated fan-out into one boundary port and route", () => {
+  const graph = canonicalGraph();
+  const queryOperation = graph.nodes.find((node) => node.id === "q");
+  const key = graph.nodes.find((node) => node.id === "k");
+  queryOperation.layer_group_id = null;
+  key.module_id = "qmod";
+  key.module_path = "layer.0.query";
+  key.layer_group_id = null;
+  const result = moduleProjection(graph, "layer");
+  const query = result.nodes.find((node) => node.raw.module_id === "qmod");
+  assert.equal(query.inputPorts.filter((portValue) => portValue.tensor_id === "t0").length, 1);
+  assert.equal(result.edges.filter((edge) => edge.target === query.id && edge.tensor_id === "t0").length, 1);
+});
+
 test("scoped operation projection creates explicit boundary ports", () => {
   const result = operationProjection(canonicalGraph(), "qmod");
   assert.ok(result.nodes.some((node) => node.kind === "scope_input" || node.kind === "graph_input"));
@@ -127,4 +141,11 @@ test("layout is stable and follows edge rank", () => {
   assert.deepEqual([...first], [...second]);
   assert.ok(first.get("a").y < first.get("b").y);
   assert.ok(first.get("b").y < first.get("c").y);
+});
+
+test("graph bounds include persisted custom node dimensions", () => {
+  const nodes = [{ id: "a" }];
+  const positions = new Map([["a", { x: 120, y: 90 }]]);
+  const sizes = new Map([["a", { width: 640, height: 420 }]]);
+  assert.deepEqual(graphBounds(nodes, positions, sizes), { width: 840, height: 590 });
 });

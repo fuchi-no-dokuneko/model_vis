@@ -52,8 +52,17 @@ def drag_first(driver, selector: str, x: int, y: int) -> str:
             elements = current.find_elements(By.CSS_SELECTOR, selector)
             if not elements:
                 return False
-            selected_id = elements[0].get_attribute("data-id")
-            ActionChains(current).drag_and_drop_by_offset(elements[0], x, y).perform()
+            node = elements[0] if "graph-node" in elements[0].get_attribute("class").split() else elements[0].find_element(By.XPATH, "ancestor::*[contains(@class, 'graph-node')]")
+            selected_id = node.get_attribute("data-id")
+            before = (float(node.value_of_css_property("left")[:-2]), float(node.value_of_css_property("top")[:-2]))
+            viewport = current.find_element(By.ID, "graph-viewport").rect
+            handle = elements[0].rect
+            actual_x = x if handle["x"] + handle["width"] / 2 + x < viewport["x"] + viewport["width"] - 4 else -x
+            actual_y = y if handle["y"] + handle["height"] / 2 + y < viewport["y"] + viewport["height"] - 4 else -y
+            ActionChains(current).drag_and_drop_by_offset(elements[0], actual_x, actual_y).perform()
+            after = (float(node.value_of_css_property("left")[:-2]), float(node.value_of_css_property("top")[:-2]))
+            assert abs(after[0] - before[0]) > abs(actual_x) * 0.5
+            assert abs(after[1] - before[1]) > abs(actual_y) * 0.5
             return True
         except StaleElementReferenceException:
             return False
@@ -123,7 +132,7 @@ def test_search_sort_compare_and_local_layout(loaded_viewer) -> None:
     driver.find_element(By.ID, "close-compare").click()
 
     click_mode(driver, "module")
-    node_id = drag_first(driver, ".graph-node", 40, 25)
+    node_id = drag_first(driver, ".node-drag-handle", 140, 90)
     stored = driver.execute_script("return Object.keys(localStorage).filter(key => key.startsWith('model-vis-layout:')).length")
     assert stored > 0
     assert driver.find_element(By.CSS_SELECTOR, f'.graph-node[data-id="{node_id}"]')
@@ -268,3 +277,75 @@ def test_amendment_controls_configs_paths_blocks_and_partial_warning(loaded_view
     driver.find_element(By.CSS_SELECTOR, ".model-open").click()
     wait.until(lambda current: current.find_element(By.ID, "model-warning").is_displayed())
     assert "official config" in driver.find_element(By.ID, "model-warning").text.lower()
+
+
+def test_amendment3_ports_controls_gestures_shortcuts_and_theme(loaded_viewer) -> None:
+    driver = loaded_viewer
+    wait = WebDriverWait(driver, 15)
+    address = driver.find_element(By.ID, "uri-input")
+    address.clear()
+    address.send_keys("modelvis:/version/bert/view/module/module/encoder.layer")
+    address.submit()
+    first = wait.until(lambda current: current.find_element(By.CSS_SELECTOR, '.graph-node[data-id="group:module-00009"]'))
+
+    input_names = [item.text for item in first.find_elements(By.CSS_SELECTOR, ".node-ports.inputs .port-name")]
+    assert input_names == ["hidden_states"]
+
+    for _ in range(8):
+        driver.find_element(By.ID, "zoom-in").click()
+    wait.until(lambda current: int(current.find_element(By.ID, "zoom-value").text.rstrip("%")) >= 95)
+    first = driver.find_element(By.CSS_SELECTOR, '.graph-node[data-id="group:module-00009"]')
+    actions = first.find_elements(By.CSS_SELECTOR, ".node-action")
+    assert len(actions) == 3
+    assert all(action.is_displayed() and action.rect["width"] > 0 for action in actions)
+    title = first.find_element(By.CSS_SELECTOR, ".node-title").rect
+    action_bar = first.find_element(By.CSS_SELECTOR, ".node-actions").rect
+    assert title["x"] + title["width"] <= action_bar["x"] + 1
+
+    before_width = float(first.value_of_css_property("width")[:-2])
+    before_height = float(first.value_of_css_property("height")[:-2])
+    ActionChains(driver).drag_and_drop_by_offset(first.find_element(By.CSS_SELECTOR, ".node-resize-handle"), 150, 110).perform()
+    assert float(first.value_of_css_property("width")[:-2]) > before_width + 80
+    assert float(first.value_of_css_property("height")[:-2]) > before_height + 60
+
+    for mode in ["family", "module", "blocks", "operation"]:
+        click_mode(driver, mode)
+        drag_first(driver, ".node-drag-handle", 120, 70)
+
+    address = driver.find_element(By.ID, "uri-input")
+    address.clear()
+    address.send_keys("modelvis:/version/bert/view/module/module/encoder.layer")
+    address.submit()
+    first = wait.until(lambda current: current.find_element(By.CSS_SELECTOR, '.graph-node[data-id="group:module-00009"]'))
+    driver.execute_script("arguments[0].click()", first)
+    driver.execute_script("window.__copied = []; Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async value => { window.__copied.push(value); } } });")
+
+    for key in ["m", "p", "s"]:
+        driver.execute_script("window.dispatchEvent(new KeyboardEvent('keydown', { key: arguments[0], altKey: true, shiftKey: true, bubbles: true }));", key)
+    wait.until(lambda current: len(current.execute_script("return window.__copied")) == 3)
+    copied = driver.execute_script("return window.__copied")
+    assert copied[0] == "BertLayer"
+    assert copied[1] == "encoder.layer.0"
+    assert "def forward(" in copied[2]
+    assert "class BertLayer" not in copied[2]
+
+    viewport = driver.find_element(By.ID, "graph-viewport")
+    canvas = driver.find_element(By.ID, "graph-canvas")
+    before_transform = canvas.get_attribute("style")
+    driver.execute_script("const r=document.createRange(); const t=document.querySelector('.node-title').firstChild; r.selectNodeContents(t); getSelection().removeAllRanges(); getSelection().addRange(r);")
+    ActionChains(driver).move_to_element_with_offset(viewport, 20, 20).click_and_hold().move_by_offset(100, 75).release().perform()
+    assert canvas.get_attribute("style") != before_transform
+    assert driver.execute_script("return String(getSelection())") == ""
+
+    driver.find_element(By.ID, "reset-button").click()
+    first = wait.until(lambda current: current.find_element(By.CSS_SELECTOR, '.graph-node[data-id="group:module-00009"]'))
+    assert float(first.value_of_css_property("width")[:-2]) == 248
+    assert float(first.value_of_css_property("height")[:-2]) == 168
+
+    initial_theme = driver.execute_script("return document.documentElement.dataset.theme")
+    driver.find_element(By.ID, "theme-button").click()
+    expected_theme = "light" if initial_theme == "dark" else "dark"
+    assert driver.execute_script("return document.documentElement.dataset.theme") == expected_theme
+    assert driver.execute_script("return localStorage.getItem('model-vis-theme')") == expected_theme
+    driver.refresh()
+    wait.until(lambda current: current.execute_script("return document.documentElement.dataset.theme") == expected_theme)

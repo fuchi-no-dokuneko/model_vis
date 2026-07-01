@@ -4,6 +4,10 @@ import { graphBounds, layoutGraph, NODE_HEIGHT, NODE_WIDTH, projectGraph, traceP
 const $ = (selector) => document.querySelector(selector);
 const store = new ModelStore();
 const LIST_ROW_HEIGHT = 62;
+const MIN_NODE_WIDTH = 184;
+const MIN_NODE_HEIGHT = 132;
+const MAX_NODE_WIDTH = 960;
+const MAX_NODE_HEIGHT = 720;
 const LAYER_COLORS = [
   "#08785d", "#356a9b", "#a76508", "#8a4f79", "#577b2f", "#a5483f",
   "#4f6f87", "#7a5d25", "#4b8079", "#76558c", "#87603f", "#3d737e",
@@ -34,6 +38,7 @@ const state = {
   graphView: { nodes: [], edges: [], layerGroups: [] },
   basePositions: new Map(),
   userPositions: new Map(),
+  userSizes: new Map(),
   layoutKey: "",
   bounds: { width: 1200, height: 800 },
   zoom: 1,
@@ -41,6 +46,7 @@ const state = {
   pointers: new Map(),
   gesture: null,
   renderFrame: null,
+  geometryFrame: null,
   loadToken: 0,
   sourceToken: 0,
   sourceAssets: new Map(),
@@ -76,6 +82,68 @@ function showStatus(message = "") {
   const status = $("#graph-status");
   status.hidden = !message;
   status.textContent = message;
+}
+
+function showTransientStatus(message) {
+  showStatus(message);
+  window.setTimeout(() => {
+    if ($("#graph-status").textContent === message) showStatus("");
+  }, 1600);
+}
+
+function applyTheme(theme, { persist = true } = {}) {
+  const next = theme === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = next;
+  if (persist) localStorage.setItem("model-vis-theme", next);
+  const button = $("#theme-button");
+  button.setAttribute("aria-pressed", String(next === "dark"));
+  button.setAttribute("aria-label", `Switch to ${next === "dark" ? "light" : "dark"} theme`);
+  button.title = `Switch to ${next === "dark" ? "light" : "dark"} theme`;
+  button.textContent = next === "dark" ? "☀" : "◐";
+  if (state.graphView.nodes.length) renderMinimap();
+}
+
+function initializeTheme() {
+  const stored = localStorage.getItem("model-vis-theme");
+  const preferred = window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  applyTheme(stored || preferred, { persist: false });
+}
+
+async function copyText(text, label) {
+  if (!text) {
+    showTransientStatus(`No ${label.toLowerCase()} is available for this selection`);
+    return false;
+  }
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const temporary = document.createElement("textarea");
+    temporary.value = text;
+    temporary.style.position = "fixed";
+    temporary.style.opacity = "0";
+    document.body.append(temporary);
+    temporary.select();
+    document.execCommand("copy");
+    temporary.remove();
+  }
+  showTransientStatus(`${label} copied`);
+  return true;
+}
+
+function selectedGraphValue() {
+  return state.graphView.nodes.find((item) => item.id === state.selectedId)?.raw || state.inspected || null;
+}
+
+async function selectedSourceCode() {
+  const ref = sourceRefFor(selectedGraphValue()) || state.currentSourceRef;
+  if (!ref?.source_uid) return "";
+  const source = await ensureSourceAsset(ref.source_uid);
+  if (!source) return "";
+  const text = await store.sourceText(source);
+  const lines = text.split("\n");
+  const start = Math.max(1, ref.start_line || ref.executed_line || 1);
+  const end = Math.max(start, ref.end_line || ref.executed_line || start);
+  return lines.slice(start - 1, end).join("\n");
 }
 
 function updateScrim() {
@@ -321,22 +389,41 @@ function positionStorageKey() {
 
 function loadUserPositions() {
   try {
-    state.userPositions = new Map(JSON.parse(localStorage.getItem(positionStorageKey()) || "[]"));
+    const stored = JSON.parse(localStorage.getItem(positionStorageKey()) || "[]");
+    if (Array.isArray(stored)) {
+      state.userPositions = new Map(stored);
+      state.userSizes = new Map();
+    } else {
+      state.userPositions = new Map(stored.positions || []);
+      state.userSizes = new Map(stored.sizes || []);
+    }
   } catch {
     state.userPositions = new Map();
+    state.userSizes = new Map();
   }
 }
 
 function saveUserPositions() {
-  localStorage.setItem(positionStorageKey(), JSON.stringify([...state.userPositions]));
+  localStorage.setItem(positionStorageKey(), JSON.stringify({
+    positions: [...state.userPositions],
+    sizes: [...state.userSizes],
+  }));
 }
 
 function positionFor(id) {
   return state.userPositions.get(id) || state.basePositions.get(id) || { x: 40, y: 40 };
 }
 
+function sizeFor(id) {
+  return state.userSizes.get(id) || { width: NODE_WIDTH, height: NODE_HEIGHT };
+}
+
 function allPositions() {
   return new Map(state.graphView.nodes.map((node) => [node.id, positionFor(node.id)]));
+}
+
+function allSizes() {
+  return new Map(state.graphView.nodes.map((node) => [node.id, sizeFor(node.id)]));
 }
 
 function renderBreadcrumbs() {
@@ -482,7 +569,7 @@ async function renderMode({ fit = false } = {}) {
       state.layoutKey = nextLayoutKey;
       loadUserPositions();
     }
-    state.bounds = graphBounds(state.graphView.nodes, allPositions());
+    state.bounds = graphBounds(state.graphView.nodes, allPositions(), allSizes());
     $("#graph-canvas").style.width = `${state.bounds.width}px`;
     $("#graph-canvas").style.height = `${state.bounds.height}px`;
     $("#edges").setAttribute("viewBox", `0 0 ${state.bounds.width} ${state.bounds.height}`);
@@ -753,8 +840,9 @@ function visibleNodeIds() {
   const bottom = top + height / state.zoom + margin * 2;
   return new Set(state.graphView.nodes.filter((node) => {
     const position = positionFor(node.id);
-    return position.x + NODE_WIDTH >= left && position.x <= right
-      && position.y + NODE_HEIGHT >= top && position.y <= bottom;
+    const size = sizeFor(node.id);
+    return position.x + size.width >= left && position.x <= right
+      && position.y + size.height >= top && position.y <= bottom;
   }).map((node) => node.id));
 }
 
@@ -763,6 +851,24 @@ function scheduleVisibleRender() {
   state.renderFrame = requestAnimationFrame(() => {
     state.renderFrame = null;
     renderVisibleGraph();
+  });
+}
+
+function updateCanvasGeometry() {
+  state.bounds = graphBounds(state.graphView.nodes, allPositions(), allSizes());
+  $("#graph-canvas").style.width = `${state.bounds.width}px`;
+  $("#graph-canvas").style.height = `${state.bounds.height}px`;
+  $("#edges").setAttribute("viewBox", `0 0 ${state.bounds.width} ${state.bounds.height}`);
+  renderEdges(visibleNodeIds());
+  renderLayerGroups();
+  renderMinimap();
+}
+
+function scheduleGeometryRender() {
+  if (state.geometryFrame !== null) return;
+  state.geometryFrame = requestAnimationFrame(() => {
+    state.geometryFrame = null;
+    updateCanvasGeometry();
   });
 }
 
@@ -823,53 +929,73 @@ function renderVisibleGraph() {
     node.classList.toggle("path-muted", state.pathNodes.size > 0 && !state.pathNodes.has(item.id));
     node.style.left = `${position.x}px`;
     node.style.top = `${position.y}px`;
+    const size = sizeFor(item.id);
+    node.style.width = `${size.width}px`;
+    node.style.height = `${size.height}px`;
     node.style.setProperty("--layer-color", layerColor(item.layerGroupId));
     node.tabIndex = 0;
     node.setAttribute("role", "button");
     node.setAttribute("aria-label", `${item.title}, ${item.inputPorts.length} inputs, ${item.outputPorts.length} outputs`);
     const core = document.createElement("div");
     core.className = "node-core";
+    const heading = document.createElement("div");
+    heading.className = "node-heading node-drag-handle";
     const title = document.createElement("div");
     title.className = "node-title";
     title.textContent = item.title;
     const subtitle = document.createElement("div");
     subtitle.className = "node-shape";
     subtitle.textContent = item.subtitle || item.kind;
-    core.append(title, subtitle);
+    heading.append(title);
     if (item.layerGroupId) {
       const layer = state.graph?.layer_groups.find((group) => group.layer_group_id === item.layerGroupId);
       const badge = document.createElement("div");
       badge.className = "node-layer";
       badge.textContent = layer?.qualified_name || item.layerGroupId;
-      core.append(badge);
+      core.append(subtitle, badge);
+    } else {
+      core.append(subtitle);
     }
     if (state.mode !== "family") {
       const actions = document.createElement("div");
       actions.className = "node-actions";
+      const itemModule = moduleById(item.raw.module_id);
       const commands = [
-        ["Open", "Open module", async () => item.raw.module_id && selectModule(item.raw.module_id)],
-        ["Ops", "Show operations", async () => {
+        ["↗", "Open module", Boolean(itemModule), async () => item.raw.module_id && selectModule(item.raw.module_id)],
+        ["⊞", "Show operations", Boolean(itemModule), async () => {
           if (item.raw.module_id) state.scopeModuleId = item.raw.module_id;
           await setMode("operation");
         }],
-        ["Parent", "Go to parent module", async () => {
+        ["↑", "Go to parent module", Boolean(itemModule?.parent_module_id), async () => {
           const module = moduleById(item.raw.module_id);
           if (module?.parent_module_id) await selectModule(module.parent_module_id);
         }],
       ];
-      for (const [label, titleText, action] of commands) {
+      for (const [label, titleText, enabled, action] of commands) {
         const button = document.createElement("button");
         button.className = "node-action";
         button.textContent = label;
         button.title = titleText;
+        button.setAttribute("aria-label", titleText);
+        button.disabled = !enabled;
         button.addEventListener("pointerdown", (event) => event.stopPropagation());
         button.addEventListener("click", async (event) => { event.stopPropagation(); await action(); });
         actions.append(button);
       }
-      core.append(actions);
+      heading.append(actions);
     }
-    node.append(portBand(item, item.inputPorts, "input"), core, portBand(item, item.outputPorts, "output"));
-    node.addEventListener("pointerdown", startNodeDrag);
+    heading.addEventListener("pointerdown", startNodeDrag);
+    core.prepend(heading);
+    const resizeHandle = document.createElement("button");
+    resizeHandle.className = "node-resize-handle";
+    resizeHandle.title = "Resize node";
+    resizeHandle.setAttribute("aria-label", `Resize ${item.title}`);
+    resizeHandle.addEventListener("pointerdown", startNodeResize);
+    resizeHandle.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+    });
+    node.append(portBand(item, item.inputPorts, "input"), core, portBand(item, item.outputPorts, "output"), resizeHandle);
     node.addEventListener("click", (event) => selectNode(item, event));
     node.addEventListener("dblclick", (event) => drillIntoNode(item, event));
     node.addEventListener("keydown", (event) => {
@@ -891,9 +1017,10 @@ function portPoint(node, portId, direction) {
   const index = Math.max(0, ports.findIndex((port) => port.port_id === portId));
   const count = Math.max(1, ports.length);
   const position = positionFor(node.id);
+  const size = sizeFor(node.id);
   return {
-    x: position.x + NODE_WIDTH * ((index + 0.5) / count),
-    y: position.y + (direction === "output" ? NODE_HEIGHT : 0),
+    x: position.x + size.width * ((index + 0.5) / count),
+    y: position.y + (direction === "output" ? size.height : 0),
   };
 }
 
@@ -912,7 +1039,7 @@ function renderEdges(visible) {
   marker.setAttribute("orient", "auto-start-reverse");
   const arrow = document.createElementNS("http://www.w3.org/2000/svg", "path");
   arrow.setAttribute("d", "M 0 0 L 10 5 L 0 10 z");
-  arrow.setAttribute("fill", "#87918a");
+  arrow.setAttribute("fill", "var(--edge)");
   marker.append(arrow);
   defs.append(marker);
   fragment.append(defs);
@@ -966,7 +1093,7 @@ function renderContinuationMarkers(visible, byId) {
     marker.textContent = `${group.direction} ${group.count} off-screen ${noun}${group.count === 1 ? "" : "s"}`;
     const rightSide = offscreenPosition.x >= anchorPosition.x;
     marker.style.left = `${rightSide ? Math.max(4, viewport.clientWidth - 184) : 4}px`;
-    marker.style.top = `${Math.max(4, Math.min(viewport.clientHeight - 28, state.pan.y + (anchorPosition.y + NODE_HEIGHT / 2) * state.zoom))}px`;
+    marker.style.top = `${Math.max(4, Math.min(viewport.clientHeight - 28, state.pan.y + (anchorPosition.y + sizeFor(anchor.id).height / 2) * state.zoom))}px`;
     fragment.append(marker);
   }
   container.replaceChildren(fragment);
@@ -981,8 +1108,8 @@ function renderLayerGroups() {
     const positions = nodes.map((node) => positionFor(node.id));
     const left = Math.min(...positions.map((position) => position.x)) - 18;
     const top = Math.min(...positions.map((position) => position.y)) - 26;
-    const right = Math.max(...positions.map((position) => position.x + NODE_WIDTH)) + 18;
-    const bottom = Math.max(...positions.map((position) => position.y + NODE_HEIGHT)) + 18;
+    const right = Math.max(...nodes.map((node) => positionFor(node.id).x + sizeFor(node.id).width)) + 18;
+    const bottom = Math.max(...nodes.map((node) => positionFor(node.id).y + sizeFor(node.id).height)) + 18;
     const boundary = document.createElement("div");
     boundary.className = "layer-boundary";
     boundary.style.left = `${left}px`;
@@ -1002,18 +1129,20 @@ function renderLayerGroups() {
 function renderMinimap() {
   const canvas = $("#minimap");
   const context = canvas.getContext("2d");
+  const styles = getComputedStyle(document.documentElement);
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.fillStyle = "#ffffff";
+  context.fillStyle = styles.getPropertyValue("--surface").trim();
   context.fillRect(0, 0, canvas.width, canvas.height);
   const scale = Math.min(canvas.width / state.bounds.width, canvas.height / state.bounds.height);
   for (const node of state.graphView.nodes) {
     context.fillStyle = state.graphMatches.has(node.id) ? "#356a9b"
       : state.pathNodes.has(node.id) ? "#a76508" : layerColor(node.layerGroupId);
     const position = positionFor(node.id);
-    context.fillRect(position.x * scale, position.y * scale, Math.max(3, NODE_WIDTH * scale), Math.max(2, 7 * scale));
+    const size = sizeFor(node.id);
+    context.fillRect(position.x * scale, position.y * scale, Math.max(3, size.width * scale), Math.max(2, Math.min(size.height, 10) * scale));
   }
   const viewport = $("#graph-viewport");
-  context.strokeStyle = "#08785d";
+  context.strokeStyle = styles.getPropertyValue("--accent").trim();
   context.lineWidth = 3;
   context.strokeRect(
     Math.max(0, -state.pan.x / state.zoom) * scale,
@@ -1533,7 +1662,7 @@ function setZoom(next, origin = null) {
 function fitGraph() {
   if (!state.graphView.nodes.length) return;
   const viewport = $("#graph-viewport").getBoundingClientRect();
-  state.bounds = graphBounds(state.graphView.nodes, allPositions());
+  state.bounds = graphBounds(state.graphView.nodes, allPositions(), allSizes());
   state.zoom = Math.min(1.1, Math.max(0.16, Math.min(viewport.width / state.bounds.width, viewport.height / state.bounds.height) * 0.9));
   state.pan = {
     x: Math.max(14, (viewport.width - state.bounds.width * state.zoom) / 2),
@@ -1545,10 +1674,11 @@ function fitGraph() {
 function centerSelection() {
   if (!state.selectedId) return;
   const position = positionFor(state.selectedId);
+  const size = sizeFor(state.selectedId);
   const viewport = $("#graph-viewport").getBoundingClientRect();
   state.pan = {
-    x: viewport.width / 2 - (position.x + NODE_WIDTH / 2) * state.zoom,
-    y: viewport.height / 2 - (position.y + NODE_HEIGHT / 2) * state.zoom,
+    x: viewport.width / 2 - (position.x + size.width / 2) * state.zoom,
+    y: viewport.height / 2 - (position.y + size.height / 2) * state.zoom,
   };
   updateTransform();
 }
@@ -1556,6 +1686,7 @@ function centerSelection() {
 function resetLayout() {
   localStorage.removeItem(positionStorageKey());
   state.userPositions = new Map();
+  state.userSizes = new Map();
   state.pan = { x: 24, y: 24 };
   state.zoom = 1;
   renderMode({ fit: true });
@@ -1563,33 +1694,90 @@ function resetLayout() {
 
 function startNodeDrag(event) {
   if (event.button !== 0) return;
+  event.preventDefault();
   event.stopPropagation();
-  const node = event.currentTarget;
+  const handle = event.currentTarget;
+  const node = handle.closest(".graph-node");
   const id = node.dataset.id;
   const start = { x: event.clientX, y: event.clientY };
-  const initial = positionFor(id);
-  node.setPointerCapture(event.pointerId);
+  const initial = { ...positionFor(id) };
+  let moved = false;
+  handle.setPointerCapture(event.pointerId);
+  node.classList.add("dragging");
   const move = (next) => {
+    if (next.pointerId !== event.pointerId) return;
+    next.preventDefault();
     const position = {
       x: Math.max(0, initial.x + (next.clientX - start.x) / state.zoom),
       y: Math.max(0, initial.y + (next.clientY - start.y) / state.zoom),
     };
+    moved ||= Math.abs(next.clientX - start.x) > 3 || Math.abs(next.clientY - start.y) > 3;
     state.userPositions.set(id, position);
     node.style.left = `${position.x}px`;
     node.style.top = `${position.y}px`;
-    scheduleVisibleRender();
+    scheduleGeometryRender();
   };
-  const end = () => {
-    node.removeEventListener("pointermove", move);
+  const end = (next) => {
+    if (next.pointerId !== event.pointerId) return;
+    window.removeEventListener("pointermove", move);
+    window.removeEventListener("pointerup", end);
+    window.removeEventListener("pointercancel", end);
+    node.classList.remove("dragging");
+    if (moved) {
+      handle.addEventListener("click", (clickEvent) => {
+        clickEvent.preventDefault();
+        clickEvent.stopPropagation();
+      }, { capture: true, once: true });
+    }
     saveUserPositions();
+    scheduleGeometryRender();
   };
-  node.addEventListener("pointermove", move);
-  node.addEventListener("pointerup", end, { once: true });
-  node.addEventListener("pointercancel", end, { once: true });
+  window.addEventListener("pointermove", move, { passive: false });
+  window.addEventListener("pointerup", end);
+  window.addEventListener("pointercancel", end);
+}
+
+function startNodeResize(event) {
+  if (event.button !== 0) return;
+  event.preventDefault();
+  event.stopPropagation();
+  const handle = event.currentTarget;
+  const node = handle.closest(".graph-node");
+  const id = node.dataset.id;
+  const start = { x: event.clientX, y: event.clientY };
+  const initial = { ...sizeFor(id) };
+  handle.setPointerCapture(event.pointerId);
+  node.classList.add("resizing");
+  const move = (next) => {
+    if (next.pointerId !== event.pointerId) return;
+    next.preventDefault();
+    const size = {
+      width: Math.min(MAX_NODE_WIDTH, Math.max(MIN_NODE_WIDTH, initial.width + (next.clientX - start.x) / state.zoom)),
+      height: Math.min(MAX_NODE_HEIGHT, Math.max(MIN_NODE_HEIGHT, initial.height + (next.clientY - start.y) / state.zoom)),
+    };
+    state.userSizes.set(id, size);
+    node.style.width = `${size.width}px`;
+    node.style.height = `${size.height}px`;
+    scheduleGeometryRender();
+  };
+  const end = (next) => {
+    if (next.pointerId !== event.pointerId) return;
+    window.removeEventListener("pointermove", move);
+    window.removeEventListener("pointerup", end);
+    window.removeEventListener("pointercancel", end);
+    node.classList.remove("resizing");
+    saveUserPositions();
+    scheduleGeometryRender();
+  };
+  window.addEventListener("pointermove", move, { passive: false });
+  window.addEventListener("pointerup", end);
+  window.addEventListener("pointercancel", end);
 }
 
 function beginViewportGesture(event) {
   if (event.target.closest(".graph-node") || event.button !== 0) return;
+  event.preventDefault();
+  window.getSelection()?.removeAllRanges();
   const viewport = $("#graph-viewport");
   state.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
   viewport.setPointerCapture(event.pointerId);
@@ -1610,6 +1798,7 @@ function beginViewportGesture(event) {
 
 function moveViewportGesture(event) {
   if (!state.pointers.has(event.pointerId)) return;
+  event.preventDefault();
   state.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
   if (state.pointers.size === 2) {
     const [a, b] = [...state.pointers.values()];
@@ -1779,25 +1968,14 @@ $("#uri-form").addEventListener("submit", async (event) => {
   event.preventDefault();
   try { await applyRoute($("#uri-input").value); } catch (error) { showStatus(error.message); }
 });
-$("#copy-source").addEventListener("click", async () => {
-  if (!state.currentSourceText) return;
-  try {
-    await navigator.clipboard.writeText(state.currentSourceText);
-  } catch {
-    const temporary = document.createElement("textarea");
-    temporary.value = state.currentSourceText;
-    temporary.style.position = "fixed";
-    temporary.style.opacity = "0";
-    document.body.append(temporary);
-    temporary.select();
-    document.execCommand("copy");
-    temporary.remove();
-  }
-});
+$("#copy-source").addEventListener("click", async () => copyText(await selectedSourceCode(), "Source code"));
 $("#zoom-in").addEventListener("click", () => setZoom(state.zoom + 0.12));
 $("#zoom-out").addEventListener("click", () => setZoom(state.zoom - 0.12));
 $("#fit-button").addEventListener("click", fitGraph);
 $("#reset-button").addEventListener("click", resetLayout);
+$("#theme-button").addEventListener("click", () => {
+  applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+});
 $("#density-button").addEventListener("click", toggleDensity);
 $("#focus-button").addEventListener("click", toggleFocus);
 $("#center-selection").addEventListener("click", centerSelection);
@@ -1842,6 +2020,25 @@ window.addEventListener("resize", scheduleVisibleRender);
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") { closeSidebar(); closeInspector(); closeCompare(); }
   if (event.key === "0" && (event.ctrlKey || event.metaKey)) { event.preventDefault(); fitGraph(); }
+  const target = event.target;
+  const typing = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement
+    || target instanceof HTMLSelectElement || target?.isContentEditable;
+  if (typing || !event.altKey || !event.shiftKey) return;
+  const value = selectedGraphValue();
+  const key = event.key.toLowerCase();
+  if (key === "m") {
+    event.preventDefault();
+    copyText(value?.display_name || value?.name || value?.qualified_name || "", "Module name");
+  }
+  if (key === "p") {
+    event.preventDefault();
+    copyText(value?.qualified_name || value?.module_path || "", "Module path");
+  }
+  if (key === "s") {
+    event.preventDefault();
+    selectedSourceCode().then((text) => copyText(text, "Source code"));
+  }
 });
 
+initializeTheme();
 start();

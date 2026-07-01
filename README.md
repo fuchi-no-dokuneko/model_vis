@@ -46,6 +46,12 @@ Build the static UI without downloading npm dependencies:
 npm run build-ui -- --model-code model_code --out build
 ```
 
+## Viewer controls
+
+Graph nodes can be moved by dragging their header and resized from the lower-right handle in every graph mode. Layout changes are stored locally per model, mode, and module scope; Reset restores generated positions and the default `248 x 168` node size. Empty-canvas dragging pans without selecting page text.
+
+With a graph node selected, `Alt+Shift+M` copies its module name, `Alt+Shift+P` copies its qualified module path, and `Alt+Shift+S` copies only its referenced source range. The top-bar theme control switches between light and dark themes and preserves the choice locally.
+
 Validate and test:
 
 ```bash

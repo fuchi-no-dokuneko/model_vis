@@ -27,6 +27,8 @@ def test_required_viewport_screenshots(driver, viewer_url: str) -> None:
     for name, size in VIEWPORTS.items():
         set_exact_viewport(driver, *size)
         driver.get(viewer_url)
+        driver.execute_script("localStorage.clear(); localStorage.setItem('model-vis-theme', 'light')")
+        driver.refresh()
         WebDriverWait(driver, 15).until(lambda current: len(current.find_elements(By.CSS_SELECTOR, ".graph-node")) > 0)
         actual_bytes = driver.get_screenshot_as_png()
         actual_path = ACTUAL / f"{name}.png"
