@@ -1,0 +1,1017 @@
+# Model-Vis: Implementation Guide for Visual Fixes and Cross-Domain Model Understanding
+
+Status: implementation-ready specification  
+Target: `https://model-vis.pages.dev/`  
+Deployment: static Cloudflare Pages site, PC-first, no backend  
+Primary audience: AI beginners and domain specialists exploring unfamiliar model domains  
+Example: a Whisper specialist learning DINOv3, or a vision specialist learning a causal language model
+
+
+
+## 1. Ten Confirmed Visual Bugs
+
+These are defects, not feature requests. Fix all ten.
+
+All ten fixes are shared UI/layout behavior. Do not add per-model CSS, geometry,
+coordinates, or exceptions. Their tests must run from generated graph fixtures.
+
+### BUG-01: Operations fit-to-screen makes graph text unreadable
+
+Severity: P1
+
+Observed baseline:
+
+- Apertus Operations can fit at 16% zoom.
+- Low-zoom title CSS is 15px, producing an effective visual size of about 2.4px.
+
+Current cause:
+
+- `fitGraph()` clamps to a minimum of `0.16`.
+- The entire graph canvas, including text, is scaled.
+- Low-zoom CSS increases unscaled font size but cannot compensate for extreme zoom.
+
+Required implementation:
+
+1. Define semantic zoom tiers:
+   - `overview`: `< 0.35`
+   - `compact`: `0.35–0.69`
+   - `normal`: `>= 0.70`
+2. At `overview`, replace full cards with readable fixed-screen-size glyph cards showing only:
+   - short semantic/source title
+   - stage/layer color
+   - aggregate input/output indicator
+3. Hide port text, metadata, and node action buttons at `overview`.
+4. Do not attempt to render full text below an effective 10px size.
+   - For canvas-scaled text, `effective_px = computed_font_px * graph_zoom`.
+   - Counter-scaled or screen-space labels may be used, but their rendered size
+     must remain at least 10px.
+5. Allow Fit to show the whole topology, but show a visible hint: `Overview zoom — zoom in for node details`.
+6. On node selection in overview zoom, zoom and center to at least `0.70`, unless the user holds a modifier designated for selection without zoom.
+
+Acceptance:
+
+- No visible graph label is rendered below an effective 10px.
+- Fit still includes all graph bounds.
+- Operations remains useful as a topology overview.
+- Selecting an overview glyph reveals a readable node.
+
+Tests:
+
+- Fit Apertus Operations in a 1366×768 viewport.
+- Assert the graph enters `overview` tier.
+- Assert full port metadata is hidden.
+- Assert visible labels have an effective size of at least 10px.
+- Assert no per-model zoom/layout exception is used.
+
+### BUG-02: Continuation markers overlap one another and graph nodes
+
+Severity: P1
+
+Observed baseline:
+
+- Apertus Operations produced 21 markers, many at identical coordinates.
+- Multiple marker-marker and marker-node intersections were measured.
+
+Current cause:
+
+- `renderContinuationMarkers()` independently projects every marker to a clamped Y coordinate.
+- It has no collision resolution or aggregation by viewport edge.
+
+Required implementation:
+
+1. Aggregate markers by:
+   - viewport side (`left`, `right`, `top`, `bottom`)
+   - direction (`from`, `to`)
+   - nearest stage/layer when available
+2. Run one-dimensional collision resolution per viewport side using an 8px minimum gap.
+3. Reserve rectangles occupied by Legend, Minimap, graph status, and other persistent overlays.
+4. If available edge length cannot hold every marker, collapse them into a summary marker such as `12 more off-screen routes`.
+5. A marker click should pan toward the nearest corresponding off-screen node. This click behavior is allowed as part of repairing the marker visual because it makes a collapsed marker usable.
+6. Marker identity and counts must come from graph edges; layout may not depend
+   on model names or stored coordinates.
+
+Acceptance:
+
+- Zero marker-marker intersections.
+- Zero marker intersections with visible nodes or permanent overlays.
+- Marker text remains inside the graph viewport.
+- Counts equal the number of represented hidden routes.
+
+Tests:
+
+- Apertus Operations at Fit zoom.
+- One large vision model with repeated layers.
+- Pan to all four extremes and repeat collision assertions.
+
+### BUG-03: Legend and Minimap cover graph content
+
+Severity: P1
+
+Observed baseline:
+
+- The Modules output node intersects the Legend.
+- Bottom nodes and continuation labels can sit beneath Legend or Minimap.
+
+Current cause:
+
+- Legend and Minimap are fixed overlays.
+- Fit and Center calculations use the whole viewport without overlay-safe insets.
+
+Required implementation:
+
+1. Add a `getGraphSafeRect()` helper that subtracts visible overlay rectangles plus 12px padding.
+   The helper may return reserved rectangles/insets rather than one oversized
+   bounding inset, but Fit and Center must use the same result.
+2. Use the safe rectangle in `fitGraph()`, `centerSelection()`, marker layout, and minimap recentering.
+3. Add collapse buttons to Legend and Minimap; persist their state in `localStorage`.
+4. Default both to expanded in Standard/Trace and collapsed in Beginner when they obscure meaningful content.
+
+Acceptance:
+
+- Fit places all node bounds inside the safe graph rectangle.
+- Center Selection never centers a node under an overlay.
+- Legend/Minimap state persists across reload.
+
+### BUG-04: SVG arrowhead styling is overridden by the generic edge selector
+
+Severity: P1
+
+Current cause:
+
+```css
+.edges path { ... }
+```
+
+This selector also matches the path inside the SVG `<marker>`, applying `fill:none` and `marker-end` to the arrowhead itself.
+
+Required implementation:
+
+1. Change edge rules to target direct graph paths, for example `.edges > path.edge-path`.
+2. Give marker geometry an explicit class such as `.edge-arrow-shape`.
+3. Create markers per visual state or use `context-stroke`/`context-fill` where browser support is acceptable.
+4. Arrowheads must match exact, inferred, ambiguous, unresolved, and active edge colors.
+
+Acceptance:
+
+- Arrowheads are filled and visible in light and dark themes.
+- Active path arrowheads use the active color.
+- Inferred and ambiguous edges retain distinguishable dash patterns and matching arrows.
+
+### BUG-05: Breadcrumbs are truncated even for short root paths
+
+Severity: P1
+
+Observed baseline at 1363px:
+
+- Breadcrumb container width: approximately 179px in the deployed build.
+- `Text`, `Apertus`, `apertus`, and `Operations` have content wider than their
+  rendered crumb boxes.
+
+Required implementation:
+
+1. Split `.canvas-toolbar` into two rows when the first row cannot provide at least 280px for breadcrumbs.
+2. Row 1: breadcrumbs with at least 280px and horizontal overflow as a last resort.
+3. Row 2 or right group: Search, Path controls, Zoom.
+4. Preserve full final crumb; collapse middle crumbs into a menu before clipping the root and final crumb.
+5. Add full crumb text through a keyboard-focusable tooltip or
+   `aria-describedby`; `title` may be included but must not be the only recovery path.
+
+Acceptance:
+
+- `Text / Apertus / apertus / Operations` is fully readable at 1366px.
+- A deep six-level module path keeps the first and final crumb fully visible.
+- Toolbar controls never overlap.
+
+### BUG-06: Every model-card metadata field is independently ellipsized
+
+Severity: P1
+
+Observed baseline:
+
+- All four Apertus metadata fields shrink and clip simultaneously.
+
+Required implementation:
+
+1. Replace the unstructured flex row with a compact two-line grid:
+   - line 1: category and version
+   - line 2: Trace parameters and official estimate
+2. Parameter values must remain fully visible before labels are shortened.
+3. Use abbreviated labels only when necessary: `trace`, `official`.
+4. Put the complete metadata string in the model-open button's accessible
+   description and keyboard-focusable tooltip; `title` alone is insufficient.
+5. Keep row virtualization and fixed row height; increase `LIST_ROW_HEIGHT` only if necessary and update both JS and CSS from a shared constant/CSS variable.
+
+Acceptance:
+
+- At a 260px sidebar, category, version, and both numeric values are readable for the reference models.
+- No metadata field collapses to a one-character fragment.
+- Virtual scrolling remains aligned with row positions.
+
+### BUG-07: Search, selection, multi-selection, and path states overwrite one another
+
+Severity: P1
+
+Current cause:
+
+- `.selected`, `.multi-selected`, `.path-active`, and `.search-match` all assign `box-shadow`.
+- Later declarations hide earlier states.
+
+Required implementation:
+
+Use separate visual channels:
+
+| State | Required channel |
+| --- | --- |
+| Primary selected | amber border and background tint |
+| Multi-selected | accent inner outline or corner check |
+| Path active | blue outer halo |
+| Search match | blue/purple top-right search badge or dashed outline |
+| Path muted | opacity, but never below 0.35 for the selected node |
+
+Implement with pseudo-elements or composed comma-separated shadows; do not rely on source-order overwrites.
+The selected node must override the current generic `path-muted: 0.30` behavior
+and remain at least `0.35` opacity.
+
+Acceptance:
+
+- A node can visibly show all four states simultaneously.
+- States remain distinguishable in both themes and at compact zoom.
+
+### BUG-08: Source reference loses important text with no recovery path
+
+Severity: P2
+
+Observed baseline:
+
+- `transformers/models/apertus/modeling_apertus.py:298 · ApertusDecoderLayer.forward` requires about 556px but receives about 344px.
+- It is ellipsized and has no `title`.
+
+Required implementation:
+
+1. Show filename, line, and symbol as separate styled parts.
+2. Always keep filename basename and line visible.
+3. Put the full reference in an accessible label and keyboard-focusable
+   tooltip; `title` may be supplemental but is not sufficient.
+4. Add a click-to-copy reference affordance or reuse the existing copy action with an adjacent menu.
+
+Acceptance:
+
+- `modeling_apertus.py:298` remains visible at a 360px Inspector width.
+- Hover/focus exposes the complete path and symbol.
+
+### BUG-09: Warning badge is too dark in dark theme
+
+Severity: P2
+
+Observed baseline:
+
+- Dark-theme contrast for the warning `!` is approximately 2.43:1 at 10px.
+
+Required implementation:
+
+1. Replace hard-coded badge colors with theme variables:
+   - `--warning-text`
+   - `--warning-border`
+   - `--warning-bg`
+2. Give the badge an opaque/tinted background.
+3. Target at least 4.5:1 text contrast in both themes.
+
+Acceptance:
+
+- Automated contrast calculation is at least 4.5:1.
+- Badge remains distinct from selected-model amber styling.
+
+### BUG-10: Tensor port metadata is too small and low contrast
+
+Severity: P2
+
+Observed baseline:
+
+- `.port-meta` is 8px.
+- Contrast measured around 3.7:1 in both themes.
+
+Required implementation:
+
+1. Set a minimum effective screen size of 10px at normal zoom. If metadata is
+   inside the scaled canvas, counter-scale it or hide it until this minimum is met.
+2. Use a theme-aware muted color with at least 4.5:1 contrast on its actual background.
+3. Hide metadata at compact/overview zoom rather than shrinking it to illegibility.
+4. Preserve complete metadata in the port tooltip and Inspector I/O panel.
+
+Acceptance:
+
+- Normal-zoom port metadata is at least 10 effective screen pixels and 4.5:1.
+- Compact/overview modes do not render tiny metadata.
+
+---
+
+## 2. Eight Cross-Domain Understanding Features
+
+All feature data must come from shared deterministic rules. Per-model human or
+LLM review must not be required; unmatched cases use `other` or a technical
+fallback and remain publishable.
+
+### FEATURE-02: Semantic Stage Architecture
+
+Purpose: present a common architecture grammar across domains.
+
+Canonical stage vocabulary for v1:
+
+```text
+input_adapter
+preprocessing
+tokenization
+input_embedding
+position_encoding
+backbone
+attention
+state_space_or_recurrence
+feed_forward
+normalization
+residual_and_scaling
+cross_modal_fusion
+aggregation
+task_head
+output_adapter
+loss_or_training_only
+other
+```
+
+UI:
+
+- Add an Architecture surface that groups modules into ordered stage cards or stage containers.
+- Each stage shows:
+  - semantic name
+  - source module count
+  - repeated block count
+  - input/output shapes
+  - parameter and operation totals when known
+- Stages are collapsible and link to the underlying Modules/Blocks graph.
+
+Rules:
+
+- Stage order comes from the traced graph, not a hard-coded domain template.
+- Multiple disconnected branches must be represented explicitly.
+- Unknown modules go to `other`, visibly marked as inferred/unclassified.
+
+Acceptance:
+
+- Stage graph order follows actual data dependencies.
+- No underlying module is silently dropped; every module maps to a stage or `other`.
+
+### FEATURE-03: Semantic and Source Label Toggle
+
+Purpose: make unfamiliar class names understandable while preserving precision.
+
+Add a label-mode control:
+
+- `Semantic`
+- `Both` (default in Standard)
+- `Source`
+
+Rendering:
+
+- Semantic primary: `Image → patch tokens`
+- Source secondary: `embeddings.patch_embeddings.projection`
+- If no semantic name exists, show source name and an `Unclassified` badge.
+
+The mode must apply consistently to:
+
+- graph nodes
+- module tree
+- breadcrumbs
+- stage cards
+- comparison
+
+Acceptance:
+
+- Switching modes never changes node identity, selection, route, or graph layout.
+- Every visible semantic label can reveal its exact module path.
+
+### FEATURE-04: Node Explanation Card
+
+Purpose: explain the selected component in the context of the whole model.
+
+Add an `Explain` Inspector tab before Details with:
+
+- What the class/interface does
+- Input representation
+- Output representation
+- Shape transformation
+- Observed graph position
+- Class/interface tags
+- Confidence and provenance
+
+Do not synthesize explanations in the browser. Load deterministic build-generated
+text. Per-model authored explanations or human/AI review are not required.
+
+Fallback:
+
+- Use a deterministic technical explanation built from kind, class, ports, shapes, and graph position.
+- Label it `Technical fallback`.
+
+Acceptance:
+
+- Every graph node renders either a semantic explanation or a labeled technical fallback.
+- Explanations never hide the exact class, qualified name, or source link.
+
+### FEATURE-06: Beginner, Standard, and Trace Detail Modes
+
+Purpose: control complexity without maintaining separate applications.
+
+Modes:
+
+| Mode | Default content |
+| --- | --- |
+| Beginner | Semantic stages, explanations, simplified shapes |
+| Standard | Semantic + source labels, key modules, exact shapes, parameter/operation summaries |
+| Trace | Existing full Modules/Blocks/Operations, dtype/device/alias/mutation/runtime/source/config |
+
+Requirements:
+
+- Persist selection in `localStorage`.
+- Encode explicit mode in shareable routes when it affects the shared view.
+- Switching modes preserves selected semantic entity and maps it to the nearest technical node.
+- Beginner mode must not delete data; it only changes projection and disclosure.
+
+Acceptance:
+
+- The same model selection survives all three mode switches.
+- Trace exposes every capability available before this project.
+
+### FEATURE-07: Class/Interface Tags
+
+Purpose: provide a small reusable technical classification without per-model
+human or AI review.
+
+Fixed v1 tag vocabulary:
+
+```text
+input
+embedding_or_projection
+position_or_context
+attention_or_mixer
+feed_forward
+normalization_or_residual
+aggregation_or_decoder
+output_or_head
+other
+```
+
+Inputs:
+
+- fully qualified class and base-class/interface identities
+- stable `forward`/`__call__` parameter and return interfaces
+- registered child-module types
+- traced input/output rank, shape, and graph position as supporting evidence
+
+Rules:
+
+1. Exact class registry.
+2. Exact base-class or protocol/interface rule.
+3. Verified signature plus graph evidence.
+4. Otherwise assign `other`.
+
+A node or stage has one primary tag and optional secondary tags. Do not classify
+from model names or fuzzy class-name similarity. Sharing a tag means only that
+the same small technical category matched; it is not an equivalence claim.
+Do not generate per-model mapping tables, analogies, or narrative reviews.
+
+Acceptance:
+
+- Every class-backed entity receives a known tag or `other`.
+- The same class/interface signature produces the same tags across models.
+- Adding an exact class or interface rule improves every matching model without
+  frontend changes or per-model review.
+
+### FEATURE-08: Tensor Journey
+
+Purpose: explain representation changes as a readable sequence.
+
+UI:
+
+- Add `Tensor Journey` on Architecture and Inspector I/O.
+- Render step cards linked by arrows, synchronized with graph highlighting.
+- Each card shows:
+  - semantic representation name
+  - exact tensor shape
+  - dtype when relevant
+  - transform/module
+  - short explanation of changed dimensions
+
+Example:
+
+```text
+RGB image [1, 3, 224, 224]
+-> patch projection
+Patch grid [1, 196, 768]
+-> add special/position tokens
+Token sequence [1, 197, 768]
+-> repeated ViT blocks
+Contextual visual tokens [1, 197, 768]
+```
+
+Algorithm:
+
+1. Start from a selected graph input or semantic input.
+2. Follow exact routes where available.
+3. Prefer stage-boundary tensors and shape-changing operations.
+4. Collapse consecutive shape-preserving operations into a stage step.
+5. Mark inferred/ambiguous transitions visibly.
+
+Acceptance:
+
+- Journey shapes exactly match graph tensor records.
+- Clicking a journey step selects/highlights corresponding graph nodes.
+- Ambiguous routes are never displayed as exact.
+
+### FEATURE-09: Normalized Architecture Comparison
+
+Purpose: compare models through small shared tags, generated stages, and trace
+facts rather than curated role mappings.
+
+Keep the current metric table, correct its semantics, and add:
+
+- domain and task
+- input/output representations
+- semantic stage presence and order
+- class/interface tag presence and order
+- exact source class and interface signature
+- repeated-block counts
+- stage parameter and operation distributions
+
+Comparison display:
+
+- Rows are fixed class/interface tags and generated stages.
+- Columns are models.
+- Cells link to the relevant stage/node.
+- Relationship badges: `Same tag`, `Different tag`, `Only in A/B`.
+- Do not infer semantic equivalence or similarity between models.
+
+Correct the existing misleading row:
+
+- Current code presents pairwise configuration differences as `0` for the left model and `N` for the right model.
+- Render pairwise metrics in a shared Difference column, with `—` in per-model cells.
+
+Acceptance:
+
+- Apertus/BERT configuration difference remains numerically correct but is no longer attributed to BERT alone.
+- Whisper/DINOv3 comparison exposes stage order, tensor shapes, tags, and exact
+  classes without a curated cross-domain mapping.
+
+### FEATURE-10: Parameter and Operation Distribution
+
+Purpose: show where model complexity resides.
+
+UI:
+
+- Two horizontal stacked bars or compact bar charts:
+  - Trace parameter distribution by semantic stage
+  - Operation distribution by semantic stage
+- Optional repeated-block distribution.
+- Clicking a segment filters/focuses the corresponding stage.
+- Show absolute value and percentage.
+
+Rules:
+
+- Count shared/tied parameters once using tensor/parameter identity.
+- Distinguish Trace initialized parameters from official estimates.
+- Never distribute an official total across stages unless per-parameter mapping exists.
+- Display coverage, such as `Mapped 97.4% of Trace parameters`.
+- Do not add FLOPs until the build pipeline has a reliable operator-cost model; if later added, show estimation coverage.
+
+Acceptance:
+
+- Stage totals equal the displayed Trace total after deduplication.
+- Unmapped values appear in an `Unclassified` segment.
+- Charts remain readable in both themes and with keyboard focus.
+
+---
+
+## 8. Semantic Data Contract
+
+Create and validate `semantic-model.schema.json`. The exact schema syntax is left to implementation, but it must enforce the following logical contract.
+
+### 8.1 Per-version semantic asset
+
+Example:
+
+```json
+{
+  "schema_version": "1.0.0",
+  "version_id": "dinov3",
+  "generated_at": "2026-08-12T00:00:00Z",
+  "class_tag_vocab_version": "1.0.0",
+  "stages": [
+    {
+      "stage_id": "patch-tokenization",
+      "stage_type": "tokenization",
+      "semantic_name": "Projection stage",
+      "tags": ["embedding_or_projection"],
+      "module_ids": ["module-..."],
+      "operation_ids": [],
+      "input_tensor_ids": ["tensor-..."],
+      "output_tensor_ids": ["tensor-..."],
+      "order": 10,
+      "importance": "primary",
+      "confidence": "verified_rule",
+      "provenance": ["exact_class_rule", "trace"]
+    }
+  ],
+  "entities": {
+    "module-...": {
+      "source_class": "transformers.models.dinov3.Dinov3PatchEmbeddings",
+      "interface_signature": "forward(pixel_values)",
+      "tags": ["embedding_or_projection"],
+      "stage_id": "patch-tokenization",
+      "what": "Transforms a rank-4 input into a rank-3 output.",
+      "importance": "primary",
+      "confidence": "verified_rule",
+      "provenance": ["exact_class_rule", "trace"]
+    }
+  },
+  "journeys": [
+    {
+      "journey_id": "primary-input-output",
+      "input_tensor_id": "tensor-input",
+      "output_tensor_ids": ["tensor-output"],
+      "preferred_boundary_tensor_ids": []
+    }
+  ],
+  "coverage": {
+    "module_stage_fraction": 0.95,
+    "class_tag_fraction": 0.95,
+    "parameter_stage_fraction": 1.0,
+    "operation_stage_fraction": 0.98
+  }
+}
+```
+
+### 8.2 Required enums
+
+```text
+confidence: verified_rule | inferred | technical_fallback
+importance: primary | secondary | implementation_detail
+domain: audio | vision | text | multimodal | other
+```
+
+### 8.3 Class/interface tag vocabulary
+
+`interface-tags.v1.json` defines only the fixed FEATURE-07 tags:
+
+```text
+input
+embedding_or_projection
+position_or_context
+attention_or_mixer
+feed_forward
+normalization_or_residual
+aggregation_or_decoder
+output_or_head
+other
+```
+
+Each tag includes:
+
+- ID
+- short technical description
+- allowed exact classes, base classes/interfaces, and verified signatures
+- optional graph/shape predicates used only as supporting evidence
+
+### 8.4 Provenance rules
+
+- `verified_rule`: deterministic rule backed by exact class/interface/config identifiers.
+- `inferred`: heuristic stage classification based on topology or shapes; it
+  must not create a FEATURE-07 tag other than `other`.
+- `technical_fallback`: generated from raw trace facts only.
+
+UI must visually distinguish `inferred` and `technical_fallback`. Show verified
+rule details in Explain or on hover, not as badges on every node.
+
+---
+
+## 9. Static Semantic Generation Pipeline
+
+Implement a deterministic build-time pipeline.
+
+### Inputs
+
+- version metadata
+- model config
+- graph modules and operations
+- tensor shapes and routes
+- trace templates/repeated layers
+- source symbols
+- exact class/interface tag registry
+- reusable architecture-family stage rules
+
+### Processing order
+
+1. Load and schema-validate existing assets.
+2. Identify exact architecture from config/class/version metadata.
+3. Assign tags from exact class, base-class/interface, and verified signatures.
+4. Apply reusable architecture-family stage rules.
+5. Infer remaining stage classifications using topology, tensor rank/shape
+   changes, and graph position; assign unmatched tags to `other`.
+6. Generate deterministic technical fallback explanations.
+7. Derive stage order from graph dependency order.
+8. Aggregate parameter and operation metrics with deduplication.
+9. Generate journeys from verified graph targets.
+10. Calculate coverage and validate output against JSON Schema.
+11. Fail only for invalid/corrupt data, not low coverage. Emit a warning report.
+
+### Rule priority
+
+```text
+exact class rule
+> exact base-class/interface rule
+> verified signature plus trace evidence
+> architecture-family stage rule
+> topology/shape stage inference
+> technical fallback
+```
+
+### Initial rule packs
+
+Create rule packs for:
+
+- Whisper-style encoder-decoder audio Transformer
+- ViT/DINOv3-style vision encoder
+- decoder-only causal language model
+
+Do not encode per-model display text or rules in the frontend or build inputs.
+Generated per-version JSON is allowed, but it must come from shared deterministic
+rules and source facts rather than per-model human or AI review.
+
+### Scalability requirement
+
+When a new Hugging Face model is added:
+
+- the technical graph must still build with zero semantic rules;
+- generic semantic output must still render;
+- coverage report identifies missing classification;
+- adding a class/interface or family rule improves all matching versions without
+  frontend changes;
+- ingestion, validation, and publication require no per-model human or AI review.
+
+---
+
+## 10. Application State and Routing
+
+Extend state conceptually with:
+
+```js
+semantic: null
+detailMode: "beginner" | "standard" | "trace"
+labelMode: "semantic" | "both" | "source"
+primaryView: "architecture" | "family" | "module" | "blocks" | "operation"
+selectedStageId: null
+selectedTag: null
+activeJourney: null
+```
+
+Required route examples:
+
+```text
+#/version/dinov3/view/architecture/stage/patch-tokenization
+#/version/dinov3/view/module/operation/<id>
+#/compare/apertus/bert/view/architecture
+```
+
+Compatibility:
+
+- Existing routes must parse unchanged.
+- If a route lacks detail/label mode, use saved preference, then product default.
+- Route parsing must not assume strictly alternating key/value pairs for nested
+  stage and compare routes. Replace the generic pair parser with an explicit
+  segment parser and tests.
+
+---
+
+## 11. UX and Visual Requirements
+
+### Defaults
+
+- New user: Beginner + Semantic labels + Architecture.
+- Returning user: restore detail and label preferences.
+- Existing deep link directly to Modules/Operations: honor the requested technical view.
+
+### Progressive disclosure
+
+- Beginner: no raw operation wall by default.
+- Standard: semantic explanation plus exact source identity.
+- Trace: full current technical interface.
+
+### Terminology
+
+- Use domain-neutral semantic language first.
+- Never replace exact framework names permanently.
+- Use `token` with a domain qualifier when necessary: text token, audio-frame token, image-patch token.
+- Avoid claiming all models have a tokenizer, encoder, decoder, or head.
+
+### Empty/error states
+
+- Semantic asset absent: `Semantic guide not yet available; showing technical structure.`
+- Low coverage: show coverage in Explain/Architecture, not as a blocking modal.
+- Missing official config: user-facing summary first, raw filesystem/build error only in expandable technical details.
+
+### Accessibility
+
+- Use real tabs with `aria-selected` and roving focus.
+- Use `aria-current` for active navigation/view.
+- All charts require text/table equivalents.
+- All semantic stage cards and journey steps must be keyboard selectable.
+- Do not communicate confidence, stage, path, or comparison state by color alone.
+- Maintain 4.5:1 contrast for normal text.
+- Tooltips must be accessible by both hover and keyboard focus.
+
+---
+
+## 12. Testing and Verification
+
+Use the repository's existing test framework. If none exists, add:
+
+- unit tests using the project's JS runtime
+- Playwright browser tests for interaction and layout
+- JSON Schema validation in the build/CI script
+- a small deterministic fixture set for Whisper, DINOv3, and Apertus
+
+### 12.1 Unit tests
+
+Test:
+
+- semantic schema validation
+- class/interface tag priority
+- technical fallbacks
+- stage topological ordering
+- parameter deduplication
+- operation aggregation
+- Tensor Journey boundary selection
+- ambiguous route labeling
+- configuration difference counts
+- explicit route parsing and legacy route compatibility
+- continuation marker aggregation/collision layout
+- graph safe-rectangle calculations
+
+### 12.2 Browser interaction tests
+
+For each reference model:
+
+1. Open Architecture and assert stages and tags render.
+2. Open a stage and verify its exact source classes/interfaces.
+3. Switch Semantic -> Both -> Source labels.
+4. Switch Beginner -> Standard -> Trace and verify selection preservation.
+5. Open Tensor Journey and select a step.
+6. Open the corresponding node's Source and Config.
+7. Hard reload a deep link.
+8. Compare against a model from another domain.
+
+### 12.3 Visual/layout assertions
+
+Desktop matrix:
+
+```text
+1366×768
+1440×900
+1920×1080
+```
+
+Themes:
+
+```text
+light
+dark
+```
+
+Required assertions:
+
+- no continuation-marker intersections
+- no node intersections with Legend/Minimap after Fit
+- no toolbar-control overlap
+- breadcrumb root and final item readable
+- no visible graph text below effective 10px
+- source basename and line visible
+- warning and port metadata contrast >= 4.5:1
+- selected + multi-selected + path + search states simultaneously visible
+- comparison table does not overflow its dialog at tested sizes
+
+Prefer geometry and computed-style assertions over pixel-perfect screenshots. Add screenshot snapshots only for stable high-level surfaces: Architecture, Tensor Journey, and normalized Compare.
+
+### 12.4 Data integrity tests
+
+For every generated model:
+
+- every semantic module ID exists in the graph
+- every operation/tensor target exists
+- every stage has at least one entity unless explicitly virtual
+- every graph entity maps to a stage or `other`
+- parameter stage totals do not exceed deduplicated Trace totals
+- coverage values are in `[0,1]`
+- journey shapes equal source tensor shapes
+- every assigned tag exists in `interface-tags.v1.json`
+
+### 12.5 Regression baseline
+
+Verify current known facts remain correct:
+
+- Manifest contains 21 versions in the current fixture/deployed dataset.
+- Apertus fixture: 2,874 Trace parameters, 121 Operations, official estimate 564,133,888.
+- BERT fixture: 109,482,240 Trace parameters, 278 Operations, official estimate 136,687,104.
+- Apertus/BERT each resolve six unique trace source files.
+- Their existing Trace-config pair produces 32 flattened differences.
+
+Do not hard-code these production numbers into application code; keep them in test fixtures/regression tests only.
+
+---
+
+## 13. Phase Deliverables
+
+### Phase A: Visual stabilization
+
+Deliver:
+
+- BUG-01 through BUG-10
+- geometry helpers
+- visual-state composition
+- Playwright layout tests
+
+Exit gate:
+
+- all ten visual defect acceptance tests pass at 1366×768 and 1920×1080, light and dark.
+
+### Phase B: Semantic foundation
+
+Deliver:
+
+- schemas
+- fixed class/interface tag vocabulary and registry
+- static semantic loader
+- generator/rule engine
+- rule packs for the three reference architectures
+- coverage report
+
+Exit gate:
+
+- all reference semantic assets validate; no missing target IDs.
+
+### Phase C: Primary understanding UI
+
+Deliver:
+
+- FEATURE-02, FEATURE-03, FEATURE-04, and FEATURE-06
+- Architecture, labels, Explain, and detail modes
+
+Exit gate:
+
+- a user can traverse all three reference models entirely in Beginner mode.
+
+### Phase D: Cross-domain technical comparison
+
+Deliver:
+
+- FEATURE-07 through FEATURE-10
+- class/interface tags, journeys, normalized comparison, distributions
+
+Exit gate:
+
+- Whisper/DINOv3 and DINOv3/Apertus comparisons pass deterministic data and
+  interaction tests without per-model review.
+
+### Phase E: Catalog scaling
+
+Deliver:
+
+- generic fallback for new HF models
+- batch build validation
+- semantic coverage dashboard/report for maintainers
+- documentation for adding reusable class/interface and family rules
+
+Exit gate:
+
+- a new unsupported HF model can be added without frontend code changes, broken
+  views, or per-model human/AI review.
+
+---
+
+## 14. Non-Goals
+
+Do not add the following as part of this plan:
+
+- backend services
+- runtime model execution or inference
+- model training
+- user accounts
+- collaborative editing
+- browser-side LLM explanations
+- arbitrary model upload
+- full mobile redesign
+- general-purpose source editor
+- FLOPs claims without reliable operator coverage
+- automatic claims of semantic equivalence based only on class-name similarity
+- ingestion of the complete Hugging Face catalog before the three reference models validate the semantic system
+
+---
+
+## 15. Coding-Agent Working Rules
+
+1. respect amend.md and other spec if necessary
