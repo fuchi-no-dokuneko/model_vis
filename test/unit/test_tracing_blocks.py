@@ -3,7 +3,7 @@ from torch import nn
 
 from src.model_builder.blocks import build_blocks
 from src.model_builder.introspection import ConstructorRecorder, sanitize_runtime_value
-from src.model_builder.tracing import trace_model
+from src.model_builder.tracing import LineRecorder, trace_model
 
 
 class CountedLayers(nn.Module):
@@ -188,3 +188,28 @@ def test_runtime_sanitizer_redacts_secrets_and_local_paths() -> None:
 
     assert value["api_key"] == {"redacted": True}
     assert value["cache_path"] == {"type": "local_path", "name": "cache.bin"}
+
+
+def test_line_traces_record_tensor_variable_names() -> None:
+    trace = trace_model(nn.Linear(3, 3).eval(), (torch.randn(2, 3),), {}, "linear")
+    line_traces = [entry for entry in trace["line_traces"] if entry.get("variables")]
+    names = {item["name"] for entry in line_traces for item in entry["variables"] if item.get("name")}
+
+    assert line_traces
+    assert "input" in names
+    assert "result" in names or "output" in names
+
+
+def test_line_recorder_merges_per_line_variables() -> None:
+    existing = [
+        {"name": "x", "tensor_shape": [2, 3], "dtype": "torch.float32", "device": "cpu", "role": "local"},
+        {"name": "y", "tensor_shape": [1], "dtype": "torch.int64", "device": "cpu", "role": "local"},
+    ]
+    incoming = [
+        {"name": "y", "tensor_shape": [1], "dtype": "torch.int64", "device": "cpu", "role": "local"},
+        {"name": "z", "tensor_shape": [2, 3], "dtype": "torch.float32", "device": "cpu", "role": "local"},
+    ]
+    merged = LineRecorder._merge_line_variables(existing, incoming)
+
+    assert len(merged) == 3
+    assert {item["name"] for item in merged} == {"x", "y", "z"}

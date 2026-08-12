@@ -12,6 +12,7 @@ const LAYER_COLORS = [
   "#08785d", "#356a9b", "#a76508", "#8a4f79", "#577b2f", "#a5483f",
   "#4f6f87", "#7a5d25", "#4b8079", "#76558c", "#87603f", "#3d737e",
 ];
+const VIEWPORT_PAN_DRAG_THRESHOLD = 4;
 
 const state = {
   manifest: null,
@@ -61,6 +62,7 @@ const state = {
   pathNodes: new Set(),
   pathEdges: new Set(),
   selectedPortId: null,
+  viewportDrag: { started: false, startX: 0, startY: 0 },
 };
 
 function formatNumber(value) {
@@ -1539,6 +1541,19 @@ async function renderSource(value) {
       lines.querySelectorAll(".source-code-line.active").forEach((item) => item.classList.remove("active"));
       row.classList.add("active");
     });
+    if (traceLine?.variables?.length) {
+      const variableLabel = document.createElement("div");
+      const sorted = [...traceLine.variables].sort((left, right) => (left.name || "").localeCompare(right.name || ""));
+      const compact = sorted.slice(0, 3);
+      const names = compact.map((item) => `${item.name || "value"}:${item.tensor_shape?.join(",") || "?"}`).join(", ");
+      variableLabel.className = "line-variables";
+      variableLabel.textContent = compact.length < traceLine.variables.length
+        ? `${names}, +${traceLine.variables.length - compact.length} more`
+        : names;
+      row.title = `line vars: ${traceLine.variables.map((item) => item.name).join(", ")}`;
+      code.append(variableLabel);
+      code.append(document.createTextNode("\n"));
+    }
     fragment.append(row);
   });
   lines.replaceChildren(fragment);
@@ -1781,9 +1796,13 @@ function beginViewportGesture(event) {
   const viewport = $("#graph-viewport");
   state.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
   viewport.setPointerCapture(event.pointerId);
+  state.viewportDrag = {
+    started: false,
+    startX: event.clientX,
+    startY: event.clientY,
+  };
   if (state.pointers.size === 1) {
     state.gesture = { type: "pan", x: event.clientX, y: event.clientY, pan: { ...state.pan } };
-    viewport.classList.add("panning");
   } else if (state.pointers.size === 2) {
     const [a, b] = [...state.pointers.values()];
     const midpoint = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
@@ -1798,7 +1817,6 @@ function beginViewportGesture(event) {
 
 function moveViewportGesture(event) {
   if (!state.pointers.has(event.pointerId)) return;
-  event.preventDefault();
   state.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
   if (state.pointers.size === 2) {
     const [a, b] = [...state.pointers.values()];
@@ -1810,17 +1828,28 @@ function moveViewportGesture(event) {
       x: midpoint.x - state.gesture.world.x * state.zoom,
       y: midpoint.y - state.gesture.world.y * state.zoom,
     };
+    updateTransform();
   } else if (state.gesture?.type === "pan") {
+    const moved = Math.abs(event.clientX - state.viewportDrag.startX) + Math.abs(event.clientY - state.viewportDrag.startY);
+    if (!state.viewportDrag.started && moved < VIEWPORT_PAN_DRAG_THRESHOLD) return;
+    if (!state.viewportDrag.started) {
+      state.viewportDrag.started = true;
+      $("#graph-viewport").classList.add("panning");
+      event.preventDefault();
+      window.getSelection()?.removeAllRanges();
+    }
     state.pan = {
       x: state.gesture.pan.x + event.clientX - state.gesture.x,
       y: state.gesture.pan.y + event.clientY - state.gesture.y,
     };
+    event.preventDefault();
+    updateTransform();
   }
-  updateTransform();
 }
 
 function endViewportGesture(event) {
   state.pointers.delete(event.pointerId);
+  if (state.pointers.size === 0) state.viewportDrag = { started: false, startX: 0, startY: 0 };
   if (state.pointers.size === 0) {
     state.gesture = null;
     $("#graph-viewport").classList.remove("panning");
@@ -2023,18 +2052,22 @@ window.addEventListener("keydown", (event) => {
   const target = event.target;
   const typing = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement
     || target instanceof HTMLSelectElement || target?.isContentEditable;
-  if (typing || !event.altKey || !event.shiftKey) return;
   const value = selectedGraphValue();
+  if (typing) return;
   const key = event.key.toLowerCase();
-  if (key === "m") {
+  const isSystemShortcut = event.ctrlKey || event.metaKey;
+  const isLegacyShortcut = event.altKey && event.shiftKey;
+  if (!isSystemShortcut && !isLegacyShortcut) return;
+
+  if ((isSystemShortcut && key === "w") || (isLegacyShortcut && key === "m")) {
     event.preventDefault();
     copyText(value?.display_name || value?.name || value?.qualified_name || "", "Module name");
   }
-  if (key === "p") {
+  if ((isSystemShortcut && key === "q") || (isLegacyShortcut && key === "p")) {
     event.preventDefault();
     copyText(value?.qualified_name || value?.module_path || "", "Module path");
   }
-  if (key === "s") {
+  if ((isSystemShortcut && key === "e") || (isLegacyShortcut && key === "s")) {
     event.preventDefault();
     selectedSourceCode().then((text) => copyText(text, "Source code"));
   }

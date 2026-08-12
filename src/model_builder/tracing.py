@@ -164,12 +164,55 @@ class LineRecorder(AbstractContextManager["LineRecorder"]):
     def __init__(self, package_roots: tuple[Path, ...]) -> None:
         self.package_prefixes = tuple(f"{path.resolve().as_posix()}/" for path in package_roots)
         self.lines: dict[str, set[int]] = defaultdict(set)
+        self.variables: dict[tuple[str, int], list[dict[str, Any]]] = {}
+
+    @staticmethod
+    def _line_variables(frame: FrameType) -> list[dict[str, Any]]:
+        variables = []
+        for name, value in frame.f_locals.items():
+            if torch.is_tensor(value):
+                metadata = tensor_metadata(value)
+                variables.append({
+                    "name": name,
+                    "role": "local",
+                    "tensor_shape": metadata["shape"],
+                    "dtype": metadata["dtype"],
+                    "device": metadata["device"],
+                })
+                continue
+            flattened = _flatten_named(value, name)
+            for path, tensor in flattened:
+                metadata = tensor_metadata(tensor)
+                variables.append({
+                    "name": path,
+                    "role": "local",
+                    "tensor_shape": metadata["shape"],
+                    "dtype": metadata["dtype"],
+                    "device": metadata["device"],
+                })
+        dedupe = {}
+        for item in variables:
+            key = (item["name"], tuple(item["tensor_shape"]), item["dtype"], item["device"])
+            dedupe[key] = item
+        return list(dedupe.values())
+
+    @staticmethod
+    def _merge_line_variables(current: list[dict[str, Any]], incoming: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        seen = {}
+        for item in current + incoming:
+            seen[(item["name"], tuple(item["tensor_shape"]), item["dtype"], item["device"])] = item
+        return list(seen.values())
 
     def _trace(self, frame: FrameType, event: str, arg: Any) -> Callable[..., Any] | None:
         if event == "line" and frame.f_code.co_filename.startswith(self.package_prefixes):
             path = normalized_source_path(frame.f_code.co_filename)
             if path:
                 self.lines[path].add(frame.f_lineno)
+                key = (path, frame.f_lineno)
+                self.variables[key] = self._merge_line_variables(
+                    self.variables.get(key, []),
+                    self._line_variables(frame),
+                )
         return self._trace
 
     def __enter__(self) -> LineRecorder:
@@ -929,7 +972,7 @@ def _line_traces(
                 "op_ids": [node["id"] for node in matching],
                 "input_shapes": [port for node in matching for port in node["input_ports"]],
                 "output_shapes": [port for node in matching for port in node["output_ports"]],
-                "variables": [],
+                "variables": recorder.variables.get((file, line), []),
                 "control_context": [],
                 "confidence": "exact" if matching else "partial",
             })
