@@ -22,6 +22,10 @@ Build the deployable site:
 npm run build-ui -- --model-code model_code --out build
 ```
 
-The drift check introduced with ADR-249 is the authoritative clean-tree check.
-It normalizes documented volatile metadata before comparing two independent
-generations and the checked-in runtime catalog.
+The ADR-249 drift check is the authoritative clean-tree check. It reuses the
+catalog's recorded generation timestamp, parses JSON before comparison, and
+compares two isolated generations with each other and the checked-in catalog:
+
+```bash
+./venv/bin/python -m src.model_builder.drift
+```
