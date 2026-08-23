@@ -65,3 +65,58 @@ def test_missing_official_config_marks_only_version_partial(tmp_path: Path) -> N
     assert result["status"] == "partial"
     assert result["warnings"][0]["code"] == "official_config_unavailable"
     assert result["official_config_ref"] is None
+
+
+def test_missing_mapping_records_a_specific_warning(tmp_path: Path) -> None:
+    result = materialize_version_configs(
+        tmp_path / "out", version(), {"model_type": "tiny"}, None, tmp_path / "official",
+    )
+    assert result["status"] == "partial"
+    assert result["warnings"][0]["code"] == "official_config_mapping_missing"
+
+
+def test_native_mamba2_config_uses_the_compatibility_adapter(tmp_path: Path) -> None:
+    raw = b'{"ssm_cfg":{"layer":"Mamba2"}}\n'
+    source = tmp_path / "official/tiny"
+    source.mkdir(parents=True)
+    (source / "config.json").write_bytes(raw)
+    (source / "metadata.json").write_text(json.dumps({
+        "revision": "a" * 40,
+        "repo_id": "publisher/tiny",
+        "sha256": hashlib.sha256(raw).hexdigest(),
+    }), encoding="utf-8")
+    mamba = ResolvedVersion(**{**version().as_dict(), "architecture_key": "mamba2"})
+
+    result = materialize_version_configs(
+        tmp_path / "out", mamba, {"model_type": "mamba2"}, entry(), tmp_path / "official",
+    )
+    assert result["status"] == "passed"
+    assert result["official_config_source"]["compatibility_adapter"] == "native-mamba2-v1"
+
+
+def test_pinned_config_rejects_each_metadata_or_compatibility_mismatch(tmp_path: Path) -> None:
+    raw = b'{"model_type":"tiny"}\n'
+    mutations = (
+        {"revision": "b" * 40},
+        {"sha256": "0" * 64},
+        {"repo_id": "another/repository"},
+        {"config": b'{"model_type":"other"}\n'},
+    )
+    for index, mutation in enumerate(mutations):
+        case = tmp_path / str(index)
+        source = case / "official/tiny"
+        source.mkdir(parents=True)
+        case_raw = mutation.get("config", raw)
+        (source / "config.json").write_bytes(case_raw)
+        metadata = {
+            "revision": "a" * 40,
+            "repo_id": "publisher/tiny",
+            "sha256": hashlib.sha256(case_raw).hexdigest(),
+            **{key: value for key, value in mutation.items() if key != "config"},
+        }
+        (source / "metadata.json").write_text(json.dumps(metadata), encoding="utf-8")
+        result = materialize_version_configs(
+            case / "out", version(), {"model_type": "tiny"}, entry(), case / "official",
+        )
+        assert result["status"] == "partial"
+        assert result["warnings"][0]["code"] == "official_config_unavailable"
