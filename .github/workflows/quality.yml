@@ -71,6 +71,9 @@ jobs:
       - name: Build deployable site
         run: timeout 60s npm run build-ui -- --model-code model_code --out build
 
+      - name: Record deployment revision
+        run: printf '{"commit":"%s","branch":"%s"}\n' "$GITHUB_SHA" "$GITHUB_REF_NAME" > build/deployment.json
+
       - name: Scan with SonarQube Cloud
         if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
         uses: SonarSource/sonarqube-scan-action@fd88b7d7ccbaefd23d8f36f73b59db7a3d246602 # v6.0.0
@@ -98,7 +101,7 @@ jobs:
           path: build
 
   deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/tickets/model-vis-260823')
     needs: verify
     runs-on: ubuntu-24.04
     timeout-minutes: 10
