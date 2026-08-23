@@ -1,0 +1,4067 @@
+{
+  "blocks": [
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00002",
+      "call_ids": [
+        "call-000001",
+        "call-000002",
+        "call-000003",
+        "call-000004",
+        "call-000006",
+        "call-000008",
+        "call-000009",
+        "call-000007",
+        "call-000010",
+        "call-000005",
+        "call-000013",
+        "call-000012",
+        "call-000014",
+        "call-000011",
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.be7de323db5b5dd1461b110bdc09950aa404c5f0a868f61a29f4cc34a5bf4155",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 2,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "input_ids",
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": true,
+          "port_id": "call-000001:in:0",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "blenderbot",
+      "module_id": "module-00002",
+      "operation_ids": [
+        "op-000000",
+        "op-000001",
+        "op-000002",
+        "op-000003",
+        "op-000004",
+        "op-000005",
+        "op-000006",
+        "op-000007",
+        "op-000008",
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000048"
+        }
+      ],
+      "parent_module_id": "module-00000",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.be7de323db5b5dd1461b110bdc09950aa404c5f0a868f61a29f4cc34a5bf4155/block.json",
+        "target_dedup_uid": "dedup.sha256.be7de323db5b5dd1461b110bdc09950aa404c5f0a868f61a29f4cc34a5bf4155",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder",
+      "source_refs": [
+        {
+          "end_line": 512,
+          "executed_line": 465,
+          "file": "transformers/utils/generic.py",
+          "source_uid": "source.sha256.254d4da4849c048a7bfc98b1244baf38c6adcf32df8b0cd035ba5ecc314bb1e6",
+          "start_line": 465,
+          "symbol": "BlenderbotEncoder.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "blenderbot.block-00003",
+      "call_ids": [
+        "call-000002"
+      ],
+      "dedup_ref": "dedup.sha256.1feaae9ea6fff9c5d403423d8f0de72eb64d6430654aa0e2181669afedc1edd4",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 3,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": false,
+          "port_id": "call-000002:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "blenderbot",
+      "module_id": "module-00003",
+      "operation_ids": [
+        "op-000000",
+        "op-000001"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000002:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000004"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.1feaae9ea6fff9c5d403423d8f0de72eb64d6430654aa0e2181669afedc1edd4/block.json",
+        "target_dedup_uid": "dedup.sha256.1feaae9ea6fff9c5d403423d8f0de72eb64d6430654aa0e2181669afedc1edd4",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.embed_tokens",
+      "source_refs": [
+        {
+          "end_line": 96,
+          "executed_line": 95,
+          "file": "transformers/models/blenderbot/modeling_blenderbot.py",
+          "source_uid": "source.sha256.26ca3e1e431d4f57ec2cde3e8d38ec4bb1483da764fe37bec43688cfc17401b7",
+          "start_line": 95,
+          "symbol": "BlenderbotScaledWordEmbedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "blenderbot.block-00004",
+      "call_ids": [
+        "call-000003"
+      ],
+      "dedup_ref": "dedup.sha256.f726dec13b0db40b4b75cc68755048164864626dc4dfd6f399e06b6a920f499b",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 4,
+      "input_ports": [],
+      "layer_group_id": null,
+      "model_version_id": "blenderbot",
+      "module_id": "module-00004",
+      "operation_ids": [
+        "op-000002",
+        "op-000003",
+        "op-000004"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000003:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000008"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f726dec13b0db40b4b75cc68755048164864626dc4dfd6f399e06b6a920f499b/block.json",
+        "target_dedup_uid": "dedup.sha256.f726dec13b0db40b4b75cc68755048164864626dc4dfd6f399e06b6a920f499b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.embed_positions",
+      "source_refs": [
+        {
+          "end_line": 82,
+          "executed_line": 73,
+          "file": "transformers/models/blenderbot/modeling_blenderbot.py",
+          "source_uid": "source.sha256.26ca3e1e431d4f57ec2cde3e8d38ec4bb1483da764fe37bec43688cfc17401b7",
+          "start_line": 73,
+          "symbol": "BlenderbotLearnedPositionalEmbedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00005",
+      "call_ids": [
+        "call-000004",
+        "call-000006",
+        "call-000008",
+        "call-000009",
+        "call-000007",
+        "call-000010",
+        "call-000005",
+        "call-000013",
+        "call-000012",
+        "call-000014",
+        "call-000011"
+      ],
+      "dedup_ref": "dedup.sha256.c6627c7a9b3681fcbaa11dbb936ab1f0f338c02b1c89308115c64930fdd2f379",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 5,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000004:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000009"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "blenderbot",
+      "module_id": "module-00005",
+      "operation_ids": [
+        "op-000007",
+        "op-000008",
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000011:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000037"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.c6627c7a9b3681fcbaa11dbb936ab1f0f338c02b1c89308115c64930fdd2f379/block.json",
+        "target_dedup_uid": "dedup.sha256.c6627c7a9b3681fcbaa11dbb936ab1f0f338c02b1c89308115c64930fdd2f379",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers",
+      "source_refs": [
+        {
+          "end_line": 404,
+          "executed_line": 391,
+          "file": "torch/nn/modules/module.py",
+          "source_uid": "source.sha256.4be56271f7bfe650e3521c81fd363da58f109cd23ee80d243156d2d6ccda6263",
+          "start_line": 391,
+          "symbol": "_forward_unimplemented"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00006",
+      "call_ids": [
+        "call-000004",
+        "call-000006",
+        "call-000008",
+        "call-000009",
+        "call-000007",
+        "call-000010",
+        "call-000005",
+        "call-000013",
+        "call-000012",
+        "call-000014",
+        "call-000011"
+      ],
+      "dedup_ref": "dedup.sha256.4079598e16d54553822c5dfaadf8d4793e5127e7ffd9056236356b0b50a31b12",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 6,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000004:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000009"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00006",
+      "operation_ids": [
+        "op-000007",
+        "op-000008",
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000011:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000037"
+        }
+      ],
+      "parent_module_id": "module-00005",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4079598e16d54553822c5dfaadf8d4793e5127e7ffd9056236356b0b50a31b12/block.json",
+        "target_dedup_uid": "dedup.sha256.4079598e16d54553822c5dfaadf8d4793e5127e7ffd9056236356b0b50a31b12",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0",
+      "source_refs": [
+        {
+          "end_line": 300,
+          "executed_line": 266,
+          "file": "transformers/models/blenderbot/modeling_blenderbot.py",
+          "source_uid": "source.sha256.26ca3e1e431d4f57ec2cde3e8d38ec4bb1483da764fe37bec43688cfc17401b7",
+          "start_line": 266,
+          "symbol": "BlenderbotEncoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "blenderbot.block-00007",
+      "call_ids": [
+        "call-000006",
+        "call-000008",
+        "call-000009",
+        "call-000007",
+        "call-000010"
+      ],
+      "dedup_ref": "dedup.sha256.fc2dfe289cd5ea52516d642a93d6ca30616d551eee3af0ae912e10009b32e62d",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 7,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "hidden_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000006:in:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000012"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00007",
+      "operation_ids": [
+        "op-000008",
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000010:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000033"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.fc2dfe289cd5ea52516d642a93d6ca30616d551eee3af0ae912e10009b32e62d/block.json",
+        "target_dedup_uid": "dedup.sha256.fc2dfe289cd5ea52516d642a93d6ca30616d551eee3af0ae912e10009b32e62d",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn",
+      "source_refs": [
+        {
+          "end_line": 243,
+          "executed_line": 171,
+          "file": "transformers/models/blenderbot/modeling_blenderbot.py",
+          "source_uid": "source.sha256.26ca3e1e431d4f57ec2cde3e8d38ec4bb1483da764fe37bec43688cfc17401b7",
+          "start_line": 171,
+          "symbol": "BlenderbotAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00008",
+      "call_ids": [
+        "call-000008"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 8,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000008:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000012"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00008",
+      "operation_ids": [
+        "op-000011"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000008:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000020"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00009",
+      "call_ids": [
+        "call-000009"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 9,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000009:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000012"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00009",
+      "operation_ids": [
+        "op-000012"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000009:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000023"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00010",
+      "call_ids": [
+        "call-000007"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 10,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000007:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000012"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00010",
+      "operation_ids": [
+        "op-000008"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000007:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000015"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00011",
+      "call_ids": [
+        "call-000010"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 11,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000010:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000030"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00011",
+      "operation_ids": [
+        "op-000020"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000010:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000033"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.out_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "blenderbot.block-00012",
+      "call_ids": [
+        "call-000005"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 12,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000005:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000009"
+        }
+      ],
+      "layer_group_id": "layer-00001",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00012",
+      "operation_ids": [
+        "op-000007"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000005:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000012"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00013",
+      "call_ids": [
+        "call-000013"
+      ],
+      "dedup_ref": "dedup.sha256.76b3b0c5ae0de9708c3729e8cf4b03aec443d9244c1dbda32f6b6f8b86c6edc0",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 13,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000013:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000040"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00013",
+      "operation_ids": [
+        "op-000025"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000013:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000041"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.76b3b0c5ae0de9708c3729e8cf4b03aec443d9244c1dbda32f6b6f8b86c6edc0/block.json",
+        "target_dedup_uid": "dedup.sha256.76b3b0c5ae0de9708c3729e8cf4b03aec443d9244c1dbda32f6b6f8b86c6edc0",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.activation_fn",
+      "source_refs": [
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00014",
+      "call_ids": [
+        "call-000012"
+      ],
+      "dedup_ref": "dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 14,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000012:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000037"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00014",
+      "operation_ids": [
+        "op-000024"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000012:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000040"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112/block.json",
+        "target_dedup_uid": "dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.fc1",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00015",
+      "call_ids": [
+        "call-000014"
+      ],
+      "dedup_ref": "dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 15,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000014:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000041"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00015",
+      "operation_ids": [
+        "op-000027"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000014:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000044"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3/block.json",
+        "target_dedup_uid": "dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.fc2",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "blenderbot.block-00016",
+      "call_ids": [
+        "call-000011"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 16,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000011:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000034"
+        }
+      ],
+      "layer_group_id": "layer-00002",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00016",
+      "operation_ids": [
+        "op-000023"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000011:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000037"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.final_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "blenderbot.block-00017",
+      "call_ids": [
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 17,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000015:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000045"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "blenderbot",
+      "module_id": "module-00017",
+      "operation_ids": [
+        "op-000030"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000048"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00018",
+      "call_ids": [
+        "call-000016",
+        "call-000017",
+        "call-000018",
+        "call-000019",
+        "call-000021",
+        "call-000023",
+        "call-000024",
+        "call-000022",
+        "call-000025",
+        "call-000034",
+        "call-000020",
+        "call-000027",
+        "call-000029",
+        "call-000030",
+        "call-000028",
+        "call-000031",
+        "call-000026",
+        "call-000033",
+        "call-000035",
+        "call-000032",
+        "call-000036"
+      ],
+      "dedup_ref": "dedup.sha256.622244fdafd5bc42f2e8ea6b6d08449426f0eb07552e8c17750b4f4a8eca4014",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 18,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "input_ids",
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": true,
+          "port_id": "call-000016:in:0",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000001"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "encoder_hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "encoder_hidden_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "encoder_hidden_states",
+          "optional": true,
+          "port_id": "call-000016:in:1",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000048"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "blenderbot",
+      "module_id": "module-00018",
+      "operation_ids": [
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034",
+        "op-000035",
+        "op-000036",
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073",
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080",
+        "op-000081",
+        "op-000082",
+        "op-000083"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000036:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000124"
+        }
+      ],
+      "parent_module_id": "module-00000",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.622244fdafd5bc42f2e8ea6b6d08449426f0eb07552e8c17750b4f4a8eca4014/block.json",
+        "target_dedup_uid": "dedup.sha256.622244fdafd5bc42f2e8ea6b6d08449426f0eb07552e8c17750b4f4a8eca4014",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder",
+      "source_refs": [
+        {
+          "end_line": 643,
+          "executed_line": 555,
+          "file": "transformers/utils/generic.py",
+          "source_uid": "source.sha256.254d4da4849c048a7bfc98b1244baf38c6adcf32df8b0cd035ba5ecc314bb1e6",
+          "start_line": 555,
+          "symbol": "BlenderbotDecoder.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "blenderbot.block-00019",
+      "call_ids": [
+        "call-000017"
+      ],
+      "dedup_ref": "dedup.sha256.1feaae9ea6fff9c5d403423d8f0de72eb64d6430654aa0e2181669afedc1edd4",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 19,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": false,
+          "port_id": "call-000017:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000001"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "blenderbot",
+      "module_id": "module-00019",
+      "operation_ids": [
+        "op-000031",
+        "op-000032"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000017:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000050"
+        }
+      ],
+      "parent_module_id": "module-00018",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.1feaae9ea6fff9c5d403423d8f0de72eb64d6430654aa0e2181669afedc1edd4/block.json",
+        "target_dedup_uid": "dedup.sha256.1feaae9ea6fff9c5d403423d8f0de72eb64d6430654aa0e2181669afedc1edd4",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.embed_tokens",
+      "source_refs": [
+        {
+          "end_line": 96,
+          "executed_line": 95,
+          "file": "transformers/models/blenderbot/modeling_blenderbot.py",
+          "source_uid": "source.sha256.26ca3e1e431d4f57ec2cde3e8d38ec4bb1483da764fe37bec43688cfc17401b7",
+          "start_line": 95,
+          "symbol": "BlenderbotScaledWordEmbedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "blenderbot.block-00020",
+      "call_ids": [
+        "call-000018"
+      ],
+      "dedup_ref": "dedup.sha256.39d89f082bdef6e905be31c28612789baec04624c91924ad675e014d57d06a87",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 20,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "position_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "position_ids",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "position_ids",
+          "optional": true,
+          "port_id": "call-000018:in:0",
+          "position": null,
+          "required": false,
+          "shape": [
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000053"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "blenderbot",
+      "module_id": "module-00020",
+      "operation_ids": [
+        "op-000041"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000018:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000059"
+        }
+      ],
+      "parent_module_id": "module-00018",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.39d89f082bdef6e905be31c28612789baec04624c91924ad675e014d57d06a87/block.json",
+        "target_dedup_uid": "dedup.sha256.39d89f082bdef6e905be31c28612789baec04624c91924ad675e014d57d06a87",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.embed_positions",
+      "source_refs": [
+        {
+          "end_line": 82,
+          "executed_line": 73,
+          "file": "transformers/models/blenderbot/modeling_blenderbot.py",
+          "source_uid": "source.sha256.26ca3e1e431d4f57ec2cde3e8d38ec4bb1483da764fe37bec43688cfc17401b7",
+          "start_line": 73,
+          "symbol": "BlenderbotLearnedPositionalEmbedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00021",
+      "call_ids": [
+        "call-000019",
+        "call-000021",
+        "call-000023",
+        "call-000024",
+        "call-000022",
+        "call-000025",
+        "call-000034",
+        "call-000020",
+        "call-000027",
+        "call-000029",
+        "call-000030",
+        "call-000028",
+        "call-000031",
+        "call-000026",
+        "call-000033",
+        "call-000035",
+        "call-000032"
+      ],
+      "dedup_ref": "dedup.sha256.489e75110ce7c6be39d8d50be0ca0a2b350cd1a5e822ff48420d4cb21ca8c828",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 21,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000019:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000060"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "encoder_hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "encoder_hidden_states",
+          "optional": true,
+          "port_id": "call-000019:in:1",
+          "position": 2,
+          "required": false,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000048"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "blenderbot",
+      "module_id": "module-00021",
+      "operation_ids": [
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073",
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080",
+        "op-000081",
+        "op-000082"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000032:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000113"
+        }
+      ],
+      "parent_module_id": "module-00018",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.489e75110ce7c6be39d8d50be0ca0a2b350cd1a5e822ff48420d4cb21ca8c828/block.json",
+        "target_dedup_uid": "dedup.sha256.489e75110ce7c6be39d8d50be0ca0a2b350cd1a5e822ff48420d4cb21ca8c828",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers",
+      "source_refs": [
+        {
+          "end_line": 404,
+          "executed_line": 391,
+          "file": "torch/nn/modules/module.py",
+          "source_uid": "source.sha256.4be56271f7bfe650e3521c81fd363da58f109cd23ee80d243156d2d6ccda6263",
+          "start_line": 391,
+          "symbol": "_forward_unimplemented"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00022",
+      "call_ids": [
+        "call-000019",
+        "call-000021",
+        "call-000023",
+        "call-000024",
+        "call-000022",
+        "call-000025",
+        "call-000034",
+        "call-000020",
+        "call-000027",
+        "call-000029",
+        "call-000030",
+        "call-000028",
+        "call-000031",
+        "call-000026",
+        "call-000033",
+        "call-000035",
+        "call-000032"
+      ],
+      "dedup_ref": "dedup.sha256.0df26dc222e11c2c1c4d8220fc46ee07e642bd835a30ef827c88dc8fe34ad2f9",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 22,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000019:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000060"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "encoder_hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "encoder_hidden_states",
+          "optional": true,
+          "port_id": "call-000019:in:1",
+          "position": 2,
+          "required": false,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000048"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00022",
+      "operation_ids": [
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073",
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080",
+        "op-000081",
+        "op-000082"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000032:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000113"
+        }
+      ],
+      "parent_module_id": "module-00021",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.0df26dc222e11c2c1c4d8220fc46ee07e642bd835a30ef827c88dc8fe34ad2f9/block.json",
+        "target_dedup_uid": "dedup.sha256.0df26dc222e11c2c1c4d8220fc46ee07e642bd835a30ef827c88dc8fe34ad2f9",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0",
+      "source_refs": [
+        {
+          "end_line": 394,
+          "executed_line": 336,
+          "file": "transformers/models/blenderbot/modeling_blenderbot.py",
+          "source_uid": "source.sha256.26ca3e1e431d4f57ec2cde3e8d38ec4bb1483da764fe37bec43688cfc17401b7",
+          "start_line": 336,
+          "symbol": "BlenderbotDecoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "blenderbot.block-00023",
+      "call_ids": [
+        "call-000021",
+        "call-000023",
+        "call-000024",
+        "call-000022",
+        "call-000025"
+      ],
+      "dedup_ref": "dedup.sha256.fc2dfe289cd5ea52516d642a93d6ca30616d551eee3af0ae912e10009b32e62d",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 23,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "hidden_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000021:in:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000063"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00023",
+      "operation_ids": [
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000025:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000084"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.fc2dfe289cd5ea52516d642a93d6ca30616d551eee3af0ae912e10009b32e62d/block.json",
+        "target_dedup_uid": "dedup.sha256.fc2dfe289cd5ea52516d642a93d6ca30616d551eee3af0ae912e10009b32e62d",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn",
+      "source_refs": [
+        {
+          "end_line": 243,
+          "executed_line": 171,
+          "file": "transformers/models/blenderbot/modeling_blenderbot.py",
+          "source_uid": "source.sha256.26ca3e1e431d4f57ec2cde3e8d38ec4bb1483da764fe37bec43688cfc17401b7",
+          "start_line": 171,
+          "symbol": "BlenderbotAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00024",
+      "call_ids": [
+        "call-000023"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 24,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000023:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000063"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00024",
+      "operation_ids": [
+        "op-000048"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000023:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000071"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00025",
+      "call_ids": [
+        "call-000024"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 25,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000024:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000063"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00025",
+      "operation_ids": [
+        "op-000049"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000024:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000074"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00026",
+      "call_ids": [
+        "call-000022"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 26,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000022:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000063"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00026",
+      "operation_ids": [
+        "op-000045"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000022:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000066"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00027",
+      "call_ids": [
+        "call-000025"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 27,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000025:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000081"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00027",
+      "operation_ids": [
+        "op-000057"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000025:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000084"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn.out_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00028",
+      "call_ids": [
+        "call-000034"
+      ],
+      "dedup_ref": "dedup.sha256.76b3b0c5ae0de9708c3729e8cf4b03aec443d9244c1dbda32f6b6f8b86c6edc0",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 28,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000034:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000116"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00028",
+      "operation_ids": [
+        "op-000078"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000034:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000117"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.76b3b0c5ae0de9708c3729e8cf4b03aec443d9244c1dbda32f6b6f8b86c6edc0/block.json",
+        "target_dedup_uid": "dedup.sha256.76b3b0c5ae0de9708c3729e8cf4b03aec443d9244c1dbda32f6b6f8b86c6edc0",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.activation_fn",
+      "source_refs": [
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "blenderbot.block-00029",
+      "call_ids": [
+        "call-000020"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 29,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000020:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000060"
+        }
+      ],
+      "layer_group_id": "layer-00004",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00029",
+      "operation_ids": [
+        "op-000044"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000020:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000063"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "blenderbot.block-00030",
+      "call_ids": [
+        "call-000027",
+        "call-000029",
+        "call-000030",
+        "call-000028",
+        "call-000031"
+      ],
+      "dedup_ref": "dedup.sha256.034ae495c7ca151e098dcbb5047665465ebb08447a0d24aff5a3404d20ad2fd9",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 30,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "hidden_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000027:in:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000088"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "key_value_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "key_value_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "key_value_states",
+          "optional": true,
+          "port_id": "call-000027:in:1",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000048"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00030",
+      "operation_ids": [
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000031:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000109"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.034ae495c7ca151e098dcbb5047665465ebb08447a0d24aff5a3404d20ad2fd9/block.json",
+        "target_dedup_uid": "dedup.sha256.034ae495c7ca151e098dcbb5047665465ebb08447a0d24aff5a3404d20ad2fd9",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn",
+      "source_refs": [
+        {
+          "end_line": 243,
+          "executed_line": 171,
+          "file": "transformers/models/blenderbot/modeling_blenderbot.py",
+          "source_uid": "source.sha256.26ca3e1e431d4f57ec2cde3e8d38ec4bb1483da764fe37bec43688cfc17401b7",
+          "start_line": 171,
+          "symbol": "BlenderbotAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00031",
+      "call_ids": [
+        "call-000029"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 31,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000029:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000048"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00031",
+      "operation_ids": [
+        "op-000064"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000029:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000096"
+        }
+      ],
+      "parent_module_id": "module-00030",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00032",
+      "call_ids": [
+        "call-000030"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 32,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000030:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000048"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00032",
+      "operation_ids": [
+        "op-000065"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000030:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000099"
+        }
+      ],
+      "parent_module_id": "module-00030",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00033",
+      "call_ids": [
+        "call-000028"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 33,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000028:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000088"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00033",
+      "operation_ids": [
+        "op-000061"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000028:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000091"
+        }
+      ],
+      "parent_module_id": "module-00030",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00034",
+      "call_ids": [
+        "call-000031"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 34,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000031:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000106"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00034",
+      "operation_ids": [
+        "op-000073"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000031:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000109"
+        }
+      ],
+      "parent_module_id": "module-00030",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn.out_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "blenderbot.block-00035",
+      "call_ids": [
+        "call-000026"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 35,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000026:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000085"
+        }
+      ],
+      "layer_group_id": "layer-00005",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00035",
+      "operation_ids": [
+        "op-000060"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000026:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000088"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00036",
+      "call_ids": [
+        "call-000033"
+      ],
+      "dedup_ref": "dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 36,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000033:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000113"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00036",
+      "operation_ids": [
+        "op-000077"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000033:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000116"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112/block.json",
+        "target_dedup_uid": "dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.fc1",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "blenderbot.block-00037",
+      "call_ids": [
+        "call-000035"
+      ],
+      "dedup_ref": "dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 37,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000035:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000117"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00037",
+      "operation_ids": [
+        "op-000080"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000035:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000120"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3/block.json",
+        "target_dedup_uid": "dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.fc2",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "blenderbot.block-00038",
+      "call_ids": [
+        "call-000032"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 38,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000032:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000110"
+        }
+      ],
+      "layer_group_id": "layer-00006",
+      "model_version_id": "blenderbot",
+      "module_id": "module-00038",
+      "operation_ids": [
+        "op-000076"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000032:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000113"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.final_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "blenderbot.block-00039",
+      "call_ids": [
+        "call-000036"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "blenderbot",
+      "graph_ref": "graphs/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json",
+      "index": 39,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000036:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000121"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "blenderbot",
+      "module_id": "module-00039",
+      "operation_ids": [
+        "op-000083"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000036:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000124"
+        }
+      ],
+      "parent_module_id": "module-00018",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.8fd978d227db8f477937a455ad355066a9a99cdb6164ead61af973232295512e.json"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "dedup_uid": "dedup.sha256.82be5e6bba4ee4ddb8c567a982774545d4a276ca0b25b5b72e2a8dfa5f4582ed",
+  "operation_ids": [
+    "op-000271",
+    "op-000272",
+    "op-000273",
+    "op-000274",
+    "op-000275"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "diffusers.models.autoencoders.autoencoder_kl_ltx2_audio",
+        "LTX2AudioPixelNorm"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            256,
+            7,
+            8
+          ]
+        ],
+        [
+          [
+            1,
+            256,
+            7,
+            8
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "71b1069b0b00a42727c940c373658bff25fbd42c93dacaa24baa7bac7c5f5a22",
+    "topology": [
+      [
+        "aten_op",
+        "aten.pow.Tensor_Scalar"
+      ],
+      [
+        "aten_op",
+        "aten.mean.dim"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.sqrt.default"
+      ],
+      [
+        "aten_op",
+        "aten.div.Tensor"
+      ]
+    ]
+  }
+}

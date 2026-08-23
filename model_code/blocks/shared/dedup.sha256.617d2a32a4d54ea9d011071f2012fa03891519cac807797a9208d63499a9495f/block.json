@@ -1,0 +1,94 @@
+{
+  "dedup_uid": "dedup.sha256.617d2a32a4d54ea9d011071f2012fa03891519cac807797a9208d63499a9495f",
+  "operation_ids": [
+    "op-000092",
+    "op-000093",
+    "op-000094",
+    "op-000095",
+    "op-000096",
+    "op-000097",
+    "op-000098",
+    "op-000099"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.bitnet.modeling_bitnet",
+        "BitNetRMSNorm"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            32
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            32
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          32
+        ]
+      ]
+    ],
+    "source": "2a8e12aad2521afac0407e7d3654dd53afbcb2321e45d306af1c3818ad0b65b1",
+    "topology": [
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.pow.Tensor_Scalar"
+      ],
+      [
+        "aten_op",
+        "aten.mean.dim"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.rsqrt.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ]
+    ]
+  }
+}

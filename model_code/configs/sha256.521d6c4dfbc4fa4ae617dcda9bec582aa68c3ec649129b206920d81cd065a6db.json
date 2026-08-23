@@ -1,0 +1,205 @@
+{
+  "_name_or_path": "",
+  "architectures": null,
+  "bos_token_id": null,
+  "chunk_size_feed_forward": 0,
+  "cross_attn_k": 2,
+  "decoder_config": {
+    "_name_or_path": "",
+    "architectures": null,
+    "bos_token_id": null,
+    "chunk_size_feed_forward": 0,
+    "cross_attn_all_layers": true,
+    "cross_attn_k": 2,
+    "dropout": 0.0,
+    "dtype": null,
+    "eos_token_id": null,
+    "head_dim": 4,
+    "hidden_act": "silu",
+    "hidden_size": 16,
+    "hidden_size_global": 16,
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "initializer_range": 0.02,
+    "intermediate_size": 32,
+    "is_encoder_decoder": false,
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "max_position_embeddings": 32,
+    "model_type": "blt_local_decoder",
+    "num_attention_heads": 4,
+    "num_hidden_layers": 1,
+    "num_key_value_heads": 2,
+    "output_attentions": false,
+    "output_hidden_states": false,
+    "pad_token_id": 0,
+    "problem_type": null,
+    "return_dict": true,
+    "rms_norm_eps": 1e-05,
+    "rope_parameters": {
+      "rope_theta": 500000.0,
+      "rope_type": "default"
+    },
+    "tie_word_embeddings": false,
+    "vocab_size": 64
+  },
+  "dtype": null,
+  "encoder_config": {
+    "_name_or_path": "",
+    "architectures": null,
+    "chunk_size_feed_forward": 0,
+    "cross_attn_all_layers": false,
+    "cross_attn_k": 2,
+    "dropout": 0.0,
+    "dtype": null,
+    "hidden_act": "silu",
+    "hidden_size": 16,
+    "hidden_size_global": 16,
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "initializer_range": 0.02,
+    "intermediate_size": 32,
+    "is_encoder_decoder": false,
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "max_position_embeddings": 32,
+    "model_type": "blt_local_encoder",
+    "num_attention_heads": 4,
+    "num_hidden_layers": 1,
+    "num_key_value_heads": 2,
+    "output_attentions": false,
+    "output_hidden_states": false,
+    "problem_type": null,
+    "return_dict": true,
+    "rms_norm_eps": 1e-05,
+    "rope_parameters": {
+      "rope_theta": 500000.0,
+      "rope_type": "default"
+    },
+    "tie_word_embeddings": false,
+    "vocab_size": 64
+  },
+  "encoder_hash_byte_group_nb_functions": 1,
+  "encoder_hash_byte_group_size": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "encoder_hash_byte_group_vocab": 64,
+  "eos_token_id": null,
+  "global_config": {
+    "_name_or_path": "",
+    "architectures": null,
+    "chunk_size_feed_forward": 0,
+    "dropout": 0.0,
+    "dtype": null,
+    "encoder_cross_output_size": 32,
+    "head_dim": 4,
+    "hidden_act": "silu",
+    "hidden_size": 16,
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "initializer_range": 0.02,
+    "intermediate_size": 32,
+    "is_encoder_decoder": false,
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "max_position_embeddings": 32,
+    "model_type": "blt_global_transformer",
+    "num_attention_heads": 4,
+    "num_hidden_layers": 1,
+    "num_key_value_heads": 2,
+    "output_attentions": false,
+    "output_hidden_states": false,
+    "problem_type": null,
+    "return_dict": true,
+    "rms_norm_eps": 1e-05,
+    "rope_parameters": {
+      "rope_theta": 500000.0,
+      "rope_type": "default"
+    },
+    "tie_word_embeddings": false
+  },
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "max_patch_length": null,
+  "max_position_embeddings": 32,
+  "model_type": "blt",
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 0,
+  "patch_in_forward": true,
+  "patch_size": 4,
+  "patcher_config": {
+    "_name_or_path": "",
+    "architectures": null,
+    "chunk_size_feed_forward": 0,
+    "dropout": 0.0,
+    "dtype": null,
+    "head_dim": 4,
+    "hidden_act": "silu",
+    "hidden_size": 16,
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "initializer_range": 0.02,
+    "intermediate_size": 32,
+    "is_encoder_decoder": false,
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "max_position_embeddings": 32,
+    "model_type": "blt_patcher",
+    "num_attention_heads": 4,
+    "num_hidden_layers": 1,
+    "num_key_value_heads": 2,
+    "output_attentions": false,
+    "output_hidden_states": false,
+    "problem_type": null,
+    "return_dict": true,
+    "rms_norm_eps": 1e-05,
+    "rope_parameters": {
+      "rope_theta": 10000.0,
+      "rope_type": "default"
+    },
+    "tie_word_embeddings": false,
+    "vocab_size": 64
+  },
+  "patching_batch_size": 1,
+  "patching_mode": "entropy",
+  "patching_threshold": 1.335442066192627,
+  "problem_type": null,
+  "return_dict": true,
+  "rope_parameters": {
+    "rope_theta": 500000.0,
+    "rope_type": "default"
+  },
+  "tie_word_embeddings": false,
+  "transformers_version": "5.12.0",
+  "vocab_size": 64
+}

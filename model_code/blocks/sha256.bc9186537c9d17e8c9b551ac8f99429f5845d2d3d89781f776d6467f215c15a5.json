@@ -1,0 +1,4135 @@
+{
+  "blocks": [
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00002",
+      "call_ids": [
+        "call-000001",
+        "call-000002",
+        "call-000003",
+        "call-000005",
+        "call-000006",
+        "call-000008",
+        "call-000009",
+        "call-000007",
+        "call-000010",
+        "call-000011",
+        "call-000013",
+        "call-000012",
+        "call-000014",
+        "call-000015",
+        "call-000004"
+      ],
+      "dedup_ref": "dedup.sha256.2e99809fe80d104a0010e158eb18be4dfbca5bfa6633ff97f5f544ee95a7f9ec",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 2,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "input_ids",
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": true,
+          "port_id": "call-000001:in:0",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bart",
+      "module_id": "module-00002",
+      "operation_ids": [
+        "op-000000",
+        "op-000001",
+        "op-000002",
+        "op-000003",
+        "op-000004",
+        "op-000005",
+        "op-000006",
+        "op-000007",
+        "op-000008",
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030",
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000004:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000015"
+        }
+      ],
+      "parent_module_id": "module-00000",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2e99809fe80d104a0010e158eb18be4dfbca5bfa6633ff97f5f544ee95a7f9ec/block.json",
+        "target_dedup_uid": "dedup.sha256.2e99809fe80d104a0010e158eb18be4dfbca5bfa6633ff97f5f544ee95a7f9ec",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder",
+      "source_refs": [
+        {
+          "end_line": 549,
+          "executed_line": 504,
+          "file": "transformers/utils/generic.py",
+          "source_uid": "source.sha256.254d4da4849c048a7bfc98b1244baf38c6adcf32df8b0cd035ba5ecc314bb1e6",
+          "start_line": 504,
+          "symbol": "BartEncoder.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "bart.block-00003",
+      "call_ids": [
+        "call-000002"
+      ],
+      "dedup_ref": "dedup.sha256.8bbd93e9dad946fb33e9619175a507617a6a40fdd96405839eef937bba0da8f6",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 3,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": false,
+          "port_id": "call-000002:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bart",
+      "module_id": "module-00003",
+      "operation_ids": [
+        "op-000000",
+        "op-000001"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000002:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000004"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.8bbd93e9dad946fb33e9619175a507617a6a40fdd96405839eef937bba0da8f6/block.json",
+        "target_dedup_uid": "dedup.sha256.8bbd93e9dad946fb33e9619175a507617a6a40fdd96405839eef937bba0da8f6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.embed_tokens",
+      "source_refs": [
+        {
+          "end_line": 111,
+          "executed_line": 110,
+          "file": "transformers/models/bart/modeling_bart.py",
+          "source_uid": "source.sha256.7152d8f9195a5fd7ee955a3d72b39c94a1da640800e5cd5103e10d916b3bdbe8",
+          "start_line": 110,
+          "symbol": "BartScaledWordEmbedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "bart.block-00004",
+      "call_ids": [
+        "call-000003"
+      ],
+      "dedup_ref": "dedup.sha256.249f70fc13cdeaba96ab7c05b637b9f4e8c92c958edd21a92a9d6fae9f1b1116",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 4,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input_ids",
+          "optional": false,
+          "port_id": "call-000003:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000005"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bart",
+      "module_id": "module-00004",
+      "operation_ids": [
+        "op-000003",
+        "op-000004",
+        "op-000005",
+        "op-000006",
+        "op-000007"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000003:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000011"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.249f70fc13cdeaba96ab7c05b637b9f4e8c92c958edd21a92a9d6fae9f1b1116/block.json",
+        "target_dedup_uid": "dedup.sha256.249f70fc13cdeaba96ab7c05b637b9f4e8c92c958edd21a92a9d6fae9f1b1116",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.embed_positions",
+      "source_refs": [
+        {
+          "end_line": 98,
+          "executed_line": 85,
+          "file": "transformers/models/bart/modeling_bart.py",
+          "source_uid": "source.sha256.7152d8f9195a5fd7ee955a3d72b39c94a1da640800e5cd5103e10d916b3bdbe8",
+          "start_line": 85,
+          "symbol": "BartLearnedPositionalEmbedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00005",
+      "call_ids": [
+        "call-000005",
+        "call-000006",
+        "call-000008",
+        "call-000009",
+        "call-000007",
+        "call-000010",
+        "call-000011",
+        "call-000013",
+        "call-000012",
+        "call-000014",
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.ffbae24d32777ea09affb1a4add168ec6b85d1a0c1bfafade9d0db12e8675a51",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 5,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000005:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000015"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bart",
+      "module_id": "module-00005",
+      "operation_ids": [
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030",
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000051"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.ffbae24d32777ea09affb1a4add168ec6b85d1a0c1bfafade9d0db12e8675a51/block.json",
+        "target_dedup_uid": "dedup.sha256.ffbae24d32777ea09affb1a4add168ec6b85d1a0c1bfafade9d0db12e8675a51",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers",
+      "source_refs": [
+        {
+          "end_line": 404,
+          "executed_line": 391,
+          "file": "torch/nn/modules/module.py",
+          "source_uid": "source.sha256.4be56271f7bfe650e3521c81fd363da58f109cd23ee80d243156d2d6ccda6263",
+          "start_line": 391,
+          "symbol": "_forward_unimplemented"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00006",
+      "call_ids": [
+        "call-000005",
+        "call-000006",
+        "call-000008",
+        "call-000009",
+        "call-000007",
+        "call-000010",
+        "call-000011",
+        "call-000013",
+        "call-000012",
+        "call-000014",
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.728d9608dede6b846ed5cc3de4ced02ac35ad34c97c68f35dec7c0b6712631ed",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 6,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000005:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000015"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bart",
+      "module_id": "module-00006",
+      "operation_ids": [
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030",
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000051"
+        }
+      ],
+      "parent_module_id": "module-00005",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.728d9608dede6b846ed5cc3de4ced02ac35ad34c97c68f35dec7c0b6712631ed/block.json",
+        "target_dedup_uid": "dedup.sha256.728d9608dede6b846ed5cc3de4ced02ac35ad34c97c68f35dec7c0b6712631ed",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0",
+      "source_refs": [
+        {
+          "end_line": 308,
+          "executed_line": 280,
+          "file": "transformers/models/bart/modeling_bart.py",
+          "source_uid": "source.sha256.7152d8f9195a5fd7ee955a3d72b39c94a1da640800e5cd5103e10d916b3bdbe8",
+          "start_line": 280,
+          "symbol": "BartEncoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "bart.block-00007",
+      "call_ids": [
+        "call-000006",
+        "call-000008",
+        "call-000009",
+        "call-000007",
+        "call-000010"
+      ],
+      "dedup_ref": "dedup.sha256.f265a0f6d2493479912b203b0f616751223fa84146bcc57c4c91b1ce359edcc6",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 7,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000006:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000015"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bart",
+      "module_id": "module-00007",
+      "operation_ids": [
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000010:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000036"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f265a0f6d2493479912b203b0f616751223fa84146bcc57c4c91b1ce359edcc6/block.json",
+        "target_dedup_uid": "dedup.sha256.f265a0f6d2493479912b203b0f616751223fa84146bcc57c4c91b1ce359edcc6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn",
+      "source_refs": [
+        {
+          "end_line": 257,
+          "executed_line": 185,
+          "file": "transformers/models/bart/modeling_bart.py",
+          "source_uid": "source.sha256.7152d8f9195a5fd7ee955a3d72b39c94a1da640800e5cd5103e10d916b3bdbe8",
+          "start_line": 185,
+          "symbol": "BartAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00008",
+      "call_ids": [
+        "call-000008"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 8,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000008:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000015"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bart",
+      "module_id": "module-00008",
+      "operation_ids": [
+        "op-000015"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000008:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000023"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00009",
+      "call_ids": [
+        "call-000009"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 9,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000009:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000015"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bart",
+      "module_id": "module-00009",
+      "operation_ids": [
+        "op-000016"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000009:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000026"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00010",
+      "call_ids": [
+        "call-000007"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 10,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000007:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000015"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bart",
+      "module_id": "module-00010",
+      "operation_ids": [
+        "op-000012"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000007:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000018"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00011",
+      "call_ids": [
+        "call-000010"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 11,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000010:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000033"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bart",
+      "module_id": "module-00011",
+      "operation_ids": [
+        "op-000024"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000010:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000036"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.out_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "bart.block-00012",
+      "call_ids": [
+        "call-000011"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 12,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000011:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000037"
+        }
+      ],
+      "layer_group_id": "layer-00001",
+      "model_version_id": "bart",
+      "module_id": "module-00012",
+      "operation_ids": [
+        "op-000027"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000011:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000040"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00013",
+      "call_ids": [
+        "call-000013"
+      ],
+      "dedup_ref": "dedup.sha256.76b3b0c5ae0de9708c3729e8cf4b03aec443d9244c1dbda32f6b6f8b86c6edc0",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 13,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000013:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000043"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bart",
+      "module_id": "module-00013",
+      "operation_ids": [
+        "op-000029"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000013:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000044"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.76b3b0c5ae0de9708c3729e8cf4b03aec443d9244c1dbda32f6b6f8b86c6edc0/block.json",
+        "target_dedup_uid": "dedup.sha256.76b3b0c5ae0de9708c3729e8cf4b03aec443d9244c1dbda32f6b6f8b86c6edc0",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.activation_fn",
+      "source_refs": [
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00014",
+      "call_ids": [
+        "call-000012"
+      ],
+      "dedup_ref": "dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 14,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000012:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000040"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bart",
+      "module_id": "module-00014",
+      "operation_ids": [
+        "op-000028"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000012:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000043"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112/block.json",
+        "target_dedup_uid": "dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.fc1",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00015",
+      "call_ids": [
+        "call-000014"
+      ],
+      "dedup_ref": "dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 15,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000014:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000044"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bart",
+      "module_id": "module-00015",
+      "operation_ids": [
+        "op-000031"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000014:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000047"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3/block.json",
+        "target_dedup_uid": "dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.fc2",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "bart.block-00016",
+      "call_ids": [
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 16,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000015:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000048"
+        }
+      ],
+      "layer_group_id": "layer-00002",
+      "model_version_id": "bart",
+      "module_id": "module-00016",
+      "operation_ids": [
+        "op-000034"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000051"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.final_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "bart.block-00017",
+      "call_ids": [
+        "call-000004"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 17,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000004:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000012"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bart",
+      "module_id": "module-00017",
+      "operation_ids": [
+        "op-000010"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000004:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000015"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layernorm_embedding",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00018",
+      "call_ids": [
+        "call-000016",
+        "call-000017",
+        "call-000018",
+        "call-000020",
+        "call-000021",
+        "call-000023",
+        "call-000024",
+        "call-000022",
+        "call-000025",
+        "call-000034",
+        "call-000026",
+        "call-000027",
+        "call-000029",
+        "call-000030",
+        "call-000028",
+        "call-000031",
+        "call-000032",
+        "call-000033",
+        "call-000035",
+        "call-000036",
+        "call-000019"
+      ],
+      "dedup_ref": "dedup.sha256.4a06d983056cd04da4e1130f4093458eb80cd71363b9cfcce6927800901b6145",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 18,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "input_ids",
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": true,
+          "port_id": "call-000016:in:0",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000001"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "encoder_hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "encoder_hidden_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "encoder_hidden_states",
+          "optional": true,
+          "port_id": "call-000016:in:1",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000051"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bart",
+      "module_id": "module-00018",
+      "operation_ids": [
+        "op-000035",
+        "op-000036",
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073",
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080",
+        "op-000081",
+        "op-000082",
+        "op-000083",
+        "op-000084",
+        "op-000085",
+        "op-000086",
+        "op-000087",
+        "op-000088",
+        "op-000089",
+        "op-000090"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000019:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000068"
+        }
+      ],
+      "parent_module_id": "module-00000",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4a06d983056cd04da4e1130f4093458eb80cd71363b9cfcce6927800901b6145/block.json",
+        "target_dedup_uid": "dedup.sha256.4a06d983056cd04da4e1130f4093458eb80cd71363b9cfcce6927800901b6145",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder",
+      "source_refs": [
+        {
+          "end_line": 676,
+          "executed_line": 591,
+          "file": "transformers/utils/generic.py",
+          "source_uid": "source.sha256.254d4da4849c048a7bfc98b1244baf38c6adcf32df8b0cd035ba5ecc314bb1e6",
+          "start_line": 591,
+          "symbol": "BartDecoder.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "bart.block-00019",
+      "call_ids": [
+        "call-000017"
+      ],
+      "dedup_ref": "dedup.sha256.8bbd93e9dad946fb33e9619175a507617a6a40fdd96405839eef937bba0da8f6",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 19,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": false,
+          "port_id": "call-000017:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000001"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bart",
+      "module_id": "module-00019",
+      "operation_ids": [
+        "op-000035",
+        "op-000036"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000017:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000053"
+        }
+      ],
+      "parent_module_id": "module-00018",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.8bbd93e9dad946fb33e9619175a507617a6a40fdd96405839eef937bba0da8f6/block.json",
+        "target_dedup_uid": "dedup.sha256.8bbd93e9dad946fb33e9619175a507617a6a40fdd96405839eef937bba0da8f6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.embed_tokens",
+      "source_refs": [
+        {
+          "end_line": 111,
+          "executed_line": 110,
+          "file": "transformers/models/bart/modeling_bart.py",
+          "source_uid": "source.sha256.7152d8f9195a5fd7ee955a3d72b39c94a1da640800e5cd5103e10d916b3bdbe8",
+          "start_line": 110,
+          "symbol": "BartScaledWordEmbedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "bart.block-00020",
+      "call_ids": [
+        "call-000018"
+      ],
+      "dedup_ref": "dedup.sha256.837d16fcdd0aaa68d99b871c6a324982bed056698896f91358495e1568218c34",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 20,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": false,
+          "port_id": "call-000018:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000001"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "position_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "position_ids",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "position_ids",
+          "optional": true,
+          "port_id": "call-000018:in:1",
+          "position": null,
+          "required": false,
+          "shape": [
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000056"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bart",
+      "module_id": "module-00020",
+      "operation_ids": [
+        "op-000045",
+        "op-000046",
+        "op-000047"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000018:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000064"
+        }
+      ],
+      "parent_module_id": "module-00018",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.837d16fcdd0aaa68d99b871c6a324982bed056698896f91358495e1568218c34/block.json",
+        "target_dedup_uid": "dedup.sha256.837d16fcdd0aaa68d99b871c6a324982bed056698896f91358495e1568218c34",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.embed_positions",
+      "source_refs": [
+        {
+          "end_line": 98,
+          "executed_line": 85,
+          "file": "transformers/models/bart/modeling_bart.py",
+          "source_uid": "source.sha256.7152d8f9195a5fd7ee955a3d72b39c94a1da640800e5cd5103e10d916b3bdbe8",
+          "start_line": 85,
+          "symbol": "BartLearnedPositionalEmbedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00021",
+      "call_ids": [
+        "call-000020",
+        "call-000021",
+        "call-000023",
+        "call-000024",
+        "call-000022",
+        "call-000025",
+        "call-000034",
+        "call-000026",
+        "call-000027",
+        "call-000029",
+        "call-000030",
+        "call-000028",
+        "call-000031",
+        "call-000032",
+        "call-000033",
+        "call-000035",
+        "call-000036"
+      ],
+      "dedup_ref": "dedup.sha256.3ba655fa64757678cd8db25f4685cf5e37ed015de307c745a09be8a3ed673c58",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 21,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000020:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000068"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "encoder_hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "encoder_hidden_states",
+          "optional": true,
+          "port_id": "call-000020:in:1",
+          "position": 2,
+          "required": false,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000051"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bart",
+      "module_id": "module-00021",
+      "operation_ids": [
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073",
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080",
+        "op-000081",
+        "op-000082",
+        "op-000083",
+        "op-000084",
+        "op-000085",
+        "op-000086",
+        "op-000087",
+        "op-000088",
+        "op-000089",
+        "op-000090"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000036:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000129"
+        }
+      ],
+      "parent_module_id": "module-00018",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.3ba655fa64757678cd8db25f4685cf5e37ed015de307c745a09be8a3ed673c58/block.json",
+        "target_dedup_uid": "dedup.sha256.3ba655fa64757678cd8db25f4685cf5e37ed015de307c745a09be8a3ed673c58",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers",
+      "source_refs": [
+        {
+          "end_line": 404,
+          "executed_line": 391,
+          "file": "torch/nn/modules/module.py",
+          "source_uid": "source.sha256.4be56271f7bfe650e3521c81fd363da58f109cd23ee80d243156d2d6ccda6263",
+          "start_line": 391,
+          "symbol": "_forward_unimplemented"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00022",
+      "call_ids": [
+        "call-000020",
+        "call-000021",
+        "call-000023",
+        "call-000024",
+        "call-000022",
+        "call-000025",
+        "call-000034",
+        "call-000026",
+        "call-000027",
+        "call-000029",
+        "call-000030",
+        "call-000028",
+        "call-000031",
+        "call-000032",
+        "call-000033",
+        "call-000035",
+        "call-000036"
+      ],
+      "dedup_ref": "dedup.sha256.dc14f9589f46f3164f0b0e434ab2bce8daa4ee0294a03cea9a41f9286bd04817",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 22,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000020:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000068"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "encoder_hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "encoder_hidden_states",
+          "optional": true,
+          "port_id": "call-000020:in:1",
+          "position": 2,
+          "required": false,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000051"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bart",
+      "module_id": "module-00022",
+      "operation_ids": [
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073",
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080",
+        "op-000081",
+        "op-000082",
+        "op-000083",
+        "op-000084",
+        "op-000085",
+        "op-000086",
+        "op-000087",
+        "op-000088",
+        "op-000089",
+        "op-000090"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000036:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000129"
+        }
+      ],
+      "parent_module_id": "module-00021",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.dc14f9589f46f3164f0b0e434ab2bce8daa4ee0294a03cea9a41f9286bd04817/block.json",
+        "target_dedup_uid": "dedup.sha256.dc14f9589f46f3164f0b0e434ab2bce8daa4ee0294a03cea9a41f9286bd04817",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0",
+      "source_refs": [
+        {
+          "end_line": 390,
+          "executed_line": 343,
+          "file": "transformers/models/bart/modeling_bart.py",
+          "source_uid": "source.sha256.7152d8f9195a5fd7ee955a3d72b39c94a1da640800e5cd5103e10d916b3bdbe8",
+          "start_line": 343,
+          "symbol": "BartDecoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "bart.block-00023",
+      "call_ids": [
+        "call-000021",
+        "call-000023",
+        "call-000024",
+        "call-000022",
+        "call-000025"
+      ],
+      "dedup_ref": "dedup.sha256.f265a0f6d2493479912b203b0f616751223fa84146bcc57c4c91b1ce359edcc6",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 23,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000021:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000068"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bart",
+      "module_id": "module-00023",
+      "operation_ids": [
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000025:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000089"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f265a0f6d2493479912b203b0f616751223fa84146bcc57c4c91b1ce359edcc6/block.json",
+        "target_dedup_uid": "dedup.sha256.f265a0f6d2493479912b203b0f616751223fa84146bcc57c4c91b1ce359edcc6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn",
+      "source_refs": [
+        {
+          "end_line": 257,
+          "executed_line": 185,
+          "file": "transformers/models/bart/modeling_bart.py",
+          "source_uid": "source.sha256.7152d8f9195a5fd7ee955a3d72b39c94a1da640800e5cd5103e10d916b3bdbe8",
+          "start_line": 185,
+          "symbol": "BartAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00024",
+      "call_ids": [
+        "call-000023"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 24,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000023:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000068"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bart",
+      "module_id": "module-00024",
+      "operation_ids": [
+        "op-000055"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000023:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000076"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00025",
+      "call_ids": [
+        "call-000024"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 25,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000024:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000068"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bart",
+      "module_id": "module-00025",
+      "operation_ids": [
+        "op-000056"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000024:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000079"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00026",
+      "call_ids": [
+        "call-000022"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 26,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000022:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000068"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bart",
+      "module_id": "module-00026",
+      "operation_ids": [
+        "op-000052"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000022:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000071"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00027",
+      "call_ids": [
+        "call-000025"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 27,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000025:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000086"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bart",
+      "module_id": "module-00027",
+      "operation_ids": [
+        "op-000064"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000025:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000089"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn.out_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00028",
+      "call_ids": [
+        "call-000034"
+      ],
+      "dedup_ref": "dedup.sha256.76b3b0c5ae0de9708c3729e8cf4b03aec443d9244c1dbda32f6b6f8b86c6edc0",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 28,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000034:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000121"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bart",
+      "module_id": "module-00028",
+      "operation_ids": [
+        "op-000085"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000034:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000122"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.76b3b0c5ae0de9708c3729e8cf4b03aec443d9244c1dbda32f6b6f8b86c6edc0/block.json",
+        "target_dedup_uid": "dedup.sha256.76b3b0c5ae0de9708c3729e8cf4b03aec443d9244c1dbda32f6b6f8b86c6edc0",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.activation_fn",
+      "source_refs": [
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "bart.block-00029",
+      "call_ids": [
+        "call-000026"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 29,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000026:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000090"
+        }
+      ],
+      "layer_group_id": "layer-00004",
+      "model_version_id": "bart",
+      "module_id": "module-00029",
+      "operation_ids": [
+        "op-000067"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000026:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000093"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "bart.block-00030",
+      "call_ids": [
+        "call-000027",
+        "call-000029",
+        "call-000030",
+        "call-000028",
+        "call-000031"
+      ],
+      "dedup_ref": "dedup.sha256.cf45c3433e7ce4d067f9d8ea88f5d1c177c3b3ec8a3e24b251fa733cdfefb427",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 30,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000027:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000093"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "key_value_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "key_value_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "key_value_states",
+          "optional": true,
+          "port_id": "call-000027:in:1",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000051"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bart",
+      "module_id": "module-00030",
+      "operation_ids": [
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073",
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000031:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000114"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.cf45c3433e7ce4d067f9d8ea88f5d1c177c3b3ec8a3e24b251fa733cdfefb427/block.json",
+        "target_dedup_uid": "dedup.sha256.cf45c3433e7ce4d067f9d8ea88f5d1c177c3b3ec8a3e24b251fa733cdfefb427",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn",
+      "source_refs": [
+        {
+          "end_line": 257,
+          "executed_line": 185,
+          "file": "transformers/models/bart/modeling_bart.py",
+          "source_uid": "source.sha256.7152d8f9195a5fd7ee955a3d72b39c94a1da640800e5cd5103e10d916b3bdbe8",
+          "start_line": 185,
+          "symbol": "BartAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00031",
+      "call_ids": [
+        "call-000029"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 31,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000029:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000051"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bart",
+      "module_id": "module-00031",
+      "operation_ids": [
+        "op-000071"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000029:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000101"
+        }
+      ],
+      "parent_module_id": "module-00030",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00032",
+      "call_ids": [
+        "call-000030"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 32,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000030:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000051"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bart",
+      "module_id": "module-00032",
+      "operation_ids": [
+        "op-000072"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000030:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000104"
+        }
+      ],
+      "parent_module_id": "module-00030",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00033",
+      "call_ids": [
+        "call-000028"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 33,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000028:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000093"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bart",
+      "module_id": "module-00033",
+      "operation_ids": [
+        "op-000068"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000028:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000096"
+        }
+      ],
+      "parent_module_id": "module-00030",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00034",
+      "call_ids": [
+        "call-000031"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 34,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000031:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000111"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bart",
+      "module_id": "module-00034",
+      "operation_ids": [
+        "op-000080"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000031:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000114"
+        }
+      ],
+      "parent_module_id": "module-00030",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn.out_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "bart.block-00035",
+      "call_ids": [
+        "call-000032"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 35,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000032:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000115"
+        }
+      ],
+      "layer_group_id": "layer-00005",
+      "model_version_id": "bart",
+      "module_id": "module-00035",
+      "operation_ids": [
+        "op-000083"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000032:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000118"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00036",
+      "call_ids": [
+        "call-000033"
+      ],
+      "dedup_ref": "dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 36,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000033:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000118"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bart",
+      "module_id": "module-00036",
+      "operation_ids": [
+        "op-000084"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000033:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000121"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112/block.json",
+        "target_dedup_uid": "dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.fc1",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bart.block-00037",
+      "call_ids": [
+        "call-000035"
+      ],
+      "dedup_ref": "dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 37,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000035:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000122"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bart",
+      "module_id": "module-00037",
+      "operation_ids": [
+        "op-000087"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000035:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000125"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3/block.json",
+        "target_dedup_uid": "dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.fc2",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "bart.block-00038",
+      "call_ids": [
+        "call-000036"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 38,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000036:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000126"
+        }
+      ],
+      "layer_group_id": "layer-00006",
+      "model_version_id": "bart",
+      "module_id": "module-00038",
+      "operation_ids": [
+        "op-000090"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000036:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000129"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.final_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "bart.block-00039",
+      "call_ids": [
+        "call-000019"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "bart",
+      "graph_ref": "graphs/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json",
+      "index": 39,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000019:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000065"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bart",
+      "module_id": "module-00039",
+      "operation_ids": [
+        "op-000050"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000019:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000068"
+        }
+      ],
+      "parent_module_id": "module-00018",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layernorm_embedding",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.bc9186537c9d17e8c9b551ac8f99429f5845d2d3d89781f776d6467f215c15a5.json"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0.0",
+  "tags": [
+    {
+      "base_classes": [],
+      "description": "Accepts a model input or adapts it to the traced computation.",
+      "exact_classes": [],
+      "id": "input",
+      "verified_signatures": []
+    },
+    {
+      "base_classes": [],
+      "description": "Maps discrete values or tensor channels into another representation width.",
+      "exact_classes": [
+        "torch.nn.modules.sparse.Embedding",
+        "torch.nn.modules.linear.Linear",
+        "torch.nn.modules.conv.Conv1d",
+        "torch.nn.modules.conv.Conv2d",
+        "transformers.models.apertus.modeling_apertus.ApertusModel",
+        "transformers.models.bert.modeling_bert.BertEmbeddings",
+        "transformers.models.dinov3_vit.modeling_dinov3_vit.DINOv3ViTEmbeddings"
+      ],
+      "id": "embedding_or_projection",
+      "verified_signatures": []
+    },
+    {
+      "base_classes": [],
+      "description": "Introduces position, ordering, or reusable context into a representation.",
+      "exact_classes": [
+        "transformers.models.apertus.modeling_apertus.ApertusRotaryEmbedding",
+        "transformers.models.dinov3_vit.modeling_dinov3_vit.DINOv3ViTRopePositionEmbedding"
+      ],
+      "id": "position_or_context",
+      "verified_signatures": []
+    },
+    {
+      "base_classes": [],
+      "description": "Mixes information between positions, channels, or recurrent state.",
+      "exact_classes": [
+        "torch.nn.modules.activation.MultiheadAttention",
+        "transformers.models.apertus.modeling_apertus.ApertusAttention",
+        "transformers.models.bert.modeling_bert.BertAttention",
+        "transformers.models.bert.modeling_bert.BertSelfAttention",
+        "transformers.models.dinov3_vit.modeling_dinov3_vit.DINOv3ViTAttention"
+      ],
+      "id": "attention_or_mixer",
+      "verified_signatures": []
+    },
+    {
+      "base_classes": [],
+      "description": "Applies point-wise expansion, activation, gating, or contraction.",
+      "exact_classes": [
+        "transformers.activations.GELUActivation",
+        "transformers.activations.GELUTanh",
+        "transformers.activations.NewGELUActivation",
+        "transformers.activations.ReLUActivation",
+        "transformers.activations.ReLUSquaredActivation",
+        "transformers.activations.SiLUActivation",
+        "transformers.activations.XIELUActivation",
+        "transformers.models.apertus.modeling_apertus.ApertusMLP",
+        "transformers.models.bert.modeling_bert.BertIntermediate",
+        "transformers.models.dinov3_vit.modeling_dinov3_vit.DINOv3ViTMLP"
+      ],
+      "id": "feed_forward",
+      "verified_signatures": []
+    },
+    {
+      "base_classes": [],
+      "description": "Normalizes, scales, or combines a representation with a residual path.",
+      "exact_classes": [
+        "torch.nn.modules.normalization.LayerNorm",
+        "transformers.models.apertus.modeling_apertus.ApertusRMSNorm",
+        "transformers.models.bert.modeling_bert.BertOutput",
+        "transformers.models.bert.modeling_bert.BertSelfOutput",
+        "transformers.models.dinov3_vit.modeling_dinov3_vit.DINOv3ViTLayerScale"
+      ],
+      "id": "normalization_or_residual",
+      "verified_signatures": []
+    },
+    {
+      "base_classes": [],
+      "description": "Aggregates a sequence or decodes an intermediate representation.",
+      "exact_classes": [
+        "transformers.models.bert.modeling_bert.BertPooler"
+      ],
+      "id": "aggregation_or_decoder",
+      "verified_signatures": []
+    },
+    {
+      "base_classes": [],
+      "description": "Produces a model output or task-specific prediction representation.",
+      "exact_classes": [],
+      "id": "output_or_head",
+      "verified_signatures": []
+    },
+    {
+      "base_classes": [],
+      "description": "No registered exact class or interface rule matched this entity.",
+      "exact_classes": [],
+      "id": "other",
+      "verified_signatures": []
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "dedup_uid": "dedup.sha256.4b7698548da24fffa4abef38cd3db69348137b65e4551c7055ae4c7da1fd24e8",
+  "operation_ids": [
+    "op-000024",
+    "op-000027",
+    "op-000030"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.bigbird_pegasus.modeling_bigbird_pegasus",
+        "BigBirdPegasusSelfAttention"
+      ],
+      [
+        "query",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "key",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "value",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "dropout",
+        "torch.nn.modules.dropout",
+        "Dropout"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "key.weight",
+        [
+          16,
+          16
+        ]
+      ],
+      [
+        "query.weight",
+        [
+          16,
+          16
+        ]
+      ],
+      [
+        "value.weight",
+        [
+          16,
+          16
+        ]
+      ]
+    ],
+    "source": "d5f6685e92e893e56ff60a749854d9ef4241b1905747510936350a3f87167ddd",
+    "topology": [
+      [
+        "aten_op",
+        "aten.linear.default"
+      ],
+      [
+        "aten_op",
+        "aten.linear.default"
+      ],
+      [
+        "aten_op",
+        "aten.linear.default"
+      ]
+    ]
+  }
+}

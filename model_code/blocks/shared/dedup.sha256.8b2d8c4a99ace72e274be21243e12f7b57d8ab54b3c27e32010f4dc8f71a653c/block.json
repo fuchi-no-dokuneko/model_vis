@@ -1,0 +1,60 @@
+{
+  "dedup_uid": "dedup.sha256.8b2d8c4a99ace72e274be21243e12f7b57d8ab54b3c27e32010f4dc8f71a653c",
+  "operation_ids": [],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.blip.modeling_blip_text",
+        "BlipTextSelfOutput"
+      ],
+      [
+        "dense",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "LayerNorm",
+        "torch.nn.modules.normalization",
+        "LayerNorm"
+      ],
+      [
+        "dropout",
+        "torch.nn.modules.dropout",
+        "Dropout"
+      ]
+    ],
+    "config_branches": [],
+    "io_shapes": [],
+    "parameters": [
+      [
+        "LayerNorm.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "LayerNorm.weight",
+        [
+          16
+        ]
+      ],
+      [
+        "dense.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "dense.weight",
+        [
+          16,
+          16
+        ]
+      ]
+    ],
+    "source": "d58f93b455e2c687ce497e633cc9b532f8cf6d2c7707c644f286abb7ff5b07b8",
+    "topology": []
+  }
+}

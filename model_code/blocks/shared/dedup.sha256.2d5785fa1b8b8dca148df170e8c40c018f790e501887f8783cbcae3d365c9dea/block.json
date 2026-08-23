@@ -1,0 +1,89 @@
+{
+  "dedup_uid": "dedup.sha256.2d5785fa1b8b8dca148df170e8c40c018f790e501887f8783cbcae3d365c9dea",
+  "operation_ids": [
+    "op-000068",
+    "op-000069"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.bit.modeling_bit",
+        "BitGroupNormActivation"
+      ],
+      [
+        "activation",
+        "torch.nn.modules.activation",
+        "ReLU"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            8,
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            8,
+            1,
+            1
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            8,
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            8,
+            1,
+            1
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "bias",
+        [
+          8
+        ]
+      ],
+      [
+        "weight",
+        [
+          8
+        ]
+      ]
+    ],
+    "source": "9cb0071af3c865423bfff6bff9b5ff791d750b48f9ac9f2d9953bca3e2affeb1",
+    "topology": [
+      [
+        "aten_op",
+        "aten.group_norm.default"
+      ],
+      [
+        "aten_op",
+        "aten.relu.default"
+      ]
+    ]
+  }
+}

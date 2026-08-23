@@ -1,0 +1,117 @@
+{
+  "dedup_uid": "dedup.sha256.8b3540b02251a66c31e54d2b6455eda3735defc05cf07176d1a49c5ad6928998",
+  "operation_ids": [
+    "op-000157",
+    "op-000158",
+    "op-000159",
+    "op-000160",
+    "op-000161",
+    "op-000162",
+    "op-000163",
+    "op-000164",
+    "op-000165",
+    "op-000166",
+    "op-000167"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.bamba.modeling_bamba",
+        "BambaRMSNormGated"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            16
+          ],
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          16
+        ]
+      ]
+    ],
+    "source": "98a8bb2930c285275d654e50b3975566a7b5e87be7d4fd6f5fbab0c36a3c3e27",
+    "topology": [
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.silu.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.pow.Tensor_Scalar"
+      ],
+      [
+        "aten_op",
+        "aten.mean.dim"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.rsqrt.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ]
+    ]
+  }
+}

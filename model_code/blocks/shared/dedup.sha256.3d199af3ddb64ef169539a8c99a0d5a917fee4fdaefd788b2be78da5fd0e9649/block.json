@@ -1,0 +1,121 @@
+{
+  "dedup_uid": "dedup.sha256.3d199af3ddb64ef169539a8c99a0d5a917fee4fdaefd788b2be78da5fd0e9649",
+  "operation_ids": [
+    "op-000487",
+    "op-000488",
+    "op-000489",
+    "op-000490",
+    "op-000491",
+    "op-000492"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "diffusers.models.autoencoders.autoencoder_kl_ltx",
+        "LTXVideoCausalConv3d"
+      ],
+      [
+        "conv",
+        "torch.nn.modules.conv",
+        "Conv3d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            512,
+            1,
+            2,
+            2
+          ]
+        ],
+        [
+          [
+            1,
+            256,
+            1,
+            2,
+            2
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            512,
+            1,
+            2,
+            2
+          ]
+        ],
+        [
+          [
+            1,
+            256,
+            1,
+            2,
+            2
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "conv.bias",
+        [
+          256
+        ]
+      ],
+      [
+        "conv.weight",
+        [
+          256,
+          512,
+          1,
+          1,
+          1
+        ]
+      ]
+    ],
+    "source": "ed42d47692039456889097292fd8e08d91aae4a65394e770f37473b09188cda7",
+    "topology": [
+      [
+        "aten_op",
+        "aten.alias.default"
+      ],
+      [
+        "aten_op",
+        "aten.repeat.default"
+      ],
+      [
+        "aten_op",
+        "aten.slice.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.repeat.default"
+      ],
+      [
+        "aten_op",
+        "aten.concatenate.default"
+      ],
+      [
+        "aten_op",
+        "aten.conv3d.default"
+      ]
+    ]
+  }
+}

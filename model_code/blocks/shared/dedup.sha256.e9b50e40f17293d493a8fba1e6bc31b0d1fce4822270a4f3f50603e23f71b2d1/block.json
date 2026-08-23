@@ -1,0 +1,125 @@
+{
+  "dedup_uid": "dedup.sha256.e9b50e40f17293d493a8fba1e6bc31b0d1fce4822270a4f3f50603e23f71b2d1",
+  "operation_ids": [
+    "op-000071",
+    "op-000072",
+    "op-000073",
+    "op-000074"
+  ],
+  "signature": {
+    "buffers": [
+      [
+        "position_ids",
+        [
+          1,
+          32
+        ]
+      ]
+    ],
+    "children": [
+      [
+        "",
+        "transformers.models.aimv2.modeling_aimv2",
+        "Aimv2TextEmbeddings"
+      ],
+      [
+        "token_embedding",
+        "torch.nn.modules.sparse",
+        "Embedding"
+      ],
+      [
+        "position_embedding",
+        "torch.nn.modules.sparse",
+        "Embedding"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "position_embedding.weight",
+        [
+          32,
+          16
+        ]
+      ],
+      [
+        "token_embedding.weight",
+        [
+          64,
+          16
+        ]
+      ]
+    ],
+    "source": "dead02506f81216a6ab58afe53cddcfaaec0f89e9bc22599e29ae4bc5059640f",
+    "topology": [
+      [
+        "aten_op",
+        "aten.slice.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.embedding.default"
+      ],
+      [
+        "aten_op",
+        "aten.embedding.default"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ]
+    ]
+  }
+}

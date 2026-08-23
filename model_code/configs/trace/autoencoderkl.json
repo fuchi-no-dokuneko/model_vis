@@ -1,0 +1,48 @@
+{
+  "config": {
+    "_use_default_values": [
+      "latents_mean",
+      "force_upcast",
+      "use_post_quant_conv",
+      "act_fn",
+      "shift_factor",
+      "mid_block_add_attention",
+      "use_quant_conv",
+      "scaling_factor",
+      "latents_std"
+    ],
+    "act_fn": "silu",
+    "block_out_channels": [
+      16
+    ],
+    "down_block_types": [
+      "DownEncoderBlock2D"
+    ],
+    "force_upcast": true,
+    "in_channels": 3,
+    "latent_channels": 16,
+    "latents_mean": null,
+    "latents_std": null,
+    "layers_per_block": 1,
+    "mid_block_add_attention": true,
+    "norm_num_groups": 4,
+    "out_channels": 3,
+    "sample_size": 16,
+    "scaling_factor": 0.18215,
+    "shift_factor": null,
+    "up_block_types": [
+      "UpDecoderBlock2D"
+    ],
+    "use_post_quant_conv": true,
+    "use_quant_conv": true
+  },
+  "derivation": {
+    "compatibility_adapter": null,
+    "official_config_available": false,
+    "overrides": [],
+    "strategy": "deterministic-compact-cpu-trace"
+  },
+  "kind": "trace_config",
+  "schema_version": "1.0.0",
+  "version_id": "autoencoderkl"
+}

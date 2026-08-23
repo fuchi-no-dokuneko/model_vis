@@ -1,0 +1,75 @@
+{
+  "dedup_uid": "dedup.sha256.4d142abd58c600cdcbd4924545e5a2f776451e0c9be893eb2f2f3f78eafb6e2d",
+  "operation_ids": [
+    "op-000087",
+    "op-000088",
+    "op-000089",
+    "op-000090"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.bit.modeling_bit",
+        "WeightStandardizedConv2d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            8,
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            8,
+            1,
+            1
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          8,
+          8,
+          3,
+          3
+        ]
+      ]
+    ],
+    "source": "29cba43aca512554329231da7610030506a175dc67175d63a4afac7fd9d8020c",
+    "topology": [
+      [
+        "aten_op",
+        "aten.reshape.default"
+      ],
+      [
+        "aten_op",
+        "aten.batch_norm.default"
+      ],
+      [
+        "aten_op",
+        "aten.reshape_as.default"
+      ],
+      [
+        "aten_op",
+        "aten.conv2d.default"
+      ]
+    ]
+  }
+}

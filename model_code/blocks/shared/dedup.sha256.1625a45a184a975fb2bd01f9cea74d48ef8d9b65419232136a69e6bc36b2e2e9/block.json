@@ -1,0 +1,58 @@
+{
+  "dedup_uid": "dedup.sha256.1625a45a184a975fb2bd01f9cea74d48ef8d9b65419232136a69e6bc36b2e2e9",
+  "operation_ids": [
+    "op-000002",
+    "op-000003",
+    "op-000004"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.blenderbot_small.modeling_blenderbot_small",
+        "BlenderbotSmallLearnedPositionalEmbedding"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [],
+        [
+          [
+            4,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          32,
+          16
+        ]
+      ]
+    ],
+    "source": "b89a947b51959e2b9f6c5aeccd52be4b510daf95ac3aa834b3242e6d57c2bcbb",
+    "topology": [
+      [
+        "aten_op",
+        "aten.arange.start"
+      ],
+      [
+        "aten_op",
+        "aten.detach.default"
+      ],
+      [
+        "aten_op",
+        "aten.embedding.default"
+      ]
+    ]
+  }
+}

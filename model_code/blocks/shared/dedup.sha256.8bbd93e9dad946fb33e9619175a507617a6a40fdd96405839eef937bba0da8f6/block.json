@@ -1,0 +1,58 @@
+{
+  "dedup_uid": "dedup.sha256.8bbd93e9dad946fb33e9619175a507617a6a40fdd96405839eef937bba0da8f6",
+  "operation_ids": [
+    "op-000000",
+    "op-000001"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.bart.modeling_bart",
+        "BartScaledWordEmbedding"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          64,
+          16
+        ]
+      ]
+    ],
+    "source": "14be303a3c9c5f8c3cfa02fadbc05ca8522da0d73baff876a65df44e6976a5ac",
+    "topology": [
+      [
+        "aten_op",
+        "aten.embedding.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ]
+    ]
+  }
+}

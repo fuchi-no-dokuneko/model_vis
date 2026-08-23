@@ -1,0 +1,4466 @@
+{
+  "blocks": [
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00002",
+      "call_ids": [
+        "call-000001",
+        "call-000002",
+        "call-000003",
+        "call-000004",
+        "call-000006",
+        "call-000007",
+        "call-000008",
+        "call-000009",
+        "call-000010",
+        "call-000005",
+        "call-000013",
+        "call-000012",
+        "call-000014",
+        "call-000011",
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.ab2b91edc5ab1d6ed39e61fb35332abc1688d28145834318e0145d5951b5e6e4",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 2,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "input_ids",
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": true,
+          "port_id": "call-000001:in:0",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00002",
+      "operation_ids": [
+        "op-000000",
+        "op-000001",
+        "op-000002",
+        "op-000003",
+        "op-000004",
+        "op-000005",
+        "op-000006",
+        "op-000007",
+        "op-000008",
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030",
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034",
+        "op-000035",
+        "op-000036",
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000070"
+        }
+      ],
+      "parent_module_id": "module-00000",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.ab2b91edc5ab1d6ed39e61fb35332abc1688d28145834318e0145d5951b5e6e4/block.json",
+        "target_dedup_uid": "dedup.sha256.ab2b91edc5ab1d6ed39e61fb35332abc1688d28145834318e0145d5951b5e6e4",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder",
+      "source_refs": [
+        {
+          "end_line": 1650,
+          "executed_line": 1550,
+          "file": "transformers/utils/generic.py",
+          "source_uid": "source.sha256.254d4da4849c048a7bfc98b1244baf38c6adcf32df8b0cd035ba5ecc314bb1e6",
+          "start_line": 1550,
+          "symbol": "BigBirdPegasusEncoder.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "bigbirdpegasus.block-00003",
+      "call_ids": [
+        "call-000002"
+      ],
+      "dedup_ref": "dedup.sha256.613f4ff38e4ddf115f1ceaf9f6c98a60a5cff5d5fa84cf521d728b4a92ea48d8",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 3,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": false,
+          "port_id": "call-000002:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00003",
+      "operation_ids": [
+        "op-000000",
+        "op-000001"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000002:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000004"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.613f4ff38e4ddf115f1ceaf9f6c98a60a5cff5d5fa84cf521d728b4a92ea48d8/block.json",
+        "target_dedup_uid": "dedup.sha256.613f4ff38e4ddf115f1ceaf9f6c98a60a5cff5d5fa84cf521d728b4a92ea48d8",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.embed_tokens",
+      "source_refs": [
+        {
+          "end_line": 108,
+          "executed_line": 107,
+          "file": "transformers/models/bigbird_pegasus/modeling_bigbird_pegasus.py",
+          "source_uid": "source.sha256.f3f7508312c3609dad4419d3a5d29bbd93af25b3910c06f8b527362fb5c1a427",
+          "start_line": 107,
+          "symbol": "BigBirdPegasusScaledWordEmbedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "bigbirdpegasus.block-00004",
+      "call_ids": [
+        "call-000003"
+      ],
+      "dedup_ref": "dedup.sha256.00a26c8e9c8cb712c075504333834c110dd0e43ac2dc8d0b88520ccf85aefcdb",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 4,
+      "input_ports": [],
+      "layer_group_id": null,
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00004",
+      "operation_ids": [
+        "op-000002",
+        "op-000003",
+        "op-000004"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000003:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000008"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.00a26c8e9c8cb712c075504333834c110dd0e43ac2dc8d0b88520ccf85aefcdb/block.json",
+        "target_dedup_uid": "dedup.sha256.00a26c8e9c8cb712c075504333834c110dd0e43ac2dc8d0b88520ccf85aefcdb",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.embed_positions",
+      "source_refs": [
+        {
+          "end_line": 94,
+          "executed_line": 84,
+          "file": "transformers/models/bigbird_pegasus/modeling_bigbird_pegasus.py",
+          "source_uid": "source.sha256.f3f7508312c3609dad4419d3a5d29bbd93af25b3910c06f8b527362fb5c1a427",
+          "start_line": 84,
+          "symbol": "BigBirdPegasusLearnedPositionalEmbedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00005",
+      "call_ids": [
+        "call-000004",
+        "call-000006",
+        "call-000007",
+        "call-000008",
+        "call-000009",
+        "call-000010",
+        "call-000005",
+        "call-000013",
+        "call-000012",
+        "call-000014",
+        "call-000011"
+      ],
+      "dedup_ref": "dedup.sha256.e59149b3733cc6f7177c1fa9ef396975c43ef048276e00ca6fad29e5068d7617",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 5,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000004:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000009"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00005",
+      "operation_ids": [
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030",
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034",
+        "op-000035",
+        "op-000036",
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000011:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000052"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.e59149b3733cc6f7177c1fa9ef396975c43ef048276e00ca6fad29e5068d7617/block.json",
+        "target_dedup_uid": "dedup.sha256.e59149b3733cc6f7177c1fa9ef396975c43ef048276e00ca6fad29e5068d7617",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers",
+      "source_refs": [
+        {
+          "end_line": 404,
+          "executed_line": 391,
+          "file": "torch/nn/modules/module.py",
+          "source_uid": "source.sha256.4be56271f7bfe650e3521c81fd363da58f109cd23ee80d243156d2d6ccda6263",
+          "start_line": 391,
+          "symbol": "_forward_unimplemented"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00006",
+      "call_ids": [
+        "call-000004",
+        "call-000006",
+        "call-000007",
+        "call-000008",
+        "call-000009",
+        "call-000010",
+        "call-000005",
+        "call-000013",
+        "call-000012",
+        "call-000014",
+        "call-000011"
+      ],
+      "dedup_ref": "dedup.sha256.4e20727732f6fc18f4a1007ea63224d1c253886e40f1b924a2bedef8db6309eb",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 6,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000004:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000009"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00006",
+      "operation_ids": [
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030",
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034",
+        "op-000035",
+        "op-000036",
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000011:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000052"
+        }
+      ],
+      "parent_module_id": "module-00005",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4e20727732f6fc18f4a1007ea63224d1c253886e40f1b924a2bedef8db6309eb/block.json",
+        "target_dedup_uid": "dedup.sha256.4e20727732f6fc18f4a1007ea63224d1c253886e40f1b924a2bedef8db6309eb",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0",
+      "source_refs": [
+        {
+          "end_line": 1348,
+          "executed_line": 1308,
+          "file": "transformers/models/bigbird_pegasus/modeling_bigbird_pegasus.py",
+          "source_uid": "source.sha256.f3f7508312c3609dad4419d3a5d29bbd93af25b3910c06f8b527362fb5c1a427",
+          "start_line": 1308,
+          "symbol": "BigBirdPegasusEncoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "bigbirdpegasus.block-00007",
+      "call_ids": [
+        "call-000006",
+        "call-000007",
+        "call-000008",
+        "call-000009",
+        "call-000010"
+      ],
+      "dedup_ref": "dedup.sha256.fb7d12647a880c0b5d3ac284b261098032c1bdfbf50b99b461efe8904b08f564",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 7,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000006:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000026"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00007",
+      "operation_ids": [
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030",
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034",
+        "op-000035",
+        "op-000036",
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000010:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000048"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.fb7d12647a880c0b5d3ac284b261098032c1bdfbf50b99b461efe8904b08f564/block.json",
+        "target_dedup_uid": "dedup.sha256.fb7d12647a880c0b5d3ac284b261098032c1bdfbf50b99b461efe8904b08f564",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn",
+      "source_refs": [
+        {
+          "end_line": 1145,
+          "executed_line": 1116,
+          "file": "transformers/models/bigbird_pegasus/modeling_bigbird_pegasus.py",
+          "source_uid": "source.sha256.f3f7508312c3609dad4419d3a5d29bbd93af25b3910c06f8b527362fb5c1a427",
+          "start_line": 1116,
+          "symbol": "BigBirdPegasusEncoderAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "bigbirdpegasus.block-00008",
+      "call_ids": [
+        "call-000007",
+        "call-000008",
+        "call-000009"
+      ],
+      "dedup_ref": "dedup.sha256.4b7698548da24fffa4abef38cd3db69348137b65e4551c7055ae4c7da1fd24e8",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 8,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000007:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000026"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00008",
+      "operation_ids": [
+        "op-000024",
+        "op-000027",
+        "op-000030"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000009:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000036"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4b7698548da24fffa4abef38cd3db69348137b65e4551c7055ae4c7da1fd24e8/block.json",
+        "target_dedup_uid": "dedup.sha256.4b7698548da24fffa4abef38cd3db69348137b65e4551c7055ae4c7da1fd24e8",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.self",
+      "source_refs": [
+        {
+          "end_line": 274,
+          "executed_line": 215,
+          "file": "transformers/models/bigbird_pegasus/modeling_bigbird_pegasus.py",
+          "source_uid": "source.sha256.f3f7508312c3609dad4419d3a5d29bbd93af25b3910c06f8b527362fb5c1a427",
+          "start_line": 215,
+          "symbol": "BigBirdPegasusBlockSparseAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00009",
+      "call_ids": [
+        "call-000007"
+      ],
+      "dedup_ref": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 9,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000007:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000026"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00009",
+      "operation_ids": [
+        "op-000024"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000007:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000028"
+        }
+      ],
+      "parent_module_id": "module-00008",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac/block.json",
+        "target_dedup_uid": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.self.query",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00010",
+      "call_ids": [
+        "call-000008"
+      ],
+      "dedup_ref": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 10,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000008:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000026"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00010",
+      "operation_ids": [
+        "op-000027"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000008:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000032"
+        }
+      ],
+      "parent_module_id": "module-00008",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac/block.json",
+        "target_dedup_uid": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.self.key",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00011",
+      "call_ids": [
+        "call-000009"
+      ],
+      "dedup_ref": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 11,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000009:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000026"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00011",
+      "operation_ids": [
+        "op-000030"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000009:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000036"
+        }
+      ],
+      "parent_module_id": "module-00008",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac/block.json",
+        "target_dedup_uid": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.self.value",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00013",
+      "call_ids": [
+        "call-000010"
+      ],
+      "dedup_ref": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 13,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000010:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000046"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00012",
+      "operation_ids": [
+        "op-000042"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000010:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000048"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac/block.json",
+        "target_dedup_uid": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn.output",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "bigbirdpegasus.block-00014",
+      "call_ids": [
+        "call-000005"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 14,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000005:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000009"
+        }
+      ],
+      "layer_group_id": "layer-00001",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00013",
+      "operation_ids": [
+        "op-000023"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000005:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000026"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.self_attn_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00015",
+      "call_ids": [
+        "call-000013"
+      ],
+      "dedup_ref": "dedup.sha256.4e445966679b702881c450245033b20ce35fd37ed007f37b36b05def0bcbc37c",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 15,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000013:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000055"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00014",
+      "operation_ids": [
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000013:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000063"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4e445966679b702881c450245033b20ce35fd37ed007f37b36b05def0bcbc37c/block.json",
+        "target_dedup_uid": "dedup.sha256.4e445966679b702881c450245033b20ce35fd37ed007f37b36b05def0bcbc37c",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.activation_fn",
+      "source_refs": [
+        {
+          "end_line": 66,
+          "executed_line": 65,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 65,
+          "symbol": "NewGELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00016",
+      "call_ids": [
+        "call-000012"
+      ],
+      "dedup_ref": "dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 16,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000012:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000052"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00015",
+      "operation_ids": [
+        "op-000046"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000012:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000055"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112/block.json",
+        "target_dedup_uid": "dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.fc1",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00017",
+      "call_ids": [
+        "call-000014"
+      ],
+      "dedup_ref": "dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 17,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000014:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000063"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00016",
+      "operation_ids": [
+        "op-000055"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000014:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000066"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3/block.json",
+        "target_dedup_uid": "dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.fc2",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "bigbirdpegasus.block-00018",
+      "call_ids": [
+        "call-000011"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 18,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000011:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000049"
+        }
+      ],
+      "layer_group_id": "layer-00002",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00017",
+      "operation_ids": [
+        "op-000045"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000011:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000052"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layers.0.final_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "bigbirdpegasus.block-00019",
+      "call_ids": [
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 19,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000015:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000067"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00018",
+      "operation_ids": [
+        "op-000058"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000070"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layernorm_embedding",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00020",
+      "call_ids": [
+        "call-000016",
+        "call-000017",
+        "call-000018",
+        "call-000019",
+        "call-000021",
+        "call-000023",
+        "call-000024",
+        "call-000022",
+        "call-000025",
+        "call-000034",
+        "call-000020",
+        "call-000027",
+        "call-000029",
+        "call-000030",
+        "call-000028",
+        "call-000031",
+        "call-000026",
+        "call-000033",
+        "call-000035",
+        "call-000032",
+        "call-000036"
+      ],
+      "dedup_ref": "dedup.sha256.cf6103fb6e4f166326e0a2d17f89d5dd59a768608e01167b296e33f41ddcfd4b",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 20,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "input_ids",
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": true,
+          "port_id": "call-000016:in:0",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000001"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "encoder_hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "encoder_hidden_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "encoder_hidden_states",
+          "optional": true,
+          "port_id": "call-000016:in:1",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000070"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00019",
+      "operation_ids": [
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073",
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080",
+        "op-000081",
+        "op-000082",
+        "op-000083",
+        "op-000084",
+        "op-000085",
+        "op-000086",
+        "op-000087",
+        "op-000088",
+        "op-000089",
+        "op-000090",
+        "op-000091",
+        "op-000092",
+        "op-000093",
+        "op-000094",
+        "op-000095",
+        "op-000096",
+        "op-000097",
+        "op-000098",
+        "op-000099",
+        "op-000100",
+        "op-000101",
+        "op-000102",
+        "op-000103",
+        "op-000104",
+        "op-000105",
+        "op-000106",
+        "op-000107",
+        "op-000108",
+        "op-000109",
+        "op-000110",
+        "op-000111",
+        "op-000112",
+        "op-000113",
+        "op-000114",
+        "op-000115",
+        "op-000116",
+        "op-000117",
+        "op-000118",
+        "op-000119",
+        "op-000120",
+        "op-000121",
+        "op-000122",
+        "op-000123",
+        "op-000124",
+        "op-000125",
+        "op-000126",
+        "op-000127",
+        "op-000128",
+        "op-000129",
+        "op-000130",
+        "op-000131",
+        "op-000132",
+        "op-000133",
+        "op-000134",
+        "op-000135",
+        "op-000136",
+        "op-000137",
+        "op-000138",
+        "op-000139",
+        "op-000140",
+        "op-000141",
+        "op-000142",
+        "op-000143",
+        "op-000144",
+        "op-000145",
+        "op-000146",
+        "op-000147",
+        "op-000148",
+        "op-000149",
+        "op-000150",
+        "op-000151",
+        "op-000152",
+        "op-000153",
+        "op-000154",
+        "op-000155",
+        "op-000156",
+        "op-000157",
+        "op-000158",
+        "op-000159",
+        "op-000160",
+        "op-000161",
+        "op-000162",
+        "op-000163",
+        "op-000164",
+        "op-000165"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000036:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000185"
+        }
+      ],
+      "parent_module_id": "module-00000",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.cf6103fb6e4f166326e0a2d17f89d5dd59a768608e01167b296e33f41ddcfd4b/block.json",
+        "target_dedup_uid": "dedup.sha256.cf6103fb6e4f166326e0a2d17f89d5dd59a768608e01167b296e33f41ddcfd4b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder",
+      "source_refs": [
+        {
+          "end_line": 1853,
+          "executed_line": 1767,
+          "file": "transformers/utils/generic.py",
+          "source_uid": "source.sha256.254d4da4849c048a7bfc98b1244baf38c6adcf32df8b0cd035ba5ecc314bb1e6",
+          "start_line": 1767,
+          "symbol": "BigBirdPegasusDecoder.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "bigbirdpegasus.block-00021",
+      "call_ids": [
+        "call-000017"
+      ],
+      "dedup_ref": "dedup.sha256.613f4ff38e4ddf115f1ceaf9f6c98a60a5cff5d5fa84cf521d728b4a92ea48d8",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 21,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": false,
+          "port_id": "call-000017:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000001"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00020",
+      "operation_ids": [
+        "op-000059",
+        "op-000060"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000017:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000072"
+        }
+      ],
+      "parent_module_id": "module-00019",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.613f4ff38e4ddf115f1ceaf9f6c98a60a5cff5d5fa84cf521d728b4a92ea48d8/block.json",
+        "target_dedup_uid": "dedup.sha256.613f4ff38e4ddf115f1ceaf9f6c98a60a5cff5d5fa84cf521d728b4a92ea48d8",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.embed_tokens",
+      "source_refs": [
+        {
+          "end_line": 108,
+          "executed_line": 107,
+          "file": "transformers/models/bigbird_pegasus/modeling_bigbird_pegasus.py",
+          "source_uid": "source.sha256.f3f7508312c3609dad4419d3a5d29bbd93af25b3910c06f8b527362fb5c1a427",
+          "start_line": 107,
+          "symbol": "BigBirdPegasusScaledWordEmbedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "bigbirdpegasus.block-00022",
+      "call_ids": [
+        "call-000018"
+      ],
+      "dedup_ref": "dedup.sha256.7e644b05632a1bb494483936ce09e7fe4294e255cc3e973dd165e5197b408720",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 22,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids_shape",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids_shape",
+          "optional": false,
+          "port_id": "call-000018:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000001"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "position_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "position_ids",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "position_ids",
+          "optional": true,
+          "port_id": "call-000018:in:1",
+          "position": null,
+          "required": false,
+          "shape": [
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000075"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00021",
+      "operation_ids": [
+        "op-000100"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000018:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000110"
+        }
+      ],
+      "parent_module_id": "module-00019",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7e644b05632a1bb494483936ce09e7fe4294e255cc3e973dd165e5197b408720/block.json",
+        "target_dedup_uid": "dedup.sha256.7e644b05632a1bb494483936ce09e7fe4294e255cc3e973dd165e5197b408720",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.embed_positions",
+      "source_refs": [
+        {
+          "end_line": 94,
+          "executed_line": 84,
+          "file": "transformers/models/bigbird_pegasus/modeling_bigbird_pegasus.py",
+          "source_uid": "source.sha256.f3f7508312c3609dad4419d3a5d29bbd93af25b3910c06f8b527362fb5c1a427",
+          "start_line": 84,
+          "symbol": "BigBirdPegasusLearnedPositionalEmbedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00023",
+      "call_ids": [
+        "call-000019",
+        "call-000021",
+        "call-000023",
+        "call-000024",
+        "call-000022",
+        "call-000025",
+        "call-000034",
+        "call-000020",
+        "call-000027",
+        "call-000029",
+        "call-000030",
+        "call-000028",
+        "call-000031",
+        "call-000026",
+        "call-000033",
+        "call-000035",
+        "call-000032"
+      ],
+      "dedup_ref": "dedup.sha256.af808d0744eb27fc81aece820c03c4aba5666f6e22d430df66f4b05b4a2b3102",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 23,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000019:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000111"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "attention_mask",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "attention_mask",
+          "optional": true,
+          "port_id": "call-000019:in:1",
+          "position": 1,
+          "required": false,
+          "shape": [
+            1,
+            1,
+            4,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000108"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "encoder_hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 2,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "encoder_hidden_states",
+          "optional": true,
+          "port_id": "call-000019:in:2",
+          "position": 2,
+          "required": false,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000070"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00022",
+      "operation_ids": [
+        "op-000104",
+        "op-000105",
+        "op-000106",
+        "op-000107",
+        "op-000108",
+        "op-000109",
+        "op-000110",
+        "op-000111",
+        "op-000112",
+        "op-000113",
+        "op-000114",
+        "op-000115",
+        "op-000116",
+        "op-000117",
+        "op-000118",
+        "op-000119",
+        "op-000120",
+        "op-000121",
+        "op-000122",
+        "op-000123",
+        "op-000124",
+        "op-000125",
+        "op-000126",
+        "op-000127",
+        "op-000128",
+        "op-000129",
+        "op-000130",
+        "op-000131",
+        "op-000132",
+        "op-000133",
+        "op-000134",
+        "op-000135",
+        "op-000136",
+        "op-000137",
+        "op-000138",
+        "op-000139",
+        "op-000140",
+        "op-000141",
+        "op-000142",
+        "op-000143",
+        "op-000144",
+        "op-000145",
+        "op-000146",
+        "op-000147",
+        "op-000148",
+        "op-000149",
+        "op-000150",
+        "op-000151",
+        "op-000152",
+        "op-000153",
+        "op-000154",
+        "op-000155",
+        "op-000156",
+        "op-000157",
+        "op-000158",
+        "op-000159",
+        "op-000160",
+        "op-000161",
+        "op-000162",
+        "op-000163",
+        "op-000164"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000032:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000167"
+        }
+      ],
+      "parent_module_id": "module-00019",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.af808d0744eb27fc81aece820c03c4aba5666f6e22d430df66f4b05b4a2b3102/block.json",
+        "target_dedup_uid": "dedup.sha256.af808d0744eb27fc81aece820c03c4aba5666f6e22d430df66f4b05b4a2b3102",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers",
+      "source_refs": [
+        {
+          "end_line": 404,
+          "executed_line": 391,
+          "file": "torch/nn/modules/module.py",
+          "source_uid": "source.sha256.4be56271f7bfe650e3521c81fd363da58f109cd23ee80d243156d2d6ccda6263",
+          "start_line": 391,
+          "symbol": "_forward_unimplemented"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00024",
+      "call_ids": [
+        "call-000019",
+        "call-000021",
+        "call-000023",
+        "call-000024",
+        "call-000022",
+        "call-000025",
+        "call-000034",
+        "call-000020",
+        "call-000027",
+        "call-000029",
+        "call-000030",
+        "call-000028",
+        "call-000031",
+        "call-000026",
+        "call-000033",
+        "call-000035",
+        "call-000032"
+      ],
+      "dedup_ref": "dedup.sha256.9023271c51065a3684c014eaa20b34bd6d8b8b304c761419213436a2bf664e54",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 24,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000019:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000111"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "attention_mask",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "attention_mask",
+          "optional": true,
+          "port_id": "call-000019:in:1",
+          "position": 1,
+          "required": false,
+          "shape": [
+            1,
+            1,
+            4,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000108"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "encoder_hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 2,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "encoder_hidden_states",
+          "optional": true,
+          "port_id": "call-000019:in:2",
+          "position": 2,
+          "required": false,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000070"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00023",
+      "operation_ids": [
+        "op-000104",
+        "op-000105",
+        "op-000106",
+        "op-000107",
+        "op-000108",
+        "op-000109",
+        "op-000110",
+        "op-000111",
+        "op-000112",
+        "op-000113",
+        "op-000114",
+        "op-000115",
+        "op-000116",
+        "op-000117",
+        "op-000118",
+        "op-000119",
+        "op-000120",
+        "op-000121",
+        "op-000122",
+        "op-000123",
+        "op-000124",
+        "op-000125",
+        "op-000126",
+        "op-000127",
+        "op-000128",
+        "op-000129",
+        "op-000130",
+        "op-000131",
+        "op-000132",
+        "op-000133",
+        "op-000134",
+        "op-000135",
+        "op-000136",
+        "op-000137",
+        "op-000138",
+        "op-000139",
+        "op-000140",
+        "op-000141",
+        "op-000142",
+        "op-000143",
+        "op-000144",
+        "op-000145",
+        "op-000146",
+        "op-000147",
+        "op-000148",
+        "op-000149",
+        "op-000150",
+        "op-000151",
+        "op-000152",
+        "op-000153",
+        "op-000154",
+        "op-000155",
+        "op-000156",
+        "op-000157",
+        "op-000158",
+        "op-000159",
+        "op-000160",
+        "op-000161",
+        "op-000162",
+        "op-000163",
+        "op-000164"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000032:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000167"
+        }
+      ],
+      "parent_module_id": "module-00022",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.9023271c51065a3684c014eaa20b34bd6d8b8b304c761419213436a2bf664e54/block.json",
+        "target_dedup_uid": "dedup.sha256.9023271c51065a3684c014eaa20b34bd6d8b8b304c761419213436a2bf664e54",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0",
+      "source_refs": [
+        {
+          "end_line": 1453,
+          "executed_line": 1395,
+          "file": "transformers/models/bigbird_pegasus/modeling_bigbird_pegasus.py",
+          "source_uid": "source.sha256.f3f7508312c3609dad4419d3a5d29bbd93af25b3910c06f8b527362fb5c1a427",
+          "start_line": 1395,
+          "symbol": "BigBirdPegasusDecoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "bigbirdpegasus.block-00025",
+      "call_ids": [
+        "call-000021",
+        "call-000023",
+        "call-000024",
+        "call-000022",
+        "call-000025"
+      ],
+      "dedup_ref": "dedup.sha256.4704bf92df9a90de806c9e5296eb8fca1d6ac88fc2124e485193eb66e971c245",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 25,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "hidden_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000021:in:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000114"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "attention_mask",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "attention_mask",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "attention_mask",
+          "optional": true,
+          "port_id": "call-000021:in:1",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            1,
+            4,
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000108"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00024",
+      "operation_ids": [
+        "op-000105",
+        "op-000106",
+        "op-000107",
+        "op-000108",
+        "op-000109",
+        "op-000110",
+        "op-000111",
+        "op-000112",
+        "op-000113",
+        "op-000114",
+        "op-000115",
+        "op-000116",
+        "op-000117",
+        "op-000118",
+        "op-000119",
+        "op-000120",
+        "op-000121",
+        "op-000122",
+        "op-000123",
+        "op-000124",
+        "op-000125"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000025:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000137"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4704bf92df9a90de806c9e5296eb8fca1d6ac88fc2124e485193eb66e971c245/block.json",
+        "target_dedup_uid": "dedup.sha256.4704bf92df9a90de806c9e5296eb8fca1d6ac88fc2124e485193eb66e971c245",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn",
+      "source_refs": [
+        {
+          "end_line": 1291,
+          "executed_line": 1219,
+          "file": "transformers/models/bigbird_pegasus/modeling_bigbird_pegasus.py",
+          "source_uid": "source.sha256.f3f7508312c3609dad4419d3a5d29bbd93af25b3910c06f8b527362fb5c1a427",
+          "start_line": 1219,
+          "symbol": "BigBirdPegasusDecoderAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00026",
+      "call_ids": [
+        "call-000023"
+      ],
+      "dedup_ref": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 26,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000023:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000114"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00025",
+      "operation_ids": [
+        "op-000108"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000023:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000120"
+        }
+      ],
+      "parent_module_id": "module-00024",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac/block.json",
+        "target_dedup_uid": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00027",
+      "call_ids": [
+        "call-000024"
+      ],
+      "dedup_ref": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 27,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000024:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000114"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00026",
+      "operation_ids": [
+        "op-000109"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000024:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000122"
+        }
+      ],
+      "parent_module_id": "module-00024",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac/block.json",
+        "target_dedup_uid": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00028",
+      "call_ids": [
+        "call-000022"
+      ],
+      "dedup_ref": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 28,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000022:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000114"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00027",
+      "operation_ids": [
+        "op-000105"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000022:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000116"
+        }
+      ],
+      "parent_module_id": "module-00024",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac/block.json",
+        "target_dedup_uid": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00029",
+      "call_ids": [
+        "call-000025"
+      ],
+      "dedup_ref": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 29,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000025:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000135"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00028",
+      "operation_ids": [
+        "op-000125"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000025:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000137"
+        }
+      ],
+      "parent_module_id": "module-00024",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac/block.json",
+        "target_dedup_uid": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn.out_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00030",
+      "call_ids": [
+        "call-000034"
+      ],
+      "dedup_ref": "dedup.sha256.4e445966679b702881c450245033b20ce35fd37ed007f37b36b05def0bcbc37c",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 30,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000034:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000170"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00029",
+      "operation_ids": [
+        "op-000153",
+        "op-000154",
+        "op-000155",
+        "op-000156",
+        "op-000157",
+        "op-000158",
+        "op-000159",
+        "op-000160"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000034:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000178"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4e445966679b702881c450245033b20ce35fd37ed007f37b36b05def0bcbc37c/block.json",
+        "target_dedup_uid": "dedup.sha256.4e445966679b702881c450245033b20ce35fd37ed007f37b36b05def0bcbc37c",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.activation_fn",
+      "source_refs": [
+        {
+          "end_line": 66,
+          "executed_line": 65,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 65,
+          "symbol": "NewGELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "bigbirdpegasus.block-00031",
+      "call_ids": [
+        "call-000020"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 31,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000020:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000111"
+        }
+      ],
+      "layer_group_id": "layer-00004",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00030",
+      "operation_ids": [
+        "op-000104"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000020:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000114"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.self_attn_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "bigbirdpegasus.block-00032",
+      "call_ids": [
+        "call-000027",
+        "call-000029",
+        "call-000030",
+        "call-000028",
+        "call-000031"
+      ],
+      "dedup_ref": "dedup.sha256.42465d82ba1c6b6ad43d044a718fedca66d9810f8753e34b0f5d7e869f9e51a2",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 32,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "hidden_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000027:in:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000141"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "key_value_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "key_value_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "key_value_states",
+          "optional": true,
+          "port_id": "call-000027:in:1",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000070"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00031",
+      "operation_ids": [
+        "op-000129",
+        "op-000130",
+        "op-000131",
+        "op-000132",
+        "op-000133",
+        "op-000134",
+        "op-000135",
+        "op-000136",
+        "op-000137",
+        "op-000138",
+        "op-000139",
+        "op-000140",
+        "op-000141",
+        "op-000142",
+        "op-000143",
+        "op-000144",
+        "op-000145",
+        "op-000146",
+        "op-000147",
+        "op-000148"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000031:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000163"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.42465d82ba1c6b6ad43d044a718fedca66d9810f8753e34b0f5d7e869f9e51a2/block.json",
+        "target_dedup_uid": "dedup.sha256.42465d82ba1c6b6ad43d044a718fedca66d9810f8753e34b0f5d7e869f9e51a2",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn",
+      "source_refs": [
+        {
+          "end_line": 1291,
+          "executed_line": 1219,
+          "file": "transformers/models/bigbird_pegasus/modeling_bigbird_pegasus.py",
+          "source_uid": "source.sha256.f3f7508312c3609dad4419d3a5d29bbd93af25b3910c06f8b527362fb5c1a427",
+          "start_line": 1219,
+          "symbol": "BigBirdPegasusDecoderAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00033",
+      "call_ids": [
+        "call-000029"
+      ],
+      "dedup_ref": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 33,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000029:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000070"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00032",
+      "operation_ids": [
+        "op-000132"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000029:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000147"
+        }
+      ],
+      "parent_module_id": "module-00031",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac/block.json",
+        "target_dedup_uid": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00034",
+      "call_ids": [
+        "call-000030"
+      ],
+      "dedup_ref": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 34,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000030:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000070"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00033",
+      "operation_ids": [
+        "op-000133"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000030:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000149"
+        }
+      ],
+      "parent_module_id": "module-00031",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac/block.json",
+        "target_dedup_uid": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00035",
+      "call_ids": [
+        "call-000028"
+      ],
+      "dedup_ref": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 35,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000028:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000141"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00034",
+      "operation_ids": [
+        "op-000129"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000028:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000143"
+        }
+      ],
+      "parent_module_id": "module-00031",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac/block.json",
+        "target_dedup_uid": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00036",
+      "call_ids": [
+        "call-000031"
+      ],
+      "dedup_ref": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 36,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000031:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000161"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00035",
+      "operation_ids": [
+        "op-000148"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000031:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000163"
+        }
+      ],
+      "parent_module_id": "module-00031",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac/block.json",
+        "target_dedup_uid": "dedup.sha256.16d2547e882a3f66cee3f85c660ee4042b7b0cc4b764ea4c3e7485070588a1ac",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn.out_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "bigbirdpegasus.block-00037",
+      "call_ids": [
+        "call-000026"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 37,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000026:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000138"
+        }
+      ],
+      "layer_group_id": "layer-00005",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00036",
+      "operation_ids": [
+        "op-000128"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000026:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000141"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.encoder_attn_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00038",
+      "call_ids": [
+        "call-000033"
+      ],
+      "dedup_ref": "dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 38,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000033:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000167"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00037",
+      "operation_ids": [
+        "op-000152"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000033:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000170"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112/block.json",
+        "target_dedup_uid": "dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.fc1",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "bigbirdpegasus.block-00039",
+      "call_ids": [
+        "call-000035"
+      ],
+      "dedup_ref": "dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 39,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000035:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000178"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00038",
+      "operation_ids": [
+        "op-000162"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000035:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000181"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3/block.json",
+        "target_dedup_uid": "dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.fc2",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "bigbirdpegasus.block-00040",
+      "call_ids": [
+        "call-000032"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 40,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000032:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000164"
+        }
+      ],
+      "layer_group_id": "layer-00006",
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00039",
+      "operation_ids": [
+        "op-000151"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000032:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000167"
+        }
+      ],
+      "parent_module_id": "module-00023",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layers.0.final_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "bigbirdpegasus.block-00041",
+      "call_ids": [
+        "call-000036"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "bigbirdpegasus",
+      "graph_ref": "graphs/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json",
+      "index": 41,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000036:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000182"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "bigbirdpegasus",
+      "module_id": "module-00040",
+      "operation_ids": [
+        "op-000165"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000036:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000185"
+        }
+      ],
+      "parent_module_id": "module-00019",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "decoder.layernorm_embedding",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.cb99f88259c184824264bb101ea8dc3b827fe3b3c923b64fe61ae48467ef469f.json"
+    }
+  ]
+}

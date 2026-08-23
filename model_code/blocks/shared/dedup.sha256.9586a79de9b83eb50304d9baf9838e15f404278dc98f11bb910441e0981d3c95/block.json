@@ -1,0 +1,97 @@
+{
+  "dedup_uid": "dedup.sha256.9586a79de9b83eb50304d9baf9838e15f404278dc98f11bb910441e0981d3c95",
+  "operation_ids": [
+    "op-000016",
+    "op-000017"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "diffusers.models.autoencoders.autoencoder_kl_hunyuan_video",
+        "HunyuanVideoCausalConv3d"
+      ],
+      [
+        "conv",
+        "torch.nn.modules.conv",
+        "Conv3d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            16,
+            2,
+            4,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            2,
+            4,
+            4
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            16,
+            4,
+            6,
+            6
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            2,
+            4,
+            4
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "conv.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "conv.weight",
+        [
+          16,
+          16,
+          3,
+          3,
+          3
+        ]
+      ]
+    ],
+    "source": "892f700f8ad5d042cee582e7f708cb570005494a3ab9ed02a21a0c203edb9f7e",
+    "topology": [
+      [
+        "aten_op",
+        "aten.pad.default"
+      ],
+      [
+        "aten_op",
+        "aten.conv3d.default"
+      ]
+    ]
+  }
+}

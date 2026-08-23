@@ -1,0 +1,93 @@
+{
+  "dedup_uid": "dedup.sha256.1fb9a23259f67bdd279682f578aac5f4adb5cdce7124c5216040aedb4cc5783e",
+  "operation_ids": [
+    "op-000080",
+    "op-000081",
+    "op-000082",
+    "op-000083",
+    "op-000084",
+    "op-000085",
+    "op-000086",
+    "op-000087",
+    "op-000088"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.bloom.modeling_bloom",
+        "BloomGelu"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            64
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            64
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "fb9264ffbfa7e10e8d57c8e014c9818d6b40057639a14c05061f4a3c9d061a13",
+    "topology": [
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.tanh.default"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ]
+    ]
+  }
+}

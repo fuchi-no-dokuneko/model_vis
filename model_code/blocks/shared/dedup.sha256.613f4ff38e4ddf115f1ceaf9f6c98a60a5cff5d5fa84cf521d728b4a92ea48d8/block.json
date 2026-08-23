@@ -1,0 +1,58 @@
+{
+  "dedup_uid": "dedup.sha256.613f4ff38e4ddf115f1ceaf9f6c98a60a5cff5d5fa84cf521d728b4a92ea48d8",
+  "operation_ids": [
+    "op-000000",
+    "op-000001"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.bigbird_pegasus.modeling_bigbird_pegasus",
+        "BigBirdPegasusScaledWordEmbedding"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          64,
+          16
+        ]
+      ]
+    ],
+    "source": "e95faa2d8c2a8aac138015501b6bb8bfbc5e4321679e3ede9cb4974b4535c911",
+    "topology": [
+      [
+        "aten_op",
+        "aten.embedding.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ]
+    ]
+  }
+}

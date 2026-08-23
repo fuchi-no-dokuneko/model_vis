@@ -1,0 +1,129 @@
+{
+  "dedup_uid": "dedup.sha256.8b42e089f7d158a4a2dc6b22b24b2d93bdc1c021e0743447dd46a73469785d0a",
+  "operation_ids": [],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.blip.modeling_blip_text",
+        "BlipTextAttention"
+      ],
+      [
+        "self",
+        "transformers.models.blip.modeling_blip_text",
+        "BlipTextSelfAttention"
+      ],
+      [
+        "self.query",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "self.key",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "self.value",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "self.dropout",
+        "torch.nn.modules.dropout",
+        "Dropout"
+      ],
+      [
+        "output",
+        "transformers.models.blip.modeling_blip_text",
+        "BlipTextSelfOutput"
+      ],
+      [
+        "output.dense",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "output.LayerNorm",
+        "torch.nn.modules.normalization",
+        "LayerNorm"
+      ],
+      [
+        "output.dropout",
+        "torch.nn.modules.dropout",
+        "Dropout"
+      ]
+    ],
+    "config_branches": [],
+    "io_shapes": [],
+    "parameters": [
+      [
+        "output.LayerNorm.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "output.LayerNorm.weight",
+        [
+          16
+        ]
+      ],
+      [
+        "output.dense.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "output.dense.weight",
+        [
+          16,
+          16
+        ]
+      ],
+      [
+        "self.key.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "self.key.weight",
+        [
+          16,
+          768
+        ]
+      ],
+      [
+        "self.query.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "self.query.weight",
+        [
+          16,
+          16
+        ]
+      ],
+      [
+        "self.value.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "self.value.weight",
+        [
+          16,
+          768
+        ]
+      ]
+    ],
+    "source": "e2045f0f97842af7274ea5ca78c1bf690f0c0988b3b93a37c8e4a520799bc13e",
+    "topology": []
+  }
+}

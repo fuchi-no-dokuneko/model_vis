@@ -1,0 +1,71 @@
+{
+  "dedup_uid": "dedup.sha256.dd2da2b56c91fb41f13d84b3d788dd689e1774b4195eaf8931fc0c09c4fc7444",
+  "operation_ids": [
+    "op-000053",
+    "op-000057"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "torch.nn.modules.activation",
+        "SiLU"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            256,
+            4,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            256,
+            4,
+            4
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            512,
+            4,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            512,
+            4,
+            4
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "c849c8e42a424a8f28e6867479e2462f1cc1f96709556c62983d252565744ee2",
+    "topology": [
+      [
+        "aten_op",
+        "aten.silu.default"
+      ],
+      [
+        "aten_op",
+        "aten.silu.default"
+      ]
+    ]
+  }
+}

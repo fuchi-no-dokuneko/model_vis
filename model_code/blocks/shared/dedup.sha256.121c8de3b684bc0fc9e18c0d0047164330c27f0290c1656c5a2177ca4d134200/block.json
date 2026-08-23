@@ -1,0 +1,127 @@
+{
+  "dedup_uid": "dedup.sha256.121c8de3b684bc0fc9e18c0d0047164330c27f0290c1656c5a2177ca4d134200",
+  "operation_ids": [
+    "op-000259",
+    "op-000260",
+    "op-000261",
+    "op-000262"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "diffusers.models.autoencoders.autoencoder_kl_ltx2_audio",
+        "LTX2AudioUpsample"
+      ],
+      [
+        "conv",
+        "diffusers.models.autoencoders.autoencoder_kl_ltx2_audio",
+        "LTX2AudioCausalConv2d"
+      ],
+      [
+        "conv.conv",
+        "torch.nn.modules.conv",
+        "Conv2d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            512,
+            4,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            512,
+            7,
+            8
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            512,
+            8,
+            8
+          ]
+        ],
+        [
+          [
+            1,
+            512,
+            8,
+            8
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            512,
+            10,
+            10
+          ]
+        ],
+        [
+          [
+            1,
+            512,
+            8,
+            8
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "conv.conv.bias",
+        [
+          512
+        ]
+      ],
+      [
+        "conv.conv.weight",
+        [
+          512,
+          512,
+          3,
+          3
+        ]
+      ]
+    ],
+    "source": "f226562bbfa76c52266280780590db8f22bd60c1cc0fccc17527660e44afd066",
+    "topology": [
+      [
+        "aten_op",
+        "aten.upsample_nearest2d.vec"
+      ],
+      [
+        "aten_op",
+        "aten.pad.default"
+      ],
+      [
+        "aten_op",
+        "aten.conv2d.default"
+      ],
+      [
+        "aten_op",
+        "aten.slice.Tensor"
+      ]
+    ]
+  }
+}

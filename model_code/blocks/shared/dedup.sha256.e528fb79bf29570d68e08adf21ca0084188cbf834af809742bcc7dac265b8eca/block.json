@@ -1,0 +1,62 @@
+{
+  "dedup_uid": "dedup.sha256.e528fb79bf29570d68e08adf21ca0084188cbf834af809742bcc7dac265b8eca",
+  "operation_ids": [
+    "op-000011",
+    "op-000012"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.biogpt.modeling_biogpt",
+        "BioGptLearnedPositionalEmbedding"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5
+          ],
+          [
+            1,
+            5
+          ]
+        ],
+        [
+          [
+            1,
+            5,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          34,
+          16
+        ]
+      ]
+    ],
+    "source": "d5b44070b6840a6b2a1a7afbcf4f0f58ee707eafc954b8d0ba5d54448f867278",
+    "topology": [
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.embedding.default"
+      ]
+    ]
+  }
+}

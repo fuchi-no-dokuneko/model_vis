@@ -1,0 +1,121 @@
+{
+  "dedup_uid": "dedup.sha256.1051af9b9803da1071e4819eeeb6efd6b688cdcace6f5d835b9e76a1b418163b",
+  "operation_ids": [
+    "op-000031",
+    "op-000032",
+    "op-000033",
+    "op-000034"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.bit.modeling_bit",
+        "BitDownsampleConv"
+      ],
+      [
+        "conv",
+        "transformers.models.bit.modeling_bit",
+        "WeightStandardizedConv2d"
+      ],
+      [
+        "norm",
+        "torch.nn.modules.linear",
+        "Identity"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            2,
+            2
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            2,
+            2
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            16,
+            2,
+            2
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            2,
+            2
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "conv.weight",
+        [
+          16,
+          16,
+          1,
+          1
+        ]
+      ]
+    ],
+    "source": "50ba5cc4143ef69f538571fe950012d1148a73550df28eca2d522f5e88c9fa50",
+    "topology": [
+      [
+        "aten_op",
+        "aten.reshape.default"
+      ],
+      [
+        "aten_op",
+        "aten.batch_norm.default"
+      ],
+      [
+        "aten_op",
+        "aten.reshape_as.default"
+      ],
+      [
+        "aten_op",
+        "aten.conv2d.default"
+      ]
+    ]
+  }
+}

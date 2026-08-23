@@ -1,0 +1,70 @@
+{
+  "dedup_uid": "dedup.sha256.e7403b8156708c5be53b69a6768f1927d9505831a29f8db0846af6d2991dbe7e",
+  "operation_ids": [
+    "op-000005"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.bit.modeling_bit",
+        "BitMaxPool2d"
+      ],
+      [
+        "pad",
+        "torch.nn.modules.linear",
+        "Identity"
+      ]
+    ],
+    "config_branches": [
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            16,
+            10,
+            10
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            16,
+            10,
+            10
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            10,
+            10
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "4b9d25bf3a8fd2d0f358629a7411457d180be54b7497f62d5e88b3faa89a1a12",
+    "topology": [
+      [
+        "aten_op",
+        "aten.max_pool2d.default"
+      ]
+    ]
+  }
+}

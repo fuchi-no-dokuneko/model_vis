@@ -1,0 +1,122 @@
+{
+  "dedup_uid": "dedup.sha256.54f38114b7bba789c30c8d3083dab1d64711f66458278ac29fce4f4951d02aaf",
+  "operation_ids": [
+    "op-000056",
+    "op-000057",
+    "op-000058",
+    "op-000059",
+    "op-000060"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "diffusers.models.autoencoders.autoencoder_kl_cogvideox",
+        "CogVideoXCausalConv3d"
+      ],
+      [
+        "conv",
+        "diffusers.models.autoencoders.autoencoder_kl_cogvideox",
+        "CogVideoXSafeConv3d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            16,
+            2,
+            8,
+            8
+          ]
+        ],
+        [
+          [
+            1,
+            32,
+            2,
+            8,
+            8
+          ],
+          [
+            1,
+            16,
+            2,
+            8,
+            8
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            16,
+            4,
+            8,
+            8
+          ]
+        ],
+        [
+          [
+            1,
+            32,
+            2,
+            8,
+            8
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "conv.bias",
+        [
+          32
+        ]
+      ],
+      [
+        "conv.weight",
+        [
+          32,
+          16,
+          3,
+          3,
+          3
+        ]
+      ]
+    ],
+    "source": "ab7e50916d80b63b6543d7269ada0e7202ac2718933df58ef197be931e86ea3f",
+    "topology": [
+      [
+        "aten_op",
+        "aten.slice.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.cat.default"
+      ],
+      [
+        "aten_op",
+        "aten.slice.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.clone.default"
+      ],
+      [
+        "aten_op",
+        "aten.conv3d.default"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "config": {
+    "_use_default_values": [
+      "act_fn",
+      "scaling_factor",
+      "temporal_compression_ratio",
+      "spatial_compression_ratio",
+      "mid_block_add_attention"
+    ],
+    "act_fn": "silu",
+    "block_out_channels": [
+      16
+    ],
+    "down_block_types": [
+      "HunyuanVideoDownBlock3D"
+    ],
+    "in_channels": 3,
+    "latent_channels": 16,
+    "layers_per_block": 1,
+    "mid_block_add_attention": true,
+    "norm_num_groups": 4,
+    "out_channels": 3,
+    "scaling_factor": 0.476986,
+    "spatial_compression_ratio": 8,
+    "temporal_compression_ratio": 4,
+    "up_block_types": [
+      "HunyuanVideoUpBlock3D"
+    ]
+  },
+  "derivation": {
+    "compatibility_adapter": null,
+    "official_config_available": false,
+    "overrides": [],
+    "strategy": "deterministic-compact-cpu-trace"
+  },
+  "kind": "trace_config",
+  "schema_version": "1.0.0",
+  "version_id": "autoencoderklhunyuanvideo"
+}

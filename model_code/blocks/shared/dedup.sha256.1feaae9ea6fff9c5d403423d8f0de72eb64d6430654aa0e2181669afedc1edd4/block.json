@@ -1,0 +1,58 @@
+{
+  "dedup_uid": "dedup.sha256.1feaae9ea6fff9c5d403423d8f0de72eb64d6430654aa0e2181669afedc1edd4",
+  "operation_ids": [
+    "op-000000",
+    "op-000001"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.blenderbot.modeling_blenderbot",
+        "BlenderbotScaledWordEmbedding"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          64,
+          16
+        ]
+      ]
+    ],
+    "source": "9fafd5cbde3fd55287f148fb14186974bdc0c801f461a7d50c9a8d4f81872960",
+    "topology": [
+      [
+        "aten_op",
+        "aten.embedding.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ]
+    ]
+  }
+}

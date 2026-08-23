@@ -1,0 +1,66 @@
+{
+  "dedup_uid": "dedup.sha256.722ac3f53337a275d17d3de95353fdc44185fd8cf0ecec629e5ce3f7d204aa06",
+  "operation_ids": [
+    "op-000012"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "diffusers.models.autoencoders.autoencoder_kl_cogvideox",
+        "CogVideoXSafeConv3d"
+      ]
+    ],
+    "config_branches": [
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            16,
+            4,
+            8,
+            8
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            2,
+            8,
+            8
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "bias",
+        [
+          16
+        ]
+      ],
+      [
+        "weight",
+        [
+          16,
+          16,
+          3,
+          3,
+          3
+        ]
+      ]
+    ],
+    "source": "d30e1e74a95e5368a890e61940dcb512fa087834ef7a6a0f3e35363d548c475d",
+    "topology": [
+      [
+        "aten_op",
+        "aten.conv3d.default"
+      ]
+    ]
+  }
+}

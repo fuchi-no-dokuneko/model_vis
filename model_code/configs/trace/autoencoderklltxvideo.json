@@ -1,0 +1,106 @@
+{
+  "config": {
+    "_use_default_values": [
+      "temporal_compression_ratio",
+      "scaling_factor",
+      "resnet_norm_eps",
+      "decoder_block_out_channels",
+      "encoder_causal",
+      "decoder_layers_per_block",
+      "upsample_factor",
+      "timestep_conditioning",
+      "spatio_temporal_scaling",
+      "downsample_type",
+      "upsample_residual",
+      "patch_size_t",
+      "decoder_causal",
+      "decoder_inject_noise",
+      "decoder_spatio_temporal_scaling",
+      "spatial_compression_ratio"
+    ],
+    "block_out_channels": [
+      16
+    ],
+    "decoder_block_out_channels": [
+      128,
+      256,
+      512,
+      512
+    ],
+    "decoder_causal": false,
+    "decoder_inject_noise": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "decoder_layers_per_block": [
+      4,
+      3,
+      3,
+      3,
+      4
+    ],
+    "decoder_spatio_temporal_scaling": [
+      true,
+      true,
+      true,
+      false
+    ],
+    "down_block_types": [
+      "LTXVideoDownBlock3D"
+    ],
+    "downsample_type": [
+      "conv",
+      "conv",
+      "conv",
+      "conv"
+    ],
+    "encoder_causal": true,
+    "in_channels": 3,
+    "latent_channels": 16,
+    "layers_per_block": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "out_channels": 3,
+    "patch_size": 4,
+    "patch_size_t": 1,
+    "resnet_norm_eps": 1e-06,
+    "scaling_factor": 1.0,
+    "spatial_compression_ratio": null,
+    "spatio_temporal_scaling": [
+      true,
+      true,
+      true,
+      false
+    ],
+    "temporal_compression_ratio": null,
+    "timestep_conditioning": false,
+    "upsample_factor": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "upsample_residual": [
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "derivation": {
+    "compatibility_adapter": null,
+    "official_config_available": false,
+    "overrides": [],
+    "strategy": "deterministic-compact-cpu-trace"
+  },
+  "kind": "trace_config",
+  "schema_version": "1.0.0",
+  "version_id": "autoencoderklltxvideo"
+}

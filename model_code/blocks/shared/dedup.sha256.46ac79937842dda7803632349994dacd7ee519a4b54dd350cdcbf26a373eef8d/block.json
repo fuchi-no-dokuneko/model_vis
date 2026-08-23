@@ -1,0 +1,92 @@
+{
+  "dedup_uid": "dedup.sha256.46ac79937842dda7803632349994dacd7ee519a4b54dd350cdcbf26a373eef8d",
+  "operation_ids": [
+    "op-000000",
+    "op-000001"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "diffusers.models.autoencoders.autoencoder_kl_ltx2_audio",
+        "LTX2AudioCausalConv2d"
+      ],
+      [
+        "conv",
+        "torch.nn.modules.conv",
+        "Conv2d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            128,
+            16,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            3,
+            18,
+            18
+          ]
+        ],
+        [
+          [
+            1,
+            128,
+            16,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "conv.bias",
+        [
+          128
+        ]
+      ],
+      [
+        "conv.weight",
+        [
+          128,
+          3,
+          3,
+          3
+        ]
+      ]
+    ],
+    "source": "296fba94569a7baea7da742304c9b48e64c7ed3f2dfafc7e8c7b527d59d7a521",
+    "topology": [
+      [
+        "aten_op",
+        "aten.pad.default"
+      ],
+      [
+        "aten_op",
+        "aten.conv2d.default"
+      ]
+    ]
+  }
+}

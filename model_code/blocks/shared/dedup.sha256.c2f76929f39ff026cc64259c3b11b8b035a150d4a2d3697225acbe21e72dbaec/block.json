@@ -1,0 +1,85 @@
+{
+  "dedup_uid": "dedup.sha256.c2f76929f39ff026cc64259c3b11b8b035a150d4a2d3697225acbe21e72dbaec",
+  "operation_ids": [
+    "op-000507",
+    "op-000508",
+    "op-000509",
+    "op-000510",
+    "op-000511",
+    "op-000512",
+    "op-000513"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "diffusers.models.normalization",
+        "RMSNorm"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            1,
+            4,
+            4,
+            256
+          ]
+        ],
+        [
+          [
+            1,
+            1,
+            4,
+            4,
+            256
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "00a44a2559d89ba6a110da1e2b897ee3a54d06cb35796c792ed4dbd9318829d0",
+    "topology": [
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.pow.Tensor_Scalar"
+      ],
+      [
+        "aten_op",
+        "aten.mean.dim"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.rsqrt.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ]
+    ]
+  }
+}

@@ -3905,6 +3905,15 @@
   ],
   "modules": [
     {
+      "base_classes": [
+        "transformers.models.mlcd.modeling_mlcd.MLCDPreTrainedModel",
+        "transformers.modeling_utils.PreTrainedModel",
+        "torch.nn.modules.module.Module",
+        "transformers.modeling_utils.EmbeddingAccessMixin",
+        "transformers.modeling_utils.ModuleUtilsMixin",
+        "transformers.utils.hub.PushToHubMixin",
+        "transformers.integrations.peft.PeftAdapterMixin"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000000"
@@ -3962,6 +3971,24 @@
         }
       },
       "display_name": "MLCDVisionModel",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "default": null,
+            "kind": "positional_or_keyword",
+            "name": "pixel_values",
+            "required": false
+          },
+          {
+            "kind": "var_keyword",
+            "name": "kwargs",
+            "required": false
+          }
+        ],
+        "returns": "tuple | transformers.modeling_outputs.BaseModelOutputWithPooling",
+        "text": "forward(pixel_values:positional_or_keyword?, kwargs:var_keyword?) -> tuple | transformers.modeling_outputs.BaseModelOutputWithPooling"
+      },
       "layer_group_id": null,
       "module_id": "module-00000",
       "observed_topology_signature": "topology.sha256.9f367087f4b87f046960d83ed857d5c4a066f40a3f1780c4120fa25807cd7c3f",
@@ -3972,6 +3999,8 @@
           "is_contiguous": true,
           "mutation_version": 1,
           "name": "class_pos_emb",
+          "numel": 2,
+          "parameter_id": "parameter-000000",
           "requires_grad": true,
           "shape": [
             1,
@@ -3998,13 +4027,18 @@
       "structural_signature": "structure.sha256.2c721c291f1bcf7bfd34025055121c0a11c7ee1b41dc56724b406de809228a3e"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [
         {
+          "buffer_id": "buffer-000000",
           "device": "cpu",
           "dtype": "torch.int64",
           "is_contiguous": true,
           "mutation_version": 1,
           "name": "position_ids",
+          "numel": 17,
           "requires_grad": false,
           "shape": [
             1,
@@ -4069,6 +4103,18 @@
         }
       },
       "display_name": "MLCDVisionEmbeddings",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "pixel_values",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(pixel_values:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": null,
       "module_id": "module-00001",
       "observed_topology_signature": "topology.sha256.d2c6564d2985c86095f9c76dc2e48b14f284f85960395970ab07fc1b5df9243f",
@@ -4079,6 +4125,8 @@
           "is_contiguous": true,
           "mutation_version": 1,
           "name": "class_embedding",
+          "numel": 16,
+          "parameter_id": "parameter-000001",
           "requires_grad": true,
           "shape": [
             16
@@ -4103,6 +4151,10 @@
       "structural_signature": "structure.sha256.3eb465892e12a1e3aa1058e7ebf6067218fecc8774ecc97890f4035720f604c9"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.conv._ConvNd",
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000003"
@@ -4280,6 +4332,18 @@
         }
       },
       "display_name": "Conv2d",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "input",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(input:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": null,
       "module_id": "module-00002",
       "observed_topology_signature": "topology.sha256.5444f6b1dec90022410310510585e9dfc16f4df562d93f5a2f49b49b25f37976",
@@ -4290,6 +4354,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "weight",
+          "numel": 768,
+          "parameter_id": "parameter-000002",
           "requires_grad": true,
           "shape": [
             16,
@@ -4320,6 +4386,9 @@
       "structural_signature": "structure.sha256.4d7c60f534c9727942e7590fdc4aa4d27ecbe04d9bdc1a00cf0ba63cf71736ce"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000004"
@@ -4432,6 +4501,18 @@
         }
       },
       "display_name": "LayerNorm",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "input",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(input:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": "layer-00000",
       "module_id": "module-00003",
       "observed_topology_signature": "topology.sha256.fce7e6f0cf55de0c029ec726c37f65e16162703208c4ea9081136352fe784cf6",
@@ -4442,6 +4523,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "weight",
+          "numel": 16,
+          "parameter_id": "parameter-000003",
           "requires_grad": true,
           "shape": [
             16
@@ -4458,6 +4541,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "bias",
+          "numel": 16,
+          "parameter_id": "parameter-000004",
           "requires_grad": true,
           "shape": [
             16
@@ -4482,6 +4567,9 @@
       "structural_signature": "structure.sha256.065403c0a6ad4992b4162f8243fc684fd88fd226db11efa59845222dac18074c"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000005"
@@ -4535,6 +4623,34 @@
         }
       },
       "display_name": "MLCDEncoder",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "inputs_embeds",
+            "required": true
+          },
+          {
+            "kind": "positional_or_keyword",
+            "name": "position_embeddings",
+            "required": true
+          },
+          {
+            "default": null,
+            "kind": "positional_or_keyword",
+            "name": "attention_mask",
+            "required": false
+          },
+          {
+            "kind": "var_keyword",
+            "name": "kwargs",
+            "required": false
+          }
+        ],
+        "returns": "tuple | transformers.modeling_outputs.BaseModelOutput",
+        "text": "forward(inputs_embeds:positional_or_keyword, position_embeddings:positional_or_keyword, attention_mask:positional_or_keyword?, kwargs:var_keyword?) -> tuple | transformers.modeling_outputs.BaseModelOutput"
+      },
       "layer_group_id": null,
       "module_id": "module-00004",
       "observed_topology_signature": "topology.sha256.3f70378a6f2416c1d1fa7392b7093fbe6bfd461ac9c08102390558fba4921c13",
@@ -4552,6 +4668,9 @@
       "structural_signature": "structure.sha256.aa09266d39b59a8d4342b09968602b91b437260e24ec2c9f5d9b40ae1c3ad574"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [],
       "child_module_ids": [
@@ -4602,6 +4721,18 @@
         }
       },
       "display_name": "ModuleList",
+      "forward_interface": {
+        "name": "_forward_unimplemented",
+        "parameters": [
+          {
+            "kind": "var_positional",
+            "name": "input",
+            "required": false
+          }
+        ],
+        "returns": "None",
+        "text": "_forward_unimplemented(input:var_positional?) -> None"
+      },
       "layer_group_id": null,
       "module_id": "module-00005",
       "observed_topology_signature": "topology.sha256.3f70378a6f2416c1d1fa7392b7093fbe6bfd461ac9c08102390558fba4921c13",
@@ -4619,6 +4750,10 @@
       "structural_signature": "structure.sha256.f3a8e2e6bcee28dd298df27f208bb9809594d7c5d27aaea3123d8fe81501ade4"
     },
     {
+      "base_classes": [
+        "transformers.modeling_layers.GradientCheckpointingLayer",
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000006"
@@ -4675,6 +4810,34 @@
         }
       },
       "display_name": "MLCDEncoderLayer",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "hidden_states",
+            "required": true
+          },
+          {
+            "kind": "positional_or_keyword",
+            "name": "position_embeddings",
+            "required": true
+          },
+          {
+            "default": null,
+            "kind": "positional_or_keyword",
+            "name": "attention_mask",
+            "required": false
+          },
+          {
+            "kind": "var_keyword",
+            "name": "kwargs",
+            "required": false
+          }
+        ],
+        "returns": "tuple",
+        "text": "forward(hidden_states:positional_or_keyword, position_embeddings:positional_or_keyword, attention_mask:positional_or_keyword?, kwargs:var_keyword?) -> tuple"
+      },
       "layer_group_id": "layer-00001",
       "module_id": "module-00006",
       "observed_topology_signature": "topology.sha256.3f70378a6f2416c1d1fa7392b7093fbe6bfd461ac9c08102390558fba4921c13",
@@ -4692,6 +4855,9 @@
       "structural_signature": "structure.sha256.56e69111e4bb34973457da4fbe13a699b7f87abe0a598c672326cfe48739acef"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000008"
@@ -4748,6 +4914,34 @@
         }
       },
       "display_name": "MLCDAttention",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "hidden_states",
+            "required": true
+          },
+          {
+            "kind": "positional_or_keyword",
+            "name": "position_embeddings",
+            "required": true
+          },
+          {
+            "default": null,
+            "kind": "positional_or_keyword",
+            "name": "attention_mask",
+            "required": false
+          },
+          {
+            "kind": "var_keyword",
+            "name": "kwargs",
+            "required": false
+          }
+        ],
+        "returns": "tuple",
+        "text": "forward(hidden_states:positional_or_keyword, position_embeddings:positional_or_keyword, attention_mask:positional_or_keyword?, kwargs:var_keyword?) -> tuple"
+      },
       "layer_group_id": "layer-00001",
       "module_id": "module-00007",
       "observed_topology_signature": "topology.sha256.bf52557622afb3730b0f455499d89ea4bd2b300f9a2fcb6e8ea734c8fde29919",
@@ -4765,6 +4959,9 @@
       "structural_signature": "structure.sha256.932085ec127c240ee788830002915db98b1d90b2a9cc0f19bfcd55065457d2d8"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000010"
@@ -4860,6 +5057,18 @@
         }
       },
       "display_name": "Linear",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "input",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(input:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": "layer-00001",
       "module_id": "module-00008",
       "observed_topology_signature": "topology.sha256.fd116aef94e04bc1b4cb870da109d90d7e75847eff4b7a5d71109973ec0fe695",
@@ -4870,6 +5079,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "weight",
+          "numel": 256,
+          "parameter_id": "parameter-000005",
           "requires_grad": true,
           "shape": [
             16,
@@ -4888,6 +5099,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "bias",
+          "numel": 16,
+          "parameter_id": "parameter-000006",
           "requires_grad": true,
           "shape": [
             16
@@ -4912,6 +5125,9 @@
       "structural_signature": "structure.sha256.9ef81929da90bacd6507494405640c18d9d4983ceb7b1fff565aaad85e94622d"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000011"
@@ -5007,6 +5223,18 @@
         }
       },
       "display_name": "Linear",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "input",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(input:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": "layer-00001",
       "module_id": "module-00009",
       "observed_topology_signature": "topology.sha256.fd116aef94e04bc1b4cb870da109d90d7e75847eff4b7a5d71109973ec0fe695",
@@ -5017,6 +5245,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "weight",
+          "numel": 256,
+          "parameter_id": "parameter-000007",
           "requires_grad": true,
           "shape": [
             16,
@@ -5035,6 +5265,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "bias",
+          "numel": 16,
+          "parameter_id": "parameter-000008",
           "requires_grad": true,
           "shape": [
             16
@@ -5059,6 +5291,9 @@
       "structural_signature": "structure.sha256.9ef81929da90bacd6507494405640c18d9d4983ceb7b1fff565aaad85e94622d"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000009"
@@ -5154,6 +5389,18 @@
         }
       },
       "display_name": "Linear",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "input",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(input:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": "layer-00001",
       "module_id": "module-00010",
       "observed_topology_signature": "topology.sha256.fd116aef94e04bc1b4cb870da109d90d7e75847eff4b7a5d71109973ec0fe695",
@@ -5164,6 +5411,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "weight",
+          "numel": 256,
+          "parameter_id": "parameter-000009",
           "requires_grad": true,
           "shape": [
             16,
@@ -5182,6 +5431,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "bias",
+          "numel": 16,
+          "parameter_id": "parameter-000010",
           "requires_grad": true,
           "shape": [
             16
@@ -5206,6 +5457,9 @@
       "structural_signature": "structure.sha256.9ef81929da90bacd6507494405640c18d9d4983ceb7b1fff565aaad85e94622d"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000012"
@@ -5301,6 +5555,18 @@
         }
       },
       "display_name": "Linear",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "input",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(input:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": "layer-00001",
       "module_id": "module-00011",
       "observed_topology_signature": "topology.sha256.fe0818a0eb11d04053078100dd84c4ff8ffcfc2f5635cb8e9e575d7243400ceb",
@@ -5311,6 +5577,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "weight",
+          "numel": 256,
+          "parameter_id": "parameter-000011",
           "requires_grad": true,
           "shape": [
             16,
@@ -5329,6 +5597,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "bias",
+          "numel": 16,
+          "parameter_id": "parameter-000012",
           "requires_grad": true,
           "shape": [
             16
@@ -5353,6 +5623,9 @@
       "structural_signature": "structure.sha256.9ef81929da90bacd6507494405640c18d9d4983ceb7b1fff565aaad85e94622d"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000007"
@@ -5465,6 +5738,18 @@
         }
       },
       "display_name": "LayerNorm",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "input",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(input:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": "layer-00002",
       "module_id": "module-00012",
       "observed_topology_signature": "topology.sha256.fce7e6f0cf55de0c029ec726c37f65e16162703208c4ea9081136352fe784cf6",
@@ -5475,6 +5760,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "weight",
+          "numel": 16,
+          "parameter_id": "parameter-000013",
           "requires_grad": true,
           "shape": [
             16
@@ -5491,6 +5778,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "bias",
+          "numel": 16,
+          "parameter_id": "parameter-000014",
           "requires_grad": true,
           "shape": [
             16
@@ -5515,6 +5804,9 @@
       "structural_signature": "structure.sha256.065403c0a6ad4992b4162f8243fc684fd88fd226db11efa59845222dac18074c"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000014"
@@ -5570,6 +5862,18 @@
         }
       },
       "display_name": "MLCDMLP",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "hidden_states",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(hidden_states:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": "layer-00001",
       "module_id": "module-00013",
       "observed_topology_signature": "topology.sha256.33023b7a65e78353bd749a7020514c73a68453bcd63da706d9fc28117ec915f0",
@@ -5587,6 +5891,9 @@
       "structural_signature": "structure.sha256.7370e24b7312defcce518e1ac306b14def474e4b10f461501d37122ab485fb02"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000016"
@@ -5627,6 +5934,18 @@
         }
       },
       "display_name": "GELUActivation",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "input",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(input:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": "layer-00001",
       "module_id": "module-00014",
       "observed_topology_signature": "topology.sha256.6b807f8e663438c388c81ae296d0fdbee4f0ade938914b95fc127132fbbe738f",
@@ -5644,6 +5963,9 @@
       "structural_signature": "structure.sha256.b9a674bbe588016a48e41c6d0c7ea8a0a3b4a97c888ef7c966e21b87dfc9c2b4"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000015"
@@ -5741,6 +6063,18 @@
         }
       },
       "display_name": "Linear",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "input",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(input:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": "layer-00001",
       "module_id": "module-00015",
       "observed_topology_signature": "topology.sha256.cb6bf3b5595d1440a258043128ce55c14105f80aedfaf97ec2f69724819e3291",
@@ -5751,6 +6085,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "weight",
+          "numel": 512,
+          "parameter_id": "parameter-000015",
           "requires_grad": true,
           "shape": [
             32,
@@ -5769,6 +6105,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "bias",
+          "numel": 32,
+          "parameter_id": "parameter-000016",
           "requires_grad": true,
           "shape": [
             32
@@ -5793,6 +6131,9 @@
       "structural_signature": "structure.sha256.c6cb62a8d3e43e2f33112f0c5969d99c56dd683acd202bf8b0f4026bf01c3fd6"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000017"
@@ -5890,6 +6231,18 @@
         }
       },
       "display_name": "Linear",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "input",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(input:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": "layer-00001",
       "module_id": "module-00016",
       "observed_topology_signature": "topology.sha256.af5d2b57548661d563f94ea50856e5aa51aacadf1b2464d17a6f00544450fba6",
@@ -5900,6 +6253,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "weight",
+          "numel": 512,
+          "parameter_id": "parameter-000017",
           "requires_grad": true,
           "shape": [
             16,
@@ -5918,6 +6273,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "bias",
+          "numel": 16,
+          "parameter_id": "parameter-000018",
           "requires_grad": true,
           "shape": [
             16
@@ -5942,6 +6299,9 @@
       "structural_signature": "structure.sha256.5b30cd957d5e25aa73bcc8c730bfeab89d5c195a0408cb5f05c0e09887d279ee"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000013"
@@ -6054,6 +6414,18 @@
         }
       },
       "display_name": "LayerNorm",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "input",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(input:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": "layer-00003",
       "module_id": "module-00017",
       "observed_topology_signature": "topology.sha256.fce7e6f0cf55de0c029ec726c37f65e16162703208c4ea9081136352fe784cf6",
@@ -6064,6 +6436,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "weight",
+          "numel": 16,
+          "parameter_id": "parameter-000019",
           "requires_grad": true,
           "shape": [
             16
@@ -6080,6 +6454,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "bias",
+          "numel": 16,
+          "parameter_id": "parameter-000020",
           "requires_grad": true,
           "shape": [
             16
@@ -6104,6 +6480,9 @@
       "structural_signature": "structure.sha256.065403c0a6ad4992b4162f8243fc684fd88fd226db11efa59845222dac18074c"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [],
       "call_ids": [
         "call-000018"
@@ -6216,6 +6595,18 @@
         }
       },
       "display_name": "LayerNorm",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "input",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(input:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": "layer-00004",
       "module_id": "module-00018",
       "observed_topology_signature": "topology.sha256.bbb701b876c141b3e62bc5467c5a06822d775e36bc77602a67088d16842c757b",
@@ -6226,6 +6617,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "weight",
+          "numel": 16,
+          "parameter_id": "parameter-000021",
           "requires_grad": true,
           "shape": [
             16
@@ -6242,6 +6635,8 @@
           "is_contiguous": true,
           "mutation_version": 2,
           "name": "bias",
+          "numel": 16,
+          "parameter_id": "parameter-000022",
           "requires_grad": true,
           "shape": [
             16
@@ -6266,13 +6661,18 @@
       "structural_signature": "structure.sha256.065403c0a6ad4992b4162f8243fc684fd88fd226db11efa59845222dac18074c"
     },
     {
+      "base_classes": [
+        "torch.nn.modules.module.Module"
+      ],
       "buffers": [
         {
+          "buffer_id": "buffer-000001",
           "device": "cpu",
           "dtype": "torch.float32",
           "is_contiguous": true,
           "mutation_version": 1,
           "name": "inv_freq",
+          "numel": 1,
           "requires_grad": false,
           "shape": [
             1
@@ -6336,6 +6736,23 @@
         }
       },
       "display_name": "MLCDRotaryEmbedding",
+      "forward_interface": {
+        "name": "forward",
+        "parameters": [
+          {
+            "kind": "positional_or_keyword",
+            "name": "num_patches_height",
+            "required": true
+          },
+          {
+            "kind": "positional_or_keyword",
+            "name": "num_patches_width",
+            "required": true
+          }
+        ],
+        "returns": "torch.Tensor",
+        "text": "forward(num_patches_height:positional_or_keyword, num_patches_width:positional_or_keyword) -> torch.Tensor"
+      },
       "layer_group_id": null,
       "module_id": "module-00019",
       "observed_topology_signature": "topology.sha256.cdc555cee0aad5260e5cbc9ae42b2cde0d2876eefa146e4d0ed422732894c625",
@@ -7671,7 +8088,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "buffer_id": "buffer-000001"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "vision_rotary_embedding.inv_freq",
@@ -8145,7 +8564,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000000"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "<root>.class_pos_emb",
@@ -8709,7 +9130,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000002"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "embeddings.patch_embedding.weight",
@@ -9057,7 +9480,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000001"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "embeddings.class_embedding",
@@ -9377,7 +9802,9 @@
       "template_id": "layer-template-000"
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000003"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "pre_layrnorm.weight",
@@ -9427,7 +9854,9 @@
       "template_id": "layer-template-000"
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000004"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "pre_layrnorm.bias",
@@ -9625,7 +10054,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000013"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.layer_norm1.weight",
@@ -9674,7 +10105,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000014"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.layer_norm1.bias",
@@ -9858,7 +10291,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000009"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.self_attn.q_proj.weight",
@@ -9908,7 +10343,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000010"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.self_attn.q_proj.bias",
@@ -10192,7 +10629,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000005"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.self_attn.k_proj.weight",
@@ -10242,7 +10681,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000006"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.self_attn.k_proj.bias",
@@ -10526,7 +10967,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000007"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.self_attn.v_proj.weight",
@@ -10576,7 +11019,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000008"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.self_attn.v_proj.bias",
@@ -14679,7 +15124,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000011"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.self_attn.out_proj.weight",
@@ -14729,7 +15176,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000012"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.self_attn.out_proj.bias",
@@ -15134,7 +15583,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000019"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.layer_norm2.weight",
@@ -15183,7 +15634,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000020"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.layer_norm2.bias",
@@ -15367,7 +15820,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000015"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.mlp.fc1.weight",
@@ -15417,7 +15872,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000016"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.mlp.fc1.bias",
@@ -15683,7 +16140,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000017"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.mlp.fc2.weight",
@@ -15733,7 +16192,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000018"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "encoder.layers.0.mlp.fc2.bias",
@@ -16142,7 +16603,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000021"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "post_layernorm.weight",
@@ -16191,7 +16654,9 @@
       }
     },
     {
-      "attributes": {},
+      "attributes": {
+        "parameter_id": "parameter-000022"
+      },
       "call_arguments": [],
       "call_id": null,
       "display_name": "post_layernorm.bias",
@@ -16328,9 +16793,9 @@
     "estimated_peak_bytes": 59869495296,
     "execution_mode": "unique_structure_forward",
     "operation_fallback_required": false,
-    "resource_budget_bytes": 10024079769,
+    "resource_budget_bytes": 10127881420,
     "resource_preflight": {
-      "available_memory_bytes": 15421661184,
+      "available_memory_bytes": 15581356032,
       "cpu_count": 6,
       "total_memory_bytes": 16769368064
     },

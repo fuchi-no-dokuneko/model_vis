@@ -1,0 +1,76 @@
+{
+  "dedup_uid": "dedup.sha256.249f70fc13cdeaba96ab7c05b637b9f4e8c92c958edd21a92a9d6fae9f1b1116",
+  "operation_ids": [
+    "op-000003",
+    "op-000004",
+    "op-000005",
+    "op-000006",
+    "op-000007"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.bart.modeling_bart",
+        "BartLearnedPositionalEmbedding"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          34,
+          16
+        ]
+      ]
+    ],
+    "source": "cf301c65da1d907637715e0b80d7ed6d994c6d0fff08fd0b49a973e01324dd7a",
+    "topology": [
+      [
+        "aten_op",
+        "aten.arange.start"
+      ],
+      [
+        "aten_op",
+        "aten.detach.default"
+      ],
+      [
+        "aten_op",
+        "aten.expand.default"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.embedding.default"
+      ]
+    ]
+  }
+}

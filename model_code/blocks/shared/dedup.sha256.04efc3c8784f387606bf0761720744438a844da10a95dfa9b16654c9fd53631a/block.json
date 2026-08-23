@@ -1,0 +1,91 @@
+{
+  "dedup_uid": "dedup.sha256.04efc3c8784f387606bf0761720744438a844da10a95dfa9b16654c9fd53631a",
+  "operation_ids": [
+    "op-000052",
+    "op-000053"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "torch.nn.modules.container",
+        "ModuleList"
+      ],
+      [
+        "0",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "1",
+        "torch.nn.modules.dropout",
+        "Dropout"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            32,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            32,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            32,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            32,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "0.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "0.weight",
+        [
+          16,
+          16
+        ]
+      ]
+    ],
+    "source": "bd3e62ad020138b355379b59cd4ad500c0ecba83ae3ca4fafba6c6a9e9d26121",
+    "topology": [
+      [
+        "aten_op",
+        "aten.linear.default"
+      ],
+      [
+        "aten_op",
+        "aten.dropout.default"
+      ]
+    ]
+  }
+}

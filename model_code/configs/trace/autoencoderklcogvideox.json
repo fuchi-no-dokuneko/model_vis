@@ -1,0 +1,55 @@
+{
+  "config": {
+    "_use_default_values": [
+      "use_post_quant_conv",
+      "scaling_factor",
+      "act_fn",
+      "sample_width",
+      "latents_mean",
+      "temporal_compression_ratio",
+      "use_quant_conv",
+      "sample_height",
+      "norm_eps",
+      "shift_factor",
+      "force_upcast",
+      "invert_scale_latents",
+      "latents_std"
+    ],
+    "act_fn": "silu",
+    "block_out_channels": [
+      16
+    ],
+    "down_block_types": [
+      "CogVideoXDownBlock3D"
+    ],
+    "force_upcast": true,
+    "in_channels": 3,
+    "invert_scale_latents": false,
+    "latent_channels": 16,
+    "latents_mean": null,
+    "latents_std": null,
+    "layers_per_block": 1,
+    "norm_eps": 1e-06,
+    "norm_num_groups": 4,
+    "out_channels": 3,
+    "sample_height": 480,
+    "sample_width": 720,
+    "scaling_factor": 1.15258426,
+    "shift_factor": null,
+    "temporal_compression_ratio": 4,
+    "up_block_types": [
+      "CogVideoXUpBlock3D"
+    ],
+    "use_post_quant_conv": false,
+    "use_quant_conv": false
+  },
+  "derivation": {
+    "compatibility_adapter": null,
+    "official_config_available": false,
+    "overrides": [],
+    "strategy": "deterministic-compact-cpu-trace"
+  },
+  "kind": "trace_config",
+  "schema_version": "1.0.0",
+  "version_id": "autoencoderklcogvideox"
+}

@@ -1,0 +1,55 @@
+{
+  "config": {
+    "_name_or_path": "",
+    "architectures": null,
+    "chunk_size_feed_forward": 0,
+    "classifier_dropout": 0.0,
+    "d_ff": 2048,
+    "d_kv": 4,
+    "d_model": 16,
+    "dense_act_fn": "relu",
+    "dropout_rate": 0.1,
+    "dtype": null,
+    "eos_token_id": 1,
+    "feed_forward_proj": "relu",
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "initializer_factor": 1.0,
+    "is_decoder": false,
+    "is_encoder_decoder": true,
+    "is_gated_act": false,
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "layer_norm_epsilon": 1e-06,
+    "model_type": "t5",
+    "num_decoder_layers": 6,
+    "num_heads": 4,
+    "num_key_value_heads": 4,
+    "num_layers": 1,
+    "output_attentions": false,
+    "output_hidden_states": false,
+    "pad_token_id": 0,
+    "problem_type": null,
+    "relative_attention_max_distance": 128,
+    "relative_attention_num_buckets": 32,
+    "return_dict": true,
+    "scale_decoder_outputs": true,
+    "tie_word_embeddings": true,
+    "transformers_version": "5.12.0",
+    "use_cache": false,
+    "vocab_size": 64
+  },
+  "derivation": {
+    "compatibility_adapter": null,
+    "official_config_available": false,
+    "overrides": [],
+    "strategy": "deterministic-compact-cpu-trace"
+  },
+  "kind": "trace_config",
+  "schema_version": "1.0.0",
+  "version_id": "byt5"
+}

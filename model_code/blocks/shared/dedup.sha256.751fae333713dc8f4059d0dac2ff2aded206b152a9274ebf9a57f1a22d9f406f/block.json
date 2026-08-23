@@ -1,0 +1,110 @@
+{
+  "dedup_uid": "dedup.sha256.751fae333713dc8f4059d0dac2ff2aded206b152a9274ebf9a57f1a22d9f406f",
+  "operation_ids": [
+    "op-000074",
+    "op-000075",
+    "op-000076"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "diffusers.models.autoencoders.autoencoder_kl_cogvideox",
+        "CogVideoXCausalConv3d"
+      ],
+      [
+        "conv",
+        "diffusers.models.autoencoders.autoencoder_kl_cogvideox",
+        "CogVideoXSafeConv3d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            16,
+            2,
+            8,
+            8
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            2,
+            8,
+            8
+          ],
+          [
+            1,
+            16,
+            2,
+            8,
+            8
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            16,
+            2,
+            8,
+            8
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            2,
+            8,
+            8
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "conv.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "conv.weight",
+        [
+          16,
+          16,
+          1,
+          1,
+          1
+        ]
+      ]
+    ],
+    "source": "ab7e50916d80b63b6543d7269ada0e7202ac2718933df58ef197be931e86ea3f",
+    "topology": [
+      [
+        "aten_op",
+        "aten.alias.default"
+      ],
+      [
+        "aten_op",
+        "aten.clone.default"
+      ],
+      [
+        "aten_op",
+        "aten.conv3d.default"
+      ]
+    ]
+  }
+}
