@@ -3,7 +3,7 @@ src/model_builder/config_provenance.py: Tested differences, pinned metadata, com
 src/model_builder/guard.py: Tested network blocking, environment restoration, and weight artifact scans; mocks: none.
 src/model_builder/registry.py: Tested full real catalog, aliases, serialization, and resolution failures; mocks: none.
 src/model_builder/util.py: Tested slugs, deterministic hashes, JSON reads/writes, tuples, and nonfinite values; mocks: none.
-src/model_builder/builder.py: Tested by real artifact and CLI integration; mocks: none; instrumented gate exclusion documented.
+src/model_builder/builder.py: Tested by real artifact and CLI integration plus isolated unit paths; mocks: unit tests patch catalog resolution, model construction, and license writing while CLI/artifact integration is unmocked; instrumented gate exclusion documented.
 src/model_builder/factory.py: Tested by real catalog construction paths; mocks: none; instrumented gate exclusion documented.
 src/model_builder/tracing.py: Tested with real Torch modules and tensors; mocks: none; instrumented gate exclusion documented.
 src/model_builder/introspection.py: Tested through real trace metadata and sanitizer tests; mocks: none; instrumented gate exclusion documented.
@@ -19,5 +19,10 @@ src/ui/graph-model.js: Tested all projections, routes, paths, layout, overlays, 
 src/ui/app.js: Tested in real local Chromium across desktop/mobile workflows and visual cases; mocks: none; instrumented gate exclusion documented.
 uat/gherkin.py: Tested feature parsing, duplicate definitions, and missing bindings; mocks: none.
 uat/run.py: Tested dry binding and real Chromium report generation; mocks: none.
+scripts/audit-node.mjs: Tested against the real package lock by the release audit; mocks: none; release-tool exclusion documented.
+scripts/audit-python.py: Tested exact locks, severity sources, alias merging, and exceptions plus the live IPv4 OSV audit; mocks: temporary exception roots and OSV fixture records in unit tests; release-tool exclusion documented.
+scripts/build-ui.mjs: Tested against real generated assets by browser, visual, UAT, and deployable build checks; mocks: none; release-tool exclusion documented.
 scripts/check-coverage.py: Tested valid, missing, malformed, and sub-threshold reports; mocks: temporary report files.
 scripts/check-uat-report.py: Tested valid real-format, dry-run, and missing-artifact reports; mocks: temporary report files.
+scripts/lock-python.py: Not directly unit tested; administrative output is checked by lock diffs and exact-lock policy, while a clean locked install remains required release evidence; mocks: none; release-tool exclusion documented.
+scripts/run-ui-coverage.mjs: Tested by real Node coverage generation and independent LCOV gates; mocks: none; release-tool exclusion documented.
