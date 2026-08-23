@@ -219,3 +219,254 @@ test("continuation marker layout avoids reserved edge intervals and collisions",
     assert.ok(result.placements[index].start - result.placements[index - 1].start >= 32);
   }
 });
+
+test("safe rectangles and edge intervals cover every overlay side", () => {
+  assert.deepEqual(graphSafeRect({}, [null, { width: 0, height: 10 }], 0), {
+    left: 0, top: 0, right: 0, bottom: 0, width: 0, height: 0,
+    insets: { left: 0, top: 0, right: 0, bottom: 0 },
+  });
+  const viewport = { width: 1000, height: 600 };
+  const overlays = {
+    left: { left: 0, top: 200, right: 100, bottom: 300, width: 100, height: 100 },
+    top: { left: 400, top: 0, right: 500, bottom: 80, width: 100, height: 80 },
+    right: { left: 900, top: 200, right: 1000, bottom: 300, width: 100, height: 100 },
+    bottom: { left: 400, top: 520, right: 500, bottom: 600, width: 100, height: 80 },
+  };
+  assert.equal(graphSafeRect(viewport, [overlays.left]).left, 112);
+  assert.equal(graphSafeRect(viewport, [overlays.top]).top, 92);
+  assert.equal(graphSafeRect(viewport, [overlays.right]).right, 888);
+  assert.equal(graphSafeRect(viewport, [overlays.bottom]).bottom, 508);
+
+  const rectangles = Object.values(overlays).map((value) => ({
+    ...value, viewportWidth: viewport.width, viewportHeight: viewport.height,
+  }));
+  for (const side of ["left", "right", "top", "bottom"]) {
+    const intervals = intervalsForEdge(rectangles, side, 120, side === "left" || side === "right" ? 600 : 1000);
+    assert.equal(intervals.length, 1);
+  }
+});
+
+test("marker placement reports items that cannot fit", () => {
+  const result = placeMarkers1D(
+    [{ id: "late", desired: 90 }, { id: "early", desired: 5 }],
+    60,
+    30,
+    [{ start: 0, end: 40 }],
+    8,
+    4,
+  );
+  assert.equal(result.placements.length, 0);
+  assert.deepEqual(result.overflow.map((item) => item.id).sort(), ["early", "late"]);
+});
+
+test("operation projection handles absent graphs, root fallbacks, and both scope boundaries", () => {
+  assert.deepEqual(operationProjection(null), { nodes: [], edges: [], layerGroups: [] });
+  const graph = canonicalGraph();
+  graph.modules[0].module_id = "module-00000";
+  for (const node of graph.nodes.filter((node) => node.module_id === "root")) node.module_id = "module-00000";
+  const root = operationProjection(graph, "missing");
+  assert.equal(root.nodes.length, graph.nodes.length);
+
+  const scopedGraph = canonicalGraph();
+  scopedGraph.nodes.find((node) => node.id === "q").input_ports.push(port("q", "input", 1, "peer", "tk"));
+  scopedGraph.edges.push({
+    edge_id: "k-q", source: "k", source_port: "k:out:0", target: "q", target_port: "q:in:1",
+    tensor_id: "tk", shape: [1, 4], confidence: "exact",
+  });
+  const scoped = operationProjection(scopedGraph, "qmod");
+  assert.ok(scoped.nodes.some((node) => node.kind === "scope_input"));
+  assert.ok(scoped.nodes.some((node) => node.kind === "scope_output"));
+  assert.ok(scoped.edges.some((edge) => edge.source.startsWith("scope_input:")));
+  assert.ok(scoped.edges.some((edge) => edge.target.startsWith("scope_output:")));
+});
+
+test("module projection handles empty input, module calls, parameters, and duplicate tensors", () => {
+  assert.deepEqual(moduleProjection(null), { nodes: [], edges: [], layerGroups: [] });
+  const graph = canonicalGraph();
+  graph.nodes.push({
+    id: "weight", kind: "parameter", name: "weight", module_id: "qmod", module_path: "layer.0.query",
+    input_ports: [], output_ports: [port("weight", "output", 0, "weight", "tw")], source_ref: {},
+  });
+  graph.edges.push({
+    edge_id: "weight-q", source: "weight", source_port: "weight:out:0", target: "q", target_port: "q:in:1",
+    tensor_id: "tw", shape: [4, 4], confidence: "exact",
+  });
+  graph.module_calls = [{
+    module_id: "qmod",
+    input_ports: [port("call-q", "input", 0, "hidden", "t0")],
+    output_ports: [port("call-q", "output", 0, "result", "tq")],
+  }];
+  graph.layer_groups = [];
+  for (const node of graph.nodes) node.layer_group_id = null;
+  graph.edges.push({ ...graph.edges[0], edge_id: "duplicate-input" });
+  const result = moduleProjection(graph, "layer");
+
+  assert.ok(result.nodes.length);
+  assert.equal(new Set(result.edges.map((edge) => `${edge.source}:${edge.target}:${edge.tensor_id}`)).size, result.edges.length);
+  assert.ok(result.nodes.some((node) => node.outputPorts.some((value) => value.name === "result")));
+});
+
+test("block projection rejects empty input and deduplicates self and repeated routes", () => {
+  assert.deepEqual(blocksProjection(null, null), { nodes: [], edges: [], layerGroups: [] });
+  assert.deepEqual(blocksProjection(canonicalGraph(), { blocks: [] }), { nodes: [], edges: [], layerGroups: [] });
+  const sharedOutput = port("one", "output", 0, "output", "shared");
+  const sharedInput = port("two", "input", 0, "input", "shared");
+  const document = { blocks: [
+    { block_uid: "one", block_type: "a", qualified_name: "one", output_ports: [sharedOutput], input_ports: [port("one", "input", 0, "self", "shared")] },
+    { block_uid: "two", block_type: "b", qualified_name: "two", output_ports: [], input_ports: [sharedInput, { ...sharedInput, port_id: "two:in:1" }] },
+  ] };
+  const result = blocksProjection(canonicalGraph(), document);
+  assert.equal(result.edges.length, 1);
+  assert.deepEqual(result.edges[0].shape, [1, 4]);
+});
+
+test("architecture projection covers source, both, missing tensor, and invalid edges", () => {
+  assert.deepEqual(architectureProjection(null, null), { nodes: [], edges: [], layerGroups: [] });
+  const graph = canonicalGraph();
+  graph.tensors = [{ tensor_id: "t0", shape: [1, 4], dtype: "torch.float16", device: "cpu" }];
+  const semantic = {
+    stages: [
+      { stage_id: "one", stage_type: "input", semantic_name: "Input", tags: ["input"], module_ids: ["missing"], input_tensor_ids: [], output_tensor_ids: ["t0", "unknown"] },
+      { stage_id: "two", stage_type: "output", semantic_name: "Output", tags: ["output"], module_ids: [], input_tensor_ids: ["t0", "unknown"], output_tensor_ids: [] },
+    ],
+    stage_edges: [
+      { source_stage_id: "one", target_stage_id: "two", tensor_ids: ["t0"], confidence: "exact" },
+      { source_stage_id: "one", target_stage_id: "two", tensor_ids: ["unknown"], confidence: "exact" },
+      { source_stage_id: "missing", target_stage_id: "two", tensor_ids: ["t0"], confidence: "inferred" },
+    ],
+  };
+  const source = architectureProjection(graph, semantic, "source");
+  const both = architectureProjection(graph, semantic, "both");
+  assert.equal(source.nodes[0].title, "input");
+  assert.match(both.nodes[0].subtitle, /input/);
+  assert.equal(source.nodes[0].outputPorts[1].dtype, "unknown");
+  assert.equal(source.edges.length, 2);
+  assert.deepEqual(source.edges[1].shape, []);
+  assert.equal(architectureProjection({ ...graph, tensors: undefined }, semantic).nodes.length, 2);
+});
+
+test("project dispatch and route parser cover fallbacks and failures", () => {
+  assert.deepEqual(projectGraph({}), { nodes: [], edges: [], layerGroups: [] });
+  const graph = canonicalGraph();
+  const fallbackFamily = projectGraph({ mode: "family", current, index: [] });
+  assert.deepEqual(fallbackFamily.nodes[1].raw.parameters, { total: 32 });
+  assert.equal(projectGraph({ mode: "operation", current, graph }).nodes.length, graph.nodes.length);
+  assert.ok(projectGraph({ mode: "module", current, graph }).nodes.length);
+  assert.deepEqual(projectGraph({ mode: "blocks", current, graph, blocks: null }).nodes, []);
+  assert.deepEqual(projectGraph({ mode: "architecture", current, graph, semantic: null }).nodes, []);
+
+  assert.deepEqual(parseViewerRoute(""), {});
+  assert.deepEqual(parseViewerRoute("https://host/#/version/tiny%20model"), { version: "tiny model" });
+  assert.throws(() => parseViewerRoute("#/compare/only-one"), /requires two/);
+  assert.throws(() => parseViewerRoute("#/unknown/value"), /Invalid route/);
+});
+
+test("layout and bounds cover empty, invalid, cyclic, and default geometry", () => {
+  assert.equal(layoutGraph([], []).size, 0);
+  const nodes = [
+    { id: "a", title: "A", raw: { module_path: "z" } },
+    { id: "b", title: "B", raw: { module_path: "a" } },
+    { id: "orphan", title: "Orphan" },
+  ];
+  const positions = layoutGraph(nodes, [
+    { source: "missing", target: "a" },
+    { source: "a", target: "a" },
+    { source: "a", target: "b" },
+    { source: "b", target: "a" },
+  ]);
+  assert.equal(positions.size, 3);
+  assert.ok(positions.get("a").y !== positions.get("b").y);
+  assert.deepEqual(graphBounds([{ id: "missing" }], new Map()), { width: 400, height: 300 });
+  assert.deepEqual(graphBounds([], new Map()), { width: 400, height: 300 });
+});
+
+test("semantic labels cover source identity and shape fallbacks", () => {
+  const graph = {
+    nodes: [
+      {
+        id: "semantic-id", kind: "aten_op", module_id: "module-a", module_path: "",
+        display_name: "Display A", name: "Name A", inputs: [{ shape: [1, 2] }], outputs: [null, [2, 3], { shape: [1, 3] }],
+      },
+      {
+        id: "module-entity", kind: "aten_op", module_id: "module-b", module_path: "module.b",
+        qualified_name: "module.b", input_ports: [], output_ports: [], name: "Name B",
+      },
+      {
+        id: "source-only", kind: "aten_op", module_id: "module-c", module_path: "",
+        input_ports: [], output_ports: [], name: "Name C",
+      },
+      { id: "display-only", kind: "aten_op", module_id: "module-d", module_path: "", input_ports: [], output_ports: [], display_name: "Display D" },
+      { id: "id-only", kind: "aten_op", module_id: "module-e", module_path: "", input_ports: [], output_ports: [] },
+    ],
+    edges: [],
+    modules: [{ module_id: "module-00000", qualified_name: "<root>" }],
+    layer_groups: [],
+  };
+  const semantic = { entities: {
+    "semantic-id": { semantic_name: "", primary_tag: "attention_or_mixer", source_name: "Entity A" },
+    "module-b": { semantic_name: "Semantic B", primary_tag: "other", qualified_name: "Qualified B" },
+    "source-only": {},
+  } };
+  const semanticResult = projectGraph({ mode: "operation", current, graph, semantic, labelMode: "semantic" });
+  const bothResult = projectGraph({ mode: "operation", current, graph, semantic, labelMode: "both" });
+  const sourceResult = projectGraph({ mode: "operation", current, graph, semantic, labelMode: "source" });
+
+  assert.equal(semanticResult.nodes.find((node) => node.id === "semantic-id").title, "attention or mixer");
+  assert.equal(semanticResult.nodes.find((node) => node.id === "module-entity").title, "Semantic B");
+  assert.equal(bothResult.nodes.find((node) => node.id === "semantic-id").subtitle, "Entity A");
+  assert.equal(sourceResult.nodes.find((node) => node.id === "semantic-id").subtitle, "[2, 3] [1, 3]");
+  assert.equal(sourceResult.nodes.find((node) => node.id === "source-only").title, "Name C");
+  assert.equal(sourceResult.nodes.find((node) => node.id === "display-only").title, "Display D");
+  assert.equal(sourceResult.nodes.find((node) => node.id === "id-only").title, "id-only");
+  assert.equal(semanticResult.nodes.find((node) => node.id === "source-only").title, "Name C");
+});
+
+test("projection fallbacks retain incomplete external and grouped records", () => {
+  const graph = canonicalGraph();
+  graph.nodes.find((node) => node.id === "q").input_ports.push({
+    port_id: "q:in:missing", direction: "input", index: 1, name: "", tensor_id: "", shape: [],
+  });
+  graph.edges.push({
+    edge_id: "missing-q", source: "not-published", source_port: null, target: "q", target_port: "not-found",
+    tensor_id: "", shape: [], confidence: "unresolved",
+  });
+  const scoped = operationProjection(graph, "qmod");
+  const boundary = scoped.nodes.find((node) => node.kind === "scope_input" && node.raw.attributes.external_node_id === null);
+  assert.equal(boundary.title, "From external graph");
+  assert.equal(boundary.outputPorts[0].name, "scope input");
+
+  const grouped = canonicalGraph();
+  grouped.layer_groups = [{ layer_group_id: "missing-group", module_id: "not-a-module", qualified_name: "layer.missing", color_index: 1 }];
+  const query = grouped.nodes.find((node) => node.id === "q");
+  query.layer_group_id = "missing-group";
+  query.module_path = "layer.missing.query";
+  const groupedResult = moduleProjection(grouped);
+  assert.ok(groupedResult.nodes.some((node) => node.id === "group:not-a-module"));
+});
+
+test("remaining projection defaults cover absent ports, shapes, summaries, and duplicate layout IDs", () => {
+  const graph = canonicalGraph();
+  const document = { blocks: [
+    { block_uid: "source", block_type: "a", qualified_name: "source", output_ports: [{ port_id: "source:out:0", tensor_id: "x" }] },
+    { block_uid: "target", block_type: "b", qualified_name: "target", input_ports: [{ port_id: "target:in:0", tensor_id: "x", shape: [2] }] },
+    { block_uid: "empty", block_type: "c", qualified_name: "empty" },
+  ] };
+  assert.deepEqual(blocksProjection(graph, document).edges[0].shape, [2]);
+  document.blocks[1].input_ports[0].shape = null;
+  assert.deepEqual(blocksProjection(graph, document).edges[0].shape, []);
+
+  const family = projectGraph({
+    mode: "family",
+    current,
+    family: { versions: ["summary"] },
+    index: [{ version_id: "summary" }],
+  });
+  assert.equal(family.nodes[1].raw.name, "Tiny");
+  assert.equal(family.nodes[1].raw.parameters, 32);
+
+  const duplicates = [{ id: "same", title: "First" }, { id: "same", title: "Second" }];
+  assert.equal(layoutGraph(duplicates, []).size, 1);
+  assert.deepEqual(graphBounds([{ id: "default" }], new Map([["default", { x: 10, y: 20 }]])), {
+    width: 400, height: 300,
+  });
+});
