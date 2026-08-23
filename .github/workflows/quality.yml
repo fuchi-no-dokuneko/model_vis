@@ -1,0 +1,119 @@
+name: Quality
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "15 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version-file: .python-version
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Create Python environment
+        run: python -m venv venv
+
+      - name: Install CPU Torch
+        run: timeout 60s venv/bin/python -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.12.0+cpu
+
+      - name: Install locked Python dependencies
+        run: timeout 60s venv/bin/python -m pip install --requirement requirements-test.lock
+
+      - name: Install locked Node dependencies
+        run: timeout 60s npm ci --ignore-scripts
+
+      - name: Audit release dependencies
+        run: timeout 60s npm run audit:release
+
+      - name: Run Python unit tests
+        run: timeout 60s venv/bin/python -m pytest -q test/unit
+
+      - name: Generate enforced coverage reports
+        run: |
+          timeout 60s npm run test:coverage:ui
+          timeout 60s npm run test:coverage:python
+          timeout 60s npm run test:coverage:check
+
+      - name: Check deterministic generated catalog
+        run: timeout 60s venv/bin/python -m src.model_builder.drift
+
+      - name: Run Chromium, visual, and responsive tests
+        run: timeout 180s venv/bin/python -m pytest -q test/e2e
+
+      - name: Validate and execute daily Gherkin UAT
+        run: |
+          timeout 60s npm run test:uat:dry
+          timeout 60s npm run test:uat
+          timeout 60s npm run test:uat:check
+
+      - name: Build deployable site
+        run: timeout 60s npm run build-ui -- --model-code model_code --out build
+
+      - name: Scan with SonarQube Cloud
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+        uses: SonarSource/sonarqube-scan-action@v8.1.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Retain quality evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: model-vis-quality-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            artifacts/uat
+            coverage
+            test/visual/actual
+
+      - name: Retain deployable site
+        uses: actions/upload-artifact@v7
+        with:
+          name: model-vis-site-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 7
+          path: build
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: model-vis-site-${{ github.sha }}
+          path: build
+
+      - name: Deploy Cloudflare Pages
+        uses: cloudflare/wrangler-action@v4.0.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy build --project-name=model-vis --branch=main

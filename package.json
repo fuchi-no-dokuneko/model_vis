@@ -17,6 +17,7 @@
     "test:coverage:check": "venv/bin/python scripts/check-coverage.py --python-report coverage/python-core.xml --lcov-report coverage/data-store.lcov --lcov-report coverage/graph-model.lcov",
     "test:uat:dry": "venv/bin/python -m uat.run --dry-run",
     "test:uat": "venv/bin/python -m uat.run",
+    "test:uat:check": "venv/bin/python scripts/check-uat-report.py",
     "audit:release": "venv/bin/python scripts/audit-python.py && node scripts/audit-node.mjs"
   }
 }
