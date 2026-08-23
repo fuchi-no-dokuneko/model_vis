@@ -24,6 +24,14 @@ def wait_for_graph_render(driver) -> None:
     )
 
 
+def selected_graph_id(driver) -> str:
+    return WebDriverWait(driver, 10).until(
+        lambda current: current.execute_script(
+            "return document.querySelector('.graph-node.selected')?.dataset.id || null"
+        )
+    )
+
+
 def touch_tap(driver, element) -> None:
     rect = element.rect
     x = rect["x"] + rect["width"] / 2
@@ -233,7 +241,7 @@ def test_semantic_architecture_explain_journey_modes_and_deep_routes(loaded_view
     assert len(stages) >= 4
     assert driver.find_elements(By.CSS_SELECTOR, ".stage-stats")
     click_first(driver, '.graph-node[data-kind="semantic_stage"]')
-    selected_stage = driver.find_element(By.CSS_SELECTOR, ".graph-node.selected").get_attribute("data-id")
+    selected_stage = selected_graph_id(driver)
     driver.find_element(By.CSS_SELECTOR, '[data-panel="explain"]').click()
     wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, ".explain-card"))
     assert driver.find_elements(By.CSS_SELECTOR, ".semantic-tag")
@@ -244,24 +252,29 @@ def test_semantic_architecture_explain_journey_modes_and_deep_routes(loaded_view
         Select(driver.find_element(By.ID, "label-mode")).select_by_value(labels)
         wait.until(lambda current: current.find_element(By.ID, "label-mode").get_attribute("value") == labels)
         wait_for_graph_render(driver)
-        assert driver.find_element(By.CSS_SELECTOR, ".graph-node.selected").get_attribute("data-id") == selected_stage
+        assert selected_graph_id(driver) == selected_stage
 
     driver.find_elements(By.CSS_SELECTOR, ".journey-step")[1].click()
     wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, ".graph-node.selected"))
-    selected_stage = driver.find_element(By.CSS_SELECTOR, ".graph-node.selected").get_attribute("data-id")
+    selected_stage = selected_graph_id(driver)
     assert "/stage/" in driver.find_element(By.ID, "uri-input").get_attribute("value")
 
     Select(driver.find_element(By.ID, "detail-mode")).select_by_value("standard")
     wait.until(lambda current: current.find_element(By.ID, "label-mode").get_attribute("value") == "both")
     wait_for_graph_render(driver)
-    assert driver.find_element(By.CSS_SELECTOR, ".graph-node.selected").get_attribute("data-id") == selected_stage
+    assert selected_graph_id(driver) == selected_stage
     Select(driver.find_element(By.ID, "detail-mode")).select_by_value("trace")
     wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, '.graph-node[data-kind="aten_op"]'))
     saved_stage = driver.execute_script("return JSON.parse(localStorage.getItem('model-vis-view-state')).selectedStageId")
     assert saved_stage == selected_stage
     Select(driver.find_element(By.ID, "detail-mode")).select_by_value("beginner")
     wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, '.graph-node[data-kind="semantic_stage"]'))
-    assert driver.find_element(By.CSS_SELECTOR, ".graph-node.selected").get_attribute("data-id") == selected_stage
+    def selected_stage_restored(current) -> bool:
+        return current.execute_script(
+            "return document.querySelector('.graph-node.selected')?.dataset.id || null"
+        ) == selected_stage
+
+    wait.until(selected_stage_restored)
 
     deep_uri = driver.find_element(By.ID, "uri-input").get_attribute("value")
     driver.refresh()
@@ -308,7 +321,7 @@ def test_viewport_controls_support_pointer_touch_enter_and_space(driver, viewer_
     wait_for_graph_render(driver)
     selected = driver.find_element(By.CSS_SELECTOR, ".graph-node")
     driver.execute_script("arguments[0].click()", selected)
-    selected_id = driver.find_element(By.CSS_SELECTOR, ".graph-node.selected").get_attribute("data-id")
+    selected_id = selected_graph_id(driver)
 
     def prepare_marker(corner: int):
         for offset in range(4):
@@ -349,7 +362,7 @@ def test_viewport_controls_support_pointer_touch_enter_and_space(driver, viewer_
         wait.until(lambda current: current.find_element(By.ID, "graph-canvas").get_attribute("style") != before_transform)
         wait_for_graph_render(driver)
         assert driver.execute_script("return window.__markerActivations") == 1
-        assert driver.find_element(By.CSS_SELECTOR, ".graph-node.selected").get_attribute("data-id") == selected_id
+        assert selected_graph_id(driver) == selected_id
         target = wait.until(lambda current: current.find_element(By.CSS_SELECTOR, f'.graph-node[data-id="{target_id}"]'))
         assert target.is_displayed()
         target_rect = target.rect
@@ -502,7 +515,7 @@ def test_architecture_actions_have_real_hit_targets_and_breadcrumbs_sync(driver,
     wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, '.graph-node[data-kind="semantic_stage"].selected'))
     wait_for_graph_render(driver)
     crumb_text = [item.text for item in driver.find_elements(By.CSS_SELECTOR, "#breadcrumbs .breadcrumb")]
-    selected_stage = driver.find_element(By.CSS_SELECTOR, ".graph-node.selected").get_attribute("data-id")
+    selected_stage = selected_graph_id(driver)
     assert crumb_text[-2] == "Architecture"
     assert "encoder" not in " / ".join(crumb_text).lower()
     assert f"/stage/{selected_stage}" in driver.find_element(By.ID, "uri-input").get_attribute("value")
