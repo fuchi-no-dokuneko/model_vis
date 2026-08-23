@@ -12,6 +12,9 @@
     "test": "node --test test/ui/*.test.mjs",
     "test:e2e": "venv/bin/python -m pytest test/e2e/test_viewer.py",
     "test:visual": "venv/bin/python -m pytest test/e2e/test_visual.py",
+    "test:coverage:ui": "node scripts/run-ui-coverage.mjs",
+    "test:coverage:python": "venv/bin/python -m pytest -q test/unit/test_catalog_registry.py test/unit/test_config_provenance.py test/unit/test_guard.py test/unit/test_util.py --cov=src.model_builder.catalog --cov=src.model_builder.config_provenance --cov=src.model_builder.guard --cov=src.model_builder.registry --cov=src.model_builder.util --cov-branch --cov-report=xml:coverage/python-core.xml",
+    "test:coverage:check": "venv/bin/python scripts/check-coverage.py --python-report coverage/python-core.xml --lcov-report coverage/data-store.lcov --lcov-report coverage/graph-model.lcov",
     "test:uat:dry": "venv/bin/python -m uat.run --dry-run",
     "test:uat": "venv/bin/python -m uat.run",
     "audit:release": "venv/bin/python scripts/audit-python.py && node scripts/audit-node.mjs"

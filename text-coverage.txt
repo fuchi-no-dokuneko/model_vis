@@ -1,0 +1,22 @@
+src/model_builder/catalog.py: Tested parser success, sections, comments, missing, empty, and duplicate catalogs; mocks: none.
+src/model_builder/config_provenance.py: Tested differences, pinned metadata, compatibility, missing and mismatched official configs; mocks: none.
+src/model_builder/guard.py: Tested network blocking, environment restoration, and weight artifact scans; mocks: none.
+src/model_builder/registry.py: Tested full real catalog, aliases, serialization, and resolution failures; mocks: none.
+src/model_builder/util.py: Tested slugs, deterministic hashes, JSON reads/writes, tuples, and nonfinite values; mocks: none.
+src/model_builder/builder.py: Tested by real artifact and CLI integration; mocks: none; instrumented gate exclusion documented.
+src/model_builder/factory.py: Tested by real catalog construction paths; mocks: none; instrumented gate exclusion documented.
+src/model_builder/tracing.py: Tested with real Torch modules and tensors; mocks: none; instrumented gate exclusion documented.
+src/model_builder/introspection.py: Tested through real trace metadata and sanitizer tests; mocks: none; instrumented gate exclusion documented.
+src/model_builder/blocks.py: Tested through real Torch block generation and deduplication; mocks: none; instrumented gate exclusion documented.
+src/model_builder/semantics.py: Tested with real generated fixtures and all published semantic models; mocks: none; instrumented gate exclusion documented.
+src/model_builder/staged.py: Tested staged catalog selection and merge behavior; mocks: none; instrumented gate exclusion documented.
+src/model_builder/hf_config.py: Tested pinned mapping validation and config parsing; mocks: none; instrumented gate exclusion documented.
+src/model_builder/validate.py: Tested by full deterministic drift validation; mocks: none; instrumented gate exclusion documented.
+src/model_builder/drift.py: Tested against two full temporary catalog generations; mocks: none; instrumented gate exclusion documented.
+src/model_builder/__main__.py: Tested through real planning CLI subprocesses; mocks: none; instrumented gate exclusion documented.
+src/ui/data-store.js: Tested fetch caching, retries, text/JSON assets, references, and config differences; mocks: injected deterministic fetcher.
+src/ui/graph-model.js: Tested all projections, routes, paths, layout, overlays, labels, incomplete data, and boundaries; mocks: none.
+src/ui/app.js: Tested in real local Chromium across desktop/mobile workflows and visual cases; mocks: none; instrumented gate exclusion documented.
+uat/gherkin.py: Tested feature parsing, duplicate definitions, and missing bindings; mocks: none.
+uat/run.py: Tested dry binding and real Chromium report generation; mocks: none.
+scripts/check-coverage.py: Tested valid, missing, malformed, and sub-threshold reports; mocks: temporary report files.
