@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { blocksProjection, graphBounds, layoutGraph, moduleProjection, operationProjection, projectGraph, tracePath } from "../../src/ui/graph-model.js";
+import {
+  architectureProjection, blocksProjection, graphBounds, graphSafeRect, intervalsForEdge, layoutGraph,
+  moduleProjection, operationProjection, parseViewerRoute, placeMarkers1D, projectGraph,
+  semanticZoomTier, tracePath,
+} from "../../src/ui/graph-model.js";
 
 const current = {
   family_id: "tiny",
@@ -116,6 +120,37 @@ test("blocks projection exposes generated architectural blocks and exact tensor 
   assert.equal(result.edges[0].tensor_id, "tq");
 });
 
+test("architecture projection uses generated stages and exact boundary tensors", () => {
+  const graph = canonicalGraph();
+  graph.tensors = ["t0", "t1"].map((tensor_id) => ({ tensor_id, shape: [1, 4], dtype: "torch.float32", device: "cpu" }));
+  const semantic = {
+    stages: [
+      { stage_id: "stage-input", stage_type: "input_adapter", semantic_name: "Model input", tags: ["input"], module_ids: ["root"], operation_ids: [], input_tensor_ids: [], output_tensor_ids: ["t0"] },
+      { stage_id: "stage-output", stage_type: "output_adapter", semantic_name: "Model output", tags: ["output_or_head"], module_ids: ["root"], operation_ids: [], input_tensor_ids: ["t0"], output_tensor_ids: [] },
+    ],
+    stage_edges: [{ source_stage_id: "stage-input", target_stage_id: "stage-output", tensor_ids: ["t0"], confidence: "exact" }],
+  };
+  const result = architectureProjection(graph, semantic, "semantic");
+
+  assert.deepEqual(result.nodes.map((node) => node.title), ["Model input", "Model output"]);
+  assert.equal(result.edges[0].tensor_id, "t0");
+  assert.equal(result.edges[0].source_port, "stage-input:out:0");
+  assert.equal(result.edges[0].target_port, "stage-output:in:0");
+});
+
+test("explicit route parser supports nested stages, compare routes, and legacy routes", () => {
+  assert.deepEqual(parseViewerRoute("#/version/dinov3/view/architecture/stage/stage-003"), {
+    version: "dinov3", view: "architecture", stage: "stage-003",
+  });
+  assert.deepEqual(parseViewerRoute("#/compare/apertus/bert/view/architecture/detail/standard/labels/both"), {
+    compare: ["apertus", "bert"], view: "architecture", detail: "standard", labels: "both",
+  });
+  assert.deepEqual(parseViewerRoute("modelvis:/version/bert/view/module/operation/op-1"), {
+    version: "bert", view: "module", operation: "op-1",
+  });
+  assert.throws(() => parseViewerRoute("#/version/bert/unpaired"), /Invalid route segment/);
+});
+
 test("path tracing follows all upstream and downstream branches", () => {
   const graph = canonicalGraph();
   const upstream = tracePath(graph.edges, "add", "upstream");
@@ -148,4 +183,39 @@ test("graph bounds include persisted custom node dimensions", () => {
   const positions = new Map([["a", { x: 120, y: 90 }]]);
   const sizes = new Map([["a", { width: 640, height: 420 }]]);
   assert.deepEqual(graphBounds(nodes, positions, sizes), { width: 840, height: 590 });
+});
+
+test("semantic zoom tiers use the amendment boundaries", () => {
+  assert.equal(semanticZoomTier(0.16), "overview");
+  assert.equal(semanticZoomTier(0.35), "compact");
+  assert.equal(semanticZoomTier(0.69), "compact");
+  assert.equal(semanticZoomTier(0.70), "normal");
+});
+
+test("safe graph rectangle reserves bottom overlays consistently", () => {
+  const safe = graphSafeRect({ width: 1000, height: 700 }, [
+    { left: 12, top: 590, right: 180, bottom: 688, width: 168, height: 98 },
+    { left: 850, top: 590, right: 988, bottom: 688, width: 138, height: 98 },
+  ]);
+  assert.deepEqual({ left: safe.left, top: safe.top, right: safe.right, bottom: safe.bottom }, {
+    left: 12, top: 12, right: 988, bottom: 578,
+  });
+});
+
+test("continuation marker layout avoids reserved edge intervals and collisions", () => {
+  const rectangles = [{
+    left: 0, top: 40, right: 120, bottom: 100, width: 120, height: 60,
+    viewportWidth: 800, viewportHeight: 500,
+  }];
+  const reserved = intervalsForEdge(rectangles, "left", 184, 500);
+  const result = placeMarkers1D([
+    { id: "a", desired: 50 },
+    { id: "b", desired: 55 },
+    { id: "c", desired: 120 },
+  ], 500, 24, reserved, 8, 4);
+  assert.equal(result.overflow.length, 0);
+  assert.ok(result.placements[0].start >= 108);
+  for (let index = 1; index < result.placements.length; index += 1) {
+    assert.ok(result.placements[index].start - result.placements[index - 1].start >= 32);
+  }
 });
