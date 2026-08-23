@@ -477,7 +477,13 @@ def test_architecture_actions_have_real_hit_targets_and_breadcrumbs_sync(driver,
 
         actions = load_actions(minimum_zoom)
         toggle_card(actions[2])
-        wait.until(lambda current: "stage-collapsed" in current.find_element(By.CSS_SELECTOR, ".graph-node.selected").get_attribute("class"))
+        def collapsed(current) -> bool:
+            try:
+                return "stage-collapsed" in current.find_element(By.CSS_SELECTOR, ".graph-node.selected").get_attribute("class")
+            except StaleElementReferenceException:
+                return False
+
+        wait.until(collapsed)
         wait_for_graph_render(driver)
 
         def collapsed_toggle(current):

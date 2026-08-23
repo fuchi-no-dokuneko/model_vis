@@ -8,12 +8,10 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 
-from test.e2e.browser import set_exact_viewport
+from test.e2e.browser import create_chrome_driver, set_exact_viewport
+from test.e2e.browser_coverage import BrowserCoverage
 
 
 ROOT = Path(__file__).parents[2]
@@ -46,27 +44,27 @@ def viewer_url() -> Iterator[str]:
 
 
 @pytest.fixture(scope="session")
-def driver(tmp_path_factory: pytest.TempPathFactory) -> Iterator[webdriver.Chrome]:
-    options = Options()
-    options.binary_location = "/snap/chromium/current/usr/lib/chromium-browser/chrome"
-    options.add_argument("--headless=new")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--remote-debugging-pipe")
-    options.add_argument("--hide-scrollbars")
-    options.add_argument("--force-device-scale-factor=1")
-    options.add_argument(f"--user-data-dir={tmp_path_factory.mktemp('chromium-profile')}")
-    browser = webdriver.Chrome(service=Service("/usr/bin/chromedriver"), options=options)
-    browser.set_page_load_timeout(20)
+def driver(tmp_path_factory: pytest.TempPathFactory) -> Iterator:
+    browser = create_chrome_driver(tmp_path_factory.mktemp("chromium-profile"))
+    browser_coverage = BrowserCoverage(browser, ROOT)
+    browser_coverage.start()
+    browser.model_vis_coverage = browser_coverage
     try:
         yield browser
     finally:
+        browser_coverage.write_lcov(ROOT / "coverage" / "browser.lcov")
         browser.quit()
 
 
+@pytest.fixture(autouse=True)
+def capture_browser_coverage(request: pytest.FixtureRequest) -> Iterator[None]:
+    yield
+    if "driver" in request.fixturenames:
+        request.getfixturevalue("driver").model_vis_coverage.capture()
+
+
 @pytest.fixture
-def loaded_viewer(driver: webdriver.Chrome, viewer_url: str) -> webdriver.Chrome:
+def loaded_viewer(driver, viewer_url: str):
     set_exact_viewport(driver, 1440, 900)
     driver.get(viewer_url)
     wait = WebDriverWait(driver, 15)

@@ -12,6 +12,8 @@
     "test": "node --test test/ui/*.test.mjs",
     "test:e2e": "venv/bin/python -m pytest test/e2e/test_viewer.py",
     "test:visual": "venv/bin/python -m pytest test/e2e/test_visual.py",
+    "test:uat:dry": "venv/bin/python -m uat.run --dry-run",
+    "test:uat": "venv/bin/python -m uat.run",
     "audit:release": "venv/bin/python scripts/audit-python.py && node scripts/audit-node.mjs"
   }
 }
