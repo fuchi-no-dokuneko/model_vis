@@ -78,6 +78,32 @@ npm run test:e2e
 npm run test:visual
 ```
 
+## Quality and release
+
+The enforced coverage scope and reviewed integration-only exclusions are listed
+in `docs/coverage-exclusions.md`. Regenerate and enforce the independent 95%
+line and branch gates with:
+
+```bash
+npm run test:coverage:ui
+npm run test:coverage:python
+npm run test:coverage:check
+```
+
+Run the daily feature binding check and real Chromium acceptance flow with:
+
+```bash
+npm run test:uat:dry
+npm run test:uat
+npm run test:uat:check
+```
+
+The real run writes a boolean checklist, screenshots, browser LCOV, and Sonar
+generic test execution XML under `artifacts/uat/`. `.github/workflows/quality.yml`
+runs locked installs, release audits, unit/coverage/drift/browser/UAT checks, and
+the SonarQube Cloud quality gate on pushes, pull requests, and daily schedule.
+Main-branch Cloudflare Pages deployment runs only after that job succeeds.
+
 Partial development builds can use `--include BERT` or `--limit 5`. They are intentionally rejected by full-catalog validation.
 
 The expanded 51-model development scope combines the original verified 21-model baseline with 30 additional families selected in alphabetical candidate order and validated through isolated offline traces:
