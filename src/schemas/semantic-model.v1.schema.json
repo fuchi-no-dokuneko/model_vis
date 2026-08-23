@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "version_id", "generated_at", "generator_version", "class_tag_vocab_version", "domain", "task", "rule_pack_ids", "stages", "stage_edges", "entities", "journeys", "metrics", "coverage"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "version_id": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "minLength": 1},
+    "generator_version": {"const": "1.0.0"},
+    "class_tag_vocab_version": {"const": "1.0.0"},
+    "domain": {"enum": ["audio", "vision", "text", "multimodal", "other"]},
+    "task": {"type": "string"},
+    "rule_pack_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "stages": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/stage"}},
+    "stage_edges": {"type": "array", "items": {"$ref": "#/$defs/stageEdge"}},
+    "entities": {"type": "object", "minProperties": 1, "additionalProperties": {"$ref": "#/$defs/entity"}},
+    "journeys": {"type": "array", "items": {"$ref": "#/$defs/journey"}},
+    "metrics": {"$ref": "#/$defs/metrics"},
+    "coverage": {"$ref": "#/$defs/coverage"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "confidence": {"enum": ["verified_rule", "inferred", "technical_fallback"]},
+    "importance": {"enum": ["primary", "secondary", "implementation_detail"]},
+    "tag": {"enum": ["input", "embedding_or_projection", "position_or_context", "attention_or_mixer", "feed_forward", "normalization_or_residual", "aggregation_or_decoder", "output_or_head", "other"]},
+    "stageType": {"enum": ["input_adapter", "preprocessing", "tokenization", "input_embedding", "position_encoding", "backbone", "attention", "state_space_or_recurrence", "feed_forward", "normalization", "residual_and_scaling", "cross_modal_fusion", "aggregation", "task_head", "output_adapter", "loss_or_training_only", "other"]},
+    "shape": {"type": "array", "items": {"type": "integer"}},
+    "stage": {
+      "type": "object",
+      "required": ["stage_id", "stage_type", "semantic_name", "what", "tags", "module_ids", "operation_ids", "entity_ids", "input_tensor_ids", "output_tensor_ids", "input_shapes", "output_shapes", "order", "importance", "confidence", "provenance", "module_count", "repeated_block_count", "observed_block_count", "template_instance_count", "expanded_instances_observed", "parameter_count", "operation_count"],
+      "properties": {
+        "stage_id": {"type": "string", "minLength": 1},
+        "stage_type": {"$ref": "#/$defs/stageType"},
+        "semantic_name": {"type": "string"},
+        "what": {"type": "string", "minLength": 1},
+        "tags": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/tag"}, "uniqueItems": true},
+        "module_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "operation_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "entity_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true},
+        "input_tensor_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "output_tensor_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "input_shapes": {"type": "array", "items": {"$ref": "#/$defs/shape"}},
+        "output_shapes": {"type": "array", "items": {"$ref": "#/$defs/shape"}},
+        "order": {"type": "integer", "minimum": 0},
+        "importance": {"$ref": "#/$defs/importance"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "provenance": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "module_count": {"type": "integer", "minimum": 0},
+        "repeated_block_count": {"type": "integer", "minimum": 0},
+        "observed_block_count": {"type": "integer", "minimum": 0},
+        "template_instance_count": {"type": "integer", "minimum": 0},
+        "expanded_instances_observed": {"type": "boolean"},
+        "parameter_count": {"type": "integer", "minimum": 0},
+        "operation_count": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "stageEdge": {
+      "type": "object",
+      "required": ["source_stage_id", "target_stage_id", "tensor_ids", "confidence"],
+      "properties": {
+        "source_stage_id": {"type": "string"},
+        "target_stage_id": {"type": "string"},
+        "tensor_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true},
+        "confidence": {"enum": ["exact", "lineage", "inferred", "ambiguous", "unresolved"]}
+      },
+      "additionalProperties": false
+    },
+    "entity": {
+      "type": "object",
+      "required": ["entity_id", "entity_kind", "source_name", "semantic_name", "source_class", "qualified_name", "interface_signature", "tags", "primary_tag", "stage_id", "input_tensor_ids", "output_tensor_ids", "input_shapes", "output_shapes", "what", "importance", "confidence", "provenance", "graph_position", "source_ref"],
+      "properties": {
+        "entity_id": {"type": "string"},
+        "entity_kind": {"enum": ["module", "operation", "graph_input", "graph_output", "parameter", "buffer", "literal", "unresolved_input", "other"]},
+        "source_name": {"type": "string"},
+        "semantic_name": {"type": "string"},
+        "source_class": {"type": ["string", "null"]},
+        "qualified_name": {"type": ["string", "null"]},
+        "interface_signature": {"type": ["string", "null"]},
+        "tags": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/tag"}, "uniqueItems": true},
+        "primary_tag": {"$ref": "#/$defs/tag"},
+        "stage_id": {"type": "string"},
+        "input_tensor_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "output_tensor_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "input_shapes": {"type": "array", "items": {"$ref": "#/$defs/shape"}},
+        "output_shapes": {"type": "array", "items": {"$ref": "#/$defs/shape"}},
+        "what": {"type": "string", "minLength": 1},
+        "importance": {"$ref": "#/$defs/importance"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "provenance": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "graph_position": {"type": "object", "required": ["order", "total"], "properties": {"order": {"type": "integer", "minimum": 0}, "total": {"type": "integer", "minimum": 1}}, "additionalProperties": false},
+        "source_ref": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "journeyStep": {
+      "type": "object",
+      "required": ["step_id", "tensor_id", "node_id", "stage_id", "representation", "shape", "dtype", "transform", "explanation", "route_confidence"],
+      "properties": {
+        "step_id": {"type": "string"},
+        "tensor_id": {"type": "string"},
+        "node_id": {"type": "string"},
+        "stage_id": {"type": "string"},
+        "representation": {"type": "string"},
+        "shape": {"$ref": "#/$defs/shape"},
+        "dtype": {"type": "string"},
+        "transform": {"type": "string"},
+        "explanation": {"type": "string"},
+        "route_confidence": {"enum": ["exact", "lineage", "inferred", "ambiguous", "unresolved"]}
+      },
+      "additionalProperties": false
+    },
+    "journey": {
+      "type": "object",
+      "required": ["journey_id", "name", "input_tensor_id", "output_tensor_ids", "preferred_boundary_tensor_ids", "route_confidence", "steps"],
+      "properties": {
+        "journey_id": {"type": "string"},
+        "name": {"type": "string"},
+        "input_tensor_id": {"type": "string"},
+        "output_tensor_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "preferred_boundary_tensor_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "route_confidence": {"enum": ["exact", "lineage", "inferred", "ambiguous", "unresolved"]},
+        "steps": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/journeyStep"}}
+      },
+      "additionalProperties": false
+    },
+    "distribution": {
+      "type": "object",
+      "required": ["stage_id", "value", "percentage"],
+      "properties": {"stage_id": {"type": "string"}, "value": {"type": "integer", "minimum": 0}, "percentage": {"type": "number", "minimum": 0, "maximum": 1}},
+      "additionalProperties": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": ["trace_parameter_total", "official_parameter_estimate", "trace_operation_total", "parameter_distribution", "operation_distribution"],
+      "properties": {
+        "trace_parameter_total": {"type": "integer", "minimum": 0},
+        "official_parameter_estimate": {"type": ["integer", "null"], "minimum": 0},
+        "trace_operation_total": {"type": "integer", "minimum": 0},
+        "parameter_distribution": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/distribution"}},
+        "operation_distribution": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/distribution"}}
+      },
+      "additionalProperties": false
+    },
+    "coverage": {
+      "type": "object",
+      "required": ["module_stage_fraction", "class_tag_fraction", "parameter_stage_fraction", "operation_stage_fraction", "parameter_accounted_fraction", "operation_accounted_fraction", "verified_module_fraction"],
+      "properties": {
+        "module_stage_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "class_tag_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "parameter_stage_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "operation_stage_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "parameter_accounted_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "operation_accounted_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "verified_module_fraction": {"type": "number", "minimum": 0, "maximum": 1}
+      },
+      "additionalProperties": false
+    }
+  }
+}

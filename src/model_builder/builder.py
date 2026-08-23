@@ -23,13 +23,26 @@ from .factory import create_model
 from .guard import NoNetworkGuard, scan_forbidden_artifacts
 from .hf_config import ConfigMappingEntry, load_mapping, parse_config
 from .registry import ResolvedVersion, resolve_catalog
+from .semantics import (
+    INTERFACE_TAGS_REF,
+    SEMANTIC_GENERATOR_VERSION,
+    SEMANTIC_REPORT_REF,
+    SEMANTIC_SCHEMA_REF,
+    load_registry,
+    load_stage_rules,
+    materialize_semantic,
+    publish_semantic_contracts,
+    semantic_index_entry,
+    semantic_index_document,
+    semantic_report_document,
+)
 from .staged import attach_template_provenance, plan_trace
 from .tracing import trace_model
 from .util import read_json, sha256_json, write_json
 
 
 REDISTRIBUTABLE_SOURCE_PACKAGES = {"project", "torch", "transformers", "diffusers"}
-CACHE_REVISION = "official-config-unique-stage-v4"
+CACHE_REVISION = "semantic-interface-metadata-v5"
 
 
 def normalized_scope(catalog: Catalog, versions: Iterable[ResolvedVersion]) -> dict[str, Any]:
@@ -498,6 +511,7 @@ def build(
     official_config_dir: Path | None = None,
 ) -> dict[str, Any]:
     catalog = read_catalog(catalog_path)
+    generated_at = dt.datetime.now(dt.timezone.utc).isoformat()
     versions = resolve_catalog(catalog.entries)
     scope = normalized_scope(catalog, versions)
     scope_out.parent.mkdir(parents=True, exist_ok=True)
@@ -545,13 +559,17 @@ def build(
     if out.exists():
         shutil.rmtree(out)
     out.mkdir(parents=True, exist_ok=True)
+    publish_semantic_contracts(out)
     if mapping_document is not None:
         write_json(out / "configs" / "hf-config-mapping.v1.json", mapping_document)
     cache.mkdir(parents=True, exist_ok=True)
     execution_records: dict[str, dict[str, Any]] = {}
     failed_structures: dict[str, dict[str, Any]] = {}
     version_summaries: list[dict[str, Any]] = []
+    semantic_entries: list[dict[str, Any]] = []
     family_versions: dict[str, list[str]] = defaultdict(list)
+    semantic_registry = load_registry()
+    semantic_stage_rules = load_stage_rules()
 
     with NoNetworkGuard():
         for version in selected:
@@ -630,6 +648,22 @@ def build(
                 )
             else:
                 summary["warnings"] = []
+            semantic, semantic_ref = materialize_semantic(
+                out,
+                summary,
+                generated_at=generated_at,
+                registry=semantic_registry,
+                stage_rules=semantic_stage_rules,
+            )
+            summary["semantic_ref"] = semantic_ref
+            summary["artifact_refs"] = sorted(set([*summary.get("artifact_refs", []), semantic_ref]))
+            semantic_entries.append(
+                semantic_index_entry(
+                    semantic,
+                    semantic_ref,
+                    version_status=summary.get("status", "passed"),
+                )
+            )
             write_json(out / "versions" / f"{version.version_id}.json", summary)
             version_summaries.append(summary)
 
@@ -653,6 +687,24 @@ def build(
     report["no_weight_download_guard"] = "passed"
     report["source_redistribution_license_gate"] = "passed"
     report["environment"] = {"python": platform.python_version(), "torch": torch.__version__, "device": "cpu"}
+    semantic_report = semantic_report_document(
+        semantic_entries,
+        generated_at=generated_at,
+        catalog_family_count=len(catalog.entries),
+        catalog_version_count=len(versions),
+        selected_family_count=len({version.family_id for version in selected}),
+        selected_version_count=len(selected),
+        generated_family_count=len(family_versions),
+        failures=report["failures"],
+    )
+    write_json(out / SEMANTIC_REPORT_REF, semantic_report)
+    report["semantic_generation"] = {
+        "report_ref": SEMANTIC_REPORT_REF,
+        "generator_version": SEMANTIC_GENERATOR_VERSION,
+        "generated_at": generated_at,
+        "counts": semantic_report["counts"],
+        "catalog": semantic_report["catalog"],
+    }
     write_json(out / "indexes" / "build_report.v2.json", report)
     search = [{
         "family_id": summary["family_id"],
@@ -670,6 +722,10 @@ def build(
         "warnings": summary.get("warnings", []),
     } for summary in version_summaries]
     write_json(out / "indexes" / "search.v2.json", search)
+    write_json(
+        out / "indexes" / "semantic.v1.json",
+        semantic_index_document(semantic_entries, generated_at),
+    )
     redistributed_packages = {
         read_json(path).get("package")
         for path in (out / "sources").glob("source.*.json")
@@ -692,13 +748,21 @@ def build(
         _write_licenses(Path.cwd(), out, redistributed)
     manifest = {
         "schema_version": SCHEMA_VERSION,
-        "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+        "generated_at": generated_at,
         "builder_version": __version__,
         "scope_hash": "sha256." + sha256_json(scope),
         "families": sorted(family_versions),
         "versions": [summary["version_id"] for summary in version_summaries],
         "asset_index": "indexes/assets.v2.json",
         "search_index": "indexes/search.v2.json",
+        "semantic_index": "indexes/semantic.v1.json",
+        "semantic_report": SEMANTIC_REPORT_REF,
+        "semantic_generated_at": generated_at,
+        "semantic_generator_version": SEMANTIC_GENERATOR_VERSION,
+        "semantic_contracts": {
+            "schema_ref": SEMANTIC_SCHEMA_REF,
+            "interface_tags_ref": INTERFACE_TAGS_REF,
+        },
         "license_manifest": "indexes/license_manifest.v2.json",
         "build_report": "indexes/build_report.v2.json",
         "cloudflare_pages_check": {"file_count": 0, "max_file_size_bytes": 0, "passed": False},

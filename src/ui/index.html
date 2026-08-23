@@ -17,12 +17,15 @@
       <input id="uri-input" aria-label="Model location" autocomplete="off" spellcheck="false" value="modelvis:/">
     </form>
     <nav class="mode-tabs" aria-label="Viewer mode">
-      <button class="mode active" data-mode="family">Families</button>
+      <button class="mode" data-mode="architecture">Architecture</button>
+      <button class="mode active" data-mode="family" aria-current="page">Families</button>
       <button class="mode" data-mode="module">Modules</button>
       <button class="mode" data-mode="blocks">Blocks</button>
       <button class="mode" data-mode="operation">Operations</button>
     </nav>
     <div class="toolbar-actions">
+      <label class="view-option"><span>Detail</span><select id="detail-mode" aria-label="Detail mode"><option value="beginner">Beginner</option><option value="standard">Standard</option><option value="trace">Trace</option></select></label>
+      <label class="view-option"><span>Labels</span><select id="label-mode" aria-label="Label mode"><option value="semantic">Semantic</option><option value="both">Both</option><option value="source">Source</option></select></label>
       <button id="density-button" class="icon-button" title="Expand graph detail" aria-label="Expand graph detail">⊞</button>
       <button id="compare-button" title="Compare selected models"><span class="button-label">Compare</span><span id="compare-count" class="count-badge" hidden>0</span></button>
       <button id="theme-button" class="icon-button" title="Switch to dark theme" aria-label="Switch to dark theme" aria-pressed="false">◐</button>
@@ -35,9 +38,9 @@
   <main class="workspace">
     <aside id="sidebar" class="sidebar" aria-label="Navigator">
       <div class="navigator-tabs" role="tablist" aria-label="Navigator view">
-        <button class="navigator-tab active" data-navigator="catalog" role="tab">Catalog</button>
-        <button class="navigator-tab" data-navigator="modules" role="tab">Modules</button>
-        <button class="navigator-tab" data-navigator="files" role="tab">Files</button>
+        <button class="navigator-tab active" data-navigator="catalog" role="tab" aria-selected="true" tabindex="0">Catalog</button>
+        <button class="navigator-tab" data-navigator="modules" role="tab" aria-selected="false" tabindex="-1">Modules</button>
+        <button class="navigator-tab" data-navigator="files" role="tab" aria-selected="false" tabindex="-1">Files</button>
       </div>
       <section id="catalog-navigator" class="navigator-panel active">
         <div class="sidebar-head">
@@ -70,16 +73,18 @@
     <section class="graph-region" aria-label="Model graph">
       <div class="canvas-toolbar">
         <nav id="breadcrumbs" class="breadcrumbs" aria-label="Model location"></nav>
-        <label class="graph-search"><span aria-hidden="true">⌕</span><input id="graph-search" type="search" placeholder="Search graph" autocomplete="off"></label>
-        <div class="path-controls" role="group" aria-label="Trace tensor path">
-          <button class="path-control" data-path-mode="upstream" disabled>Inputs</button>
-          <button class="path-control" data-path-mode="downstream" disabled>Outputs</button>
-          <button class="path-control" data-path-mode="isolate" disabled>Path</button>
-        </div>
-        <div class="zoom-controls">
-          <button id="zoom-out" class="icon-button" title="Zoom out" aria-label="Zoom out">−</button>
-          <output id="zoom-value">100%</output>
-          <button id="zoom-in" class="icon-button" title="Zoom in" aria-label="Zoom in">+</button>
+        <div class="canvas-tools">
+          <label class="graph-search"><span aria-hidden="true">⌕</span><input id="graph-search" type="search" placeholder="Search graph" autocomplete="off"></label>
+          <div class="path-controls" role="group" aria-label="Trace tensor path">
+            <button class="path-control" data-path-mode="upstream" disabled>Inputs</button>
+            <button class="path-control" data-path-mode="downstream" disabled>Outputs</button>
+            <button class="path-control" data-path-mode="isolate" disabled>Path</button>
+          </div>
+          <div class="zoom-controls">
+            <button id="zoom-out" class="icon-button" title="Zoom out" aria-label="Zoom out">−</button>
+            <output id="zoom-value">100%</output>
+            <button id="zoom-in" class="icon-button" title="Zoom in" aria-label="Zoom in">+</button>
+          </div>
         </div>
       </div>
         <div id="graph-viewport" class="graph-viewport" tabindex="0" aria-label="Interactive computation graph">
@@ -88,17 +93,22 @@
             <svg id="edges" class="edges" aria-hidden="true"></svg>
             <div id="nodes"></div>
         </div>
-        <canvas id="minimap" class="minimap" width="272" height="176" aria-label="Graph overview"></canvas>
+        <aside id="minimap-panel" class="minimap-panel" aria-label="Graph overview">
+          <button id="minimap-toggle" class="overlay-toggle" aria-expanded="true" aria-controls="minimap" title="Collapse minimap">−</button>
+          <canvas id="minimap" class="minimap" width="272" height="176"></canvas>
+        </aside>
         <aside id="graph-legend" class="graph-legend" aria-label="Graph legend">
-          <div class="legend-title">Legend</div>
-          <div><span class="legend-node module"></span>Module or operation</div>
-          <div><span class="legend-node input"></span>Input boundary</div>
-          <div><span class="legend-node output"></span>Output boundary</div>
-          <div><span class="legend-edge exact"></span>Exact route</div>
-          <div><span class="legend-edge inferred"></span>Inferred route</div>
-          <div><span class="legend-edge ambiguous"></span>Ambiguous route</div>
-          <div><span class="legend-layer"></span>Repeated layer color</div>
-          <div><span class="legend-selection"></span>Selection and traced path</div>
+          <div class="legend-head"><div class="legend-title">Legend</div><button id="legend-toggle" class="overlay-toggle" aria-expanded="true" aria-controls="legend-content" title="Collapse legend">−</button></div>
+          <div id="legend-content" class="legend-content">
+            <div><span class="legend-node module"></span>Module or operation</div>
+            <div><span class="legend-node input"></span>Input boundary</div>
+            <div><span class="legend-node output"></span>Output boundary</div>
+            <div><span class="legend-edge exact"></span>Exact route</div>
+            <div><span class="legend-edge inferred"></span>Inferred route</div>
+            <div><span class="legend-edge ambiguous"></span>Ambiguous route</div>
+            <div><span class="legend-layer"></span>Repeated layer color</div>
+            <div><span class="legend-selection"></span>Selection and traced path</div>
+          </div>
         </aside>
         <div id="continuations" class="continuations" aria-live="polite"></div>
         <div id="graph-status" class="graph-status" hidden></div>
@@ -116,12 +126,14 @@
       </div>
       <div id="model-warning" class="model-warning" role="alert" hidden></div>
       <div class="inspector-tabs" role="tablist" aria-label="Inspector view">
-        <button class="inspector-tab active" data-panel="details" role="tab">Details</button>
-        <button class="inspector-tab" data-panel="shapes" role="tab">I/O</button>
-        <button class="inspector-tab" data-panel="source" role="tab">Source</button>
-        <button class="inspector-tab" data-panel="runtime" role="tab">Runtime</button>
-        <button class="inspector-tab" data-panel="config" role="tab">Config</button>
+        <button class="inspector-tab" data-panel="explain" role="tab" aria-selected="false" tabindex="-1">Explain</button>
+        <button class="inspector-tab active" data-panel="details" role="tab" aria-selected="true" tabindex="0">Details</button>
+        <button class="inspector-tab" data-panel="shapes" role="tab" aria-selected="false" tabindex="-1">I/O</button>
+        <button class="inspector-tab" data-panel="source" role="tab" aria-selected="false" tabindex="-1">Source</button>
+        <button class="inspector-tab" data-panel="runtime" role="tab" aria-selected="false" tabindex="-1">Runtime</button>
+        <button class="inspector-tab" data-panel="config" role="tab" aria-selected="false" tabindex="-1">Config</button>
       </div>
+      <section id="explain-panel" class="inspector-panel"><div id="explain-view" class="explain-view"></div></section>
       <section id="details-panel" class="inspector-panel active">
         <div id="structural-summary" class="structural-summary"></div>
         <div id="metadata" class="metadata"></div>
@@ -129,7 +141,7 @@
       <section id="shapes-panel" class="inspector-panel"><div id="shape-list" class="shape-list"></div></section>
       <section id="source-panel" class="inspector-panel source-panel">
         <div class="source-toolbar">
-          <div id="source-reference" class="source-reference">No operation selected</div>
+          <button id="source-reference" class="source-reference" type="button" aria-label="No operation selected">No operation selected</button>
           <div class="source-actions">
             <button id="copy-source" class="icon-button" title="Copy source" aria-label="Copy source">⧉</button>
             <a id="source-repository" class="icon-button" title="Open official source" aria-label="Open official source" target="_blank" rel="noopener noreferrer" hidden>↗</a>
@@ -160,6 +172,7 @@
     <div id="compare-content" class="compare-content"></div>
   </section>
   <div id="scrim" class="scrim" hidden></div>
+  <div id="ui-tooltip" class="ui-tooltip" role="tooltip" hidden></div>
   <script type="module" src="app.js"></script>
 </body>
 </html>

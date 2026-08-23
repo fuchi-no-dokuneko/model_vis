@@ -4,7 +4,12 @@ Status: implementation-ready specification
 Target: `https://model-vis.pages.dev/`  
 Deployment: static Cloudflare Pages site, PC-first, no backend  
 Primary audience: AI beginners and domain specialists exploring unfamiliar model domains  
-Example: a Whisper specialist learning DINOv3, or a vision specialist learning a causal language model
+Example: a Moshi specialist learning DINOv3, or a vision specialist learning a causal language model
+
+Acceptance-fixture decision (2026-08-15): Moshi/DINOv3 replaces the original
+Whisper/DINOv3 comparison fixture because both models are present in the
+expanded 51-model static catalog. This changes only the deterministic cross-domain test
+fixture; exact reusable Whisper rules remain valid for a future catalog build.
 
 
 
@@ -556,7 +561,7 @@ Correct the existing misleading row:
 Acceptance:
 
 - Apertus/BERT configuration difference remains numerically correct but is no longer attributed to BERT alone.
-- Whisper/DINOv3 comparison exposes stage order, tensor shapes, tags, and exact
+- Moshi/DINOv3 comparison exposes stage order, tensor shapes, tags, and exact
   classes without a curated cross-domain mapping.
 
 ### FEATURE-10: Parameter and Operation Distribution
@@ -834,7 +839,7 @@ Use the repository's existing test framework. If none exists, add:
 - unit tests using the project's JS runtime
 - Playwright browser tests for interaction and layout
 - JSON Schema validation in the build/CI script
-- a small deterministic fixture set for Whisper, DINOv3, and Apertus
+- a small deterministic fixture set for Moshi, DINOv3, and Apertus
 
 ### 12.1 Unit tests
 
@@ -914,7 +919,7 @@ For every generated model:
 
 Verify current known facts remain correct:
 
-- Manifest contains 21 versions in the current fixture/deployed dataset.
+- Manifest contains 51 versions in the current generated fixture dataset.
 - Apertus fixture: 2,874 Trace parameters, 121 Operations, official estimate 564,133,888.
 - BERT fixture: 109,482,240 Trace parameters, 278 Operations, official estimate 136,687,104.
 - Apertus/BERT each resolve six unique trace source files.
@@ -974,7 +979,7 @@ Deliver:
 
 Exit gate:
 
-- Whisper/DINOv3 and DINOv3/Apertus comparisons pass deterministic data and
+- Moshi/DINOv3 and DINOv3/Apertus comparisons pass deterministic data and
   interaction tests without per-model review.
 
 ### Phase E: Catalog scaling

@@ -1,9 +1,22 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
-  "required": ["schema_version", "generated_at", "builder_version", "scope_hash", "families", "versions", "asset_index", "search_index", "license_manifest", "build_report", "cloudflare_pages_check"],
+  "required": ["schema_version", "generated_at", "builder_version", "scope_hash", "families", "versions", "asset_index", "search_index", "semantic_index", "semantic_report", "semantic_generated_at", "semantic_generator_version", "semantic_contracts", "license_manifest", "build_report", "cloudflare_pages_check"],
   "properties": {
     "schema_version": {"const": "2.2.0"},
+    "semantic_index": {"const": "indexes/semantic.v1.json"},
+    "semantic_report": {"const": "indexes/semantic-report.v1.json"},
+    "semantic_generated_at": {"type": "string", "minLength": 1},
+    "semantic_generator_version": {"const": "1.0.0"},
+    "semantic_contracts": {
+      "type": "object",
+      "required": ["schema_ref", "interface_tags_ref"],
+      "properties": {
+        "schema_ref": {"const": "contracts/semantic-model.schema.json"},
+        "interface_tags_ref": {"const": "contracts/interface-tags.v1.json"}
+      },
+      "additionalProperties": false
+    },
     "families": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
     "versions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
     "cloudflare_pages_check": {

@@ -52,6 +52,7 @@ export class ModelStore {
   traceConfig(version) { return version.trace_config_ref ? this.get(version.trace_config_ref) : this.config(version); }
   officialConfig(version) { return version.official_config_ref ? this.get(version.official_config_ref) : Promise.resolve(null); }
   configDiff(version) { return version.config_diff_ref ? this.get(version.config_diff_ref) : Promise.resolve(null); }
+  semantic(version) { return version.semantic_ref ? this.get(version.semantic_ref) : Promise.resolve(null); }
   source(sourceUid) { return this.get(`sources/${sourceUid}.json`); }
   sourceText(source) { return this.text(source.asset_path); }
   sharedBlock(block) { return this.get(block.pointer.target_asset); }

@@ -1,18 +1,105 @@
 export const NODE_WIDTH = 248;
 export const NODE_HEIGHT = 168;
 
+export function semanticZoomTier(zoom) {
+  if (zoom < 0.35) return "overview";
+  if (zoom < 0.70) return "compact";
+  return "normal";
+}
+
+export function graphSafeRect(viewport, overlays = [], padding = 12) {
+  const width = Math.max(0, viewport.width || 0);
+  const height = Math.max(0, viewport.height || 0);
+  const insets = { left: padding, top: padding, right: padding, bottom: padding };
+  for (const overlay of overlays.filter((value) => value && value.width > 0 && value.height > 0)) {
+    const distances = {
+      left: Math.max(0, overlay.left),
+      top: Math.max(0, overlay.top),
+      right: Math.max(0, width - overlay.right),
+      bottom: Math.max(0, height - overlay.bottom),
+    };
+    const minimum = Math.min(...Object.values(distances));
+    const side = distances.bottom === minimum && overlay.top >= height / 2 ? "bottom"
+      : distances.top === minimum && overlay.bottom <= height / 2 ? "top"
+        : distances.left === minimum ? "left" : "right";
+    if (side === "left") insets.left = Math.max(insets.left, overlay.right + padding);
+    if (side === "top") insets.top = Math.max(insets.top, overlay.bottom + padding);
+    if (side === "right") insets.right = Math.max(insets.right, width - overlay.left + padding);
+    if (side === "bottom") insets.bottom = Math.max(insets.bottom, height - overlay.top + padding);
+  }
+  const left = Math.min(insets.left, Math.max(padding, width - padding));
+  const top = Math.min(insets.top, Math.max(padding, height - padding));
+  const right = Math.max(left, width - insets.right);
+  const bottom = Math.max(top, height - insets.bottom);
+  return { left, top, right, bottom, width: right - left, height: bottom - top, insets };
+}
+
+export function intervalsForEdge(rectangles, side, stripSize, axisLength) {
+  const vertical = side === "left" || side === "right";
+  return rectangles.filter((rect) => {
+    if (vertical && side === "left") return rect.left < stripSize;
+    if (vertical) return rect.right > rect.viewportWidth - stripSize;
+    if (side === "top") return rect.top < stripSize;
+    return rect.bottom > rect.viewportHeight - stripSize;
+  }).map((rect) => ({
+    start: Math.max(0, vertical ? rect.top : rect.left),
+    end: Math.min(axisLength, vertical ? rect.bottom : rect.right),
+  })).sort((left, right) => left.start - right.start);
+}
+
+export function placeMarkers1D(items, axisLength, markerSize, reserved = [], gap = 8, padding = 4) {
+  const placements = [];
+  const overflow = [];
+  let cursor = padding;
+  const blocked = [...reserved].sort((left, right) => left.start - right.start);
+  for (const item of [...items].sort((left, right) => left.desired - right.desired)) {
+    let start = Math.max(cursor, item.desired - markerSize / 2, padding);
+    let moved = true;
+    while (moved) {
+      moved = false;
+      for (const interval of blocked) {
+        if (start + markerSize + gap <= interval.start || start >= interval.end + gap) continue;
+        start = interval.end + gap;
+        moved = true;
+      }
+    }
+    if (start + markerSize > axisLength - padding) {
+      overflow.push(item);
+      continue;
+    }
+    placements.push({ item, start });
+    cursor = start + markerSize + gap;
+  }
+  return { placements, overflow };
+}
+
 function shapeText(records = []) {
   return records.map((record) => record?.shape || record).filter(Array.isArray)
     .map((shape) => `[${shape.join(", ")}]`).join(" ");
 }
 
-function viewNode(raw) {
+function labelParts(raw, semantic, labelMode = "source") {
+  const entity = semantic?.entities?.[raw.id] || semantic?.entities?.[raw.module_id];
+  const source = ["scope_input", "scope_output"].includes(raw.kind) ? (raw.display_name || raw.name) : (raw.qualified_name && raw.qualified_name !== "<root>" ? raw.qualified_name : null)
+    || raw.module_path || raw.display_name || raw.name || raw.id;
+  if (!entity || labelMode === "source") return { title: source, subtitle: raw.module_path || raw.qualified_name || shapeText(raw.output_ports || raw.outputs) || raw.kind };
+  const semanticName = entity.semantic_name || entity.primary_tag?.replaceAll("_", " ") || source;
+  return {
+    title: semanticName,
+    subtitle: labelMode === "both"
+      ? (entity.qualified_name || entity.source_name || source)
+      : (shapeText(raw.output_ports || raw.outputs) || entity.primary_tag),
+  };
+}
+
+function viewNode(raw, semantic = null, labelMode = "source") {
   const inputs = raw.input_ports || raw.inputs || [];
   const outputs = raw.output_ports || raw.outputs || [];
+  const label = labelParts(raw, semantic, labelMode);
   return {
     id: raw.id || raw.module_id || raw.block_uid,
-    title: raw.display_name || raw.name || raw.qualified_name,
-    subtitle: raw.module_path || shapeText(outputs) || raw.kind,
+    title: label.title,
+    subtitle: label.subtitle,
     kind: raw.kind || "module",
     raw,
     inputPorts: inputs,
@@ -317,6 +404,80 @@ export function blocksProjection(graph, blocksDocument) {
   };
 }
 
+export function architectureProjection(graph, semantic, labelMode = "semantic") {
+  if (!graph || !semantic?.stages?.length) return { nodes: [], edges: [], layerGroups: [] };
+  const tensors = new Map((graph.tensors || []).map((tensor) => [tensor.tensor_id, tensor]));
+  const modules = new Map(graph.modules.map((module) => [module.module_id, module]));
+  const stages = semantic.stages.map((stage) => {
+    const firstModule = modules.get(stage.module_ids[0]);
+    const sourceLabel = firstModule?.qualified_name || stage.stage_type;
+    const title = labelMode === "source" ? sourceLabel : stage.semantic_name;
+    const subtitle = labelMode === "both"
+      ? `${sourceLabel} · ${stage.tags.join(", ")}`
+      : labelMode === "source" ? stage.tags.join(", ") : stage.tags.join(", ");
+    const port = (tensorId, direction, index) => {
+      const tensor = tensors.get(tensorId) || {};
+      return {
+        port_id: `${stage.stage_id}:${direction === "input" ? "in" : "out"}:${index}`,
+        direction,
+        index,
+        name: tensorId,
+        tensor_id: tensorId,
+        shape: tensor.shape || [],
+        dtype: tensor.dtype || "unknown",
+        device: tensor.device || "unknown",
+        required: true,
+        optional: false,
+      };
+    };
+    return {
+      ...stage,
+      id: stage.stage_id,
+      kind: "semantic_stage",
+      name: title,
+      display_name: title,
+      semantic_name: stage.semantic_name,
+      source_name: sourceLabel,
+      qualified_name: sourceLabel,
+      module_path: sourceLabel,
+      module_id: stage.module_ids[0] || null,
+      input_ports: stage.input_tensor_ids.map((tensorId, index) => port(tensorId, "input", index)),
+      output_ports: stage.output_tensor_ids.map((tensorId, index) => port(tensorId, "output", index)),
+      call_arguments: [],
+      source_ref: firstModule?.source_ref || {},
+      subtitle,
+    };
+  });
+  const byId = new Map(stages.map((stage) => [stage.id, stage]));
+  const edges = semantic.stage_edges.flatMap((edge, edgeIndex) => edge.tensor_ids.map((tensorId, tensorIndex) => {
+    const source = byId.get(edge.source_stage_id);
+    const target = byId.get(edge.target_stage_id);
+    const sourcePort = source?.output_ports.find((item) => item.tensor_id === tensorId);
+    const targetPort = target?.input_ports.find((item) => item.tensor_id === tensorId);
+    if (!source || !target || !sourcePort || !targetPort) return null;
+    return {
+      edge_id: `semantic-edge-${edgeIndex}-${tensorIndex}`,
+      source: source.id,
+      source_port: sourcePort.port_id,
+      target: target.id,
+      target_port: targetPort.port_id,
+      tensor_id: tensorId,
+      shape: tensors.get(tensorId)?.shape || [],
+      confidence: edge.confidence,
+      evidence: ["semantic_stage_boundary"],
+    };
+  })).filter(Boolean);
+  return {
+    nodes: stages.map((stage) => ({
+      ...viewNode(stage),
+      title: stage.display_name,
+      subtitle: stage.subtitle,
+    })),
+    edges,
+    layerGroups: [],
+  };
+}
+
 export function tracePath(edges, startId, direction = "downstream") {
   const upstream = direction === "upstream" || direction === "isolate";
   const downstream = direction === "downstream" || direction === "isolate";
@@ -340,7 +501,7 @@ export function tracePath(edges, startId, direction = "downstream") {
   return { nodes, edges: edgeIds };
 }
 
-export function projectGraph({ mode, current, family, index, graph, blocks, scopeModuleId }) {
+export function projectGraph({ mode, current, family, index, graph, blocks, semantic, labelMode, scopeModuleId }) {
   if (!current) return { nodes: [], edges: [], layerGroups: [] };
   if (mode === "family") {
     const root = {
@@ -379,9 +540,35 @@ export function projectGraph({ mode, current, family, index, graph, blocks, scop
       layerGroups: [],
     };
   }
-  if (mode === "operation") return operationProjection(graph, scopeModuleId);
-  if (mode === "blocks") return blocksProjection(graph, blocks);
-  return moduleProjection(graph, scopeModuleId);
+  if (mode === "architecture") return architectureProjection(graph, semantic, labelMode);
+  const projection = mode === "operation"
+    ? operationProjection(graph, scopeModuleId)
+    : mode === "blocks" ? blocksProjection(graph, blocks) : moduleProjection(graph, scopeModuleId);
+  projection.nodes = projection.nodes.map((node) => viewNode(node.raw, semantic, labelMode));
+  return projection;
+}
+
+export function parseViewerRoute(value) {
+  let route = String(value || "").trim();
+  if (route.startsWith("modelvis:")) route = route.slice("modelvis:".length);
+  else if (route.includes("#")) route = route.slice(route.indexOf("#") + 1);
+  route = route.replace(/^#/, "");
+  const parts = route.split("/").filter(Boolean).map(decodeURIComponent);
+  const result = {};
+  let index = 0;
+  if (parts[0] === "compare") {
+    if (!parts[1] || !parts[2]) throw new Error("Compare route requires two version IDs");
+    result.compare = [parts[1], parts[2]];
+    index = 3;
+  }
+  const keys = new Set(["version", "view", "stage", "module", "operation", "call", "source", "line", "detail", "labels"]);
+  while (index < parts.length) {
+    const key = parts[index];
+    if (!keys.has(key) || parts[index + 1] === undefined) throw new Error(`Invalid route segment: ${key}`);
+    result[key] = parts[index + 1];
+    index += 2;
+  }
+  return result;
 }
 
 export function layoutGraph(nodes, edges) {

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "generator_version", "class_tag_vocab_version", "semantic_schema_ref", "interface_tags_ref", "report_ref", "versions"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "generated_at": {"type": "string", "minLength": 1},
+    "generator_version": {"const": "1.0.0"},
+    "class_tag_vocab_version": {"const": "1.0.0"},
+    "semantic_schema_ref": {"const": "contracts/semantic-model.schema.json"},
+    "interface_tags_ref": {"const": "contracts/interface-tags.v1.json"},
+    "report_ref": {"const": "indexes/semantic-report.v1.json"},
+    "versions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": ["version_id", "semantic_ref", "domain", "stage_count", "generation_status", "coverage"],
+        "properties": {
+          "version_id": {"type": "string"},
+          "semantic_ref": {"type": "string"},
+          "domain": {"enum": ["audio", "vision", "text", "multimodal", "other"]},
+          "stage_count": {"type": "integer", "minimum": 1},
+          "generation_status": {"enum": ["passed", "fallback", "partial"]},
+          "coverage": {"type": "object"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

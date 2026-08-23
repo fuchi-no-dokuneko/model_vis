@@ -6,7 +6,7 @@ Each generated source asset records its package, version, content hash, license 
 - torch 2.12.0+cpu: BSD-3-Clause (source redistributed: yes; license assets: licenses/torch/LICENSE.txt, licenses/torch/NOTICE.txt)
 - torchview 0.2.7: see-package-metadata (source redistributed: no; license assets: metadata only)
 - transformers 5.12.0: Apache 2.0 License (source redistributed: yes; license assets: licenses/transformers/LICENSE.txt)
-- diffusers 0.38.0: Apache 2.0 License (source redistributed: no; license assets: metadata only)
+- diffusers 0.38.0: Apache 2.0 License (source redistributed: yes; license assets: licenses/diffusers/LICENSE.txt)
 - jsonschema 4.26.0: see-package-metadata (source redistributed: no; license assets: metadata only)
 - PyYAML 6.0.3: MIT (source redistributed: no; license assets: metadata only)
 - timm 1.0.27: Apache-2.0 (source redistributed: no; license assets: metadata only)

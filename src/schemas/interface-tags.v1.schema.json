@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "tags"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "tags": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "required": ["id", "description", "exact_classes", "base_classes", "verified_signatures"],
+        "properties": {
+          "id": {"enum": ["input", "embedding_or_projection", "position_or_context", "attention_or_mixer", "feed_forward", "normalization_or_residual", "aggregation_or_decoder", "output_or_head", "other"]},
+          "description": {"type": "string", "minLength": 1},
+          "exact_classes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "base_classes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "verified_signatures": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

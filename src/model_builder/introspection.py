@@ -180,6 +180,38 @@ def signature_record(callable_obj: object) -> list[dict[str, Any]]:
     return result
 
 
+def callable_interface_record(callable_obj: object) -> dict[str, Any]:
+    try:
+        signature = inspect.signature(callable_obj)
+    except (TypeError, ValueError):
+        return {"name": getattr(callable_obj, "__name__", "call"), "parameters": [], "returns": None, "text": "call(?)"}
+
+    def annotation_name(annotation: Any) -> str | None:
+        if annotation is inspect.Signature.empty:
+            return None
+        if isinstance(annotation, str):
+            return annotation
+        module = getattr(annotation, "__module__", None)
+        name = getattr(annotation, "__qualname__", getattr(annotation, "__name__", None))
+        if name:
+            return f"{module}.{name}" if module and module != "builtins" else name
+        return _ADDRESS.sub("", repr(annotation))[:500]
+
+    parameters = signature_record(callable_obj)
+    returns = annotation_name(signature.return_annotation)
+    compact = ", ".join(
+        f"{item['name']}:{item['kind']}{'' if item['required'] else '?'}"
+        for item in parameters
+    )
+    name = getattr(callable_obj, "__name__", "call")
+    return {
+        "name": name,
+        "parameters": parameters,
+        "returns": returns,
+        "text": f"{name}({compact})" + (f" -> {returns}" if returns else ""),
+    }
+
+
 class ConstructorRecorder:
     """Capture effective Python nn.Module constructor values during model creation."""
 

@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "rule_packs": [
+    {
+      "id": "whisper-encoder-decoder",
+      "description": "Reusable stages for Whisper-style encoder-decoder audio Transformer interfaces.",
+      "when": {"domain": "audio", "model_types": ["whisper"], "is_encoder_decoder": true},
+      "tag_stages": {
+        "embedding_or_projection": "preprocessing",
+        "position_or_context": "position_encoding",
+        "attention_or_mixer": "attention",
+        "feed_forward": "feed_forward",
+        "normalization_or_residual": "normalization",
+        "aggregation_or_decoder": "aggregation",
+        "output_or_head": "output_adapter"
+      }
+    },
+    {
+      "id": "vision-encoder",
+      "description": "Reusable stages for traced vision encoder interfaces.",
+      "when": {"domain": "vision", "model_types": ["beit", "dinov2", "dinov3_vit", "vit"]},
+      "tag_stages": {
+        "embedding_or_projection": "tokenization",
+        "position_or_context": "position_encoding",
+        "attention_or_mixer": "attention",
+        "feed_forward": "feed_forward",
+        "normalization_or_residual": "normalization",
+        "aggregation_or_decoder": "aggregation",
+        "output_or_head": "task_head"
+      }
+    },
+    {
+      "id": "causal-language-decoder",
+      "description": "Reusable stages for traced decoder-only text interfaces.",
+      "when": {
+        "domain": "text",
+        "model_types": ["apertus", "arcee", "deepseek_v3", "falcon", "jais2", "nanochat", "nemotron", "phi", "starcoder2", "youtu", "zamba", "zamba2"],
+        "is_encoder_decoder": false
+      },
+      "tag_stages": {
+        "embedding_or_projection": "input_embedding",
+        "position_or_context": "position_encoding",
+        "attention_or_mixer": "attention",
+        "feed_forward": "feed_forward",
+        "normalization_or_residual": "normalization",
+        "aggregation_or_decoder": "aggregation",
+        "output_or_head": "task_head"
+      }
+    }
+  ],
+  "exact_class_stages": {
+    "transformers.models.apertus.modeling_apertus.ApertusRotaryEmbedding": "position_encoding",
+    "transformers.models.apertus.modeling_apertus.ApertusAttention": "attention",
+    "transformers.models.apertus.modeling_apertus.ApertusMLP": "feed_forward",
+    "transformers.models.bert.modeling_bert.BertEmbeddings": "input_embedding",
+    "transformers.models.bert.modeling_bert.BertAttention": "attention",
+    "transformers.models.bert.modeling_bert.BertSelfAttention": "attention",
+    "transformers.models.bert.modeling_bert.BertIntermediate": "feed_forward",
+    "transformers.models.bert.modeling_bert.BertPooler": "aggregation",
+    "transformers.models.dinov3_vit.modeling_dinov3_vit.DINOv3ViTEmbeddings": "tokenization",
+    "transformers.models.dinov3_vit.modeling_dinov3_vit.DINOv3ViTRopePositionEmbedding": "position_encoding",
+    "transformers.models.dinov3_vit.modeling_dinov3_vit.DINOv3ViTAttention": "attention",
+    "transformers.models.dinov3_vit.modeling_dinov3_vit.DINOv3ViTMLP": "feed_forward"
+  }
+}

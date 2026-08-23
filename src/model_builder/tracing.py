@@ -15,6 +15,7 @@ from torch.utils._python_dispatch import TorchDispatchMode
 
 from . import SCHEMA_VERSION
 from .introspection import (
+    callable_interface_record,
     normalized_source_path,
     sanitize_runtime_value,
     source_ref,
@@ -39,8 +40,14 @@ def _flatten_named(value: Any, path: str) -> list[tuple[str, torch.Tensor]]:
     elif isinstance(value, (tuple, list)):
         for index, item in enumerate(value):
             result.extend(_flatten_named(item, f"{path}[{index}]"))
-    elif hasattr(value, "to_tuple"):
-        result.extend(_flatten_named(value.to_tuple(), path))
+    else:
+        # Inspect the type instead of probing the instance.  Some runtime objects
+        # (notably torch operator overloads) implement dynamic ``__getattr__``;
+        # probing them while sys.settrace is active recursively re-enters this
+        # collector.  Structured model outputs expose ``to_tuple`` on their type.
+        to_tuple = getattr(type(value), "to_tuple", None)
+        if callable(to_tuple):
+            result.extend(_flatten_named(to_tuple(value), path))
     return result
 
 
@@ -246,6 +253,13 @@ def _module_records(
     named = list(model.named_modules())
     id_by_object = {id(module): f"module-{index:05d}" for index, (_, module) in enumerate(named)}
     path_by_object = {id(module): path or "<root>" for path, module in named}
+    parameter_ids: dict[int, str] = {}
+    buffer_ids: dict[int, str] = {}
+    for _, module in named:
+        for _, value in module.named_parameters(recurse=False):
+            parameter_ids.setdefault(id(value), f"parameter-{len(parameter_ids):06d}")
+        for _, value in module.named_buffers(recurse=False):
+            buffer_ids.setdefault(id(value), f"buffer-{len(buffer_ids):06d}")
     records = []
     for index, (path, module) in enumerate(named):
         qualified = path or "<root>"
@@ -256,16 +270,29 @@ def _module_records(
             "qualified_name": qualified,
             "display_name": type(module).__name__,
             "class_name": f"{type(module).__module__}.{type(module).__qualname__}",
+            "base_classes": [
+                f"{base.__module__}.{base.__qualname__}"
+                for base in type(module).__mro__[1:]
+                if base is not object
+            ],
+            "forward_interface": callable_interface_record(type(module).forward),
             "parent_module_id": id_by_object.get(id(parent)) if parent is not None else None,
             "child_module_ids": [],
             "source_ref": source_ref(type(module).forward),
             "constructor": constructor_by_path.get(qualified, {}),
             "parameters": [{
+                "parameter_id": parameter_ids[id(value)],
                 "name": name,
                 **tensor_metadata(value),
+                "numel": int(value.numel()),
                 "trainable": bool(value.requires_grad),
             } for name, value in module.named_parameters(recurse=False)],
-            "buffers": [{"name": name, **tensor_metadata(value)} for name, value in module.named_buffers(recurse=False)],
+            "buffers": [{
+                "buffer_id": buffer_ids[id(value)],
+                "name": name,
+                **tensor_metadata(value),
+                "numel": int(value.numel()),
+            } for name, value in module.named_buffers(recurse=False)],
             "structural_signature": _structural_signature(module),
             "layer_group_id": None,
             "call_ids": [],
@@ -365,18 +392,25 @@ class RuntimeGraphRecorder(TorchDispatchMode):
         self._tensor_by_id: dict[str, dict[str, Any]] = {}
         self._producer_by_tensor: dict[str, tuple[str, str]] = {}
         self._producer_by_storage: dict[str, tuple[str, str, str]] = {}
-        self._parameters: dict[int, tuple[str, str]] = {}
-        self._buffers: dict[int, tuple[str, str]] = {}
+        self._parameters: dict[int, tuple[str, str, str]] = {}
+        self._buffers: dict[int, tuple[str, str, str]] = {}
         self._boundary_by_tensor: dict[str, tuple[str, str]] = {}
         self._pending_recovery: list[tuple[dict[str, Any], str, int]] = []
         self._handles: list[Any] = []
         for module_path, module in model.named_modules():
             path = module_path or "<root>"
             module_id = module_ids[id(module)]
+            module_record = self._module_by_id[module_id]
+            parameter_id_by_name = {
+                item["name"]: item["parameter_id"] for item in module_record["parameters"]
+            }
+            buffer_id_by_name = {
+                item["name"]: item["buffer_id"] for item in module_record["buffers"]
+            }
             for name, value in module.named_parameters(recurse=False):
-                self._parameters[id(value)] = (module_id, f"{path}.{name}")
+                self._parameters[id(value)] = (module_id, f"{path}.{name}", parameter_id_by_name[name])
             for name, value in module.named_buffers(recurse=False):
-                self._buffers[id(value)] = (module_id, f"{path}.{name}")
+                self._buffers[id(value)] = (module_id, f"{path}.{name}", buffer_id_by_name[name])
 
     def _storage_id(self, value: torch.Tensor) -> str | None:
         try:
@@ -537,7 +571,14 @@ class RuntimeGraphRecorder(TorchDispatchMode):
                 "mutation_version": after,
             })
 
-    def _constant_node(self, tensor_id: str, kind: str, label: str, module_id: str | None) -> tuple[str, str]:
+    def _constant_node(
+        self,
+        tensor_id: str,
+        kind: str,
+        label: str,
+        module_id: str | None,
+        attributes: dict[str, Any] | None = None,
+    ) -> tuple[str, str]:
         node_id = f"{kind}-{len(self.nodes):06d}"
         value = self._tensor_refs[tensor_id]
         output = self._port(node_id, "output", 0, label, value, {
@@ -559,7 +600,7 @@ class RuntimeGraphRecorder(TorchDispatchMode):
             "input_ports": [],
             "output_ports": [output],
             "call_arguments": [],
-            "attributes": {},
+            "attributes": attributes or {},
         })
         producer = (node_id, output["port_id"])
         self._producer_by_tensor[tensor_id] = producer
@@ -587,12 +628,16 @@ class RuntimeGraphRecorder(TorchDispatchMode):
             return node_id, port_id, "lineage"
         object_id = id(value)
         if object_id in self._parameters:
-            module_id, label = self._parameters[object_id]
-            node_id, port_id = self._constant_node(tensor_id, "parameter", label, module_id)
+            module_id, label, parameter_id = self._parameters[object_id]
+            node_id, port_id = self._constant_node(
+                tensor_id, "parameter", label, module_id, {"parameter_id": parameter_id}
+            )
             return node_id, port_id, "exact"
         if object_id in self._buffers:
-            module_id, label = self._buffers[object_id]
-            node_id, port_id = self._constant_node(tensor_id, "buffer", label, module_id)
+            module_id, label, buffer_id = self._buffers[object_id]
+            node_id, port_id = self._constant_node(
+                tensor_id, "buffer", label, module_id, {"buffer_id": buffer_id}
+            )
             return node_id, port_id, "exact"
         if literal:
             node_id, port_id = self._constant_node(tensor_id, "literal", f"literal {consumer_index}", module_id)

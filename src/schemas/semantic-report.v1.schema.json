@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "generator_version", "catalog", "counts", "remaining_reasons", "models", "failures"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "generated_at": {"type": "string", "minLength": 1},
+    "generator_version": {"const": "1.0.0"},
+    "catalog": {
+      "type": "object",
+      "required": ["family_count", "normalized_version_count", "selected_family_count", "selected_version_count", "generated_family_count", "generated_version_count", "generated_family_fraction", "generated_version_fraction"],
+      "properties": {
+        "family_count": {"type": "integer", "minimum": 0},
+        "normalized_version_count": {"type": "integer", "minimum": 0},
+        "selected_family_count": {"type": "integer", "minimum": 0},
+        "selected_version_count": {"type": "integer", "minimum": 0},
+        "generated_family_count": {"type": "integer", "minimum": 0},
+        "generated_version_count": {"type": "integer", "minimum": 0},
+        "generated_family_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "generated_version_fraction": {"type": "number", "minimum": 0, "maximum": 1}
+      },
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "required": ["passed", "fallback", "partial", "failed"],
+      "properties": {
+        "passed": {"type": "integer", "minimum": 0},
+        "fallback": {"type": "integer", "minimum": 0},
+        "partial": {"type": "integer", "minimum": 0},
+        "failed": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "remaining_reasons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["reason", "family_count", "version_count"],
+        "properties": {
+          "reason": {"enum": ["outside_selected_build_scope", "build_failed"]},
+          "family_count": {"type": "integer", "minimum": 0},
+          "version_count": {"type": "integer", "minimum": 0}
+        },
+        "additionalProperties": false
+      }
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["version_id", "status", "semantic_ref", "coverage", "reason"],
+        "properties": {
+          "version_id": {"type": "string", "minLength": 1},
+          "status": {"enum": ["passed", "fallback", "partial", "failed"]},
+          "semantic_ref": {"type": ["string", "null"]},
+          "coverage": {"type": ["object", "null"]},
+          "reason": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["version_id", "error_type", "message"],
+        "properties": {
+          "version_id": {"type": "string", "minLength": 1},
+          "error_type": {"type": "string", "minLength": 1},
+          "message": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

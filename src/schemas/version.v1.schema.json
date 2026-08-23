@@ -8,6 +8,7 @@
     "execution_mode": {"enum": ["full_model_forward", "staged_layer_by_layer", "unique_structure_forward"]},
     "trace_event_count": {"type": "integer", "minimum": 1},
     "top_level_outputs": {"type": "array", "minItems": 1},
+    "semantic_ref": {"type": "string", "pattern": "^semantics/.+\\.json$"},
     "parameters": {
       "type": "object",
       "required": ["total", "trainable"],
