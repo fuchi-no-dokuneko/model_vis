@@ -3,10 +3,15 @@
   "version": "0.4.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": "24.17.0",
+    "npm": "11.13.0"
+  },
   "scripts": {
     "build-ui": "node scripts/build-ui.mjs",
     "test": "node --test test/ui/*.test.mjs",
     "test:e2e": "venv/bin/python -m pytest test/e2e/test_viewer.py",
-    "test:visual": "venv/bin/python -m pytest test/e2e/test_visual.py"
+    "test:visual": "venv/bin/python -m pytest test/e2e/test_visual.py",
+    "audit:release": "venv/bin/python scripts/audit-python.py && node scripts/audit-node.mjs"
   }
 }

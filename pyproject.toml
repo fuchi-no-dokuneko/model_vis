@@ -1,23 +1,23 @@
 [build-system]
-requires = ["setuptools>=75"]
+requires = ["setuptools==70.2.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "model-vis"
 version = "0.4.0"
 description = "Offline compiler and static viewer for PyTorch model structures"
-requires-python = ">=3.11"
+requires-python = ">=3.13,<3.14"
 dependencies = [
-  "diffusers>=0.38",
-  "jsonschema>=4.20",
-  "PyYAML>=6",
-  "torch>=2.6",
-  "torchview>=0.2.7",
-  "transformers>=5",
+  "diffusers==0.38.0",
+  "jsonschema==4.26.0",
+  "PyYAML==6.0.3",
+  "torch==2.12.0",
+  "torchview==0.2.7",
+  "transformers==5.12.0",
 ]
 
 [project.optional-dependencies]
-test = ["pytest>=8", "selenium>=4"]
+test = ["pytest==9.1.1", "pytest-cov==7.1.0", "selenium==4.45.0"]
 
 [tool.pytest.ini_options]
 testpaths = ["test"]
