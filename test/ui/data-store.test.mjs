@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-import { configDifferences, ModelStore } from "../../src/ui/data-store.js";
+import { configDifferences, flattenConfig, ModelStore } from "../../src/ui/data-store.js";
 
 const readJson = async (path) => JSON.parse(await readFile(path, "utf8"));
 
@@ -104,4 +104,67 @@ test("expanded fixture contains the original 21 plus exactly 30 new versions", a
   assert.equal(expansion.length, 30);
   assert.equal(new Set([...baseline, ...expansion]).size, 51);
   assert.deepEqual(new Set(manifest.versions), new Set([...baseline, ...expansion]));
+});
+
+test("failed JSON and text requests are evicted so a retry can succeed", async () => {
+  const attempts = new Map();
+  const fetcher = async (path) => {
+    const attempt = (attempts.get(path) || 0) + 1;
+    attempts.set(path, attempt);
+    if (attempt === 1) return { ok: false, status: 503 };
+    return {
+      ok: true,
+      status: 200,
+      json: async () => ({ path }),
+      text: async () => `source:${path}`,
+    };
+  };
+  const store = new ModelStore("model_code/", fetcher);
+
+  await assert.rejects(store.get("retry.json"), /503/);
+  assert.deepEqual(await store.get("retry.json"), { path: "model_code/retry.json" });
+  await assert.rejects(store.text("retry.py"), /503/);
+  assert.equal(await store.text("retry.py"), "source:model_code/retry.py");
+  assert.equal(await store.text("retry.py"), "source:model_code/retry.py");
+  assert.equal(attempts.get("model_code/retry.py"), 2);
+});
+
+test("asset helpers use explicit references and documented fallbacks", async () => {
+  const requested = [];
+  const store = new ModelStore("assets", async (path) => {
+    requested.push(path);
+    return { ok: true, json: async () => ({ path }), text: async () => path };
+  });
+  const version = {
+    graph_ref: "graphs/g.json",
+    blocks_ref: "blocks/b.json",
+    trace_ref: "traces/t.json",
+    config_ref: "configs/c.json",
+    semantic_ref: "semantics/s.json",
+  };
+
+  await Promise.all([
+    store.family("family"), store.graph(version), store.blocks(version), store.semantic(version),
+    store.source("source-id"), store.sourceText({ asset_path: "sources/code.py" }),
+    store.sharedBlock({ pointer: { target_asset: "shared/block.json" } }),
+  ]);
+  assert.equal((await store.traceConfig(version)).path, "assets/configs/c.json");
+  assert.equal(await store.officialConfig(version), null);
+  assert.equal(await store.configDiff(version), null);
+  assert.equal(await store.semantic({}), null);
+  assert.ok(requested.includes("assets/families/family.json"));
+  assert.ok(requested.includes("assets/sources/source-id.json"));
+  assert.ok(requested.includes("assets/shared/block.json"));
+});
+
+test("config flattening covers scalar arrays and missing leaves", () => {
+  assert.deepEqual([...flattenConfig(7)], [["value", 7]]);
+  assert.deepEqual([...configDifferences(
+    { array: [1, 2], removed: null },
+    { array: [1, 3], added: true },
+  )], [
+    { key: "added", left: "—", right: true },
+    { key: "array", left: "[1,2]", right: "[1,3]" },
+    { key: "removed", left: null, right: "—" },
+  ]);
 });
