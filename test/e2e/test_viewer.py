@@ -412,15 +412,27 @@ def test_architecture_actions_have_real_hit_targets_and_breadcrumbs_sync(driver,
         stage = driver.find_element(By.CSS_SELECTOR, ".graph-node.selected")
         actions = stage.find_elements(By.CSS_SELECTOR, ".node-action:not([disabled])")
         assert len(actions) == 3
-        for action in actions:
-            assert driver.execute_script(
-                """
-                const rect = arguments[0].getBoundingClientRect();
-                const hit = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
-                return hit === arguments[0] || arguments[0].contains(hit);
-                """,
-                action,
-            )
+        for action_index in range(3):
+            def has_real_hit_target(current) -> bool:
+                try:
+                    current_actions = current.find_elements(
+                        By.CSS_SELECTOR,
+                        ".graph-node.selected .node-action:not([disabled])",
+                    )
+                    if len(current_actions) != 3:
+                        return False
+                    return current.execute_script(
+                        """
+                        const rect = arguments[0].getBoundingClientRect();
+                        const hit = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
+                        return hit === arguments[0] || arguments[0].contains(hit);
+                        """,
+                        current_actions[action_index],
+                    )
+                except StaleElementReferenceException:
+                    return False
+
+            assert wait.until(has_real_hit_target)
 
     collapse = driver.find_elements(By.CSS_SELECTOR, ".graph-node.selected .node-action:not([disabled])")[2]
     touch_tap(driver, collapse)
