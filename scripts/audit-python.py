@@ -70,6 +70,26 @@ def query_osv(packages: list[tuple[str, str]]) -> list[dict[str, Any]]:
     return json.loads(completed.stdout)["results"]
 
 
+def query_vulnerability(vulnerability_id: str) -> dict[str, Any]:
+    completed = subprocess.run(
+        [
+            "curl",
+            "-4",
+            "--fail-with-body",
+            "--silent",
+            "--show-error",
+            f"https://api.osv.dev/v1/vulns/{vulnerability_id}",
+        ],
+        text=True,
+        capture_output=True,
+        check=False,
+        timeout=20,
+    )
+    if completed.returncode:
+        raise RuntimeError(completed.stderr.strip() or f"OSV advisory query failed: {vulnerability_id}")
+    return json.loads(completed.stdout)
+
+
 def severity(vulnerability: dict[str, Any]) -> str:
     value = vulnerability.get("database_specific", {}).get("severity")
     return str(value or "UNCLASSIFIED").upper()
@@ -78,15 +98,34 @@ def severity(vulnerability: dict[str, Any]) -> str:
 def main() -> int:
     packages = production_packages()
     exceptions = active_exceptions()
+    summaries = query_osv(packages)
+    package_advisories = {
+        (package[0], vulnerability["id"])
+        for package, result in zip(packages, summaries, strict=True)
+        for vulnerability in result.get("vulns", [])
+    }
+    details = {
+        vulnerability_id: query_vulnerability(vulnerability_id)
+        for vulnerability_id in sorted({item[1] for item in package_advisories})
+    }
     blocking = []
-    for package, result in zip(packages, query_osv(packages), strict=True):
-        for vulnerability in result.get("vulns", []):
-            level = severity(vulnerability)
-            if vulnerability["id"] in exceptions:
-                continue
-            if level in {"HIGH", "CRITICAL", "UNCLASSIFIED"}:
-                blocking.append({"package": package[0], "id": vulnerability["id"], "severity": level})
-    print(json.dumps({"passed": not blocking, "packages": len(packages), "blocking": blocking}, indent=2))
+    findings = []
+    for package, vulnerability_id in sorted(package_advisories):
+        vulnerability = details[vulnerability_id]
+        level = severity(vulnerability)
+        identifiers = {vulnerability_id, *vulnerability.get("aliases", [])}
+        excepted = bool(identifiers & exceptions)
+        finding = {"package": package, "id": vulnerability_id, "severity": level, "excepted": excepted}
+        findings.append(finding)
+        if not excepted and level in {"HIGH", "CRITICAL"}:
+            blocking.append(finding)
+    print(json.dumps({
+        "passed": not blocking,
+        "packages": len(packages),
+        "advisories": len(findings),
+        "unclassified": sum(item["severity"] == "UNCLASSIFIED" for item in findings),
+        "blocking": blocking,
+    }, indent=2))
     return 0 if not blocking else 1
 
 
