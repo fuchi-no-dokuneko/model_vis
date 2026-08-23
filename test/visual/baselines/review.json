@@ -1,6 +1,17 @@
 {
   "schema_version": "1.0.0",
-  "reviewed_on": "2026-08-23",
+  "audit": {
+    "type": "automated_local_audit",
+    "audited_on": "2026-08-23",
+    "audited_commit": "5201e3d8aa98c24e9ead508dafdb783cdcf5a7ad",
+    "reviewer": "OpenAI Codex",
+    "human_review": false,
+    "evidence": [
+      "Each baseline was opened at original resolution and verified nonblank.",
+      "The bounded Selenium browser, visual, responsive, and pixel suite passed 24 tests.",
+      "Viewport dimensions and SHA-256 digests are recorded below."
+    ]
+  },
   "viewports": {
     "desktop": "desktop-1440x900.png",
     "laptop": "laptop-1280x720.png",
@@ -18,5 +29,27 @@
     "BUG-08",
     "BUG-09",
     "BUG-10"
-  ]
+  ],
+  "artifacts": {
+    "desktop-1440x900.png": {
+      "width": 1440,
+      "height": 900,
+      "sha256": "2da133906f4e6fb1cc79ea431fc63d7ee51f7d0f569b8d90eb4a147d9861bb12"
+    },
+    "laptop-1280x720.png": {
+      "width": 1280,
+      "height": 720,
+      "sha256": "6021435146b589dbff97d8b0ae7f91129308de24ec45041070e8e8fccf591ba0"
+    },
+    "tablet-768x1024.png": {
+      "width": 768,
+      "height": 1024,
+      "sha256": "592becd4a5936a4da69115e8365503093a2cc1e5b93f28ea71cd82bd1ee793b5"
+    },
+    "phone-390x844.png": {
+      "width": 390,
+      "height": 844,
+      "sha256": "cf84d03ec83940f9f26d0730a926144c18fb41408a7f52b8c8d84730b13c3736"
+    }
+  }
 }
