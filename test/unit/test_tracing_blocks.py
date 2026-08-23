@@ -74,6 +74,17 @@ class DifferentNestedShapes(nn.Module):
         return self.first(value), self.second(value)
 
 
+class TiedProjection(nn.Module):
+    def __init__(self) -> None:
+        super().__init__()
+        self.encoder = nn.Linear(4, 4, bias=False)
+        self.decoder = nn.Linear(4, 4, bias=False)
+        self.decoder.weight = self.encoder.weight
+
+    def forward(self, value: torch.Tensor) -> torch.Tensor:
+        return self.decoder(self.encoder(value))
+
+
 def test_torchview_executes_once_and_records_shapes() -> None:
     model = CountedLayers().eval()
     trace = trace_model(model, (torch.zeros(1, 4),), {}, "counted")
@@ -178,6 +189,19 @@ def test_structural_signature_includes_descendant_parameter_shapes() -> None:
     second = next(module for module in graph["modules"] if module["qualified_name"] == "second")
 
     assert first["structural_signature"] != second["structural_signature"]
+
+
+def test_modules_publish_interfaces_base_classes_and_canonical_parameter_ids() -> None:
+    graph = trace_model(TiedProjection().eval(), (torch.zeros(1, 4),), {}, "tied")["graph"]
+    encoder = next(module for module in graph["modules"] if module["qualified_name"] == "encoder")
+    decoder = next(module for module in graph["modules"] if module["qualified_name"] == "decoder")
+    parameter_node = next(node for node in graph["nodes"] if node["kind"] == "parameter")
+
+    assert encoder["parameters"][0]["parameter_id"] == decoder["parameters"][0]["parameter_id"]
+    assert encoder["parameters"][0]["numel"] == 16
+    assert "torch.nn.modules.module.Module" in encoder["base_classes"]
+    assert encoder["forward_interface"]["parameters"][0]["name"] == "input"
+    assert parameter_node["attributes"]["parameter_id"] == encoder["parameters"][0]["parameter_id"]
 
 
 def test_runtime_sanitizer_redacts_secrets_and_local_paths() -> None:
