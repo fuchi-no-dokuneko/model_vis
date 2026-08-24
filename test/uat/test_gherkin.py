@@ -4,14 +4,14 @@ from uat.gherkin import BINDINGS, assert_all_steps_bound, parse_feature
 from uat import steps as _steps  # noqa: F401
 
 
-def test_daily_feature_has_five_fully_bound_scenarios() -> None:
-    scenarios = parse_feature(Path("uat/features/daily.feature"))
-    assert [scenario.name for scenario in scenarios] == [
-        "Browse the generated catalog",
-        "Inspect semantic stages",
-        "Run Tensor Journey",
-        "Compare models",
-        "Inspect distributions",
-    ]
-    assert_all_steps_bound(scenarios)
-    assert all(step.text in BINDINGS for scenario in scenarios for step in scenario.steps)
+def test_daily_and_recording_features_are_fully_bound() -> None:
+    suites = {
+        "daily.feature": 13,
+        "demo-en.feature": 1,
+        "demo-yue.feature": 1,
+    }
+    for filename, expected_count in suites.items():
+        scenarios = parse_feature(Path("uat/features") / filename)
+        assert len(scenarios) == expected_count
+        assert_all_steps_bound(scenarios)
+        assert all(step.text in BINDINGS for scenario in scenarios for step in scenario.steps)

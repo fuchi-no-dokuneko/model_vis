@@ -18,7 +18,8 @@ src/ui/data-store.js: Tested fetch caching, retries, text/JSON assets, reference
 src/ui/graph-model.js: Tested all projections, routes, paths, layout, overlays, labels, incomplete data, and boundaries; mocks: none.
 src/ui/app.js: Tested in real local Chromium across desktop/mobile workflows and visual cases; mocks: none; instrumented gate exclusion documented.
 uat/gherkin.py: Tested feature parsing, duplicate definitions, and missing bindings; mocks: none.
-uat/run.py: Tested dry binding and real Chromium report generation; mocks: none.
+uat/run.py: Tested daily and bilingual demo selection, dry binding, evidence grouping, recording cleanup, and real Chromium reports; mocks: none.
+uat/steps.py: Tested catalog, routes, all views, inspector evidence, graph controls, persistence, comparison, warnings, keyboard, mobile drawers, and timed recording hooks in Chromium; mocks: external TTS and recorder wrappers are optional.
 scripts/audit-node.mjs: Tested against the real package lock by the release audit; mocks: none; release-tool exclusion documented.
 scripts/audit-python.py: Tested exact locks, severity sources, alias merging, and exceptions plus the live IPv4 OSV audit; mocks: temporary exception roots and OSV fixture records in unit tests; release-tool exclusion documented.
 scripts/build-ui.mjs: Tested against real generated assets by browser, visual, UAT, and deployable build checks; mocks: none; release-tool exclusion documented.

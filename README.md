@@ -96,6 +96,9 @@ Run the daily feature binding check and real Chromium acceptance flow with:
 npm run test:uat:dry
 npm run test:uat
 npm run test:uat:check
+venv/bin/python -m uat.run --suite all --dry-run
+venv/bin/python -m uat.run --suite demo-en
+venv/bin/python -m uat.run --suite demo-yue
 ```
 
 The real run writes a boolean checklist, screenshots, browser LCOV, and Sonar
@@ -103,6 +106,8 @@ generic test execution XML under `artifacts/uat/`. `.github/workflows/quality.ym
 runs locked installs, release audits, unit/coverage/drift/browser/UAT checks, and
 the SonarQube Cloud quality gate on pushes, pull requests, and daily schedule.
 Main-branch Cloudflare Pages deployment runs only after that job succeeds.
+The complete feature matrix and TTS/recording wrapper contract are documented in
+`uat/README.md`; recording suites are product walkthroughs and are not quality-gate evidence.
 
 Partial development builds can use `--include BERT` or `--limit 5`. They are intentionally rejected by full-catalog validation.
 
