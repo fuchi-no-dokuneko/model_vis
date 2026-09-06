@@ -24,7 +24,9 @@ npm run build-ui -- --model-code model_code --out build
 
 The ADR-249 drift check is the authoritative clean-tree check. It reuses the
 catalog's recorded generation timestamp, parses JSON before comparison, and
-compares two isolated generations with each other and the checked-in catalog:
+compares two isolated generations with each other and the checked-in catalog.
+Each copy is regenerated and fully validated in its own fresh process; the two
+processes run concurrently within the existing CI time limit:
 
 ```bash
 ./venv/bin/python -m src.model_builder.drift

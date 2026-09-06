@@ -19,11 +19,14 @@ It also keeps invalid-location diagnostics visible during graph redraws,
 preserves invalid module addresses until correction, resets catalog scrolling
 after filtering, and puts mobile drawers above their backdrop. DINOv3's traced
 layer path is model.layer.0; do not use the obsolete encoder.layer.0 fixture.
-Local verification: 101-model integrity and drift checks, 39 JS tests, 60 Python
+Local verification: 101-model integrity and drift checks, 39 JS tests, 64 Python
 unit/binding tests, 30 browser tests (including all 101 models), the independent
 95% coverage gates, and all 13 daily acceptance scenarios passed. Target
 publication must still be verified through the existing workflow and served
 assets as described in docs/catalog-expansion.md.
+The two complete drift generations and validations run concurrently in separate
+fresh processes. This keeps the 101-model check within the existing 60-second
+CI limit without changing the workflow or removing any validation.
 
 Acceptance-fixture decision (2026-08-15): Moshi/DINOv3 replaces the original
 Whisper/DINOv3 comparison fixture because both models are present in the

@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import multiprocessing
 import shutil
 import tempfile
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 from typing import Any
 
@@ -40,6 +42,16 @@ def differences(left: dict[str, Any], right: dict[str, Any]) -> list[str]:
     return [name for name in names if left.get(name) != right.get(name)]
 
 
+def regenerate_copy(
+    model_code: Path, destination: Path, catalog: Path, cloudflare_target: str,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    shutil.copytree(model_code, destination)
+    materialize_catalog(destination)
+    snapshot = parsed_snapshot(destination)
+    validation = validate(destination, catalog, cloudflare_target, allow_partial=True)
+    return snapshot, validation
+
+
 def check_generated_drift(
     model_code: Path,
     catalog: Path,
@@ -51,18 +63,22 @@ def check_generated_drift(
         temporary_root = Path(temporary)
         first = temporary_root / "first"
         second = temporary_root / "second"
-        shutil.copytree(model_code, first)
-        shutil.copytree(model_code, second)
-        materialize_catalog(first)
-        materialize_catalog(second)
-        first_snapshot = parsed_snapshot(first)
-        second_snapshot = parsed_snapshot(second)
+        # Each generation and its complete validation run in a fresh process.
+        # The two independent copies can use both cores of the existing runner
+        # without relaxing the drift or validation gates as the catalog grows.
+        with ProcessPoolExecutor(
+            max_workers=2, mp_context=multiprocessing.get_context("spawn"),
+        ) as workers:
+            jobs = [
+                workers.submit(regenerate_copy, model_code, path, catalog, cloudflare_target)
+                for path in (first, second)
+            ]
+            (first_snapshot, first_validation), (second_snapshot, second_validation) = [
+                job.result() for job in jobs
+            ]
         reproducibility_drift = differences(first_snapshot, second_snapshot)
         checked_in_drift = differences(checked_in, first_snapshot)
-        validations = [
-            validate(first, catalog, cloudflare_target, allow_partial=True),
-            validate(second, catalog, cloudflare_target, allow_partial=True),
-        ]
+        validations = [first_validation, second_validation]
 
     errors = [
         error
