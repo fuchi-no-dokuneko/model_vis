@@ -4,7 +4,7 @@ Feature: Model Structure Viewer 粵語產品介紹錄影
     Given the built Model Vis site is running
     And I begin a recorded demo
     When I open the model catalog
-    And I narrate in Cantonese for at least 9 seconds: Model Structure Viewer 將產生好嘅 PyTorch 架構資料整理成離線互動目錄，入面有五十一個模型，唔需要下載權重，亦唔會執行遠端模型程式碼。
+    And I narrate in Cantonese for at least 9 seconds: Model Structure Viewer 將產生好嘅 PyTorch 架構資料整理成離線互動目錄，入面有一百零一個模型，唔需要下載權重，亦唔會執行遠端模型程式碼。
     And I inspect DINOv3 semantic architecture
     Then semantic stages and exact tags are shown
     When I open a semantic stage explanation

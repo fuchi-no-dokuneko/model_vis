@@ -1,0 +1,5383 @@
+{
+  "class_tag_vocab_version": "1.0.0",
+  "coverage": {
+    "class_tag_fraction": 0.521739,
+    "module_stage_fraction": 1.0,
+    "operation_accounted_fraction": 1.0,
+    "operation_stage_fraction": 1.0,
+    "parameter_accounted_fraction": 1.0,
+    "parameter_stage_fraction": 1.0,
+    "verified_module_fraction": 0.521739
+  },
+  "domain": "vision",
+  "entities": {
+    "graph-input": {
+      "confidence": "verified_rule",
+      "entity_id": "graph-input",
+      "entity_kind": "graph_input",
+      "graph_position": {
+        "order": 0,
+        "total": 84
+      },
+      "importance": "primary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "Model inputs",
+      "output_shapes": [
+        [
+          1,
+          3,
+          16,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000000"
+      ],
+      "primary_tag": "input",
+      "provenance": [
+        "graph_boundary_rule",
+        "trace"
+      ],
+      "qualified_name": "<root>",
+      "semantic_name": "Model input",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTModel",
+      "source_name": "Model inputs",
+      "source_ref": {
+        "end_line": 399,
+        "executed_line": 364,
+        "file": "transformers/utils/generic.py",
+        "source_uid": "source.sha256.254d4da4849c048a7bfc98b1244baf38c6adcf32df8b0cd035ba5ecc314bb1e6",
+        "start_line": 364,
+        "symbol": "DeiTModel.forward"
+      },
+      "stage_id": "stage-000-input-adapter",
+      "tags": [
+        "input"
+      ],
+      "what": "Introduces an input representation to the traced model. Exact source: Model inputs."
+    },
+    "graph-output": {
+      "confidence": "verified_rule",
+      "entity_id": "graph-output",
+      "entity_kind": "graph_output",
+      "graph_position": {
+        "order": 60,
+        "total": 84
+      },
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          1,
+          768
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000051",
+        "tensor-000056"
+      ],
+      "interface_signature": "Model outputs",
+      "output_shapes": [],
+      "output_tensor_ids": [],
+      "primary_tag": "output_or_head",
+      "provenance": [
+        "graph_boundary_rule",
+        "trace"
+      ],
+      "qualified_name": "<root>",
+      "semantic_name": "Model output or head",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTModel",
+      "source_name": "Model outputs",
+      "source_ref": {
+        "end_line": 399,
+        "executed_line": 364,
+        "file": "transformers/utils/generic.py",
+        "source_uid": "source.sha256.254d4da4849c048a7bfc98b1244baf38c6adcf32df8b0cd035ba5ecc314bb1e6",
+        "start_line": 364,
+        "symbol": "DeiTModel.forward"
+      },
+      "stage_id": "stage-008-output-adapter",
+      "tags": [
+        "output_or_head"
+      ],
+      "what": "Produces an output representation. Exact source: Model outputs."
+    },
+    "module-00000": {
+      "confidence": "technical_fallback",
+      "entity_id": "module-00000",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          3,
+          16,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000000"
+      ],
+      "interface_signature": "forward(pixel_values:positional_or_keyword?, bool_masked_pos:positional_or_keyword?, interpolate_pos_encoding:positional_or_keyword?, attention_mask:positional_or_keyword?, kwargs:var_keyword?) -> transformers.modeling_outputs.BaseModelOutputWithPooling",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          1,
+          768
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000051",
+        "tensor-000056"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "<root>",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTModel",
+      "source_name": "DeiTModel",
+      "source_ref": {
+        "end_line": 399,
+        "executed_line": 364,
+        "file": "transformers/utils/generic.py",
+        "source_uid": "source.sha256.254d4da4849c048a7bfc98b1244baf38c6adcf32df8b0cd035ba5ecc314bb1e6",
+        "start_line": 364,
+        "symbol": "DeiTModel.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: transformers.models.deit.modeling_deit.DeiTModel transforms [1, 3, 16, 16] into [1, 18, 16] in the observed trace."
+    },
+    "module-00001": {
+      "confidence": "technical_fallback",
+      "entity_id": "module-00001",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 2,
+        "total": 84
+      },
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          3,
+          16,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000000"
+      ],
+      "interface_signature": "forward(pixel_values:positional_or_keyword, bool_masked_pos:positional_or_keyword?, interpolate_pos_encoding:positional_or_keyword?) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000012"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTEmbeddings",
+      "source_name": "DeiTEmbeddings",
+      "source_ref": {
+        "end_line": 166,
+        "executed_line": 134,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 134,
+        "symbol": "DeiTEmbeddings.forward"
+      },
+      "stage_id": "stage-002-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: transformers.models.deit.modeling_deit.DeiTEmbeddings transforms [1, 3, 16, 16] into [1, 18, 16] in the observed trace."
+    },
+    "module-00002": {
+      "confidence": "technical_fallback",
+      "entity_id": "module-00002",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 1,
+        "total": 84
+      },
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          3,
+          16,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000000"
+      ],
+      "interface_signature": "forward(pixel_values:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          16,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000005"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings.patch_embeddings",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTPatchEmbeddings",
+      "source_name": "DeiTPatchEmbeddings",
+      "source_ref": {
+        "end_line": 67,
+        "executed_line": 60,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 60,
+        "symbol": "DeiTPatchEmbeddings.forward"
+      },
+      "stage_id": "stage-001-input-embedding",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: transformers.models.deit.modeling_deit.DeiTPatchEmbeddings transforms [1, 3, 16, 16] into [1, 16, 16] in the observed trace."
+    },
+    "module-00003": {
+      "confidence": "verified_rule",
+      "entity_id": "module-00003",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 1,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          3,
+          16,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000000"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          16,
+          4,
+          4
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000003"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings.patch_embeddings.projection",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.conv.Conv2d",
+      "source_name": "Conv2d",
+      "source_ref": {
+        "end_line": 565,
+        "executed_line": 564,
+        "file": "torch/nn/modules/conv.py",
+        "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+        "start_line": 564,
+        "symbol": "Conv2d.forward"
+      },
+      "stage_id": "stage-001-input-embedding",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: torch.nn.modules.conv.Conv2d. Observed shape: [1, 3, 16, 16] \u2192 [1, 16, 4, 4]."
+    },
+    "module-00004": {
+      "confidence": "technical_fallback",
+      "entity_id": "module-00004",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 2,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000012"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000012"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings.dropout",
+      "semantic_name": "Unclassified component",
+      "source_class": "torch.nn.modules.dropout.Dropout",
+      "source_name": "Dropout",
+      "source_ref": {
+        "end_line": 73,
+        "executed_line": 69,
+        "file": "torch/nn/modules/dropout.py",
+        "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+        "start_line": 69,
+        "symbol": "Dropout.forward"
+      },
+      "stage_id": "stage-002-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: torch.nn.modules.dropout.Dropout transforms [1, 18, 16] into [1, 18, 16] in the observed trace."
+    },
+    "module-00005": {
+      "confidence": "technical_fallback",
+      "entity_id": "module-00005",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "primary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "_forward_unimplemented(input:var_positional?) -> None",
+      "output_shapes": [],
+      "output_tensor_ids": [],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers",
+      "semantic_name": "Unclassified component",
+      "source_class": "torch.nn.modules.container.ModuleList",
+      "source_name": "ModuleList",
+      "source_ref": {
+        "end_line": 404,
+        "executed_line": 391,
+        "file": "torch/nn/modules/module.py",
+        "source_uid": "source.sha256.4be56271f7bfe650e3521c81fd363da58f109cd23ee80d243156d2d6ccda6263",
+        "start_line": 391,
+        "symbol": "_forward_unimplemented"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: torch.nn.modules.container.ModuleList is present in the traced module hierarchy."
+    },
+    "module-00006": {
+      "confidence": "technical_fallback",
+      "entity_id": "module-00006",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000012"
+      ],
+      "interface_signature": "forward(hidden_states:positional_or_keyword, attention_mask:positional_or_keyword?, kwargs:var_keyword?) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000048"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTLayer",
+      "source_name": "DeiTLayer",
+      "source_ref": {
+        "end_line": 291,
+        "executed_line": 271,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 271,
+        "symbol": "DeiTLayer.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: transformers.models.deit.modeling_deit.DeiTLayer transforms [1, 18, 16] into [1, 18, 16] in the observed trace."
+    },
+    "module-00007": {
+      "confidence": "technical_fallback",
+      "entity_id": "module-00007",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000015"
+      ],
+      "interface_signature": "forward(hidden_states:positional_or_keyword, attention_mask:positional_or_keyword?, kwargs:var_keyword?) -> tuple",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000036"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTAttention",
+      "source_name": "DeiTAttention",
+      "source_ref": {
+        "end_line": 243,
+        "executed_line": 212,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 212,
+        "symbol": "DeiTAttention.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: transformers.models.deit.modeling_deit.DeiTAttention transforms [1, 18, 16] into [1, 18, 16] in the observed trace."
+    },
+    "module-00008": {
+      "confidence": "verified_rule",
+      "entity_id": "module-00008",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000015"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000018"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.q_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "Linear",
+      "source_ref": {
+        "end_line": 134,
+        "executed_line": 130,
+        "file": "torch/nn/modules/linear.py",
+        "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+        "start_line": 130,
+        "symbol": "Linear.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: torch.nn.modules.linear.Linear. Observed shape: [1, 18, 16] \u2192 [1, 18, 16]."
+    },
+    "module-00009": {
+      "confidence": "verified_rule",
+      "entity_id": "module-00009",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000015"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000023"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.k_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "Linear",
+      "source_ref": {
+        "end_line": 134,
+        "executed_line": 130,
+        "file": "torch/nn/modules/linear.py",
+        "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+        "start_line": 130,
+        "symbol": "Linear.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: torch.nn.modules.linear.Linear. Observed shape: [1, 18, 16] \u2192 [1, 18, 16]."
+    },
+    "module-00010": {
+      "confidence": "verified_rule",
+      "entity_id": "module-00010",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000015"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000028"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.v_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "Linear",
+      "source_ref": {
+        "end_line": 134,
+        "executed_line": 130,
+        "file": "torch/nn/modules/linear.py",
+        "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+        "start_line": 130,
+        "symbol": "Linear.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: torch.nn.modules.linear.Linear. Observed shape: [1, 18, 16] \u2192 [1, 18, 16]."
+    },
+    "module-00011": {
+      "confidence": "verified_rule",
+      "entity_id": "module-00011",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000033"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000036"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.o_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "Linear",
+      "source_ref": {
+        "end_line": 134,
+        "executed_line": 130,
+        "file": "torch/nn/modules/linear.py",
+        "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+        "start_line": 130,
+        "symbol": "Linear.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: torch.nn.modules.linear.Linear. Observed shape: [1, 18, 16] \u2192 [1, 18, 16]."
+    },
+    "module-00012": {
+      "confidence": "verified_rule",
+      "entity_id": "module-00012",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000012"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000015"
+      ],
+      "primary_tag": "normalization_or_residual",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.layernorm_before",
+      "semantic_name": "Normalization or residual",
+      "source_class": "torch.nn.modules.normalization.LayerNorm",
+      "source_name": "LayerNorm",
+      "source_ref": {
+        "end_line": 230,
+        "executed_line": 227,
+        "file": "torch/nn/modules/normalization.py",
+        "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+        "start_line": 227,
+        "symbol": "LayerNorm.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "normalization_or_residual"
+      ],
+      "what": "Normalizes, scales, or combines a residual representation. Exact source: torch.nn.modules.normalization.LayerNorm. Observed shape: [1, 18, 16] \u2192 [1, 18, 16]."
+    },
+    "module-00013": {
+      "confidence": "verified_rule",
+      "entity_id": "module-00013",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000037"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000040"
+      ],
+      "primary_tag": "normalization_or_residual",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.layernorm_after",
+      "semantic_name": "Normalization or residual",
+      "source_class": "torch.nn.modules.normalization.LayerNorm",
+      "source_name": "LayerNorm",
+      "source_ref": {
+        "end_line": 230,
+        "executed_line": 227,
+        "file": "torch/nn/modules/normalization.py",
+        "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+        "start_line": 227,
+        "symbol": "LayerNorm.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "normalization_or_residual"
+      ],
+      "what": "Normalizes, scales, or combines a residual representation. Exact source: torch.nn.modules.normalization.LayerNorm. Observed shape: [1, 18, 16] \u2192 [1, 18, 16]."
+    },
+    "module-00014": {
+      "confidence": "technical_fallback",
+      "entity_id": "module-00014",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000040"
+      ],
+      "interface_signature": "forward(hidden_states:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000047"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.mlp",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTMLP",
+      "source_name": "DeiTMLP",
+      "source_ref": {
+        "end_line": 259,
+        "executed_line": 254,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 254,
+        "symbol": "DeiTMLP.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: transformers.models.deit.modeling_deit.DeiTMLP transforms [1, 18, 16] into [1, 18, 16] in the observed trace."
+    },
+    "module-00015": {
+      "confidence": "verified_rule",
+      "entity_id": "module-00015",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          32
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000043"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          32
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000044"
+      ],
+      "primary_tag": "feed_forward",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.mlp.activation_fn",
+      "semantic_name": "Feed-forward transform",
+      "source_class": "transformers.activations.GELUActivation",
+      "source_name": "GELUActivation",
+      "source_ref": {
+        "end_line": 89,
+        "executed_line": 88,
+        "file": "transformers/activations.py",
+        "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+        "start_line": 88,
+        "symbol": "GELUActivation.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "feed_forward"
+      ],
+      "what": "Applies a point-wise feed-forward transformation. Exact source: transformers.activations.GELUActivation. Observed shape: [1, 18, 32] \u2192 [1, 18, 32]."
+    },
+    "module-00016": {
+      "confidence": "verified_rule",
+      "entity_id": "module-00016",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000040"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          32
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000043"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.mlp.fc1",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "Linear",
+      "source_ref": {
+        "end_line": 134,
+        "executed_line": 130,
+        "file": "torch/nn/modules/linear.py",
+        "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+        "start_line": 130,
+        "symbol": "Linear.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: torch.nn.modules.linear.Linear. Observed shape: [1, 18, 16] \u2192 [1, 18, 32]."
+    },
+    "module-00017": {
+      "confidence": "verified_rule",
+      "entity_id": "module-00017",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          32
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000044"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000047"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.mlp.fc2",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "Linear",
+      "source_ref": {
+        "end_line": 134,
+        "executed_line": 130,
+        "file": "torch/nn/modules/linear.py",
+        "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+        "start_line": 130,
+        "symbol": "Linear.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: torch.nn.modules.linear.Linear. Observed shape: [1, 18, 32] \u2192 [1, 18, 16]."
+    },
+    "module-00018": {
+      "confidence": "technical_fallback",
+      "entity_id": "module-00018",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000036",
+        "tensor-000047"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000036",
+        "tensor-000047"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.dropout",
+      "semantic_name": "Unclassified component",
+      "source_class": "torch.nn.modules.dropout.Dropout",
+      "source_name": "Dropout",
+      "source_ref": {
+        "end_line": 73,
+        "executed_line": 69,
+        "file": "torch/nn/modules/dropout.py",
+        "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+        "start_line": 69,
+        "symbol": "Dropout.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: torch.nn.modules.dropout.Dropout transforms [1, 18, 16] into [1, 18, 16] in the observed trace."
+    },
+    "module-00019": {
+      "confidence": "verified_rule",
+      "entity_id": "module-00019",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 4,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000048"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000051"
+      ],
+      "primary_tag": "normalization_or_residual",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layernorm",
+      "semantic_name": "Normalization or residual",
+      "source_class": "torch.nn.modules.normalization.LayerNorm",
+      "source_name": "LayerNorm",
+      "source_ref": {
+        "end_line": 230,
+        "executed_line": 227,
+        "file": "torch/nn/modules/normalization.py",
+        "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+        "start_line": 227,
+        "symbol": "LayerNorm.forward"
+      },
+      "stage_id": "stage-004-normalization",
+      "tags": [
+        "normalization_or_residual"
+      ],
+      "what": "Normalizes, scales, or combines a residual representation. Exact source: torch.nn.modules.normalization.LayerNorm. Observed shape: [1, 18, 16] \u2192 [1, 18, 16]."
+    },
+    "module-00020": {
+      "confidence": "technical_fallback",
+      "entity_id": "module-00020",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 6,
+        "total": 84
+      },
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000051"
+      ],
+      "interface_signature": "forward(hidden_states:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          768
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000056"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "pooler",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTPooler",
+      "source_name": "DeiTPooler",
+      "source_ref": {
+        "end_line": 343,
+        "executed_line": 337,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 337,
+        "symbol": "DeiTPooler.forward"
+      },
+      "stage_id": "stage-006-input-embedding",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: transformers.models.deit.modeling_deit.DeiTPooler transforms [1, 18, 16] into [1, 768] in the observed trace."
+    },
+    "module-00021": {
+      "confidence": "verified_rule",
+      "entity_id": "module-00021",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 6,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000052"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          768
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000055"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "pooler.dense",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "Linear",
+      "source_ref": {
+        "end_line": 134,
+        "executed_line": 130,
+        "file": "torch/nn/modules/linear.py",
+        "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+        "start_line": 130,
+        "symbol": "Linear.forward"
+      },
+      "stage_id": "stage-006-input-embedding",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: torch.nn.modules.linear.Linear. Observed shape: [1, 16] \u2192 [1, 768]."
+    },
+    "module-00022": {
+      "confidence": "technical_fallback",
+      "entity_id": "module-00022",
+      "entity_kind": "module",
+      "graph_position": {
+        "order": 7,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          768
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000055"
+      ],
+      "interface_signature": "forward(input:positional_or_keyword) -> torch.Tensor",
+      "output_shapes": [
+        [
+          1,
+          768
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000056"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "pooler.activation",
+      "semantic_name": "Unclassified component",
+      "source_class": "torch.nn.modules.activation.Tanh",
+      "source_name": "Tanh",
+      "source_ref": {
+        "end_line": 432,
+        "executed_line": 428,
+        "file": "torch/nn/modules/activation.py",
+        "source_uid": "source.sha256.61bd5e4f390b965228ead6bb0efcad5b9b5299d833bcf5c2aa11ebaebb39ba29",
+        "start_line": 428,
+        "symbol": "Tanh.forward"
+      },
+      "stage_id": "stage-007-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: torch.nn.modules.activation.Tanh transforms [1, 768] into [1, 768] in the observed trace."
+    },
+    "op-000000": {
+      "confidence": "verified_rule",
+      "entity_id": "op-000000",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 3,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          3,
+          16,
+          16
+        ],
+        [
+          16,
+          3,
+          4,
+          4
+        ],
+        [
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000000",
+        "tensor-000001",
+        "tensor-000002"
+      ],
+      "interface_signature": "aten.conv2d.default",
+      "output_shapes": [
+        [
+          1,
+          16,
+          4,
+          4
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000003"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings.patch_embeddings.projection",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.conv.Conv2d",
+      "source_name": "conv2d",
+      "source_ref": {
+        "end_line": 562,
+        "executed_line": 560,
+        "file": "torch/nn/modules/conv.py",
+        "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+        "start_line": 546,
+        "symbol": "Conv2d._conv_forward"
+      },
+      "stage_id": "stage-001-input-embedding",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: conv2d. Observed shape: [1, 3, 16, 16] \u2192 [1, 16, 4, 4]."
+    },
+    "op-000001": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000001",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 4,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          16,
+          4,
+          4
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000003"
+      ],
+      "interface_signature": "aten.flatten.using_ints",
+      "output_shapes": [
+        [
+          1,
+          16,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000004"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings.patch_embeddings",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTPatchEmbeddings",
+      "source_name": "flatten",
+      "source_ref": {
+        "end_line": 67,
+        "executed_line": 67,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 60,
+        "symbol": "DeiTPatchEmbeddings.forward"
+      },
+      "stage_id": "stage-002-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: flatten transforms [1, 16, 4, 4] into [1, 16, 16] in the observed trace."
+    },
+    "op-000002": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000002",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 5,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          16,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000004"
+      ],
+      "interface_signature": "aten.transpose.int",
+      "output_shapes": [
+        [
+          1,
+          16,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000005"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings.patch_embeddings",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTPatchEmbeddings",
+      "source_name": "transpose",
+      "source_ref": {
+        "end_line": 67,
+        "executed_line": 67,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 60,
+        "symbol": "DeiTPatchEmbeddings.forward"
+      },
+      "stage_id": "stage-002-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: transpose transforms [1, 16, 16] into [1, 16, 16] in the observed trace."
+    },
+    "op-000003": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000003",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 7,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          1,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000006"
+      ],
+      "interface_signature": "aten.expand.default",
+      "output_shapes": [
+        [
+          1,
+          1,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000007"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTEmbeddings",
+      "source_name": "expand",
+      "source_ref": {
+        "end_line": 166,
+        "executed_line": 151,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 134,
+        "symbol": "DeiTEmbeddings.forward"
+      },
+      "stage_id": "stage-002-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: expand transforms [1, 1, 16] into [1, 1, 16] in the observed trace."
+    },
+    "op-000004": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000004",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 9,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          1,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000008"
+      ],
+      "interface_signature": "aten.expand.default",
+      "output_shapes": [
+        [
+          1,
+          1,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000009"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTEmbeddings",
+      "source_name": "expand",
+      "source_ref": {
+        "end_line": 166,
+        "executed_line": 152,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 134,
+        "symbol": "DeiTEmbeddings.forward"
+      },
+      "stage_id": "stage-002-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: expand transforms [1, 1, 16] into [1, 1, 16] in the observed trace."
+    },
+    "op-000005": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000005",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 10,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          1,
+          16
+        ],
+        [
+          1,
+          1,
+          16
+        ],
+        [
+          1,
+          16,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000007",
+        "tensor-000009",
+        "tensor-000005"
+      ],
+      "interface_signature": "aten.cat.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000010"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTEmbeddings",
+      "source_name": "cat",
+      "source_ref": {
+        "end_line": 166,
+        "executed_line": 153,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 134,
+        "symbol": "DeiTEmbeddings.forward"
+      },
+      "stage_id": "stage-002-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: cat transforms [1, 1, 16] into [1, 18, 16] in the observed trace."
+    },
+    "op-000006": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000006",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 12,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000010",
+        "tensor-000011"
+      ],
+      "interface_signature": "aten.add.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000012"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTEmbeddings",
+      "source_name": "add",
+      "source_ref": {
+        "end_line": 166,
+        "executed_line": 163,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 134,
+        "symbol": "DeiTEmbeddings.forward"
+      },
+      "stage_id": "stage-002-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: add transforms [1, 18, 16] into [1, 18, 16] in the observed trace."
+    },
+    "op-000007": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000007",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 13,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000012"
+      ],
+      "interface_signature": "aten.dropout.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000012"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings.dropout",
+      "semantic_name": "Unclassified component",
+      "source_class": "torch.nn.modules.dropout.Dropout",
+      "source_name": "dropout",
+      "source_ref": {
+        "end_line": 1444,
+        "executed_line": 1443,
+        "file": "torch/nn/functional.py",
+        "source_uid": "source.sha256.c358c214f663ba0c8b9c6846fbe0042fa29494cf02fe4714a17dcd0d268b035b",
+        "start_line": 1419,
+        "symbol": "dropout"
+      },
+      "stage_id": "stage-002-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: dropout transforms [1, 18, 16] into [1, 18, 16] in the observed trace."
+    },
+    "op-000008": {
+      "confidence": "verified_rule",
+      "entity_id": "op-000008",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 16,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          16
+        ],
+        [
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000012",
+        "tensor-000013",
+        "tensor-000014"
+      ],
+      "interface_signature": "aten.layer_norm.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000015"
+      ],
+      "primary_tag": "normalization_or_residual",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.layernorm_before",
+      "semantic_name": "Normalization or residual",
+      "source_class": "torch.nn.modules.normalization.LayerNorm",
+      "source_name": "layer_norm",
+      "source_ref": {
+        "end_line": 2941,
+        "executed_line": 2939,
+        "file": "torch/nn/functional.py",
+        "source_uid": "source.sha256.c358c214f663ba0c8b9c6846fbe0042fa29494cf02fe4714a17dcd0d268b035b",
+        "start_line": 2918,
+        "symbol": "layer_norm"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "normalization_or_residual"
+      ],
+      "what": "Normalizes, scales, or combines a residual representation. Exact source: layer_norm. Observed shape: [1, 18, 16] \u2192 [1, 18, 16]."
+    },
+    "op-000009": {
+      "confidence": "verified_rule",
+      "entity_id": "op-000009",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 19,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000015",
+        "tensor-000016",
+        "tensor-000017"
+      ],
+      "interface_signature": "aten.linear.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000018"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.q_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "linear",
+      "source_ref": {
+        "end_line": 134,
+        "executed_line": 134,
+        "file": "torch/nn/modules/linear.py",
+        "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+        "start_line": 130,
+        "symbol": "Linear.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: linear. Observed shape: [1, 18, 16] \u2192 [1, 18, 16]."
+    },
+    "op-000010": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000010",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 20,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000018"
+      ],
+      "interface_signature": "aten.view.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          4,
+          4
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000019"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTAttention",
+      "source_name": "view",
+      "source_ref": {
+        "end_line": 243,
+        "executed_line": 221,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 212,
+        "symbol": "DeiTAttention.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: view transforms [1, 18, 16] into [1, 18, 4, 4] in the observed trace."
+    },
+    "op-000011": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000011",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 21,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          4,
+          4
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000019"
+      ],
+      "interface_signature": "aten.transpose.int",
+      "output_shapes": [
+        [
+          1,
+          4,
+          18,
+          4
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000020"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTAttention",
+      "source_name": "transpose",
+      "source_ref": {
+        "end_line": 243,
+        "executed_line": 221,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 212,
+        "symbol": "DeiTAttention.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: transpose transforms [1, 18, 4, 4] into [1, 4, 18, 4] in the observed trace."
+    },
+    "op-000012": {
+      "confidence": "verified_rule",
+      "entity_id": "op-000012",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 24,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000015",
+        "tensor-000021",
+        "tensor-000022"
+      ],
+      "interface_signature": "aten.linear.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000023"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.k_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "linear",
+      "source_ref": {
+        "end_line": 134,
+        "executed_line": 134,
+        "file": "torch/nn/modules/linear.py",
+        "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+        "start_line": 130,
+        "symbol": "Linear.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: linear. Observed shape: [1, 18, 16] \u2192 [1, 18, 16]."
+    },
+    "op-000013": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000013",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 25,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000023"
+      ],
+      "interface_signature": "aten.view.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          4,
+          4
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000024"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTAttention",
+      "source_name": "view",
+      "source_ref": {
+        "end_line": 243,
+        "executed_line": 222,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 212,
+        "symbol": "DeiTAttention.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: view transforms [1, 18, 16] into [1, 18, 4, 4] in the observed trace."
+    },
+    "op-000014": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000014",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 26,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          4,
+          4
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000024"
+      ],
+      "interface_signature": "aten.transpose.int",
+      "output_shapes": [
+        [
+          1,
+          4,
+          18,
+          4
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000025"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTAttention",
+      "source_name": "transpose",
+      "source_ref": {
+        "end_line": 243,
+        "executed_line": 222,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 212,
+        "symbol": "DeiTAttention.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: transpose transforms [1, 18, 4, 4] into [1, 4, 18, 4] in the observed trace."
+    },
+    "op-000015": {
+      "confidence": "verified_rule",
+      "entity_id": "op-000015",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 29,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000015",
+        "tensor-000026",
+        "tensor-000027"
+      ],
+      "interface_signature": "aten.linear.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000028"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.v_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "linear",
+      "source_ref": {
+        "end_line": 134,
+        "executed_line": 134,
+        "file": "torch/nn/modules/linear.py",
+        "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+        "start_line": 130,
+        "symbol": "Linear.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: linear. Observed shape: [1, 18, 16] \u2192 [1, 18, 16]."
+    },
+    "op-000016": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000016",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 30,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000028"
+      ],
+      "interface_signature": "aten.view.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          4,
+          4
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000029"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTAttention",
+      "source_name": "view",
+      "source_ref": {
+        "end_line": 243,
+        "executed_line": 223,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 212,
+        "symbol": "DeiTAttention.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: view transforms [1, 18, 16] into [1, 18, 4, 4] in the observed trace."
+    },
+    "op-000017": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000017",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 31,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          4,
+          4
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000029"
+      ],
+      "interface_signature": "aten.transpose.int",
+      "output_shapes": [
+        [
+          1,
+          4,
+          18,
+          4
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000030"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTAttention",
+      "source_name": "transpose",
+      "source_ref": {
+        "end_line": 243,
+        "executed_line": 223,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 212,
+        "symbol": "DeiTAttention.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: transpose transforms [1, 18, 4, 4] into [1, 4, 18, 4] in the observed trace."
+    },
+    "op-000018": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000018",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 32,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          4,
+          18,
+          4
+        ],
+        [
+          1,
+          4,
+          18,
+          4
+        ],
+        [
+          1,
+          4,
+          18,
+          4
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000020",
+        "tensor-000025",
+        "tensor-000030"
+      ],
+      "interface_signature": "aten.scaled_dot_product_attention.default",
+      "output_shapes": [
+        [
+          1,
+          4,
+          18,
+          4
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000031"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTAttention",
+      "source_name": "scaled_dot_product_attention",
+      "source_ref": {
+        "end_line": 104,
+        "executed_line": 92,
+        "file": "transformers/integrations/sdpa_attention.py",
+        "source_uid": "source.sha256.fdcdb0edc2d04000d9969daaf4069894eb7b57b208b725a400f6738e7eca2834",
+        "start_line": 40,
+        "symbol": "sdpa_attention_forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: scaled_dot_product_attention transforms [1, 4, 18, 4] into [1, 4, 18, 4] in the observed trace."
+    },
+    "op-000019": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000019",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 33,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          4,
+          18,
+          4
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000031"
+      ],
+      "interface_signature": "aten.transpose.int",
+      "output_shapes": [
+        [
+          1,
+          18,
+          4,
+          4
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000032"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTAttention",
+      "source_name": "transpose",
+      "source_ref": {
+        "end_line": 104,
+        "executed_line": 102,
+        "file": "transformers/integrations/sdpa_attention.py",
+        "source_uid": "source.sha256.fdcdb0edc2d04000d9969daaf4069894eb7b57b208b725a400f6738e7eca2834",
+        "start_line": 40,
+        "symbol": "sdpa_attention_forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: transpose transforms [1, 4, 18, 4] into [1, 18, 4, 4] in the observed trace."
+    },
+    "op-000020": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000020",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 34,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          4,
+          4
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000032"
+      ],
+      "interface_signature": "aten.reshape.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000033"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTAttention",
+      "source_name": "reshape",
+      "source_ref": {
+        "end_line": 243,
+        "executed_line": 240,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 212,
+        "symbol": "DeiTAttention.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: reshape transforms [1, 18, 4, 4] into [1, 18, 16] in the observed trace."
+    },
+    "op-000021": {
+      "confidence": "verified_rule",
+      "entity_id": "op-000021",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 37,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000033",
+        "tensor-000034",
+        "tensor-000035"
+      ],
+      "interface_signature": "aten.linear.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000036"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.o_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "linear",
+      "source_ref": {
+        "end_line": 134,
+        "executed_line": 134,
+        "file": "torch/nn/modules/linear.py",
+        "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+        "start_line": 130,
+        "symbol": "Linear.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: linear. Observed shape: [1, 18, 16] \u2192 [1, 18, 16]."
+    },
+    "op-000022": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000022",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 38,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000036"
+      ],
+      "interface_signature": "aten.dropout.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000036"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.dropout",
+      "semantic_name": "Unclassified component",
+      "source_class": "torch.nn.modules.dropout.Dropout",
+      "source_name": "dropout",
+      "source_ref": {
+        "end_line": 1444,
+        "executed_line": 1443,
+        "file": "torch/nn/functional.py",
+        "source_uid": "source.sha256.c358c214f663ba0c8b9c6846fbe0042fa29494cf02fe4714a17dcd0d268b035b",
+        "start_line": 1419,
+        "symbol": "dropout"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: dropout transforms [1, 18, 16] into [1, 18, 16] in the observed trace."
+    },
+    "op-000023": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000023",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 39,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000036",
+        "tensor-000012"
+      ],
+      "interface_signature": "aten.add.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000037"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTLayer",
+      "source_name": "add",
+      "source_ref": {
+        "end_line": 291,
+        "executed_line": 282,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 271,
+        "symbol": "DeiTLayer.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: add transforms [1, 18, 16] into [1, 18, 16] in the observed trace."
+    },
+    "op-000024": {
+      "confidence": "verified_rule",
+      "entity_id": "op-000024",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 42,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          16
+        ],
+        [
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000037",
+        "tensor-000038",
+        "tensor-000039"
+      ],
+      "interface_signature": "aten.layer_norm.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000040"
+      ],
+      "primary_tag": "normalization_or_residual",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.layernorm_after",
+      "semantic_name": "Normalization or residual",
+      "source_class": "torch.nn.modules.normalization.LayerNorm",
+      "source_name": "layer_norm",
+      "source_ref": {
+        "end_line": 2941,
+        "executed_line": 2939,
+        "file": "torch/nn/functional.py",
+        "source_uid": "source.sha256.c358c214f663ba0c8b9c6846fbe0042fa29494cf02fe4714a17dcd0d268b035b",
+        "start_line": 2918,
+        "symbol": "layer_norm"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "normalization_or_residual"
+      ],
+      "what": "Normalizes, scales, or combines a residual representation. Exact source: layer_norm. Observed shape: [1, 18, 16] \u2192 [1, 18, 16]."
+    },
+    "op-000025": {
+      "confidence": "verified_rule",
+      "entity_id": "op-000025",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 45,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          32,
+          16
+        ],
+        [
+          32
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000040",
+        "tensor-000041",
+        "tensor-000042"
+      ],
+      "interface_signature": "aten.linear.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          32
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000043"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.mlp.fc1",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "linear",
+      "source_ref": {
+        "end_line": 134,
+        "executed_line": 134,
+        "file": "torch/nn/modules/linear.py",
+        "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+        "start_line": 130,
+        "symbol": "Linear.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: linear. Observed shape: [1, 18, 16] \u2192 [1, 18, 32]."
+    },
+    "op-000026": {
+      "confidence": "verified_rule",
+      "entity_id": "op-000026",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 46,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          32
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000043"
+      ],
+      "interface_signature": "aten.gelu.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          32
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000044"
+      ],
+      "primary_tag": "feed_forward",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.mlp.activation_fn",
+      "semantic_name": "Feed-forward transform",
+      "source_class": "transformers.activations.GELUActivation",
+      "source_name": "gelu",
+      "source_ref": {
+        "end_line": 89,
+        "executed_line": 89,
+        "file": "transformers/activations.py",
+        "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+        "start_line": 88,
+        "symbol": "GELUActivation.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "feed_forward"
+      ],
+      "what": "Applies a point-wise feed-forward transformation. Exact source: gelu. Observed shape: [1, 18, 32] \u2192 [1, 18, 32]."
+    },
+    "op-000027": {
+      "confidence": "verified_rule",
+      "entity_id": "op-000027",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 49,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          32
+        ],
+        [
+          16,
+          32
+        ],
+        [
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000044",
+        "tensor-000045",
+        "tensor-000046"
+      ],
+      "interface_signature": "aten.linear.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000047"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.mlp.fc2",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "linear",
+      "source_ref": {
+        "end_line": 134,
+        "executed_line": 134,
+        "file": "torch/nn/modules/linear.py",
+        "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+        "start_line": 130,
+        "symbol": "Linear.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: linear. Observed shape: [1, 18, 32] \u2192 [1, 18, 16]."
+    },
+    "op-000028": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000028",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 50,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000047"
+      ],
+      "interface_signature": "aten.dropout.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000047"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.dropout",
+      "semantic_name": "Unclassified component",
+      "source_class": "torch.nn.modules.dropout.Dropout",
+      "source_name": "dropout",
+      "source_ref": {
+        "end_line": 1444,
+        "executed_line": 1443,
+        "file": "torch/nn/functional.py",
+        "source_uid": "source.sha256.c358c214f663ba0c8b9c6846fbe0042fa29494cf02fe4714a17dcd0d268b035b",
+        "start_line": 1419,
+        "symbol": "dropout"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: dropout transforms [1, 18, 16] into [1, 18, 16] in the observed trace."
+    },
+    "op-000029": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000029",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 51,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000047",
+        "tensor-000037"
+      ],
+      "interface_signature": "aten.add.Tensor",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000048"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTLayer",
+      "source_name": "add",
+      "source_ref": {
+        "end_line": 291,
+        "executed_line": 289,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 271,
+        "symbol": "DeiTLayer.forward"
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: add transforms [1, 18, 16] into [1, 18, 16] in the observed trace."
+    },
+    "op-000030": {
+      "confidence": "verified_rule",
+      "entity_id": "op-000030",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 54,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          16
+        ],
+        [
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000048",
+        "tensor-000049",
+        "tensor-000050"
+      ],
+      "interface_signature": "aten.layer_norm.default",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000051"
+      ],
+      "primary_tag": "normalization_or_residual",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layernorm",
+      "semantic_name": "Normalization or residual",
+      "source_class": "torch.nn.modules.normalization.LayerNorm",
+      "source_name": "layer_norm",
+      "source_ref": {
+        "end_line": 2941,
+        "executed_line": 2939,
+        "file": "torch/nn/functional.py",
+        "source_uid": "source.sha256.c358c214f663ba0c8b9c6846fbe0042fa29494cf02fe4714a17dcd0d268b035b",
+        "start_line": 2918,
+        "symbol": "layer_norm"
+      },
+      "stage_id": "stage-004-normalization",
+      "tags": [
+        "normalization_or_residual"
+      ],
+      "what": "Normalizes, scales, or combines a residual representation. Exact source: layer_norm. Observed shape: [1, 18, 16] \u2192 [1, 18, 16]."
+    },
+    "op-000031": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000031",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 55,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000051"
+      ],
+      "interface_signature": "aten.select.int",
+      "output_shapes": [
+        [
+          1,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000052"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "pooler",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTPooler",
+      "source_name": "select",
+      "source_ref": {
+        "end_line": 343,
+        "executed_line": 340,
+        "file": "transformers/models/deit/modeling_deit.py",
+        "source_uid": "source.sha256.07cbe6bd10b65f61f6becade8e921c8c470f6680264356aa6779a74b5e3b535f",
+        "start_line": 337,
+        "symbol": "DeiTPooler.forward"
+      },
+      "stage_id": "stage-005-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: select transforms [1, 18, 16] into [1, 16] in the observed trace."
+    },
+    "op-000032": {
+      "confidence": "verified_rule",
+      "entity_id": "op-000032",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 58,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          16
+        ],
+        [
+          768,
+          16
+        ],
+        [
+          768
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000052",
+        "tensor-000053",
+        "tensor-000054"
+      ],
+      "interface_signature": "aten.linear.default",
+      "output_shapes": [
+        [
+          1,
+          768
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000055"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "pooler.dense",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "linear",
+      "source_ref": {
+        "end_line": 134,
+        "executed_line": 134,
+        "file": "torch/nn/modules/linear.py",
+        "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+        "start_line": 130,
+        "symbol": "Linear.forward"
+      },
+      "stage_id": "stage-006-input-embedding",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: linear. Observed shape: [1, 16] \u2192 [1, 768]."
+    },
+    "op-000033": {
+      "confidence": "technical_fallback",
+      "entity_id": "op-000033",
+      "entity_kind": "operation",
+      "graph_position": {
+        "order": 59,
+        "total": 84
+      },
+      "importance": "implementation_detail",
+      "input_shapes": [
+        [
+          1,
+          768
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000055"
+      ],
+      "interface_signature": "aten.tanh.default",
+      "output_shapes": [
+        [
+          1,
+          768
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000056"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "pooler.activation",
+      "semantic_name": "Unclassified component",
+      "source_class": "torch.nn.modules.activation.Tanh",
+      "source_name": "tanh",
+      "source_ref": {
+        "end_line": 432,
+        "executed_line": 432,
+        "file": "torch/nn/modules/activation.py",
+        "source_uid": "source.sha256.61bd5e4f390b965228ead6bb0efcad5b9b5299d833bcf5c2aa11ebaebb39ba29",
+        "start_line": 428,
+        "symbol": "Tanh.forward"
+      },
+      "stage_id": "stage-007-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: tanh transforms [1, 768] into [1, 768] in the observed trace."
+    },
+    "parameter-000002": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000002",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 1,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "embeddings.patch_embeddings.projection.weight",
+      "output_shapes": [
+        [
+          16,
+          3,
+          4,
+          4
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000001"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings.patch_embeddings.projection",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.conv.Conv2d",
+      "source_name": "embeddings.patch_embeddings.projection.weight",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-001-input-embedding",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: embeddings.patch_embeddings.projection.weight."
+    },
+    "parameter-000003": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000003",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 2,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "embeddings.patch_embeddings.projection.bias",
+      "output_shapes": [
+        [
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000002"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings.patch_embeddings.projection",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.conv.Conv2d",
+      "source_name": "embeddings.patch_embeddings.projection.bias",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-001-input-embedding",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: embeddings.patch_embeddings.projection.bias."
+    },
+    "parameter-000007": {
+      "confidence": "technical_fallback",
+      "entity_id": "parameter-000007",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 6,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "embeddings.cls_token",
+      "output_shapes": [
+        [
+          1,
+          1,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000006"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTEmbeddings",
+      "source_name": "embeddings.cls_token",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-002-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: embeddings.cls_token produces [1, 1, 16] in the observed trace."
+    },
+    "parameter-000009": {
+      "confidence": "technical_fallback",
+      "entity_id": "parameter-000009",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 8,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "embeddings.distillation_token",
+      "output_shapes": [
+        [
+          1,
+          1,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000008"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTEmbeddings",
+      "source_name": "embeddings.distillation_token",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-002-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: embeddings.distillation_token produces [1, 1, 16] in the observed trace."
+    },
+    "parameter-000012": {
+      "confidence": "technical_fallback",
+      "entity_id": "parameter-000012",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 11,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "embeddings.position_embeddings",
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000011"
+      ],
+      "primary_tag": "other",
+      "provenance": [
+        "no_exact_interface_rule",
+        "trace"
+      ],
+      "qualified_name": "embeddings",
+      "semantic_name": "Unclassified component",
+      "source_class": "transformers.models.deit.modeling_deit.DeiTEmbeddings",
+      "source_name": "embeddings.position_embeddings",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-002-backbone",
+      "tags": [
+        "other"
+      ],
+      "what": "Technical fallback: embeddings.position_embeddings produces [1, 18, 16] in the observed trace."
+    },
+    "parameter-000015": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000015",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 14,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.layernorm_before.weight",
+      "output_shapes": [
+        [
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000013"
+      ],
+      "primary_tag": "normalization_or_residual",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.layernorm_before",
+      "semantic_name": "Normalization or residual",
+      "source_class": "torch.nn.modules.normalization.LayerNorm",
+      "source_name": "layers.0.layernorm_before.weight",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "normalization_or_residual"
+      ],
+      "what": "Normalizes, scales, or combines a residual representation. Exact source: layers.0.layernorm_before.weight."
+    },
+    "parameter-000016": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000016",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 15,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.layernorm_before.bias",
+      "output_shapes": [
+        [
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000014"
+      ],
+      "primary_tag": "normalization_or_residual",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.layernorm_before",
+      "semantic_name": "Normalization or residual",
+      "source_class": "torch.nn.modules.normalization.LayerNorm",
+      "source_name": "layers.0.layernorm_before.bias",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "normalization_or_residual"
+      ],
+      "what": "Normalizes, scales, or combines a residual representation. Exact source: layers.0.layernorm_before.bias."
+    },
+    "parameter-000018": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000018",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 17,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.attention.q_proj.weight",
+      "output_shapes": [
+        [
+          16,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000016"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.q_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "layers.0.attention.q_proj.weight",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: layers.0.attention.q_proj.weight."
+    },
+    "parameter-000019": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000019",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 18,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.attention.q_proj.bias",
+      "output_shapes": [
+        [
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000017"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.q_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "layers.0.attention.q_proj.bias",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: layers.0.attention.q_proj.bias."
+    },
+    "parameter-000023": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000023",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 22,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.attention.k_proj.weight",
+      "output_shapes": [
+        [
+          16,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000021"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.k_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "layers.0.attention.k_proj.weight",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: layers.0.attention.k_proj.weight."
+    },
+    "parameter-000024": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000024",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 23,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.attention.k_proj.bias",
+      "output_shapes": [
+        [
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000022"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.k_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "layers.0.attention.k_proj.bias",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: layers.0.attention.k_proj.bias."
+    },
+    "parameter-000028": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000028",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 27,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.attention.v_proj.weight",
+      "output_shapes": [
+        [
+          16,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000026"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.v_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "layers.0.attention.v_proj.weight",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: layers.0.attention.v_proj.weight."
+    },
+    "parameter-000029": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000029",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 28,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.attention.v_proj.bias",
+      "output_shapes": [
+        [
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000027"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.v_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "layers.0.attention.v_proj.bias",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: layers.0.attention.v_proj.bias."
+    },
+    "parameter-000036": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000036",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 35,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.attention.o_proj.weight",
+      "output_shapes": [
+        [
+          16,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000034"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.o_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "layers.0.attention.o_proj.weight",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: layers.0.attention.o_proj.weight."
+    },
+    "parameter-000037": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000037",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 36,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.attention.o_proj.bias",
+      "output_shapes": [
+        [
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000035"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.attention.o_proj",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "layers.0.attention.o_proj.bias",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: layers.0.attention.o_proj.bias."
+    },
+    "parameter-000041": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000041",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 40,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.layernorm_after.weight",
+      "output_shapes": [
+        [
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000038"
+      ],
+      "primary_tag": "normalization_or_residual",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.layernorm_after",
+      "semantic_name": "Normalization or residual",
+      "source_class": "torch.nn.modules.normalization.LayerNorm",
+      "source_name": "layers.0.layernorm_after.weight",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "normalization_or_residual"
+      ],
+      "what": "Normalizes, scales, or combines a residual representation. Exact source: layers.0.layernorm_after.weight."
+    },
+    "parameter-000042": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000042",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 41,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.layernorm_after.bias",
+      "output_shapes": [
+        [
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000039"
+      ],
+      "primary_tag": "normalization_or_residual",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.layernorm_after",
+      "semantic_name": "Normalization or residual",
+      "source_class": "torch.nn.modules.normalization.LayerNorm",
+      "source_name": "layers.0.layernorm_after.bias",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "normalization_or_residual"
+      ],
+      "what": "Normalizes, scales, or combines a residual representation. Exact source: layers.0.layernorm_after.bias."
+    },
+    "parameter-000044": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000044",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 43,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.mlp.fc1.weight",
+      "output_shapes": [
+        [
+          32,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000041"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.mlp.fc1",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "layers.0.mlp.fc1.weight",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: layers.0.mlp.fc1.weight."
+    },
+    "parameter-000045": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000045",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 44,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.mlp.fc1.bias",
+      "output_shapes": [
+        [
+          32
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000042"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.mlp.fc1",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "layers.0.mlp.fc1.bias",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: layers.0.mlp.fc1.bias."
+    },
+    "parameter-000048": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000048",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 47,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.mlp.fc2.weight",
+      "output_shapes": [
+        [
+          16,
+          32
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000045"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.mlp.fc2",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "layers.0.mlp.fc2.weight",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: layers.0.mlp.fc2.weight."
+    },
+    "parameter-000049": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000049",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 48,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layers.0.mlp.fc2.bias",
+      "output_shapes": [
+        [
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000046"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layers.0.mlp.fc2",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "layers.0.mlp.fc2.bias",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-003-backbone",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: layers.0.mlp.fc2.bias."
+    },
+    "parameter-000053": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000053",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 52,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layernorm.weight",
+      "output_shapes": [
+        [
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000049"
+      ],
+      "primary_tag": "normalization_or_residual",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layernorm",
+      "semantic_name": "Normalization or residual",
+      "source_class": "torch.nn.modules.normalization.LayerNorm",
+      "source_name": "layernorm.weight",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-004-normalization",
+      "tags": [
+        "normalization_or_residual"
+      ],
+      "what": "Normalizes, scales, or combines a residual representation. Exact source: layernorm.weight."
+    },
+    "parameter-000054": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000054",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 53,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "layernorm.bias",
+      "output_shapes": [
+        [
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000050"
+      ],
+      "primary_tag": "normalization_or_residual",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "layernorm",
+      "semantic_name": "Normalization or residual",
+      "source_class": "torch.nn.modules.normalization.LayerNorm",
+      "source_name": "layernorm.bias",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-004-normalization",
+      "tags": [
+        "normalization_or_residual"
+      ],
+      "what": "Normalizes, scales, or combines a residual representation. Exact source: layernorm.bias."
+    },
+    "parameter-000057": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000057",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 56,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "pooler.dense.weight",
+      "output_shapes": [
+        [
+          768,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000053"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "pooler.dense",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "pooler.dense.weight",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-006-input-embedding",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: pooler.dense.weight."
+    },
+    "parameter-000058": {
+      "confidence": "verified_rule",
+      "entity_id": "parameter-000058",
+      "entity_kind": "parameter",
+      "graph_position": {
+        "order": 57,
+        "total": 84
+      },
+      "importance": "secondary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "interface_signature": "pooler.dense.bias",
+      "output_shapes": [
+        [
+          768
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000054"
+      ],
+      "primary_tag": "embedding_or_projection",
+      "provenance": [
+        "exact_class_rule",
+        "trace"
+      ],
+      "qualified_name": "pooler.dense",
+      "semantic_name": "Embedding or projection",
+      "source_class": "torch.nn.modules.linear.Linear",
+      "source_name": "pooler.dense.bias",
+      "source_ref": {
+        "end_line": 0,
+        "executed_line": 0,
+        "file": null,
+        "source_uid": null,
+        "start_line": 0,
+        "symbol": null
+      },
+      "stage_id": "stage-006-input-embedding",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "what": "Projects values or channels into another representation width. Exact source: pooler.dense.bias."
+    }
+  },
+  "generated_at": "2026-09-06T16:35:30.997960+00:00",
+  "generator_version": "1.0.0",
+  "journeys": [
+    {
+      "input_tensor_id": "tensor-000000",
+      "journey_id": "primary-input-output",
+      "name": "Primary input-to-output route",
+      "output_tensor_ids": [
+        "tensor-000056"
+      ],
+      "preferred_boundary_tensor_ids": [
+        "tensor-000003",
+        "tensor-000004",
+        "tensor-000010",
+        "tensor-000012",
+        "tensor-000019",
+        "tensor-000020",
+        "tensor-000032",
+        "tensor-000033",
+        "tensor-000043",
+        "tensor-000047",
+        "tensor-000048",
+        "tensor-000051",
+        "tensor-000052",
+        "tensor-000055"
+      ],
+      "route_confidence": "exact",
+      "steps": [
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved at this selected boundary.",
+          "node_id": "op-000000",
+          "representation": "Image-like tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            3,
+            16,
+            16
+          ],
+          "stage_id": "stage-001-input-embedding",
+          "step_id": "journey-step-000",
+          "tensor_id": "tensor-000000",
+          "transform": "Model input"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape changes from [1, 3, 16, 16] to [1, 16, 4, 4].",
+          "node_id": "op-000001",
+          "representation": "Image-like tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            4,
+            4
+          ],
+          "stage_id": "stage-002-backbone",
+          "step_id": "journey-step-001",
+          "tensor_id": "tensor-000003",
+          "transform": "flatten"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape changes from [1, 16, 4, 4] to [1, 16, 16].",
+          "node_id": "op-000002",
+          "representation": "Visual token sequence",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16
+          ],
+          "stage_id": "stage-002-backbone",
+          "step_id": "journey-step-002",
+          "tensor_id": "tensor-000004",
+          "transform": "transpose"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape changes from [1, 16, 16] to [1, 18, 16].",
+          "node_id": "op-000006",
+          "representation": "Visual token sequence",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            18,
+            16
+          ],
+          "stage_id": "stage-002-backbone",
+          "step_id": "journey-step-003",
+          "tensor_id": "tensor-000010",
+          "transform": "add"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved at this selected boundary.",
+          "node_id": "op-000008",
+          "representation": "Visual token sequence",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            18,
+            16
+          ],
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-004",
+          "tensor_id": "tensor-000012",
+          "transform": "layer_norm"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape changes from [1, 18, 16] to [1, 18, 4, 4].",
+          "node_id": "op-000011",
+          "representation": "Image-like tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            18,
+            4,
+            4
+          ],
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-005",
+          "tensor_id": "tensor-000019",
+          "transform": "transpose"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape changes from [1, 18, 4, 4] to [1, 4, 18, 4].",
+          "node_id": "op-000018",
+          "representation": "Image-like tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            4,
+            18,
+            4
+          ],
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-006",
+          "tensor_id": "tensor-000020",
+          "transform": "scaled_dot_product_attention"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape changes from [1, 4, 18, 4] to [1, 18, 4, 4].",
+          "node_id": "op-000020",
+          "representation": "Image-like tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            18,
+            4,
+            4
+          ],
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-007",
+          "tensor_id": "tensor-000032",
+          "transform": "reshape"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape changes from [1, 18, 4, 4] to [1, 18, 16].",
+          "node_id": "op-000021",
+          "representation": "Visual token sequence",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            18,
+            16
+          ],
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-008",
+          "tensor_id": "tensor-000033",
+          "transform": "linear"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape changes from [1, 18, 16] to [1, 18, 32].",
+          "node_id": "op-000026",
+          "representation": "Visual token sequence",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            18,
+            32
+          ],
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-009",
+          "tensor_id": "tensor-000043",
+          "transform": "gelu"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape changes from [1, 18, 32] to [1, 18, 16].",
+          "node_id": "op-000028",
+          "representation": "Visual token sequence",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            18,
+            16
+          ],
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-010",
+          "tensor_id": "tensor-000047",
+          "transform": "dropout"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved at this selected boundary.",
+          "node_id": "op-000030",
+          "representation": "Visual token sequence",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            18,
+            16
+          ],
+          "stage_id": "stage-004-normalization",
+          "step_id": "journey-step-011",
+          "tensor_id": "tensor-000048",
+          "transform": "layer_norm"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved at this selected boundary.",
+          "node_id": "op-000031",
+          "representation": "Visual token sequence",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            18,
+            16
+          ],
+          "stage_id": "stage-005-backbone",
+          "step_id": "journey-step-012",
+          "tensor_id": "tensor-000051",
+          "transform": "select"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape changes from [1, 18, 16] to [1, 16].",
+          "node_id": "op-000032",
+          "representation": "Rank-2 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16
+          ],
+          "stage_id": "stage-006-input-embedding",
+          "step_id": "journey-step-013",
+          "tensor_id": "tensor-000052",
+          "transform": "linear"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape changes from [1, 16] to [1, 768].",
+          "node_id": "op-000033",
+          "representation": "Rank-2 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            768
+          ],
+          "stage_id": "stage-007-backbone",
+          "step_id": "journey-step-014",
+          "tensor_id": "tensor-000055",
+          "transform": "tanh"
+        },
+        {
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved at this selected boundary.",
+          "node_id": "graph-output",
+          "representation": "Rank-2 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            768
+          ],
+          "stage_id": "stage-008-output-adapter",
+          "step_id": "journey-step-015",
+          "tensor_id": "tensor-000056",
+          "transform": "Model outputs"
+        }
+      ]
+    }
+  ],
+  "metrics": {
+    "official_parameter_estimate": null,
+    "operation_distribution": [
+      {
+        "percentage": 0.029412,
+        "stage_id": "stage-001-input-embedding",
+        "value": 1
+      },
+      {
+        "percentage": 0.205882,
+        "stage_id": "stage-002-backbone",
+        "value": 7
+      },
+      {
+        "percentage": 0.647059,
+        "stage_id": "stage-003-backbone",
+        "value": 22
+      },
+      {
+        "percentage": 0.029412,
+        "stage_id": "stage-004-normalization",
+        "value": 1
+      },
+      {
+        "percentage": 0.029412,
+        "stage_id": "stage-005-backbone",
+        "value": 1
+      },
+      {
+        "percentage": 0.029412,
+        "stage_id": "stage-006-input-embedding",
+        "value": 1
+      },
+      {
+        "percentage": 0.029412,
+        "stage_id": "stage-007-backbone",
+        "value": 1
+      }
+    ],
+    "parameter_distribution": [
+      {
+        "percentage": 0.047758,
+        "stage_id": "stage-001-input-embedding",
+        "value": 784
+      },
+      {
+        "percentage": 0.019493,
+        "stage_id": "stage-002-backbone",
+        "value": 320
+      },
+      {
+        "percentage": 0.135478,
+        "stage_id": "stage-003-backbone",
+        "value": 2224
+      },
+      {
+        "percentage": 0.001949,
+        "stage_id": "stage-004-normalization",
+        "value": 32
+      },
+      {
+        "percentage": 0.795322,
+        "stage_id": "stage-006-input-embedding",
+        "value": 13056
+      }
+    ],
+    "trace_operation_total": 34,
+    "trace_parameter_total": 16416
+  },
+  "rule_pack_ids": [],
+  "schema_version": "1.0.0",
+  "stage_edges": [
+    {
+      "confidence": "exact",
+      "source_stage_id": "stage-000-input-adapter",
+      "target_stage_id": "stage-001-input-embedding",
+      "tensor_ids": [
+        "tensor-000000"
+      ]
+    },
+    {
+      "confidence": "exact",
+      "source_stage_id": "stage-001-input-embedding",
+      "target_stage_id": "stage-002-backbone",
+      "tensor_ids": [
+        "tensor-000003"
+      ]
+    },
+    {
+      "confidence": "exact",
+      "source_stage_id": "stage-002-backbone",
+      "target_stage_id": "stage-003-backbone",
+      "tensor_ids": [
+        "tensor-000012"
+      ]
+    },
+    {
+      "confidence": "exact",
+      "source_stage_id": "stage-003-backbone",
+      "target_stage_id": "stage-004-normalization",
+      "tensor_ids": [
+        "tensor-000048"
+      ]
+    },
+    {
+      "confidence": "exact",
+      "source_stage_id": "stage-004-normalization",
+      "target_stage_id": "stage-005-backbone",
+      "tensor_ids": [
+        "tensor-000051"
+      ]
+    },
+    {
+      "confidence": "exact",
+      "source_stage_id": "stage-005-backbone",
+      "target_stage_id": "stage-006-input-embedding",
+      "tensor_ids": [
+        "tensor-000052"
+      ]
+    },
+    {
+      "confidence": "exact",
+      "source_stage_id": "stage-006-input-embedding",
+      "target_stage_id": "stage-007-backbone",
+      "tensor_ids": [
+        "tensor-000055"
+      ]
+    },
+    {
+      "confidence": "exact",
+      "source_stage_id": "stage-004-normalization",
+      "target_stage_id": "stage-008-output-adapter",
+      "tensor_ids": [
+        "tensor-000051"
+      ]
+    },
+    {
+      "confidence": "exact",
+      "source_stage_id": "stage-007-backbone",
+      "target_stage_id": "stage-008-output-adapter",
+      "tensor_ids": [
+        "tensor-000056"
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "confidence": "verified_rule",
+      "entity_ids": [
+        "graph-input"
+      ],
+      "expanded_instances_observed": true,
+      "importance": "primary",
+      "input_shapes": [],
+      "input_tensor_ids": [],
+      "module_count": 0,
+      "module_ids": [],
+      "observed_block_count": 0,
+      "operation_count": 0,
+      "operation_ids": [],
+      "order": 0,
+      "output_shapes": [
+        [
+          1,
+          3,
+          16,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000000"
+      ],
+      "parameter_count": 0,
+      "provenance": [
+        "graph_boundary_rule",
+        "trace_topological_order"
+      ],
+      "repeated_block_count": 0,
+      "semantic_name": "Model input",
+      "stage_id": "stage-000-input-adapter",
+      "stage_type": "input_adapter",
+      "tags": [
+        "input"
+      ],
+      "template_instance_count": 0,
+      "what": "Model input contains 0 source modules and 0 observed operations in this trace."
+    },
+    {
+      "confidence": "inferred",
+      "entity_ids": [
+        "module-00002",
+        "module-00003",
+        "parameter-000002",
+        "parameter-000003",
+        "op-000000"
+      ],
+      "expanded_instances_observed": true,
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          3,
+          16,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000000"
+      ],
+      "module_count": 2,
+      "module_ids": [
+        "module-00002",
+        "module-00003"
+      ],
+      "observed_block_count": 0,
+      "operation_count": 1,
+      "operation_ids": [
+        "op-000000"
+      ],
+      "order": 1,
+      "output_shapes": [
+        [
+          1,
+          16,
+          4,
+          4
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000003"
+      ],
+      "parameter_count": 784,
+      "provenance": [
+        "class_tag_stage_rule",
+        "trace_topological_order"
+      ],
+      "repeated_block_count": 0,
+      "semantic_name": "Input projection",
+      "stage_id": "stage-001-input-embedding",
+      "stage_type": "input_embedding",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "template_instance_count": 0,
+      "what": "Input projection contains 2 source modules and 1 observed operations in this trace."
+    },
+    {
+      "confidence": "inferred",
+      "entity_ids": [
+        "module-00001",
+        "module-00004",
+        "op-000001",
+        "op-000002",
+        "parameter-000007",
+        "op-000003",
+        "parameter-000009",
+        "op-000004",
+        "op-000005",
+        "parameter-000012",
+        "op-000006",
+        "op-000007"
+      ],
+      "expanded_instances_observed": true,
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          16,
+          4,
+          4
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000003"
+      ],
+      "module_count": 2,
+      "module_ids": [
+        "module-00001",
+        "module-00004"
+      ],
+      "observed_block_count": 0,
+      "operation_count": 7,
+      "operation_ids": [
+        "op-000001",
+        "op-000002",
+        "op-000003",
+        "op-000004",
+        "op-000005",
+        "op-000006",
+        "op-000007"
+      ],
+      "order": 2,
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000012"
+      ],
+      "parameter_count": 320,
+      "provenance": [
+        "topology_stage_inference",
+        "trace_topological_order"
+      ],
+      "repeated_block_count": 0,
+      "semantic_name": "Backbone processing",
+      "stage_id": "stage-002-backbone",
+      "stage_type": "backbone",
+      "tags": [
+        "other"
+      ],
+      "template_instance_count": 0,
+      "what": "Backbone processing contains 2 source modules and 7 observed operations in this trace."
+    },
+    {
+      "confidence": "inferred",
+      "entity_ids": [
+        "module-00000",
+        "module-00005",
+        "module-00006",
+        "module-00007",
+        "module-00008",
+        "module-00009",
+        "module-00010",
+        "module-00011",
+        "module-00012",
+        "module-00013",
+        "module-00014",
+        "module-00015",
+        "module-00016",
+        "module-00017",
+        "module-00018",
+        "parameter-000015",
+        "parameter-000016",
+        "op-000008",
+        "parameter-000018",
+        "parameter-000019",
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "parameter-000023",
+        "parameter-000024",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "parameter-000028",
+        "parameter-000029",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "parameter-000036",
+        "parameter-000037",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "parameter-000041",
+        "parameter-000042",
+        "op-000024",
+        "parameter-000044",
+        "parameter-000045",
+        "op-000025",
+        "op-000026",
+        "parameter-000048",
+        "parameter-000049",
+        "op-000027",
+        "op-000028",
+        "op-000029"
+      ],
+      "expanded_instances_observed": false,
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000012"
+      ],
+      "module_count": 15,
+      "module_ids": [
+        "module-00000",
+        "module-00005",
+        "module-00006",
+        "module-00007",
+        "module-00008",
+        "module-00009",
+        "module-00010",
+        "module-00011",
+        "module-00012",
+        "module-00013",
+        "module-00014",
+        "module-00015",
+        "module-00016",
+        "module-00017",
+        "module-00018"
+      ],
+      "observed_block_count": 1,
+      "operation_count": 22,
+      "operation_ids": [
+        "op-000008",
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029"
+      ],
+      "order": 3,
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000048"
+      ],
+      "parameter_count": 2224,
+      "provenance": [
+        "traced_repeated_block_rule",
+        "trace_topological_order"
+      ],
+      "repeated_block_count": 1,
+      "semantic_name": "Backbone processing",
+      "stage_id": "stage-003-backbone",
+      "stage_type": "backbone",
+      "tags": [
+        "embedding_or_projection",
+        "normalization_or_residual",
+        "feed_forward"
+      ],
+      "template_instance_count": 1,
+      "what": "Backbone processing contains 15 source modules and 22 observed operations in this trace."
+    },
+    {
+      "confidence": "inferred",
+      "entity_ids": [
+        "module-00019",
+        "parameter-000053",
+        "parameter-000054",
+        "op-000030"
+      ],
+      "expanded_instances_observed": true,
+      "importance": "secondary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000048"
+      ],
+      "module_count": 1,
+      "module_ids": [
+        "module-00019"
+      ],
+      "observed_block_count": 0,
+      "operation_count": 1,
+      "operation_ids": [
+        "op-000030"
+      ],
+      "order": 4,
+      "output_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000051"
+      ],
+      "parameter_count": 32,
+      "provenance": [
+        "class_tag_stage_rule",
+        "trace_topological_order"
+      ],
+      "repeated_block_count": 0,
+      "semantic_name": "Normalization",
+      "stage_id": "stage-004-normalization",
+      "stage_type": "normalization",
+      "tags": [
+        "normalization_or_residual"
+      ],
+      "template_instance_count": 0,
+      "what": "Normalization contains 1 source modules and 1 observed operations in this trace."
+    },
+    {
+      "confidence": "inferred",
+      "entity_ids": [
+        "op-000031"
+      ],
+      "expanded_instances_observed": true,
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000051"
+      ],
+      "module_count": 0,
+      "module_ids": [],
+      "observed_block_count": 0,
+      "operation_count": 1,
+      "operation_ids": [
+        "op-000031"
+      ],
+      "order": 5,
+      "output_shapes": [
+        [
+          1,
+          16
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000052"
+      ],
+      "parameter_count": 0,
+      "provenance": [
+        "topology_stage_inference",
+        "trace_topological_order"
+      ],
+      "repeated_block_count": 0,
+      "semantic_name": "Backbone processing",
+      "stage_id": "stage-005-backbone",
+      "stage_type": "backbone",
+      "tags": [
+        "other"
+      ],
+      "template_instance_count": 0,
+      "what": "Backbone processing contains 0 source modules and 1 observed operations in this trace."
+    },
+    {
+      "confidence": "inferred",
+      "entity_ids": [
+        "module-00020",
+        "module-00021",
+        "parameter-000057",
+        "parameter-000058",
+        "op-000032"
+      ],
+      "expanded_instances_observed": true,
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          16
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000052"
+      ],
+      "module_count": 2,
+      "module_ids": [
+        "module-00020",
+        "module-00021"
+      ],
+      "observed_block_count": 0,
+      "operation_count": 1,
+      "operation_ids": [
+        "op-000032"
+      ],
+      "order": 6,
+      "output_shapes": [
+        [
+          1,
+          768
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000055"
+      ],
+      "parameter_count": 13056,
+      "provenance": [
+        "class_tag_stage_rule",
+        "trace_topological_order"
+      ],
+      "repeated_block_count": 0,
+      "semantic_name": "Input projection",
+      "stage_id": "stage-006-input-embedding",
+      "stage_type": "input_embedding",
+      "tags": [
+        "embedding_or_projection"
+      ],
+      "template_instance_count": 0,
+      "what": "Input projection contains 2 source modules and 1 observed operations in this trace."
+    },
+    {
+      "confidence": "inferred",
+      "entity_ids": [
+        "module-00022",
+        "op-000033"
+      ],
+      "expanded_instances_observed": true,
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          768
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000055"
+      ],
+      "module_count": 1,
+      "module_ids": [
+        "module-00022"
+      ],
+      "observed_block_count": 0,
+      "operation_count": 1,
+      "operation_ids": [
+        "op-000033"
+      ],
+      "order": 7,
+      "output_shapes": [
+        [
+          1,
+          768
+        ]
+      ],
+      "output_tensor_ids": [
+        "tensor-000056"
+      ],
+      "parameter_count": 0,
+      "provenance": [
+        "topology_stage_inference",
+        "trace_topological_order"
+      ],
+      "repeated_block_count": 0,
+      "semantic_name": "Backbone processing",
+      "stage_id": "stage-007-backbone",
+      "stage_type": "backbone",
+      "tags": [
+        "other"
+      ],
+      "template_instance_count": 0,
+      "what": "Backbone processing contains 1 source modules and 1 observed operations in this trace."
+    },
+    {
+      "confidence": "verified_rule",
+      "entity_ids": [
+        "graph-output"
+      ],
+      "expanded_instances_observed": true,
+      "importance": "primary",
+      "input_shapes": [
+        [
+          1,
+          18,
+          16
+        ],
+        [
+          1,
+          768
+        ]
+      ],
+      "input_tensor_ids": [
+        "tensor-000051",
+        "tensor-000056"
+      ],
+      "module_count": 0,
+      "module_ids": [],
+      "observed_block_count": 0,
+      "operation_count": 0,
+      "operation_ids": [],
+      "order": 8,
+      "output_shapes": [],
+      "output_tensor_ids": [],
+      "parameter_count": 0,
+      "provenance": [
+        "graph_boundary_rule",
+        "trace_topological_order"
+      ],
+      "repeated_block_count": 0,
+      "semantic_name": "Model output",
+      "stage_id": "stage-008-output-adapter",
+      "stage_type": "output_adapter",
+      "tags": [
+        "output_or_head"
+      ],
+      "template_instance_count": 0,
+      "what": "Model output contains 0 source modules and 0 observed operations in this trace."
+    }
+  ],
+  "task": "vision",
+  "version_id": "deit"
+}

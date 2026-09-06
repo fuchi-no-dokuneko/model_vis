@@ -1,0 +1,107 @@
+{
+  "dedup_uid": "dedup.sha256.33b63532ef1fe97c9fec359869619e4587f1f736ea1f82ffa911ab9972a18fbf",
+  "operation_ids": [
+    "op-000097",
+    "op-000098"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.cvt.modeling_cvt",
+        "CvtIntermediate"
+      ],
+      [
+        "dense",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "activation",
+        "torch.nn.modules.activation",
+        "GELU"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            64
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            64
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            16,
+            64
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            64
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "dense.bias",
+        [
+          64
+        ]
+      ],
+      [
+        "dense.weight",
+        [
+          64,
+          16
+        ]
+      ]
+    ],
+    "source": "f814be9b09c41c203dc7d1faa818d1e18c9a049407051f28855af11b6d579c83",
+    "topology": [
+      [
+        "aten_op",
+        "aten.linear.default"
+      ],
+      [
+        "aten_op",
+        "aten.gelu.default"
+      ]
+    ]
+  }
+}

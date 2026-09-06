@@ -1,7 +1,7 @@
-繁中：待辦：IPv4 PyPI SSL逾時後重驗全新鎖版安裝；七秒推送成功後確認遠端CI、Sonar與Cloudflare部署。
+繁中：發佈檢查：依照 docs/catalog-expansion.md 執行既有驗證；部署後核對目標的 deployment.json、101 個模型及全部靜態資產。不可變更網絡、部署方法或 CI/CD。
 
-English: TODO: recheck a clean locked install after the IPv4 PyPI SSL timeout; verify remote CI, Sonar, and Cloudflare after a seven-second push succeeds.
+English: Release checks: follow docs/catalog-expansion.md, then verify the target deployment.json, all 101 models, and static assets after the existing workflow deploys. Preserve networking, deployment methods, and CI/CD.
 
-繁中：無效模型 URI 診斷約五十毫秒後被縮放狀態覆蓋；產品 UI 修正不在本次驗收檔案範圍。
+繁中：已修正無效模型 URI 診斷被縮放狀態覆蓋；test/e2e/test_catalog_experience.py 驗證錯誤持續顯示及有效連結復原。
 
-English: The invalid-model URI diagnostic is replaced by zoom status after about 50 ms; the product UI fix is outside this acceptance-only scope.
+English: Fixed invalid-model URI diagnostics being overwritten by zoom status. test/e2e/test_catalog_experience.py verifies persistent errors and recovery through a valid link.

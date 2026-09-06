@@ -1,0 +1,91 @@
+{
+  "dedup_uid": "dedup.sha256.6d749534bd2f172d1da9e61419965cef2f750e2b32df5583ef7d27c6b8d85e09",
+  "operation_ids": [
+    "op-000361",
+    "op-000362",
+    "op-000363",
+    "op-000364",
+    "op-000365",
+    "op-000366",
+    "op-000367"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.deepseek_v4.modeling_deepseek_v4",
+        "DeepseekV4GroupedLinear"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            8,
+            2
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            8,
+            4
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          32,
+          2
+        ]
+      ]
+    ],
+    "source": "cb8aaad2a772ee543333ab457e781fd7f3be3c82bcaa889663c0cf63b126e8b9",
+    "topology": [
+      [
+        "aten_op",
+        "aten.view.default"
+      ],
+      [
+        "aten_op",
+        "aten.transpose.int"
+      ],
+      [
+        "aten_op",
+        "aten.reshape.default"
+      ],
+      [
+        "aten_op",
+        "aten.transpose.int"
+      ],
+      [
+        "aten_op",
+        "aten.bmm.default"
+      ],
+      [
+        "aten_op",
+        "aten.transpose.int"
+      ],
+      [
+        "aten_op",
+        "aten.reshape.default"
+      ]
+    ]
+  }
+}

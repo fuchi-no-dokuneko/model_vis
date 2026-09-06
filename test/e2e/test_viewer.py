@@ -111,7 +111,7 @@ def drag_first(driver, selector: str, x: int, y: int) -> str:
 
 def test_mode_navigation_drilldown_and_source_shapes(loaded_viewer) -> None:
     driver = loaded_viewer
-    assert "51 models" in driver.find_element(By.ID, "result-count").text
+    assert "101 models" in driver.find_element(By.ID, "result-count").text
     assert not driver.find_element(By.ID, "empty-state").is_displayed()
 
     click_mode(driver, "module")
@@ -162,8 +162,10 @@ def test_search_sort_compare_and_local_layout(loaded_viewer) -> None:
     search = driver.find_element(By.ID, "search")
     search.clear()
     search.send_keys("Falcon")
-    WebDriverWait(driver, 10).until(lambda current: current.find_element(By.ID, "result-count").text.startswith("1 model"))
-    assert "Falcon" in driver.find_element(By.CSS_SELECTOR, ".model-name").text
+    expected_count = sum("falcon" in version_id for version_id in ALPHABETICAL_VERSIONS)
+    WebDriverWait(driver, 10).until(lambda current: current.find_element(By.ID, "result-count").text == f"{expected_count} models")
+    names = driver.find_elements(By.CSS_SELECTOR, ".model-name")
+    assert len(names) == expected_count and all("Falcon" in name.text for name in names)
 
     search.clear()
     Select(driver.find_element(By.ID, "sort")).select_by_value("sources")
@@ -436,7 +438,7 @@ def test_architecture_actions_have_real_hit_targets_and_breadcrumbs_sync(driver,
 
     collapse = driver.find_elements(By.CSS_SELECTOR, ".graph-node.selected .node-action:not([disabled])")[2]
     touch_tap(driver, collapse)
-    wait.until(lambda current: "stage-collapsed" in current.find_element(By.CSS_SELECTOR, ".graph-node.selected").get_attribute("class"))
+    wait.until(lambda current: current.execute_script("return Boolean(document.querySelector('.graph-node.selected.stage-collapsed'))"))
     wait_for_graph_render(driver)
     expand = driver.find_elements(By.CSS_SELECTOR, ".graph-node.selected .node-action:not([disabled])")[2]
     expand.send_keys(Keys.ENTER)
@@ -521,15 +523,15 @@ def test_architecture_actions_have_real_hit_targets_and_breadcrumbs_sync(driver,
         toggle_card(wait.until(collapsed_toggle))
         wait.until(expanded)
 
-    driver.get(f"{viewer_url}#/version/dinov3/view/module/module/encoder.layer.0/detail/trace/labels/source")
-    wait.until(lambda current: "/view/module/" in current.find_element(By.ID, "uri-input").get_attribute("value"))
+    driver.get(f"{viewer_url}#/version/dinov3/view/module/module/model.layer.0/detail/trace/labels/source")
+    wait.until(lambda current: "/view/module/module/model.layer.0" in current.find_element(By.ID, "uri-input").get_attribute("value"))
     Select(driver.find_element(By.ID, "detail-mode")).select_by_value("beginner")
     wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, '.graph-node[data-kind="semantic_stage"].selected'))
     wait_for_graph_render(driver)
     crumb_text = [item.text for item in driver.find_elements(By.CSS_SELECTOR, "#breadcrumbs .breadcrumb")]
     selected_stage = selected_graph_id(driver)
     assert crumb_text[-2] == "Architecture"
-    assert "encoder" not in " / ".join(crumb_text).lower()
+    assert len(crumb_text) == 5
     assert f"/stage/{selected_stage}" in driver.find_element(By.ID, "uri-input").get_attribute("value")
     assert driver.find_element(By.ID, "inspector-title").text == crumb_text[-1]
     driver.refresh()
@@ -558,8 +560,8 @@ def test_moshi_dinov3_normalized_cross_domain_fixture(driver, viewer_url: str) -
     assert content.find_elements(By.CSS_SELECTOR, ".compare-table button")
 
 
-def test_all_fifty_one_semantic_models_in_alphabetical_order(driver, viewer_url: str) -> None:
-    assert len(ALPHABETICAL_VERSIONS) == 51
+def test_all_101_semantic_models_in_alphabetical_order(driver, viewer_url: str) -> None:
+    assert len(ALPHABETICAL_VERSIONS) == 101
     assert ALPHABETICAL_VERSIONS == sorted(ALPHABETICAL_VERSIONS, key=str.casefold)
     wait = WebDriverWait(driver, 15)
 

@@ -1,0 +1,51 @@
+{
+  "dedup_uid": "dedup.sha256.0380d81246adbc58f0782bb1602678a10e4cf52df060dc8d6a2b5f9f000295b6",
+  "operation_ids": [
+    "op-000011",
+    "op-000012"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.fnet.modeling_fnet",
+        "FNetBasicFourierTransform"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "421b8fbdce55c18330c61f41aeb4d92626c301199b5a47df7aafed2ab99069fd",
+    "topology": [
+      [
+        "aten_op",
+        "aten.fft_fftn.default"
+      ],
+      [
+        "aten_op",
+        "aten.real.default"
+      ]
+    ]
+  }
+}

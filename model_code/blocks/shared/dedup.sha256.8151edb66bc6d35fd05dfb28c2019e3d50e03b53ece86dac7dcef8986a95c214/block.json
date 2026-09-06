@@ -1,0 +1,72 @@
+{
+  "dedup_uid": "dedup.sha256.8151edb66bc6d35fd05dfb28c2019e3d50e03b53ece86dac7dcef8986a95c214",
+  "operation_ids": [
+    "op-000077",
+    "op-000078",
+    "op-000079"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.deepseek_ocr2.modeling_deepseek_ocr2",
+        "DeepseekOcr2SamLayerNorm"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "bias",
+        [
+          16
+        ]
+      ],
+      [
+        "weight",
+        [
+          16
+        ]
+      ]
+    ],
+    "source": "465c356237bd6caeb2ae104862799e96f23b762ce41ce50f1e1d54eca0f0aae1",
+    "topology": [
+      [
+        "aten_op",
+        "aten.permute.default"
+      ],
+      [
+        "aten_op",
+        "aten.layer_norm.default"
+      ],
+      [
+        "aten_op",
+        "aten.permute.default"
+      ]
+    ]
+  }
+}

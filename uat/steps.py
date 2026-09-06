@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import json
 import os
 import subprocess
 import time
+from pathlib import Path
 
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
@@ -102,9 +104,9 @@ def open_catalog(context) -> None:
     _wait(context).until(lambda current: current.find_elements(By.CSS_SELECTOR, ".model-item"))
 
 
-@bind("51 generated models are listed")
+@bind("101 generated models are listed")
 def catalog_count(context) -> None:
-    _wait(context).until(lambda current: current.find_element(By.ID, "result-count").text == "51 models")
+    _wait(context).until(lambda current: current.find_element(By.ID, "result-count").text == "101 models")
 
 
 @bind("Beginner detail, Semantic labels, and Architecture are selected")
@@ -128,10 +130,17 @@ def search_falcon(context) -> None:
     search.send_keys("Falcon")
 
 
-@bind("exactly one Falcon model is listed")
-def one_falcon(context) -> None:
-    _wait(context).until(lambda current: current.find_element(By.ID, "result-count").text == "1 model")
-    assert "Falcon" in context.driver.find_element(By.CSS_SELECTOR, ".model-name").text
+@bind("all generated Falcon models matching the search are listed")
+def matching_falcon_models(context) -> None:
+    root = Path(__file__).resolve().parents[1] / "model_code"
+    manifest = json.loads((root / "manifest.v2.json").read_text())
+    versions = [json.loads((root / "versions" / f"{version_id}.json").read_text()) for version_id in manifest["versions"]]
+    expected = [version for version in versions if "falcon" in version["family_name"].lower()]
+    assert expected
+    count = len(expected)
+    _wait(context).until(lambda current: current.find_element(By.ID, "result-count").text == f"{count} model{'s' if count != 1 else ''}")
+    names = context.driver.find_elements(By.CSS_SELECTOR, ".model-name")
+    assert len(names) == count and all("Falcon" in name.text for name in names)
 
 
 @bind("I search the catalog for a model that does not exist")
@@ -155,7 +164,7 @@ def clear_catalog_search(context) -> None:
     search.clear()
     search.send_keys(" ")
     search.send_keys(Keys.BACKSPACE)
-    _wait(context).until(lambda current: current.find_element(By.ID, "result-count").text == "51 models")
+    _wait(context).until(lambda current: current.find_element(By.ID, "result-count").text == "101 models")
 
 
 @bind("I choose the first model category")
@@ -169,7 +178,7 @@ def choose_category(context) -> None:
 @bind("the category filter leaves a nonempty catalog subset")
 def category_subset(context) -> None:
     count = int(_wait(context).until(lambda current: current.find_element(By.ID, "result-count").text).split()[0])
-    assert 0 < count < 51
+    assert 0 < count < 101
     assert context.driver.find_element(By.ID, "category").get_attribute("value") == context.category_value
 
 
@@ -492,11 +501,18 @@ def custom_layout_restored(context) -> None:
         if context.driver.find_element(By.ID, "graph-viewport").get_attribute("data-zoom-tier") == "normal":
             break
         context.driver.find_element(By.ID, "zoom-in").click()
-    node = _wait(context).until(
-        lambda current: current.find_element(By.CSS_SELECTOR, f'.graph-node[data-id="{context.layout_node_id}"]')
-    )
-    restored = _node_box(node)
-    assert all(abs(actual - expected) < 3 for actual, expected in zip(restored, context.custom_box))
+    def layout_matches(current):
+        # Read one rendered frame atomically; Fit can replace graph elements
+        # between individual WebDriver property requests after a reload.
+        restored = current.execute_script(
+            "const node = document.querySelector(arguments[0]); if (!node) return null; "
+            "const style = getComputedStyle(node); "
+            "return ['left','top','width','height'].map(name => parseFloat(style[name]));",
+            f'.graph-node[data-id="{context.layout_node_id}"]',
+        )
+        return restored and all(abs(actual - expected) < 3 for actual, expected in zip(restored, context.custom_box))
+
+    assert _wait(context).until(layout_matches)
 
 
 @bind("I reset the graph layout")
@@ -550,9 +566,12 @@ def deep_uri(context) -> None:
 
 @bind("theme, labels, and semantic stage selection persist")
 def persisted_preferences(context) -> None:
-    assert context.driver.execute_script("return document.documentElement.dataset.theme") == context.persisted_theme
-    assert context.driver.find_element(By.ID, "label-mode").get_attribute("value") == "both"
-    assert context.driver.find_element(By.CSS_SELECTOR, ".graph-node.selected").get_attribute("data-id") == context.persisted_stage
+    expected = [context.persisted_theme, "both", context.persisted_stage]
+    assert _wait(context).until(lambda current: current.execute_script(
+        "return [document.documentElement.dataset.theme, "
+        "document.querySelector('#label-mode').value, "
+        "document.querySelector('.graph-node.selected')?.dataset.id];"
+    ) == expected)
 
 
 @bind("I open comparison without selecting two models")
@@ -821,8 +840,8 @@ def finish_recording(context) -> None:
 
 
 NARRATIONS = {
-    "I narrate in English for at least 9 seconds: Model Structure Viewer turns generated PyTorch architecture metadata into an offline interactive catalog of fifty-one models, without downloading weights or running remote model code.": (
-        "en-US", 9, "Model Structure Viewer turns generated PyTorch architecture metadata into an offline interactive catalog of fifty-one models, without downloading weights or running remote model code."
+    "I narrate in English for at least 9 seconds: Model Structure Viewer turns generated PyTorch architecture metadata into an offline interactive catalog of one hundred and one models, without downloading weights or running remote model code.": (
+        "en-US", 9, "Model Structure Viewer turns generated PyTorch architecture metadata into an offline interactive catalog of one hundred and one models, without downloading weights or running remote model code."
     ),
     "I narrate in English for at least 11 seconds: Beginner view groups technical modules into meaningful stages. Select a stage to read its purpose, follow the generated tensor journey, and compare how parameters and operations are distributed.": (
         "en-US", 11, "Beginner view groups technical modules into meaningful stages. Select a stage to read its purpose, follow the generated tensor journey, and compare how parameters and operations are distributed."
@@ -833,8 +852,8 @@ NARRATIONS = {
     "I narrate in English for at least 10 seconds: Comparison normalizes two different model families by stage, exact interface tags, trace distributions, and configuration differences, while keeping the original evidence available for inspection.": (
         "en-US", 10, "Comparison normalizes two different model families by stage, exact interface tags, trace distributions, and configuration differences, while keeping the original evidence available for inspection."
     ),
-    "I narrate in Cantonese for at least 9 seconds: Model Structure Viewer 將產生好嘅 PyTorch 架構資料整理成離線互動目錄，入面有五十一個模型，唔需要下載權重，亦唔會執行遠端模型程式碼。": (
-        "yue-HK", 9, "Model Structure Viewer 將產生好嘅 PyTorch 架構資料整理成離線互動目錄，入面有五十一個模型，唔需要下載權重，亦唔會執行遠端模型程式碼。"
+    "I narrate in Cantonese for at least 9 seconds: Model Structure Viewer 將產生好嘅 PyTorch 架構資料整理成離線互動目錄，入面有一百零一個模型，唔需要下載權重，亦唔會執行遠端模型程式碼。": (
+        "yue-HK", 9, "Model Structure Viewer 將產生好嘅 PyTorch 架構資料整理成離線互動目錄，入面有一百零一個模型，唔需要下載權重，亦唔會執行遠端模型程式碼。"
     ),
     "I narrate in Cantonese for at least 11 seconds: 初學者模式會將技術模組整理成有意思嘅階段。揀一個階段，就可以睇用途、跟住產生好嘅張量流程，再比較參數同運算分佈。": (
         "yue-HK", 11, "初學者模式會將技術模組整理成有意思嘅階段。揀一個階段，就可以睇用途、跟住產生好嘅張量流程，再比較參數同運算分佈。"

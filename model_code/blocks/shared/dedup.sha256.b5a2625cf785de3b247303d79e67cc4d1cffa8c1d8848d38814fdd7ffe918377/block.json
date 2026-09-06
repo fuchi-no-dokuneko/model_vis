@@ -1,0 +1,69 @@
+{
+  "dedup_uid": "dedup.sha256.b5a2625cf785de3b247303d79e67cc4d1cffa8c1d8848d38814fdd7ffe918377",
+  "operation_ids": [
+    "op-000000",
+    "op-000001",
+    "op-000002"
+  ],
+  "signature": {
+    "buffers": [
+      [
+        "embed_scale",
+        []
+      ]
+    ],
+    "children": [
+      [
+        "",
+        "transformers.models.gemma2.modeling_gemma2",
+        "Gemma2TextScaledWordEmbedding"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          64,
+          16
+        ]
+      ]
+    ],
+    "source": "8119393618251d80339d35a5683faefe37677b8ef565da19df30d9afec1ccdb8",
+    "topology": [
+      [
+        "aten_op",
+        "aten.embedding.default"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ]
+    ]
+  }
+}

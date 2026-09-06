@@ -1,0 +1,52 @@
+{
+  "dedup_uid": "dedup.sha256.96fe578fd5ccc9d45f5713b8273b2ceb500db01ee9e44878454f7c666c6392be",
+  "operation_ids": [
+    "op-000018",
+    "op-000019"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.cvt.modeling_cvt",
+        "CvtSelfAttentionLinearProjection"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            16,
+            8,
+            8
+          ]
+        ],
+        [
+          [
+            1,
+            64,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "5cea3bbcaacef56a9b6f67b331215fb7a7b074f811aab31ec9a70b3e08df1211",
+    "topology": [
+      [
+        "aten_op",
+        "aten.view.default"
+      ],
+      [
+        "aten_op",
+        "aten.permute.default"
+      ]
+    ]
+  }
+}

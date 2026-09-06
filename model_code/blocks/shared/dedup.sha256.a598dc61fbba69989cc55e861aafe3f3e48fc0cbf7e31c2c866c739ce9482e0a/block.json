@@ -1,0 +1,94 @@
+{
+  "dedup_uid": "dedup.sha256.a598dc61fbba69989cc55e861aafe3f3e48fc0cbf7e31c2c866c739ce9482e0a",
+  "operation_ids": [
+    "op-000095",
+    "op-000096",
+    "op-000097",
+    "op-000098",
+    "op-000099",
+    "op-000100",
+    "op-000101",
+    "op-000102"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.cpmant.modeling_cpmant",
+        "CpmAntLayerNorm"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            37,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            37,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          16
+        ]
+      ]
+    ],
+    "source": "6509e36770fd63c50e94bb9dd43400328eec9f687c71c9babe3c9fe7c99a5250",
+    "topology": [
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.pow.Tensor_Scalar"
+      ],
+      [
+        "aten_op",
+        "aten.mean.dim"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.rsqrt.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ]
+    ]
+  }
+}

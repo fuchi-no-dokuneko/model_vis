@@ -1,0 +1,125 @@
+{
+  "dedup_uid": "dedup.sha256.8cf5eb30c8f708efe9c392e17a689593b7e70c145b0787acf592bc982bc65c36",
+  "operation_ids": [
+    "op-000036",
+    "op-000037",
+    "op-000038",
+    "op-000039"
+  ],
+  "signature": {
+    "buffers": [
+      [
+        "position_ids",
+        [
+          1,
+          32
+        ]
+      ]
+    ],
+    "children": [
+      [
+        "",
+        "transformers.models.clipseg.modeling_clipseg",
+        "CLIPSegTextEmbeddings"
+      ],
+      [
+        "token_embedding",
+        "torch.nn.modules.sparse",
+        "Embedding"
+      ],
+      [
+        "position_embedding",
+        "torch.nn.modules.sparse",
+        "Embedding"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "position_embedding.weight",
+        [
+          32,
+          16
+        ]
+      ],
+      [
+        "token_embedding.weight",
+        [
+          64,
+          16
+        ]
+      ]
+    ],
+    "source": "8d8e1717a7fb725489230732eafb6bd11abffd4495a268f15916cf92e4030394",
+    "topology": [
+      [
+        "aten_op",
+        "aten.slice.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.embedding.default"
+      ],
+      [
+        "aten_op",
+        "aten.embedding.default"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "dedup_uid": "dedup.sha256.cc98547f87865fbc0d8a2736467796ee0147979eec15f44edc076760cde01350",
+  "operation_ids": [
+    "op-000000",
+    "op-000001",
+    "op-000002",
+    "op-000003"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.glpn.modeling_glpn",
+        "GLPNOverlapPatchEmbeddings"
+      ],
+      [
+        "proj",
+        "torch.nn.modules.conv",
+        "Conv2d"
+      ],
+      [
+        "layer_norm",
+        "torch.nn.modules.normalization",
+        "LayerNorm"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            3,
+            32,
+            32
+          ]
+        ],
+        [
+          [
+            1,
+            64,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            3,
+            32,
+            32
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            8,
+            8
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            64,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            64,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "layer_norm.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "layer_norm.weight",
+        [
+          16
+        ]
+      ],
+      [
+        "proj.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "proj.weight",
+        [
+          16,
+          3,
+          7,
+          7
+        ]
+      ]
+    ],
+    "source": "2fb61065fb30234d3414cfb1c19bd24b3e76ac813cccd9a88befc313620af92a",
+    "topology": [
+      [
+        "aten_op",
+        "aten.conv2d.default"
+      ],
+      [
+        "aten_op",
+        "aten.flatten.using_ints"
+      ],
+      [
+        "aten_op",
+        "aten.transpose.int"
+      ],
+      [
+        "aten_op",
+        "aten.layer_norm.default"
+      ]
+    ]
+  }
+}

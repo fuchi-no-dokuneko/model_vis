@@ -1,0 +1,118 @@
+{
+  "dedup_uid": "dedup.sha256.0e5b6d3198dc4a95ea6674f9f830dc87b28eb35d2d845ee15901357426c68963",
+  "operation_ids": [
+    "op-000042",
+    "op-000043",
+    "op-000044",
+    "op-000045",
+    "op-000046",
+    "op-000047",
+    "op-000048",
+    "op-000049",
+    "op-000050",
+    "op-000051",
+    "op-000052",
+    "op-000053"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.cohere2_moe.modeling_cohere2_moe",
+        "Cohere2MoeLayerNorm"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          16
+        ]
+      ]
+    ],
+    "source": "eb6f9d1ffcd3eac2c179758aa1064526cff0752cfa4d3dd613738121338bcfa8",
+    "topology": [
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.mean.dim"
+      ],
+      [
+        "aten_op",
+        "aten.sub.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.pow.Tensor_Scalar"
+      ],
+      [
+        "aten_op",
+        "aten.mean.dim"
+      ],
+      [
+        "aten_op",
+        "aten.sub.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.rsqrt.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ]
+    ]
+  }
+}

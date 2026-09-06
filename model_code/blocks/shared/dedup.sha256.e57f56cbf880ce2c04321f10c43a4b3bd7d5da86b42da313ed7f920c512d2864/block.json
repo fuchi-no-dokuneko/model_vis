@@ -1,0 +1,49 @@
+{
+  "dedup_uid": "dedup.sha256.e57f56cbf880ce2c04321f10c43a4b3bd7d5da86b42da313ed7f920c512d2864",
+  "operation_ids": [
+    "op-000538",
+    "op-000539"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.activations",
+        "SqrtSoftplusActivation"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            15,
+            2
+          ]
+        ],
+        [
+          [
+            15,
+            2
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "e75db12007b37f694399938b9b902200360af4af47de2afd5fd3912a65b48a55",
+    "topology": [
+      [
+        "aten_op",
+        "aten.softplus.default"
+      ],
+      [
+        "aten_op",
+        "aten.sqrt.default"
+      ]
+    ]
+  }
+}

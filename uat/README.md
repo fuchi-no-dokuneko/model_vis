@@ -38,7 +38,7 @@ Without wrappers, recording hooks are no-ops and narration is printed and timed.
 
 | User-visible area | Daily scenario |
 | --- | --- |
-| Startup defaults, 51-model catalog, graph overlays | Start in the documented beginner workspace |
+| Startup defaults, 101-model catalog, graph overlays | Start in the documented beginner workspace |
 | Search, no-result recovery, category filter, source sort | Search, filter, sort, and recover from no catalog results |
 | Invalid and shareable model URIs | Reject an unknown URI and recover with a valid shareable URI |
 | Architecture, Family, Modules, Blocks, Operations; detail and labels | Move through every graph mode and detail level |

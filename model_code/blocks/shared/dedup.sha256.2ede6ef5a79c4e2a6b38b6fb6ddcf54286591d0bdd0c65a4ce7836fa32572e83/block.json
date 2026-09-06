@@ -1,0 +1,94 @@
+{
+  "dedup_uid": "dedup.sha256.2ede6ef5a79c4e2a6b38b6fb6ddcf54286591d0bdd0c65a4ce7836fa32572e83",
+  "operation_ids": [
+    "op-000088",
+    "op-000089",
+    "op-000090",
+    "op-000091",
+    "op-000092",
+    "op-000093",
+    "op-000094",
+    "op-000095"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.exaone4.modeling_exaone4",
+        "Exaone4RMSNorm"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          16
+        ]
+      ]
+    ],
+    "source": "f137ebd4a00e19eea2787cb0f3388e224159ebbf78259d4ef719bf6bbdfc5d2f",
+    "topology": [
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.pow.Tensor_Scalar"
+      ],
+      [
+        "aten_op",
+        "aten.mean.dim"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.rsqrt.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ]
+    ]
+  }
+}

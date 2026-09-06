@@ -1,0 +1,97 @@
+{
+  "dedup_uid": "dedup.sha256.ac0f205d3459a6a03a03ca1529315a438914779fbccbf45a174995e109991cb3",
+  "operation_ids": [
+    "op-000001",
+    "op-000002",
+    "op-000003"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.dinov2_with_registers.modeling_dinov2_with_registers",
+        "Dinov2WithRegistersPatchEmbeddings"
+      ],
+      [
+        "projection",
+        "torch.nn.modules.conv",
+        "Conv2d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "projection.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "projection.weight",
+        [
+          16,
+          3,
+          4,
+          4
+        ]
+      ]
+    ],
+    "source": "ca4b46ca88d1c851764ce83215ba710aa169e6fe0e4a868956c77b560aa900e2",
+    "topology": [
+      [
+        "aten_op",
+        "aten.conv2d.default"
+      ],
+      [
+        "aten_op",
+        "aten.flatten.using_ints"
+      ],
+      [
+        "aten_op",
+        "aten.transpose.int"
+      ]
+    ]
+  }
+}

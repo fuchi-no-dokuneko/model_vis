@@ -6,6 +6,25 @@ Deployment: static Cloudflare Pages site, PC-first, no backend
 Primary audience: AI beginners and domain specialists exploring unfamiliar model domains  
 Example: a Moshi specialist learning DINOv3, or a vision specialist learning a causal language model
 
+Maintenance update (2026-09-06): the published scope for this update is 101
+versions: the existing 51 plus profiles/expansion-50-new.txt. Preserve all original
+fixtures and metrics below. Use docs/catalog-expansion.md for executable build,
+validation, and target verification commands, and docs/maintenance-prompt.md for
+the next maintenance request. Browser tests use the existing Selenium/Chromium
+framework. Networking, start.sh, deployment methods, and .github/workflows/ are
+outside this update's change scope.
+
+This update adds browser-local Favorites with combined search/category filters.
+It also keeps invalid-location diagnostics visible during graph redraws,
+preserves invalid module addresses until correction, resets catalog scrolling
+after filtering, and puts mobile drawers above their backdrop. DINOv3's traced
+layer path is model.layer.0; do not use the obsolete encoder.layer.0 fixture.
+Local verification: 101-model integrity and drift checks, 39 JS tests, 60 Python
+unit/binding tests, 30 browser tests (including all 101 models), the independent
+95% coverage gates, and all 13 daily acceptance scenarios passed. Target
+publication must still be verified through the existing workflow and served
+assets as described in docs/catalog-expansion.md.
+
 Acceptance-fixture decision (2026-08-15): Moshi/DINOv3 replaces the original
 Whisper/DINOv3 comparison fixture because both models are present in the
 expanded 51-model static catalog. This changes only the deterministic cross-domain test
@@ -837,7 +856,7 @@ Compatibility:
 Use the repository's existing test framework. If none exists, add:
 
 - unit tests using the project's JS runtime
-- Playwright browser tests for interaction and layout
+- Selenium/Chromium browser tests for interaction and layout (the existing framework)
 - JSON Schema validation in the build/CI script
 - a small deterministic fixture set for Moshi, DINOv3, and Apertus
 
@@ -919,7 +938,9 @@ For every generated model:
 
 Verify current known facts remain correct:
 
-- Manifest contains 51 versions in the current generated fixture dataset.
+- Manifest contains 101 versions: preserve the 51-version baseline and add
+  exactly 50 versions from profiles/expansion-50-new.txt, each with a distinct
+  structure absent from that baseline and a successful trace and semantic asset.
 - Apertus fixture: 2,874 Trace parameters, 121 Operations, official estimate 564,133,888.
 - BERT fixture: 109,482,240 Trace parameters, 278 Operations, official estimate 136,687,104.
 - Apertus/BERT each resolve six unique trace source files.
@@ -938,7 +959,7 @@ Deliver:
 - BUG-01 through BUG-10
 - geometry helpers
 - visual-state composition
-- Playwright layout tests
+- Selenium/Chromium layout tests
 
 Exit gate:
 
@@ -1019,4 +1040,11 @@ Do not add the following as part of this plan:
 
 ## 15. Coding-Agent Working Rules
 
-1. respect amend.md and other spec if necessary
+1. Read spec.txt, ammend.md, ammend2.md, ammend3.txt, this guide, and the current
+   README. The filenames are spelled ammend, not amend.
+2. Use the existing Selenium browser harness and deterministic generated data.
+   Do not add frontend model-specific rules or synthetic topology.
+3. Preserve the current networking, deployment, and CI/CD configuration.
+4. Follow docs/maintenance-prompt.md. Prove completion with generated assets,
+   browser behavior, and the actual target manifest; a local build alone does
+   not prove a target deployment.

@@ -1,0 +1,2983 @@
+{
+  "blocks": [
+    {
+      "block_type": "embedding",
+      "block_uid": "deberta.block-00001",
+      "call_ids": [
+        "call-000001",
+        "call-000002",
+        "call-000003",
+        "call-000004",
+        "call-000005",
+        "call-000006"
+      ],
+      "dedup_ref": "dedup.sha256.468fb8c4a091fe9b0e4dfb15e59257f4a407f5dfe708930782906179a8804a95",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 1,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "input_ids",
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": true,
+          "port_id": "call-000001:in:0",
+          "position": null,
+          "required": false,
+          "shape": [
+            3,
+            5
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000000"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "token_type_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "token_type_ids",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "token_type_ids",
+          "optional": true,
+          "port_id": "call-000001:in:1",
+          "position": null,
+          "required": false,
+          "shape": [
+            3,
+            5
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000008"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "mask",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 2,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "mask",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "mask",
+          "optional": true,
+          "port_id": "call-000001:in:2",
+          "position": null,
+          "required": false,
+          "shape": [
+            3,
+            5
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000006"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "deberta",
+      "module_id": "module-00001",
+      "operation_ids": [
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030",
+        "op-000031"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000006:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000033"
+        }
+      ],
+      "parent_module_id": "module-00000",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.468fb8c4a091fe9b0e4dfb15e59257f4a407f5dfe708930782906179a8804a95/block.json",
+        "target_dedup_uid": "dedup.sha256.468fb8c4a091fe9b0e4dfb15e59257f4a407f5dfe708930782906179a8804a95",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings",
+      "source_refs": [
+        {
+          "end_line": 425,
+          "executed_line": 381,
+          "file": "transformers/models/deberta/modeling_deberta.py",
+          "source_uid": "source.sha256.8d9704ee27ebfe63e3bc069a821a388e9d9e83d26465e9ce9f91dfaf68908f3a",
+          "start_line": 381,
+          "symbol": "DebertaEmbeddings.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "deberta.block-00002",
+      "call_ids": [
+        "call-000002"
+      ],
+      "dedup_ref": "dedup.sha256.fbe53f0343d2aa92bcae2f7aaa44db5bdc3d1fd56e04d3b86f2e202435e87b4c",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 2,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000002:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "deberta",
+      "module_id": "module-00002",
+      "operation_ids": [
+        "op-000010"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000002:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000013"
+        }
+      ],
+      "parent_module_id": "module-00001",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.fbe53f0343d2aa92bcae2f7aaa44db5bdc3d1fd56e04d3b86f2e202435e87b4c/block.json",
+        "target_dedup_uid": "dedup.sha256.fbe53f0343d2aa92bcae2f7aaa44db5bdc3d1fd56e04d3b86f2e202435e87b4c",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.word_embeddings",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "deberta.block-00003",
+      "call_ids": [
+        "call-000003"
+      ],
+      "dedup_ref": "dedup.sha256.c812e1578728eff7558bb94ba90b3f4c33ea5a292a00be5ef7ea9de29f99b62f",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 3,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 1,
+          "mutation_version_after": 1,
+          "mutation_version_before": 1,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000003:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000011"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "deberta",
+      "module_id": "module-00003",
+      "operation_ids": [
+        "op-000012"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000003:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000015"
+        }
+      ],
+      "parent_module_id": "module-00001",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.c812e1578728eff7558bb94ba90b3f4c33ea5a292a00be5ef7ea9de29f99b62f/block.json",
+        "target_dedup_uid": "dedup.sha256.c812e1578728eff7558bb94ba90b3f4c33ea5a292a00be5ef7ea9de29f99b62f",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.position_embeddings",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "deberta.block-00004",
+      "call_ids": [
+        "call-000004"
+      ],
+      "dedup_ref": "dedup.sha256.25f5d119ba813debf94750d5fde9797d3d5e06d873dc8802bf9981095ec6035d",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 4,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000004:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000008"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "deberta",
+      "module_id": "module-00004",
+      "operation_ids": [
+        "op-000014"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000004:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000018"
+        }
+      ],
+      "parent_module_id": "module-00001",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.25f5d119ba813debf94750d5fde9797d3d5e06d873dc8802bf9981095ec6035d/block.json",
+        "target_dedup_uid": "dedup.sha256.25f5d119ba813debf94750d5fde9797d3d5e06d873dc8802bf9981095ec6035d",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.token_type_embeddings",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "deberta.block-00005",
+      "call_ids": [
+        "call-000005"
+      ],
+      "dedup_ref": "dedup.sha256.8c4598822188535730714a4f14128a6a3044f18785790fa808a8982b99eb9ac2",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 5,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000005:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000019"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "deberta",
+      "module_id": "module-00005",
+      "operation_ids": [
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000005:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000031"
+        }
+      ],
+      "parent_module_id": "module-00001",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.8c4598822188535730714a4f14128a6a3044f18785790fa808a8982b99eb9ac2/block.json",
+        "target_dedup_uid": "dedup.sha256.8c4598822188535730714a4f14128a6a3044f18785790fa808a8982b99eb9ac2",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.LayerNorm",
+      "source_refs": [
+        {
+          "end_line": 55,
+          "executed_line": 47,
+          "file": "transformers/models/deberta/modeling_deberta.py",
+          "source_uid": "source.sha256.8d9704ee27ebfe63e3bc069a821a388e9d9e83d26465e9ce9f91dfaf68908f3a",
+          "start_line": 47,
+          "symbol": "DebertaLayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "deberta.block-00006",
+      "call_ids": [
+        "call-000006"
+      ],
+      "dedup_ref": "dedup.sha256.021f41156bc196e68259398d88eb14d743b1ce643a978392b400a973051cbcbf",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 6,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000006:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000033"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "deberta",
+      "module_id": "module-00006",
+      "operation_ids": [
+        "op-000031"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000006:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000033"
+        }
+      ],
+      "parent_module_id": "module-00001",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.021f41156bc196e68259398d88eb14d743b1ce643a978392b400a973051cbcbf/block.json",
+        "target_dedup_uid": "dedup.sha256.021f41156bc196e68259398d88eb14d743b1ce643a978392b400a973051cbcbf",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.dropout",
+      "source_refs": [
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "deberta.block-00007",
+      "call_ids": [
+        "call-000007",
+        "call-000008",
+        "call-000009",
+        "call-000010",
+        "call-000011",
+        "call-000012",
+        "call-000013",
+        "call-000014",
+        "call-000016",
+        "call-000015",
+        "call-000017",
+        "call-000018",
+        "call-000019",
+        "call-000020",
+        "call-000021",
+        "call-000023",
+        "call-000022"
+      ],
+      "dedup_ref": "dedup.sha256.ffd72991c3f1acf9847a65f4d9d7215a6912d94e72c4c8c75c1be0aab6789b25",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 7,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000007:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000033"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "attention_mask",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "attention_mask",
+          "optional": false,
+          "port_id": "call-000007:in:1",
+          "position": 1,
+          "required": true,
+          "shape": [
+            3,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000006"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "deberta",
+      "module_id": "module-00007",
+      "operation_ids": [
+        "op-000032",
+        "op-000033",
+        "op-000034",
+        "op-000035",
+        "op-000036",
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073",
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080",
+        "op-000081",
+        "op-000082",
+        "op-000083",
+        "op-000084",
+        "op-000085",
+        "op-000086",
+        "op-000087",
+        "op-000088",
+        "op-000089",
+        "op-000090",
+        "op-000091",
+        "op-000092",
+        "op-000093",
+        "op-000094",
+        "op-000095",
+        "op-000096",
+        "op-000097",
+        "op-000098",
+        "op-000099",
+        "op-000100"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000022:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000096"
+        }
+      ],
+      "parent_module_id": "module-00000",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.ffd72991c3f1acf9847a65f4d9d7215a6912d94e72c4c8c75c1be0aab6789b25/block.json",
+        "target_dedup_uid": "dedup.sha256.ffd72991c3f1acf9847a65f4d9d7215a6912d94e72c4c8c75c1be0aab6789b25",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder",
+      "source_refs": [
+        {
+          "end_line": 605,
+          "executed_line": 561,
+          "file": "transformers/models/deberta/modeling_deberta.py",
+          "source_uid": "source.sha256.8d9704ee27ebfe63e3bc069a821a388e9d9e83d26465e9ce9f91dfaf68908f3a",
+          "start_line": 561,
+          "symbol": "DebertaEncoder.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "deberta.block-00008",
+      "call_ids": [
+        "call-000008",
+        "call-000009",
+        "call-000010",
+        "call-000011",
+        "call-000012",
+        "call-000013",
+        "call-000014",
+        "call-000016",
+        "call-000015",
+        "call-000017",
+        "call-000018",
+        "call-000019",
+        "call-000020",
+        "call-000021",
+        "call-000023",
+        "call-000022"
+      ],
+      "dedup_ref": "dedup.sha256.870317ec493a63ce8a9321d35bda2dd88486372e8d391f030d785b43b2baa196",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 8,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000008:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000033"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "attention_mask",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "attention_mask",
+          "optional": false,
+          "port_id": "call-000008:in:1",
+          "position": 1,
+          "required": true,
+          "shape": [
+            3,
+            1,
+            5,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000038"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "deberta",
+      "module_id": "module-00008",
+      "operation_ids": [
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073",
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080",
+        "op-000081",
+        "op-000082",
+        "op-000083",
+        "op-000084",
+        "op-000085",
+        "op-000086",
+        "op-000087",
+        "op-000088",
+        "op-000089",
+        "op-000090",
+        "op-000091",
+        "op-000092",
+        "op-000093",
+        "op-000094",
+        "op-000095",
+        "op-000096",
+        "op-000097",
+        "op-000098",
+        "op-000099",
+        "op-000100"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000022:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000096"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.870317ec493a63ce8a9321d35bda2dd88486372e8d391f030d785b43b2baa196/block.json",
+        "target_dedup_uid": "dedup.sha256.870317ec493a63ce8a9321d35bda2dd88486372e8d391f030d785b43b2baa196",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer",
+      "source_refs": [
+        {
+          "end_line": 404,
+          "executed_line": 391,
+          "file": "torch/nn/modules/module.py",
+          "source_uid": "source.sha256.4be56271f7bfe650e3521c81fd363da58f109cd23ee80d243156d2d6ccda6263",
+          "start_line": 391,
+          "symbol": "_forward_unimplemented"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "deberta.block-00009",
+      "call_ids": [
+        "call-000008",
+        "call-000009",
+        "call-000010",
+        "call-000011",
+        "call-000012",
+        "call-000013",
+        "call-000014",
+        "call-000016",
+        "call-000015",
+        "call-000017",
+        "call-000018",
+        "call-000019",
+        "call-000020",
+        "call-000021",
+        "call-000023",
+        "call-000022"
+      ],
+      "dedup_ref": "dedup.sha256.0e029515fbc2c5cbbb8041c1fab24acc0f6c213d51530a586740b98521f0c92e",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 9,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000008:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000033"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "attention_mask",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "attention_mask",
+          "optional": false,
+          "port_id": "call-000008:in:1",
+          "position": 1,
+          "required": true,
+          "shape": [
+            3,
+            1,
+            5,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000038"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00009",
+      "operation_ids": [
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073",
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080",
+        "op-000081",
+        "op-000082",
+        "op-000083",
+        "op-000084",
+        "op-000085",
+        "op-000086",
+        "op-000087",
+        "op-000088",
+        "op-000089",
+        "op-000090",
+        "op-000091",
+        "op-000092",
+        "op-000093",
+        "op-000094",
+        "op-000095",
+        "op-000096",
+        "op-000097",
+        "op-000098",
+        "op-000099",
+        "op-000100"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000022:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000096"
+        }
+      ],
+      "parent_module_id": "module-00008",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.0e029515fbc2c5cbbb8041c1fab24acc0f6c213d51530a586740b98521f0c92e/block.json",
+        "target_dedup_uid": "dedup.sha256.0e029515fbc2c5cbbb8041c1fab24acc0f6c213d51530a586740b98521f0c92e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0",
+      "source_refs": [
+        {
+          "end_line": 523,
+          "executed_line": 500,
+          "file": "transformers/models/deberta/modeling_deberta.py",
+          "source_uid": "source.sha256.8d9704ee27ebfe63e3bc069a821a388e9d9e83d26465e9ce9f91dfaf68908f3a",
+          "start_line": 500,
+          "symbol": "DebertaLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "deberta.block-00010",
+      "call_ids": [
+        "call-000009",
+        "call-000010",
+        "call-000011",
+        "call-000012",
+        "call-000013",
+        "call-000014",
+        "call-000016",
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.f0c10181f88541b17b79ae848b68719d609dc4ca92a4d4f0efdffc375d1f026a",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 10,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000009:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000033"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "attention_mask",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "attention_mask",
+          "optional": false,
+          "port_id": "call-000009:in:1",
+          "position": 1,
+          "required": true,
+          "shape": [
+            3,
+            1,
+            5,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000038"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00010",
+      "operation_ids": [
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073",
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080",
+        "op-000081",
+        "op-000082",
+        "op-000083"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000076"
+        }
+      ],
+      "parent_module_id": "module-00009",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f0c10181f88541b17b79ae848b68719d609dc4ca92a4d4f0efdffc375d1f026a/block.json",
+        "target_dedup_uid": "dedup.sha256.f0c10181f88541b17b79ae848b68719d609dc4ca92a4d4f0efdffc375d1f026a",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention",
+      "source_refs": [
+        {
+          "end_line": 459,
+          "executed_line": 435,
+          "file": "transformers/models/deberta/modeling_deberta.py",
+          "source_uid": "source.sha256.8d9704ee27ebfe63e3bc069a821a388e9d9e83d26465e9ce9f91dfaf68908f3a",
+          "start_line": 435,
+          "symbol": "DebertaAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "deberta.block-00011",
+      "call_ids": [
+        "call-000010",
+        "call-000011",
+        "call-000012"
+      ],
+      "dedup_ref": "dedup.sha256.5e24576d4bafc3495cddf159ed8b7a05b46013ceb985f39a1ca1eeefd5a39c5a",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 11,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000010:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000033"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "attention_mask",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "attention_mask",
+          "optional": false,
+          "port_id": "call-000010:in:1",
+          "position": 1,
+          "required": true,
+          "shape": [
+            3,
+            1,
+            5,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000038"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00011",
+      "operation_ids": [
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000012:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            4,
+            5,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000069"
+        }
+      ],
+      "parent_module_id": "module-00010",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.5e24576d4bafc3495cddf159ed8b7a05b46013ceb985f39a1ca1eeefd5a39c5a/block.json",
+        "target_dedup_uid": "dedup.sha256.5e24576d4bafc3495cddf159ed8b7a05b46013ceb985f39a1ca1eeefd5a39c5a",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.self",
+      "source_refs": [
+        {
+          "end_line": 288,
+          "executed_line": 203,
+          "file": "transformers/models/deberta/modeling_deberta.py",
+          "source_uid": "source.sha256.8d9704ee27ebfe63e3bc069a821a388e9d9e83d26465e9ce9f91dfaf68908f3a",
+          "start_line": 203,
+          "symbol": "DisentangledSelfAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "deberta.block-00012",
+      "call_ids": [
+        "call-000011"
+      ],
+      "dedup_ref": "dedup.sha256.5cd7f6521cbf35c82aff6a8a71d2967a075ef8600bfab09f667fc8e397267f51",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 12,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000011:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000033"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00012",
+      "operation_ids": [
+        "op-000037"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000011:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            48
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000040"
+        }
+      ],
+      "parent_module_id": "module-00011",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.5cd7f6521cbf35c82aff6a8a71d2967a075ef8600bfab09f667fc8e397267f51/block.json",
+        "target_dedup_uid": "dedup.sha256.5cd7f6521cbf35c82aff6a8a71d2967a075ef8600bfab09f667fc8e397267f51",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.self.in_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "deberta.block-00013",
+      "call_ids": [
+        "call-000012"
+      ],
+      "dedup_ref": "dedup.sha256.bfff83d05839c4e36db1ef15a320fe174ea9cbf3b700e1af791db10817764889",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 13,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000012:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            4,
+            5,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000069"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00013",
+      "operation_ids": [
+        "op-000064"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000012:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            4,
+            5,
+            5
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000069"
+        }
+      ],
+      "parent_module_id": "module-00011",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.bfff83d05839c4e36db1ef15a320fe174ea9cbf3b700e1af791db10817764889/block.json",
+        "target_dedup_uid": "dedup.sha256.bfff83d05839c4e36db1ef15a320fe174ea9cbf3b700e1af791db10817764889",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.self.dropout",
+      "source_refs": [
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "deberta.block-00014",
+      "call_ids": [
+        "call-000013",
+        "call-000014",
+        "call-000016",
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.0e419e79503aec1a2f5631bc8056e7fd2c14cc6d7fe35b0c09170fa47af6ac73",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 14,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000013:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000073"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_tensor",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input_tensor",
+          "optional": false,
+          "port_id": "call-000013:in:1",
+          "position": 1,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000033"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00014",
+      "operation_ids": [
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073",
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080",
+        "op-000081",
+        "op-000082",
+        "op-000083"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000076"
+        }
+      ],
+      "parent_module_id": "module-00010",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.0e419e79503aec1a2f5631bc8056e7fd2c14cc6d7fe35b0c09170fa47af6ac73/block.json",
+        "target_dedup_uid": "dedup.sha256.0e419e79503aec1a2f5631bc8056e7fd2c14cc6d7fe35b0c09170fa47af6ac73",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.output",
+      "source_refs": [
+        {
+          "end_line": 69,
+          "executed_line": 65,
+          "file": "transformers/models/deberta/modeling_deberta.py",
+          "source_uid": "source.sha256.8d9704ee27ebfe63e3bc069a821a388e9d9e83d26465e9ce9f91dfaf68908f3a",
+          "start_line": 65,
+          "symbol": "DebertaSelfOutput.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "deberta.block-00015",
+      "call_ids": [
+        "call-000014"
+      ],
+      "dedup_ref": "dedup.sha256.adc15b307a6b627fc59e3bb625bed0f523dca112e0a6d05500d7ffb7fa936c13",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 15,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000014:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000073"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00015",
+      "operation_ids": [
+        "op-000069"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000014:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000076"
+        }
+      ],
+      "parent_module_id": "module-00014",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.adc15b307a6b627fc59e3bb625bed0f523dca112e0a6d05500d7ffb7fa936c13/block.json",
+        "target_dedup_uid": "dedup.sha256.adc15b307a6b627fc59e3bb625bed0f523dca112e0a6d05500d7ffb7fa936c13",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.output.dense",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "deberta.block-00016",
+      "call_ids": [
+        "call-000016"
+      ],
+      "dedup_ref": "dedup.sha256.8c4598822188535730714a4f14128a6a3044f18785790fa808a8982b99eb9ac2",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 16,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000016:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000077"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00016",
+      "operation_ids": [
+        "op-000072",
+        "op-000073",
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080",
+        "op-000081",
+        "op-000082",
+        "op-000083"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000016:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000089"
+        }
+      ],
+      "parent_module_id": "module-00014",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.8c4598822188535730714a4f14128a6a3044f18785790fa808a8982b99eb9ac2/block.json",
+        "target_dedup_uid": "dedup.sha256.8c4598822188535730714a4f14128a6a3044f18785790fa808a8982b99eb9ac2",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.output.LayerNorm",
+      "source_refs": [
+        {
+          "end_line": 55,
+          "executed_line": 47,
+          "file": "transformers/models/deberta/modeling_deberta.py",
+          "source_uid": "source.sha256.8d9704ee27ebfe63e3bc069a821a388e9d9e83d26465e9ce9f91dfaf68908f3a",
+          "start_line": 47,
+          "symbol": "DebertaLayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "deberta.block-00017",
+      "call_ids": [
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.021f41156bc196e68259398d88eb14d743b1ce643a978392b400a973051cbcbf",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 17,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000015:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000076"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00017",
+      "operation_ids": [
+        "op-000070"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000076"
+        }
+      ],
+      "parent_module_id": "module-00014",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.021f41156bc196e68259398d88eb14d743b1ce643a978392b400a973051cbcbf/block.json",
+        "target_dedup_uid": "dedup.sha256.021f41156bc196e68259398d88eb14d743b1ce643a978392b400a973051cbcbf",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.output.dropout",
+      "source_refs": [
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "deberta.block-00018",
+      "call_ids": [
+        "call-000017",
+        "call-000018",
+        "call-000019"
+      ],
+      "dedup_ref": "dedup.sha256.391a8f8242255015bafc6ca6cc73bc94bf40e3f9f48d814f52a91ead37daba1a",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 18,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000017:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000089"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00018",
+      "operation_ids": [
+        "op-000084",
+        "op-000085"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000019:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000093"
+        }
+      ],
+      "parent_module_id": "module-00009",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.391a8f8242255015bafc6ca6cc73bc94bf40e3f9f48d814f52a91ead37daba1a/block.json",
+        "target_dedup_uid": "dedup.sha256.391a8f8242255015bafc6ca6cc73bc94bf40e3f9f48d814f52a91ead37daba1a",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.intermediate",
+      "source_refs": [
+        {
+          "end_line": 475,
+          "executed_line": 472,
+          "file": "transformers/models/deberta/modeling_deberta.py",
+          "source_uid": "source.sha256.8d9704ee27ebfe63e3bc069a821a388e9d9e83d26465e9ce9f91dfaf68908f3a",
+          "start_line": 472,
+          "symbol": "DebertaIntermediate.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "deberta.block-00019",
+      "call_ids": [
+        "call-000018"
+      ],
+      "dedup_ref": "dedup.sha256.0bd2b37be9e0cf8eb95504c7d16532bcb10226364a1f56e5796b43517d463e49",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 19,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000018:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000089"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00019",
+      "operation_ids": [
+        "op-000084"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000018:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000092"
+        }
+      ],
+      "parent_module_id": "module-00018",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.0bd2b37be9e0cf8eb95504c7d16532bcb10226364a1f56e5796b43517d463e49/block.json",
+        "target_dedup_uid": "dedup.sha256.0bd2b37be9e0cf8eb95504c7d16532bcb10226364a1f56e5796b43517d463e49",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.intermediate.dense",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "deberta.block-00020",
+      "call_ids": [
+        "call-000019"
+      ],
+      "dedup_ref": "dedup.sha256.9affa9ff1e93881238bc1d42cd806eb5f7f9b15afc7137a0831217b08fe39612",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 20,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000019:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000092"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00020",
+      "operation_ids": [
+        "op-000085"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000019:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000093"
+        }
+      ],
+      "parent_module_id": "module-00018",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.9affa9ff1e93881238bc1d42cd806eb5f7f9b15afc7137a0831217b08fe39612/block.json",
+        "target_dedup_uid": "dedup.sha256.9affa9ff1e93881238bc1d42cd806eb5f7f9b15afc7137a0831217b08fe39612",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.intermediate.intermediate_act_fn",
+      "source_refs": [
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "deberta.block-00021",
+      "call_ids": [
+        "call-000020",
+        "call-000021",
+        "call-000023",
+        "call-000022"
+      ],
+      "dedup_ref": "dedup.sha256.99903813efcd0fe6f1c92ccd34465e51192a90b82cab0164cd811a866ff35aa6",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 21,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000020:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000093"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_tensor",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input_tensor",
+          "optional": false,
+          "port_id": "call-000020:in:1",
+          "position": 1,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000089"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00021",
+      "operation_ids": [
+        "op-000086",
+        "op-000087",
+        "op-000088",
+        "op-000089",
+        "op-000090",
+        "op-000091",
+        "op-000092",
+        "op-000093",
+        "op-000094",
+        "op-000095",
+        "op-000096",
+        "op-000097",
+        "op-000098",
+        "op-000099",
+        "op-000100"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000022:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000096"
+        }
+      ],
+      "parent_module_id": "module-00009",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.99903813efcd0fe6f1c92ccd34465e51192a90b82cab0164cd811a866ff35aa6/block.json",
+        "target_dedup_uid": "dedup.sha256.99903813efcd0fe6f1c92ccd34465e51192a90b82cab0164cd811a866ff35aa6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.output",
+      "source_refs": [
+        {
+          "end_line": 490,
+          "executed_line": 486,
+          "file": "transformers/models/deberta/modeling_deberta.py",
+          "source_uid": "source.sha256.8d9704ee27ebfe63e3bc069a821a388e9d9e83d26465e9ce9f91dfaf68908f3a",
+          "start_line": 486,
+          "symbol": "DebertaOutput.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "deberta.block-00022",
+      "call_ids": [
+        "call-000021"
+      ],
+      "dedup_ref": "dedup.sha256.f2d5bc91bdf5454d137a6ccaae5fd0a59e0a64008c057e90e18e31c409090d8c",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 22,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000021:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000093"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00022",
+      "operation_ids": [
+        "op-000086"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000021:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000096"
+        }
+      ],
+      "parent_module_id": "module-00021",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f2d5bc91bdf5454d137a6ccaae5fd0a59e0a64008c057e90e18e31c409090d8c/block.json",
+        "target_dedup_uid": "dedup.sha256.f2d5bc91bdf5454d137a6ccaae5fd0a59e0a64008c057e90e18e31c409090d8c",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.output.dense",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "deberta.block-00023",
+      "call_ids": [
+        "call-000023"
+      ],
+      "dedup_ref": "dedup.sha256.8c4598822188535730714a4f14128a6a3044f18785790fa808a8982b99eb9ac2",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 23,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000023:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000097"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00023",
+      "operation_ids": [
+        "op-000089",
+        "op-000090",
+        "op-000091",
+        "op-000092",
+        "op-000093",
+        "op-000094",
+        "op-000095",
+        "op-000096",
+        "op-000097",
+        "op-000098",
+        "op-000099",
+        "op-000100"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000023:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000109"
+        }
+      ],
+      "parent_module_id": "module-00021",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.8c4598822188535730714a4f14128a6a3044f18785790fa808a8982b99eb9ac2/block.json",
+        "target_dedup_uid": "dedup.sha256.8c4598822188535730714a4f14128a6a3044f18785790fa808a8982b99eb9ac2",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.output.LayerNorm",
+      "source_refs": [
+        {
+          "end_line": 55,
+          "executed_line": 47,
+          "file": "transformers/models/deberta/modeling_deberta.py",
+          "source_uid": "source.sha256.8d9704ee27ebfe63e3bc069a821a388e9d9e83d26465e9ce9f91dfaf68908f3a",
+          "start_line": 47,
+          "symbol": "DebertaLayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "deberta.block-00024",
+      "call_ids": [
+        "call-000022"
+      ],
+      "dedup_ref": "dedup.sha256.021f41156bc196e68259398d88eb14d743b1ce643a978392b400a973051cbcbf",
+      "family_id": "deberta",
+      "graph_ref": "graphs/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json",
+      "index": 24,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000022:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000096"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "deberta",
+      "module_id": "module-00024",
+      "operation_ids": [
+        "op-000087"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000022:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000096"
+        }
+      ],
+      "parent_module_id": "module-00021",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.021f41156bc196e68259398d88eb14d743b1ce643a978392b400a973051cbcbf/block.json",
+        "target_dedup_uid": "dedup.sha256.021f41156bc196e68259398d88eb14d743b1ce643a978392b400a973051cbcbf",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.output.dropout",
+      "source_refs": [
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.18ba316fbd45cb683657302b8ed28b6f00ab74b45a5c18a5509fe578b9acbdc1.json"
+    }
+  ]
+}

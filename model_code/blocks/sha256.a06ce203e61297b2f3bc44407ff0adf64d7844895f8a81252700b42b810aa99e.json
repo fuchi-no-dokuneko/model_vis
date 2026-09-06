@@ -1,0 +1,2612 @@
+{
+  "blocks": [
+    {
+      "block_type": "embedding",
+      "block_uid": "dinov2.block-00001",
+      "call_ids": [
+        "call-000001",
+        "call-000002",
+        "call-000003",
+        "call-000004"
+      ],
+      "dedup_ref": "dedup.sha256.818a2b0357c4d1f29d32addc9ef9c3c38d916c9268c9183cf43147bf02a1a011",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 1,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "pixel_values",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "pixel_values",
+          "optional": false,
+          "port_id": "call-000001:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            3,
+            16,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "dinov2",
+      "module_id": "module-00001",
+      "operation_ids": [
+        "op-000000",
+        "op-000001",
+        "op-000002",
+        "op-000003",
+        "op-000004",
+        "op-000005",
+        "op-000006",
+        "op-000007"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000004:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000010"
+        }
+      ],
+      "parent_module_id": "module-00000",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.818a2b0357c4d1f29d32addc9ef9c3c38d916c9268c9183cf43147bf02a1a011/block.json",
+        "target_dedup_uid": "dedup.sha256.818a2b0357c4d1f29d32addc9ef9c3c38d916c9268c9183cf43147bf02a1a011",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings",
+      "source_refs": [
+        {
+          "end_line": 116,
+          "executed_line": 97,
+          "file": "transformers/models/dinov2/modeling_dinov2.py",
+          "source_uid": "source.sha256.f5f4c40542bda9b76ae1aeecceb3fcd264b181f86a0b5554ce81f5efb542b3d6",
+          "start_line": 97,
+          "symbol": "Dinov2Embeddings.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "dinov2.block-00002",
+      "call_ids": [
+        "call-000002",
+        "call-000003"
+      ],
+      "dedup_ref": "dedup.sha256.850f68070d4bf9ae7b3d00ef08fcc1b8132e75b005d7c5e23d37e35264c27f53",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 2,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "pixel_values",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "pixel_values",
+          "optional": false,
+          "port_id": "call-000002:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            3,
+            16,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "dinov2",
+      "module_id": "module-00002",
+      "operation_ids": [
+        "op-000001",
+        "op-000002",
+        "op-000003"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000003:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            16,
+            4,
+            4
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000003"
+        }
+      ],
+      "parent_module_id": "module-00001",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.850f68070d4bf9ae7b3d00ef08fcc1b8132e75b005d7c5e23d37e35264c27f53/block.json",
+        "target_dedup_uid": "dedup.sha256.850f68070d4bf9ae7b3d00ef08fcc1b8132e75b005d7c5e23d37e35264c27f53",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.patch_embeddings",
+      "source_refs": [
+        {
+          "end_line": 149,
+          "executed_line": 141,
+          "file": "transformers/models/dinov2/modeling_dinov2.py",
+          "source_uid": "source.sha256.f5f4c40542bda9b76ae1aeecceb3fcd264b181f86a0b5554ce81f5efb542b3d6",
+          "start_line": 141,
+          "symbol": "Dinov2PatchEmbeddings.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "dinov2.block-00003",
+      "call_ids": [
+        "call-000003"
+      ],
+      "dedup_ref": "dedup.sha256.41a0b94ffd41ed77fdf5074641f850b27ef271ee74d7c3c21317701ff8bc22b2",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 3,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000003:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            3,
+            16,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "dinov2",
+      "module_id": "module-00003",
+      "operation_ids": [
+        "op-000001"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000003:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            16,
+            4,
+            4
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000003"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.41a0b94ffd41ed77fdf5074641f850b27ef271ee74d7c3c21317701ff8bc22b2/block.json",
+        "target_dedup_uid": "dedup.sha256.41a0b94ffd41ed77fdf5074641f850b27ef271ee74d7c3c21317701ff8bc22b2",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.patch_embeddings.projection",
+      "source_refs": [
+        {
+          "end_line": 565,
+          "executed_line": 564,
+          "file": "torch/nn/modules/conv.py",
+          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+          "start_line": 564,
+          "symbol": "Conv2d.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "dinov2.block-00004",
+      "call_ids": [
+        "call-000004"
+      ],
+      "dedup_ref": "dedup.sha256.ce66bcd9470a59f302094171e85cf3262cb17b52aa0c2559a0aca5688825ef28",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 4,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000004:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000010"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "dinov2",
+      "module_id": "module-00004",
+      "operation_ids": [
+        "op-000007"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000004:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000010"
+        }
+      ],
+      "parent_module_id": "module-00001",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.ce66bcd9470a59f302094171e85cf3262cb17b52aa0c2559a0aca5688825ef28/block.json",
+        "target_dedup_uid": "dedup.sha256.ce66bcd9470a59f302094171e85cf3262cb17b52aa0c2559a0aca5688825ef28",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embeddings.dropout",
+      "source_refs": [
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "dinov2.block-00005",
+      "call_ids": [
+        "call-000005",
+        "call-000006",
+        "call-000007",
+        "call-000008",
+        "call-000009",
+        "call-000012",
+        "call-000010",
+        "call-000011",
+        "call-000013",
+        "call-000014",
+        "call-000015",
+        "call-000016",
+        "call-000017",
+        "call-000024",
+        "call-000018",
+        "call-000019",
+        "call-000020",
+        "call-000021",
+        "call-000022",
+        "call-000023"
+      ],
+      "dedup_ref": "dedup.sha256.cd1dd70c94038b871694f63bfef091d72c56e9d27150dd82501aa225eb74cade",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 5,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000005:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000010"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "dinov2",
+      "module_id": "module-00005",
+      "operation_ids": [
+        "op-000008",
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000023:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000049"
+        }
+      ],
+      "parent_module_id": "module-00000",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.cd1dd70c94038b871694f63bfef091d72c56e9d27150dd82501aa225eb74cade/block.json",
+        "target_dedup_uid": "dedup.sha256.cd1dd70c94038b871694f63bfef091d72c56e9d27150dd82501aa225eb74cade",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder",
+      "source_refs": [
+        {
+          "end_line": 431,
+          "executed_line": 425,
+          "file": "transformers/utils/generic.py",
+          "source_uid": "source.sha256.254d4da4849c048a7bfc98b1244baf38c6adcf32df8b0cd035ba5ecc314bb1e6",
+          "start_line": 425,
+          "symbol": "Dinov2Encoder.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "dinov2.block-00006",
+      "call_ids": [
+        "call-000006",
+        "call-000007",
+        "call-000008",
+        "call-000009",
+        "call-000012",
+        "call-000010",
+        "call-000011",
+        "call-000013",
+        "call-000014",
+        "call-000015",
+        "call-000016",
+        "call-000017",
+        "call-000024",
+        "call-000018",
+        "call-000019",
+        "call-000020",
+        "call-000021",
+        "call-000022",
+        "call-000023"
+      ],
+      "dedup_ref": "dedup.sha256.929c41172b72d84ae2db4bba90585bbdbd9bb432aae12555cbed2ea3b8d53aa6",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 6,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000006:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000010"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "dinov2",
+      "module_id": "module-00006",
+      "operation_ids": [
+        "op-000008",
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000023:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000049"
+        }
+      ],
+      "parent_module_id": "module-00005",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.929c41172b72d84ae2db4bba90585bbdbd9bb432aae12555cbed2ea3b8d53aa6/block.json",
+        "target_dedup_uid": "dedup.sha256.929c41172b72d84ae2db4bba90585bbdbd9bb432aae12555cbed2ea3b8d53aa6",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer",
+      "source_refs": [
+        {
+          "end_line": 404,
+          "executed_line": 391,
+          "file": "torch/nn/modules/module.py",
+          "source_uid": "source.sha256.4be56271f7bfe650e3521c81fd363da58f109cd23ee80d243156d2d6ccda6263",
+          "start_line": 391,
+          "symbol": "_forward_unimplemented"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "dinov2.block-00007",
+      "call_ids": [
+        "call-000006",
+        "call-000007",
+        "call-000008",
+        "call-000009",
+        "call-000012",
+        "call-000010",
+        "call-000011",
+        "call-000013",
+        "call-000014",
+        "call-000015",
+        "call-000016",
+        "call-000017",
+        "call-000024",
+        "call-000018",
+        "call-000019",
+        "call-000020",
+        "call-000021",
+        "call-000022",
+        "call-000023"
+      ],
+      "dedup_ref": "dedup.sha256.d2b56ac89a23ea84a27eba343eea9161a02f371f454410d9eb21b1124e7d6e78",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 7,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000006:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000010"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "dinov2",
+      "module_id": "module-00007",
+      "operation_ids": [
+        "op-000008",
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000023:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000049"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.d2b56ac89a23ea84a27eba343eea9161a02f371f454410d9eb21b1124e7d6e78/block.json",
+        "target_dedup_uid": "dedup.sha256.d2b56ac89a23ea84a27eba343eea9161a02f371f454410d9eb21b1124e7d6e78",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0",
+      "source_refs": [
+        {
+          "end_line": 380,
+          "executed_line": 361,
+          "file": "transformers/models/dinov2/modeling_dinov2.py",
+          "source_uid": "source.sha256.f5f4c40542bda9b76ae1aeecceb3fcd264b181f86a0b5554ce81f5efb542b3d6",
+          "start_line": 361,
+          "symbol": "Dinov2Layer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "dinov2.block-00008",
+      "call_ids": [
+        "call-000007"
+      ],
+      "dedup_ref": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 8,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000007:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000010"
+        }
+      ],
+      "layer_group_id": "layer-00001",
+      "model_version_id": "dinov2",
+      "module_id": "module-00008",
+      "operation_ids": [
+        "op-000008"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000007:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000013"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66/block.json",
+        "target_dedup_uid": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.norm1",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "dinov2.block-00009",
+      "call_ids": [
+        "call-000008",
+        "call-000009",
+        "call-000012",
+        "call-000010",
+        "call-000011",
+        "call-000013",
+        "call-000014",
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.087c0634c66fc53c65867ddcc8861d46f39615b181e2a1e20eb4aaa227fb70f2",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 9,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000008:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000013"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "dinov2",
+      "module_id": "module-00009",
+      "operation_ids": [
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000034"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.087c0634c66fc53c65867ddcc8861d46f39615b181e2a1e20eb4aaa227fb70f2/block.json",
+        "target_dedup_uid": "dedup.sha256.087c0634c66fc53c65867ddcc8861d46f39615b181e2a1e20eb4aaa227fb70f2",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention",
+      "source_refs": [
+        {
+          "end_line": 269,
+          "executed_line": 262,
+          "file": "transformers/models/dinov2/modeling_dinov2.py",
+          "source_uid": "source.sha256.f5f4c40542bda9b76ae1aeecceb3fcd264b181f86a0b5554ce81f5efb542b3d6",
+          "start_line": 262,
+          "symbol": "Dinov2Attention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "dinov2.block-00010",
+      "call_ids": [
+        "call-000009",
+        "call-000012",
+        "call-000010",
+        "call-000011"
+      ],
+      "dedup_ref": "dedup.sha256.9a4c2431718ab284b971a6463103a2f84958cd19ce8e4204fb124a7f32c70fe9",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 10,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000009:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000013"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "dinov2",
+      "module_id": "module-00010",
+      "operation_ids": [
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000011:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000021"
+        }
+      ],
+      "parent_module_id": "module-00009",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.9a4c2431718ab284b971a6463103a2f84958cd19ce8e4204fb124a7f32c70fe9/block.json",
+        "target_dedup_uid": "dedup.sha256.9a4c2431718ab284b971a6463103a2f84958cd19ce8e4204fb124a7f32c70fe9",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.attention",
+      "source_refs": [
+        {
+          "end_line": 234,
+          "executed_line": 203,
+          "file": "transformers/models/dinov2/modeling_dinov2.py",
+          "source_uid": "source.sha256.f5f4c40542bda9b76ae1aeecceb3fcd264b181f86a0b5554ce81f5efb542b3d6",
+          "start_line": 203,
+          "symbol": "Dinov2SelfAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "dinov2.block-00011",
+      "call_ids": [
+        "call-000012"
+      ],
+      "dedup_ref": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 11,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000012:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000013"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "dinov2",
+      "module_id": "module-00011",
+      "operation_ids": [
+        "op-000015"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000012:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000026"
+        }
+      ],
+      "parent_module_id": "module-00010",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8/block.json",
+        "target_dedup_uid": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.attention.query",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "dinov2.block-00012",
+      "call_ids": [
+        "call-000010"
+      ],
+      "dedup_ref": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 12,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000010:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000013"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "dinov2",
+      "module_id": "module-00012",
+      "operation_ids": [
+        "op-000009"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000010:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000016"
+        }
+      ],
+      "parent_module_id": "module-00010",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8/block.json",
+        "target_dedup_uid": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.attention.key",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "dinov2.block-00013",
+      "call_ids": [
+        "call-000011"
+      ],
+      "dedup_ref": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 13,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000011:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000013"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "dinov2",
+      "module_id": "module-00013",
+      "operation_ids": [
+        "op-000012"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000011:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000021"
+        }
+      ],
+      "parent_module_id": "module-00010",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8/block.json",
+        "target_dedup_uid": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.attention.value",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "dinov2.block-00014",
+      "call_ids": [
+        "call-000013",
+        "call-000014",
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.ca78c845312ca69b20b25b53a292ec0b0d86a85b080e30ebef18e83e7d28f374",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 14,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000013:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000031"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_tensor",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input_tensor",
+          "optional": false,
+          "port_id": "call-000013:in:1",
+          "position": 1,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000013"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "dinov2",
+      "module_id": "module-00014",
+      "operation_ids": [
+        "op-000021",
+        "op-000022"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000034"
+        }
+      ],
+      "parent_module_id": "module-00009",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.ca78c845312ca69b20b25b53a292ec0b0d86a85b080e30ebef18e83e7d28f374/block.json",
+        "target_dedup_uid": "dedup.sha256.ca78c845312ca69b20b25b53a292ec0b0d86a85b080e30ebef18e83e7d28f374",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.output",
+      "source_refs": [
+        {
+          "end_line": 252,
+          "executed_line": 249,
+          "file": "transformers/models/dinov2/modeling_dinov2.py",
+          "source_uid": "source.sha256.f5f4c40542bda9b76ae1aeecceb3fcd264b181f86a0b5554ce81f5efb542b3d6",
+          "start_line": 249,
+          "symbol": "Dinov2SelfOutput.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "dinov2.block-00015",
+      "call_ids": [
+        "call-000014"
+      ],
+      "dedup_ref": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 15,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000014:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000031"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "dinov2",
+      "module_id": "module-00015",
+      "operation_ids": [
+        "op-000021"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000014:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000034"
+        }
+      ],
+      "parent_module_id": "module-00014",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8/block.json",
+        "target_dedup_uid": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.output.dense",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "dinov2.block-00016",
+      "call_ids": [
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.ce66bcd9470a59f302094171e85cf3262cb17b52aa0c2559a0aca5688825ef28",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 16,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000015:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000034"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "dinov2",
+      "module_id": "module-00016",
+      "operation_ids": [
+        "op-000022"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000034"
+        }
+      ],
+      "parent_module_id": "module-00014",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.ce66bcd9470a59f302094171e85cf3262cb17b52aa0c2559a0aca5688825ef28/block.json",
+        "target_dedup_uid": "dedup.sha256.ce66bcd9470a59f302094171e85cf3262cb17b52aa0c2559a0aca5688825ef28",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.attention.output.dropout",
+      "source_refs": [
+        {
+          "end_line": 73,
+          "executed_line": 69,
+          "file": "torch/nn/modules/dropout.py",
+          "source_uid": "source.sha256.3b235a9a887ac94c9925a4ec4bfe7b6e2fc69e61a6dd57fe7dd790fc37d54a2d",
+          "start_line": 69,
+          "symbol": "Dropout.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "dinov2.block-00017",
+      "call_ids": [
+        "call-000016"
+      ],
+      "dedup_ref": "dedup.sha256.a15c40e84e6997eb1aad9051b23b0674ca3458b0a80a18249935d9408472675d",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 17,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_state",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_state",
+          "optional": false,
+          "port_id": "call-000016:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000034"
+        }
+      ],
+      "layer_group_id": "layer-00002",
+      "model_version_id": "dinov2",
+      "module_id": "module-00017",
+      "operation_ids": [
+        "op-000023"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000016:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000036"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.a15c40e84e6997eb1aad9051b23b0674ca3458b0a80a18249935d9408472675d/block.json",
+        "target_dedup_uid": "dedup.sha256.a15c40e84e6997eb1aad9051b23b0674ca3458b0a80a18249935d9408472675d",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.layer_scale1",
+      "source_refs": [
+        {
+          "end_line": 278,
+          "executed_line": 277,
+          "file": "transformers/models/dinov2/modeling_dinov2.py",
+          "source_uid": "source.sha256.f5f4c40542bda9b76ae1aeecceb3fcd264b181f86a0b5554ce81f5efb542b3d6",
+          "start_line": 277,
+          "symbol": "Dinov2LayerScale.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "dinov2.block-00018",
+      "call_ids": [
+        "call-000017",
+        "call-000024"
+      ],
+      "dedup_ref": "dedup.sha256.5bcc98c723344d8f781f419c461321236512f5fe4b17d3abd8201f64745ce6dd",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 18,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000017:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000036"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "dinov2",
+      "module_id": "module-00018",
+      "operation_ids": [],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000024:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000049"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.5bcc98c723344d8f781f419c461321236512f5fe4b17d3abd8201f64745ce6dd/block.json",
+        "target_dedup_uid": "dedup.sha256.5bcc98c723344d8f781f419c461321236512f5fe4b17d3abd8201f64745ce6dd",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.drop_path",
+      "source_refs": [
+        {
+          "end_line": 50,
+          "executed_line": 46,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 46,
+          "symbol": "Identity.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "dinov2.block-00019",
+      "call_ids": [
+        "call-000018"
+      ],
+      "dedup_ref": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 19,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000018:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000037"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "dinov2",
+      "module_id": "module-00019",
+      "operation_ids": [
+        "op-000025"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000018:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000040"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66/block.json",
+        "target_dedup_uid": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.norm2",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "dinov2.block-00020",
+      "call_ids": [
+        "call-000019",
+        "call-000020",
+        "call-000021",
+        "call-000022"
+      ],
+      "dedup_ref": "dedup.sha256.8475d9ecef7aaa8b872bf5447f5b65db1c206d4f1859b2d7a2c95b84352fc51c",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 20,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_state",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_state",
+          "optional": false,
+          "port_id": "call-000019:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000040"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "dinov2",
+      "module_id": "module-00020",
+      "operation_ids": [
+        "op-000026",
+        "op-000027",
+        "op-000028"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000022:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000047"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.8475d9ecef7aaa8b872bf5447f5b65db1c206d4f1859b2d7a2c95b84352fc51c/block.json",
+        "target_dedup_uid": "dedup.sha256.8475d9ecef7aaa8b872bf5447f5b65db1c206d4f1859b2d7a2c95b84352fc51c",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.mlp",
+      "source_refs": [
+        {
+          "end_line": 297,
+          "executed_line": 293,
+          "file": "transformers/models/dinov2/modeling_dinov2.py",
+          "source_uid": "source.sha256.f5f4c40542bda9b76ae1aeecceb3fcd264b181f86a0b5554ce81f5efb542b3d6",
+          "start_line": 293,
+          "symbol": "Dinov2MLP.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "dinov2.block-00021",
+      "call_ids": [
+        "call-000020"
+      ],
+      "dedup_ref": "dedup.sha256.a51295225e7ada50361f8d603bf3eaba49158af2d77e6eecbbb2a2c8b84ab49e",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 21,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000020:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000040"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "dinov2",
+      "module_id": "module-00021",
+      "operation_ids": [
+        "op-000026"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000020:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            64
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000043"
+        }
+      ],
+      "parent_module_id": "module-00020",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.a51295225e7ada50361f8d603bf3eaba49158af2d77e6eecbbb2a2c8b84ab49e/block.json",
+        "target_dedup_uid": "dedup.sha256.a51295225e7ada50361f8d603bf3eaba49158af2d77e6eecbbb2a2c8b84ab49e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.mlp.fc1",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "dinov2.block-00022",
+      "call_ids": [
+        "call-000021"
+      ],
+      "dedup_ref": "dedup.sha256.a606ac2d55a0c8069c740183a37aaf3a79b32321ccf358c477860a206fd5387e",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 22,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000021:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            64
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000043"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "dinov2",
+      "module_id": "module-00022",
+      "operation_ids": [
+        "op-000027"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000021:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            64
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000044"
+        }
+      ],
+      "parent_module_id": "module-00020",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.a606ac2d55a0c8069c740183a37aaf3a79b32321ccf358c477860a206fd5387e/block.json",
+        "target_dedup_uid": "dedup.sha256.a606ac2d55a0c8069c740183a37aaf3a79b32321ccf358c477860a206fd5387e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.mlp.activation",
+      "source_refs": [
+        {
+          "end_line": 89,
+          "executed_line": 88,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 88,
+          "symbol": "GELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "dinov2.block-00023",
+      "call_ids": [
+        "call-000022"
+      ],
+      "dedup_ref": "dedup.sha256.4310bfcdfc2b307ef25e1515dac6a43c38076a51271ee547b902b9e96445a9d7",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 23,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000022:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            64
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000044"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "dinov2",
+      "module_id": "module-00023",
+      "operation_ids": [
+        "op-000028"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000022:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000047"
+        }
+      ],
+      "parent_module_id": "module-00020",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.4310bfcdfc2b307ef25e1515dac6a43c38076a51271ee547b902b9e96445a9d7/block.json",
+        "target_dedup_uid": "dedup.sha256.4310bfcdfc2b307ef25e1515dac6a43c38076a51271ee547b902b9e96445a9d7",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.mlp.fc2",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "dinov2.block-00024",
+      "call_ids": [
+        "call-000023"
+      ],
+      "dedup_ref": "dedup.sha256.a15c40e84e6997eb1aad9051b23b0674ca3458b0a80a18249935d9408472675d",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 24,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_state",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_state",
+          "optional": false,
+          "port_id": "call-000023:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000047"
+        }
+      ],
+      "layer_group_id": "layer-00004",
+      "model_version_id": "dinov2",
+      "module_id": "module-00024",
+      "operation_ids": [
+        "op-000029"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000023:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000049"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.a15c40e84e6997eb1aad9051b23b0674ca3458b0a80a18249935d9408472675d/block.json",
+        "target_dedup_uid": "dedup.sha256.a15c40e84e6997eb1aad9051b23b0674ca3458b0a80a18249935d9408472675d",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "encoder.layer.0.layer_scale2",
+      "source_refs": [
+        {
+          "end_line": 278,
+          "executed_line": 277,
+          "file": "transformers/models/dinov2/modeling_dinov2.py",
+          "source_uid": "source.sha256.f5f4c40542bda9b76ae1aeecceb3fcd264b181f86a0b5554ce81f5efb542b3d6",
+          "start_line": 277,
+          "symbol": "Dinov2LayerScale.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "dinov2.block-00025",
+      "call_ids": [
+        "call-000025"
+      ],
+      "dedup_ref": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
+      "family_id": "dinov2",
+      "graph_ref": "graphs/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json",
+      "index": 25,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000025:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000050"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "dinov2",
+      "module_id": "module-00025",
+      "operation_ids": [
+        "op-000031"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000025:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000053"
+        }
+      ],
+      "parent_module_id": "module-00000",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66/block.json",
+        "target_dedup_uid": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layernorm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.a06ce203e61297b2f3bc44407ff0adf64d7844895f8a81252700b42b810aa99e.json"
+    }
+  ]
+}

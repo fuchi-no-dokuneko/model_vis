@@ -1,0 +1,77 @@
+{
+  "dedup_uid": "dedup.sha256.b2c8e5b45b18c44634b30e52f0df7e0d558bf91e59b405a426b97cfb23e18c08",
+  "operation_ids": [
+    "op-000095",
+    "op-000096",
+    "op-000097",
+    "op-000098"
+  ],
+  "signature": {
+    "buffers": [
+      [
+        "e_score_correction_bias",
+        [
+          2
+        ]
+      ]
+    ],
+    "children": [
+      [
+        "",
+        "transformers.models.dots1.modeling_dots1",
+        "Dots1TopkRouter"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            15,
+            2
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          2,
+          16
+        ]
+      ]
+    ],
+    "source": "114cb5f9722d10a846a4a972f0c4b23907094bbb4121b3920ee9abc34624b5cc",
+    "topology": [
+      [
+        "aten_op",
+        "aten.view.default"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.linear.default"
+      ]
+    ]
+  }
+}

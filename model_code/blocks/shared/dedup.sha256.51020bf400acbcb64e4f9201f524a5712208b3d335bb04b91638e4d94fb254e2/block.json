@@ -1,0 +1,108 @@
+{
+  "dedup_uid": "dedup.sha256.51020bf400acbcb64e4f9201f524a5712208b3d335bb04b91638e4d94fb254e2",
+  "operation_ids": [
+    "op-000171",
+    "op-000172",
+    "op-000173",
+    "op-000174",
+    "op-000175"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.glpn.modeling_glpn",
+        "GLPNDepthWiseConv"
+      ],
+      [
+        "dwconv",
+        "torch.nn.modules.conv",
+        "Conv2d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            1,
+            64
+          ]
+        ],
+        [
+          [
+            1,
+            1,
+            64
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            64,
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            64,
+            1,
+            1
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "dwconv.bias",
+        [
+          64
+        ]
+      ],
+      [
+        "dwconv.weight",
+        [
+          64,
+          1,
+          3,
+          3
+        ]
+      ]
+    ],
+    "source": "75b558ace54a4ea9b11defe0192d65aa7376920215fab7ff69b996d190eca2ae",
+    "topology": [
+      [
+        "aten_op",
+        "aten.transpose.int"
+      ],
+      [
+        "aten_op",
+        "aten.view.default"
+      ],
+      [
+        "aten_op",
+        "aten.conv2d.default"
+      ],
+      [
+        "aten_op",
+        "aten.flatten.using_ints"
+      ],
+      [
+        "aten_op",
+        "aten.transpose.int"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "dedup_uid": "dedup.sha256.0589464e7104310980ea7c4a8adbe217b0212e1d02c7af64d574c2bae9ed4678",
+  "operation_ids": [
+    "op-000041",
+    "op-000042",
+    "op-000043",
+    "op-000044",
+    "op-000045",
+    "op-000046",
+    "op-000047",
+    "op-000048"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.flex_olmo.modeling_flex_olmo",
+        "FlexOlmoRMSNorm"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            8
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            8
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          8
+        ]
+      ]
+    ],
+    "source": "042bf2f72da857e08e0e7fa59f3a6aadf61ca145c651d4c4077af39884cb45d5",
+    "topology": [
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.pow.Tensor_Scalar"
+      ],
+      [
+        "aten_op",
+        "aten.mean.dim"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.rsqrt.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ]
+    ]
+  }
+}

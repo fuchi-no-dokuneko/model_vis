@@ -1,0 +1,57 @@
+{
+  "dedup_uid": "dedup.sha256.f764ce644df3b8882f33dedbb6d79e62277d13098548f5c8c4e85791a9d0a6f1",
+  "operation_ids": [
+    "op-000057",
+    "op-000058",
+    "op-000059"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.activations",
+        "QuickGELUActivation"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            4,
+            32
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            32
+          ]
+        ]
+      ]
+    ],
+    "parameters": [],
+    "source": "b126658eba102f5888525738e49b2b468303ae564408da4dbfba814d5a642017",
+    "topology": [
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.sigmoid.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ]
+    ]
+  }
+}

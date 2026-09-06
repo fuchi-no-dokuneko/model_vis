@@ -1,0 +1,97 @@
+{
+  "dedup_uid": "dedup.sha256.874d8215a054b3bf4a7fdca2a1f4fc64524693ba0fc06bda6ade82d5a698865d",
+  "operation_ids": [
+    "op-000009",
+    "op-000010",
+    "op-000011"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.dpt.modeling_dpt",
+        "DPTViTPatchEmbeddings"
+      ],
+      [
+        "projection",
+        "torch.nn.modules.conv",
+        "Conv2d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "projection.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "projection.weight",
+        [
+          16,
+          3,
+          4,
+          4
+        ]
+      ]
+    ],
+    "source": "f67204f1ca56d235093e45c4778900d6e04eedb2c2eefcc659c178226449f613",
+    "topology": [
+      [
+        "aten_op",
+        "aten.conv2d.default"
+      ],
+      [
+        "aten_op",
+        "aten.flatten.using_ints"
+      ],
+      [
+        "aten_op",
+        "aten.transpose.int"
+      ]
+    ]
+  }
+}

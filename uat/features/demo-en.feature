@@ -4,7 +4,7 @@ Feature: English product introduction recording for Model Structure Viewer
     Given the built Model Vis site is running
     And I begin a recorded demo
     When I open the model catalog
-    And I narrate in English for at least 9 seconds: Model Structure Viewer turns generated PyTorch architecture metadata into an offline interactive catalog of fifty-one models, without downloading weights or running remote model code.
+    And I narrate in English for at least 9 seconds: Model Structure Viewer turns generated PyTorch architecture metadata into an offline interactive catalog of one hundred and one models, without downloading weights or running remote model code.
     And I inspect DINOv3 semantic architecture
     Then semantic stages and exact tags are shown
     When I open a semantic stage explanation

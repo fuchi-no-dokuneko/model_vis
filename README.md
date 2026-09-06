@@ -18,7 +18,7 @@ Prefetch the original 21 pinned official Hugging Face `config.json` files on a n
   --out official_configs
 ```
 
-The pinned mapping is human-reviewable. Jais2 and DINOv3 currently require Hub authorization; without credentials their exact model records are published as partial with a visible warning. The 30-model alphabetical expansion currently uses deterministic compact local configurations and is therefore also published with explicit partial-status warnings rather than being represented as official configuration coverage.
+The pinned mapping is human-reviewable and covers the original 21 versions. Jais2 and DINOv3 require Hub authorization; without credentials their exact model records are published as partial with a visible warning. The subsequent 30-model and 50-model expansions use deterministic compact local configurations and are also published with explicit partial-status warnings. A successful trace does not imply official configuration coverage.
 For an account that has accepted those repository terms, `HF_TOKEN` may be supplied to the prefetch process; the token is sent only as an authorization header and is never written to generated metadata.
 
 Run the resumable offline trace build:
@@ -29,6 +29,9 @@ Run the resumable offline trace build:
   --scope-out model_scope.generated.yaml \
   --out model_code \
   --cache build_cache \
+  --include-file profiles/smallest-21.txt \
+  --include-file profiles/alphabetical-30-new.txt \
+  --include-file profiles/expansion-50-new.txt \
   --official-config-mapping profiles/hf-config-mapping.v1.json \
   --official-config-dir official_configs \
   --resume
@@ -48,7 +51,7 @@ To improve coverage for a new architecture:
 2. Run `./venv/bin/python -m src.model_builder.semantics --model-code model_code` to rematerialize existing assets without tracing models again.
 3. Run partial validation and the semantic unit tests. The machine-readable coverage and outcome dashboard is `model_code/indexes/semantic-report.v1.json`.
 
-Every semantic module, operation, tensor, stage, journey shape, tag, and distribution total is cross-checked against its canonical graph during validation. The report distinguishes passed, technical-fallback, partial, and failed generation. It also reports selected/generated proportions against the complete catalog instead of presenting models outside a development scope as failures. The checked-in scope currently covers 51 of 563 catalog families and 51 of 567 normalized versions; the browser smoke batch opens all 51 in case-insensitive alphabetical order.
+Every semantic module, operation, tensor, stage, journey shape, tag, and distribution total is cross-checked against its canonical graph during validation. The report distinguishes passed, technical-fallback, partial, and failed generation. It also reports selected/generated proportions against the complete catalog instead of presenting models outside a development scope as failures. The checked-in scope covers 101 of 563 catalog families and 101 of 567 normalized versions; the browser smoke batch opens all 101 in case-insensitive alphabetical order.
 
 ## Redistributed source code
 
@@ -62,6 +65,12 @@ npm run build-ui -- --model-code model_code --out build
 
 ## Viewer controls
 
+Use the star beside a model to save it to Favorites. The Favorites filter combines with search and category filters; stars persist in this browser across reloads. Comparison checkboxes remain independent. If browser storage is unavailable, favorites work for the current session and a message explains the limitation. Filtering resets the catalog scroll position so matching models remain visible.
+
+Invalid model locations remain visible in the graph status while zooming, fitting, or resizing. The address field identifies the error to assistive technology. Opening a valid model location clears the diagnostic.
+
+On phones, the catalog and inspector drawers open above the backdrop and close one another so their controls remain reachable.
+
 Graph nodes can be moved by dragging their header and resized from the lower-right handle in every graph mode. Layout changes are stored locally per model, mode, and module scope; Reset restores generated positions and the default `248 x 168` technical-node or `248 x 196` semantic-stage size. Empty-canvas dragging pans without selecting page text.
 
 New viewer sessions open in Beginner detail, Semantic labels, and Architecture. Standard combines semantic and source labels; Trace exposes the full Modules, Blocks, Operations, runtime, source, and config interface. Detail, label, selection, and stage preferences persist locally and explicit choices are encoded in shareable routes.
@@ -71,7 +80,7 @@ With a graph node selected, `Alt+Shift+M` copies its module name, `Alt+Shift+P` 
 Validate and test:
 
 ```bash
-./venv/bin/python -m src.model_builder.validate --model-code model_code --catalog model.txt
+./venv/bin/python -m src.model_builder.validate --model-code model_code --catalog model.txt --allow-partial
 ./venv/bin/python -m pytest
 npm test
 npm run test:e2e
@@ -105,13 +114,13 @@ The real run writes a boolean checklist, screenshots, browser LCOV, and Sonar
 generic test execution XML under `artifacts/uat/`. `.github/workflows/quality.yml`
 runs locked installs, release audits, unit/coverage/drift/browser/UAT checks, and
 the SonarQube Cloud quality gate on pushes, pull requests, and daily schedule.
-Main-branch Cloudflare Pages deployment runs only after that job succeeds.
+Cloudflare Pages deployment runs only after that job succeeds on `main` or the existing `tickets/model-vis-260823` branch. Other branches run verification without deploying.
 The complete feature matrix and TTS/recording wrapper contract are documented in
 `uat/README.md`; recording suites are product walkthroughs and are not quality-gate evidence.
 
 Partial development builds can use `--include BERT` or `--limit 5`. They are intentionally rejected by full-catalog validation.
 
-The expanded 51-model development scope combines the original verified 21-model baseline with 30 additional families selected in alphabetical candidate order and validated through isolated offline traces:
+The 101-model development scope preserves the original 21-model baseline and the first 30-model expansion, and adds 50 distinct structures validated through isolated offline traces. The fixed include files define the published selection; failed candidates are not included. See [the current generation guide](docs/catalog-expansion.md) and [the reusable maintenance prompt](docs/maintenance-prompt.md).
 
 ```bash
 ./venv/bin/python -m src.model_builder \
@@ -121,6 +130,7 @@ The expanded 51-model development scope combines the original verified 21-model 
   --cache build_cache \
   --include-file profiles/smallest-21.txt \
   --include-file profiles/alphabetical-30-new.txt \
+  --include-file profiles/expansion-50-new.txt \
   --official-config-mapping profiles/hf-config-mapping.v1.json \
   --official-config-dir official_configs \
   --resume

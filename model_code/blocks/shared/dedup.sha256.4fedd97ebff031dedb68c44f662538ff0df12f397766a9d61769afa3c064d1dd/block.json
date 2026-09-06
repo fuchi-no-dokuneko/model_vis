@@ -1,0 +1,118 @@
+{
+  "dedup_uid": "dedup.sha256.4fedd97ebff031dedb68c44f662538ff0df12f397766a9d61769afa3c064d1dd",
+  "operation_ids": [
+    "op-000084",
+    "op-000085"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.deepseek_ocr2.modeling_deepseek_ocr2",
+        "DeepseekOcr2SamVisionProj"
+      ],
+      [
+        "conv1",
+        "torch.nn.modules.conv",
+        "Conv2d"
+      ],
+      [
+        "conv2",
+        "torch.nn.modules.conv",
+        "Conv2d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            1,
+            1
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            2,
+            2
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            16,
+            2,
+            2
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            1,
+            1
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "conv1.weight",
+        [
+          16,
+          16,
+          3,
+          3
+        ]
+      ],
+      [
+        "conv2.weight",
+        [
+          16,
+          16,
+          3,
+          3
+        ]
+      ]
+    ],
+    "source": "4401e8763f878f1daa46f92b8b6ae9d61d4983c45ce0cbc4b17ca2a9d8a9e2d1",
+    "topology": [
+      [
+        "aten_op",
+        "aten.conv2d.default"
+      ],
+      [
+        "aten_op",
+        "aten.conv2d.default"
+      ]
+    ]
+  }
+}

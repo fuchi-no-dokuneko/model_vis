@@ -1,0 +1,94 @@
+{
+  "dedup_uid": "dedup.sha256.d956e8e7a3859b6db2bd11a5f60d086cd8df7c400928642ddac0943d0d304819",
+  "operation_ids": [
+    "op-000151",
+    "op-000152",
+    "op-000153",
+    "op-000154",
+    "op-000155",
+    "op-000156",
+    "op-000157",
+    "op-000158"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.deepseek_ocr2.modeling_deepseek_ocr2",
+        "DeepseekOcr2VisionRMSNorm"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            145,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            145,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          16
+        ]
+      ]
+    ],
+    "source": "3e085a3fd2af8a99635024aad9145cf59e45eb6f855fa96a49e7d0dae9b492c8",
+    "topology": [
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.pow.Tensor_Scalar"
+      ],
+      [
+        "aten_op",
+        "aten.mean.dim"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.rsqrt.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ]
+    ]
+  }
+}

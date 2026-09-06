@@ -76,6 +76,11 @@ const state = {
   pendingSelection: null,
   viewportDrag: { started: false, startX: 0, startY: 0 },
   overlayState: { legend: true, minimap: true },
+  navigationError: "",
+  graphStatus: "",
+  transientStatus: "",
+  transientStatusTimer: null,
+  favoriteIds: new Set(),
 };
 
 function savedViewState() {
@@ -120,16 +125,57 @@ function layerColor(layerGroupId) {
 }
 
 function showStatus(message = "") {
+  state.graphStatus = message;
   const status = $("#graph-status");
-  status.hidden = !message;
-  status.textContent = message;
+  const visibleMessage = state.navigationError || state.transientStatus || message;
+  status.hidden = !visibleMessage;
+  status.textContent = visibleMessage;
+  status.classList.toggle("navigation-error", Boolean(state.navigationError));
 }
 
 function showTransientStatus(message) {
-  showStatus(message);
-  window.setTimeout(() => {
-    if ($("#graph-status").textContent === message) showStatus("");
+  state.transientStatus = message;
+  window.clearTimeout(state.transientStatusTimer);
+  showStatus(state.graphStatus);
+  state.transientStatusTimer = window.setTimeout(() => {
+    state.transientStatus = "";
+    showStatus(state.graphStatus);
   }, 1600);
+}
+
+function setNavigationError(message = "") {
+  state.navigationError = message;
+  $("#uri-input").setAttribute("aria-invalid", String(Boolean(message)));
+  if (message) $("#uri-input").setAttribute("aria-describedby", "graph-status");
+  else $("#uri-input").removeAttribute("aria-describedby");
+  showStatus(state.graphStatus);
+}
+
+function initializeFavorites() {
+  try {
+    const saved = JSON.parse(localStorage.getItem("model-vis-favorites") || "[]");
+    if (Array.isArray(saved)) state.favoriteIds = new Set(saved.filter((id) => typeof id === "string"));
+  } catch { state.favoriteIds = new Set(); }
+}
+
+function updateFavoriteButton(button, item) {
+  const saved = state.favoriteIds.has(item.version_id);
+  button.textContent = saved ? "★" : "☆";
+  button.setAttribute("aria-pressed", String(saved));
+  button.setAttribute("aria-label", `${saved ? "Remove" : "Save"} ${item.family_name} ${saved ? "from" : "to"} favorites`);
+  button.title = button.getAttribute("aria-label");
+}
+
+function toggleFavorite(item, button) {
+  if (state.favoriteIds.has(item.version_id)) state.favoriteIds.delete(item.version_id);
+  else state.favoriteIds.add(item.version_id);
+  try { localStorage.setItem("model-vis-favorites", JSON.stringify([...state.favoriteIds])); }
+  catch { showTransientStatus("Favorites are available for this session; browser storage is unavailable."); }
+  updateFavoriteButton(button, item);
+  if ($("#favorites-only").getAttribute("aria-pressed") === "true") {
+    filterIndex();
+    $("#favorites-only").focus();
+  }
 }
 
 function applyTheme(theme, { persist = true } = {}) {
@@ -284,9 +330,9 @@ function updateScrim() {
   $("#scrim").hidden = !open;
 }
 
-function openSidebar() { $("#sidebar").classList.add("open"); updateScrim(); }
+function openSidebar() { closeInspector(); $("#sidebar").classList.add("open"); updateScrim(); }
 function closeSidebar() { $("#sidebar").classList.remove("open"); updateScrim(); }
-function openInspector() { $("#inspector").classList.add("open"); updateScrim(); }
+function openInspector() { closeSidebar(); $("#inspector").classList.add("open"); updateScrim(); }
 function closeInspector() { $("#inspector").classList.remove("open"); updateScrim(); }
 
 async function switchNavigator(panel) {
@@ -319,6 +365,7 @@ function filterIndex() {
   const sort = $("#sort").value;
   state.filtered = state.index.filter((item) => (
     (!category || item.category === category)
+    && ($("#favorites-only").getAttribute("aria-pressed") !== "true" || state.favoriteIds.has(item.version_id))
     && (!query || `${item.family_name} ${item.version_id} ${item.category} ${item.library}`.toLowerCase().includes(query))
   ));
   state.filtered.sort((left, right) => {
@@ -327,8 +374,14 @@ function filterIndex() {
     if (sort === "sources") return right.source_count - left.source_count || left.family_name.localeCompare(right.family_name);
     return left.family_name.localeCompare(right.family_name) || left.version_id.localeCompare(right.version_id);
   });
+  $("#model-list").scrollTop = 0;
   $("#model-list-inner").style.height = `${state.filtered.length * LIST_ROW_HEIGHT}px`;
   $("#result-count").textContent = `${state.filtered.length} model${state.filtered.length === 1 ? "" : "s"}`;
+  const empty = $("#catalog-empty");
+  empty.hidden = state.filtered.length > 0;
+  empty.textContent = $("#favorites-only").getAttribute("aria-pressed") === "true"
+    ? "No favorites match. Show all models to save a model with its star."
+    : "No models match. Try another search or category.";
   renderListWindow();
 }
 
@@ -392,7 +445,15 @@ function renderListWindow() {
     checkbox.setAttribute("aria-label", `Compare ${item.family_name}`);
     checkbox.addEventListener("change", () => toggleCompareVersion(item.version_id, checkbox.checked));
     label.append(checkbox);
-    row.append(open, label);
+    const favorite = document.createElement("button");
+    favorite.className = "favorite-button";
+    favorite.dataset.versionId = item.version_id;
+    updateFavoriteButton(favorite, item);
+    favorite.addEventListener("click", () => toggleFavorite(item, favorite));
+    const actions = document.createElement("div");
+    actions.className = "model-actions";
+    actions.append(favorite, label);
+    row.append(open, actions);
     fragment.append(row);
   }
   $("#model-list-inner").replaceChildren(fragment);
@@ -471,6 +532,7 @@ function routePath() {
 
 function syncRoute({ push = true } = {}) {
   if (state.routeApplying || !state.current) return;
+  setNavigationError();
   const hash = routePath();
   const browserUrl = `${location.pathname}${location.search}${hash}`;
   if (push) history.pushState(null, "", browserUrl);
@@ -494,6 +556,7 @@ async function applyRoute(value) {
     state.compareIds = route.compare;
     await openCompare({ sync: false, view: route.view || "architecture" });
     history.replaceState(null, "", `${location.pathname}${location.search}#/${["compare", ...route.compare, "view", route.view || "architecture", "detail", state.detailMode, "labels", state.labelMode].map(encodeURIComponent).join("/")}`);
+    setNavigationError();
     return;
   }
   if (!route.version) throw new Error("URI must include /version/<version-id>");
@@ -558,8 +621,8 @@ async function applyRoute(value) {
     renderModuleTree();
   } finally {
     state.routeApplying = false;
-    syncRoute({ push: false });
   }
+  syncRoute({ push: false });
 }
 
 function positionStorageKey() {
@@ -2817,12 +2880,20 @@ async function start() {
     }
   } catch (error) {
     $("#empty-state").textContent = error.message;
+    setNavigationError(error.message);
   }
 }
 
 $("#search").addEventListener("input", filterIndex);
 $("#category").addEventListener("change", filterIndex);
 $("#sort").addEventListener("change", filterIndex);
+$("#favorites-only").addEventListener("click", (event) => {
+  const button = event.currentTarget;
+  const active = button.getAttribute("aria-pressed") !== "true";
+  button.setAttribute("aria-pressed", String(active));
+  button.textContent = active ? "★ Favorites · Show all" : "☆ Favorites";
+  filterIndex();
+});
 $("#model-list").addEventListener("scroll", renderListWindow, { passive: true });
 $("#module-search").addEventListener("input", renderModuleTree);
 $("#graph-search").addEventListener("input", () => updateGraphSearch());
@@ -2839,7 +2910,7 @@ document.querySelectorAll(".config-mode").forEach((button) => button.addEventLis
 }));
 $("#uri-form").addEventListener("submit", async (event) => {
   event.preventDefault();
-  try { await applyRoute($("#uri-input").value); } catch (error) { showStatus(error.message); }
+  try { await applyRoute($("#uri-input").value); } catch (error) { setNavigationError(error.message); }
 });
 $("#copy-source").addEventListener("click", async () => copyText(await selectedSourceCode(), "Source code"));
 $("#source-reference").addEventListener("click", () => copyText($("#source-reference").dataset.reference || "", "Source reference"));
@@ -2902,7 +2973,7 @@ $("#minimap").addEventListener("click", (event) => {
   };
   updateTransform();
 });
-window.addEventListener("hashchange", () => applyRoute(location.hash).catch((error) => showStatus(error.message)));
+window.addEventListener("hashchange", () => applyRoute(location.hash).catch((error) => setNavigationError(error.message)));
 window.addEventListener("resize", scheduleVisibleRender);
 document.addEventListener("mouseover", (event) => showTooltip(event.target.closest?.("[data-tooltip]")));
 document.addEventListener("mouseout", (event) => {
@@ -2940,6 +3011,7 @@ window.addEventListener("keydown", (event) => {
 });
 
 initializeViewPreferences();
+initializeFavorites();
 initializeTheme();
 initializeOverlayState();
 start();

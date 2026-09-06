@@ -1,0 +1,107 @@
+{
+  "dedup_uid": "dedup.sha256.5aa89e12d4e0c6dfaed906a182bc63580371d8b0a2a4667f304b4ef9b2c7bc16",
+  "operation_ids": [
+    "op-000128",
+    "op-000129"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.canine.modeling_canine",
+        "CanineIntermediate"
+      ],
+      [
+        "dense",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "intermediate_act_fn",
+        "transformers.activations",
+        "GELUActivation"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            1,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            1,
+            32
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            3,
+            1,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            1,
+            32
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            3,
+            1,
+            32
+          ]
+        ],
+        [
+          [
+            3,
+            1,
+            32
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "dense.bias",
+        [
+          32
+        ]
+      ],
+      [
+        "dense.weight",
+        [
+          32,
+          16
+        ]
+      ]
+    ],
+    "source": "4d136225000ba16a71a5050773d77ec5b3d16acff214937382531e7cd46da7a8",
+    "topology": [
+      [
+        "aten_op",
+        "aten.linear.default"
+      ],
+      [
+        "aten_op",
+        "aten.gelu.default"
+      ]
+    ]
+  }
+}

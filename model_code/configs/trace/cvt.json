@@ -1,0 +1,125 @@
+{
+  "config": {
+    "_name_or_path": "",
+    "architectures": null,
+    "attention_drop_rate": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "chunk_size_feed_forward": 0,
+    "cls_token": [
+      false,
+      false,
+      true
+    ],
+    "depth": [
+      1,
+      2,
+      3
+    ],
+    "drop_path_rate": [
+      0.0,
+      0.0,
+      0.1
+    ],
+    "drop_rate": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "dtype": null,
+    "embed_dim": [
+      16,
+      16,
+      16
+    ],
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "initializer_range": 0.02,
+    "is_encoder_decoder": false,
+    "kernel_qkv": [
+      3,
+      3,
+      3
+    ],
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "layer_norm_eps": 1e-12,
+    "mlp_ratio": [
+      4.0,
+      4.0,
+      4.0
+    ],
+    "model_type": "cvt",
+    "num_channels": 3,
+    "num_heads": [
+      4,
+      4,
+      4
+    ],
+    "output_attentions": false,
+    "output_hidden_states": false,
+    "padding_kv": [
+      1,
+      1,
+      1
+    ],
+    "padding_q": [
+      1,
+      1,
+      1
+    ],
+    "patch_padding": [
+      2,
+      1,
+      1
+    ],
+    "patch_sizes": [
+      7,
+      3,
+      3
+    ],
+    "patch_stride": [
+      4,
+      2,
+      2
+    ],
+    "problem_type": null,
+    "qkv_bias": [
+      true,
+      true,
+      true
+    ],
+    "qkv_projection_method": [
+      "dw_bn",
+      "dw_bn",
+      "dw_bn"
+    ],
+    "return_dict": true,
+    "stride_kv": [
+      2,
+      2,
+      2
+    ],
+    "stride_q": [
+      1,
+      1,
+      1
+    ],
+    "transformers_version": "5.12.0"
+  },
+  "derivation": {
+    "compatibility_adapter": null,
+    "official_config_available": false,
+    "overrides": [],
+    "strategy": "deterministic-compact-cpu-trace"
+  },
+  "kind": "trace_config",
+  "schema_version": "1.0.0",
+  "version_id": "cvt"
+}

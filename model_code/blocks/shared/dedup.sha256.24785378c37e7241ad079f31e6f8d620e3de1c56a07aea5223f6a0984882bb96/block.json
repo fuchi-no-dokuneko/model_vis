@@ -1,0 +1,92 @@
+{
+  "dedup_uid": "dedup.sha256.24785378c37e7241ad079f31e6f8d620e3de1c56a07aea5223f6a0984882bb96",
+  "operation_ids": [
+    "op-000001",
+    "op-000002"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.deepseek_ocr2.modeling_deepseek_ocr2",
+        "DeepseekOcr2SamPatchEmbeddings"
+      ],
+      [
+        "projection",
+        "torch.nn.modules.conv",
+        "Conv2d"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            4,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "projection.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "projection.weight",
+        [
+          16,
+          3,
+          4,
+          4
+        ]
+      ]
+    ],
+    "source": "9bfd40dbba79f928117fa7091c138423d609c81fb0ac0823ab9f61df2740be8f",
+    "topology": [
+      [
+        "aten_op",
+        "aten.conv2d.default"
+      ],
+      [
+        "aten_op",
+        "aten.permute.default"
+      ]
+    ]
+  }
+}

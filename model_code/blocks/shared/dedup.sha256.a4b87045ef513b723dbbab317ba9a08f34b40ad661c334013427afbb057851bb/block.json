@@ -1,0 +1,60 @@
+{
+  "dedup_uid": "dedup.sha256.a4b87045ef513b723dbbab317ba9a08f34b40ad661c334013427afbb057851bb",
+  "operation_ids": [
+    "op-000017"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "torch.nn.modules.conv",
+        "Conv1d"
+      ]
+    ],
+    "config_branches": [
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            32,
+            5
+          ]
+        ],
+        [
+          [
+            3,
+            32,
+            7
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "bias",
+        [
+          32
+        ]
+      ],
+      [
+        "weight",
+        [
+          32,
+          1,
+          3
+        ]
+      ]
+    ],
+    "source": "fbee03b57ea5de21b175e1e3192b3308ba0b5d60fd5c613f9cbae60d4b029b51",
+    "topology": [
+      [
+        "aten_op",
+        "aten.conv1d.default"
+      ]
+    ]
+  }
+}

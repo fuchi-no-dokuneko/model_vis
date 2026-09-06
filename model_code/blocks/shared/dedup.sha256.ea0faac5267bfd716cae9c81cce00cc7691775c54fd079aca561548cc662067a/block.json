@@ -1,0 +1,94 @@
+{
+  "dedup_uid": "dedup.sha256.ea0faac5267bfd716cae9c81cce00cc7691775c54fd079aca561548cc662067a",
+  "operation_ids": [
+    "op-000019",
+    "op-000020",
+    "op-000021",
+    "op-000022",
+    "op-000023",
+    "op-000024",
+    "op-000025",
+    "op-000026"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.fsmt.modeling_fsmt",
+        "SinusoidalPositionalEmbedding"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            4,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          33,
+          16
+        ]
+      ]
+    ],
+    "source": "912e96361703f1ab69334104b14e449cd1a9afd7895cb9faa4598c55a4403f07",
+    "topology": [
+      [
+        "aten_op",
+        "aten.ne.Scalar"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.cumsum.default"
+      ],
+      [
+        "aten_op",
+        "aten.type_as.default"
+      ],
+      [
+        "aten_op",
+        "aten.mul.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ],
+      [
+        "aten_op",
+        "aten.embedding.default"
+      ]
+    ]
+  }
+}

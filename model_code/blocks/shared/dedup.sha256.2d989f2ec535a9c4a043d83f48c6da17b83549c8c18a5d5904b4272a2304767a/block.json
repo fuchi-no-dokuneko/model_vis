@@ -1,0 +1,118 @@
+{
+  "dedup_uid": "dedup.sha256.2d989f2ec535a9c4a043d83f48c6da17b83549c8c18a5d5904b4272a2304767a",
+  "operation_ids": [
+    "op-000034",
+    "op-000035",
+    "op-000036"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.esm.modeling_esm",
+        "EsmOutput"
+      ],
+      [
+        "dense",
+        "torch.nn.modules.linear",
+        "Linear"
+      ],
+      [
+        "dropout",
+        "torch.nn.modules.dropout",
+        "Dropout"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            3,
+            5,
+            32
+          ],
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            3,
+            5,
+            32
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ],
+        [
+          [
+            3,
+            5,
+            16
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "dense.bias",
+        [
+          16
+        ]
+      ],
+      [
+        "dense.weight",
+        [
+          16,
+          32
+        ]
+      ]
+    ],
+    "source": "0b02c273fadda4e00ace4b61d29c17b6c5a1b11303eb5ec298dacb7381db870d",
+    "topology": [
+      [
+        "aten_op",
+        "aten.linear.default"
+      ],
+      [
+        "aten_op",
+        "aten.dropout.default"
+      ],
+      [
+        "aten_op",
+        "aten.add.Tensor"
+      ]
+    ]
+  }
+}

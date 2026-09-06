@@ -1,0 +1,77 @@
+{
+  "dedup_uid": "dedup.sha256.9bddb93c0c4a976c8d9c26bd112afbf0e461efe9ee93c52ac6b18f1c5f6ffb3c",
+  "operation_ids": [
+    "op-001030"
+  ],
+  "signature": {
+    "buffers": [
+      [
+        "num_batches_tracked",
+        []
+      ],
+      [
+        "running_mean",
+        [
+          16
+        ]
+      ],
+      [
+        "running_var",
+        [
+          16
+        ]
+      ]
+    ],
+    "children": [
+      [
+        "",
+        "torch.nn.modules.batchnorm",
+        "BatchNorm2d"
+      ]
+    ],
+    "config_branches": [
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            16,
+            2,
+            2
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            2,
+            2
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "bias",
+        [
+          16
+        ]
+      ],
+      [
+        "weight",
+        [
+          16
+        ]
+      ]
+    ],
+    "source": "bcb0cba2525fcba8de82dfc82ec0f8a9667fdb4374c0e95262cf01309ce7f1fb",
+    "topology": [
+      [
+        "aten_op",
+        "aten.batch_norm.default"
+      ]
+    ]
+  }
+}

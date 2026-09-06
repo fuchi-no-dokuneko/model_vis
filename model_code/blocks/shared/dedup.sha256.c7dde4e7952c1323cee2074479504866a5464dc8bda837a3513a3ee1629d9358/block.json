@@ -1,0 +1,77 @@
+{
+  "dedup_uid": "dedup.sha256.c7dde4e7952c1323cee2074479504866a5464dc8bda837a3513a3ee1629d9358",
+  "operation_ids": [
+    "op-000090",
+    "op-000091",
+    "op-000092",
+    "op-000093"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.cohere2_moe.modeling_cohere2_moe",
+        "Cohere2MoeTopKRouter"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            15,
+            16
+          ]
+        ],
+        [
+          [
+            15,
+            2
+          ],
+          [
+            15,
+            1
+          ],
+          [
+            15,
+            1
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          2,
+          16
+        ]
+      ]
+    ],
+    "source": "84a3849bc49a28d6313b1edb3ddca22f5e1ad68604fbaa9f0ec01e7d9e9f8ee9",
+    "topology": [
+      [
+        "aten_op",
+        "aten.linear.default"
+      ],
+      [
+        "aten_op",
+        "aten.topk.default"
+      ],
+      [
+        "aten_op",
+        "aten.softmax.int"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ]
+    ]
+  }
+}

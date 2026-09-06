@@ -3,7 +3,7 @@ Feature: Daily Model Structure Viewer acceptance
   Scenario: Start in the documented beginner workspace
     Given the built Model Vis site is running
     When I open the model catalog
-    Then 51 generated models are listed
+    Then 101 generated models are listed
     And Beginner detail, Semantic labels, and Architecture are selected
     And a semantic graph, legend, minimap, and inspector are visible
 
@@ -11,7 +11,7 @@ Feature: Daily Model Structure Viewer acceptance
     Given the built Model Vis site is running
     When I open the model catalog
     And I search the catalog for Falcon
-    Then exactly one Falcon model is listed
+    Then all generated Falcon models matching the search are listed
     When I search the catalog for a model that does not exist
     Then the catalog reports zero models without changing the open graph
     When I clear the catalog search

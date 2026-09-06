@@ -1,0 +1,105 @@
+{
+  "config": {
+    "_name_or_path": "",
+    "architectures": null,
+    "chunk_size_feed_forward": 0,
+    "dtype": null,
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "initializer_factor": 1.0,
+    "is_encoder_decoder": false,
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "logit_scale_init_value": 2.6592,
+    "model_type": "clip",
+    "output_attentions": false,
+    "output_hidden_states": false,
+    "problem_type": null,
+    "projection_dim": 512,
+    "return_dict": true,
+    "text_config": {
+      "_name_or_path": "",
+      "architectures": null,
+      "attention_dropout": 0.0,
+      "bos_token_id": 1,
+      "chunk_size_feed_forward": 0,
+      "dtype": null,
+      "eos_token_id": 1,
+      "hidden_act": "quick_gelu",
+      "hidden_size": 16,
+      "id2label": {
+        "0": "LABEL_0",
+        "1": "LABEL_1"
+      },
+      "initializer_factor": 1.0,
+      "initializer_range": 0.02,
+      "intermediate_size": 32,
+      "is_encoder_decoder": false,
+      "label2id": {
+        "LABEL_0": 0,
+        "LABEL_1": 1
+      },
+      "layer_norm_eps": 1e-05,
+      "max_position_embeddings": 32,
+      "model_type": "clip_text_model",
+      "num_attention_heads": 4,
+      "num_hidden_layers": 1,
+      "num_key_value_heads": 4,
+      "output_attentions": false,
+      "output_hidden_states": false,
+      "pad_token_id": 0,
+      "problem_type": null,
+      "projection_dim": 512,
+      "return_dict": true,
+      "vocab_size": 64
+    },
+    "transformers_version": "5.12.0",
+    "vision_config": {
+      "_name_or_path": "",
+      "architectures": null,
+      "attention_dropout": 0.0,
+      "chunk_size_feed_forward": 0,
+      "dtype": null,
+      "hidden_act": "quick_gelu",
+      "hidden_size": 16,
+      "id2label": {
+        "0": "LABEL_0",
+        "1": "LABEL_1"
+      },
+      "image_size": 16,
+      "initializer_factor": 1.0,
+      "initializer_range": 0.02,
+      "intermediate_size": 32,
+      "is_encoder_decoder": false,
+      "label2id": {
+        "LABEL_0": 0,
+        "LABEL_1": 1
+      },
+      "layer_norm_eps": 1e-05,
+      "model_type": "clip_vision_model",
+      "num_attention_heads": 4,
+      "num_channels": 3,
+      "num_hidden_layers": 1,
+      "num_key_value_heads": 4,
+      "output_attentions": false,
+      "output_hidden_states": false,
+      "patch_size": 4,
+      "problem_type": null,
+      "projection_dim": 512,
+      "return_dict": true
+    }
+  },
+  "derivation": {
+    "compatibility_adapter": null,
+    "official_config_available": false,
+    "overrides": [],
+    "strategy": "deterministic-compact-cpu-trace"
+  },
+  "kind": "trace_config",
+  "schema_version": "1.0.0",
+  "version_id": "clip"
+}

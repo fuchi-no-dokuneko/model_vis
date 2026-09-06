@@ -1,0 +1,83 @@
+{
+  "dedup_uid": "dedup.sha256.9b155c273515c622627e09c894ab7d81b7d955ab3e067f98788daac98e87d76d",
+  "operation_ids": [
+    "op-000088",
+    "op-000089",
+    "op-000090",
+    "op-000091",
+    "op-000092"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "transformers.models.flex_olmo.modeling_flex_olmo",
+        "FlexOlmoTopKRouter"
+      ]
+    ],
+    "config_branches": [
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            15,
+            16
+          ]
+        ],
+        [
+          [
+            15,
+            2
+          ],
+          [
+            15,
+            1
+          ],
+          [
+            15,
+            1
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "weight",
+        [
+          2,
+          16
+        ]
+      ]
+    ],
+    "source": "e917e2b25b281003fa5738ab2be4a3079c9a89c827d055758a84257a999c09ab",
+    "topology": [
+      [
+        "aten_op",
+        "aten.reshape.default"
+      ],
+      [
+        "aten_op",
+        "aten.linear.default"
+      ],
+      [
+        "aten_op",
+        "aten.softmax.int"
+      ],
+      [
+        "aten_op",
+        "aten.topk.default"
+      ],
+      [
+        "aten_op",
+        "aten.to.dtype"
+      ]
+    ]
+  }
+}

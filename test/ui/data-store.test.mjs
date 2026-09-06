@@ -75,7 +75,7 @@ test("published fixture regression facts remain stable", async () => {
     trace.operations.map((operation) => operation.source_ref?.file).filter(Boolean),
   ).size;
 
-  assert.equal(manifest.versions.length, 51);
+  assert.equal(manifest.versions.length, 101);
   assert.deepEqual(
     [apertus.parameters.total, apertus.operation_count, apertus.resource_preflight.estimated_parameter_count],
     [2_874, 121, 564_133_888],
@@ -89,21 +89,31 @@ test("published fixture regression facts remain stable", async () => {
   assert.equal(configDifferences(apertusConfig, bertConfig).length, 32);
 });
 
-test("expanded fixture contains the original 21 plus exactly 30 new versions", async () => {
+test("expanded fixture preserves 51 versions and adds 50 distinct structures", async () => {
   const manifest = await readJson("model_code/manifest.v2.json");
   const readProfile = async (path) => (await readFile(path, "utf8"))
     .split("\n")
     .map((line) => line.trim())
     .filter((line) => line && !line.startsWith("#"));
-  const [baseline, expansion] = await Promise.all([
+  const [baseline, expansion, additions] = await Promise.all([
     readProfile("profiles/smallest-21.txt"),
     readProfile("profiles/alphabetical-30-new.txt"),
+    readProfile("profiles/expansion-50-new.txt"),
   ]);
 
   assert.equal(baseline.length, 21);
   assert.equal(expansion.length, 30);
   assert.equal(new Set([...baseline, ...expansion]).size, 51);
-  assert.deepEqual(new Set(manifest.versions), new Set([...baseline, ...expansion]));
+  assert.equal(additions.length, 50);
+  const expected = [...baseline, ...expansion, ...additions];
+  assert.equal(new Set(expected).size, 101);
+  assert.deepEqual(new Set(manifest.versions), new Set(expected));
+  const summaries = await Promise.all(expected.map((id) => readJson(`model_code/versions/${id}.json`)));
+  const existingStructures = new Set(summaries.slice(0, 51).map((version) => version.structure_key));
+  const addedStructures = summaries.slice(51).map((version) => version.structure_key);
+  assert.equal(new Set(addedStructures).size, 50);
+  assert.ok(addedStructures.every((key) => !existingStructures.has(key)));
+  assert.ok(summaries.every((version) => version.operation_count > 0 && version.graph_ref && version.semantic_ref));
 });
 
 test("failed JSON and text requests are evicted so a retry can succeed", async () => {

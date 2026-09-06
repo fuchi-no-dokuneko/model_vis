@@ -1,0 +1,1975 @@
+{
+  "blocks": [
+    {
+      "block_type": "embedding",
+      "block_uid": "eurobert.block-00001",
+      "call_ids": [
+        "call-000001"
+      ],
+      "dedup_ref": "dedup.sha256.fbe53f0343d2aa92bcae2f7aaa44db5bdc3d1fd56e04d3b86f2e202435e87b4c",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 1,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000001:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000000"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "eurobert",
+      "module_id": "module-00001",
+      "operation_ids": [
+        "op-000000"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000001:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000002"
+        }
+      ],
+      "parent_module_id": "module-00000",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.fbe53f0343d2aa92bcae2f7aaa44db5bdc3d1fd56e04d3b86f2e202435e87b4c/block.json",
+        "target_dedup_uid": "dedup.sha256.fbe53f0343d2aa92bcae2f7aaa44db5bdc3d1fd56e04d3b86f2e202435e87b4c",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "embed_tokens",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "eurobert.block-00002",
+      "call_ids": [
+        "call-000003",
+        "call-000005",
+        "call-000006",
+        "call-000007",
+        "call-000008",
+        "call-000009",
+        "call-000011",
+        "call-000012",
+        "call-000014",
+        "call-000015",
+        "call-000013",
+        "call-000004",
+        "call-000010"
+      ],
+      "dedup_ref": "dedup.sha256.5b71e301a553c44e4aa506801787f98d264d82a953304053e460a3fed5646455",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 2,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000003:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000002"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "position_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "position_ids",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "position_ids",
+          "optional": true,
+          "port_id": "call-000003:in:1",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            5
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000005"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "position_embeddings[0]",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 2,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "position_embeddings",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "position_embeddings[0]",
+          "optional": true,
+          "port_id": "call-000003:in:2",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            5,
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000016"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "position_embeddings[1]",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 3,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "position_embeddings",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "position_embeddings[1]",
+          "optional": true,
+          "port_id": "call-000003:in:3",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            5,
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000018"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "eurobert",
+      "module_id": "module-00002",
+      "operation_ids": [
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030",
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034",
+        "op-000035",
+        "op-000036",
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000010:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000066"
+        }
+      ],
+      "parent_module_id": "module-00000",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.5b71e301a553c44e4aa506801787f98d264d82a953304053e460a3fed5646455/block.json",
+        "target_dedup_uid": "dedup.sha256.5b71e301a553c44e4aa506801787f98d264d82a953304053e460a3fed5646455",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers",
+      "source_refs": [
+        {
+          "end_line": 404,
+          "executed_line": 391,
+          "file": "torch/nn/modules/module.py",
+          "source_uid": "source.sha256.4be56271f7bfe650e3521c81fd363da58f109cd23ee80d243156d2d6ccda6263",
+          "start_line": 391,
+          "symbol": "_forward_unimplemented"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "eurobert.block-00003",
+      "call_ids": [
+        "call-000003",
+        "call-000005",
+        "call-000006",
+        "call-000007",
+        "call-000008",
+        "call-000009",
+        "call-000011",
+        "call-000012",
+        "call-000014",
+        "call-000015",
+        "call-000013",
+        "call-000004",
+        "call-000010"
+      ],
+      "dedup_ref": "dedup.sha256.525c01fcecc2ba5904d1ecd3fc58b4d536b3d164bdd6202cd367dee93c83f879",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 3,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000003:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000002"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "position_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "position_ids",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "position_ids",
+          "optional": true,
+          "port_id": "call-000003:in:1",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            5
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000005"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "position_embeddings[0]",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 2,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "position_embeddings",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "position_embeddings[0]",
+          "optional": true,
+          "port_id": "call-000003:in:2",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            5,
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000016"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "position_embeddings[1]",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 3,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "position_embeddings",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "position_embeddings[1]",
+          "optional": true,
+          "port_id": "call-000003:in:3",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            5,
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000018"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "eurobert",
+      "module_id": "module-00003",
+      "operation_ids": [
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030",
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034",
+        "op-000035",
+        "op-000036",
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067",
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072",
+        "op-000073"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000010:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000066"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.525c01fcecc2ba5904d1ecd3fc58b4d536b3d164bdd6202cd367dee93c83f879/block.json",
+        "target_dedup_uid": "dedup.sha256.525c01fcecc2ba5904d1ecd3fc58b4d536b3d164bdd6202cd367dee93c83f879",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0",
+      "source_refs": [
+        {
+          "end_line": 259,
+          "executed_line": 230,
+          "file": "transformers/models/eurobert/modeling_eurobert.py",
+          "source_uid": "source.sha256.8e33b344a7b964517c26f1cf2f1a9c4eaa5201cd208f6fc25b5f8115b65ab842",
+          "start_line": 230,
+          "symbol": "EuroBertDecoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "eurobert.block-00004",
+      "call_ids": [
+        "call-000005",
+        "call-000006",
+        "call-000007",
+        "call-000008",
+        "call-000009"
+      ],
+      "dedup_ref": "dedup.sha256.f9e09e498906edcedbf7a3f2cde75cb81a9241a7334f2e25538debda26999b25",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 4,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "hidden_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000005:in:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000025"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "position_embeddings[0]",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 1,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "position_embeddings",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "position_embeddings[0]",
+          "optional": true,
+          "port_id": "call-000005:in:1",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            5,
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000016"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "position_embeddings[1]",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 2,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "position_embeddings",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "position_embeddings[1]",
+          "optional": true,
+          "port_id": "call-000005:in:2",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            5,
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000018"
+        },
+        {
+          "alias_kind": "value",
+          "argument_kind": "var_keyword",
+          "container_path": "kwargs.position_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 3,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "kwargs.position_ids",
+          "optional": true,
+          "port_id": "call-000005:in:3",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            5
+          ],
+          "supplied_by": "default",
+          "tensor_id": "tensor-000005"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "eurobert",
+      "module_id": "module-00004",
+      "operation_ids": [
+        "op-000030",
+        "op-000031",
+        "op-000032",
+        "op-000033",
+        "op-000034",
+        "op-000035",
+        "op-000036",
+        "op-000037",
+        "op-000038",
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000009:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000058"
+        }
+      ],
+      "parent_module_id": "module-00003",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f9e09e498906edcedbf7a3f2cde75cb81a9241a7334f2e25538debda26999b25/block.json",
+        "target_dedup_uid": "dedup.sha256.f9e09e498906edcedbf7a3f2cde75cb81a9241a7334f2e25538debda26999b25",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn",
+      "source_refs": [
+        {
+          "end_line": 200,
+          "executed_line": 162,
+          "file": "transformers/models/eurobert/modeling_eurobert.py",
+          "source_uid": "source.sha256.8e33b344a7b964517c26f1cf2f1a9c4eaa5201cd208f6fc25b5f8115b65ab842",
+          "start_line": 162,
+          "symbol": "EuroBertAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "eurobert.block-00005",
+      "call_ids": [
+        "call-000006"
+      ],
+      "dedup_ref": "dedup.sha256.1a40ee83048593c9a592b15a18f57c7cb2ed8cddeb8a7a37cdb21de7da772824",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 5,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000006:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000025"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "eurobert",
+      "module_id": "module-00005",
+      "operation_ids": [
+        "op-000030"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000006:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000027"
+        }
+      ],
+      "parent_module_id": "module-00004",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.1a40ee83048593c9a592b15a18f57c7cb2ed8cddeb8a7a37cdb21de7da772824/block.json",
+        "target_dedup_uid": "dedup.sha256.1a40ee83048593c9a592b15a18f57c7cb2ed8cddeb8a7a37cdb21de7da772824",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "eurobert.block-00006",
+      "call_ids": [
+        "call-000007"
+      ],
+      "dedup_ref": "dedup.sha256.c3103742d9aad0f34c3cad7a2f75b457e06528a7088b4c0840db09f9bbec8a32",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 6,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000007:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000025"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "eurobert",
+      "module_id": "module-00006",
+      "operation_ids": [
+        "op-000033"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000007:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            8
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000031"
+        }
+      ],
+      "parent_module_id": "module-00004",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.c3103742d9aad0f34c3cad7a2f75b457e06528a7088b4c0840db09f9bbec8a32/block.json",
+        "target_dedup_uid": "dedup.sha256.c3103742d9aad0f34c3cad7a2f75b457e06528a7088b4c0840db09f9bbec8a32",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "eurobert.block-00007",
+      "call_ids": [
+        "call-000008"
+      ],
+      "dedup_ref": "dedup.sha256.c3103742d9aad0f34c3cad7a2f75b457e06528a7088b4c0840db09f9bbec8a32",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 7,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000008:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000025"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "eurobert",
+      "module_id": "module-00007",
+      "operation_ids": [
+        "op-000036"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000008:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            8
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000035"
+        }
+      ],
+      "parent_module_id": "module-00004",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.c3103742d9aad0f34c3cad7a2f75b457e06528a7088b4c0840db09f9bbec8a32/block.json",
+        "target_dedup_uid": "dedup.sha256.c3103742d9aad0f34c3cad7a2f75b457e06528a7088b4c0840db09f9bbec8a32",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "eurobert.block-00008",
+      "call_ids": [
+        "call-000009"
+      ],
+      "dedup_ref": "dedup.sha256.1a40ee83048593c9a592b15a18f57c7cb2ed8cddeb8a7a37cdb21de7da772824",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 8,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000009:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000056"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "eurobert",
+      "module_id": "module-00008",
+      "operation_ids": [
+        "op-000058"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000009:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000058"
+        }
+      ],
+      "parent_module_id": "module-00004",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.1a40ee83048593c9a592b15a18f57c7cb2ed8cddeb8a7a37cdb21de7da772824/block.json",
+        "target_dedup_uid": "dedup.sha256.1a40ee83048593c9a592b15a18f57c7cb2ed8cddeb8a7a37cdb21de7da772824",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.self_attn.o_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "eurobert.block-00009",
+      "call_ids": [
+        "call-000011",
+        "call-000012",
+        "call-000014",
+        "call-000015",
+        "call-000013"
+      ],
+      "dedup_ref": "dedup.sha256.7ec4bad415822f8ca3d04c4d25fbea0711b204e2368b5d5e9bca4ca8069c8edc",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 9,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "x",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "x",
+          "optional": false,
+          "port_id": "call-000011:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000066"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "eurobert",
+      "module_id": "module-00009",
+      "operation_ids": [
+        "op-000068",
+        "op-000069",
+        "op-000070",
+        "op-000071",
+        "op-000072"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000013:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000069"
+        }
+      ],
+      "parent_module_id": "module-00003",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7ec4bad415822f8ca3d04c4d25fbea0711b204e2368b5d5e9bca4ca8069c8edc/block.json",
+        "target_dedup_uid": "dedup.sha256.7ec4bad415822f8ca3d04c4d25fbea0711b204e2368b5d5e9bca4ca8069c8edc",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp",
+      "source_refs": [
+        {
+          "end_line": 216,
+          "executed_line": 214,
+          "file": "transformers/models/eurobert/modeling_eurobert.py",
+          "source_uid": "source.sha256.8e33b344a7b964517c26f1cf2f1a9c4eaa5201cd208f6fc25b5f8115b65ab842",
+          "start_line": 214,
+          "symbol": "EuroBertMLP.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "eurobert.block-00010",
+      "call_ids": [
+        "call-000012"
+      ],
+      "dedup_ref": "dedup.sha256.ba5345adb9e6f2a0bad3ee01c7b502e3b7029ded123209011bc384ee6797738e",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 10,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000012:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000066"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "eurobert",
+      "module_id": "module-00010",
+      "operation_ids": [
+        "op-000068"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000012:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000068"
+        }
+      ],
+      "parent_module_id": "module-00009",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.ba5345adb9e6f2a0bad3ee01c7b502e3b7029ded123209011bc384ee6797738e/block.json",
+        "target_dedup_uid": "dedup.sha256.ba5345adb9e6f2a0bad3ee01c7b502e3b7029ded123209011bc384ee6797738e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.gate_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "eurobert.block-00011",
+      "call_ids": [
+        "call-000014"
+      ],
+      "dedup_ref": "dedup.sha256.ba5345adb9e6f2a0bad3ee01c7b502e3b7029ded123209011bc384ee6797738e",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 11,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000014:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000066"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "eurobert",
+      "module_id": "module-00011",
+      "operation_ids": [
+        "op-000070"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000014:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000071"
+        }
+      ],
+      "parent_module_id": "module-00009",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.ba5345adb9e6f2a0bad3ee01c7b502e3b7029ded123209011bc384ee6797738e/block.json",
+        "target_dedup_uid": "dedup.sha256.ba5345adb9e6f2a0bad3ee01c7b502e3b7029ded123209011bc384ee6797738e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.up_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "eurobert.block-00012",
+      "call_ids": [
+        "call-000015"
+      ],
+      "dedup_ref": "dedup.sha256.f1798b4b0068fe929821781e189ab2bfd3cdfafefa50b8a9a25ba20c7591ee84",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 12,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000015:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000072"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "eurobert",
+      "module_id": "module-00012",
+      "operation_ids": [
+        "op-000072"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000015:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000074"
+        }
+      ],
+      "parent_module_id": "module-00009",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f1798b4b0068fe929821781e189ab2bfd3cdfafefa50b8a9a25ba20c7591ee84/block.json",
+        "target_dedup_uid": "dedup.sha256.f1798b4b0068fe929821781e189ab2bfd3cdfafefa50b8a9a25ba20c7591ee84",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.down_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "eurobert.block-00013",
+      "call_ids": [
+        "call-000013"
+      ],
+      "dedup_ref": "dedup.sha256.bc3d878093e7764f8c6a16ab13e08d8d69b26d1e8e7c955c3fc8f2fffe745f82",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 13,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000013:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000068"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "eurobert",
+      "module_id": "module-00013",
+      "operation_ids": [
+        "op-000069"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000013:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000069"
+        }
+      ],
+      "parent_module_id": "module-00009",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.bc3d878093e7764f8c6a16ab13e08d8d69b26d1e8e7c955c3fc8f2fffe745f82/block.json",
+        "target_dedup_uid": "dedup.sha256.bc3d878093e7764f8c6a16ab13e08d8d69b26d1e8e7c955c3fc8f2fffe745f82",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.mlp.act_fn",
+      "source_refs": [
+        {
+          "end_line": 103,
+          "executed_line": 102,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 102,
+          "symbol": "SiLUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "eurobert.block-00014",
+      "call_ids": [
+        "call-000004"
+      ],
+      "dedup_ref": "dedup.sha256.5c1925e065b57745dbea4ae1bf5403cd19a4deac4537c27126116b7254b94d53",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 14,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000004:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000002"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "eurobert",
+      "module_id": "module-00014",
+      "operation_ids": [
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000004:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000025"
+        }
+      ],
+      "parent_module_id": "module-00003",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.5c1925e065b57745dbea4ae1bf5403cd19a4deac4537c27126116b7254b94d53/block.json",
+        "target_dedup_uid": "dedup.sha256.5c1925e065b57745dbea4ae1bf5403cd19a4deac4537c27126116b7254b94d53",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.input_layernorm",
+      "source_refs": [
+        {
+          "end_line": 59,
+          "executed_line": 54,
+          "file": "transformers/models/eurobert/modeling_eurobert.py",
+          "source_uid": "source.sha256.8e33b344a7b964517c26f1cf2f1a9c4eaa5201cd208f6fc25b5f8115b65ab842",
+          "start_line": 54,
+          "symbol": "EuroBertRMSNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "eurobert.block-00015",
+      "call_ids": [
+        "call-000010"
+      ],
+      "dedup_ref": "dedup.sha256.5c1925e065b57745dbea4ae1bf5403cd19a4deac4537c27126116b7254b94d53",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 15,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000010:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000059"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "eurobert",
+      "module_id": "module-00015",
+      "operation_ids": [
+        "op-000060",
+        "op-000061",
+        "op-000062",
+        "op-000063",
+        "op-000064",
+        "op-000065",
+        "op-000066",
+        "op-000067"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000010:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000066"
+        }
+      ],
+      "parent_module_id": "module-00003",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.5c1925e065b57745dbea4ae1bf5403cd19a4deac4537c27126116b7254b94d53/block.json",
+        "target_dedup_uid": "dedup.sha256.5c1925e065b57745dbea4ae1bf5403cd19a4deac4537c27126116b7254b94d53",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "layers.0.post_attention_layernorm",
+      "source_refs": [
+        {
+          "end_line": 59,
+          "executed_line": 54,
+          "file": "transformers/models/eurobert/modeling_eurobert.py",
+          "source_uid": "source.sha256.8e33b344a7b964517c26f1cf2f1a9c4eaa5201cd208f6fc25b5f8115b65ab842",
+          "start_line": 54,
+          "symbol": "EuroBertRMSNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "eurobert.block-00016",
+      "call_ids": [
+        "call-000016"
+      ],
+      "dedup_ref": "dedup.sha256.5c1925e065b57745dbea4ae1bf5403cd19a4deac4537c27126116b7254b94d53",
+      "family_id": "eurobert",
+      "graph_ref": "graphs/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json",
+      "index": 16,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000016:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000075"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "eurobert",
+      "module_id": "module-00016",
+      "operation_ids": [
+        "op-000074",
+        "op-000075",
+        "op-000076",
+        "op-000077",
+        "op-000078",
+        "op-000079",
+        "op-000080",
+        "op-000081"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000016:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            3,
+            5,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000082"
+        }
+      ],
+      "parent_module_id": "module-00000",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.5c1925e065b57745dbea4ae1bf5403cd19a4deac4537c27126116b7254b94d53/block.json",
+        "target_dedup_uid": "dedup.sha256.5c1925e065b57745dbea4ae1bf5403cd19a4deac4537c27126116b7254b94d53",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "norm",
+      "source_refs": [
+        {
+          "end_line": 59,
+          "executed_line": 54,
+          "file": "transformers/models/eurobert/modeling_eurobert.py",
+          "source_uid": "source.sha256.8e33b344a7b964517c26f1cf2f1a9c4eaa5201cd208f6fc25b5f8115b65ab842",
+          "start_line": 54,
+          "symbol": "EuroBertRMSNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.e3f5e66a4e1e478b1fc3388325e1340e4ca6991af0928223004b4c681b593ff7.json"
+    }
+  ]
+}

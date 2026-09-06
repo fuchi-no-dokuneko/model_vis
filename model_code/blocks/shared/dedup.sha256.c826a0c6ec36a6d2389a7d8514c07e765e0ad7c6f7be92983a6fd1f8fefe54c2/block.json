@@ -1,0 +1,109 @@
+{
+  "dedup_uid": "dedup.sha256.c826a0c6ec36a6d2389a7d8514c07e765e0ad7c6f7be92983a6fd1f8fefe54c2",
+  "operation_ids": [
+    "op-000016",
+    "op-000017"
+  ],
+  "signature": {
+    "buffers": [],
+    "children": [
+      [
+        "",
+        "torch.nn.modules.container",
+        "Sequential"
+      ],
+      [
+        "0",
+        "torch.nn.modules.conv",
+        "Conv2d"
+      ],
+      [
+        "1",
+        "torch.nn.modules.activation",
+        "GELU"
+      ]
+    ],
+    "config_branches": [
+      [],
+      []
+    ],
+    "io_shapes": [
+      [
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            16,
+            4,
+            4
+          ]
+        ]
+      ]
+    ],
+    "parameters": [
+      [
+        "0.weight",
+        [
+          16,
+          1,
+          5,
+          5
+        ]
+      ]
+    ],
+    "source": "91ddb4c261c6be4a1a3eb4614770905be7d85adb0c5a63c850cee50d1893a1e4",
+    "topology": [
+      [
+        "aten_op",
+        "aten.conv2d.default"
+      ],
+      [
+        "aten_op",
+        "aten.gelu.default"
+      ]
+    ]
+  }
+}

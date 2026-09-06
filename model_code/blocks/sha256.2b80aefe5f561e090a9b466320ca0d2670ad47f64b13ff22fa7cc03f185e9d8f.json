@@ -1,0 +1,3811 @@
+{
+  "blocks": [
+    {
+      "block_type": "embedding",
+      "block_uid": "clip.block-00002",
+      "call_ids": [
+        "call-000022",
+        "call-000023",
+        "call-000024"
+      ],
+      "dedup_ref": "dedup.sha256.82580954117ec09dc6ac59dff7e012bc534b9cc44533e9e57fb90c967c474cc9",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 2,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input_ids",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "input_ids",
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input_ids",
+          "optional": true,
+          "port_id": "call-000022:in:0",
+          "position": null,
+          "required": false,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000061"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "clip",
+      "module_id": "module-00002",
+      "operation_ids": [
+        "op-000035",
+        "op-000036",
+        "op-000037",
+        "op-000038"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000024:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000068"
+        }
+      ],
+      "parent_module_id": "module-00001",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.82580954117ec09dc6ac59dff7e012bc534b9cc44533e9e57fb90c967c474cc9/block.json",
+        "target_dedup_uid": "dedup.sha256.82580954117ec09dc6ac59dff7e012bc534b9cc44533e9e57fb90c967c474cc9",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.embeddings",
+      "source_refs": [
+        {
+          "end_line": 258,
+          "executed_line": 234,
+          "file": "transformers/models/clip/modeling_clip.py",
+          "source_uid": "source.sha256.b6bc63dc96b0f961ad2306ff41205c3b0a79a3bfaf9ad28f5f8243bdd35a39c4",
+          "start_line": 234,
+          "symbol": "CLIPTextEmbeddings.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "clip.block-00003",
+      "call_ids": [
+        "call-000023"
+      ],
+      "dedup_ref": "dedup.sha256.a4ee003b3c9f6e0420ceca4abaf5da69497fed58d4e1bc564a03fcdaedde1505",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 3,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000023:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000061"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "clip",
+      "module_id": "module-00003",
+      "operation_ids": [
+        "op-000036"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000023:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000066"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.a4ee003b3c9f6e0420ceca4abaf5da69497fed58d4e1bc564a03fcdaedde1505/block.json",
+        "target_dedup_uid": "dedup.sha256.a4ee003b3c9f6e0420ceca4abaf5da69497fed58d4e1bc564a03fcdaedde1505",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.embeddings.token_embedding",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "clip.block-00004",
+      "call_ids": [
+        "call-000024"
+      ],
+      "dedup_ref": "dedup.sha256.eba1c02911a94b7d3ec6427b52157beaebfe11dffafe710c4f534bf9b4a5ef00",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 4,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 1,
+          "mutation_version_after": 1,
+          "mutation_version_before": 1,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000024:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000064"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "clip",
+      "module_id": "module-00004",
+      "operation_ids": [
+        "op-000037"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000024:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000068"
+        }
+      ],
+      "parent_module_id": "module-00002",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.eba1c02911a94b7d3ec6427b52157beaebfe11dffafe710c4f534bf9b4a5ef00/block.json",
+        "target_dedup_uid": "dedup.sha256.eba1c02911a94b7d3ec6427b52157beaebfe11dffafe710c4f534bf9b4a5ef00",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.embeddings.position_embedding",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "clip.block-00005",
+      "call_ids": [
+        "call-000025",
+        "call-000026",
+        "call-000028",
+        "call-000030",
+        "call-000031",
+        "call-000029",
+        "call-000032",
+        "call-000027",
+        "call-000034",
+        "call-000036",
+        "call-000035",
+        "call-000037",
+        "call-000033"
+      ],
+      "dedup_ref": "dedup.sha256.34087bb5ba5bae3184b19fcd2fd5cb11ecc99de0b3f50714e7a1ee51adca132a",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 5,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "inputs_embeds",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "inputs_embeds",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "inputs_embeds",
+          "optional": false,
+          "port_id": "call-000025:in:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000069"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "clip",
+      "module_id": "module-00005",
+      "operation_ids": [
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000033:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000097"
+        }
+      ],
+      "parent_module_id": "module-00001",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.34087bb5ba5bae3184b19fcd2fd5cb11ecc99de0b3f50714e7a1ee51adca132a/block.json",
+        "target_dedup_uid": "dedup.sha256.34087bb5ba5bae3184b19fcd2fd5cb11ecc99de0b3f50714e7a1ee51adca132a",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.encoder",
+      "source_refs": [
+        {
+          "end_line": 493,
+          "executed_line": 477,
+          "file": "transformers/models/clip/modeling_clip.py",
+          "source_uid": "source.sha256.b6bc63dc96b0f961ad2306ff41205c3b0a79a3bfaf9ad28f5f8243bdd35a39c4",
+          "start_line": 477,
+          "symbol": "CLIPEncoder.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "clip.block-00006",
+      "call_ids": [
+        "call-000026",
+        "call-000028",
+        "call-000030",
+        "call-000031",
+        "call-000029",
+        "call-000032",
+        "call-000027",
+        "call-000034",
+        "call-000036",
+        "call-000035",
+        "call-000037",
+        "call-000033"
+      ],
+      "dedup_ref": "dedup.sha256.7095189f10ccdb90b8a8b17524c0d9360845ea78f5a43e068d9491cce7695624",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 6,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000026:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000069"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "clip",
+      "module_id": "module-00006",
+      "operation_ids": [
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000033:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000097"
+        }
+      ],
+      "parent_module_id": "module-00005",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.7095189f10ccdb90b8a8b17524c0d9360845ea78f5a43e068d9491cce7695624/block.json",
+        "target_dedup_uid": "dedup.sha256.7095189f10ccdb90b8a8b17524c0d9360845ea78f5a43e068d9491cce7695624",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.encoder.layers",
+      "source_refs": [
+        {
+          "end_line": 404,
+          "executed_line": 391,
+          "file": "torch/nn/modules/module.py",
+          "source_uid": "source.sha256.4be56271f7bfe650e3521c81fd363da58f109cd23ee80d243156d2d6ccda6263",
+          "start_line": 391,
+          "symbol": "_forward_unimplemented"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "clip.block-00007",
+      "call_ids": [
+        "call-000026",
+        "call-000028",
+        "call-000030",
+        "call-000031",
+        "call-000029",
+        "call-000032",
+        "call-000027",
+        "call-000034",
+        "call-000036",
+        "call-000035",
+        "call-000037",
+        "call-000033"
+      ],
+      "dedup_ref": "dedup.sha256.2fb575508e8b9464c8cbe8f6b55a2719470ebf7fe77cc3ffc720f2578c44c6aa",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 7,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000026:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000069"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "clip",
+      "module_id": "module-00007",
+      "operation_ids": [
+        "op-000039",
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052",
+        "op-000053",
+        "op-000054",
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059",
+        "op-000060"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000033:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000097"
+        }
+      ],
+      "parent_module_id": "module-00006",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2fb575508e8b9464c8cbe8f6b55a2719470ebf7fe77cc3ffc720f2578c44c6aa/block.json",
+        "target_dedup_uid": "dedup.sha256.2fb575508e8b9464c8cbe8f6b55a2719470ebf7fe77cc3ffc720f2578c44c6aa",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.encoder.layers.0",
+      "source_refs": [
+        {
+          "end_line": 385,
+          "executed_line": 364,
+          "file": "transformers/models/clip/modeling_clip.py",
+          "source_uid": "source.sha256.b6bc63dc96b0f961ad2306ff41205c3b0a79a3bfaf9ad28f5f8243bdd35a39c4",
+          "start_line": 364,
+          "symbol": "CLIPEncoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "clip.block-00008",
+      "call_ids": [
+        "call-000028",
+        "call-000030",
+        "call-000031",
+        "call-000029",
+        "call-000032"
+      ],
+      "dedup_ref": "dedup.sha256.ba381aafc9e401f780977b0afa714db90102006d11549520890ca13b6a711106",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 8,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "hidden_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000028:in:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000072"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "clip",
+      "module_id": "module-00008",
+      "operation_ids": [
+        "op-000040",
+        "op-000041",
+        "op-000042",
+        "op-000043",
+        "op-000044",
+        "op-000045",
+        "op-000046",
+        "op-000047",
+        "op-000048",
+        "op-000049",
+        "op-000050",
+        "op-000051",
+        "op-000052"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000032:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000093"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.ba381aafc9e401f780977b0afa714db90102006d11549520890ca13b6a711106/block.json",
+        "target_dedup_uid": "dedup.sha256.ba381aafc9e401f780977b0afa714db90102006d11549520890ca13b6a711106",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.encoder.layers.0.self_attn",
+      "source_refs": [
+        {
+          "end_line": 337,
+          "executed_line": 300,
+          "file": "transformers/models/clip/modeling_clip.py",
+          "source_uid": "source.sha256.b6bc63dc96b0f961ad2306ff41205c3b0a79a3bfaf9ad28f5f8243bdd35a39c4",
+          "start_line": 300,
+          "symbol": "CLIPAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "clip.block-00009",
+      "call_ids": [
+        "call-000030"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 9,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000030:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000072"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "clip",
+      "module_id": "module-00009",
+      "operation_ids": [
+        "op-000041"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000030:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000078"
+        }
+      ],
+      "parent_module_id": "module-00008",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.encoder.layers.0.self_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "clip.block-00010",
+      "call_ids": [
+        "call-000031"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 10,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000031:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000072"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "clip",
+      "module_id": "module-00010",
+      "operation_ids": [
+        "op-000042"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000031:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000081"
+        }
+      ],
+      "parent_module_id": "module-00008",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.encoder.layers.0.self_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "clip.block-00011",
+      "call_ids": [
+        "call-000029"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 11,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000029:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000072"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "clip",
+      "module_id": "module-00011",
+      "operation_ids": [
+        "op-000040"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000029:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000075"
+        }
+      ],
+      "parent_module_id": "module-00008",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.encoder.layers.0.self_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "clip.block-00012",
+      "call_ids": [
+        "call-000032"
+      ],
+      "dedup_ref": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 12,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000032:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000090"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "clip",
+      "module_id": "module-00012",
+      "operation_ids": [
+        "op-000052"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000032:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000093"
+        }
+      ],
+      "parent_module_id": "module-00008",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916/block.json",
+        "target_dedup_uid": "dedup.sha256.b984e3adf7ac579bfce98e3c6770b0c2655ab3aa311ca7a90649f23725558916",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.encoder.layers.0.self_attn.out_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "clip.block-00013",
+      "call_ids": [
+        "call-000027"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 13,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000027:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000069"
+        }
+      ],
+      "layer_group_id": "layer-00001",
+      "model_version_id": "clip",
+      "module_id": "module-00013",
+      "operation_ids": [
+        "op-000039"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000027:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000072"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.encoder.layers.0.layer_norm1",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "clip.block-00014",
+      "call_ids": [
+        "call-000034",
+        "call-000036",
+        "call-000035",
+        "call-000037"
+      ],
+      "dedup_ref": "dedup.sha256.a720ef101b9d827077a5828ead35e94356af316f7c1c41eb309a5572b42ac2b8",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 14,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000034:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000097"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "clip",
+      "module_id": "module-00014",
+      "operation_ids": [
+        "op-000055",
+        "op-000056",
+        "op-000057",
+        "op-000058",
+        "op-000059"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000037:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000106"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.a720ef101b9d827077a5828ead35e94356af316f7c1c41eb309a5572b42ac2b8/block.json",
+        "target_dedup_uid": "dedup.sha256.a720ef101b9d827077a5828ead35e94356af316f7c1c41eb309a5572b42ac2b8",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.encoder.layers.0.mlp",
+      "source_refs": [
+        {
+          "end_line": 352,
+          "executed_line": 348,
+          "file": "transformers/models/clip/modeling_clip.py",
+          "source_uid": "source.sha256.b6bc63dc96b0f961ad2306ff41205c3b0a79a3bfaf9ad28f5f8243bdd35a39c4",
+          "start_line": 348,
+          "symbol": "CLIPMLP.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "clip.block-00015",
+      "call_ids": [
+        "call-000036"
+      ],
+      "dedup_ref": "dedup.sha256.f764ce644df3b8882f33dedbb6d79e62277d13098548f5c8c4e85791a9d0a6f1",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 15,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000036:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000100"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "clip",
+      "module_id": "module-00015",
+      "operation_ids": [
+        "op-000056",
+        "op-000057",
+        "op-000058"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000036:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000103"
+        }
+      ],
+      "parent_module_id": "module-00014",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f764ce644df3b8882f33dedbb6d79e62277d13098548f5c8c4e85791a9d0a6f1/block.json",
+        "target_dedup_uid": "dedup.sha256.f764ce644df3b8882f33dedbb6d79e62277d13098548f5c8c4e85791a9d0a6f1",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.encoder.layers.0.mlp.activation_fn",
+      "source_refs": [
+        {
+          "end_line": 123,
+          "executed_line": 122,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 122,
+          "symbol": "QuickGELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "clip.block-00016",
+      "call_ids": [
+        "call-000035"
+      ],
+      "dedup_ref": "dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 16,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000035:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000097"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "clip",
+      "module_id": "module-00016",
+      "operation_ids": [
+        "op-000055"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000035:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000100"
+        }
+      ],
+      "parent_module_id": "module-00014",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112/block.json",
+        "target_dedup_uid": "dedup.sha256.f1a1bb0cabff85cfca0597d9df9bfbb18588199b552933cb1a0b65db26ed4112",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.encoder.layers.0.mlp.fc1",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "clip.block-00017",
+      "call_ids": [
+        "call-000037"
+      ],
+      "dedup_ref": "dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 17,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000037:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000103"
+        }
+      ],
+      "layer_group_id": "layer-00000",
+      "model_version_id": "clip",
+      "module_id": "module-00017",
+      "operation_ids": [
+        "op-000059"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000037:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000106"
+        }
+      ],
+      "parent_module_id": "module-00014",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3/block.json",
+        "target_dedup_uid": "dedup.sha256.b6a796e093cf0655ec9e2447046d02e7a78910677f468a88b8718d86e4c1b7e3",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.encoder.layers.0.mlp.fc2",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "clip.block-00018",
+      "call_ids": [
+        "call-000033"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 18,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000033:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000094"
+        }
+      ],
+      "layer_group_id": "layer-00002",
+      "model_version_id": "clip",
+      "module_id": "module-00018",
+      "operation_ids": [
+        "op-000054"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000033:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000097"
+        }
+      ],
+      "parent_module_id": "module-00007",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.encoder.layers.0.layer_norm2",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "clip.block-00019",
+      "call_ids": [
+        "call-000038"
+      ],
+      "dedup_ref": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 19,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000038:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000107"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "clip",
+      "module_id": "module-00019",
+      "operation_ids": [
+        "op-000061"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000038:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            4,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000110"
+        }
+      ],
+      "parent_module_id": "module-00001",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b/block.json",
+        "target_dedup_uid": "dedup.sha256.16ac84ad0ef2cbe24e08f9a32f2b9783f294edc90cfd1b06371eaa641fe2076b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "text_model.final_layer_norm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "clip.block-00021",
+      "call_ids": [
+        "call-000002",
+        "call-000003",
+        "call-000004"
+      ],
+      "dedup_ref": "dedup.sha256.880b28559b61056816042ded84a3759123d6425e75fbbc9d59044e38755b9c2b",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 21,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "pixel_values",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "pixel_values",
+          "optional": false,
+          "port_id": "call-000002:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            3,
+            16,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000001"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "clip",
+      "module_id": "module-00021",
+      "operation_ids": [
+        "op-000000",
+        "op-000001",
+        "op-000002",
+        "op-000003",
+        "op-000004",
+        "op-000005",
+        "op-000006",
+        "op-000007"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000004:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000012"
+        }
+      ],
+      "parent_module_id": "module-00020",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.880b28559b61056816042ded84a3759123d6425e75fbbc9d59044e38755b9c2b/block.json",
+        "target_dedup_uid": "dedup.sha256.880b28559b61056816042ded84a3759123d6425e75fbbc9d59044e38755b9c2b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.embeddings",
+      "source_refs": [
+        {
+          "end_line": 218,
+          "executed_line": 202,
+          "file": "transformers/models/clip/modeling_clip.py",
+          "source_uid": "source.sha256.b6bc63dc96b0f961ad2306ff41205c3b0a79a3bfaf9ad28f5f8243bdd35a39c4",
+          "start_line": 202,
+          "symbol": "CLIPVisionEmbeddings.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "clip.block-00022",
+      "call_ids": [
+        "call-000003"
+      ],
+      "dedup_ref": "dedup.sha256.8c413e8a6b2563f299facf2093299c8f82a8548a4fe905c3ddd59d622580e990",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 22,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": 0,
+          "mutation_version_after": 0,
+          "mutation_version_before": 0,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000003:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            3,
+            16,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000001"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "clip",
+      "module_id": "module-00022",
+      "operation_ids": [
+        "op-000001"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000003:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            16,
+            4,
+            4
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000003"
+        }
+      ],
+      "parent_module_id": "module-00021",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.8c413e8a6b2563f299facf2093299c8f82a8548a4fe905c3ddd59d622580e990/block.json",
+        "target_dedup_uid": "dedup.sha256.8c413e8a6b2563f299facf2093299c8f82a8548a4fe905c3ddd59d622580e990",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.embeddings.patch_embedding",
+      "source_refs": [
+        {
+          "end_line": 565,
+          "executed_line": 564,
+          "file": "torch/nn/modules/conv.py",
+          "source_uid": "source.sha256.db28bf59508ce2064dfd833cede78086de03b9567550a1a53f110256385ae7a0",
+          "start_line": 564,
+          "symbol": "Conv2d.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "embedding",
+      "block_uid": "clip.block-00023",
+      "call_ids": [
+        "call-000004"
+      ],
+      "dedup_ref": "dedup.sha256.bf9540b5c56d62a9bcd3ebec2cae2337a5843fb35fa6d2cde130f6ebd84c2a5e",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 23,
+      "input_ports": [
+        {
+          "alias_kind": "view",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.int64",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": true,
+          "keyword_name": null,
+          "mutation_version": 1,
+          "mutation_version_after": 1,
+          "mutation_version_before": 1,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000004:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000009"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "clip",
+      "module_id": "module-00023",
+      "operation_ids": [
+        "op-000006"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000004:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000012"
+        }
+      ],
+      "parent_module_id": "module-00021",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.bf9540b5c56d62a9bcd3ebec2cae2337a5843fb35fa6d2cde130f6ebd84c2a5e/block.json",
+        "target_dedup_uid": "dedup.sha256.bf9540b5c56d62a9bcd3ebec2cae2337a5843fb35fa6d2cde130f6ebd84c2a5e",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.embeddings.position_embedding",
+      "source_refs": [
+        {
+          "end_line": 197,
+          "executed_line": 188,
+          "file": "torch/nn/modules/sparse.py",
+          "source_uid": "source.sha256.5c802735d695144f94c24c7bb95236ec0482a85343bb1ee9edea8965ec01c130",
+          "start_line": 188,
+          "symbol": "Embedding.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "clip.block-00024",
+      "call_ids": [
+        "call-000005"
+      ],
+      "dedup_ref": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 24,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000005:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000013"
+        }
+      ],
+      "layer_group_id": "layer-00003",
+      "model_version_id": "clip",
+      "module_id": "module-00024",
+      "operation_ids": [
+        "op-000008"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000005:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000016"
+        }
+      ],
+      "parent_module_id": "module-00020",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66/block.json",
+        "target_dedup_uid": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.pre_layrnorm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "clip.block-00025",
+      "call_ids": [
+        "call-000006",
+        "call-000007",
+        "call-000009",
+        "call-000011",
+        "call-000012",
+        "call-000010",
+        "call-000013",
+        "call-000008",
+        "call-000015",
+        "call-000017",
+        "call-000016",
+        "call-000018",
+        "call-000014"
+      ],
+      "dedup_ref": "dedup.sha256.57da70591d1f0ed5802cab9b3e6474f6b1b564b14244d644971b137191b124f0",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 25,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "inputs_embeds",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "inputs_embeds",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "inputs_embeds",
+          "optional": false,
+          "port_id": "call-000006:in:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000016"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "clip",
+      "module_id": "module-00025",
+      "operation_ids": [
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000014:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000044"
+        }
+      ],
+      "parent_module_id": "module-00020",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.57da70591d1f0ed5802cab9b3e6474f6b1b564b14244d644971b137191b124f0/block.json",
+        "target_dedup_uid": "dedup.sha256.57da70591d1f0ed5802cab9b3e6474f6b1b564b14244d644971b137191b124f0",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.encoder",
+      "source_refs": [
+        {
+          "end_line": 493,
+          "executed_line": 477,
+          "file": "transformers/models/clip/modeling_clip.py",
+          "source_uid": "source.sha256.b6bc63dc96b0f961ad2306ff41205c3b0a79a3bfaf9ad28f5f8243bdd35a39c4",
+          "start_line": 477,
+          "symbol": "CLIPEncoder.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "clip.block-00026",
+      "call_ids": [
+        "call-000007",
+        "call-000009",
+        "call-000011",
+        "call-000012",
+        "call-000010",
+        "call-000013",
+        "call-000008",
+        "call-000015",
+        "call-000017",
+        "call-000016",
+        "call-000018",
+        "call-000014"
+      ],
+      "dedup_ref": "dedup.sha256.03a923506d0b64a58ada1df53cc018a6afdafbd7a705d41499c26e657dcc26df",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 26,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000007:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000016"
+        }
+      ],
+      "layer_group_id": null,
+      "model_version_id": "clip",
+      "module_id": "module-00026",
+      "operation_ids": [
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000014:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000044"
+        }
+      ],
+      "parent_module_id": "module-00025",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.03a923506d0b64a58ada1df53cc018a6afdafbd7a705d41499c26e657dcc26df/block.json",
+        "target_dedup_uid": "dedup.sha256.03a923506d0b64a58ada1df53cc018a6afdafbd7a705d41499c26e657dcc26df",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.encoder.layers",
+      "source_refs": [
+        {
+          "end_line": 404,
+          "executed_line": 391,
+          "file": "torch/nn/modules/module.py",
+          "source_uid": "source.sha256.4be56271f7bfe650e3521c81fd363da58f109cd23ee80d243156d2d6ccda6263",
+          "start_line": 391,
+          "symbol": "_forward_unimplemented"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "clip.block-00027",
+      "call_ids": [
+        "call-000007",
+        "call-000009",
+        "call-000011",
+        "call-000012",
+        "call-000010",
+        "call-000013",
+        "call-000008",
+        "call-000015",
+        "call-000017",
+        "call-000016",
+        "call-000018",
+        "call-000014"
+      ],
+      "dedup_ref": "dedup.sha256.cc2d57155a97434b36cb311ddc766cc46508ad1da902636c20038428cdf24ebb",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 27,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000007:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000016"
+        }
+      ],
+      "layer_group_id": "layer-00004",
+      "model_version_id": "clip",
+      "module_id": "module-00027",
+      "operation_ids": [
+        "op-000009",
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022",
+        "op-000023",
+        "op-000024",
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029",
+        "op-000030"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000014:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000044"
+        }
+      ],
+      "parent_module_id": "module-00026",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.cc2d57155a97434b36cb311ddc766cc46508ad1da902636c20038428cdf24ebb/block.json",
+        "target_dedup_uid": "dedup.sha256.cc2d57155a97434b36cb311ddc766cc46508ad1da902636c20038428cdf24ebb",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.encoder.layers.0",
+      "source_refs": [
+        {
+          "end_line": 385,
+          "executed_line": 364,
+          "file": "transformers/models/clip/modeling_clip.py",
+          "source_uid": "source.sha256.b6bc63dc96b0f961ad2306ff41205c3b0a79a3bfaf9ad28f5f8243bdd35a39c4",
+          "start_line": 364,
+          "symbol": "CLIPEncoderLayer.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "attention",
+      "block_uid": "clip.block-00028",
+      "call_ids": [
+        "call-000009",
+        "call-000011",
+        "call-000012",
+        "call-000010",
+        "call-000013"
+      ],
+      "dedup_ref": "dedup.sha256.fe7ccfad8430858414f1c4157612105ccff584ee398d6e0b078744c23b892cba",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 28,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": "hidden_states",
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000009:in:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "keyword",
+          "tensor_id": "tensor-000019"
+        }
+      ],
+      "layer_group_id": "layer-00004",
+      "model_version_id": "clip",
+      "module_id": "module-00028",
+      "operation_ids": [
+        "op-000010",
+        "op-000011",
+        "op-000012",
+        "op-000013",
+        "op-000014",
+        "op-000015",
+        "op-000016",
+        "op-000017",
+        "op-000018",
+        "op-000019",
+        "op-000020",
+        "op-000021",
+        "op-000022"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000013:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000040"
+        }
+      ],
+      "parent_module_id": "module-00027",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.fe7ccfad8430858414f1c4157612105ccff584ee398d6e0b078744c23b892cba/block.json",
+        "target_dedup_uid": "dedup.sha256.fe7ccfad8430858414f1c4157612105ccff584ee398d6e0b078744c23b892cba",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.encoder.layers.0.self_attn",
+      "source_refs": [
+        {
+          "end_line": 337,
+          "executed_line": 300,
+          "file": "transformers/models/clip/modeling_clip.py",
+          "source_uid": "source.sha256.b6bc63dc96b0f961ad2306ff41205c3b0a79a3bfaf9ad28f5f8243bdd35a39c4",
+          "start_line": 300,
+          "symbol": "CLIPAttention.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "clip.block-00029",
+      "call_ids": [
+        "call-000011"
+      ],
+      "dedup_ref": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 29,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000011:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000019"
+        }
+      ],
+      "layer_group_id": "layer-00004",
+      "model_version_id": "clip",
+      "module_id": "module-00029",
+      "operation_ids": [
+        "op-000011"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000011:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000025"
+        }
+      ],
+      "parent_module_id": "module-00028",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8/block.json",
+        "target_dedup_uid": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.encoder.layers.0.self_attn.k_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "clip.block-00030",
+      "call_ids": [
+        "call-000012"
+      ],
+      "dedup_ref": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 30,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000012:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000019"
+        }
+      ],
+      "layer_group_id": "layer-00004",
+      "model_version_id": "clip",
+      "module_id": "module-00030",
+      "operation_ids": [
+        "op-000012"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000012:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000028"
+        }
+      ],
+      "parent_module_id": "module-00028",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8/block.json",
+        "target_dedup_uid": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.encoder.layers.0.self_attn.v_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "clip.block-00031",
+      "call_ids": [
+        "call-000010"
+      ],
+      "dedup_ref": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 31,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000010:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000019"
+        }
+      ],
+      "layer_group_id": "layer-00004",
+      "model_version_id": "clip",
+      "module_id": "module-00031",
+      "operation_ids": [
+        "op-000010"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000010:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000022"
+        }
+      ],
+      "parent_module_id": "module-00028",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8/block.json",
+        "target_dedup_uid": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.encoder.layers.0.self_attn.q_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "transformer_block",
+      "block_uid": "clip.block-00032",
+      "call_ids": [
+        "call-000013"
+      ],
+      "dedup_ref": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 32,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000013:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000037"
+        }
+      ],
+      "layer_group_id": "layer-00004",
+      "model_version_id": "clip",
+      "module_id": "module-00032",
+      "operation_ids": [
+        "op-000022"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000013:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000040"
+        }
+      ],
+      "parent_module_id": "module-00028",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8/block.json",
+        "target_dedup_uid": "dedup.sha256.2b0c295f9ab66def799839ad09cf7edde3d9183ebcce691395c1ef457d2bbee8",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.encoder.layers.0.self_attn.out_proj",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "clip.block-00033",
+      "call_ids": [
+        "call-000008"
+      ],
+      "dedup_ref": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 33,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000008:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000016"
+        }
+      ],
+      "layer_group_id": "layer-00005",
+      "model_version_id": "clip",
+      "module_id": "module-00033",
+      "operation_ids": [
+        "op-000009"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000008:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000019"
+        }
+      ],
+      "parent_module_id": "module-00027",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66/block.json",
+        "target_dedup_uid": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.encoder.layers.0.layer_norm1",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "clip.block-00034",
+      "call_ids": [
+        "call-000015",
+        "call-000017",
+        "call-000016",
+        "call-000018"
+      ],
+      "dedup_ref": "dedup.sha256.522a5c0233b742ff77be7cad2677ca11d1f3596f29f38846105043be69c89085",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 34,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "hidden_states",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "hidden_states",
+          "optional": false,
+          "port_id": "call-000015:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000044"
+        }
+      ],
+      "layer_group_id": "layer-00004",
+      "model_version_id": "clip",
+      "module_id": "module-00034",
+      "operation_ids": [
+        "op-000025",
+        "op-000026",
+        "op-000027",
+        "op-000028",
+        "op-000029"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000018:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000053"
+        }
+      ],
+      "parent_module_id": "module-00027",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.522a5c0233b742ff77be7cad2677ca11d1f3596f29f38846105043be69c89085/block.json",
+        "target_dedup_uid": "dedup.sha256.522a5c0233b742ff77be7cad2677ca11d1f3596f29f38846105043be69c89085",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.encoder.layers.0.mlp",
+      "source_refs": [
+        {
+          "end_line": 352,
+          "executed_line": 348,
+          "file": "transformers/models/clip/modeling_clip.py",
+          "source_uid": "source.sha256.b6bc63dc96b0f961ad2306ff41205c3b0a79a3bfaf9ad28f5f8243bdd35a39c4",
+          "start_line": 348,
+          "symbol": "CLIPMLP.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "clip.block-00035",
+      "call_ids": [
+        "call-000017"
+      ],
+      "dedup_ref": "dedup.sha256.fb778788e85c2f19d58fe15321c0ae27881eff1107cdcecb28ab8d18c7e109d1",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 35,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000017:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000047"
+        }
+      ],
+      "layer_group_id": "layer-00004",
+      "model_version_id": "clip",
+      "module_id": "module-00035",
+      "operation_ids": [
+        "op-000026",
+        "op-000027",
+        "op-000028"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000017:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000050"
+        }
+      ],
+      "parent_module_id": "module-00034",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.fb778788e85c2f19d58fe15321c0ae27881eff1107cdcecb28ab8d18c7e109d1/block.json",
+        "target_dedup_uid": "dedup.sha256.fb778788e85c2f19d58fe15321c0ae27881eff1107cdcecb28ab8d18c7e109d1",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.encoder.layers.0.mlp.activation_fn",
+      "source_refs": [
+        {
+          "end_line": 123,
+          "executed_line": 122,
+          "file": "transformers/activations.py",
+          "source_uid": "source.sha256.42263650179a8cfbae57a4839f2b4f94bf7308d391a693881e555e684bbe0188",
+          "start_line": 122,
+          "symbol": "QuickGELUActivation.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "clip.block-00036",
+      "call_ids": [
+        "call-000016"
+      ],
+      "dedup_ref": "dedup.sha256.5e75998f3a64a7c817f671e000b65477975b18c881c99dd36e56c8d548fe5533",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 36,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000016:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000044"
+        }
+      ],
+      "layer_group_id": "layer-00004",
+      "model_version_id": "clip",
+      "module_id": "module-00036",
+      "operation_ids": [
+        "op-000025"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000016:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            32
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000047"
+        }
+      ],
+      "parent_module_id": "module-00034",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.5e75998f3a64a7c817f671e000b65477975b18c881c99dd36e56c8d548fe5533/block.json",
+        "target_dedup_uid": "dedup.sha256.5e75998f3a64a7c817f671e000b65477975b18c881c99dd36e56c8d548fe5533",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.encoder.layers.0.mlp.fc1",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "mlp",
+      "block_uid": "clip.block-00037",
+      "call_ids": [
+        "call-000018"
+      ],
+      "dedup_ref": "dedup.sha256.b50d2449166dcbab6618b87a9ce4f96904a2b184631dfc2bf1b6ff46340d0e7b",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 37,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000018:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            32
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000050"
+        }
+      ],
+      "layer_group_id": "layer-00004",
+      "model_version_id": "clip",
+      "module_id": "module-00037",
+      "operation_ids": [
+        "op-000029"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000018:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000053"
+        }
+      ],
+      "parent_module_id": "module-00034",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.b50d2449166dcbab6618b87a9ce4f96904a2b184631dfc2bf1b6ff46340d0e7b/block.json",
+        "target_dedup_uid": "dedup.sha256.b50d2449166dcbab6618b87a9ce4f96904a2b184631dfc2bf1b6ff46340d0e7b",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.encoder.layers.0.mlp.fc2",
+      "source_refs": [
+        {
+          "end_line": 134,
+          "executed_line": 130,
+          "file": "torch/nn/modules/linear.py",
+          "source_uid": "source.sha256.2a19d05e5b98169650fecd0f4991173b2e42f9b8ba78f633d39462c32d51a108",
+          "start_line": 130,
+          "symbol": "Linear.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "clip.block-00038",
+      "call_ids": [
+        "call-000014"
+      ],
+      "dedup_ref": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 38,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000014:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000041"
+        }
+      ],
+      "layer_group_id": "layer-00006",
+      "model_version_id": "clip",
+      "module_id": "module-00038",
+      "operation_ids": [
+        "op-000024"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000014:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            17,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000044"
+        }
+      ],
+      "parent_module_id": "module-00027",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66/block.json",
+        "target_dedup_uid": "dedup.sha256.334d238cbdc4804d51ed34cf645cdea8ff8a1a268aa595274190abbca61feb66",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.encoder.layers.0.layer_norm2",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    },
+    {
+      "block_type": "norm",
+      "block_uid": "clip.block-00039",
+      "call_ids": [
+        "call-000019"
+      ],
+      "dedup_ref": "dedup.sha256.08b423f62eb47df25a99efb0c64493fb8d1b358746abc438987351f83d8188ff",
+      "family_id": "clip",
+      "graph_ref": "graphs/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json",
+      "index": 39,
+      "input_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "positional_or_keyword",
+          "container_path": "input",
+          "device": "cpu",
+          "direction": "input",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "input",
+          "optional": false,
+          "port_id": "call-000019:in:0",
+          "position": 0,
+          "required": true,
+          "shape": [
+            1,
+            16
+          ],
+          "supplied_by": "positional",
+          "tensor_id": "tensor-000055"
+        }
+      ],
+      "layer_group_id": "layer-00007",
+      "model_version_id": "clip",
+      "module_id": "module-00039",
+      "operation_ids": [
+        "op-000032"
+      ],
+      "output_ports": [
+        {
+          "alias_kind": "value",
+          "argument_kind": "return",
+          "container_path": "output",
+          "device": "cpu",
+          "direction": "output",
+          "dtype": "torch.float32",
+          "index": 0,
+          "is_copy": false,
+          "is_inplace": false,
+          "is_view": false,
+          "keyword_name": null,
+          "mutation_version": null,
+          "mutation_version_after": null,
+          "mutation_version_before": null,
+          "name": "output",
+          "optional": false,
+          "port_id": "call-000019:out:0",
+          "position": null,
+          "required": true,
+          "shape": [
+            1,
+            16
+          ],
+          "supplied_by": "runtime_output",
+          "tensor_id": "tensor-000058"
+        }
+      ],
+      "parent_module_id": "module-00020",
+      "pointer": {
+        "reason": "same_source_tree_graph_shapes_config_signature",
+        "target_asset": "blocks/shared/dedup.sha256.08b423f62eb47df25a99efb0c64493fb8d1b358746abc438987351f83d8188ff/block.json",
+        "target_dedup_uid": "dedup.sha256.08b423f62eb47df25a99efb0c64493fb8d1b358746abc438987351f83d8188ff",
+        "type": "deduplicated_block"
+      },
+      "qualified_name": "vision_model.post_layernorm",
+      "source_refs": [
+        {
+          "end_line": 230,
+          "executed_line": 227,
+          "file": "torch/nn/modules/normalization.py",
+          "source_uid": "source.sha256.8790184aa4916d4bdeaaac468dc201a4745951e0e095bf89d9eac3b16bb32580",
+          "start_line": 227,
+          "symbol": "LayerNorm.forward"
+        }
+      ],
+      "trace_ref": "traces/sha256.2b80aefe5f561e090a9b466320ca0d2670ad47f64b13ff22fa7cc03f185e9d8f.json"
+    }
+  ]
+}
