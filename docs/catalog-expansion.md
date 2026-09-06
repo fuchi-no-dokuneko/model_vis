@@ -6,6 +6,17 @@ The September 2026 update adds exactly 50 families/versions to the existing 51.
 the full catalog of 563 families and 567 normalized versions. This is a partial
 catalog release, not a claim that the entire catalog has been traced.
 
+Publication checkpoint, 2026-09-06 17:01 UTC: commit
+`0159dc5276463c5e8ba535b8e858854b4323c642` contains all 101 generated models and
+passed the complete remote verification job. The
+[deployment attempt](https://github.com/fuchi-no-dokuneko/model_vis/actions/runs/34046894311/job/101524158394)
+failed because Cloudflare rejected the existing token from the GitHub runner's
+location (error `9109`, also reporting authentication error `10000`). The target
+still served 51 models at commit `54747beb6bc91d96826be283092b9ec36d2309e6` when
+checked. Publication remains unfinished until access for the existing workflow
+is restored, its deploy job succeeds, and the served artifacts are verified.
+Networking, deployment methods, and workflow files have not been changed.
+
 The new selection uses distinct structures absent from the baseline. Candidates
 are ordered by case-insensitive display name among single-version text and
 vision families plus Chinese-CLIP, CLIP, CLIPSeg, ViLT, VisualBERT, Wav2Vec2, and
