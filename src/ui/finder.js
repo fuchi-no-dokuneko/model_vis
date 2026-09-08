@@ -1,6 +1,7 @@
 const normalized = (value) => String(value || "").toLowerCase().replaceAll(/\s+/g, "");
 
 export function operationRecords(graph) {
+  const modules = new Map((graph?.modules || []).map((module) => [module.module_id, module]));
   return (graph?.nodes || []).map((node) => {
     const ports = [...(node.input_ports || []), ...(node.output_ports || [])];
     return {
@@ -10,7 +11,7 @@ export function operationRecords(graph) {
       tensor: [...new Set(ports.map((p) => p.tensor_id).filter(Boolean))].join(" "),
       dtype: [...new Set(ports.map((p) => p.dtype).filter(Boolean))].join(" "),
       shape: [...new Set(ports.map((p) => JSON.stringify(p.shape)))].join(" "),
-      source: node.source_ref?.symbol || "",
+      source: [node.source_ref?.symbol, modules.get(node.module_id)?.class_name, ...ports.map((port) => port.name)].filter(Boolean).join(" "),
       node,
     };
   });

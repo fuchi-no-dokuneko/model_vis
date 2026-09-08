@@ -27,7 +27,7 @@ export function compareDetails(container, left, right, semantics, store, appendT
     const journey = semantic.journeys?.[0]; if (!journey) return;
     const fold = document.createElement("details"), heading = document.createElement("summary"), list = document.createElement("ol");
     fold.className = "comparison-details";
-    heading.textContent = `${[left, right][index].family_name} journey · ${journey.steps.length} steps · ${journey.route_confidence}`;
+    heading.textContent = `${[left, right][index].family_name} Primary journey · ${JSON.stringify(journey.steps[0].shape)} → ${JSON.stringify(journey.steps.at(-1).shape)} · ${journey.steps.length} steps · ${journey.route_confidence}`;
     for (const step of journey.steps) { const item = document.createElement("li"); item.textContent = `${step.transform}: ${step.explanation}`; list.append(item); }
     fold.append(heading, list); container.append(fold);
   });

@@ -8,6 +8,8 @@ import { savedReviews } from "./saved-reviews.js";
 import { workspaceSizing } from "./workspace-size.js";
 import { journeyView } from "./journey-view.js";
 import { compareDetails } from "./comparison-details.js";
+import { metricDifference as delta } from "./comparison-metrics.js";
+import { renderOverview } from "./overview-view.js";
 import {
   graphBounds, graphSafeRect, intervalsForEdge, layoutGraph, NODE_HEIGHT, NODE_WIDTH,
   parseViewerRoute, placeMarkers1D, projectGraph, semanticZoomTier, tracePath,
@@ -441,7 +443,7 @@ function renderListWindow() {
     }
     const reused = item.execution_source_version && item.execution_source_version !== item.version_id;
     if (reused) meta.firstElementChild.textContent = `Reused: ${item.execution_source_version}`;
-    const fullMetadata = `${item.category}; version ${item.version_id}; ${item.parameters.toLocaleString()} initialized trace parameters; ${item.official_parameter_estimate?.toLocaleString() || "unavailable"} config-derived count${reused ? `; architecture demonstration, trace reused from ${item.execution_source_version}; selected checkpoint unverified` : ""}`;
+    const fullMetadata = `${item.category}; version ${item.version_id}; ${item.parameters.toLocaleString()} Trace parameters (initialized); ${item.official_parameter_estimate?.toLocaleString() || "unavailable"} config-derived count${reused ? `; architecture demonstration, trace reused from ${item.execution_source_version}; selected checkpoint unverified` : ""}`;
     open.setAttribute("aria-label", `${item.family_name}. ${fullMetadata}`);
     setTooltip(open, fullMetadata);
     open.append(name, meta);
@@ -1300,6 +1302,13 @@ function portBand(nodeItem, ports, direction) {
 }
 
 function renderVisibleGraph() {
+  if (semanticZoomTier(state.zoom) === "overview" && state.graphView.nodes.length) {
+    $("#graph-viewport").dataset.zoomTier = "overview";
+    showStatus(`Overview zoom · ${state.graphView.nodes.length} nodes; select a group for readable detail`);
+    renderOverview(state, getGraphSafeRect(), selectNode);
+    renderMinimap();
+    return;
+  }
   const visible = visibleNodeIds();
   if (state.selectedId) visible.add(state.selectedId);
   const fragment = document.createDocumentFragment();
@@ -1778,13 +1787,13 @@ function selectPort(item, port, direction, event) {
   updatePathControls();
   renderInspector(state.inspected);
   renderVisibleGraph();
-  if (window.innerWidth <= 980) openInspector();
+  if (window.innerWidth <= 1060) openInspector();
 }
 
 function updatePathControls() {
-  document.querySelectorAll(".path-control").forEach((button) => {
+  document.querySelectorAll(".path-control,.mobile-path-control").forEach((button) => {
     button.disabled = !state.selectedId;
-    button.classList.toggle("active", button.dataset.pathMode === state.pathMode);
+    button.classList.toggle("active", (button.dataset.pathMode || button.dataset.mobilePath) === state.pathMode);
   });
 }
 
@@ -1814,7 +1823,7 @@ function updateGraphSearch({ render = true } = {}) {
   if (active) {
     const ids = new Set(state.finderResults.map((item) => item.id));
     state.graphView.nodes.forEach((item) => {
-      if (ids.has(item.id) || item.raw.operation_ids?.some((id) => ids.has(id))) state.graphMatches.add(item.id);
+      if (ids.has(item.id) || item.raw.operation_ids?.some((id) => ids.has(id)) || state.finderResults.some((record) => record.node.module_id === item.id || (item.raw.qualified_name && record.module.startsWith(`${item.raw.qualified_name}.`)))) state.graphMatches.add(item.id);
     });
   }
   $("#finder-status").textContent = active ? `${state.finderResults.length} matches${state.finderResults.length ? " · across this model" : " · No results"}` : `${state.finderResults.length} operations and boundaries · no filter`;
@@ -2023,7 +2032,7 @@ function renderExplain(value) {
   const card = document.createElement("section");
   card.className = "explain-card";
   const heading = document.createElement("h3");
-  heading.textContent = semantic.semantic_name;
+  heading.textContent = semantic.primary_tag === "other" ? value.display_name || value.name || semantic.source_name : semantic.semantic_name;
   const description = document.createElement("p");
   description.textContent = semantic.what;
   const facts = document.createElement("dl");
@@ -2715,14 +2724,6 @@ function sourceFiles(trace) {
   return [...new Set(trace.operations.map((operation) => operation.source_ref?.file).filter(Boolean))].sort();
 }
 
-function delta(left, right) {
-  if (left == null && right == null) return "Unavailable for both";
-  if (left == null || right == null) return "Not comparable";
-  if (typeof left !== "number" || typeof right !== "number") return left === right ? "same" : "different";
-  const value = right - left;
-  return `${value > 0 ? "+" : ""}${value.toLocaleString()}`;
-}
-
 function appendCompareTable(container, rows, leftTitle, rightTitle) {
   const table = document.createElement("table");
   table.className = "compare-table";
@@ -2991,7 +2992,7 @@ $("#finder-clear").addEventListener("click", async () => {
     requestAnimationFrame(() => { state.zoom = context.zoom; state.pan = context.pan; updateTransform(); });
   }
 });
-document.querySelectorAll(".path-control").forEach((button) => button.addEventListener("click", () => applyPathMode(button.dataset.pathMode)));
+document.querySelectorAll(".path-control,.mobile-path-control").forEach((button) => button.addEventListener("click", () => applyPathMode(button.dataset.pathMode || button.dataset.mobilePath)));
 document.querySelectorAll(".navigator-tab").forEach((button) => button.addEventListener("click", () => switchNavigator(button.dataset.navigator)));
 document.querySelectorAll(".mode").forEach((button) => button.addEventListener("click", () => setMode(button.dataset.mode)));
 document.querySelectorAll(".inspector-tab").forEach((button) => button.addEventListener("click", () => switchInspectorPanel(button.dataset.panel)));
@@ -3121,8 +3122,13 @@ $("#minimap").addEventListener("click", (event) => {
 });
 window.addEventListener("hashchange", () => applyRoute(location.hash).catch((error) => setNavigationError(error.message)));
 window.addEventListener("resize", () => {
+  const focused = document.activeElement;
   if (!matchMedia("(max-width: 720px)").matches) $("#sidebar").classList.remove("open");
   if (!matchMedia("(max-width: 1060px)").matches) $("#inspector").classList.remove("open");
+  if (innerWidth > 1200) { document.body.classList.remove("tools-open"); $("#tools-button").setAttribute("aria-expanded", "false"); }
+  if (innerWidth <= 720 && $("#sidebar").contains(focused) && !$("#sidebar").classList.contains("open")) $("#menu-button").focus();
+  if (innerWidth <= 1060 && $("#inspector").contains(focused) && !$("#inspector").classList.contains("open")) $("#tools-button").focus();
+  if (innerWidth > 1060 && focused?.id === "close-inspector") $(".inspector-tab.active").focus();
   updateScrim();
   scheduleVisibleRender();
 });
@@ -3135,7 +3141,12 @@ document.addEventListener("focusout", (event) => {
   if (!event.relatedTarget?.closest?.("[data-tooltip]")) hideTooltip();
 });
 window.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") { closeSidebar(); closeInspector(); closeCompare(); }
+  if (event.key === "Escape") {
+    closeSidebar(); closeInspector(); closeCompare();
+    if (document.body.classList.contains("tools-open")) {
+      document.body.classList.remove("tools-open"); $("#tools-button").setAttribute("aria-expanded", "false"); $("#tools-button").focus();
+    }
+  }
   if (event.key === "0" && (event.ctrlKey || event.metaKey)) { event.preventDefault(); fitGraph(); }
   const target = event.target;
   const typing = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement

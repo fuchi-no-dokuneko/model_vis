@@ -50,6 +50,13 @@ def click_mode(driver, mode: str) -> None:
     WebDriverWait(driver, 10).until(lambda current: f"/view/{mode}" in current.find_element(By.ID, "uri-input").get_attribute("value"))
 
 
+def zoom_to_detail(driver) -> None:
+    wait_for_graph_render(driver)
+    while driver.find_element(By.ID, "graph-viewport").get_attribute("data-zoom-tier") != "normal":
+        driver.find_element(By.ID, "zoom-in").click()
+    wait_for_graph_render(driver)
+
+
 def click_first(driver, selector: str) -> None:
     def attempt(current) -> bool:
         try:
@@ -115,6 +122,7 @@ def test_mode_navigation_drilldown_and_source_shapes(loaded_viewer) -> None:
     assert not driver.find_element(By.ID, "empty-state").is_displayed()
 
     click_mode(driver, "module")
+    zoom_to_detail(driver)
     assert driver.find_elements(By.CSS_SELECTOR, ".node-ports.inputs")
     assert driver.find_elements(By.CSS_SELECTOR, ".node-ports.outputs")
     click_first(driver, ".graph-node")
@@ -177,6 +185,7 @@ def test_search_sort_compare_and_local_layout(loaded_viewer) -> None:
     driver.find_element(By.ID, "close-compare").click()
 
     click_mode(driver, "module")
+    zoom_to_detail(driver)
     node_id = drag_first(driver, ".node-drag-handle", 140, 90)
     stored = driver.execute_script("return Object.keys(localStorage).filter(key => key.startsWith('model-vis-layout:')).length")
     assert stored > 0
@@ -195,6 +204,7 @@ def test_data2vec_parallel_scope_layer_group_and_uri(loaded_viewer) -> None:
     wait = WebDriverWait(driver, 15)
     wait.until(lambda current: "data2vec-3" in current.find_element(By.ID, "uri-input").get_attribute("value"))
     wait.until(lambda current: len(current.find_elements(By.CSS_SELECTOR, '.graph-node[data-kind="aten_op"]')) > 5)
+    zoom_to_detail(driver)
 
     node_text = "\n".join(node.text for node in driver.find_elements(By.CSS_SELECTOR, ".graph-node"))
     assert "query" in node_text
@@ -670,6 +680,7 @@ def test_amendment_controls_configs_paths_blocks_and_partial_warning(loaded_view
     assert driver.find_element(By.ID, "graph-viewport").get_attribute("data-zoom-level") == "low"
 
     click_mode(driver, "operation")
+    zoom_to_detail(driver)
     wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, ".continuation-marker"))
 
     driver.find_element(By.CSS_SELECTOR, '[data-navigator="catalog"]').click()
