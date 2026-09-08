@@ -15,6 +15,10 @@ export function overviewEdges(layout, state) {
     const x2 = (b.x + 50 - state.pan.x) / state.zoom, y2 = (b.y - state.pan.y) / state.zoom;
     const path = element("path"), title = element("title");
     path.setAttribute("class", "edge-path"); path.dataset.confidence = edge.confidence;
+    path.style.vectorEffect = "none";
+    path.style.strokeWidth = `${1.5 / state.zoom}px`;
+    const dash = { inferred: [5, 4], ambiguous: [8, 3, 2, 3], unresolved: [2, 5] }[edge.confidence];
+    if (dash) path.style.strokeDasharray = dash.map((value) => value / state.zoom).join(" ");
     path.setAttribute("d", `M ${x1} ${y1} C ${x1} ${(y1 + y2) / 2}, ${x2} ${(y1 + y2) / 2}, ${x2} ${y2}`);
     title.textContent = `${edge.tensorIds.length} observed tensor routes between groups · ${edge.confidence}`;
     path.append(title); fragment.append(path);

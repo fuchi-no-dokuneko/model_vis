@@ -12,6 +12,7 @@ const records = operationRecords(graph);
 test("the finder combines real BERT operation, module, dtype, shape and tensor filters", () => {
   const gelu = findOperations(records, { interface: "gelu", module: "encoder.layer.0.", dtype: "float32", shape: "[3,5,3072]" });
   assert.equal(gelu.length, 1); assert.equal(gelu[0].id, "op-000028");
+  assert.equal(gelu[0].interface, "aten.gelu.default");
   const tensor = gelu[0].node.input_ports[0].tensor_id;
   assert.ok(findOperations(records, { tensor }).some((item) => item.id === gelu[0].id));
   assert.equal(findOperations(records, { query: "zzzz-no-such-operation" }).length, 0);
@@ -19,7 +20,7 @@ test("the finder combines real BERT operation, module, dtype, shape and tensor f
 });
 
 test("tensor, dtype and shape filters describe the same observed port", () => {
-  const embedding = records.find((r) => r.interface === "embedding");
+  const embedding = records.find((r) => r.node.display_name === "embedding");
   assert.ok(embedding);
   const integer = embedding.node.input_ports.find((p) => p.dtype === "torch.int64");
   const output = embedding.node.output_ports[0];

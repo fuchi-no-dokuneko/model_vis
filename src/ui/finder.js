@@ -6,7 +6,7 @@ export function operationRecords(graph) {
     const ports = [...(node.input_ports || []), ...(node.output_ports || [])];
     return {
       id: node.id,
-      interface: node.display_name || node.name || node.kind,
+      interface: node.name || node.display_name || node.kind,
       module: node.module_path || "<root>",
       tensor: [...new Set(ports.map((p) => p.tensor_id).filter(Boolean))].join(" "),
       dtype: [...new Set(ports.map((p) => p.dtype).filter(Boolean))].join(" "),
