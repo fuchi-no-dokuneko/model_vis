@@ -34,6 +34,9 @@ def parameter_evidence(model_code, version, graph):
         return evidence
     source = version["official_config_source"]
     evidence.update(checkpoint=source["repo_id"], revision=source["revision"])
+    if source.get("compatibility_adapter"):
+        evidence["reason"] = "Native publisher configuration requires a separately verified counting adapter"
+        return evidence
     config = read_json(model_code / version["official_config_ref"])
     arguments = {
         item["name"]: item["value"]

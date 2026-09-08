@@ -10,7 +10,7 @@ from src.model_builder import drift
 def test_independent_copies_preserve_both_drift_and_validation_gates(tmp_path, monkeypatch, problem):
     source = tmp_path / "catalog"
     source.mkdir()
-    manifest = {"versions": ["test"], "asset_index": "indexes/assets.json", "build_report": "indexes/report.json"}
+    manifest = {"versions": ["test"], "asset_index": "indexes/assets.json", "build_report": "indexes/report.json", "search_index": "indexes/search.json"}
     (source / "manifest.v2.json").write_text(json.dumps(manifest))
     for path in drift.managed_paths(source):
         if path.name != "manifest.v2.json":

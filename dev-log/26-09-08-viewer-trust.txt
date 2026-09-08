@@ -1,0 +1,8 @@
+---16:24---原生設定計數風險
+category: bug_discovery
+Current status: 已修正新發現的原生 Mamba2 設定錯算風險。
+Issues: 通用設定類別會忽略原生欄位並套用預設值，產生沒有依據的參數數字。
+Apporch chosen: 需要原生轉換器的設定先明示精確數量不可用，保留已驗證執行參數。
+Assumption made to chose this approch: 審核要求缺乏模型依據時顯示不可用，不得以估算冒充。
+affect scope: 參數依據產生器及 Mamba2 中繼資料；待補回歸驗證。
+---

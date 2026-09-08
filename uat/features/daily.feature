@@ -1,10 +1,10 @@
 Feature: Daily Model Structure Viewer acceptance
 
-  Scenario: Start in the documented beginner workspace
+  Scenario: Start in the documented professional workspace
     Given the built Model Vis site is running
     When I open the model catalog
     Then 101 generated models are listed
-    And Beginner detail, Semantic labels, and Architecture are selected
+    And Standard detail, Both labels, and Architecture are selected
     And a semantic graph, legend, minimap, and inspector are visible
 
   Scenario: Search, filter, sort, and recover from no catalog results

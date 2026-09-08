@@ -32,6 +32,7 @@ def copy_real_semantic_fixture(destination: Path, version_id: str = "apertus") -
         version["graph_ref"],
         version.get("trace_config_ref"),
         version.get("config_ref"),
+        version.get("official_config_ref"),
     } - {None}:
         target = destination / relative
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -50,6 +51,8 @@ def copy_real_semantic_fixture(destination: Path, version_id: str = "apertus") -
     report_target.parent.mkdir(parents=True)
     report_target.write_text(json.dumps(report), encoding="utf-8")
     (destination / "indexes" / "assets.v2.json").write_text("[]\n", encoding="utf-8")
+    search = json.loads((source / manifest["search_index"]).read_text())
+    (destination / "indexes" / "search.v2.json").write_text(json.dumps([item for item in search if item["version_id"] == version_id]))
     fixture_manifest = {
         "schema_version": manifest["schema_version"],
         "generated_at": manifest["generated_at"],
@@ -58,6 +61,7 @@ def copy_real_semantic_fixture(destination: Path, version_id: str = "apertus") -
         "versions": [version_id],
         "asset_index": "indexes/assets.v2.json",
         "build_report": "indexes/build_report.v2.json",
+        "search_index": "indexes/search.v2.json",
     }
     (destination / "manifest.v2.json").write_text(
         json.dumps(fixture_manifest),

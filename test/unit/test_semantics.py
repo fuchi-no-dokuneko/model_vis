@@ -92,7 +92,7 @@ def test_semantic_generator_validates_fallbacks_and_deduplicates_tied_parameters
     assert semantic["schema_version"] == "1.0.0"
     assert semantic["generator_version"] == SEMANTIC_GENERATOR_VERSION
     assert sum(item["value"] for item in semantic["metrics"]["parameter_distribution"]) == 16
-    assert semantic["metrics"]["official_parameter_estimate"] == 160
+    assert semantic["metrics"]["official_parameter_estimate"] is None
     assert sum(item["value"] for item in semantic["metrics"]["operation_distribution"]) == semantic["metrics"]["trace_operation_total"]
     assert semantic["coverage"]["parameter_accounted_fraction"] == 1.0
     assert semantic["entities"]["module-00000"]["what"].startswith("Technical fallback:")

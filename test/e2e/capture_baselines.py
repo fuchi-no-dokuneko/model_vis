@@ -14,6 +14,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
 from browser import set_exact_viewport
+from scripts.serve_https import https_server
 
 
 ROOT = Path(__file__).parents[2]
@@ -32,10 +33,11 @@ def main() -> None:
         cwd=ROOT,
         check=True,
     )
-    server = ThreadingHTTPServer(("127.0.0.1", 0), partial(SimpleHTTPRequestHandler, directory=ROOT / "build"))
+    server = https_server(ROOT / "build")
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     options = Options()
+    options.accept_insecure_certs = True
     options.binary_location = "/snap/chromium/current/usr/lib/chromium-browser/chrome"
     profile = tempfile.TemporaryDirectory(prefix="model-vis-chromium-")
     for option in (
@@ -47,7 +49,7 @@ def main() -> None:
     browser = webdriver.Chrome(service=Service("/usr/bin/chromedriver"), options=options)
     BASELINES.mkdir(parents=True, exist_ok=True)
     try:
-        url = f"http://127.0.0.1:{server.server_port}/"
+        url = f"https://127.0.0.1:{server.server_port}/"
         for name, size in VIEWPORTS.items():
             set_exact_viewport(browser, *size)
             browser.get(url)
@@ -57,6 +59,7 @@ def main() -> None:
         browser.quit()
         profile.cleanup()
         server.shutdown()
+        server.server_close()
         thread.join(timeout=5)
 
 

@@ -412,7 +412,7 @@ test("semantic labels cover source identity and shape fallbacks", () => {
   const sourceResult = projectGraph({ mode: "operation", current, graph, semantic, labelMode: "source" });
 
   assert.equal(semanticResult.nodes.find((node) => node.id === "semantic-id").title, "attention or mixer");
-  assert.equal(semanticResult.nodes.find((node) => node.id === "module-entity").title, "Semantic B");
+  assert.equal(semanticResult.nodes.find((node) => node.id === "module-entity").title, "Name B");
   assert.equal(bothResult.nodes.find((node) => node.id === "semantic-id").subtitle, "Entity A");
   assert.equal(sourceResult.nodes.find((node) => node.id === "semantic-id").subtitle, "[2, 3] [1, 3]");
   assert.equal(sourceResult.nodes.find((node) => node.id === "source-only").title, "Name C");

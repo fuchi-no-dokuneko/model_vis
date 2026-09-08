@@ -109,10 +109,10 @@ def catalog_count(context) -> None:
     _wait(context).until(lambda current: current.find_element(By.ID, "result-count").text == "101 models")
 
 
-@bind("Beginner detail, Semantic labels, and Architecture are selected")
+@bind("Standard detail, Both labels, and Architecture are selected")
 def default_workspace(context) -> None:
-    assert context.driver.find_element(By.ID, "detail-mode").get_attribute("value") == "beginner"
-    assert context.driver.find_element(By.ID, "label-mode").get_attribute("value") == "semantic"
+    assert context.driver.find_element(By.ID, "detail-mode").get_attribute("value") == "standard"
+    assert context.driver.find_element(By.ID, "label-mode").get_attribute("value") == "both"
     assert "active" in context.driver.find_element(By.CSS_SELECTOR, '[data-mode="architecture"]').get_attribute("class")
 
 

@@ -176,6 +176,7 @@ def validate(
         if graph_path.is_file():
             graph = read_json(graph_path)
             node_ids = {node["id"] for node in graph.get("nodes", [])}
+            nodes_by_id = {node["id"]: node for node in graph.get("nodes", [])}
             tensor_ids = {tensor["tensor_id"] for tensor in graph.get("tensors", [])}
             tensors = {tensor["tensor_id"]: tensor for tensor in graph.get("tensors", [])}
             modules = {module["module_id"]: module for module in graph.get("modules", [])}
@@ -322,6 +323,11 @@ def validate(
                     if source_order < 0 or target_order < 0 or source_order >= target_order:
                         errors.append(f"semantic stage edge violates topological order: {version_id}")
                 metrics = semantic.get("metrics", {})
+                evidence = version.get("parameter_evidence", {})
+                if metrics.get("official_parameter_estimate") != evidence.get("parameter_count"):
+                    errors.append(f"semantic parameter evidence mismatch: {version_id}")
+                if evidence.get("parameter_count") is not None and not version.get("official_config_source"):
+                    errors.append(f"parameter count lacks selected model provenance: {version_id}")
                 parameter_values = metrics.get("parameter_distribution", [])
                 operation_values = metrics.get("operation_distribution", [])
                 if sum(item.get("value", 0) for item in parameter_values) != version.get("parameters", {}).get("total"):
@@ -336,6 +342,13 @@ def validate(
                         tensor = tensors.get(step.get("tensor_id"))
                         if tensor is None or tensor.get("shape") != step.get("shape"):
                             errors.append(f"semantic journey tensor shape mismatch: {version_id}:{step.get('step_id')}")
+                        node = nodes_by_id.get(step.get("node_id"), {})
+                        for direction in ("input_ports", "output_ports"):
+                            actual = step.get(direction, [])
+                            expected = node.get(direction, [])
+                            keys = ("port_id", "tensor_id", "name", "shape", "dtype")
+                            if actual != [{key: port[key] for key in keys if key in port} for port in expected]:
+                                errors.append(f"semantic journey operation ports mismatch: {version_id}:{step.get('step_id')}:{direction}")
     semantic_index_versions = {item.get("version_id"): item for item in semantic_index.get("versions", [])}
     if semantic_index.get("generated_at") != manifest.get("semantic_generated_at"):
         errors.append("semantic index timestamp differs from manifest")

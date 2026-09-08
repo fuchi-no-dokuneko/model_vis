@@ -27,3 +27,6 @@ scripts/check-coverage.py: Tested valid, missing, malformed, and sub-threshold r
 scripts/check-uat-report.py: Tested valid real-format, dry-run, and missing-artifact reports; mocks: temporary report files.
 scripts/lock-python.py: Not directly unit tested; administrative output is checked by lock diffs and exact-lock policy, while a clean locked install remains required release evidence; mocks: none; release-tool exclusion documented.
 scripts/run-ui-coverage.mjs: Tested by real Node coverage generation and independent LCOV gates; mocks: none; release-tool exclusion documented.
+src/model_builder/parameter_counts.py: Tests execute pinned and compact Transformer classes on meta tensors; mocks: none. / 以真實設定驗證，無模擬。
+src/model_builder/journey_facts.py: Tests compare all generated journey ports with real graph assets and BERT/BiT shape arithmetic; mocks: none. / 核對全部張量埠，無模擬。
+src/ui/finder.js, comparison-metrics.js, review-export.js, review-svg.js: Real BERT/catalog fixtures test filtering, unknown values and selected exports; mocks: none. / 使用真實模型資料，無模擬。
