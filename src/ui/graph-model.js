@@ -84,6 +84,10 @@ function labelParts(raw, semantic, labelMode = "source") {
     || raw.module_path || raw.display_name || raw.name || raw.id;
   if (!entity || labelMode === "source") return { title: source, subtitle: raw.module_path || raw.qualified_name || shapeText(raw.output_ports || raw.outputs) || raw.kind };
   const semanticName = entity.semantic_name || entity.primary_tag?.replaceAll("_", " ") || source;
+  if (entity.primary_tag === "other" || semanticName === "Unclassified component") {
+    const identity = raw.display_name || raw.name || entity.source_name || source;
+    return { title: identity, subtitle: `${raw.module_path || entity.qualified_name || source} · unclassified` };
+  }
   return {
     title: semanticName,
     subtitle: labelMode === "both"
@@ -567,6 +571,9 @@ export function parseViewerRoute(value) {
     if (!keys.has(key) || parts[index + 1] === undefined) throw new Error(`Invalid route segment: ${key}`);
     result[key] = parts[index + 1];
     index += 2;
+  }
+  for (const [key, allowed] of Object.entries({ view: ["architecture", "family", "module", "blocks", "operation"], detail: ["beginner", "standard", "trace"], labels: ["semantic", "both", "source"] })) {
+    if (result[key] && !allowed.includes(result[key])) throw new Error(`Unknown ${key} mode: ${result[key]}`);
   }
   return result;
 }

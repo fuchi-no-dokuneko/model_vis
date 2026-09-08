@@ -1,0 +1,19 @@
+.identity-panel { padding: 6px 10px; border-bottom: 1px solid var(--border); max-height: 35vh; overflow: auto; font-size: 11px; overflow-wrap: anywhere; }
+.identity-panel summary { cursor: pointer; }
+.evidence-facts { display: grid; grid-template-columns: minmax(85px, 35%) minmax(0, 1fr); gap: 5px 8px; }
+.evidence-facts dt { color: var(--muted); }
+.evidence-facts dd { margin: 0; overflow-wrap: anywhere; }
+.resource-state { padding: 12px; max-width: 100%; overflow-wrap: anywhere; }
+.resource-state pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.compare-pane { margin: 0; color: var(--text); }
+.compare-pane::backdrop { background: rgb(13 19 15 / 32%); }
+.graph-viewport[data-zoom-tier="overview"] .overview-glyph { width: min(calc(92px * var(--inverse-zoom)), calc(100% - 8px)); height: min(calc(38px * var(--inverse-zoom)), calc(100% - 8px)); transform: translate(-50%, -50%); font-size: min(calc(10px * var(--inverse-zoom)), 28px); }
+.overview-io { font-size: inherit; }
+.journey-steps:focus-visible { outline: 2px solid var(--accent); }
+.journey-gap { flex: 0 0 85px; padding: 12px 4px; font-size: 10px; color: var(--muted); }
+.journey-step.active { border-color: var(--accent); background: var(--accent-soft); }
+.journey-step { overflow-wrap: anywhere; }
+.comparison-details { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+.comparison-details summary { cursor: pointer; }
+.comparison-details ol { max-height: 220px; overflow: auto; overflow-wrap: anywhere; padding-right: 8px; }
+.compare-filter { padding: 8px 12px; border-top: 1px solid var(--border); font-size: 11px; }

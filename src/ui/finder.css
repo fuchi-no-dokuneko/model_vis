@@ -1,0 +1,17 @@
+.finder-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 4px 8px; border-bottom: 1px solid var(--border); font-size: 11px; }
+.finder-bar button { min-height: 27px; padding: 2px 7px; }
+#finder-status { flex: 1; min-width: 100px; }
+.finder-panel { max-height: min(38vh, 320px); overflow: auto; border-bottom: 1px solid var(--border); padding: 5px 8px; background: var(--surface); }
+.finder-panel summary { cursor: pointer; font-size: 11px; }
+.finder-filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+.finder-filters label { display: grid; gap: 3px; font-size: 10px; }
+.finder-filters input { width: 125px; min-width: 0; padding: 4px; background: var(--surface); border: 1px solid var(--border); }
+.finder-table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 10px; }
+.finder-table td, .finder-table th { border-bottom: 1px solid var(--border); padding: 5px; overflow-wrap: anywhere; text-align: left; }
+.finder-table button { width: 100%; height: auto; text-align: left; padding: 2px; }
+.finder-table .selected { background: var(--accent-soft); }
+.finder-pagination { display: flex; gap: 6px; align-items: center; padding: 6px 0; font-size: 11px; }
+@media (max-width: 720px) {
+  .finder-table { min-width: 580px; }
+  #finder-results { overflow-x: auto; }
+}

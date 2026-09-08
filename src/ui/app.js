@@ -1,4 +1,13 @@
 import { configDifferences, flattenConfig, ModelStore } from "./data-store.js";
+import { evidenceRows, renderEvidence } from "./provenance.js";
+import { panelState } from "./panel-state.js";
+import { findOperations, operationRecords, renderResults } from "./finder.js";
+import { downloadReview, factsCsv, reviewFacts } from "./review-export.js";
+import { subgraphSvg } from "./review-svg.js";
+import { savedReviews } from "./saved-reviews.js";
+import { workspaceSizing } from "./workspace-size.js";
+import { journeyView } from "./journey-view.js";
+import { compareDetails } from "./comparison-details.js";
 import {
   graphBounds, graphSafeRect, intervalsForEdge, layoutGraph, NODE_HEIGHT, NODE_WIDTH,
   parseViewerRoute, placeMarkers1D, projectGraph, semanticZoomTier, tracePath,
@@ -23,8 +32,8 @@ const state = {
   index: [],
   filtered: [],
   mode: "family",
-  detailMode: "beginner",
-  labelMode: "semantic",
+  detailMode: "standard",
+  labelMode: "both",
   current: null,
   family: null,
   graph: null,
@@ -65,6 +74,9 @@ const state = {
   routeApplying: false,
   graphQuery: "",
   graphMatches: new Set(),
+  finderResults: [],
+  finderPage: 0,
+  finderCursor: -1,
   pathMode: null,
   pathNodes: new Set(),
   pathEdges: new Set(),
@@ -324,8 +336,8 @@ async function selectedSourceCode() {
 }
 
 function updateScrim() {
-  const open = $("#sidebar").classList.contains("open")
-    || $("#inspector").classList.contains("open")
+  const open = (matchMedia("(max-width: 720px)").matches && $("#sidebar").classList.contains("open"))
+    || (matchMedia("(max-width: 1060px)").matches && $("#inspector").classList.contains("open"))
     || !$("#compare-pane").hidden;
   $("#scrim").hidden = !open;
 }
@@ -419,7 +431,7 @@ function renderListWindow() {
       [item.category.replace(" models", ""), "meta-label"],
       [item.version_id, "meta-value"],
       [`trace ${formatNumber(item.parameters)}`, "meta-label"],
-      [item.official_parameter_estimate ? `official ${formatNumber(item.official_parameter_estimate)}` : "official —", "meta-value"],
+      [item.official_parameter_estimate != null ? `config ${formatNumber(item.official_parameter_estimate)}` : "config count unavailable", "meta-value"],
     ];
     for (const [text, className] of metadata) {
       const value = document.createElement("span");
@@ -427,7 +439,9 @@ function renderListWindow() {
       value.textContent = text;
       meta.append(value);
     }
-    const fullMetadata = `${item.category}; version ${item.version_id}; ${item.parameters.toLocaleString()} Trace parameters; ${item.official_parameter_estimate?.toLocaleString() || "no"} official estimate`;
+    const reused = item.execution_source_version && item.execution_source_version !== item.version_id;
+    if (reused) meta.firstElementChild.textContent = `Reused: ${item.execution_source_version}`;
+    const fullMetadata = `${item.category}; version ${item.version_id}; ${item.parameters.toLocaleString()} initialized trace parameters; ${item.official_parameter_estimate?.toLocaleString() || "unavailable"} config-derived count${reused ? `; architecture demonstration, trace reused from ${item.execution_source_version}; selected checkpoint unverified` : ""}`;
     open.setAttribute("aria-label", `${item.family_name}. ${fullMetadata}`);
     setTooltip(open, fullMetadata);
     open.append(name, meta);
@@ -541,7 +555,9 @@ function syncRoute({ push = true } = {}) {
 }
 
 async function applyRoute(value) {
+  state.requestedRoute = value;
   const route = parseViewerRoute(value);
+  if (!route.compare && !$("#compare-pane").hidden) closeCompare({ sync: false });
   if (route.detail && !["beginner", "standard", "trace"].includes(route.detail)) throw new Error(`Unknown detail mode: ${route.detail}`);
   if (route.labels && !["semantic", "both", "source"].includes(route.labels)) throw new Error(`Unknown label mode: ${route.labels}`);
   if (route.detail) state.detailMode = route.detail;
@@ -918,10 +934,10 @@ async function renderMode({ fit = false } = {}) {
     renderVisibleGraph();
     renderStructuralSummary();
     renderInspector(state.inspected);
-    if (fit) requestAnimationFrame(fitGraph);
+    if (fit) requestAnimationFrame(() => state.selectedId ? focusSelection() : fitGraph());
   } catch (error) {
     $("#empty-state").hidden = false;
-    $("#empty-state").textContent = error.message;
+    panelState($("#empty-state"), `Could not load ${state.current.family_name}. Your investigation is retained.`, { error, retry: () => state.requestedRoute ? applyRoute(state.requestedRoute).catch((failure) => setNavigationError(failure.message)) : renderMode({ fit: true }) });
   } finally {
     if ($("#graph-status").textContent === "Loading view...") showStatus("");
   }
@@ -1725,7 +1741,7 @@ function selectNode(item, event = {}, { sync = true, openOnMobile = true } = {})
   }
   persistViewState();
   if (sync) syncRoute();
-  if (openOnMobile && window.innerWidth <= 980) openInspector();
+  if (openOnMobile && window.innerWidth <= 1060) openInspector();
 }
 
 function selectPort(item, port, direction, event) {
@@ -1789,22 +1805,45 @@ function applyPathMode(mode, { render = true } = {}) {
 
 function updateGraphSearch({ render = true } = {}) {
   state.graphQuery = $("#graph-search").value.trim().toLowerCase();
+  const filters = { query: state.graphQuery };
+  document.querySelectorAll("[data-finder]").forEach((input) => { filters[input.dataset.finder] = input.value.trim(); });
+  const active = Object.values(filters).some(Boolean);
+  if (active && !state.searchContext) state.searchContext = { route: routePath(), zoom: state.zoom, pan: { ...state.pan } };
+  state.finderResults = findOperations(operationRecords(state.graph), filters);
   state.graphMatches.clear();
-  if (state.graphQuery) {
-    for (const item of state.graphView.nodes) {
-      const searchable = [
-        item.title,
-        item.subtitle,
-        item.kind,
-        item.raw.source_ref?.file,
-        item.raw.source_ref?.symbol,
-        ...item.inputPorts.flatMap((port) => [port.name, port.tensor_id, port.dtype, shapeLabel([port])]),
-        ...item.outputPorts.flatMap((port) => [port.name, port.tensor_id, port.dtype, shapeLabel([port])]),
-      ].filter(Boolean).join(" ").toLowerCase();
-      if (searchable.includes(state.graphQuery)) state.graphMatches.add(item.id);
-    }
+  if (active) {
+    const ids = new Set(state.finderResults.map((item) => item.id));
+    state.graphView.nodes.forEach((item) => {
+      if (ids.has(item.id) || item.raw.operation_ids?.some((id) => ids.has(id))) state.graphMatches.add(item.id);
+    });
   }
+  $("#finder-status").textContent = active ? `${state.finderResults.length} matches${state.finderResults.length ? " · across this model" : " · No results"}` : `${state.finderResults.length} operations and boundaries · no filter`;
+  $("#finder-previous").disabled = $("#finder-next").disabled = !state.finderResults.length;
+  state.finderPage = Math.min(state.finderPage, Math.max(0, Math.ceil(state.finderResults.length / 30) - 1));
+  renderFinderTable();
   if (render) renderVisibleGraph();
+}
+
+function renderFinderTable() {
+  const pages = Math.max(1, Math.ceil(state.finderResults.length / 30));
+  $("#finder-page").textContent = `${state.finderPage + 1} / ${pages}`;
+  $("#finder-page-previous").disabled = state.finderPage === 0;
+  $("#finder-page-next").disabled = state.finderPage + 1 >= pages;
+  if ($("#finder-panel").open) renderResults($("#finder-results"), state.finderResults, state.finderPage, state.selectedId, openFinderResult);
+}
+
+async function openFinderResult(record) {
+  state.finderCursor = state.finderResults.findIndex((item) => item.id === record.id);
+  await selectOperation(record.id);
+  focusSelection();
+  renderFinderTable();
+  requestAnimationFrame(() => $("#nodes").querySelector(`[data-id="${record.id}"]`)?.focus({ preventScroll: true }));
+}
+
+function nextFinderResult(direction) {
+  if (!state.finderResults.length) return;
+  state.finderCursor = (state.finderCursor + direction + state.finderResults.length) % state.finderResults.length;
+  openFinderResult(state.finderResults[state.finderCursor]);
 }
 
 async function drillIntoNode(item, event = {}) {
@@ -2037,10 +2076,15 @@ function renderExplain(value) {
 function renderInspector(value) {
   value ||= state.current || {};
   state.inspected = value;
+  if (state.current) {
+    renderEvidence($("#identity-facts"), state.current, state.semantic);
+    const origin = state.current.execution_source_version;
+    $("#identity-summary").textContent = `${state.current.parameter_evidence?.model_class?.split(".").at(-1) || state.current.family_name} · ${state.current.execution_mode === "full_model_forward" ? "full" : "compact"} · initialized${origin !== state.current.version_id ? ` · reused from ${origin}` : ""}`;
+  }
   const semantic = semanticRecordFor(value);
   $("#inspector-title").textContent = state.labelMode === "source"
     ? (value.qualified_name || value.display_name || value.name || value.family_name || "Inspector")
-    : (semantic?.semantic_name || value.display_name || value.qualified_name || value.name || value.family_name || "Inspector");
+    : ((semantic?.primary_tag !== "other" && semantic?.semantic_name) || value.display_name || value.qualified_name || value.name || value.family_name || "Inspector");
   const list = document.createElement("dl");
   for (const [name, content] of metadataRows(value)) {
     const term = document.createElement("dt");
@@ -2092,41 +2136,7 @@ async function focusJourneyStep(step) {
 
 function appendTensorJourney(fragment, value) {
   const journey = state.semantic?.journeys?.[0];
-  if (!journey) return;
-  const selectedSemantic = semanticRecordFor(value);
-  const selectedTensors = new Set([
-    ...(selectedSemantic?.input_tensor_ids || []),
-    ...(selectedSemantic?.output_tensor_ids || []),
-  ]);
-  const section = document.createElement("section");
-  section.className = "journey";
-  const title = document.createElement("h3");
-  title.textContent = `Tensor Journey · ${journey.route_confidence} route`;
-  const steps = document.createElement("div");
-  steps.className = "journey-steps";
-  journey.steps.forEach((step) => {
-    const button = document.createElement("button");
-    button.className = "journey-step";
-    if (selectedTensors.has(step.tensor_id)) button.classList.add("active");
-    button.setAttribute("aria-label", `${step.representation}, shape ${step.shape.join(" by ")}, ${step.transform}, ${step.route_confidence} route`);
-    const representation = document.createElement("span");
-    representation.className = "journey-representation";
-    representation.textContent = step.representation;
-    const shape = document.createElement("span");
-    shape.className = "journey-shape";
-    shape.textContent = `[${step.shape.join(", ")}]`;
-    const transform = document.createElement("span");
-    transform.className = "journey-meta";
-    transform.textContent = `${step.transform} · ${step.dtype} · ${step.route_confidence}`;
-    const explanation = document.createElement("span");
-    explanation.className = "journey-meta";
-    explanation.textContent = step.explanation;
-    button.append(representation, shape, transform, explanation);
-    button.addEventListener("click", () => focusJourneyStep(step));
-    steps.append(button);
-  });
-  section.append(title, steps);
-  fragment.append(section);
+  if (journey) fragment.append(journeyView(journey, value?.id || state.selectedId, focusJourneyStep));
 }
 
 function renderShapes(value) {
@@ -2232,13 +2242,22 @@ function appendHighlightedCode(container, text) {
 
 async function renderSource(value) {
   const token = ++state.sourceToken;
+  const lines = $("#source-lines");
+  panelState(lines, "Loading source…");
+  try { await renderSourceContent(value, token); }
+  catch (error) {
+    if (token === state.sourceToken) panelState(lines, "Source could not be loaded for this selection.", { error, retry: () => renderSource(value) });
+  }
+}
+
+async function renderSourceContent(value, token) {
   const reference = $("#source-reference");
   const lines = $("#source-lines");
   const repository = $("#source-repository");
   const ref = sourceRefFor(value);
   if (!ref?.source_uid || !ref.file) {
     renderSourceReference(value);
-    lines.replaceChildren();
+    panelState(lines, "No source reference is available for this selection. Select an operation to inspect its source.");
     repository.hidden = true;
     return;
   }
@@ -2400,7 +2419,7 @@ async function renderConfigPanel() {
     }
     view.replaceChildren(fragment);
   } catch (error) {
-    view.textContent = error.message;
+    panelState(view, "Configuration could not be loaded.", { error, retry: renderConfigPanel });
   }
 }
 
@@ -2442,7 +2461,7 @@ function fitGraph() {
   if (!state.graphView.nodes.length) return;
   const safe = getGraphSafeRect();
   state.bounds = graphBounds(state.graphView.nodes, allPositions(), allSizes());
-  state.zoom = Math.min(1.1, Math.max(0.16, Math.min(safe.width / state.bounds.width, safe.height / state.bounds.height) * 0.9));
+  state.zoom = Math.min(1.1, Math.max(0.01, Math.min(safe.width / state.bounds.width, safe.height / state.bounds.height) * 0.9));
   state.pan = {
     x: safe.left + Math.max(0, (safe.width - state.bounds.width * state.zoom) / 2),
     y: safe.top + Math.max(0, (safe.height - state.bounds.height * state.zoom) / 2),
@@ -2462,6 +2481,12 @@ function centerSelection() {
   updateTransform();
 }
 
+function focusSelection() {
+  if (!state.selectedId) return fitGraph();
+  state.zoom = Math.max(state.zoom, 0.85);
+  centerSelection();
+}
+
 function resetLayout() {
   localStorage.removeItem(positionStorageKey());
   state.userPositions = new Map();
@@ -2469,6 +2494,23 @@ function resetLayout() {
   state.pan = { x: 24, y: 24 };
   state.zoom = 1;
   renderMode({ fit: true });
+}
+
+function investigationLink() {
+  if (!state.current || !state.graph || state.navigationError) throw new Error("Open a valid model location before saving or exporting an investigation.");
+  const route = routePath();
+  parseViewerRoute(route);
+  return `${location.origin}${location.pathname}${location.search}${route}`;
+}
+
+function exportInvestigation(format) {
+  try {
+    const facts = reviewFacts(state, investigationLink(), $("#review-annotation").value);
+    if (!facts.nodes.length) throw new Error("Select an operation or stage to export its subgraph. Ctrl-click adds more nodes.");
+    const formats = { json: [JSON.stringify(facts, null, 2), "application/json"], csv: [factsCsv(facts), "text/csv"], svg: [subgraphSvg(facts), "image/svg+xml"] };
+    downloadReview(`${facts.model}-investigation.${format}`, ...formats[format]);
+    showTransientStatus(`Exported ${facts.nodes.length} nodes with provenance.`);
+  } catch (error) { showTransientStatus(error.message); }
 }
 
 function startNodeDrag(event) {
@@ -2674,6 +2716,8 @@ function sourceFiles(trace) {
 }
 
 function delta(left, right) {
+  if (left == null && right == null) return "Unavailable for both";
+  if (left == null || right == null) return "Not comparable";
   if (typeof left !== "number" || typeof right !== "number") return left === right ? "same" : "different";
   const value = right - left;
   return `${value > 0 ? "+" : ""}${value.toLocaleString()}`;
@@ -2693,9 +2737,10 @@ function appendCompareTable(container, rows, leftTitle, rightTitle) {
   const body = document.createElement("tbody");
   for (const [label, left, right, difference = delta(left, right)] of rows) {
     const row = document.createElement("tr");
+    row.dataset.equal = String(left != null && right != null && left === right);
     for (const value of [label, left, right, difference]) {
       const cell = document.createElement("td");
-      cell.textContent = String(value);
+      cell.textContent = value == null ? "Unavailable" : String(value);
       row.append(cell);
     }
     body.append(row);
@@ -2716,7 +2761,7 @@ function semanticTargetButton(version, semantic, stage, label) {
   const button = document.createElement("button");
   button.textContent = label;
   button.addEventListener("click", async () => {
-    closeCompare();
+    closeCompare({ sync: false });
     await loadVersion(version.version_id, { sync: false });
     await setMode("architecture", { sync: false });
     const item = state.graphView.nodes.find((node) => node.id === stage.stage_id);
@@ -2742,6 +2787,7 @@ function appendSemanticTable(container, titleText, rows, left, right, leftSemant
   const body = document.createElement("tbody");
   rows.forEach((rowValue) => {
     const row = document.createElement("tr");
+    row.dataset.equal = String(Boolean(rowValue.leftStage && rowValue.rightStage && rowValue.leftText === rowValue.rightText));
     const label = document.createElement("td");
     label.textContent = rowValue.label;
     const leftCell = document.createElement("td");
@@ -2763,9 +2809,16 @@ function appendSemanticTable(container, titleText, rows, left, right, leftSemant
 }
 
 async function openCompare({ sync = true, view = "architecture" } = {}) {
+  if (!["architecture", "family", "module", "blocks", "operation"].includes(view)) throw new Error("Invalid comparison view");
   const content = $("#compare-content");
-  content.replaceChildren();
-  $("#compare-pane").hidden = false;
+  panelState(content, "Loading comparison…");
+  const dialog = $("#compare-pane");
+  if (!dialog.open) {
+    state.compareReturnRoute = state.current ? routePath() : null;
+    dialog.hidden = false;
+    dialog.showModal();
+    $("#close-compare").focus();
+  }
   updateScrim();
   if (state.compareIds.length < 2) {
     content.textContent = "Select two models in the catalog to compare.";
@@ -2782,18 +2835,22 @@ async function openCompare({ sync = true, view = "architecture" } = {}) {
       store.config(left), store.config(right), store.trace(left), store.trace(right), store.semantic(left), store.semantic(right),
     ]);
     const configDifferenceCount = configDifferences(leftConfig, rightConfig).length;
+    content.replaceChildren();
+    const compatibleTrace = left.execution_mode === right.execution_mode;
     appendCompareTable(content, [
       ["Version", left.version_id, right.version_id],
       ["Domain", leftSemantic.domain, rightSemantic.domain],
       ["Task", leftSemantic.task, rightSemantic.task],
       ["Library", left.library, right.library],
-      ["Trace initialized parameters", left.parameters.total, right.parameters.total],
-      ["Official parameter estimate", leftSemantic.metrics.official_parameter_estimate ?? "—", rightSemantic.metrics.official_parameter_estimate ?? "—"],
+      ["Trace initialized parameters", left.parameters.total, right.parameters.total, compatibleTrace ? delta(left.parameters.total, right.parameters.total) : "Not comparable: trace scopes differ"],
+      ["Config-derived parameters", left.parameter_evidence?.parameter_count, right.parameter_evidence?.parameter_count],
       ["Observed operations", left.operation_count, right.operation_count],
       ["Source files", sourceFiles(leftTrace).length, sourceFiles(rightTrace).length],
       ["Config fields changed", "—", "—", configDifferenceCount],
-      ["Primary journey", leftSemantic.journeys[0]?.steps.map((step) => `${step.representation} ${JSON.stringify(step.shape)}`).join(" → ") || "—", rightSemantic.journeys[0]?.steps.map((step) => `${step.representation} ${JSON.stringify(step.shape)}`).join(" → ") || "—", "Trace facts"],
     ], left.family_name, right.family_name);
+    const a = new Map(evidenceRows(left, leftSemantic)), b = new Map(evidenceRows(right, rightSemantic));
+    appendCompareTable(content, [...new Set([...a.keys(), ...b.keys()])].map((key) => [key, a.get(key), b.get(key)]), left.family_name, right.family_name);
+    compareDetails(content, left, right, [leftSemantic, rightSemantic], store, appendCompareTable);
 
     const stageTypes = [...new Set([...leftSemantic.stages, ...rightSemantic.stages].map((stage) => stage.stage_type))];
     appendSemanticTable(content, "Semantic stage presence and order", stageTypes.map((stageType) => {
@@ -2846,12 +2903,29 @@ async function openCompare({ sync = true, view = "architecture" } = {}) {
       };
     });
     appendSemanticTable(content, "Stage parameter and operation distributions", distributionRows, left, right, leftSemantic, rightSemantic);
+    filterComparison();
   } catch (error) {
-    content.textContent = error.message;
+    panelState(content, "Comparison could not be loaded. Your model choices are retained.", { error, retry: () => openCompare({ sync: false, view }) });
   }
 }
 
-function closeCompare() { $("#compare-pane").hidden = true; updateScrim(); }
+function closeCompare({ sync = true } = {}) {
+  const dialog = $("#compare-pane");
+  if (!dialog.open) return;
+  dialog.close();
+  dialog.hidden = true;
+  updateScrim();
+  if (sync && location.hash.startsWith("#/compare/")) {
+    const route = state.compareReturnRoute || `#/version/${state.compareIds[0]}/view/architecture`;
+    applyRoute(route).catch((error) => setNavigationError(error.message));
+  }
+  $("#compare-button").focus();
+}
+
+function filterComparison() {
+  const only = $("#compare-differences-only").checked;
+  $("#compare-content").querySelectorAll("tr[data-equal]").forEach((row) => { row.hidden = only && row.dataset.equal === "true"; });
+}
 
 function toggleFocus() {
   document.body.classList.toggle("focus-canvas");
@@ -2879,7 +2953,8 @@ async function start() {
       syncRoute({ push: false });
     }
   } catch (error) {
-    $("#empty-state").textContent = error.message;
+    $("#empty-state").hidden = false;
+    panelState($("#empty-state"), "The requested model could not be opened.", { error, retry: start });
     setNavigationError(error.message);
   }
 }
@@ -2897,6 +2972,25 @@ $("#favorites-only").addEventListener("click", (event) => {
 $("#model-list").addEventListener("scroll", renderListWindow, { passive: true });
 $("#module-search").addEventListener("input", renderModuleTree);
 $("#graph-search").addEventListener("input", () => updateGraphSearch());
+$("#graph-search").addEventListener("keydown", (event) => { if (event.key === "Enter") { event.preventDefault(); nextFinderResult(event.shiftKey ? -1 : 1); } });
+document.querySelectorAll("[data-finder]").forEach((input) => input.addEventListener("input", () => { state.finderPage = 0; state.finderCursor = -1; updateGraphSearch(); }));
+$("#finder-panel").addEventListener("toggle", renderFinderTable);
+$("#finder-next").addEventListener("click", () => nextFinderResult(1));
+$("#finder-previous").addEventListener("click", () => nextFinderResult(-1));
+$("#finder-page-next").addEventListener("click", () => { state.finderPage++; renderFinderTable(); });
+$("#finder-page-previous").addEventListener("click", () => { state.finderPage--; renderFinderTable(); });
+$("#finder-clear").addEventListener("click", async () => {
+  const context = state.searchContext;
+  state.searchContext = null;
+  $("#graph-search").value = "";
+  document.querySelectorAll("[data-finder]").forEach((input) => { input.value = ""; });
+  state.finderPage = 0; state.finderCursor = -1;
+  updateGraphSearch();
+  if (context) {
+    await applyRoute(context.route);
+    requestAnimationFrame(() => { state.zoom = context.zoom; state.pan = context.pan; updateTransform(); });
+  }
+});
 document.querySelectorAll(".path-control").forEach((button) => button.addEventListener("click", () => applyPathMode(button.dataset.pathMode)));
 document.querySelectorAll(".navigator-tab").forEach((button) => button.addEventListener("click", () => switchNavigator(button.dataset.navigator)));
 document.querySelectorAll(".mode").forEach((button) => button.addEventListener("click", () => setMode(button.dataset.mode)));
@@ -2932,8 +3026,60 @@ $("#theme-button").addEventListener("click", () => {
 $("#density-button").addEventListener("click", toggleDensity);
 $("#focus-button").addEventListener("click", toggleFocus);
 $("#center-selection").addEventListener("click", centerSelection);
-$("#compare-button").addEventListener("click", openCompare);
-$("#close-compare").addEventListener("click", closeCompare);
+$("#compare-button").addEventListener("click", () => openCompare({ view: state.mode }));
+$("#close-compare").addEventListener("click", () => closeCompare());
+$("#compare-differences-only").addEventListener("change", filterComparison);
+$("#compare-content").addEventListener("comparisonrender", filterComparison);
+$("#compare-pane").addEventListener("cancel", (event) => { event.preventDefault(); closeCompare(); });
+$("#compare-pane").addEventListener("keydown", (event) => {
+  if (event.key !== "Tab") return;
+  const controls = [...event.currentTarget.querySelectorAll('button:not([disabled]), input, select, a[href], summary, [tabindex="0"]')].filter((node) => node.getClientRects().length);
+  const first = controls[0], last = controls.at(-1);
+  if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+  if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+});
+$("#tools-button").addEventListener("click", () => {
+  const open = document.body.classList.toggle("tools-open");
+  $("#tools-button").setAttribute("aria-expanded", String(open));
+});
+$("#professional-preset").addEventListener("click", async () => {
+  await setDetailMode("standard", { sync: false });
+  await setLabelMode("both");
+  showTransientStatus("Professional preset saved: Standard detail and Both labels.");
+});
+$("#review-button").addEventListener("click", () => {
+  document.body.classList.remove("tools-open"); $("#tools-button").setAttribute("aria-expanded", "false");
+  openInspector(); $("#review-panel").open = true; $("#review-name").focus();
+});
+$("#copy-review-link").addEventListener("click", () => {
+  try { copyText(investigationLink(), "Investigation link"); }
+  catch (error) { showTransientStatus(error.message); }
+});
+for (const format of ["json", "csv", "svg"]) $("#export-" + format).addEventListener("click", () => exportInvestigation(format));
+workspaceSizing(showTransientStatus);
+savedReviews({
+  status: showTransientStatus,
+  snapshot: () => {
+    try {
+      return { name: $("#review-name").value.trim() || `${state.current?.family_name} investigation`, link: investigationLink(),
+        annotation: $("#review-annotation").value, selection: [...state.selectedIds], zoom: state.zoom, pan: { ...state.pan },
+        positions: [...state.userPositions], sizes: [...state.userSizes],
+        query: $("#graph-search").value, filters: [...document.querySelectorAll("[data-finder]")].map((input) => [input.dataset.finder, input.value]) };
+    } catch (error) { showTransientStatus(error.message); return null; }
+  },
+  restore: async (item) => {
+    try {
+      await applyRoute(item.link);
+      $("#review-name").value = item.name; $("#review-annotation").value = item.annotation;
+      $("#graph-search").value = item.query || "";
+      for (const [key, value] of item.filters || []) { const input = document.querySelector(`[data-finder="${key}"]`); if (input) input.value = value; }
+      state.userPositions = new Map(item.positions || []); state.userSizes = new Map(item.sizes || []);
+      state.selectedIds = new Set(item.selection || []); saveUserPositions();
+      requestAnimationFrame(() => { state.zoom = item.zoom; state.pan = item.pan; updateGraphSearch({ render: false }); updateTransform(); });
+      showTransientStatus("Saved investigation restored.");
+    } catch (error) { showTransientStatus(`Saved view could not be restored: ${error.message}`); }
+  },
+});
 $("#menu-button").addEventListener("click", openSidebar);
 $("#close-inspector").addEventListener("click", closeInspector);
 $("#scrim").addEventListener("click", () => { closeSidebar(); closeInspector(); closeCompare(); });
@@ -2974,7 +3120,12 @@ $("#minimap").addEventListener("click", (event) => {
   updateTransform();
 });
 window.addEventListener("hashchange", () => applyRoute(location.hash).catch((error) => setNavigationError(error.message)));
-window.addEventListener("resize", scheduleVisibleRender);
+window.addEventListener("resize", () => {
+  if (!matchMedia("(max-width: 720px)").matches) $("#sidebar").classList.remove("open");
+  if (!matchMedia("(max-width: 1060px)").matches) $("#inspector").classList.remove("open");
+  updateScrim();
+  scheduleVisibleRender();
+});
 document.addEventListener("mouseover", (event) => showTooltip(event.target.closest?.("[data-tooltip]")));
 document.addEventListener("mouseout", (event) => {
   if (!event.relatedTarget?.closest?.("[data-tooltip]")) hideTooltip();

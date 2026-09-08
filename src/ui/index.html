@@ -7,6 +7,10 @@
   <title>Model Structure</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="workspace.css">
+  <link rel="stylesheet" href="evidence.css">
+  <link rel="stylesheet" href="finder.css">
+  <link rel="stylesheet" href="review.css">
 </head>
 <body>
   <header class="topbar">
@@ -23,7 +27,8 @@
       <button class="mode" data-mode="blocks">Blocks</button>
       <button class="mode" data-mode="operation">Operations</button>
     </nav>
-    <div class="toolbar-actions">
+    <button id="tools-button" aria-expanded="false" aria-controls="workspace-tools">Tools</button>
+    <div id="workspace-tools" class="toolbar-actions" aria-label="Workspace tools">
       <label class="view-option"><span>Detail</span><select id="detail-mode" aria-label="Detail mode"><option value="beginner">Beginner</option><option value="standard">Standard</option><option value="trace">Trace</option></select></label>
       <label class="view-option"><span>Labels</span><select id="label-mode" aria-label="Label mode"><option value="semantic">Semantic</option><option value="both">Both</option><option value="source">Source</option></select></label>
       <button id="density-button" class="icon-button" title="Expand graph detail" aria-label="Expand graph detail">⊞</button>
@@ -32,6 +37,13 @@
       <button id="focus-button" class="icon-button" title="Toggle full canvas" aria-label="Toggle full canvas">⛶</button>
       <button id="reset-button" class="icon-button" title="Reset graph layout" aria-label="Reset graph layout">↺</button>
       <button id="fit-button" class="icon-button" title="Fit graph to screen" aria-label="Fit graph to screen">⤢</button>
+      <button id="professional-preset">Professional preset</button>
+      <button id="review-button">Review / export</button><button id="reset-panels">Reset panels</button>
+      <div class="mobile-paths" role="group" aria-label="Mobile tensor path">
+        <button class="path-control" data-path-mode="upstream" disabled>Inputs</button>
+        <button class="path-control" data-path-mode="downstream" disabled>Outputs</button>
+        <button class="path-control" data-path-mode="isolate" disabled>Path</button>
+      </div>
     </div>
   </header>
 
@@ -88,6 +100,20 @@
           </div>
         </div>
       </div>
+      <div class="finder-bar">
+        <output id="finder-status" role="status" aria-live="polite">Search operations and tensors</output>
+        <button id="finder-previous" aria-label="Previous search result">Previous</button><button id="finder-next" aria-label="Next search result">Next</button><button id="finder-clear">Clear search</button>
+      </div>
+      <details id="finder-panel" class="finder-panel"><summary>Operation table and tensor filters</summary>
+        <div class="finder-filters">
+          <label>Interface<input data-finder="interface" aria-label="Filter exact interface"></label>
+          <label>Module path<input data-finder="module" aria-label="Filter module path"></label>
+          <label>Tensor ID<input data-finder="tensor" aria-label="Filter tensor ID"></label>
+          <label>Dtype<input data-finder="dtype" aria-label="Filter dtype"></label>
+          <label>Shape<input data-finder="shape" aria-label="Filter shape" placeholder="[3, 5, 768]"></label>
+        </div>
+        <div id="finder-results"></div><div class="finder-pagination"><button id="finder-page-previous">Previous page</button><output id="finder-page"></output><button id="finder-page-next">Next page</button></div>
+      </details>
         <div id="graph-viewport" class="graph-viewport" tabindex="0" aria-label="Interactive computation graph">
           <div id="graph-canvas" class="graph-canvas">
             <div id="layer-groups" class="layer-groups" aria-hidden="true"></div>
@@ -126,6 +152,13 @@
         </div>
       </div>
       <div id="model-warning" class="model-warning" role="alert" hidden></div>
+      <details id="identity-panel" class="identity-panel"><summary id="identity-summary">Model identity and evidence</summary><div id="identity-facts"></div></details>
+      <details id="review-panel" class="review-panel"><summary>Saved views, annotations and export</summary>
+        <label>View name<input id="review-name" placeholder="Investigation name"></label>
+        <label>Annotation<textarea id="review-annotation" placeholder="Record an observation about the selected operations"></textarea></label>
+        <div class="review-actions"><button id="copy-review-link">Copy investigation link</button><button id="save-review">Save view</button><button id="export-json">JSON facts</button><button id="export-csv">CSV facts</button><button id="export-svg">Subgraph SVG</button></div>
+        <div id="saved-reviews"></div>
+      </details>
       <div class="inspector-tabs" role="tablist" aria-label="Inspector view">
         <button class="inspector-tab" data-panel="explain" role="tab" aria-selected="false" tabindex="-1">Explain</button>
         <button class="inspector-tab active" data-panel="details" role="tab" aria-selected="true" tabindex="0">Details</button>
@@ -163,15 +196,18 @@
         <div id="config-view" class="config-view">Open Config to load this asset.</div>
       </section>
     </aside>
+    <button id="resize-sidebar" class="panel-divider" role="separator" aria-label="Resize catalog panel" aria-orientation="vertical" aria-valuemin="180" aria-valuenow="260"></button>
+    <button id="resize-inspector" class="panel-divider" role="separator" aria-label="Resize inspector panel" aria-orientation="vertical" aria-valuemin="280" aria-valuenow="370"></button>
   </main>
 
-  <section id="compare-pane" class="compare-pane" role="dialog" aria-modal="true" aria-labelledby="compare-title" hidden>
+  <dialog id="compare-pane" class="compare-pane" aria-labelledby="compare-title" hidden>
     <div class="panel-head">
       <h2 id="compare-title">Compare models</h2>
       <button id="close-compare" class="icon-button" title="Close comparison" aria-label="Close comparison">×</button>
     </div>
     <div id="compare-content" class="compare-content"></div>
-  </section>
+    <label class="compare-filter"><input id="compare-differences-only" type="checkbox"> Differences only (unknown values remain visible)</label>
+  </dialog>
   <div id="scrim" class="scrim" hidden></div>
   <div id="ui-tooltip" class="ui-tooltip" role="tooltip" hidden></div>
   <script type="module" src="app.js"></script>

@@ -1,0 +1,20 @@
+.review-panel { padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 11px; }
+.review-panel summary { cursor: pointer; }
+.review-panel label { display: grid; gap: 4px; margin: 7px 0; }
+.review-panel input, .review-panel textarea { width: 100%; min-width: 0; padding: 5px; color: var(--text); background: var(--surface); border: 1px solid var(--border); }
+.review-panel textarea { resize: vertical; min-height: 54px; }
+.review-actions { display: flex; flex-wrap: wrap; gap: 5px; }
+#saved-reviews { max-height: 110px; overflow: auto; padding-top: 6px; }
+#saved-reviews > div { display: flex; gap: 5px; margin-bottom: 4px; }
+#saved-reviews > div > button:first-child { flex: 1; text-align: left; overflow-wrap: anywhere; }
+.workspace { position: relative; }
+.panel-divider { position: absolute; z-index: 10; top: 0; bottom: 0; width: 7px; padding: 0; min-height: 0; cursor: col-resize; background: transparent; border: 0; }
+.panel-divider:hover, .panel-divider:focus-visible { background: var(--accent); }
+@media (min-width: 1061px) {
+  .workspace { grid-template-columns: var(--sidebar-width, 260px) minmax(300px, 1fr) var(--inspector-width, 370px); }
+  #resize-sidebar { left: calc(var(--sidebar-width, 260px) - 4px); }
+  #resize-inspector { right: calc(var(--inspector-width, 370px) - 4px); }
+}
+@media (max-width: 1060px) { .panel-divider { display: none; } }
+body.focus-canvas .panel-divider { display: none; }
+body.focus-canvas .workspace { grid-template-columns: 1fr; }
