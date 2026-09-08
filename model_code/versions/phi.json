@@ -90,6 +90,23 @@
     "size_bytes": 734
   },
   "operation_count": 86,
+  "parameter_evidence": {
+    "basis": "Config-derived; unique parameter identities on a meta device",
+    "checkpoint": "microsoft/phi-1",
+    "head_scope": "Executed entrypoint; task heads only when included by this class",
+    "model_class": "transformers.models.phi.modeling_phi.PhiModel",
+    "parameter_count": 1313361920,
+    "publisher_parameter_count": null,
+    "revision": "d4c0adcb065e84e00ca814e35cba3012ea9841ab",
+    "status": "config_derived",
+    "variants": [
+      {
+        "head_scope": "Pinned config architecture, including its task head",
+        "model_class": "PhiForCausalLM",
+        "parameter_count": 1418270720
+      }
+    ]
+  },
   "parameters": {
     "total": 2976,
     "trainable": 2976

@@ -10,6 +10,8 @@ from typing import Any, Iterable
 from jsonschema import Draft202012Validator
 
 from .util import read_json, slug, write_json
+from .journey_facts import operation_facts
+from .parameter_counts import parameter_evidence
 
 
 SEMANTIC_SCHEMA_VERSION = "1.0.0"
@@ -336,37 +338,14 @@ def _primary_journey(
     path = best[target][1]
     if not path:
         return []
-    candidates = [(path[0]["source"], path[0])]
-    candidates.extend((edge["target"], edge) for edge in path)
-    selected: list[tuple[str, dict[str, Any]]] = []
-    for index, candidate in enumerate(candidates):
-        node_id, edge = candidate
-        tensor = tensors.get(edge["tensor_id"])
-        if tensor is None:
-            continue
-        previous = selected[-1] if selected else None
-        changed = bool(previous) and (
-            node_stage.get(previous[0]) != node_stage.get(node_id)
-            or tensors[previous[1]["tensor_id"]].get("shape") != tensor.get("shape")
-        )
-        if not previous or changed or index == len(candidates) - 1:
-            if previous and previous[1]["tensor_id"] == edge["tensor_id"]:
-                selected[-1] = candidate
-            else:
-                selected.append(candidate)
-    if len(selected) < 2:
-        selected = [candidates[0], candidates[-1]]
+    # A card owns this operation's ports. UI condensation cannot reinterpret gaps.
+    selected = [(edge["source"], edge) for edge in path]
+    selected.append((path[-1]["target"], path[-1]))
     steps = []
     for index, (node_id, edge) in enumerate(selected):
         tensor = tensors[edge["tensor_id"]]
         node = nodes[node_id]
-        previous_shape = steps[-1]["shape"] if steps else None
         shape = list(tensor.get("shape") or [])
-        explanation = (
-            f"Shape changes from {previous_shape} to {shape}."
-            if previous_shape is not None and previous_shape != shape
-            else "Shape is preserved at this selected boundary."
-        )
         stage_id = node_stage[node_id]
         steps.append({
             "step_id": f"journey-step-{index:03d}",
@@ -377,8 +356,8 @@ def _primary_journey(
             "shape": shape,
             "dtype": str(tensor.get("dtype") or "unknown"),
             "transform": "Model input" if index == 0 else node.get("display_name") or node.get("name") or stages_by_id[stage_id]["semantic_name"],
-            "explanation": explanation,
             "route_confidence": "exact" if index == 0 else edge.get("confidence", "unresolved"),
+            **operation_facts(node, graph.get("edges", [])),
         })
     ranks = [ROUTE_CONFIDENCE.get(edge.get("confidence"), 0) for edge in path]
     route_confidence = next(name for name, rank in ROUTE_CONFIDENCE.items() if rank == min(ranks))
@@ -704,7 +683,7 @@ def generate_semantics(
         "journeys": _primary_journey(graph, node_stage, stages_by_id, domain),
         "metrics": {
             "trace_parameter_total": trace_parameter_total,
-            "official_parameter_estimate": (version.get("resource_preflight") or {}).get("estimated_parameter_count"),
+            "official_parameter_estimate": (version.get("parameter_evidence") or {}).get("parameter_count"),
             "trace_operation_total": operation_total,
             "parameter_distribution": parameter_distribution,
             "operation_distribution": operation_distribution,
@@ -852,6 +831,7 @@ def materialize_semantic(
     stage_rules: dict[str, Any] | None = None,
 ) -> tuple[dict[str, Any], str]:
     graph = read_json(model_code / version["graph_ref"])
+    version["parameter_evidence"] = parameter_evidence(model_code, version, graph)
     config = read_json(model_code / version["trace_config_ref"]) if version.get("trace_config_ref") else read_json(model_code / version["config_ref"])
     semantic = generate_semantics(version, graph, generated_at=generated_at, config=config, registry=registry, stage_rules=stage_rules)
     semantic_ref = f"semantics/{version['version_id']}.json"
@@ -866,6 +846,8 @@ def materialize_catalog(model_code: Path) -> dict[str, Any]:
     registry, stage_rules = load_registry(), load_stage_rules()
     publish_semantic_contracts(model_code)
     entries = []
+    search_path = model_code / manifest["search_index"]
+    search = read_json(search_path)
     for version_id in manifest["versions"]:
         version_path = model_code / "versions" / f"{version_id}.json"
         version = read_json(version_path)
@@ -873,7 +855,15 @@ def materialize_catalog(model_code: Path) -> dict[str, Any]:
         version["semantic_ref"] = semantic_ref
         version["artifact_refs"] = sorted(set([*version.get("artifact_refs", []), semantic_ref]))
         write_json(version_path, version)
+        item = next(item for item in search if item["version_id"] == version_id)
+        item.update(
+            official_parameter_estimate=version["parameter_evidence"]["parameter_count"],
+            parameter_evidence=version["parameter_evidence"],
+            execution_source_version=version.get("execution_source_version"),
+            official_config_source=version.get("official_config_source"),
+        )
         entries.append(semantic_index_entry(semantic, semantic_ref, version_status=version.get("status", "passed")))
+    write_json(search_path, search)
     index = semantic_index_document(entries, generated_at)
     semantic_index_ref = "indexes/semantic.v1.json"
     write_json(model_code / semantic_index_ref, index)

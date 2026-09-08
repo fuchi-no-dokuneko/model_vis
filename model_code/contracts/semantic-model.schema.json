@@ -290,14 +290,38 @@
     "journeyStep": {
       "additionalProperties": false,
       "properties": {
+        "consumer_node_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "dtype": {
           "type": "string"
         },
         "explanation": {
           "type": "string"
         },
+        "input_ports": {
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        },
         "node_id": {
           "type": "string"
+        },
+        "output_ports": {
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "producer_node_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "representation": {
           "type": "string"

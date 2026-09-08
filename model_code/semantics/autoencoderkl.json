@@ -16392,47 +16392,130 @@
       ],
       "preferred_boundary_tensor_ids": [
         "tensor-000003",
+        "tensor-000006",
+        "tensor-000007",
+        "tensor-000010",
+        "tensor-000013",
+        "tensor-000014",
+        "tensor-000017",
+        "tensor-000018",
         "tensor-000019",
+        "tensor-000022",
+        "tensor-000023",
+        "tensor-000026",
+        "tensor-000029",
+        "tensor-000030",
+        "tensor-000033",
+        "tensor-000034",
         "tensor-000035",
         "tensor-000036",
         "tensor-000037",
         "tensor-000038",
+        "tensor-000041",
         "tensor-000042",
+        "tensor-000045",
         "tensor-000052",
         "tensor-000053",
+        "tensor-000058",
         "tensor-000059",
         "tensor-000060",
+        "tensor-000063",
         "tensor-000064",
         "tensor-000065",
+        "tensor-000066",
         "tensor-000067",
+        "tensor-000070",
+        "tensor-000071",
+        "tensor-000074",
+        "tensor-000077",
+        "tensor-000078",
+        "tensor-000081",
+        "tensor-000082",
         "tensor-000083",
+        "tensor-000086",
         "tensor-000087",
         "tensor-000090",
         "tensor-000093",
         "tensor-000094",
+        "tensor-000102",
         "tensor-000105",
+        "tensor-000108",
+        "tensor-000109",
+        "tensor-000112",
+        "tensor-000115",
+        "tensor-000116",
+        "tensor-000119",
+        "tensor-000120",
         "tensor-000121",
         "tensor-000122",
         "tensor-000123",
         "tensor-000124",
+        "tensor-000127",
         "tensor-000128",
+        "tensor-000131",
         "tensor-000138",
         "tensor-000139",
+        "tensor-000144",
         "tensor-000145",
         "tensor-000146",
+        "tensor-000149",
         "tensor-000150",
         "tensor-000151",
+        "tensor-000152",
         "tensor-000153",
+        "tensor-000156",
+        "tensor-000157",
+        "tensor-000160",
+        "tensor-000163",
+        "tensor-000164",
+        "tensor-000167",
+        "tensor-000168",
         "tensor-000169",
+        "tensor-000172",
+        "tensor-000173",
+        "tensor-000176",
+        "tensor-000179",
+        "tensor-000180",
+        "tensor-000183",
+        "tensor-000184",
+        "tensor-000185",
+        "tensor-000188",
+        "tensor-000189",
+        "tensor-000192",
+        "tensor-000195",
+        "tensor-000196",
+        "tensor-000199",
+        "tensor-000200",
         "tensor-000201",
-        "tensor-000205"
+        "tensor-000204",
+        "tensor-000205",
+        "tensor-000208"
       ],
       "route_confidence": "exact",
       "steps": [
         {
+          "consumer_node_ids": [
+            "op-000000"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape is preserved at this selected boundary.",
-          "node_id": "op-000000",
+          "explanation": "Model input exposes [[1, 3, 16, 16]].",
+          "input_ports": [],
+          "node_id": "graph-input",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "sample",
+              "port_id": "graph-input:out:0",
+              "shape": [
+                1,
+                3,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000000"
+            }
+          ],
+          "producer_node_ids": [],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16441,15 +16524,144 @@
             16,
             16
           ],
-          "stage_id": "stage-001-input-embedding",
+          "stage_id": "stage-000-input-adapter",
           "step_id": "journey-step-000",
           "tensor_id": "tensor-000000",
           "transform": "Model input"
         },
         {
+          "consumer_node_ids": [
+            "op-000001",
+            "op-000008"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 3, 16, 16] to [1, 16, 16, 16].",
+          "explanation": "This operation transforms [[1, 3, 16, 16], [16, 3, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000000:in:0",
+              "shape": [
+                1,
+                3,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000000"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000000:in:1",
+              "shape": [
+                16,
+                3,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000001"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000000:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000002"
+            }
+          ],
+          "node_id": "op-000000",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000000:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000003"
+            }
+          ],
+          "producer_node_ids": [
+            "graph-input",
+            "parameter-000002",
+            "parameter-000003"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-001-input-embedding",
+          "step_id": "journey-step-001",
+          "tensor_id": "tensor-000003",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000002"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000001:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000003"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000001:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000004"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000001:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000005"
+            }
+          ],
           "node_id": "op-000001",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000001:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000006"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000000",
+            "parameter-000005",
+            "parameter-000006"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16459,14 +16671,556 @@
             16
           ],
           "stage_id": "stage-002-backbone",
-          "step_id": "journey-step-001",
-          "tensor_id": "tensor-000003",
+          "step_id": "journey-step-002",
+          "tensor_id": "tensor-000006",
           "transform": "group_norm"
         },
         {
+          "consumer_node_ids": [
+            "op-000003"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape is preserved at this selected boundary.",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000002:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000006"
+            }
+          ],
+          "node_id": "op-000002",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000002:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000007"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000001"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-002-backbone",
+          "step_id": "journey-step-003",
+          "tensor_id": "tensor-000007",
+          "transform": "silu"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000004"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000003:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000007"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000003:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000008"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000003:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000009"
+            }
+          ],
+          "node_id": "op-000003",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000003:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000010"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000002",
+            "parameter-000009",
+            "parameter-000010"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-002-backbone",
+          "step_id": "journey-step-004",
+          "tensor_id": "tensor-000010",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000005"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000004:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000010"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000004:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000011"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000004:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000012"
+            }
+          ],
+          "node_id": "op-000004",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000004:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000013"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000003",
+            "parameter-000012",
+            "parameter-000013"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-002-backbone",
+          "step_id": "journey-step-005",
+          "tensor_id": "tensor-000013",
+          "transform": "group_norm"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000006"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000005:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000013"
+            }
+          ],
+          "node_id": "op-000005",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000005:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000014"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000004"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-002-backbone",
+          "step_id": "journey-step-006",
+          "tensor_id": "tensor-000014",
+          "transform": "silu"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000007"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000006:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000014"
+            }
+          ],
+          "node_id": "op-000006",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000006:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000014"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000005"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-002-backbone",
+          "step_id": "journey-step-007",
+          "tensor_id": "tensor-000014",
+          "transform": "dropout"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000008"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000007:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000014"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000007:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000015"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000007:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000016"
+            }
+          ],
+          "node_id": "op-000007",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000007:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000017"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000006",
+            "parameter-000017",
+            "parameter-000018"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-002-backbone",
+          "step_id": "journey-step-008",
+          "tensor_id": "tensor-000017",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000009"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000008:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000003"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "other",
+              "port_id": "op-000008:in:1",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000017"
+            }
+          ],
+          "node_id": "op-000008",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000008:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000018"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000000",
+            "op-000007"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-002-backbone",
+          "step_id": "journey-step-009",
+          "tensor_id": "tensor-000018",
+          "transform": "add"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000010",
+            "op-000017"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000009:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000018"
+            }
+          ],
+          "node_id": "op-000009",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000009:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000019"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000008"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-002-backbone",
+          "step_id": "journey-step-010",
+          "tensor_id": "tensor-000019",
+          "transform": "div"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000011"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000010:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000019"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000010:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000020"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000010:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000021"
+            }
+          ],
           "node_id": "op-000010",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000010:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000022"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000009",
+            "parameter-000022",
+            "parameter-000023"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16476,14 +17230,48 @@
             16
           ],
           "stage_id": "stage-003-backbone",
-          "step_id": "journey-step-002",
-          "tensor_id": "tensor-000019",
+          "step_id": "journey-step-011",
+          "tensor_id": "tensor-000022",
           "transform": "group_norm"
         },
         {
+          "consumer_node_ids": [
+            "op-000012"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape is preserved at this selected boundary.",
-          "node_id": "op-000019",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000011:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000022"
+            }
+          ],
+          "node_id": "op-000011",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000011:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000023"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000010"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16492,15 +17280,485 @@
             16,
             16
           ],
-          "stage_id": "stage-004-backbone",
-          "step_id": "journey-step-003",
-          "tensor_id": "tensor-000035",
-          "transform": "view"
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-012",
+          "tensor_id": "tensor-000023",
+          "transform": "silu"
         },
         {
+          "consumer_node_ids": [
+            "op-000013"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 16, 16, 16] to [1, 16, 256].",
-          "node_id": "op-000020",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000012:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000023"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000012:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000024"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000012:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000025"
+            }
+          ],
+          "node_id": "op-000012",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000012:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000026"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000011",
+            "parameter-000026",
+            "parameter-000027"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-013",
+          "tensor_id": "tensor-000026",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000014"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000013:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000026"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000013:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000027"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000013:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000028"
+            }
+          ],
+          "node_id": "op-000013",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000013:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000029"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000012",
+            "parameter-000029",
+            "parameter-000030"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-014",
+          "tensor_id": "tensor-000029",
+          "transform": "group_norm"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000015"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000014:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000029"
+            }
+          ],
+          "node_id": "op-000014",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000014:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000030"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000013"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-015",
+          "tensor_id": "tensor-000030",
+          "transform": "silu"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000016"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000015:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000030"
+            }
+          ],
+          "node_id": "op-000015",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000015:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000030"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000014"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-016",
+          "tensor_id": "tensor-000030",
+          "transform": "dropout"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000017"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000016:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000030"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000016:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000031"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000016:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000032"
+            }
+          ],
+          "node_id": "op-000016",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000016:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000033"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000015",
+            "parameter-000034",
+            "parameter-000035"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-017",
+          "tensor_id": "tensor-000033",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000018"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000017:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000019"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "other",
+              "port_id": "op-000017:in:1",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000033"
+            }
+          ],
+          "node_id": "op-000017",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000017:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000034"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000009",
+            "op-000016"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-018",
+          "tensor_id": "tensor-000034",
+          "transform": "add"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000019",
+            "op-000041"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000018:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000034"
+            }
+          ],
+          "node_id": "op-000018",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000018:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000035"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000017"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-003-backbone",
+          "step_id": "journey-step-019",
+          "tensor_id": "tensor-000035",
+          "transform": "div"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000020"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16]] \u2192 [[1, 16, 256]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000019:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000035"
+            }
+          ],
+          "node_id": "op-000019",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000019:out:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000036"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000018"
+          ],
           "representation": "Rank-3 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16509,14 +17767,46 @@
             256
           ],
           "stage_id": "stage-004-backbone",
-          "step_id": "journey-step-004",
+          "step_id": "journey-step-020",
           "tensor_id": "tensor-000036",
-          "transform": "transpose"
+          "transform": "view"
         },
         {
+          "consumer_node_ids": [
+            "op-000021"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 16, 256] to [1, 256, 16].",
-          "node_id": "op-000021",
+          "explanation": "This operation transforms [[1, 16, 256]] \u2192 [[1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000020:in:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000036"
+            }
+          ],
+          "node_id": "op-000020",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000020:out:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000037"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000019"
+          ],
           "representation": "Rank-3 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16525,14 +17815,46 @@
             16
           ],
           "stage_id": "stage-004-backbone",
-          "step_id": "journey-step-005",
+          "step_id": "journey-step-021",
           "tensor_id": "tensor-000037",
           "transform": "transpose"
         },
         {
+          "consumer_node_ids": [
+            "op-000022"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 256, 16] to [1, 16, 256].",
-          "node_id": "op-000022",
+          "explanation": "This operation transforms [[1, 256, 16]] \u2192 [[1, 16, 256]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000021:in:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000037"
+            }
+          ],
+          "node_id": "op-000021",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000021:out:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000038"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000020"
+          ],
           "representation": "Rank-3 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16541,81 +17863,116 @@
             256
           ],
           "stage_id": "stage-004-backbone",
-          "step_id": "journey-step-006",
+          "step_id": "journey-step-022",
           "tensor_id": "tensor-000038",
-          "transform": "group_norm"
-        },
-        {
-          "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 16, 256] to [1, 256, 16].",
-          "node_id": "op-000024",
-          "representation": "Rank-3 tensor",
-          "route_confidence": "exact",
-          "shape": [
-            1,
-            256,
-            16
-          ],
-          "stage_id": "stage-004-backbone",
-          "step_id": "journey-step-007",
-          "tensor_id": "tensor-000042",
-          "transform": "linear"
-        },
-        {
-          "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 256, 16] to [1, 256, 1, 16].",
-          "node_id": "op-000028",
-          "representation": "Rank-4 tensor",
-          "route_confidence": "exact",
-          "shape": [
-            1,
-            256,
-            1,
-            16
-          ],
-          "stage_id": "stage-004-backbone",
-          "step_id": "journey-step-008",
-          "tensor_id": "tensor-000052",
           "transform": "transpose"
         },
         {
+          "consumer_node_ids": [
+            "op-000023"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 256, 1, 16] to [1, 1, 256, 16].",
-          "node_id": "op-000033",
-          "representation": "Rank-4 tensor",
+          "explanation": "This operation transforms [[1, 16, 256], [16], [16]] \u2192 [[1, 16, 256]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000022:in:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000038"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000022:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000039"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000022:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000040"
+            }
+          ],
+          "node_id": "op-000022",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000022:out:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000041"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000021",
+            "parameter-000042",
+            "parameter-000043"
+          ],
+          "representation": "Rank-3 tensor",
           "route_confidence": "exact",
           "shape": [
             1,
-            1,
-            256,
-            16
+            16,
+            256
           ],
           "stage_id": "stage-004-backbone",
-          "step_id": "journey-step-009",
-          "tensor_id": "tensor-000053",
-          "transform": "scaled_dot_product_attention"
+          "step_id": "journey-step-023",
+          "tensor_id": "tensor-000041",
+          "transform": "group_norm"
         },
         {
-          "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 1, 256, 16] to [1, 256, 1, 16].",
-          "node_id": "op-000035",
-          "representation": "Rank-4 tensor",
-          "route_confidence": "exact",
-          "shape": [
-            1,
-            256,
-            1,
-            16
+          "consumer_node_ids": [
+            "op-000024",
+            "op-000025",
+            "op-000026"
           ],
-          "stage_id": "stage-004-backbone",
-          "step_id": "journey-step-010",
-          "tensor_id": "tensor-000059",
-          "transform": "reshape"
-        },
-        {
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 256, 1, 16] to [1, 256, 16].",
-          "node_id": "op-000036",
+          "explanation": "This operation transforms [[1, 16, 256]] \u2192 [[1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000023:in:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000041"
+            }
+          ],
+          "node_id": "op-000023",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000023:out:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000042"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000022"
+          ],
           "representation": "Rank-3 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16624,14 +17981,558 @@
             16
           ],
           "stage_id": "stage-004-backbone",
-          "step_id": "journey-step-011",
+          "step_id": "journey-step-024",
+          "tensor_id": "tensor-000042",
+          "transform": "transpose"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000027"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 256, 16], [16, 16], [16]] \u2192 [[1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000024:in:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000042"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000024:in:1",
+              "shape": [
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000043"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000024:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000044"
+            }
+          ],
+          "node_id": "op-000024",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000024:out:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000045"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000023",
+            "parameter-000046",
+            "parameter-000047"
+          ],
+          "representation": "Rank-3 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            256,
+            16
+          ],
+          "stage_id": "stage-004-backbone",
+          "step_id": "journey-step-025",
+          "tensor_id": "tensor-000045",
+          "transform": "linear"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000028"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 256, 16]] \u2192 [[1, 256, 1, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000027:in:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000045"
+            }
+          ],
+          "node_id": "op-000027",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000027:out:0",
+              "shape": [
+                1,
+                256,
+                1,
+                16
+              ],
+              "tensor_id": "tensor-000052"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000024"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            256,
+            1,
+            16
+          ],
+          "stage_id": "stage-004-backbone",
+          "step_id": "journey-step-026",
+          "tensor_id": "tensor-000052",
+          "transform": "view"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000033"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 256, 1, 16]] \u2192 [[1, 1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000028:in:0",
+              "shape": [
+                1,
+                256,
+                1,
+                16
+              ],
+              "tensor_id": "tensor-000052"
+            }
+          ],
+          "node_id": "op-000028",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000028:out:0",
+              "shape": [
+                1,
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000053"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000027"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            1,
+            256,
+            16
+          ],
+          "stage_id": "stage-004-backbone",
+          "step_id": "journey-step-027",
+          "tensor_id": "tensor-000053",
+          "transform": "transpose"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000034"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 1, 256, 16], [1, 1, 256, 16], [1, 1, 256, 16]] \u2192 [[1, 1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "query",
+              "port_id": "op-000033:in:0",
+              "shape": [
+                1,
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000053"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "key",
+              "port_id": "op-000033:in:1",
+              "shape": [
+                1,
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000055"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "value",
+              "port_id": "op-000033:in:2",
+              "shape": [
+                1,
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000057"
+            }
+          ],
+          "node_id": "op-000033",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000033:out:0",
+              "shape": [
+                1,
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000058"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000028",
+            "op-000030",
+            "op-000032"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            1,
+            256,
+            16
+          ],
+          "stage_id": "stage-004-backbone",
+          "step_id": "journey-step-028",
+          "tensor_id": "tensor-000058",
+          "transform": "scaled_dot_product_attention"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000035"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 1, 256, 16]] \u2192 [[1, 256, 1, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000034:in:0",
+              "shape": [
+                1,
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000058"
+            }
+          ],
+          "node_id": "op-000034",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000034:out:0",
+              "shape": [
+                1,
+                256,
+                1,
+                16
+              ],
+              "tensor_id": "tensor-000059"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000033"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            256,
+            1,
+            16
+          ],
+          "stage_id": "stage-004-backbone",
+          "step_id": "journey-step-029",
+          "tensor_id": "tensor-000059",
+          "transform": "transpose"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000036"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 256, 1, 16]] \u2192 [[1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000035:in:0",
+              "shape": [
+                1,
+                256,
+                1,
+                16
+              ],
+              "tensor_id": "tensor-000059"
+            }
+          ],
+          "node_id": "op-000035",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000035:out:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000060"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000034"
+          ],
+          "representation": "Rank-3 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            256,
+            16
+          ],
+          "stage_id": "stage-004-backbone",
+          "step_id": "journey-step-030",
+          "tensor_id": "tensor-000060",
+          "transform": "reshape"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000037"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 256, 16]] \u2192 [[1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000036:in:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000060"
+            }
+          ],
+          "node_id": "op-000036",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000036:out:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000060"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000035"
+          ],
+          "representation": "Rank-3 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            256,
+            16
+          ],
+          "stage_id": "stage-004-backbone",
+          "step_id": "journey-step-031",
           "tensor_id": "tensor-000060",
           "transform": "to"
         },
         {
+          "consumer_node_ids": [
+            "op-000038"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 256, 16] to [1, 16, 256].",
-          "node_id": "op-000040",
+          "explanation": "This operation transforms [[1, 256, 16], [16, 16], [16]] \u2192 [[1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000037:in:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000060"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000037:in:1",
+              "shape": [
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000061"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000037:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000062"
+            }
+          ],
+          "node_id": "op-000037",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000037:out:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000063"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000036",
+            "parameter-000065",
+            "parameter-000066"
+          ],
+          "representation": "Rank-3 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            256,
+            16
+          ],
+          "stage_id": "stage-004-backbone",
+          "step_id": "journey-step-032",
+          "tensor_id": "tensor-000063",
+          "transform": "linear"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000039"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 256, 16]] \u2192 [[1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000038:in:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000063"
+            }
+          ],
+          "node_id": "op-000038",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000038:out:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000063"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000037"
+          ],
+          "representation": "Rank-3 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            256,
+            16
+          ],
+          "stage_id": "stage-004-backbone",
+          "step_id": "journey-step-033",
+          "tensor_id": "tensor-000063",
+          "transform": "dropout"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000040"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 256, 16]] \u2192 [[1, 16, 256]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000039:in:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000063"
+            }
+          ],
+          "node_id": "op-000039",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000039:out:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000064"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000038"
+          ],
           "representation": "Rank-3 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16640,14 +18541,47 @@
             256
           ],
           "stage_id": "stage-004-backbone",
-          "step_id": "journey-step-012",
+          "step_id": "journey-step-034",
           "tensor_id": "tensor-000064",
-          "transform": "reshape"
+          "transform": "transpose"
         },
         {
+          "consumer_node_ids": [
+            "op-000041"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 16, 256] to [1, 16, 16, 16].",
-          "node_id": "op-000041",
+          "explanation": "This operation transforms [[1, 16, 256]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000040:in:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000064"
+            }
+          ],
+          "node_id": "op-000040",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000040:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000065"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000039"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16657,14 +18591,184 @@
             16
           ],
           "stage_id": "stage-004-backbone",
-          "step_id": "journey-step-013",
+          "step_id": "journey-step-035",
           "tensor_id": "tensor-000065",
+          "transform": "reshape"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000042"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000041:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000065"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "other",
+              "port_id": "op-000041:in:1",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000035"
+            }
+          ],
+          "node_id": "op-000041",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000041:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000066"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000018",
+            "op-000040"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-004-backbone",
+          "step_id": "journey-step-036",
+          "tensor_id": "tensor-000066",
           "transform": "add"
         },
         {
+          "consumer_node_ids": [
+            "op-000043",
+            "op-000050"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape is preserved at this selected boundary.",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000042:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000066"
+            }
+          ],
+          "node_id": "op-000042",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000042:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000067"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000041"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-004-backbone",
+          "step_id": "journey-step-037",
+          "tensor_id": "tensor-000067",
+          "transform": "div"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000044"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000043:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000067"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000043:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000068"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000043:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000069"
+            }
+          ],
           "node_id": "op-000043",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000043:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000070"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000042",
+            "parameter-000073",
+            "parameter-000074"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16674,14 +18778,555 @@
             16
           ],
           "stage_id": "stage-005-backbone",
-          "step_id": "journey-step-014",
-          "tensor_id": "tensor-000067",
+          "step_id": "journey-step-038",
+          "tensor_id": "tensor-000070",
           "transform": "group_norm"
         },
         {
+          "consumer_node_ids": [
+            "op-000045"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape is preserved at this selected boundary.",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000044:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000070"
+            }
+          ],
+          "node_id": "op-000044",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000044:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000071"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000043"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-005-backbone",
+          "step_id": "journey-step-039",
+          "tensor_id": "tensor-000071",
+          "transform": "silu"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000046"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000045:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000071"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000045:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000072"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000045:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000073"
+            }
+          ],
+          "node_id": "op-000045",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000045:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000074"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000044",
+            "parameter-000077",
+            "parameter-000078"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-005-backbone",
+          "step_id": "journey-step-040",
+          "tensor_id": "tensor-000074",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000047"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000046:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000074"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000046:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000075"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000046:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000076"
+            }
+          ],
+          "node_id": "op-000046",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000046:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000077"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000045",
+            "parameter-000080",
+            "parameter-000081"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-005-backbone",
+          "step_id": "journey-step-041",
+          "tensor_id": "tensor-000077",
+          "transform": "group_norm"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000048"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000047:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000077"
+            }
+          ],
+          "node_id": "op-000047",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000047:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000078"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000046"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-005-backbone",
+          "step_id": "journey-step-042",
+          "tensor_id": "tensor-000078",
+          "transform": "silu"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000049"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000048:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000078"
+            }
+          ],
+          "node_id": "op-000048",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000048:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000078"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000047"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-005-backbone",
+          "step_id": "journey-step-043",
+          "tensor_id": "tensor-000078",
+          "transform": "dropout"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000050"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000049:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000078"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000049:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000079"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000049:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000080"
+            }
+          ],
+          "node_id": "op-000049",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000049:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000081"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000048",
+            "parameter-000085",
+            "parameter-000086"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-005-backbone",
+          "step_id": "journey-step-044",
+          "tensor_id": "tensor-000081",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000051"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000050:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000067"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "other",
+              "port_id": "op-000050:in:1",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000081"
+            }
+          ],
+          "node_id": "op-000050",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000050:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000082"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000042",
+            "op-000049"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-005-backbone",
+          "step_id": "journey-step-045",
+          "tensor_id": "tensor-000082",
+          "transform": "add"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000052"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000051:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000082"
+            }
+          ],
+          "node_id": "op-000051",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000051:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000083"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000050"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-005-backbone",
+          "step_id": "journey-step-046",
+          "tensor_id": "tensor-000083",
+          "transform": "div"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000053"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000052:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000083"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000052:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000084"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000052:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000085"
+            }
+          ],
           "node_id": "op-000052",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000052:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000086"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000051",
+            "parameter-000090",
+            "parameter-000091"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16691,14 +19336,48 @@
             16
           ],
           "stage_id": "stage-006-backbone",
-          "step_id": "journey-step-015",
-          "tensor_id": "tensor-000083",
+          "step_id": "journey-step-047",
+          "tensor_id": "tensor-000086",
           "transform": "group_norm"
         },
         {
+          "consumer_node_ids": [
+            "op-000054"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape is preserved at this selected boundary.",
-          "node_id": "op-000054",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000053:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000086"
+            }
+          ],
+          "node_id": "op-000053",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000053:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000087"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000052"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16707,15 +19386,72 @@
             16,
             16
           ],
-          "stage_id": "stage-007-input-embedding",
-          "step_id": "journey-step-016",
+          "stage_id": "stage-006-backbone",
+          "step_id": "journey-step-048",
           "tensor_id": "tensor-000087",
-          "transform": "conv2d"
+          "transform": "silu"
         },
         {
+          "consumer_node_ids": [
+            "op-000055"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 16, 16, 16] to [1, 32, 16, 16].",
-          "node_id": "op-000055",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [32, 16, 3, 3], [32]] \u2192 [[1, 32, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000054:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000087"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000054:in:1",
+              "shape": [
+                32,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000088"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000054:in:2",
+              "shape": [
+                32
+              ],
+              "tensor_id": "tensor-000089"
+            }
+          ],
+          "node_id": "op-000054",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000054:out:0",
+              "shape": [
+                1,
+                32,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000090"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000053",
+            "parameter-000094",
+            "parameter-000095"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16725,14 +19461,71 @@
             16
           ],
           "stage_id": "stage-007-input-embedding",
-          "step_id": "journey-step-017",
+          "step_id": "journey-step-049",
           "tensor_id": "tensor-000090",
           "transform": "conv2d"
         },
         {
+          "consumer_node_ids": [
+            "op-000056"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape is preserved at this selected boundary.",
-          "node_id": "op-000056",
+          "explanation": "This operation transforms [[1, 32, 16, 16], [32, 32, 1, 1], [32]] \u2192 [[1, 32, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000055:in:0",
+              "shape": [
+                1,
+                32,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000090"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000055:in:1",
+              "shape": [
+                32,
+                32,
+                1,
+                1
+              ],
+              "tensor_id": "tensor-000091"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000055:in:2",
+              "shape": [
+                32
+              ],
+              "tensor_id": "tensor-000092"
+            }
+          ],
+          "node_id": "op-000055",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000055:out:0",
+              "shape": [
+                1,
+                32,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000093"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000054",
+            "parameter-000097",
+            "parameter-000098"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16741,15 +19534,136 @@
             16,
             16
           ],
-          "stage_id": "stage-008-backbone",
-          "step_id": "journey-step-018",
+          "stage_id": "stage-007-input-embedding",
+          "step_id": "journey-step-050",
           "tensor_id": "tensor-000093",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000057",
+            "op-000061"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 32, 16, 16]] \u2192 [[1, 16, 16, 16], [1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000056:in:0",
+              "shape": [
+                1,
+                32,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000093"
+            }
+          ],
+          "node_id": "op-000056",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output[0]",
+              "port_id": "op-000056:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000094"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "output[1]",
+              "port_id": "op-000056:out:1",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000095"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000055"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-008-backbone",
+          "step_id": "journey-step-051",
+          "tensor_id": "tensor-000094",
           "transform": "chunk"
         },
         {
+          "consumer_node_ids": [
+            "op-000062"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 32, 16, 16] to [1, 16, 16, 16].",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 1, 1], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000061:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000094"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000061:in:1",
+              "shape": [
+                16,
+                16,
+                1,
+                1
+              ],
+              "tensor_id": "tensor-000100"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000061:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000101"
+            }
+          ],
           "node_id": "op-000061",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000061:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000102"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000056",
+            "parameter-000105",
+            "parameter-000106"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16759,14 +19673,143 @@
             16
           ],
           "stage_id": "stage-009-input-embedding",
-          "step_id": "journey-step-019",
-          "tensor_id": "tensor-000094",
+          "step_id": "journey-step-052",
+          "tensor_id": "tensor-000102",
           "transform": "conv2d"
         },
         {
+          "consumer_node_ids": [
+            "op-000063",
+            "op-000070"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape is preserved at this selected boundary.",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000062:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000102"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000062:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000103"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000062:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000104"
+            }
+          ],
+          "node_id": "op-000062",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000062:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000105"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000061",
+            "parameter-000108",
+            "parameter-000109"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-009-input-embedding",
+          "step_id": "journey-step-053",
+          "tensor_id": "tensor-000105",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000064"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000063:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000105"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000063:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000106"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000063:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000107"
+            }
+          ],
           "node_id": "op-000063",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000063:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000108"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000062",
+            "parameter-000111",
+            "parameter-000112"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16776,14 +19819,48 @@
             16
           ],
           "stage_id": "stage-010-backbone",
-          "step_id": "journey-step-020",
-          "tensor_id": "tensor-000105",
+          "step_id": "journey-step-054",
+          "tensor_id": "tensor-000108",
           "transform": "group_norm"
         },
         {
+          "consumer_node_ids": [
+            "op-000065"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape is preserved at this selected boundary.",
-          "node_id": "op-000072",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000064:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000108"
+            }
+          ],
+          "node_id": "op-000064",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000064:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000109"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000063"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16792,15 +19869,485 @@
             16,
             16
           ],
-          "stage_id": "stage-011-backbone",
-          "step_id": "journey-step-021",
-          "tensor_id": "tensor-000121",
-          "transform": "view"
+          "stage_id": "stage-010-backbone",
+          "step_id": "journey-step-055",
+          "tensor_id": "tensor-000109",
+          "transform": "silu"
         },
         {
+          "consumer_node_ids": [
+            "op-000066"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 16, 16, 16] to [1, 16, 256].",
-          "node_id": "op-000073",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000065:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000109"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000065:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000110"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000065:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000111"
+            }
+          ],
+          "node_id": "op-000065",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000065:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000112"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000064",
+            "parameter-000115",
+            "parameter-000116"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-010-backbone",
+          "step_id": "journey-step-056",
+          "tensor_id": "tensor-000112",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000067"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000066:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000112"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000066:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000113"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000066:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000114"
+            }
+          ],
+          "node_id": "op-000066",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000066:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000115"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000065",
+            "parameter-000118",
+            "parameter-000119"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-010-backbone",
+          "step_id": "journey-step-057",
+          "tensor_id": "tensor-000115",
+          "transform": "group_norm"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000068"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000067:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000115"
+            }
+          ],
+          "node_id": "op-000067",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000067:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000116"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000066"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-010-backbone",
+          "step_id": "journey-step-058",
+          "tensor_id": "tensor-000116",
+          "transform": "silu"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000069"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000068:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000116"
+            }
+          ],
+          "node_id": "op-000068",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000068:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000116"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000067"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-010-backbone",
+          "step_id": "journey-step-059",
+          "tensor_id": "tensor-000116",
+          "transform": "dropout"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000070"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000069:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000116"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000069:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000117"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000069:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000118"
+            }
+          ],
+          "node_id": "op-000069",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000069:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000119"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000068",
+            "parameter-000123",
+            "parameter-000124"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-010-backbone",
+          "step_id": "journey-step-060",
+          "tensor_id": "tensor-000119",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000071"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000070:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000105"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "other",
+              "port_id": "op-000070:in:1",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000119"
+            }
+          ],
+          "node_id": "op-000070",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000070:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000120"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000062",
+            "op-000069"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-010-backbone",
+          "step_id": "journey-step-061",
+          "tensor_id": "tensor-000120",
+          "transform": "add"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000072",
+            "op-000094"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000071:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000120"
+            }
+          ],
+          "node_id": "op-000071",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000071:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000121"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000070"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-010-backbone",
+          "step_id": "journey-step-062",
+          "tensor_id": "tensor-000121",
+          "transform": "div"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000073"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16]] \u2192 [[1, 16, 256]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000072:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000121"
+            }
+          ],
+          "node_id": "op-000072",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000072:out:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000122"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000071"
+          ],
           "representation": "Rank-3 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16809,14 +20356,46 @@
             256
           ],
           "stage_id": "stage-011-backbone",
-          "step_id": "journey-step-022",
+          "step_id": "journey-step-063",
           "tensor_id": "tensor-000122",
-          "transform": "transpose"
+          "transform": "view"
         },
         {
+          "consumer_node_ids": [
+            "op-000074"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 16, 256] to [1, 256, 16].",
-          "node_id": "op-000074",
+          "explanation": "This operation transforms [[1, 16, 256]] \u2192 [[1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000073:in:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000122"
+            }
+          ],
+          "node_id": "op-000073",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000073:out:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000123"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000072"
+          ],
           "representation": "Rank-3 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16825,14 +20404,46 @@
             16
           ],
           "stage_id": "stage-011-backbone",
-          "step_id": "journey-step-023",
+          "step_id": "journey-step-064",
           "tensor_id": "tensor-000123",
           "transform": "transpose"
         },
         {
+          "consumer_node_ids": [
+            "op-000075"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 256, 16] to [1, 16, 256].",
-          "node_id": "op-000075",
+          "explanation": "This operation transforms [[1, 256, 16]] \u2192 [[1, 16, 256]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000074:in:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000123"
+            }
+          ],
+          "node_id": "op-000074",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000074:out:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000124"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000073"
+          ],
           "representation": "Rank-3 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16841,81 +20452,116 @@
             256
           ],
           "stage_id": "stage-011-backbone",
-          "step_id": "journey-step-024",
+          "step_id": "journey-step-065",
           "tensor_id": "tensor-000124",
-          "transform": "group_norm"
-        },
-        {
-          "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 16, 256] to [1, 256, 16].",
-          "node_id": "op-000077",
-          "representation": "Rank-3 tensor",
-          "route_confidence": "exact",
-          "shape": [
-            1,
-            256,
-            16
-          ],
-          "stage_id": "stage-011-backbone",
-          "step_id": "journey-step-025",
-          "tensor_id": "tensor-000128",
-          "transform": "linear"
-        },
-        {
-          "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 256, 16] to [1, 256, 1, 16].",
-          "node_id": "op-000081",
-          "representation": "Rank-4 tensor",
-          "route_confidence": "exact",
-          "shape": [
-            1,
-            256,
-            1,
-            16
-          ],
-          "stage_id": "stage-011-backbone",
-          "step_id": "journey-step-026",
-          "tensor_id": "tensor-000138",
           "transform": "transpose"
         },
         {
+          "consumer_node_ids": [
+            "op-000076"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 256, 1, 16] to [1, 1, 256, 16].",
-          "node_id": "op-000086",
-          "representation": "Rank-4 tensor",
+          "explanation": "This operation transforms [[1, 16, 256], [16], [16]] \u2192 [[1, 16, 256]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000075:in:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000124"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000075:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000125"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000075:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000126"
+            }
+          ],
+          "node_id": "op-000075",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000075:out:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000127"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000074",
+            "parameter-000131",
+            "parameter-000132"
+          ],
+          "representation": "Rank-3 tensor",
           "route_confidence": "exact",
           "shape": [
             1,
-            1,
-            256,
-            16
+            16,
+            256
           ],
           "stage_id": "stage-011-backbone",
-          "step_id": "journey-step-027",
-          "tensor_id": "tensor-000139",
-          "transform": "scaled_dot_product_attention"
+          "step_id": "journey-step-066",
+          "tensor_id": "tensor-000127",
+          "transform": "group_norm"
         },
         {
-          "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 1, 256, 16] to [1, 256, 1, 16].",
-          "node_id": "op-000088",
-          "representation": "Rank-4 tensor",
-          "route_confidence": "exact",
-          "shape": [
-            1,
-            256,
-            1,
-            16
+          "consumer_node_ids": [
+            "op-000077",
+            "op-000078",
+            "op-000079"
           ],
-          "stage_id": "stage-011-backbone",
-          "step_id": "journey-step-028",
-          "tensor_id": "tensor-000145",
-          "transform": "reshape"
-        },
-        {
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 256, 1, 16] to [1, 256, 16].",
-          "node_id": "op-000089",
+          "explanation": "This operation transforms [[1, 16, 256]] \u2192 [[1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000076:in:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000127"
+            }
+          ],
+          "node_id": "op-000076",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000076:out:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000128"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000075"
+          ],
           "representation": "Rank-3 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16924,14 +20570,558 @@
             16
           ],
           "stage_id": "stage-011-backbone",
-          "step_id": "journey-step-029",
+          "step_id": "journey-step-067",
+          "tensor_id": "tensor-000128",
+          "transform": "transpose"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000080"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 256, 16], [16, 16], [16]] \u2192 [[1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000077:in:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000128"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000077:in:1",
+              "shape": [
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000129"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000077:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000130"
+            }
+          ],
+          "node_id": "op-000077",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000077:out:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000131"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000076",
+            "parameter-000135",
+            "parameter-000136"
+          ],
+          "representation": "Rank-3 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            256,
+            16
+          ],
+          "stage_id": "stage-011-backbone",
+          "step_id": "journey-step-068",
+          "tensor_id": "tensor-000131",
+          "transform": "linear"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000081"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 256, 16]] \u2192 [[1, 256, 1, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000080:in:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000131"
+            }
+          ],
+          "node_id": "op-000080",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000080:out:0",
+              "shape": [
+                1,
+                256,
+                1,
+                16
+              ],
+              "tensor_id": "tensor-000138"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000077"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            256,
+            1,
+            16
+          ],
+          "stage_id": "stage-011-backbone",
+          "step_id": "journey-step-069",
+          "tensor_id": "tensor-000138",
+          "transform": "view"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000086"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 256, 1, 16]] \u2192 [[1, 1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000081:in:0",
+              "shape": [
+                1,
+                256,
+                1,
+                16
+              ],
+              "tensor_id": "tensor-000138"
+            }
+          ],
+          "node_id": "op-000081",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000081:out:0",
+              "shape": [
+                1,
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000139"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000080"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            1,
+            256,
+            16
+          ],
+          "stage_id": "stage-011-backbone",
+          "step_id": "journey-step-070",
+          "tensor_id": "tensor-000139",
+          "transform": "transpose"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000087"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 1, 256, 16], [1, 1, 256, 16], [1, 1, 256, 16]] \u2192 [[1, 1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "query",
+              "port_id": "op-000086:in:0",
+              "shape": [
+                1,
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000139"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "key",
+              "port_id": "op-000086:in:1",
+              "shape": [
+                1,
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000141"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "value",
+              "port_id": "op-000086:in:2",
+              "shape": [
+                1,
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000143"
+            }
+          ],
+          "node_id": "op-000086",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000086:out:0",
+              "shape": [
+                1,
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000144"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000081",
+            "op-000083",
+            "op-000085"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            1,
+            256,
+            16
+          ],
+          "stage_id": "stage-011-backbone",
+          "step_id": "journey-step-071",
+          "tensor_id": "tensor-000144",
+          "transform": "scaled_dot_product_attention"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000088"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 1, 256, 16]] \u2192 [[1, 256, 1, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000087:in:0",
+              "shape": [
+                1,
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000144"
+            }
+          ],
+          "node_id": "op-000087",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000087:out:0",
+              "shape": [
+                1,
+                256,
+                1,
+                16
+              ],
+              "tensor_id": "tensor-000145"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000086"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            256,
+            1,
+            16
+          ],
+          "stage_id": "stage-011-backbone",
+          "step_id": "journey-step-072",
+          "tensor_id": "tensor-000145",
+          "transform": "transpose"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000089"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 256, 1, 16]] \u2192 [[1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000088:in:0",
+              "shape": [
+                1,
+                256,
+                1,
+                16
+              ],
+              "tensor_id": "tensor-000145"
+            }
+          ],
+          "node_id": "op-000088",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000088:out:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000146"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000087"
+          ],
+          "representation": "Rank-3 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            256,
+            16
+          ],
+          "stage_id": "stage-011-backbone",
+          "step_id": "journey-step-073",
+          "tensor_id": "tensor-000146",
+          "transform": "reshape"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000090"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 256, 16]] \u2192 [[1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000089:in:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000146"
+            }
+          ],
+          "node_id": "op-000089",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000089:out:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000146"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000088"
+          ],
+          "representation": "Rank-3 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            256,
+            16
+          ],
+          "stage_id": "stage-011-backbone",
+          "step_id": "journey-step-074",
           "tensor_id": "tensor-000146",
           "transform": "to"
         },
         {
+          "consumer_node_ids": [
+            "op-000091"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 256, 16] to [1, 16, 256].",
-          "node_id": "op-000093",
+          "explanation": "This operation transforms [[1, 256, 16], [16, 16], [16]] \u2192 [[1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000090:in:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000146"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000090:in:1",
+              "shape": [
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000147"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000090:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000148"
+            }
+          ],
+          "node_id": "op-000090",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000090:out:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000149"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000089",
+            "parameter-000154",
+            "parameter-000155"
+          ],
+          "representation": "Rank-3 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            256,
+            16
+          ],
+          "stage_id": "stage-011-backbone",
+          "step_id": "journey-step-075",
+          "tensor_id": "tensor-000149",
+          "transform": "linear"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000092"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 256, 16]] \u2192 [[1, 256, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000091:in:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000149"
+            }
+          ],
+          "node_id": "op-000091",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000091:out:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000149"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000090"
+          ],
+          "representation": "Rank-3 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            256,
+            16
+          ],
+          "stage_id": "stage-011-backbone",
+          "step_id": "journey-step-076",
+          "tensor_id": "tensor-000149",
+          "transform": "dropout"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000093"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 256, 16]] \u2192 [[1, 16, 256]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000092:in:0",
+              "shape": [
+                1,
+                256,
+                16
+              ],
+              "tensor_id": "tensor-000149"
+            }
+          ],
+          "node_id": "op-000092",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000092:out:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000150"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000091"
+          ],
           "representation": "Rank-3 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16940,14 +21130,47 @@
             256
           ],
           "stage_id": "stage-011-backbone",
-          "step_id": "journey-step-030",
+          "step_id": "journey-step-077",
           "tensor_id": "tensor-000150",
-          "transform": "reshape"
+          "transform": "transpose"
         },
         {
+          "consumer_node_ids": [
+            "op-000094"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 16, 256] to [1, 16, 16, 16].",
-          "node_id": "op-000094",
+          "explanation": "This operation transforms [[1, 16, 256]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000093:in:0",
+              "shape": [
+                1,
+                16,
+                256
+              ],
+              "tensor_id": "tensor-000150"
+            }
+          ],
+          "node_id": "op-000093",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000093:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000151"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000092"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16957,14 +21180,184 @@
             16
           ],
           "stage_id": "stage-011-backbone",
-          "step_id": "journey-step-031",
+          "step_id": "journey-step-078",
           "tensor_id": "tensor-000151",
+          "transform": "reshape"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000095"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000094:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000151"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "other",
+              "port_id": "op-000094:in:1",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000121"
+            }
+          ],
+          "node_id": "op-000094",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000094:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000152"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000071",
+            "op-000093"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-011-backbone",
+          "step_id": "journey-step-079",
+          "tensor_id": "tensor-000152",
           "transform": "add"
         },
         {
+          "consumer_node_ids": [
+            "op-000096",
+            "op-000103"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape is preserved at this selected boundary.",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000095:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000152"
+            }
+          ],
+          "node_id": "op-000095",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000095:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000153"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000094"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-011-backbone",
+          "step_id": "journey-step-080",
+          "tensor_id": "tensor-000153",
+          "transform": "div"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000097"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000096:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000153"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000096:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000154"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000096:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000155"
+            }
+          ],
           "node_id": "op-000096",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000096:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000156"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000095",
+            "parameter-000162",
+            "parameter-000163"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16974,14 +21367,556 @@
             16
           ],
           "stage_id": "stage-012-backbone",
-          "step_id": "journey-step-032",
-          "tensor_id": "tensor-000153",
+          "step_id": "journey-step-081",
+          "tensor_id": "tensor-000156",
           "transform": "group_norm"
         },
         {
+          "consumer_node_ids": [
+            "op-000098"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape is preserved at this selected boundary.",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000097:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000156"
+            }
+          ],
+          "node_id": "op-000097",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000097:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000157"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000096"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-012-backbone",
+          "step_id": "journey-step-082",
+          "tensor_id": "tensor-000157",
+          "transform": "silu"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000099"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000098:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000157"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000098:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000158"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000098:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000159"
+            }
+          ],
+          "node_id": "op-000098",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000098:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000160"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000097",
+            "parameter-000166",
+            "parameter-000167"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-012-backbone",
+          "step_id": "journey-step-083",
+          "tensor_id": "tensor-000160",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000100"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000099:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000160"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000099:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000161"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000099:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000162"
+            }
+          ],
+          "node_id": "op-000099",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000099:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000163"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000098",
+            "parameter-000169",
+            "parameter-000170"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-012-backbone",
+          "step_id": "journey-step-084",
+          "tensor_id": "tensor-000163",
+          "transform": "group_norm"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000101"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000100:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000163"
+            }
+          ],
+          "node_id": "op-000100",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000100:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000164"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000099"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-012-backbone",
+          "step_id": "journey-step-085",
+          "tensor_id": "tensor-000164",
+          "transform": "silu"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000102"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000101:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000164"
+            }
+          ],
+          "node_id": "op-000101",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000101:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000164"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000100"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-012-backbone",
+          "step_id": "journey-step-086",
+          "tensor_id": "tensor-000164",
+          "transform": "dropout"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000103"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000102:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000164"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000102:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000165"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000102:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000166"
+            }
+          ],
+          "node_id": "op-000102",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000102:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000167"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000101",
+            "parameter-000174",
+            "parameter-000175"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-012-backbone",
+          "step_id": "journey-step-087",
+          "tensor_id": "tensor-000167",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000104"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000103:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000153"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "other",
+              "port_id": "op-000103:in:1",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000167"
+            }
+          ],
+          "node_id": "op-000103",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000103:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000168"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000095",
+            "op-000102"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-012-backbone",
+          "step_id": "journey-step-088",
+          "tensor_id": "tensor-000168",
+          "transform": "add"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000105",
+            "op-000112"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000104:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000168"
+            }
+          ],
+          "node_id": "op-000104",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000104:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000169"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000103"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-012-backbone",
+          "step_id": "journey-step-089",
+          "tensor_id": "tensor-000169",
+          "transform": "div"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000106"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000105:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000169"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000105:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000170"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000105:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000171"
+            }
+          ],
           "node_id": "op-000105",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000105:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000172"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000104",
+            "parameter-000179",
+            "parameter-000180"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -16991,14 +21926,1114 @@
             16
           ],
           "stage_id": "stage-013-backbone",
-          "step_id": "journey-step-033",
-          "tensor_id": "tensor-000169",
+          "step_id": "journey-step-090",
+          "tensor_id": "tensor-000172",
           "transform": "group_norm"
         },
         {
+          "consumer_node_ids": [
+            "op-000107"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape is preserved at this selected boundary.",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000106:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000172"
+            }
+          ],
+          "node_id": "op-000106",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000106:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000173"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000105"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-091",
+          "tensor_id": "tensor-000173",
+          "transform": "silu"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000108"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000107:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000173"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000107:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000174"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000107:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000175"
+            }
+          ],
+          "node_id": "op-000107",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000107:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000176"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000106",
+            "parameter-000183",
+            "parameter-000184"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-092",
+          "tensor_id": "tensor-000176",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000109"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000108:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000176"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000108:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000177"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000108:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000178"
+            }
+          ],
+          "node_id": "op-000108",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000108:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000179"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000107",
+            "parameter-000186",
+            "parameter-000187"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-093",
+          "tensor_id": "tensor-000179",
+          "transform": "group_norm"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000110"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000109:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000179"
+            }
+          ],
+          "node_id": "op-000109",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000109:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000180"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000108"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-094",
+          "tensor_id": "tensor-000180",
+          "transform": "silu"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000111"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000110:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000180"
+            }
+          ],
+          "node_id": "op-000110",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000110:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000180"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000109"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-095",
+          "tensor_id": "tensor-000180",
+          "transform": "dropout"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000112"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000111:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000180"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000111:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000181"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000111:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000182"
+            }
+          ],
+          "node_id": "op-000111",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000111:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000183"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000110",
+            "parameter-000191",
+            "parameter-000192"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-096",
+          "tensor_id": "tensor-000183",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000113"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000112:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000169"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "other",
+              "port_id": "op-000112:in:1",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000183"
+            }
+          ],
+          "node_id": "op-000112",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000112:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000184"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000104",
+            "op-000111"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-097",
+          "tensor_id": "tensor-000184",
+          "transform": "add"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000114",
+            "op-000121"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000113:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000184"
+            }
+          ],
+          "node_id": "op-000113",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000113:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000185"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000112"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-098",
+          "tensor_id": "tensor-000185",
+          "transform": "div"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000115"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000114:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000185"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000114:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000186"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000114:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000187"
+            }
+          ],
+          "node_id": "op-000114",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000114:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000188"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000113",
+            "parameter-000196",
+            "parameter-000197"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-099",
+          "tensor_id": "tensor-000188",
+          "transform": "group_norm"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000116"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000115:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000188"
+            }
+          ],
+          "node_id": "op-000115",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000115:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000189"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000114"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-100",
+          "tensor_id": "tensor-000189",
+          "transform": "silu"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000117"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000116:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000189"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000116:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000190"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000116:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000191"
+            }
+          ],
+          "node_id": "op-000116",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000116:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000192"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000115",
+            "parameter-000200",
+            "parameter-000201"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-101",
+          "tensor_id": "tensor-000192",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000118"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000117:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000192"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000117:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000193"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000117:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000194"
+            }
+          ],
+          "node_id": "op-000117",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000117:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000195"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000116",
+            "parameter-000203",
+            "parameter-000204"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-102",
+          "tensor_id": "tensor-000195",
+          "transform": "group_norm"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000119"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000118:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000195"
+            }
+          ],
+          "node_id": "op-000118",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000118:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000196"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000117"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-103",
+          "tensor_id": "tensor-000196",
+          "transform": "silu"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000120"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000119:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000196"
+            }
+          ],
+          "node_id": "op-000119",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000119:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000196"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000118"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-104",
+          "tensor_id": "tensor-000196",
+          "transform": "dropout"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000121"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16, 16, 3, 3], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000120:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000196"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000120:in:1",
+              "shape": [
+                16,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000197"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000120:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000198"
+            }
+          ],
+          "node_id": "op-000120",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000120:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000199"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000119",
+            "parameter-000208",
+            "parameter-000209"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-105",
+          "tensor_id": "tensor-000199",
+          "transform": "conv2d"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000122"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000121:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000185"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "other",
+              "port_id": "op-000121:in:1",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000199"
+            }
+          ],
+          "node_id": "op-000121",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000121:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000200"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000113",
+            "op-000120"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-106",
+          "tensor_id": "tensor-000200",
+          "transform": "add"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000123"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000122:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000200"
+            }
+          ],
+          "node_id": "op-000122",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000122:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000201"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000121"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            16,
+            16,
+            16
+          ],
+          "stage_id": "stage-013-backbone",
+          "step_id": "journey-step-107",
+          "tensor_id": "tensor-000201",
+          "transform": "div"
+        },
+        {
+          "consumer_node_ids": [
+            "op-000124"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [16], [16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000123:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000201"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000123:in:1",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000202"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000123:in:2",
+              "shape": [
+                16
+              ],
+              "tensor_id": "tensor-000203"
+            }
+          ],
           "node_id": "op-000123",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000123:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000204"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000122",
+            "parameter-000213",
+            "parameter-000214"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -17008,14 +23043,48 @@
             16
           ],
           "stage_id": "stage-014-backbone",
-          "step_id": "journey-step-034",
-          "tensor_id": "tensor-000201",
+          "step_id": "journey-step-108",
+          "tensor_id": "tensor-000204",
           "transform": "group_norm"
         },
         {
+          "consumer_node_ids": [
+            "op-000125"
+          ],
           "dtype": "torch.float32",
-          "explanation": "Shape is preserved at this selected boundary.",
-          "node_id": "op-000125",
+          "explanation": "Shape is preserved: [[1, 16, 16, 16]] \u2192 [[1, 16, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "self",
+              "port_id": "op-000124:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000204"
+            }
+          ],
+          "node_id": "op-000124",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000124:out:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000205"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000123"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -17024,15 +23093,108 @@
             16,
             16
           ],
-          "stage_id": "stage-015-input-embedding",
-          "step_id": "journey-step-035",
+          "stage_id": "stage-014-backbone",
+          "step_id": "journey-step-109",
           "tensor_id": "tensor-000205",
+          "transform": "silu"
+        },
+        {
+          "consumer_node_ids": [
+            "graph-output"
+          ],
+          "dtype": "torch.float32",
+          "explanation": "This operation transforms [[1, 16, 16, 16], [3, 16, 3, 3], [3]] \u2192 [[1, 3, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "input",
+              "port_id": "op-000125:in:0",
+              "shape": [
+                1,
+                16,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000205"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "weight",
+              "port_id": "op-000125:in:1",
+              "shape": [
+                3,
+                16,
+                3,
+                3
+              ],
+              "tensor_id": "tensor-000206"
+            },
+            {
+              "dtype": "torch.float32",
+              "name": "bias",
+              "port_id": "op-000125:in:2",
+              "shape": [
+                3
+              ],
+              "tensor_id": "tensor-000207"
+            }
+          ],
+          "node_id": "op-000125",
+          "output_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output",
+              "port_id": "op-000125:out:0",
+              "shape": [
+                1,
+                3,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000208"
+            }
+          ],
+          "producer_node_ids": [
+            "op-000124",
+            "parameter-000217",
+            "parameter-000218"
+          ],
+          "representation": "Rank-4 tensor",
+          "route_confidence": "exact",
+          "shape": [
+            1,
+            3,
+            16,
+            16
+          ],
+          "stage_id": "stage-015-input-embedding",
+          "step_id": "journey-step-110",
+          "tensor_id": "tensor-000208",
           "transform": "conv2d"
         },
         {
+          "consumer_node_ids": [],
           "dtype": "torch.float32",
-          "explanation": "Shape changes from [1, 16, 16, 16] to [1, 3, 16, 16].",
+          "explanation": "Model output receives [[1, 3, 16, 16]].",
+          "input_ports": [
+            {
+              "dtype": "torch.float32",
+              "name": "output.sample",
+              "port_id": "graph-output:in:0",
+              "shape": [
+                1,
+                3,
+                16,
+                16
+              ],
+              "tensor_id": "tensor-000208"
+            }
+          ],
           "node_id": "graph-output",
+          "output_ports": [],
+          "producer_node_ids": [
+            "op-000125"
+          ],
           "representation": "Rank-4 tensor",
           "route_confidence": "exact",
           "shape": [
@@ -17042,7 +23204,7 @@
             16
           ],
           "stage_id": "stage-016-output-adapter",
-          "step_id": "journey-step-036",
+          "step_id": "journey-step-111",
           "tensor_id": "tensor-000208",
           "transform": "Model outputs"
         }

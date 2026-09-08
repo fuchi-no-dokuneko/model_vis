@@ -20,6 +20,7 @@ def managed_paths(model_code: Path) -> list[Path]:
         Path("manifest.v2.json"),
         Path(manifest["asset_index"]),
         Path(manifest["build_report"]),
+        Path(manifest["search_index"]),
         Path("indexes/semantic.v1.json"),
         Path("indexes/semantic-report.v1.json"),
         Path("contracts/interface-tags.v1.json"),

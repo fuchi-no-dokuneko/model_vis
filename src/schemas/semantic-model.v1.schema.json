@@ -98,6 +98,10 @@
       "required": ["step_id", "tensor_id", "node_id", "stage_id", "representation", "shape", "dtype", "transform", "explanation", "route_confidence"],
       "properties": {
         "step_id": {"type": "string"},
+        "input_ports": {"type": "array", "items": {"type": "object"}},
+        "output_ports": {"type": "array", "items": {"type": "object"}},
+        "producer_node_ids": {"type": "array", "items": {"type": "string"}},
+        "consumer_node_ids": {"type": "array", "items": {"type": "string"}},
         "tensor_id": {"type": "string"},
         "node_id": {"type": "string"},
         "stage_id": {"type": "string"},

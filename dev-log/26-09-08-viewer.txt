@@ -1,0 +1,16 @@
+---16:01---審核範圍與執行決定
+category: decision_make
+Current status: 已讀附件及審核，保留目前分支；瀏覽器實際渲染成功。
+Issues: 14 項缺陷及 8 項功能建議均納入本批次。
+Apporch chosen: 分輪實作所有功能，再補回歸測試、精修及圖形介面驗收。
+Assumption made to chose this approch: 使用者豁免目錄重整及既有檔案規格；部署仍不需要。
+affect scope: 檢視器、產生器、測試、文件與開發紀錄。
+---
+---16:11---參數與張量資料修正
+category: api_schema_change
+Current status: 已完成 F01 至 F03 首版；101 個模型語意資料已重建。
+Issues: 舊參數欄位混入記憶體估算；張量卡片錯配相鄰運算。
+Apporch chosen: 以中介裝置計算獨立參數，保留任務頭差異；每一步儲存實際輸入輸出埠。
+Assumption made to chose this approch: 設定推算與已訓練權重驗證必須分開。
+affect scope: 產生器、語意契約、搜尋索引；未重新執行模型前向。
+---
