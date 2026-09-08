@@ -87,7 +87,8 @@
   "parameter_evidence": {
     "basis": "Config-derived; unique parameter identities on a meta device",
     "checkpoint": "swiss-ai/Apertus-v1.1-0.5B",
-    "head_scope": "Executed entrypoint; task heads only when included by this class",
+    "head_scope": "Direct entrypoint ApertusModel; no separate task wrapper",
+    "head_scope_kind": "direct_entrypoint",
     "model_class": "transformers.models.apertus.modeling_apertus.ApertusModel",
     "parameter_count": 438349352,
     "publisher_parameter_count": null,
@@ -95,7 +96,8 @@
     "status": "config_derived",
     "variants": [
       {
-        "head_scope": "Pinned config architecture, including its task head",
+        "head_scope": "Task wrapper ApertusForCausalLM around ApertusModel",
+        "head_scope_kind": "task_wrapper",
         "model_class": "ApertusForCausalLM",
         "parameter_count": 438349352
       }

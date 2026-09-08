@@ -18,6 +18,8 @@ def test_pinned_backbone_and_head_counts(version_id, total, head_total):
     evidence = parameter_evidence(ROOT, version, read_json(ROOT / version["graph_ref"]))
     assert evidence["parameter_count"] == total
     assert evidence["variants"][0]["parameter_count"] == head_total
+    assert evidence["head_scope_kind"] == "direct_entrypoint"
+    assert evidence["variants"][0]["head_scope_kind"] == "task_wrapper"
     assert evidence["revision"] == version["official_config_source"]["revision"]
     assert evidence["publisher_parameter_count"] is None
 

@@ -1,20 +1,6 @@
 """Count initialized parameter identities without allocating model tensors."""
-from importlib import import_module
-from copy import deepcopy
-
-import torch
-
+from .meta_parameters import count_parameters as _count, model_parameter_facts
 from .util import read_json
-
-
-def _count(class_path, raw_config, arguments=None):
-    module, name = class_path.rsplit(".", 1)
-    cls = getattr(import_module(module), name)
-    config = cls.config_class.from_dict(deepcopy(raw_config))
-    with torch.device("meta"):
-        model = cls(config, **(arguments or {}))
-        model.tie_weights()
-    return sum(parameter.numel() for parameter in model.parameters())
 
 
 def parameter_evidence(model_code, version, graph):
@@ -44,7 +30,7 @@ def parameter_evidence(model_code, version, graph):
         if item["name"] != "config" and isinstance(item.get("value"), (bool, int, float, str))
     }
     try:
-        evidence["parameter_count"] = _count(class_path, config, arguments)
+        evidence.update(model_parameter_facts(class_path, config, arguments))
         evidence["status"] = "config_derived"
     except (ValueError, TypeError, RuntimeError, AttributeError, ImportError, KeyError, NotImplementedError) as error:
         evidence["reason"] = f"Exact entrypoint count unavailable: {type(error).__name__}"
@@ -52,9 +38,8 @@ def parameter_evidence(model_code, version, graph):
         if name == class_path.rsplit(".", 1)[-1]:
             continue
         try:
-            count = _count(f"transformers.{name}", config)
+            facts = model_parameter_facts(f"transformers.{name}", config)
         except (ValueError, TypeError, RuntimeError, AttributeError, ImportError, KeyError, NotImplementedError):
             continue
-        evidence["variants"].append({"model_class": name, "parameter_count": count,
-                                     "head_scope": "Pinned config architecture, including its task head"})
+        evidence["variants"].append({"model_class": name, **facts})
     return evidence

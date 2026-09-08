@@ -91,7 +91,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "swiss-ai/Apertus-v1.1-0.5B",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint ApertusModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.apertus.modeling_apertus.ApertusModel",
       "parameter_count": 438349352,
       "publisher_parameter_count": null,
@@ -99,7 +100,8 @@
       "status": "config_derived",
       "variants": [
         {
-          "head_scope": "Pinned config architecture, including its task head",
+          "head_scope": "Task wrapper ApertusForCausalLM around ApertusModel",
+          "head_scope_kind": "task_wrapper",
           "model_class": "ApertusForCausalLM",
           "parameter_count": 438349352
         }
@@ -137,7 +139,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "arcee-ai/AFM-4.5B",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint ArceeModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.arcee.modeling_arcee.ArceeModel",
       "parameter_count": 4291496960,
       "publisher_parameter_count": null,
@@ -145,7 +148,8 @@
       "status": "config_derived",
       "variants": [
         {
-          "head_scope": "Pinned config architecture, including its task head",
+          "head_scope": "Task wrapper ArceeForCausalLM around ArceeModel",
+          "head_scope_kind": "task_wrapper",
           "model_class": "ArceeForCausalLM",
           "parameter_count": 4619189760
         }
@@ -315,7 +319,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "google-bert/bert-base-uncased",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint BertModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.bert.modeling_bert.BertModel",
       "parameter_count": 109482240,
       "publisher_parameter_count": null,
@@ -323,7 +328,8 @@
       "status": "config_derived",
       "variants": [
         {
-          "head_scope": "Pinned config architecture, including its task head",
+          "head_scope": "Task wrapper BertForMaskedLM around BertModel",
+          "head_scope_kind": "task_wrapper",
           "model_class": "BertForMaskedLM",
           "parameter_count": 109514298
         }
@@ -988,7 +994,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "YituTech/conv-bert-small",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint ConvBertModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.convbert.modeling_convbert.ConvBertModel",
       "parameter_count": 13143768,
       "publisher_parameter_count": null,
@@ -1259,7 +1266,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "deepseek-ai/DeepSeek-V3",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint DeepseekV3Model; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.deepseek_v3.modeling_deepseek_v3.DeepseekV3Model",
       "parameter_count": 670099725312,
       "publisher_parameter_count": null,
@@ -1267,7 +1275,8 @@
       "status": "config_derived",
       "variants": [
         {
-          "head_scope": "Pinned config architecture, including its task head",
+          "head_scope": "Task wrapper DeepseekV3ForCausalLM around DeepseekV3Model",
+          "head_scope_kind": "task_wrapper",
           "model_class": "DeepseekV3ForCausalLM",
           "parameter_count": 671026404352
         }
@@ -1833,7 +1842,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "tiiuae/falcon-rw-1b",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint FalconModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.falcon.modeling_falcon.FalconModel",
       "parameter_count": 1311625216,
       "publisher_parameter_count": null,
@@ -1841,7 +1851,8 @@
       "status": "config_derived",
       "variants": [
         {
-          "head_scope": "Pinned config architecture, including its task head",
+          "head_scope": "Task wrapper FalconForCausalLM around FalconModel",
+          "head_scope_kind": "task_wrapper",
           "model_class": "FalconForCausalLM",
           "parameter_count": 1311625216
         }
@@ -2316,7 +2327,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "karpathy/nanochat-d32",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint NanoChatModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.nanochat.modeling_nanochat.NanoChatModel",
       "parameter_count": 1744830464,
       "publisher_parameter_count": null,
@@ -2324,7 +2336,8 @@
       "status": "config_derived",
       "variants": [
         {
-          "head_scope": "Pinned config architecture, including its task head",
+          "head_scope": "Task wrapper NanoChatForCausalLM around NanoChatModel",
+          "head_scope_kind": "task_wrapper",
           "model_class": "NanoChatForCausalLM",
           "parameter_count": 1879048192
         }
@@ -2362,7 +2375,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "nvidia/Nemotron-Mini-4B-Instruct",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint NemotronModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.nemotron.modeling_nemotron.NemotronModel",
       "parameter_count": 3404077056,
       "publisher_parameter_count": null,
@@ -2370,7 +2384,8 @@
       "status": "config_derived",
       "variants": [
         {
-          "head_scope": "Pinned config architecture, including its task head",
+          "head_scope": "Task wrapper NemotronForCausalLM around NemotronModel",
+          "head_scope_kind": "task_wrapper",
           "model_class": "NemotronForCausalLM",
           "parameter_count": 4190509056
         }
@@ -2408,7 +2423,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "microsoft/phi-1",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint PhiModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.phi.modeling_phi.PhiModel",
       "parameter_count": 1313361920,
       "publisher_parameter_count": null,
@@ -2416,7 +2432,8 @@
       "status": "config_derived",
       "variants": [
         {
-          "head_scope": "Pinned config architecture, including its task head",
+          "head_scope": "Task wrapper PhiForCausalLM around PhiModel",
+          "head_scope_kind": "task_wrapper",
           "model_class": "PhiForCausalLM",
           "parameter_count": 1418270720
         }
@@ -2454,7 +2471,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "squeezebert/squeezebert-uncased",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint SqueezeBertModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.squeezebert.modeling_squeezebert.SqueezeBertModel",
       "parameter_count": 51094272,
       "publisher_parameter_count": null,
@@ -2494,7 +2512,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "bigcode/starcoder2-3b",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint Starcoder2Model; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.starcoder2.modeling_starcoder2.Starcoder2Model",
       "parameter_count": 3030371328,
       "publisher_parameter_count": null,
@@ -2502,7 +2521,8 @@
       "status": "config_derived",
       "variants": [
         {
-          "head_scope": "Pinned config architecture, including its task head",
+          "head_scope": "Task wrapper Starcoder2ForCausalLM around Starcoder2Model",
+          "head_scope_kind": "task_wrapper",
           "model_class": "Starcoder2ForCausalLM",
           "parameter_count": 3030371328
         }
@@ -2540,7 +2560,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "tencent/Youtu-LLM-2B",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint YoutuModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.youtu.modeling_youtu.YoutuModel",
       "parameter_count": 1961560064,
       "publisher_parameter_count": null,
@@ -2548,7 +2569,8 @@
       "status": "config_derived",
       "variants": [
         {
-          "head_scope": "Pinned config architecture, including its task head",
+          "head_scope": "Task wrapper YoutuForCausalLM around YoutuModel",
+          "head_scope_kind": "task_wrapper",
           "model_class": "YoutuForCausalLM",
           "parameter_count": 1961560064
         }
@@ -2586,7 +2608,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "Zyphra/Zamba-7B-v1",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint ZambaModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.zamba.modeling_zamba.ZambaModel",
       "parameter_count": 7232490496,
       "publisher_parameter_count": null,
@@ -2594,7 +2617,8 @@
       "status": "config_derived",
       "variants": [
         {
-          "head_scope": "Pinned config architecture, including its task head",
+          "head_scope": "Task wrapper ZambaForCausalLM around ZambaModel",
+          "head_scope_kind": "task_wrapper",
           "model_class": "ZambaForCausalLM",
           "parameter_count": 7232490496
         }
@@ -2632,7 +2656,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "Zyphra/Zamba2-1.2B",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint Zamba2Model; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.zamba2.modeling_zamba2.Zamba2Model",
       "parameter_count": 1215064704,
       "publisher_parameter_count": null,
@@ -2640,7 +2665,8 @@
       "status": "config_derived",
       "variants": [
         {
-          "head_scope": "Pinned config architecture, including its task head",
+          "head_scope": "Task wrapper Zamba2ForCausalLM around Zamba2Model",
+          "head_scope_kind": "task_wrapper",
           "model_class": "Zamba2ForCausalLM",
           "parameter_count": 1215064704
         }
@@ -2711,7 +2737,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "microsoft/beit-base-patch16-224",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint BeitModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.beit.modeling_beit.BeitModel",
       "parameter_count": 85761984,
       "publisher_parameter_count": null,
@@ -2719,7 +2746,8 @@
       "status": "config_derived",
       "variants": [
         {
-          "head_scope": "Pinned config architecture, including its task head",
+          "head_scope": "Task wrapper BeitForImageClassification around BeitModel",
+          "head_scope_kind": "task_wrapper",
           "model_class": "BeitForImageClassification",
           "parameter_count": 86530984
         }
@@ -3054,7 +3082,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "DeepGlint-AI/mlcd-vit-bigG-patch14-336",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint MLCDVisionModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.mlcd.modeling_mlcd.MLCDVisionModel",
       "parameter_count": 1842349748,
       "publisher_parameter_count": null,
@@ -3094,7 +3123,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "kmhf/hf-moshiko",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint MoshiModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.moshi.modeling_moshi.MoshiModel",
       "parameter_count": 6708011008,
       "publisher_parameter_count": null,
@@ -3102,7 +3132,8 @@
       "status": "config_derived",
       "variants": [
         {
-          "head_scope": "Pinned config architecture, including its task head",
+          "head_scope": "Direct entrypoint MoshiForConditionalGeneration; no separate task wrapper",
+          "head_scope_kind": "direct_entrypoint",
           "model_class": "MoshiForConditionalGeneration",
           "parameter_count": 7767037761
         }
@@ -3305,7 +3336,8 @@
     "parameter_evidence": {
       "basis": "Config-derived; unique parameter identities on a meta device",
       "checkpoint": "facebook/data2vec-vision-base",
-      "head_scope": "Executed entrypoint; task heads only when included by this class",
+      "head_scope": "Direct entrypoint Data2VecVisionModel; no separate task wrapper",
+      "head_scope_kind": "direct_entrypoint",
       "model_class": "transformers.models.data2vec.modeling_data2vec_vision.Data2VecVisionModel",
       "parameter_count": 85665360,
       "publisher_parameter_count": null,

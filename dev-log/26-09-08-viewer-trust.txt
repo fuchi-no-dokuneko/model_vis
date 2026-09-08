@@ -6,3 +6,11 @@ Apporch chosen: 需要原生轉換器的設定先明示精確數量不可用，�
 Assumption made to chose this approch: 審核要求缺乏模型依據時顯示不可用，不得以估算冒充。
 affect scope: 參數依據產生器及 Mamba2 中繼資料；待補回歸驗證。
 ---
+---17:24---任務輸出頭範圍明確化
+category: api_schema_change
+Current status: 設定推導量新增實際類別的直接入口或任務包裝範圍；101 模型完整驗證通過。
+Issues: 泛稱輸出頭不足以判讀跨模型參數比較。
+Apporch chosen: 從實際 meta 模型的基底關係取得範圍，任務包裝另列並限制不相容比較。
+Assumption made to chose this approch: 類別實體關係比名稱推測更可靠。
+affect scope: 參數依據、版本與搜尋中繼資料、比較及單元測試。
+---

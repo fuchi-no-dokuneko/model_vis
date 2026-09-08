@@ -96,7 +96,8 @@
   "parameter_evidence": {
     "basis": "Config-derived; unique parameter identities on a meta device",
     "checkpoint": "microsoft/beit-base-patch16-224",
-    "head_scope": "Executed entrypoint; task heads only when included by this class",
+    "head_scope": "Direct entrypoint BeitModel; no separate task wrapper",
+    "head_scope_kind": "direct_entrypoint",
     "model_class": "transformers.models.beit.modeling_beit.BeitModel",
     "parameter_count": 85761984,
     "publisher_parameter_count": null,
@@ -104,7 +105,8 @@
     "status": "config_derived",
     "variants": [
       {
-        "head_scope": "Pinned config architecture, including its task head",
+        "head_scope": "Task wrapper BeitForImageClassification around BeitModel",
+        "head_scope_kind": "task_wrapper",
         "model_class": "BeitForImageClassification",
         "parameter_count": 86530984
       }

@@ -102,7 +102,8 @@
   "parameter_evidence": {
     "basis": "Config-derived; unique parameter identities on a meta device",
     "checkpoint": "squeezebert/squeezebert-uncased",
-    "head_scope": "Executed entrypoint; task heads only when included by this class",
+    "head_scope": "Direct entrypoint SqueezeBertModel; no separate task wrapper",
+    "head_scope_kind": "direct_entrypoint",
     "model_class": "transformers.models.squeezebert.modeling_squeezebert.SqueezeBertModel",
     "parameter_count": 51094272,
     "publisher_parameter_count": null,

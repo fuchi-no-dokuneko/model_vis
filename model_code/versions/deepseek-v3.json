@@ -98,7 +98,8 @@
   "parameter_evidence": {
     "basis": "Config-derived; unique parameter identities on a meta device",
     "checkpoint": "deepseek-ai/DeepSeek-V3",
-    "head_scope": "Executed entrypoint; task heads only when included by this class",
+    "head_scope": "Direct entrypoint DeepseekV3Model; no separate task wrapper",
+    "head_scope_kind": "direct_entrypoint",
     "model_class": "transformers.models.deepseek_v3.modeling_deepseek_v3.DeepseekV3Model",
     "parameter_count": 670099725312,
     "publisher_parameter_count": null,
@@ -106,7 +107,8 @@
     "status": "config_derived",
     "variants": [
       {
-        "head_scope": "Pinned config architecture, including its task head",
+        "head_scope": "Task wrapper DeepseekV3ForCausalLM around DeepseekV3Model",
+        "head_scope_kind": "task_wrapper",
         "model_class": "DeepseekV3ForCausalLM",
         "parameter_count": 671026404352
       }

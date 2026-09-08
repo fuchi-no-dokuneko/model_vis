@@ -84,7 +84,8 @@
   "parameter_evidence": {
     "basis": "Config-derived; unique parameter identities on a meta device",
     "checkpoint": "nvidia/Nemotron-Mini-4B-Instruct",
-    "head_scope": "Executed entrypoint; task heads only when included by this class",
+    "head_scope": "Direct entrypoint NemotronModel; no separate task wrapper",
+    "head_scope_kind": "direct_entrypoint",
     "model_class": "transformers.models.nemotron.modeling_nemotron.NemotronModel",
     "parameter_count": 3404077056,
     "publisher_parameter_count": null,
@@ -92,7 +93,8 @@
     "status": "config_derived",
     "variants": [
       {
-        "head_scope": "Pinned config architecture, including its task head",
+        "head_scope": "Task wrapper NemotronForCausalLM around NemotronModel",
+        "head_scope_kind": "task_wrapper",
         "model_class": "NemotronForCausalLM",
         "parameter_count": 4190509056
       }

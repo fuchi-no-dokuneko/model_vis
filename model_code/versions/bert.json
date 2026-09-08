@@ -95,7 +95,8 @@
   "parameter_evidence": {
     "basis": "Config-derived; unique parameter identities on a meta device",
     "checkpoint": "google-bert/bert-base-uncased",
-    "head_scope": "Executed entrypoint; task heads only when included by this class",
+    "head_scope": "Direct entrypoint BertModel; no separate task wrapper",
+    "head_scope_kind": "direct_entrypoint",
     "model_class": "transformers.models.bert.modeling_bert.BertModel",
     "parameter_count": 109482240,
     "publisher_parameter_count": null,
@@ -103,7 +104,8 @@
     "status": "config_derived",
     "variants": [
       {
-        "head_scope": "Pinned config architecture, including its task head",
+        "head_scope": "Task wrapper BertForMaskedLM around BertModel",
+        "head_scope_kind": "task_wrapper",
         "model_class": "BertForMaskedLM",
         "parameter_count": 109514298
       }
