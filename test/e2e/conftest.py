@@ -12,6 +12,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 from test.e2e.browser import create_chrome_driver, set_exact_viewport
 from test.e2e.browser_coverage import BrowserCoverage
+from scripts.serve_https import https_server
 
 
 ROOT = Path(__file__).parents[2]
@@ -32,14 +33,14 @@ def viewer_url() -> Iterator[str]:
         capture_output=True,
         text=True,
     )
-    handler = partial(QuietHandler, directory=BUILD)
-    server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
+    server = https_server(BUILD, handler=QuietHandler)
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     try:
-        yield f"http://127.0.0.1:{server.server_port}/"
+        yield f"https://127.0.0.1:{server.server_port}/"
     finally:
         server.shutdown()
+        server.server_close()
         thread.join(timeout=5)
 
 

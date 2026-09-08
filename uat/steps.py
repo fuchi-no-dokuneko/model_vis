@@ -95,7 +95,7 @@ def _narrate(language: str, minimum_seconds: int, narration: str) -> None:
 
 @bind("the built Model Vis site is running")
 def built_site(context) -> None:
-    assert context.viewer_url.startswith("http://127.0.0.1:")
+    assert context.viewer_url.startswith("https://127.0.0.1:")
 
 
 @bind("I open the model catalog")

@@ -15,13 +15,7 @@ PORT="${PORT:-8081}"
 BUILD_DIR="${BUILD_DIR:-build}"
 PYTHON="${PYTHON:-$ROOT_DIR/venv/bin/python}"
 
-if [[ -z "${BIND_HOST:-}" ]]; then
-  if ! command -v tailscale >/dev/null 2>&1; then
-    printf 'tailscale is unavailable; set BIND_HOST in %s\n' "$ENV_FILE" >&2
-    exit 1
-  fi
-  BIND_HOST="$(tailscale ip -4 2>/dev/null | head -n 1)"
-fi
+BIND_HOST="${BIND_HOST:-0.0.0.0}"
 
 if [[ -z "$BIND_HOST" ]]; then
   printf 'no active Tailscale IPv4 address; set BIND_HOST in %s\n' "$ENV_FILE" >&2
@@ -47,5 +41,5 @@ if [[ ! -x "$PYTHON" ]]; then
   exit 1
 fi
 
-printf 'Serving %s at http://%s:%s/\n' "$BUILD_DIR" "$BIND_HOST" "$PORT"
-exec "$PYTHON" -m http.server "$PORT" --bind "$BIND_HOST" --directory "$BUILD_DIR"
+printf 'Serving %s at https://%s:%s/\n' "$BUILD_DIR" "$BIND_HOST" "$PORT"
+exec "$PYTHON" "$ROOT_DIR/scripts/serve_https.py" --port "$PORT" --host "$BIND_HOST" --directory "$BUILD_DIR"

@@ -12,6 +12,7 @@ import time
 from dataclasses import dataclass
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from scripts.serve_https import https_server
 from pathlib import Path
 from typing import Any
 from xml.etree import ElementTree
@@ -131,7 +132,7 @@ def execute(output: Path, cases: list[ScenarioCase], suite: str) -> int:
         shutil.rmtree(output)
     screenshots = output / "screenshots"
     screenshots.mkdir(parents=True)
-    server = ThreadingHTTPServer(("127.0.0.1", 0), partial(QuietHandler, directory=ROOT / "build"))
+    server = https_server(ROOT / "build", handler=QuietHandler)
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     profile = ROOT / "build_cache" / "uat-chromium-profile"
@@ -145,7 +146,7 @@ def execute(output: Path, cases: list[ScenarioCase], suite: str) -> int:
     started = iso_now()
     records = []
     try:
-        viewer_url = f"http://127.0.0.1:{server.server_port}/"
+        viewer_url = f"https://127.0.0.1:{server.server_port}/"
         for index, case in enumerate(cases, start=1):
             scenario = case.scenario
             case_suite = case.feature.stem
@@ -189,6 +190,7 @@ def execute(output: Path, cases: list[ScenarioCase], suite: str) -> int:
         coverage.write_lcov(output / "browser.lcov")
         browser.quit()
         server.shutdown()
+        server.server_close()
         thread.join(timeout=5)
         shutil.rmtree(profile, ignore_errors=True)
 

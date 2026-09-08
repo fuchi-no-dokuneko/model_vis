@@ -25,6 +25,7 @@ def _installed_binary(environment_name: str, candidates: tuple[str, ...]) -> str
 
 def create_chrome_driver(profile: Path) -> webdriver.Chrome:
     options = Options()
+    options.accept_insecure_certs = True
     options.binary_location = _installed_binary(
         "CHROME_BIN",
         (
