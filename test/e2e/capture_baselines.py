@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import subprocess
+import sys
 import tempfile
 import threading
 from functools import partial
@@ -14,10 +15,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
 from browser import set_exact_viewport
-from scripts.serve_https import https_server
-
-
 ROOT = Path(__file__).parents[2]
+sys.path.insert(0, str(ROOT))
+from scripts.serve_https import https_server
 BASELINES = ROOT / "test" / "visual" / "baselines"
 VIEWPORTS = {
     "desktop-1440x900": (1440, 900),

@@ -126,3 +126,21 @@ Feature: Daily Model Structure Viewer acceptance
     Then journey steps use generated tensors
     When I inspect DINOv3 parameter and operation distributions
     Then both mapped distributions are visible
+
+  Scenario: Save and export an annotated investigation
+    Given the built Model Vis site is running
+    When I save an annotated GELU review and export its facts
+    Then the downloaded files preserve GELU and its provenance
+    When I restore the saved review from another model
+    Then BERT GELU and the saved annotation are restored
+
+  Scenario: Find an exact operation and persist panel sizing
+    Given the built Model Vis site is running
+    When I filter GELU by module, dtype and shape
+    Then the finder identifies the exact GELU interface and opens it
+    And my resized catalog panel survives a reload
+
+  Scenario: Compare compatible facts with configuration drilldown
+    Given the built Model Vis site is running
+    When I compare BERT and Arcee using differences and pinned configs
+    Then scope differences and actual configuration values remain visible

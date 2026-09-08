@@ -1,4 +1,6 @@
 from pathlib import Path
+import json
+from urllib.parse import quote
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -7,11 +9,22 @@ from selenium.webdriver.support.ui import WebDriverWait
 ARTIFACTS = Path(__file__).parents[2] / "artifacts" / "audit-v2"
 
 
+def long_location(model):
+    root=Path(__file__).parents[2]/"model_code"
+    version=json.loads((root/f"versions/{model}.json").read_text())
+    graph=json.loads((root/version["graph_ref"]).read_text())
+    node=max((n for n in graph["nodes"] if n["kind"]=="aten_op" and n.get("source_ref")),key=lambda n:len(n.get("module_path","")))
+    source=node["source_ref"]
+    parts=["version",model,"view","operation","module",node["module_path"],"operation",node["id"],"source",source["source_uid"],"line",str(source["start_line"]),"detail","standard","labels","both"]
+    return "modelvis:/"+"/".join(quote(p,safe="") for p in parts)
+
+
 def settle(driver):
     driver.execute_async_script("const done=arguments[0]; requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(done,180)));")
 
 
 def open_model(driver, url, model="bit", view="architecture", suffix=""):
+    driver.get("about:blank")
     driver.get(f"{url}#/version/{model}/view/{view}/detail/standard/labels/both{suffix}")
     WebDriverWait(driver, 20).until(lambda d: d.find_elements(By.CSS_SELECTOR, ".graph-node"))
     settle(driver)

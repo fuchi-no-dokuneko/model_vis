@@ -16,6 +16,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from test.e2e.browser import set_exact_viewport
 
 from .gherkin import bind
+from . import review_steps, investigation_steps  # noqa: F401
 
 
 def _wait(context):
@@ -291,6 +292,9 @@ def open_apertus_trace(context) -> None:
         lambda current: "/version/apertus/view/module" in current.find_element(By.ID, "uri-input").get_attribute("value")
     )
     _graph_nodes(context)
+    if context.driver.find_elements(By.CSS_SELECTOR, ".overview-group"):
+        _click_first(context, ".overview-group")
+        context.driver.execute_async_script("const done=arguments[0];requestAnimationFrame(()=>requestAnimationFrame(done))")
     _click_first(context, ".graph-node .node-drag-handle")
     _wait(context).until(lambda current: current.find_elements(By.CSS_SELECTOR, ".graph-node.selected"))
     context.selected_node_id = context.driver.find_element(By.CSS_SELECTOR, ".graph-node.selected").get_attribute("data-id")
@@ -522,6 +526,8 @@ def reset_graph(context) -> None:
 
 @bind("the node returns to its generated position and default size")
 def default_layout_restored(context) -> None:
+    _click_first(context, f'.graph-node[data-id="{context.layout_node_id}"]')
+    context.driver.execute_async_script("const done=arguments[0];requestAnimationFrame(()=>requestAnimationFrame(done))")
     def is_default(current):
         try:
             node = current.find_element(By.CSS_SELECTOR, f'.graph-node[data-id="{context.layout_node_id}"]')

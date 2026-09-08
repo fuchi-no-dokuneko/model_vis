@@ -1,0 +1,28 @@
+---17:13---介面矩陣驗收通過
+milestone-type : success-test
+Time used (min) : 8
+描述：本機自簽 HTTPS 的 Chromium 圖形介面驗收通過 52 個視窗配置及 16 個斷點鄰界。
+描述：另通過 12 個模型共 36 個 I/O 尺寸、15 個比較往返、儲存註記與三種匯出。
+證據：artifacts/audit-v2/audit-matrix.xml、geometry-refined.xml；前者五項失敗已於後者補驗通過。
+---
+---17:32---延遲與檢查面板驗收
+milestone-type : success-test
+Time used (min) : 19
+描述：真實 HTTPS 延遲、503、離線重試與新選取歸屬通過；剪貼簿連結可重新開啟原運算。
+描述：12 模型的 60 個視圖與 72 個檢查面板通過，運算延續標記亦補驗成功。
+證據：delay-final.xml、features-final.xml、inspector-refined.xml，均位於 artifacts/audit-v2。
+---
+---17:47---完整每日驗收成功
+milestone-type : success-test
+Time used (min) : 1
+描述：16 項本機 Chromium UAT 全部通過，實際瀏覽器執行約 26 秒，符合原有 60 秒時限。
+描述：涵蓋註記儲存與跨模型還原、三種實際下載、精確介面搜尋、面板尺寸及設定比較。
+證據：artifacts/uat/checklist.json、sonar-test-execution.xml、screenshots 與 review-exports。
+---
+---17:52---完整審核矩陣再驗通過
+milestone-type : success-test
+Time used (min) : 6
+描述：最終 84 項實際 Chromium 審核全部通過，包含長網址、52 視窗、36 個 I/O 排版及延遲故障。
+描述：另有 30 項原有瀏覽器回歸通過，約 108 秒，符合原有 180 秒時限。
+證據：artifacts/audit-v2/audit-complete.xml、e2e-complete.xml 與全部截圖。
+---

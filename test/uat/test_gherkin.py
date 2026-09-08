@@ -6,7 +6,7 @@ from uat import steps as _steps  # noqa: F401
 
 def test_daily_and_recording_features_are_fully_bound() -> None:
     suites = {
-        "daily.feature": 13,
+        "daily.feature": 16,
         "demo-en.feature": 1,
         "demo-yue.feature": 1,
     }

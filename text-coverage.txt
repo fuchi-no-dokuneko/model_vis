@@ -1,32 +1,53 @@
-src/model_builder/catalog.py: Tested parser success, sections, comments, missing, empty, and duplicate catalogs; mocks: none.
-src/model_builder/config_provenance.py: Tested differences, pinned metadata, compatibility, missing and mismatched official configs; mocks: none.
-src/model_builder/guard.py: Tested network blocking, environment restoration, and weight artifact scans; mocks: none.
-src/model_builder/registry.py: Tested full real catalog, aliases, serialization, and resolution failures; mocks: none.
-src/model_builder/util.py: Tested slugs, deterministic hashes, JSON reads/writes, tuples, and nonfinite values; mocks: none.
-src/model_builder/builder.py: Tested by real artifact and CLI integration plus isolated unit paths; mocks: unit tests patch catalog resolution, model construction, and license writing while CLI/artifact integration is unmocked; instrumented gate exclusion documented.
-src/model_builder/factory.py: Tested by real catalog construction paths; mocks: none; instrumented gate exclusion documented.
-src/model_builder/tracing.py: Tested with real Torch modules and tensors; mocks: none; instrumented gate exclusion documented.
-src/model_builder/introspection.py: Tested through real trace metadata and sanitizer tests; mocks: none; instrumented gate exclusion documented.
-src/model_builder/blocks.py: Tested through real Torch block generation and deduplication; mocks: none; instrumented gate exclusion documented.
-src/model_builder/semantics.py: Tested with real generated fixtures and all published semantic models; mocks: none; instrumented gate exclusion documented.
-src/model_builder/staged.py: Tested staged catalog selection and merge behavior; mocks: none; instrumented gate exclusion documented.
-src/model_builder/hf_config.py: Tested pinned mapping validation and config parsing; mocks: none; instrumented gate exclusion documented.
-src/model_builder/validate.py: Tested by full deterministic drift validation; mocks: none; instrumented gate exclusion documented.
-src/model_builder/drift.py: Tested against two full temporary catalog generations; mocks: none; instrumented gate exclusion documented.
-src/model_builder/__main__.py: Tested through real planning CLI subprocesses; mocks: none; instrumented gate exclusion documented.
-src/ui/data-store.js: Tested fetch caching, retries, text/JSON assets, references, and config differences; mocks: injected deterministic fetcher.
-src/ui/graph-model.js: Tested all projections, routes, paths, layout, overlays, labels, incomplete data, and boundaries; mocks: none.
-src/ui/app.js: Tested in real local Chromium across desktop/mobile workflows and visual cases; mocks: none; instrumented gate exclusion documented.
-uat/gherkin.py: Tested feature parsing, duplicate definitions, and missing bindings; mocks: none.
-uat/run.py: Tested daily and bilingual demo selection, dry binding, evidence grouping, recording cleanup, and real Chromium reports; mocks: none.
-uat/steps.py: Tested catalog, routes, all views, inspector evidence, graph controls, persistence, comparison, warnings, keyboard, mobile drawers, and timed recording hooks in Chromium; mocks: external TTS and recorder wrappers are optional.
-scripts/audit-node.mjs: Tested against the real package lock by the release audit; mocks: none; release-tool exclusion documented.
-scripts/audit-python.py: Tested exact locks, severity sources, alias merging, and exceptions plus the live IPv4 OSV audit; mocks: temporary exception roots and OSV fixture records in unit tests; release-tool exclusion documented.
-scripts/build-ui.mjs: Tested against real generated assets by browser, visual, UAT, and deployable build checks; mocks: none; release-tool exclusion documented.
-scripts/check-coverage.py: Tested valid, missing, malformed, and sub-threshold reports; mocks: temporary report files.
-scripts/check-uat-report.py: Tested valid real-format, dry-run, and missing-artifact reports; mocks: temporary report files.
-scripts/lock-python.py: Not directly unit tested; administrative output is checked by lock diffs and exact-lock policy, while a clean locked install remains required release evidence; mocks: none; release-tool exclusion documented.
-scripts/run-ui-coverage.mjs: Tested by real Node coverage generation and independent LCOV gates; mocks: none; release-tool exclusion documented.
-src/model_builder/parameter_counts.py: Tests execute pinned and compact Transformer classes on meta tensors; mocks: none. / 以真實設定驗證，無模擬。
-src/model_builder/journey_facts.py: Tests compare all generated journey ports with real graph assets and BERT/BiT shape arithmetic; mocks: none. / 核對全部張量埠，無模擬。
-src/ui/finder.js, comparison-metrics.js, review-export.js, review-svg.js: Real BERT/catalog fixtures test filtering, unknown values and selected exports; mocks: none. / 使用真實模型資料，無模擬。
+src/model_builder/catalog.py: Real catalog fixtures; mocks: none. / 真實目錄，無模擬。
+src/model_builder/config_provenance.py: Pinned local configurations; mocks: none. / 固定來源設定，無模擬。
+src/model_builder/guard.py: Real guarded Python execution; mocks: none. / 實際受控執行，無模擬。
+src/model_builder/registry.py: Complete real catalog; mocks: none. / 完整真實目錄，無模擬。
+src/model_builder/util.py: Real local files; mocks: none. / 真實本機檔案，無模擬。
+src/model_builder/builder.py: Real CLI/artifact integration; unit mocks: catalog, construction, license writer. / 真實整合；單元模擬目錄、建構與授權輸出。
+src/model_builder/factory.py: Real model constructors; mocks: none. / 真實模型建構，無模擬。
+src/model_builder/tracing.py: Real Torch execution; mocks: none. / 真實 Torch 執行，無模擬。
+src/model_builder/introspection.py: Real trace metadata; mocks: none. / 真實追蹤資料，無模擬。
+src/model_builder/blocks.py: Real Torch blocks; mocks: none. / 真實模型區塊，無模擬。
+src/model_builder/semantics.py: All 101 canonical models; mocks: none. / 全部 101 模型，無模擬。
+src/model_builder/staged.py: Real catalog fixture builds; mocks: none. / 真實目錄建置，無模擬。
+src/model_builder/hf_config.py: Pinned config fixtures; mocks: none. / 固定來源設定，無模擬。
+src/model_builder/validate.py: Complete 101-model catalog; mocks: none. / 完整模型資料，無模擬。
+src/model_builder/drift.py: Two independent full regenerations; mocks: none. / 兩次獨立重建，無模擬。
+src/model_builder/__main__.py: Real CLI subprocesses; mocks: none. / 真實命令程序，無模擬。
+src/model_builder/parameter_counts.py: Real pinned and compact configs; mocks: none. / 真實固定與精簡設定，無模擬。
+src/model_builder/meta_parameters.py: Real Transformer meta models; mocks: none. / 真實 meta 模型，無模擬。
+src/model_builder/journey_facts.py: All canonical journey/graph assets; mocks: none. / 全部真實旅程與圖形，無模擬。
+src/ui/data-store.js: Unit fetcher injection and real HTTPS Chromium; mocks: unit fetch responses. / 真實瀏覽器；單元模擬回應。
+src/ui/graph-model.js: Real model assets and projection fixtures; mocks: none. / 真實模型與投影資料，無模擬。
+src/ui/app.js: Real HTTPS Chromium; controlled delays/503 and browser offline; application mocks: none. / 真實瀏覽器故障注入，無應用模擬。
+uat/gherkin.py: Feature/binding fixtures; mocks: none. / 功能與綁定資料，無模擬。
+uat/run.py: Real Chromium and local reports; optional external recording wrappers. / 真實瀏覽器與報告，外部錄製包裝為選配。
+uat/steps.py: Real Chromium workflows; optional TTS/recording wrappers. / 真實操作，語音與錄製包裝為選配。
+scripts/audit-node.mjs: Real package lock; mocks: none. / 真實鎖定檔，無模擬。
+scripts/audit-python.py: Live IPv4 OSV; unit mocks: advisory and exception records. / 實際查詢；單元模擬公告與例外。
+scripts/build-ui.mjs: Real generated catalog; mocks: none. / 真實產生資料，無模擬。
+scripts/check-coverage.py: Real reports plus temporary report fixtures. / 真實報告與暫存測試資料。
+scripts/check-uat-report.py: Real reports plus temporary report fixtures. / 真實報告與暫存測試資料。
+scripts/lock-python.py: No direct unit test; unchanged administrative tool. / 無直接單元測試，未修改管理工具。
+scripts/run-ui-coverage.mjs: Real Node instrumentation; mocks: none. / 真實 Node 涵蓋率，無模擬。
+scripts/serve_https.py: Real local TLS/browser sessions; mocks: none. / 真實本機 TLS，無模擬。
+src/ui/provenance.js: Real model data and Chromium; mocks: none. / 真實模型資料與瀏覽器，無模擬。
+src/ui/panel-state.js: Real model data and Chromium; mocks: none. / 真實模型資料與瀏覽器，無模擬。
+src/ui/finder.js: Real model data and Chromium; mocks: none. / 真實模型資料與瀏覽器，無模擬。
+src/ui/review-export.js: Real model data and Chromium; mocks: none. / 真實模型資料與瀏覽器，無模擬。
+src/ui/review-svg.js: Real model data and Chromium; mocks: none. / 真實模型資料與瀏覽器，無模擬。
+src/ui/saved-reviews.js: Real model data and Chromium; mocks: none. / 真實模型資料與瀏覽器，無模擬。
+src/ui/workspace-size.js: Real model data and Chromium; mocks: none. / 真實模型資料與瀏覽器，無模擬。
+src/ui/journey-view.js: Real model data and Chromium; mocks: none. / 真實模型資料與瀏覽器，無模擬。
+src/ui/comparison-details.js: Real model data and Chromium; mocks: none. / 真實模型資料與瀏覽器，無模擬。
+src/ui/comparison-metrics.js: Real model data and Chromium; mocks: none. / 真實模型資料與瀏覽器，無模擬。
+src/ui/overview-layout.js: Real model data and Chromium; mocks: none. / 真實模型資料與瀏覽器，無模擬。
+src/ui/overview-view.js: Real model data and Chromium; mocks: none. / 真實模型資料與瀏覽器，無模擬。
+src/ui/overview-edges.js: Real model data and Chromium; mocks: none. / 真實模型資料與瀏覽器，無模擬。
+src/ui/workspace.css: Real Chromium geometry and screenshots; mocks: none. / 真實瀏覽器與截圖，無模擬。
+src/ui/evidence.css: Real Chromium geometry and screenshots; mocks: none. / 真實瀏覽器與截圖，無模擬。
+src/ui/finder.css: Real Chromium geometry and screenshots; mocks: none. / 真實瀏覽器與截圖，無模擬。
+src/ui/review.css: Real Chromium geometry and screenshots; mocks: none. / 真實瀏覽器與截圖，無模擬。
+uat/review_steps.py: Real Chromium and local artifacts; mocks: none. / 真實瀏覽器與本機產物，無模擬。
+uat/investigation_steps.py: Real Chromium and local artifacts; mocks: none. / 真實瀏覽器與本機產物，無模擬。
+test/e2e/browser_coverage.py: Real Chromium and local artifacts; mocks: none. / 真實瀏覽器與本機產物，無模擬。

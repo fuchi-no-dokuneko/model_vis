@@ -681,6 +681,12 @@ def test_amendment_controls_configs_paths_blocks_and_partial_warning(loaded_view
 
     click_mode(driver, "operation")
     zoom_to_detail(driver)
+    address.clear()
+    address.send_keys("modelvis:/version/apertus/view/operation/operation/op-000032/detail/trace/labels/source")
+    address.submit()
+    wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, '.graph-node.selected[data-id="op-000032"]'))
+    driver.find_element(By.ID, "center-selection").click()
+    wait_for_graph_render(driver)
     wait.until(lambda current: current.find_elements(By.CSS_SELECTOR, ".continuation-marker"))
 
     driver.find_element(By.CSS_SELECTOR, '[data-navigator="catalog"]').click()
@@ -781,6 +787,9 @@ def test_amendment3_ports_controls_gestures_shortcuts_and_theme(loaded_viewer) -
     assert driver.execute_script("return String(getSelection())") == ""
 
     driver.find_element(By.ID, "reset-button").click()
+    wait_for_graph_render(driver)
+    driver.find_element(By.CSS_SELECTOR, '.graph-node[data-id="group:module-00009"]').click()
+    zoom_to_detail(driver)
     def default_size(current) -> bool:
         try:
             node = current.find_element(By.CSS_SELECTOR, '.graph-node[data-id="group:module-00009"]')

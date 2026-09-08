@@ -7,9 +7,8 @@ from urllib.parse import urlparse
 
 
 SOURCE_PATHS = {
-    "app.js": Path("src/ui/app.js"),
-    "data-store.js": Path("src/ui/data-store.js"),
-    "graph-model.js": Path("src/ui/graph-model.js"),
+    path.name: Path("src/ui") / path.name
+    for path in (Path(__file__).parents[2] / "src/ui").glob("*.js")
 }
 
 

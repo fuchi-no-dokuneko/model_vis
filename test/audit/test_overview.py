@@ -21,6 +21,7 @@ def test_fitted_overview_has_readable_unobstructed_nonintersecting_groups(driver
     """)
     assert evidence["count"]>0 and not evidence["intersections"]
     assert all(evidence["hit"])
+    assert driver.execute_script("return [...document.querySelectorAll('#edges > path')].every(p=>parseFloat(getComputedStyle(p).strokeWidth)*Math.hypot(p.getScreenCTM().a,p.getScreenCTM().b)>=1.4)")
     screenshot(driver,f"overview-{model}")
     driver.find_element(By.CSS_SELECTOR,".overview-group").click()
     assert driver.find_element(By.ID,"graph-viewport").get_attribute("data-zoom-tier")=="normal"
