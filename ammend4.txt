@@ -1051,3 +1051,18 @@ Do not add the following as part of this plan:
 4. Follow docs/maintenance-prompt.md. Prove completion with generated assets,
    browser behavior, and the actual target manifest; a local build alone does
    not prove a target deployment.
+
+
+Audit-v2 maintenance update / 審核第二版維護更新 (2026-09-08)
+
+English: This update supersedes older parameter-estimate labels and Beginner defaults above. Keep the current branch and all 101 models. Deployment is explicitly excluded. No CI/CD or system network changes are part of this batch. Local serving uses repository-local self-signed HTTPS on IPv4 0.0.0.0.
+繁中：此更新取代上述舊參數預估標籤與 Beginner 預設。保留目前分支與 101 個模型，明確排除部署，不修改 CI/CD 或系統網絡；本機採用專案內自簽 HTTPS 與 IPv4 0.0.0.0。
+
+English: Config-derived counts instantiate the exact entrypoint with unique parameter identities. BERT BertModel is 109,482,240; ArceeModel is 4,291,496,960 and ArceeForCausalLM is 4,619,189,760. Task wrappers and approximate preflight estimates remain separate. BertJapanese has no mapped checkpoint count and visibly identifies its reused BERT trace. Unsupported native configuration adapters remain unavailable rather than silently using class defaults.
+繁中：設定推導量依實際入口類別計算唯一參數。BertModel 為 109,482,240；ArceeModel 為 4,291,496,960，ArceeForCausalLM 為 4,619,189,760。任務包裝與近似預估分開列示；BertJapanese 缺少檢查點映射且明示沿用 BERT 追蹤。尚未驗證的原生設定轉接維持不可用，不套用預設設定冒充結果。
+
+English: Default Standard/Both, persisted Professional preset, and explicit shared preferences are supported. Overview groups preserve readable labels and drill into actual operations. The finder, per-operation port journeys, comparison differences/config drilldown, mobile Tools, resizable panels, saved annotations and SVG/JSON/CSV review export are covered by the separate test/audit suite. Empty, delayed, offline and failed resources provide context-preserving recovery.
+繁中：預設 Standard／Both，保留專業預設與明確共享偏好。概覽群組可讀且能進入真實運算。搜尋、逐運算埠旅程、差異與設定比較、行動 Tools、可調面板、儲存註記及 SVG／JSON／CSV 匯出由 test/audit 獨立驗收；空範圍、延遲、離線與失敗資源均提供保留調查脈絡的恢復方式。
+
+English: Follow docs/audit-v2.md and docs/maintenance-prompt.md. Keep append-only Traditional Chinese development tickets and actual GUI milestones, monthly verbatim goal amendments, bilingual todo.txt, and module/mock text-coverage.txt. Preserve the existing 95% coverage and timed CI requirements.
+繁中：依 docs/audit-v2.md 與 docs/maintenance-prompt.md 維護；繁中開發票記與實際 GUI 里程碑只追加，每月逐字保存目標修訂，更新雙語待辦與模組／模擬涵蓋清單，保留既有 95% 涵蓋率及 CI 時限。

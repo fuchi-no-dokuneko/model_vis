@@ -6,3 +6,10 @@ Apporch chosen: 使用現有 OpenSSL 產生專案內憑證，IPv4 公開監聽�
 Assumption made to chose this approch: 最新明示規則優先於先前的本機啟動設定；不部署。
 affect scope: start.sh、瀏覽器及 UAT 服務；未修改系統網絡或 CI/CD。
 ---
+---16:48---推送逾時已停止
+category: devenv_change
+Current status: 外部 GitHub 推送五秒內未完成，已按使用者規則終止且不重試。
+Issues: 結束碼 137；具體外部原因未確認，五個提交仍保存在本機。
+TODO for human: 本批驗證完成後，使用者可自行推送目前分支。
+affect scope: 遠端同步；本機實作與驗證繼續，未更改網絡設定。
+---

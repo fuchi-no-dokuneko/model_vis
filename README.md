@@ -41,7 +41,7 @@ An automatic preflight compares estimated official-model peak memory with curren
 
 ## Deterministic semantic assets
 
-The build also writes a schema-validated `semantics/<version>.json` for every successful technical graph. These assets contain topology-ordered stages, exact class/interface tags, technical fallback explanations, tensor journeys, trace-only parameter and operation distributions, and coverage values. Official parameter estimates remain separate and are never distributed across trace stages. Every semantic asset records the semantic generator version and a shared generation timestamp.
+The build also writes a schema-validated `semantics/<version>.json` for every successful technical graph. These assets contain topology-ordered stages, exact class/interface tags, technical fallback explanations, tensor journeys, trace-only parameter and operation distributions, and coverage values. Config-derived parameter counts instantiate the recorded entrypoint on the meta device, deduplicate tied parameters, and identify task-head variants. These counts remain separate from approximate memory-preflight estimates and initialized trace counts. Missing or unsupported official mappings remain unavailable, including reused aliases. Every journey step describes its own observed input and output ports.
 
 The fixed tag vocabulary and exact matching registry live in `profiles/interface-tags.v1.json`; reusable architecture-family stage packs live in `profiles/semantic-stage-rules.v1.json`. Rules match exact classes, base classes/interfaces, or verified signatures. Unknown classes remain publishable as `other` with a technical fallback—do not add fuzzy class-name rules or browser-side per-model mappings. The static tree publishes canonical copies at `contracts/interface-tags.v1.json` and `contracts/semantic-model.schema.json`; `manifest.v2.json` links both contracts, the semantic index, and `indexes/semantic-report.v1.json`.
 
@@ -73,7 +73,11 @@ On phones, the catalog and inspector drawers open above the backdrop and close o
 
 Graph nodes can be moved by dragging their header and resized from the lower-right handle in every graph mode. Layout changes are stored locally per model, mode, and module scope; Reset restores generated positions and the default `248 x 168` technical-node or `248 x 196` semantic-stage size. Empty-canvas dragging pans without selecting page text.
 
-New viewer sessions open in Beginner detail, Semantic labels, and Architecture. Standard combines semantic and source labels; Trace exposes the full Modules, Blocks, Operations, runtime, source, and config interface. Detail, label, selection, and stage preferences persist locally and explicit choices are encoded in shareable routes.
+New viewer sessions open in Standard detail, Both labels, and Architecture. The Professional preset restores Standard/Both. Trace exposes the full Modules, Blocks, Operations, runtime, source, and config interface. Detail, label, selection, and stage preferences persist locally; explicit shared route preferences take precedence. Overview groups expand into readable technical nodes.
+
+The finder supports interface, module, tensor ID, dtype and shape filters, a results table, next/previous navigation and an explicit empty state. Tensor filters describe the same observed port. Review/export saves annotated views and downloads selected subgraph SVG plus JSON/CSV facts with provenance. Compare provides missing-data-aware differences and expandable configuration/journey details. Panel widths persist locally; smaller windows expose controls through Tools. See [audit controls and checks](docs/audit-v2.md).
+
+Serve the local build with `venv/bin/python scripts/serve_https.py --directory build --port 8081`. It binds IPv4 `0.0.0.0` using a self-signed certificate under `.local-tool/certs/`; manually accept the certificate in your browser. The audit-v2 task excludes deployment.
 
 With a graph node selected, `Alt+Shift+M` copies its module name, `Alt+Shift+P` copies its qualified module path, and `Alt+Shift+S` copies only its referenced source range. The top-bar theme control switches between light and dark themes and preserves the choice locally.
 
@@ -151,3 +155,19 @@ python -m pip download -d wheelhouse -r requirements-admin.txt
 ```
 
 `torchaudio` must be the CPU wheel matching the installed `torch` version. The viewer and non-audio model builds work without it; audio-family builds require it.
+
+## 繁體中文
+
+本專案將離線 PyTorch 架構追蹤轉成靜態檢視器，保留 101 個模型；權重為本機初始化，不下載預訓練權重。上述命令可建置、驗證與執行測試。官方設定映射不足或沿用其他模型追蹤時會明確標示，不能視為檢查點驗證。
+
+預設使用 Standard／Both；專業預設、搜尋結果表、逐埠張量旅程、差異比較、可調面板、儲存註記及 SVG／JSON／CSV 匯出均可在介面操作。共享網址的明確模式優先。設定推導參數量與初始化追蹤、記憶體預估分開顯示。
+
+本機服務使用專案內自簽 HTTPS 憑證，監聽 IPv4 `0.0.0.0`；瀏覽器需手動接受憑證。此次審核不需要部署。詳細操作與驗收命令見[審核指南](docs/audit-v2.md)。來源授權仍依第三方聲明與既有發行檢查處理。
+
+## 简体中文
+
+本项目将离线 PyTorch 架构跟踪转为静态查看器，保留 101 个模型；权重为本地初始化，不下载预训练权重。上述命令可构建、验证并运行测试。官方配置映射不足或复用其他模型跟踪时会明确标示，不能视为检查点验证。
+
+默认使用 Standard／Both；专业预设、搜索结果表、逐端口张量旅程、差异比较、可调面板、保存注释及 SVG／JSON／CSV 导出均可在界面操作。共享网址的明确模式优先。配置推导参数量与初始化跟踪、内存预估分别显示。
+
+本地服务使用项目内自签 HTTPS 证书，监听 IPv4 `0.0.0.0`；浏览器需手动接受证书。本次审核无需部署。详细操作与验收命令见[审核指南](docs/audit-v2.md)。源码授权仍按第三方声明与现有发布检查处理。

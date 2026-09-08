@@ -6,16 +6,10 @@ The September 2026 update adds exactly 50 families/versions to the existing 51.
 the full catalog of 563 families and 567 normalized versions. This is a partial
 catalog release, not a claim that the entire catalog has been traced.
 
-Publication checkpoint, 2026-09-06 17:01 UTC: commit
-`0159dc5276463c5e8ba535b8e858854b4323c642` contains all 101 generated models and
-passed the complete remote verification job. The
-[deployment attempt](https://github.com/fuchi-no-dokuneko/model_vis/actions/runs/34046894311/job/101524158394)
-failed because Cloudflare rejected the existing token from the GitHub runner's
-location (error `9109`, also reporting authentication error `10000`). The target
-still served 51 models at commit `54747beb6bc91d96826be283092b9ec36d2309e6` when
-checked. Publication remains unfinished until access for the existing workflow
-is restored, its deploy job succeeds, and the served artifacts are verified.
-Networking, deployment methods, and workflow files have not been changed.
+The audit-v2 maintenance batch on 2026-09-08 retains these 101 models on
+`feat/viewer-model-expansion-101`. The user explicitly excludes deployment.
+Local validation and browser evidence describe local artifacts. They do not
+claim a new remote release or deployment. Existing CI/CD files remain unchanged.
 
 The new selection uses distinct structures absent from the baseline. Candidates
 are ordered by case-insensitive display name among single-version text and
@@ -66,6 +60,7 @@ limit validation. Failed candidate attempts are not successful models.
 npm test
 ./venv/bin/python -m pytest -q test/unit test/uat
 ./venv/bin/python -m pytest -q test/e2e
+./venv/bin/python -m pytest -q test/audit
 npm run test:coverage:ui
 npm run test:coverage:python
 npm run test:coverage:check
@@ -81,19 +76,24 @@ and 50 distinct added structures. The browser smoke test opens every one of the
 valid-link recovery, Favorites storage/keyboard/filter behavior, and search
 after scrolling. Shared geometry and contrast tests remain in force.
 
-## Existing target publication
+The separate audit suite verifies 52 viewports, breakpoint neighbors, 12 I/O
+models at three sizes, comparison routes and keyboard focus, provenance,
+exports, saved views, filters, and recovery from real HTTPS failures and delays.
+Config-derived counts and every journey port are checked against actual model
+classes and canonical graphs. See [the audit guide](audit-v2.md).
 
-The target is `https://model-vis.pages.dev/`. Keep `.github/workflows/quality.yml`,
-network configuration, and deployment methods unchanged. The existing workflow
-verifies every branch and deploys successful pushes on `main` or
-`tickets/model-vis-260823` through its existing Cloudflare Pages action. A feature
-branch passing verification alone does not update the target.
+## 繁體中文
 
-After publishing through that workflow, verify the successful deployment job,
-the target's `deployment.json` commit, and `model_code/manifest.v2.json`. Fetch
-and validate the target assets and open the new models in the browser. Confirm
-all original 51 IDs remain and all 50 new IDs are served. A local 101-model
-manifest, a push, or a queued CI run is insufficient evidence of completion.
+固定三份 include 清單保留原有 51 個模型並增加 50 個不同結構，共 101 個；完整目錄為 563 個家族與 567 個版本。這是部分目錄範圍，未宣稱全部已追蹤。新增模型使用精簡本機設定，缺少官方映射時明確標示。
 
-If network or deployment access fails, record the exact failed step and retain
-the ready artifacts. Do not work around it by changing networking or CI/CD.
+上述建置命令可從快取恢復既有追蹤；完整驗證仍檢查圖形、來源、語意與檔案限制。`--allow-partial` 只允許選定範圍及明確的來源限制。單元、漂移、涵蓋率、101 模型載入與獨立審核套件共同提供本機驗收證據。
+
+2026-09-08 審核沿用目前分支，不部署，亦不修改 CI/CD 或系統網絡。瀏覽器使用專案內自簽 HTTPS。舊部署狀態不屬此次完成條件；本機結果不代表遠端發行。
+
+## 简体中文
+
+固定三份 include 清单保留原有 51 个模型并增加 50 个不同结构，共 101 个；完整目录为 563 个家族与 567 个版本。这是部分目录范围，未声称全部已跟踪。新增模型使用精简本地配置，缺少官方映射时明确标示。
+
+上述构建命令可从缓存恢复现有跟踪；完整验证仍检查图形、源码、语义与文件限制。`--allow-partial` 只允许选定范围及明确的来源限制。单元、漂移、覆盖率、101 模型加载与独立审核套件共同提供本地验收证据。
+
+2026-09-08 审核沿用当前分支，不部署，也不修改 CI/CD 或系统网络。浏览器使用项目内自签 HTTPS。本次完成条件不包含旧部署状态；本地结果不代表远程发布。

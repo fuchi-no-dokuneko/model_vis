@@ -13,7 +13,7 @@ gate but remain covered by named real tests:
 | `src/ui/app.js` | Browser event orchestration; Chromium precise coverage has no stable semantic JavaScript branch IDs. | Full Selenium suite, ten visual cases, four reviewed viewports, and daily real Gherkin run. |
 | `src/model_builder/builder.py`, `factory.py`, `tracing.py`, `introspection.py`, `blocks.py` | Model construction and tracing deliberately replace Python frame tracing and execute native Torch/Transformers paths. | Real generated-artifact, tracing/block, catalog, drift, and packaged-site tests. |
 | `src/model_builder/semantics.py`, `staged.py`, `hf_config.py` | Generated semantic/catalog integration is validated as parsed artifacts and across all published models. | Semantic, staged, configuration, schema, deterministic generation, browser, and UAT tests. |
-| `src/model_builder/validate.py`, `drift.py`, `__main__.py` | CLI and full-catalog integration paths operate on the 244 MB checked-in runtime catalog. | Real CLI fixture tests plus the mandatory full drift command in CI. |
+| `src/model_builder/validate.py`, `drift.py`, `__main__.py` | CLI and full-catalog integration paths operate on the checked-in runtime catalog. | Real CLI fixture tests plus the mandatory full drift command in CI. |
 | `src/__init__.py`, `src/model_builder/__init__.py` | Package markers and schema constant contain no decision logic. | Import and build tests. |
 
 ## Release tooling classification
@@ -36,3 +36,20 @@ as product coverage.
 An exclusion may be removed only when its replacement report preserves real model
 execution and supplies stable line and branch identifiers. Changes to this table
 require review in the same pull request as the coverage configuration.
+
+## Audit-v2 coverage additions
+
+The Python core report now includes `parameter_counts.py`, `meta_parameters.py`
+and `journey_facts.py`, exercised with real pinned configurations and canonical
+graphs. Browser LCOV discovers every shipped UI JavaScript module. Daily UAT
+also exercises review downloads/restoration, finder filters, panel sizing and
+configuration comparison. The existing exclusions and independent 95% report
+thresholds are unchanged; the extended `test/audit` matrix is additional evidence.
+
+## 繁體中文
+
+核心報告各自維持 95% 行與分支涵蓋率；既有排除清單未變更。新增參數計算、meta 模型及旅程埠模組納入 Python 核心報告，使用真實設定與圖形。瀏覽器涵蓋率收集全部前端 JavaScript，每日 UAT 新增下載、還原、搜尋、面板尺寸及設定比較；完整審核矩陣另行提供證據。
+
+## 简体中文
+
+核心报告各自维持 95% 行与分支覆盖率；现有排除清单未变更。新增参数计算、meta 模型及旅程端口模块纳入 Python 核心报告，使用真实配置与图形。浏览器覆盖率收集全部前端 JavaScript，每日 UAT 新增下载、恢复、搜索、面板尺寸及配置比较；完整审核矩阵另行提供证据。
