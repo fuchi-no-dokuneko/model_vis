@@ -14,3 +14,11 @@ Apporch chosen: 使用可展開的群組概覽與觀測連線，維持可讀字�
 Assumption made to chose this approch: 新審核的無重疊要求與既有可讀性要求必須同時滿足。
 affect scope: 概覽、搜尋、行動選單、瀏覽器測試及獨立完整審核套件。
 ---
+---17:04---離線與重試操作修正
+category: bug_discovery
+Current status: 已修正首版重試按鈕不接收點擊及離線導覽缺少重試動作；七項針對性回歸通過。
+Issues: 圖形空狀態原有樣式禁止點擊；離線錯誤只更新狀態文字。
+Apporch chosen: 讓錯誤卡片可互動，保留失敗位置並加入直接重試。
+Assumption made to chose this approch: 使用者應能在連線恢復後繼續原本選取的運算。
+affect scope: 模型導覽、錯誤卡片與瀏覽器驗收。
+---

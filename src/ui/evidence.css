@@ -5,6 +5,7 @@
 .evidence-facts dd { margin: 0; overflow-wrap: anywhere; }
 .resource-state { padding: 12px; max-width: 100%; overflow-wrap: anywhere; }
 .resource-state pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.empty-state > .resource-state { pointer-events: auto; width: min(460px, calc(100% - 24px)); max-height: 90%; overflow: auto; color: var(--text); background: var(--surface); border: 1px solid var(--border-strong); user-select: text; }
 .compare-pane { margin: 0; color: var(--text); }
 .compare-pane::backdrop { background: rgb(13 19 15 / 32%); }
 .graph-viewport[data-zoom-tier="overview"] .overview-glyph { width: min(calc(92px * var(--inverse-zoom)), calc(100% - 8px)); height: min(calc(38px * var(--inverse-zoom)), calc(100% - 8px)); transform: translate(-50%, -50%); font-size: min(calc(10px * var(--inverse-zoom)), 28px); }

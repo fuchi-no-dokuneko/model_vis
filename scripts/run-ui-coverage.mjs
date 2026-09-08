@@ -2,17 +2,17 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 
 const reports = [
-  ["test/ui/data-store.test.mjs", "coverage/data-store.lcov"],
-  ["test/ui/graph-model.test.mjs", "coverage/graph-model.lcov"],
+  [["test/ui/data-store.test.mjs"], "coverage/data-store.lcov"],
+  [["test/ui/graph-model.test.mjs", "test/ui/audit-projections.test.mjs", "test/ui/audit-metrics.test.mjs"], "coverage/graph-model.lcov"],
 ];
 
 mkdirSync("coverage", { recursive: true });
-for (const [testFile, report] of reports) {
+for (const [testFiles, report] of reports) {
   const result = spawnSync(process.execPath, [
     "--experimental-test-coverage",
     "--test-reporter=lcov",
     "--test",
-    testFile,
+    ...testFiles,
   ], { encoding: "utf8" });
   if (result.stderr) process.stderr.write(result.stderr);
   if (result.status !== 0) process.exit(result.status ?? 1);

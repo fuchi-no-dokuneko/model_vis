@@ -82,12 +82,12 @@ function labelParts(raw, semantic, labelMode = "source") {
   const entity = semantic?.entities?.[raw.id] || semantic?.entities?.[raw.module_id];
   const source = ["scope_input", "scope_output"].includes(raw.kind) ? (raw.display_name || raw.name) : (raw.qualified_name && raw.qualified_name !== "<root>" ? raw.qualified_name : null)
     || raw.module_path || raw.display_name || raw.name || raw.id;
-  if (!entity || labelMode === "source") return { title: source, subtitle: raw.module_path || raw.qualified_name || shapeText(raw.output_ports || raw.outputs) || raw.kind };
-  const semanticName = entity.semantic_name || entity.primary_tag?.replaceAll("_", " ") || source;
-  if (entity.primary_tag === "other" || semanticName === "Unclassified component") {
+  if (entity?.primary_tag === "other" || entity?.semantic_name === "Unclassified component") {
     const identity = raw.display_name || raw.name || entity.source_name || source;
     return { title: identity, subtitle: `${raw.module_path || entity.qualified_name || source} · unclassified` };
   }
+  if (!entity || labelMode === "source") return { title: source, subtitle: raw.module_path || raw.qualified_name || shapeText(raw.output_ports || raw.outputs) || raw.kind };
+  const semanticName = entity.semantic_name || entity.primary_tag?.replaceAll("_", " ") || source;
   return {
     title: semanticName,
     subtitle: labelMode === "both"

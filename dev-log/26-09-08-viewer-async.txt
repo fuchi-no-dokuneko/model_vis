@@ -1,0 +1,8 @@
+---17:19---跨模型延遲覆蓋修正
+category: bug_discovery
+Current status: 已修正晚到的 BERT 圖形與設定覆蓋 BiT／Arcee 選取；五項延遲與重試回歸通過。
+Issues: 舊非同步工作曾寫入目前模型狀態；重複失敗重繪亦會替換重試按鈕。
+Apporch chosen: 模型、路由、面板與比較各自保留請求歸屬，失效回應不再提交至介面。
+Assumption made to chose this approch: 使用者最後選取應決定顯示內容，晚到回應不可混用。
+affect scope: 導覽、圖形資產、來源、設定、比較及離線恢復。
+---

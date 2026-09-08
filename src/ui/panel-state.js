@@ -1,4 +1,4 @@
-export function panelState(container, message, { error, retry } = {}) {
+export function panelState(container, message, { error, retry, retryLabel = "Retry" } = {}) {
   const section = document.createElement("div");
   section.className = "resource-state";
   section.setAttribute("role", error ? "alert" : "status");
@@ -7,7 +7,7 @@ export function panelState(container, message, { error, retry } = {}) {
   section.append(title);
   if (retry) {
     const button = document.createElement("button");
-    button.textContent = "Retry";
+    button.textContent = retryLabel;
     button.addEventListener("click", retry);
     section.append(button);
   }

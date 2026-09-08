@@ -67,6 +67,10 @@ const state = {
   renderFrame: null,
   geometryFrame: null,
   loadToken: 0,
+  routeToken: 0,
+  viewToken: 0,
+  configToken: 0,
+  compareToken: 0,
   sourceToken: 0,
   sourceAssets: new Map(),
   currentSourceText: "",
@@ -163,6 +167,17 @@ function setNavigationError(message = "") {
   if (message) $("#uri-input").setAttribute("aria-describedby", "graph-status");
   else $("#uri-input").removeAttribute("aria-describedby");
   showStatus(state.graphStatus);
+}
+
+function routeFailure(error) {
+  const network = /fetch|Unable to load|NetworkError/i.test(error.message);
+  setNavigationError(network ? "The requested location could not be loaded. Retry when the connection is available." : error.message);
+  if (network) {
+    const empty = $("#empty-state"); empty.hidden = false;
+    panelState(empty, "The requested model could not be opened. Your previous investigation is retained.", {
+      error, retry: () => applyRoute(state.requestedRoute || location.hash).catch(routeFailure),
+    });
+  }
 }
 
 function initializeFavorites() {
@@ -448,8 +463,7 @@ function renderListWindow() {
     setTooltip(open, fullMetadata);
     open.append(name, meta);
     open.addEventListener("click", async () => {
-      await loadVersion(item.version_id);
-      await setMode("module");
+      await applyRoute(`#/version/${encodeURIComponent(item.version_id)}/view/module`, { push: true });
       switchNavigator("modules");
     });
     const label = document.createElement("label");
@@ -556,7 +570,8 @@ function syncRoute({ push = true } = {}) {
   $("#uri-input").value = `modelvis:${hash.slice(1)}`;
 }
 
-async function applyRoute(value) {
+async function applyRoute(value, { push = false } = {}) {
+  const token = ++state.routeToken;
   state.requestedRoute = value;
   const route = parseViewerRoute(value);
   if (!route.compare && !$("#compare-pane").hidden) closeCompare({ sync: false });
@@ -573,7 +588,9 @@ async function applyRoute(value) {
     if (route.compare.some((id) => !state.index.some((item) => item.version_id === id))) throw new Error("Compare route contains an unknown model version");
     state.compareIds = route.compare;
     await openCompare({ sync: false, view: route.view || "architecture" });
-    history.replaceState(null, "", `${location.pathname}${location.search}#/${["compare", ...route.compare, "view", route.view || "architecture", "detail", state.detailMode, "labels", state.labelMode].map(encodeURIComponent).join("/")}`);
+    if (token !== state.routeToken) return;
+    history.replaceState({ returnRoute: state.compareReturnRoute }, "", `${location.pathname}${location.search}#/${["compare", ...route.compare, "view", route.view || "architecture", "detail", state.detailMode, "labels", state.labelMode].map(encodeURIComponent).join("/")}`);
+    $("#uri-input").value = `modelvis:${location.hash.slice(1)}`;
     setNavigationError();
     return;
   }
@@ -584,14 +601,17 @@ async function applyRoute(value) {
   }
   state.routeApplying = true;
   try {
-    await loadVersion(route.version, { sync: false });
+    if (!await loadVersion(route.version, { sync: false })) return;
+    if (token !== state.routeToken) return;
     const mode = ["architecture", "family", "module", "blocks", "operation"].includes(route.view) ? route.view : "architecture";
-    await setMode(mode, { sync: false });
+    if (!await setMode(mode, { sync: false })) return;
+    if (token !== state.routeToken) return;
     if (route.module && state.graph) {
       const module = moduleByPath(route.module);
       if (!module) throw new Error(`Unknown module path: ${route.module}`);
       state.scopeModuleId = module.module_id;
       state.hierarchyModuleId = module.module_id;
+      state.inspected = module;
       expandModuleAncestors(module);
     }
     if (route.call) {
@@ -601,8 +621,10 @@ async function applyRoute(value) {
       state.hierarchyModuleId = call.module_id;
       expandModuleAncestors(moduleById(call.module_id));
     }
-    await renderMode({ fit: true });
+    if (!await renderMode({ fit: true })) return;
+    if (token !== state.routeToken) return;
     await switchInspectorPanel(state.detailMode === "beginner" ? "explain" : "details");
+    if (token !== state.routeToken) return;
     if (route.stage) {
       const item = state.graphView.nodes.find((node) => node.id === route.stage);
       if (!item) throw new Error(`Unknown semantic stage: ${route.stage}`);
@@ -619,12 +641,14 @@ async function applyRoute(value) {
     }
     if (route.source) {
       const source = await ensureSourceAsset(route.source);
+      if (token !== state.routeToken) return;
       if (!source) throw new Error(`Unknown source asset: ${route.source}`);
       const line = Number(route.line || 1);
       if (!Number.isInteger(line) || line < 1 || line > source.line_count) {
         throw new Error(`Invalid source line: ${route.line}`);
       }
       await switchInspectorPanel("source");
+      if (token !== state.routeToken) return;
       await renderSource({
         source_ref: {
           source_uid: route.source,
@@ -636,11 +660,14 @@ async function applyRoute(value) {
         },
       });
     }
+    if (token !== state.routeToken) return;
     renderModuleTree();
+  } catch (error) {
+    if (token === state.routeToken) throw error;
   } finally {
-    state.routeApplying = false;
+    if (token === state.routeToken) state.routeApplying = false;
   }
-  syncRoute({ push: false });
+  if (token === state.routeToken) syncRoute({ push });
 }
 
 function positionStorageKey() {
@@ -761,10 +788,12 @@ function renderBreadcrumbs() {
 
 async function ensureGraphAssets() {
   if (!state.current) return;
+  const current = state.current, token = state.loadToken;
   const [graph, trace] = await Promise.all([
-    state.graph ? Promise.resolve(state.graph) : store.graph(state.current),
-    state.trace ? Promise.resolve(state.trace) : store.trace(state.current),
+    state.graph ? Promise.resolve(state.graph) : store.graph(current),
+    state.trace ? Promise.resolve(state.trace) : store.trace(current),
   ]);
+  if (current !== state.current || token !== state.loadToken) return;
   state.graph = graph;
   state.trace = trace;
   state.scopeModuleId ||= graph.modules[0]?.module_id || null;
@@ -773,23 +802,31 @@ async function ensureGraphAssets() {
 
 async function ensureModeAssets() {
   if (!state.current) return;
-  if (state.mode === "family") {
-    state.family ||= await store.family(state.current.family_id);
+  const current = state.current, token = state.loadToken, mode = state.mode;
+  const active = () => current === state.current && token === state.loadToken;
+  if (mode === "family") {
+    const family = state.family || await store.family(current.family_id);
+    if (active()) state.family = family;
     return;
   }
   await ensureGraphAssets();
-  state.semantic ||= await store.semantic(state.current);
-  if (state.mode === "blocks") state.blocks ||= await store.blocks(state.current);
+  if (!active()) return;
+  const [semantic, blocks] = await Promise.all([
+    state.semantic || store.semantic(current),
+    mode === "blocks" ? state.blocks || store.blocks(current) : state.blocks,
+  ]);
+  if (active()) { state.semantic = semantic; state.blocks = blocks; }
 }
 
 async function loadVersion(versionId, { sync = true } = {}) {
   const token = ++state.loadToken;
+  state.viewToken++; state.configToken++; state.sourceToken++;
   showStatus("Loading model metadata...");
   const [version, family] = await Promise.all([store.version(versionId), store.family((state.index.find((item) => item.version_id === versionId) || {}).family_id || versionId)]).catch(async () => {
     const versionValue = await store.version(versionId);
     return [versionValue, await store.family(versionValue.family_id)];
   });
-  if (token !== state.loadToken) return;
+  if (token !== state.loadToken) return false;
   state.current = version;
   state.family = family;
   state.graph = null;
@@ -825,9 +862,11 @@ async function loadVersion(versionId, { sync = true } = {}) {
   state.zoom = 1;
   renderListWindow();
   renderInspector(version);
-  await renderMode({ fit: true });
+  if (!await renderMode({ fit: true })) return false;
+  if (token !== state.loadToken) return false;
   closeSidebar();
   if (sync) syncRoute();
+  return true;
 }
 
 async function setMode(mode, { sync = true } = {}) {
@@ -856,7 +895,7 @@ async function setMode(mode, { sync = true } = {}) {
     else button.removeAttribute("aria-current");
   });
   updateDensityButton();
-  await renderMode({ fit: true });
+  if (!await renderMode({ fit: true })) return false;
   let item = null;
   if (mode === "architecture" && preservedStage) {
     item = state.graphView.nodes.find((node) => node.id === preservedStage);
@@ -878,6 +917,7 @@ async function setMode(mode, { sync = true } = {}) {
   state.pendingSelection = null;
   persistViewState();
   if (sync) syncRoute();
+  return true;
 }
 
 async function selectModule(moduleId, { sync = true } = {}) {
@@ -903,9 +943,12 @@ async function selectModule(moduleId, { sync = true } = {}) {
 
 async function renderMode({ fit = false } = {}) {
   if (!state.current) return;
+  const token = ++state.viewToken, current = state.current, loadToken = state.loadToken, mode = state.mode;
+  const active = () => token === state.viewToken && current === state.current && loadToken === state.loadToken && mode === state.mode;
   showStatus("Loading view...");
   try {
     await ensureModeAssets();
+    if (!active()) return false;
     const projectionMode = state.mode === "architecture" && !state.semantic ? "module" : state.mode;
     state.graphView = projectGraph({
       mode: projectionMode,
@@ -929,6 +972,13 @@ async function renderMode({ fit = false } = {}) {
     $("#graph-canvas").style.height = `${state.bounds.height}px`;
     $("#edges").setAttribute("viewBox", `0 0 ${state.bounds.width} ${state.bounds.height}`);
     $("#empty-state").hidden = state.graphView.nodes.length > 0;
+    if (!state.graphView.nodes.length) panelState($("#empty-state"), "No operations were observed in this module scope.", {
+      retryLabel: "Show model graph", retry: async () => {
+        state.scopeModuleId = state.graph?.modules[0]?.module_id || null;
+        state.hierarchyModuleId = null; state.selectedId = null; state.inspected = state.current;
+        await renderMode({ fit: true }); renderModuleTree(); syncRoute();
+      },
+    });
     renderBreadcrumbs();
     updateGraphSearch({ render: false });
     updatePathControls();
@@ -936,12 +986,14 @@ async function renderMode({ fit = false } = {}) {
     renderVisibleGraph();
     renderStructuralSummary();
     renderInspector(state.inspected);
-    if (fit) requestAnimationFrame(() => state.selectedId ? focusSelection() : fitGraph());
+    if (fit) requestAnimationFrame(() => { if (active()) state.selectedId ? focusSelection() : fitGraph(); });
+    return true;
   } catch (error) {
+    if (!active()) return false;
     $("#empty-state").hidden = false;
     panelState($("#empty-state"), `Could not load ${state.current.family_name}. Your investigation is retained.`, { error, retry: () => state.requestedRoute ? applyRoute(state.requestedRoute).catch((failure) => setNavigationError(failure.message)) : renderMode({ fit: true }) });
   } finally {
-    if ($("#graph-status").textContent === "Loading view...") showStatus("");
+    if (active() && $("#graph-status").textContent === "Loading view...") showStatus("");
   }
 }
 
@@ -950,7 +1002,7 @@ async function setLabelMode(mode, { sync = true } = {}) {
   const selectedId = state.selectedId;
   state.labelMode = mode;
   $("#label-mode").value = mode;
-  await renderMode();
+  if (!await renderMode()) return;
   const item = state.graphView.nodes.find((node) => node.id === selectedId);
   if (item) selectNode(item, {}, { sync: false, openOnMobile: false });
   renderModuleTree();
@@ -1133,10 +1185,11 @@ function handleModuleTreeKeydown(event) {
 }
 
 async function ensureSourceAsset(sourceUid) {
-  if (state.sourceAssets.has(sourceUid)) return state.sourceAssets.get(sourceUid);
+  const assets = state.sourceAssets;
+  if (assets.has(sourceUid)) return assets.get(sourceUid);
   try {
     const source = await store.source(sourceUid);
-    state.sourceAssets.set(sourceUid, source);
+    assets.set(sourceUid, source);
     return source;
   } catch {
     return null;
@@ -1859,8 +1912,7 @@ async function drillIntoNode(item, event = {}) {
   event.stopPropagation?.();
   if (state.mode === "family") {
     const versionId = item.id.startsWith("version:") ? item.id.slice(8) : state.current.version_id;
-    await loadVersion(versionId);
-    await setMode("module");
+    await applyRoute(`#/version/${encodeURIComponent(versionId)}/view/module`, { push: true });
     switchNavigator("modules");
     return;
   }
@@ -2083,17 +2135,20 @@ function renderExplain(value) {
 }
 
 function renderInspector(value) {
+  state.sourceToken++;
   value ||= state.current || {};
   state.inspected = value;
   if (state.current) {
     renderEvidence($("#identity-facts"), state.current, state.semantic);
     const origin = state.current.execution_source_version;
-    $("#identity-summary").textContent = `${state.current.parameter_evidence?.model_class?.split(".").at(-1) || state.current.family_name} · ${state.current.execution_mode === "full_model_forward" ? "full" : "compact"} · initialized${origin !== state.current.version_id ? ` · reused from ${origin}` : ""}`;
+    const checkpoint = state.current.official_config_source;
+    $("#identity-summary").textContent = `${state.current.parameter_evidence?.model_class?.split(".").at(-1) || state.current.family_name} · ${state.current.execution_mode === "full_model_forward" ? "full" : "compact"} · initialized${origin !== state.current.version_id ? ` · reused from ${origin}` : ""} · ${checkpoint ? `${checkpoint.repo_id} @ ${checkpoint.revision.slice(0, 12)}` : "No verified checkpoint mapping"}`;
   }
   const semantic = semanticRecordFor(value);
-  $("#inspector-title").textContent = state.labelMode === "source"
-    ? (value.qualified_name || value.display_name || value.name || value.family_name || "Inspector")
-    : ((semantic?.primary_tag !== "other" && semantic?.semantic_name) || value.display_name || value.qualified_name || value.name || value.family_name || "Inspector");
+  const technicalName = value.display_name || value.qualified_name || value.name || value.family_name || "Inspector";
+  const semanticName = semantic?.primary_tag !== "other" && semantic?.semantic_name;
+  $("#inspector-title").textContent = state.labelMode === "source" || !semanticName ? technicalName
+    : state.labelMode === "both" && semanticName !== technicalName ? `${semanticName} · ${technicalName}` : semanticName;
   const list = document.createElement("dl");
   for (const [name, content] of metadataRows(value)) {
     const term = document.createElement("dt");
@@ -2387,39 +2442,42 @@ function appendConfigRow(fragment, key, value, changed = false) {
 }
 
 async function renderConfigPanel() {
+  const current = state.current, mode = state.configMode, token = ++state.configToken;
+  const active = () => current === state.current && mode === state.configMode && token === state.configToken;
   const view = $("#config-view");
   view.textContent = "Loading config...";
   document.querySelectorAll(".config-mode").forEach((button) => {
-    button.classList.toggle("active", button.dataset.configMode === state.configMode);
+    button.classList.toggle("active", button.dataset.configMode === mode);
   });
   const link = $("#official-config-link");
-  link.hidden = !state.current?.official_config_source?.pinned_url;
-  if (!link.hidden) link.href = state.current.official_config_source.pinned_url;
+  link.hidden = !current?.official_config_source?.pinned_url;
+  if (!link.hidden) link.href = current.official_config_source.pinned_url;
   try {
+    const key = mode === "official" ? "officialConfig" : mode === "trace" ? "traceConfig" : "configDiff";
+    const loaded = state[key] ?? await store[key](current);
+    if (!active()) return;
+    state[key] = loaded;
     const fragment = document.createDocumentFragment();
-    if (state.configMode === "official") {
-      state.officialConfig ??= await store.officialConfig(state.current);
-      if (!state.officialConfig) {
-        view.textContent = state.current.warnings?.[0]?.message || "Official config unavailable.";
+    if (mode === "official") {
+      if (!loaded) {
+        view.textContent = current.warnings?.[0]?.message || "Official config unavailable.";
         return;
       }
-      const source = state.current.official_config_source;
+      const source = current.official_config_source;
       const provenance = document.createElement("div");
       provenance.className = "config-provenance";
       provenance.textContent = `${source.repo_id} @ ${source.revision.slice(0, 12)} · ${source.license} · sha256:${source.sha256.slice(0, 12)}`;
       fragment.append(provenance);
-      for (const [key, value] of [...flattenConfig(state.officialConfig)].slice(0, 2000)) appendConfigRow(fragment, key, value);
-    } else if (state.configMode === "trace") {
-      state.traceConfig ??= await store.traceConfig(state.current);
-      const config = state.traceConfig.config || state.traceConfig;
+      for (const [key, value] of [...flattenConfig(loaded)].slice(0, 2000)) appendConfigRow(fragment, key, value);
+    } else if (mode === "trace") {
+      const config = loaded.config || loaded;
       for (const [key, value] of [...flattenConfig(config)].slice(0, 2000)) appendConfigRow(fragment, key, value);
     } else {
-      state.configDiff ??= await store.configDiff(state.current);
-      if (!state.configDiff) {
+      if (!loaded) {
         view.textContent = "Differences unavailable because the official config could not be fetched.";
         return;
       }
-      for (const item of state.configDiff.differences) {
+      for (const item of loaded.differences) {
         appendConfigRow(fragment, `${item.path} · ${item.status}`, {
           official: item.official_value,
           trace: item.trace_value,
@@ -2428,7 +2486,7 @@ async function renderConfigPanel() {
     }
     view.replaceChildren(fragment);
   } catch (error) {
-    panelState(view, "Configuration could not be loaded.", { error, retry: renderConfigPanel });
+    if (active()) panelState(view, "Configuration could not be loaded.", { error, retry: renderConfigPanel });
   }
 }
 
@@ -2738,7 +2796,7 @@ function appendCompareTable(container, rows, leftTitle, rightTitle) {
   const body = document.createElement("tbody");
   for (const [label, left, right, difference = delta(left, right)] of rows) {
     const row = document.createElement("tr");
-    row.dataset.equal = String(left != null && right != null && left === right);
+    row.dataset.equal = String(left != null && right != null && left === right && ["same", "0", 0].includes(difference));
     for (const value of [label, left, right, difference]) {
       const cell = document.createElement("td");
       cell.textContent = value == null ? "Unavailable" : String(value);
@@ -2763,10 +2821,7 @@ function semanticTargetButton(version, semantic, stage, label) {
   button.textContent = label;
   button.addEventListener("click", async () => {
     closeCompare({ sync: false });
-    await loadVersion(version.version_id, { sync: false });
-    await setMode("architecture", { sync: false });
-    const item = state.graphView.nodes.find((node) => node.id === stage.stage_id);
-    if (item) selectNode(item);
+    await applyRoute(`#/version/${encodeURIComponent(version.version_id)}/view/architecture/stage/${encodeURIComponent(stage.stage_id)}`, { push: true });
   });
   return button;
 }
@@ -2788,7 +2843,7 @@ function appendSemanticTable(container, titleText, rows, left, right, leftSemant
   const body = document.createElement("tbody");
   rows.forEach((rowValue) => {
     const row = document.createElement("tr");
-    row.dataset.equal = String(Boolean(rowValue.leftStage && rowValue.rightStage && rowValue.leftText === rowValue.rightText));
+    row.dataset.equal = String(Boolean(rowValue.leftStage && rowValue.rightStage && rowValue.leftText === rowValue.rightText && !rowValue.relationship.startsWith("Not comparable")));
     const label = document.createElement("td");
     label.textContent = rowValue.label;
     const leftCell = document.createElement("td");
@@ -2814,8 +2869,11 @@ async function openCompare({ sync = true, view = "architecture" } = {}) {
   const content = $("#compare-content");
   panelState(content, "Loading comparison…");
   const dialog = $("#compare-pane");
+  const token = ++state.compareToken, ids = [...state.compareIds];
+  const active = () => token === state.compareToken && dialog.open;
+  state.compareView = view;
   if (!dialog.open) {
-    state.compareReturnRoute = state.current ? routePath() : null;
+    state.compareReturnRoute = state.current ? routePath() : history.state?.returnRoute || null;
     dialog.hidden = false;
     dialog.showModal();
     $("#close-compare").focus();
@@ -2827,30 +2885,33 @@ async function openCompare({ sync = true, view = "architecture" } = {}) {
   }
   if (sync) {
     const segments = ["compare", ...state.compareIds, "view", view, "detail", state.detailMode, "labels", state.labelMode];
-    history.pushState(null, "", `${location.pathname}${location.search}#/${segments.map(encodeURIComponent).join("/")}`);
-    $("#uri-input").value = `modelvis:/compare/${state.compareIds.map(encodeURIComponent).join("/")}/view/${view}`;
+    history.pushState({ returnRoute: state.compareReturnRoute }, "", `${location.pathname}${location.search}#/${segments.map(encodeURIComponent).join("/")}`);
+    $("#uri-input").value = `modelvis:/${segments.map(encodeURIComponent).join("/")}`;
   }
   try {
-    const [left, right] = await Promise.all(state.compareIds.map((id) => store.version(id)));
+    const [left, right] = await Promise.all(ids.map((id) => store.version(id)));
+    if (!active()) return;
     const [leftConfig, rightConfig, leftTrace, rightTrace, leftSemantic, rightSemantic] = await Promise.all([
       store.config(left), store.config(right), store.trace(left), store.trace(right), store.semantic(left), store.semantic(right),
     ]);
+    if (!active()) return;
     const configDifferenceCount = configDifferences(leftConfig, rightConfig).length;
     content.replaceChildren();
     const compatibleTrace = left.execution_mode === right.execution_mode;
+    const compatibleHeads = left.parameter_evidence?.head_scope_kind === right.parameter_evidence?.head_scope_kind;
     appendCompareTable(content, [
       ["Version", left.version_id, right.version_id],
       ["Domain", leftSemantic.domain, rightSemantic.domain],
       ["Task", leftSemantic.task, rightSemantic.task],
       ["Library", left.library, right.library],
       ["Trace initialized parameters", left.parameters.total, right.parameters.total, compatibleTrace ? delta(left.parameters.total, right.parameters.total) : "Not comparable: trace scopes differ"],
-      ["Config-derived parameters", left.parameter_evidence?.parameter_count, right.parameter_evidence?.parameter_count],
-      ["Observed operations", left.operation_count, right.operation_count],
+      ["Config-derived parameters", left.parameter_evidence?.parameter_count, right.parameter_evidence?.parameter_count, delta(left.parameter_evidence?.parameter_count, right.parameter_evidence?.parameter_count, compatibleHeads)],
+      ["Observed operations", left.operation_count, right.operation_count, delta(left.operation_count, right.operation_count, compatibleTrace)],
       ["Source files", sourceFiles(leftTrace).length, sourceFiles(rightTrace).length],
       ["Config fields changed", "—", "—", configDifferenceCount],
     ], left.family_name, right.family_name);
     const a = new Map(evidenceRows(left, leftSemantic)), b = new Map(evidenceRows(right, rightSemantic));
-    appendCompareTable(content, [...new Set([...a.keys(), ...b.keys()])].map((key) => [key, a.get(key), b.get(key)]), left.family_name, right.family_name);
+    appendCompareTable(content, [...new Set([...a.keys(), ...b.keys()])].map((key) => [key, a.get(key), b.get(key), delta(a.get(key), b.get(key), key !== "Config-derived parameters" || compatibleHeads)]), left.family_name, right.family_name);
     compareDetails(content, left, right, [leftSemantic, rightSemantic], store, appendCompareTable);
 
     const stageTypes = [...new Set([...leftSemantic.stages, ...rightSemantic.stages].map((stage) => stage.stage_type))];
@@ -2900,24 +2961,25 @@ async function openCompare({ sync = true, view = "architecture" } = {}) {
         rightStage,
         leftText: summary(leftStage, leftSemantic.metrics),
         rightText: summary(rightStage, rightSemantic.metrics),
-        relationship: leftStage && rightStage ? "Comparable trace distributions" : leftStage ? `Only in ${left.family_name}` : `Only in ${right.family_name}`,
+        relationship: leftStage && rightStage ? (compatibleTrace ? "Comparable trace distributions" : "Not comparable: trace scopes differ") : leftStage ? `Only in ${left.family_name}` : `Only in ${right.family_name}`,
       };
     });
     appendSemanticTable(content, "Stage parameter and operation distributions", distributionRows, left, right, leftSemantic, rightSemantic);
     filterComparison();
   } catch (error) {
-    panelState(content, "Comparison could not be loaded. Your model choices are retained.", { error, retry: () => openCompare({ sync: false, view }) });
+    if (active()) panelState(content, "Comparison could not be loaded. Your model choices are retained.", { error, retry: () => openCompare({ sync: false, view }) });
   }
 }
 
 function closeCompare({ sync = true } = {}) {
   const dialog = $("#compare-pane");
   if (!dialog.open) return;
+  state.compareToken++;
   dialog.close();
   dialog.hidden = true;
   updateScrim();
   if (sync && location.hash.startsWith("#/compare/")) {
-    const route = state.compareReturnRoute || `#/version/${state.compareIds[0]}/view/architecture`;
+    const route = state.compareReturnRoute || `#/version/${state.compareIds[0]}/view/${state.compareView || "architecture"}/detail/${state.detailMode}/labels/${state.labelMode}`;
     applyRoute(route).catch((error) => setNavigationError(error.message));
   }
   $("#compare-button").focus();
@@ -2948,7 +3010,7 @@ async function start() {
       const saved = savedViewState();
       const versionId = state.index.some((item) => item.version_id === saved.versionId) ? saved.versionId : index[0].version_id;
       const primaryView = ["architecture", "family", "module", "blocks", "operation"].includes(saved.primaryView) ? saved.primaryView : "architecture";
-      await loadVersion(versionId, { sync: false });
+      if (!await loadVersion(versionId, { sync: false })) return;
       await setMode(primaryView, { sync: false });
       await switchInspectorPanel(state.detailMode === "beginner" ? "explain" : "details");
       syncRoute({ push: false });
@@ -3005,7 +3067,7 @@ document.querySelectorAll(".config-mode").forEach((button) => button.addEventLis
 }));
 $("#uri-form").addEventListener("submit", async (event) => {
   event.preventDefault();
-  try { await applyRoute($("#uri-input").value); } catch (error) { setNavigationError(error.message); }
+  try { await applyRoute($("#uri-input").value); } catch (error) { routeFailure(error); }
 });
 $("#copy-source").addEventListener("click", async () => copyText(await selectedSourceCode(), "Source code"));
 $("#source-reference").addEventListener("click", () => copyText($("#source-reference").dataset.reference || "", "Source reference"));
@@ -3120,7 +3182,7 @@ $("#minimap").addEventListener("click", (event) => {
   };
   updateTransform();
 });
-window.addEventListener("hashchange", () => applyRoute(location.hash).catch((error) => setNavigationError(error.message)));
+window.addEventListener("hashchange", () => applyRoute(location.hash).catch(routeFailure));
 window.addEventListener("resize", () => {
   const focused = document.activeElement;
   if (!matchMedia("(max-width: 720px)").matches) $("#sidebar").classList.remove("open");

@@ -18,7 +18,11 @@ export function operationRecords(graph) {
 }
 
 export function findOperations(records, filters) {
-  return records.filter((record) => Object.entries(filters).every(([key, value]) => {
+  const ports = Object.entries(filters).filter(([key, value]) => value && ["tensor", "dtype", "shape"].includes(key));
+  return records.filter((record) => (!ports.length || [...(record.node.input_ports || []), ...(record.node.output_ports || [])].some((port) => ports.every(([key, value]) => {
+    const actual = key === "tensor" ? port.tensor_id : key === "shape" ? JSON.stringify(port.shape) : port.dtype;
+    return normalized(actual).includes(normalized(value));
+  }))) && Object.entries(filters).every(([key, value]) => {
     if (!value) return true;
     const actual = key === "query" ? [record.id, record.interface, record.module, record.tensor, record.dtype, record.shape, record.source].join(" ") : record[key];
     return normalized(actual).includes(normalized(value));

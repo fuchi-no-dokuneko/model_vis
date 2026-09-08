@@ -18,6 +18,16 @@ test("the finder combines real BERT operation, module, dtype, shape and tensor f
   assert.equal(findOperations(records, {}).length, graph.nodes.length);
 });
 
+test("tensor, dtype and shape filters describe the same observed port", () => {
+  const embedding = records.find((r) => r.interface === "embedding");
+  assert.ok(embedding);
+  const integer = embedding.node.input_ports.find((p) => p.dtype === "torch.int64");
+  const output = embedding.node.output_ports[0];
+  assert.equal(findOperations([embedding], { tensor: integer.tensor_id, dtype: output.dtype }).length, 0);
+  assert.equal(findOperations([embedding], { dtype: integer.dtype, shape: JSON.stringify(output.shape) }).length, 0);
+  assert.equal(findOperations([embedding], { tensor: output.tensor_id, dtype: output.dtype, shape: JSON.stringify(output.shape) }).length, 1);
+});
+
 test("review exports preserve selected facts, branch boundaries, annotations and provenance", () => {
   const state = { current, graph, selectedIds: new Set(["op-000028"]), selectedId: "op-000028", mode: "operation", detailMode: "trace", labelMode: "source" };
   const annotation = 'GELU "preserves"\n3072 dimensions <verified shape>';

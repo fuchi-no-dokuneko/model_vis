@@ -1,0 +1,8 @@
+---17:13---搜尋與名稱精修
+category: bug_discovery
+Current status: 已修正 Both 模式缺少技術名稱及張量篩選可混用不同埠的屬性。
+Issues: BERT 真實嵌入運算的整數輸入和浮點輸出曾可同時符合錯配條件。
+Apporch chosen: 同一埠需同時符合張量、型別及形狀條件；雙名稱模式保留技術身分。
+Assumption made to chose this approch: 使用者的張量條件應描述同一個觀測張量。
+affect scope: 搜尋模組、檢查面板及真實資料回歸測試。
+---

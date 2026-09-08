@@ -1,0 +1,8 @@
+---17:32---來源名稱與空範圍修正
+category: bug_discovery
+Current status: 已修正 Source 模式把未分類運算改成模組路徑；未觀測到運算的範圍改為明確空狀態。
+Issues: 真實 BiT reshape 名稱遭遮蔽；BERT 未執行 dropout 範圍原本提示重新選擇模型。
+Apporch chosen: 各標籤模式保留未分類運算身分，空範圍提供返回模型图形的動作。
+Assumption made to chose this approch: 未分類與未觀測不代表沒有技術資料或模型尚未選取。
+affect scope: 圖形標籤、空狀態及真實模型範圍測試。
+---
